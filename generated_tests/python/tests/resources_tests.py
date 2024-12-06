@@ -3,45 +3,45 @@ from splashkit import *
 
 
 def test_DeregisterFreeNotifier_integration():
-    RegisterFreeNotifier(test_notifier)
-    DeregisterFreeNotifier(test_notifier)
+    register_free_notifier(test_notifier)
+    deregister_free_notifier(test_notifier)
     assert test_notifier is None
 
 
 def test_PathToResource_integration():
-    SetResourcesPath("resources")
-    image_path = PathToResource("test_image.png", ResourceKind.ImageResource)
+    set_resources_path("resources")
+    image_path = path_to_resource("test_image.png", ResourceKind.ImageResource)
     assert image_path != ""
-    text_path = PathToResource("nonexistent_file.txt", ResourceKind.AnimationResource)
+    text_path = path_to_resource("nonexistent_file.txt", ResourceKind.AnimationResource)
     assert text_path == ""
 
 
 def test_PathToResources_integration():
-    resource_path = PathToResources()
+    resource_path = path_to_resources()
     assert resource_path is not None
-    SetResourcesPath("/new/resources")
-    new_resource_path = PathToResources()
+    set_resources_path("/new/resources")
+    new_resource_path = path_to_resources()
     assert new_resource_path == "/new/resources"
 
 
 def test_PathToResourcesForKind_integration():
-    SetResourcesPath("resources")
-    image_path = PathToResourcesForKind(ResourceKind.ImageResource)
+    set_resources_path("resources")
+    image_path = path_to_resources_for_kind(ResourceKind.ImageResource)
     assert image_path == "resources/images"
-    sound_path = PathToResourcesForKind(ResourceKind.SoundResource)
+    sound_path = path_to_resources_for_kind(ResourceKind.SoundResource)
     assert sound_path == "resources/sounds"
 
 
 def test_RegisterFreeNotifier_integration():
-    RegisterFreeNotifier(FreeNotifier())
+    register_free_notifier(free_notifier())
     assert notifier_called is True
-    DeregisterFreeNotifier(FreeNotifier())
+    deregister_free_notifier(free_notifier())
     assert notifier_called is False
 
 
 def test_SetResourcesPath_integration():
-    SetResourcesPath("/resources")
-    assert PathToResources() == "/resources"
-    SetResourcesPath("/new/resources")
-    assert PathToResources() == "/new/resources"
+    set_resources_path("/resources")
+    assert path_to_resources() == "/resources"
+    set_resources_path("/new/resources")
+    assert path_to_resources() == "/new/resources"
 

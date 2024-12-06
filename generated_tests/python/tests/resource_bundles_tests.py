@@ -3,23 +3,23 @@ from splashkit import *
 
 
 def test_FreeResourceBundle_integration():
-    LoadResourceBundle("test", "test.txt")
-    assert HasResourceBundle("test") is True
-    FreeResourceBundle("test")
-    assert HasResourceBundle("test") is False
+    load_resource_bundle("test", "test.txt")
+    assert has_resource_bundle("test") is True
+    free_resource_bundle("test")
+    assert has_resource_bundle("test") is False
 
 
 def test_HasResourceBundle_integration():
-    LoadResourceBundle("test", "test.txt")
-    assert HasResourceBundle("test") is True
-    FreeResourceBundle("test")
-    assert HasResourceBundle("test") is False
-    assert HasResourceBundle("nonexistent") is False
+    load_resource_bundle("test", "test.txt")
+    assert has_resource_bundle("test") is True
+    free_resource_bundle("test")
+    assert has_resource_bundle("test") is False
+    assert has_resource_bundle("nonexistent") is False
 
 
 def test_LoadResourceBundle_integration():
-    LoadResourceBundle("test_bundle", "test_bundle.txt")
-    assert HasResourceBundle("test_bundle") is True
-    FreeResourceBundle("test_bundle")
-    assert HasResourceBundle("test_bundle") is False
+    load_resource_bundle("test_bundle", "test_bundle.txt")
+    assert has_resource_bundle("test_bundle") is True
+    free_resource_bundle("test_bundle")
+    assert has_resource_bundle("test_bundle") is False
 

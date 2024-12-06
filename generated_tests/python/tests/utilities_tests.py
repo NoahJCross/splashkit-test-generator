@@ -3,153 +3,153 @@ from splashkit import *
 
 
 def test_Contains_integration():
-    test_result = Contains("SplashKit is awesome", "awesome")
+    test_result = contains("SplashKit is awesome", "awesome")
     assert test_result is True
-    test_result = Contains("SplashKit is awesome", "unreal")
+    test_result = contains("SplashKit is awesome", "unreal")
     assert test_result is False
 
 
 def test_ConvertToDouble_integration():
-    test_result = ConvertToDouble("123.456")
+    test_result = convert_to_double("123.456")
     assert test_result == 123.456
-    test_result = ConvertToDouble("-123.456")
+    test_result = convert_to_double("-123.456")
     assert test_result == -123.456
-    test_result = ConvertToDouble("invalid")
+    test_result = convert_to_double("invalid")
     assert test_result is None
 
 
 def test_ConvertToInteger_integration():
-    test_result = ConvertToInteger("123")
+    test_result = convert_to_integer("123")
     assert test_result == 123
-    test_result = ConvertToInteger("-456")
+    test_result = convert_to_integer("-456")
     assert test_result == -456
-    test_result = ConvertToInteger("123.456")
+    test_result = convert_to_integer("123.456")
     assert test_result == 123
-    test_result = ConvertToInteger("abc")
+    test_result = convert_to_integer("abc")
     with pytest.raises(Exception):
-        ConvertToInteger("abc")
+        convert_to_integer("abc")
 
 
 def test_IndexOf_integration():
-    test_result = IndexOf("splashkit library", "library")
+    test_result = index_of("splashkit library", "library")
     assert test_result == 10
-    test_result = IndexOf("splashkit library", "unreal")
+    test_result = index_of("splashkit library", "unreal")
     assert test_result == -1
 
 
 def test_IsDouble_integration():
-    test_result = IsDouble("123.456")
+    test_result = is_double("123.456")
     assert test_result is True
-    test_result = IsDouble("123")
+    test_result = is_double("123")
     assert test_result is True
-    test_result = IsDouble("-123.456")
+    test_result = is_double("-123.456")
     assert test_result is True
-    test_result = IsDouble("SplashKit")
+    test_result = is_double("SplashKit")
     assert test_result is False
-    test_result = IsDouble("")
+    test_result = is_double("")
     assert test_result is False
 
 
 def test_IsInteger_integration():
-    test_result = IsInteger("123")
+    test_result = is_integer("123")
     assert test_result is True
-    test_result = IsInteger("123.456")
+    test_result = is_integer("123.456")
     assert test_result is False
-    test_result = IsInteger("-123")
+    test_result = is_integer("-123")
     assert test_result is True
-    test_result = IsInteger("SplashKit")
+    test_result = is_integer("SplashKit")
     assert test_result is False
-    test_result = IsInteger("")
+    test_result = is_integer("")
     assert test_result is False
 
 
 def test_IsNumber_integration():
-    test_result = IsNumber("123.456")
+    test_result = is_number("123.456")
     assert test_result is True
-    test_result = IsNumber("abc")
+    test_result = is_number("abc")
     assert test_result is False
 
 
 def test_LengthOf_integration():
-    test_length = LengthOf("SplashKit")
+    test_length = length_of("SplashKit")
     assert test_length == 9
-    test_length_empty = LengthOf("")
+    test_length_empty = length_of("")
     assert test_length_empty == 0
 
 
 def test_ReplaceAll_integration():
-    test_result = ReplaceAll("hello world", "world", "SplashKit")
+    test_result = replace_all("hello world", "world", "SplashKit")
     assert test_result == "hello SplashKit"
-    test_result = ReplaceAll("aaaa", "a", "b")
+    test_result = replace_all("aaaa", "a", "b")
     assert test_result == "bbbb"
-    test_result = ReplaceAll("test", "t", "")
+    test_result = replace_all("test", "t", "")
     assert test_result == "es"
 
 
 def test_Split_integration():
-    test_result = Split("splashkit library", " ")
-    assert LengthOf(test_result) == 2
-    assert IndexOf(test_result, "splashkit") == 0
-    assert IndexOf(test_result, "library") == 0
+    test_result = split("splashkit library", " ")
+    assert length_of(test_result) == 2
+    assert index_of(test_result, "splashkit") == 0
+    assert index_of(test_result, "library") == 0
 
 
 def test_ToLowercase_integration():
-    test_lowercase = ToLowercase("SPLASHKIT")
+    test_lowercase = to_lowercase("SPLASHKIT")
     assert test_lowercase == "splashkit"
-    test_empty = ToLowercase("")
+    test_empty = to_lowercase("")
     assert test_empty == ""
 
 
 def test_ToUppercase_integration():
-    test_uppercase = ToUppercase("hello")
+    test_uppercase = to_uppercase("hello")
     assert test_uppercase == "HELLO"
 
 
 def test_Trim_integration():
-    test_trimmed = Trim("  Hello, World!  ")
+    test_trimmed = trim("  Hello, World!  ")
     assert test_trimmed == "Hello, World!"
-    test_empty_trimmed = Trim(" \t\n  ")
+    test_empty_trimmed = trim(" \t\n  ")
     assert test_empty_trimmed == ""
 
 
 def test_RndRange_integration():
-    test_result = RndRange(1, 10)
+    test_result = rnd_range(1, 10)
     assert 1 <= test_result <= 10
 
 
 def test_Rnd_integration():
-    test_random = Rnd()
+    test_random = rnd()
     assert test_random > 0.0
     assert test_random < 1.0
 
 
 def test_RndInt_integration():
-    test_result = RndInt(10)
+    test_result = rnd_int(10)
     assert 0 <= test_result <= 10
 
 
 def test_CurrentTicks_integration():
-    test_ticks = CurrentTicks()
+    test_ticks = current_ticks()
     assert test_ticks > 0
 
 
 def test_Delay_integration():
-    test_start_time = CurrentTicks()
-    Delay(1000)
-    test_end_time = CurrentTicks()
-    assert CurrentTicks() > test_start_time
-    assert test_start_time <= CurrentTicks() <= 1100
+    test_start_time = current_ticks()
+    delay(1000)
+    test_end_time = current_ticks()
+    assert current_ticks() > test_start_time
+    assert test_start_time <= current_ticks() <= 1100
 
 
 def test_DisplayDialog_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_font = LoadFont("test_font", "path/to/font.ttf")
-    DisplayDialog("Test Title", "This is a test message.", test_font, 12)
-    FreeFont(test_font)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_font = load_font("test_font", "path/to/font.ttf")
+    display_dialog("Test Title", "This is a test message.", test_font, 12)
+    free_font(test_font)
+    close_window(test_window)
 
 
 def test_FileAsString_integration():
-    test_file_content = FileAsString("test_file.txt", ResourceKind.BundleResource)
+    test_file_content = file_as_string("test_file.txt", ResourceKind.BundleResource)
     assert test_file_content != ""
 

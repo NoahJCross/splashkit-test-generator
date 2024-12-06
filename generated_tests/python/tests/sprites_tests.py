@@ -3,1657 +3,1657 @@ from splashkit import *
 
 
 def test_CallForAllSpritesWithValue_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite1 = CreateSprite(test_bitmap)
-    test_sprite2 = CreateSprite(test_bitmap)
-    SpriteSetX(test_sprite1, 100)
-    SpriteSetX(test_sprite2, 200)
-    CallForAllSpritesWithValue(SpriteSetX(test_sprite1, 300), 300)
-    assert SpriteX(test_sprite1) == 300
-    assert SpriteX(test_sprite2) == 300
-    FreeAllSprites()
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite1 = create_sprite(test_bitmap)
+    test_sprite2 = create_sprite(test_bitmap)
+    sprite_set_x(test_sprite1, 100)
+    sprite_set_x(test_sprite2, 200)
+    call_for_all_sprites_with_value(sprite_set_x(test_sprite1, 300), 300)
+    assert sprite_x(test_sprite1) == 300
+    assert sprite_x(test_sprite2) == 300
+    free_all_sprites()
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_CallForAllSprites_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite_1 = CreateSprite(test_bitmap)
-    test_sprite_2 = CreateSprite(test_bitmap)
-    SpriteSetX(test_sprite_1, 100)
-    SpriteSetY(test_sprite_1, 100)
-    SpriteSetX(test_sprite_2, 200)
-    SpriteSetY(test_sprite_2, 200)
-    CallForAllSprites(TestSpriteFunction())
-    assert SpriteAt(test_sprite_1, PointAt(100, 100)) is True
-    assert SpriteAt(test_sprite_2, PointAt(200, 200)) is True
-    FreeAllSprites()
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite_1 = create_sprite(test_bitmap)
+    test_sprite_2 = create_sprite(test_bitmap)
+    sprite_set_x(test_sprite_1, 100)
+    sprite_set_y(test_sprite_1, 100)
+    sprite_set_x(test_sprite_2, 200)
+    sprite_set_y(test_sprite_2, 200)
+    call_for_all_sprites(_test_sprite_function())
+    assert sprite_at(test_sprite_1, point_at(100, 100)) is True
+    assert sprite_at(test_sprite_2, point_at(200, 200)) is True
+    free_all_sprites()
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_CallOnSpriteEvent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    CallOnSpriteEvent(OnSpriteEvent())
-    ProcessEvents()
-    SimulateMouseClick(Mousebutton.Left)
-    ProcessEvents()
-    assert MouseClicked(Mousebutton.Left) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    call_on_sprite_event(_on_sprite_event())
+    process_events()
+    simulate_mouse_click(Mousebutton.Left)
+    process_events()
+    assert mouse_clicked(Mousebutton.Left) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_CenterPoint_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100, 100))
-    test_center_point = CenterPoint(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100, 100))
+    test_center_point = center_point(test_sprite)
     assert test_center_point.x == 150
     assert test_center_point.y == 150
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_CreateSprite_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
     assert test_sprite is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_CreateSpriteWithAnimation_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_animation = LoadAnimationScript("test_animation", "kermit.txt")
-    test_sprite = CreateSpriteWithAnimation(test_bitmap, test_animation)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_animation = load_animation_script("test_animation", "kermit.txt")
+    test_sprite = create_sprite_with_animation(test_bitmap, test_animation)
     assert test_sprite is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    FreeAnimationScript(test_animation)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    free_animation_script(test_animation)
+    close_window(test_window)
 
 
 def test_CreateSpriteWithBitmapNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSpriteWithBitmapNamed("test_bitmap")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite_with_bitmap_named("test_bitmap")
     assert test_sprite is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_CreateSpriteNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSpriteNamed("test_sprite", test_bitmap)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite_named("test_sprite", test_bitmap)
     assert test_sprite is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_CreateSpriteNamedWithAnimation_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_animation = LoadAnimationScript("test_animation", "kermit.txt")
-    test_sprite = CreateSpriteNamedWithAnimation("test_sprite", test_bitmap, test_animation)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_animation = load_animation_script("test_animation", "kermit.txt")
+    test_sprite = create_sprite_named_with_animation("test_sprite", test_bitmap, test_animation)
     assert test_sprite is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    FreeAnimationScript(test_animation)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    free_animation_script(test_animation)
+    close_window(test_window)
 
 
 def test_CreateSpriteWithBitmapAndAnimationNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSpriteWithBitmapAndAnimationNamed("test_bitmap", "test_animation")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite_with_bitmap_and_animation_named("test_bitmap", "test_animation")
     assert test_sprite is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_CreateSpritePack_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    CreateSpritePack("test_pack")
-    assert HasSpritePack("test_pack") is True
-    FreeSpritePack("test_pack")
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    create_sprite_pack("test_pack")
+    assert has_sprite_pack("test_pack") is True
+    free_sprite_pack("test_pack")
+    close_window(test_window)
 
 
 def test_CurrentSpritePack_integration():
-    CreateSpritePack("test_pack")
-    SelectSpritePack("test_pack")
-    current_pack = CurrentSpritePack()
+    create_sprite_pack("test_pack")
+    select_sprite_pack("test_pack")
+    current_pack = current_sprite_pack()
     assert current_pack == "test_pack"
-    FreeSpritePack("test_pack")
+    free_sprite_pack("test_pack")
 
 
 def test_DrawAllSprites_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite1 = CreateSprite(test_bitmap)
-    test_sprite2 = CreateSprite(test_bitmap)
-    SpriteSetX(test_sprite1, 100)
-    SpriteSetY(test_sprite1, 100)
-    SpriteSetX(test_sprite2, 200)
-    SpriteSetY(test_sprite2, 200)
-    DrawAllSprites()
-    RefreshScreen()
-    assert GetPixel(100, 100) != ColorWhite()
-    assert GetPixel(200, 200) != ColorWhite()
-    FreeAllSprites()
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite1 = create_sprite(test_bitmap)
+    test_sprite2 = create_sprite(test_bitmap)
+    sprite_set_x(test_sprite1, 100)
+    sprite_set_y(test_sprite1, 100)
+    sprite_set_x(test_sprite2, 200)
+    sprite_set_y(test_sprite2, 200)
+    draw_all_sprites()
+    refresh_screen()
+    assert get_pixel(100, 100) != color_white()
+    assert get_pixel(200, 200) != color_white()
+    free_all_sprites()
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_DrawSpriteOffsetBy_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(400, 300))
-    DrawSpriteOffsetBy(test_sprite, VectorTo(50, 50))
-    RefreshScreen()
-    assert GetPixel(PointAt(450, 350)) != ColorWhite()
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(400, 300))
+    draw_sprite_offset_by(test_sprite, vector_to(50, 50))
+    refresh_screen()
+    assert get_pixel(point_at(450, 350)) != color_white()
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_DrawSprite_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(400, 300))
-    DrawSprite(test_sprite)
-    RefreshScreen()
-    assert SpriteOnScreenAt(test_sprite, PointAt(400, 300)) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(400, 300))
+    draw_sprite(test_sprite)
+    refresh_screen()
+    assert sprite_on_screen_at(test_sprite, point_at(400, 300)) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_DrawSpriteOffsetXY_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(400, 300))
-    DrawSpriteOffsetXY(test_sprite, 50, 50)
-    RefreshScreen()
-    assert PointInCircle(PointAt(450, 350), SpriteCollisionCircle(test_sprite)) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(400, 300))
+    draw_sprite_offset_x_y(test_sprite, 50, 50)
+    refresh_screen()
+    assert point_in_circle(point_at(450, 350), sprite_collision_circle(test_sprite)) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_FreeAllSprites_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    FreeAllSprites()
-    assert HasSprite("test_sprite") is False
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    free_all_sprites()
+    assert has_sprite("test_sprite") is False
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_FreeSprite_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_FreeSpritePack_integration():
-    CreateSpritePack("test_pack")
-    test_has_pack = HasSpritePack("test_pack")
+    create_sprite_pack("test_pack")
+    test_has_pack = has_sprite_pack("test_pack")
     assert test_has_pack is True
-    FreeSpritePack("test_pack")
-    test_has_pack = HasSpritePack("test_pack")
+    free_sprite_pack("test_pack")
+    test_has_pack = has_sprite_pack("test_pack")
     assert test_has_pack is False
 
 
 def test_HasSprite_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    assert HasSprite("test_sprite") is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    assert has_sprite("test_sprite") is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_HasSpritePack_integration():
-    CreateSpritePack("test_pack")
-    assert HasSpritePack("test_pack") is True
-    assert HasSpritePack("non_existent_pack") is False
-    FreeSpritePack("test_pack")
+    create_sprite_pack("test_pack")
+    assert has_sprite_pack("test_pack") is True
+    assert has_sprite_pack("non_existent_pack") is False
+    free_sprite_pack("test_pack")
 
 
 def test_MoveSprite_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetVelocity(test_sprite, VectorTo(10.0, 10.0))
-    SpriteSetPosition(test_sprite, PointAt(100.0, 100.0))
-    MoveSprite(test_sprite)
-    ProcessEvents()
-    assert SpritePosition(test_sprite) != PointAt(100.0, 100.0)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_velocity(test_sprite, vector_to(10.0, 10.0))
+    sprite_set_position(test_sprite, point_at(100.0, 100.0))
+    move_sprite(test_sprite)
+    process_events()
+    assert sprite_position(test_sprite) != point_at(100.0, 100.0)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_MoveSpriteByVector_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100, 100))
-    MoveSpriteByVector(test_sprite, VectorTo(50, 50))
-    ProcessEvents()
-    assert SpriteX(test_sprite) == 150
-    assert SpriteY(test_sprite) == 150
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100, 100))
+    move_sprite_by_vector(test_sprite, vector_to(50, 50))
+    process_events()
+    assert sprite_x(test_sprite) == 150
+    assert sprite_y(test_sprite) == 150
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_MoveSpriteByVectorPercent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100.0, 100.0))
-    MoveSpriteByVectorPercent(test_sprite, VectorTo(50.0, 50.0), 0.5)
-    assert SpriteX(test_sprite) == 125.0
-    assert SpriteY(test_sprite) == 125.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100.0, 100.0))
+    move_sprite_by_vector_percent(test_sprite, vector_to(50.0, 50.0), 0.5)
+    assert sprite_x(test_sprite) == 125.0
+    assert sprite_y(test_sprite) == 125.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_MoveSpritePercent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100.0, 100.0))
-    SpriteSetVelocity(test_sprite, VectorTo(10.0, 10.0))
-    MoveSpritePercent(test_sprite, 0.5)
-    ProcessEvents()
-    assert PointInCircle(PointAt(105.0, 105.0), SpriteCircle(test_sprite)) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100.0, 100.0))
+    sprite_set_velocity(test_sprite, vector_to(10.0, 10.0))
+    move_sprite_percent(test_sprite, 0.5)
+    process_events()
+    assert point_in_circle(point_at(105.0, 105.0), sprite_circle(test_sprite)) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_MoveSpriteTo_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    MoveSpriteTo(test_sprite, 400.0, 300.0)
-    assert SpriteX(test_sprite) == 400.0
-    assert SpriteY(test_sprite) == 300.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    move_sprite_to(test_sprite, 400.0, 300.0)
+    assert sprite_x(test_sprite) == 400.0
+    assert sprite_y(test_sprite) == 300.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SelectSpritePack_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    CreateSpritePack("test_pack")
-    test_sprite = CreateSprite("rocket_sprt.png")
-    SelectSpritePack("test_pack")
-    DrawAllSprites()
-    assert SpriteOnScreenAt(test_sprite, PointAt(400, 300)) is True
-    FreeAllSprites()
-    FreeSpritePack("test_pack")
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    create_sprite_pack("test_pack")
+    test_sprite = create_sprite("rocket_sprt.png")
+    select_sprite_pack("test_pack")
+    draw_all_sprites()
+    assert sprite_on_screen_at(test_sprite, point_at(400, 300)) is True
+    free_all_sprites()
+    free_sprite_pack("test_pack")
+    close_window(test_window)
 
 
 def test_SpriteAddLayer_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    new_layer_bitmap = CreateBitmap("new_layer_bitmap", 50, 50)
-    layer_index = SpriteAddLayer(test_sprite, new_layer_bitmap, "new_layer")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    new_layer_bitmap = create_bitmap("new_layer_bitmap", 50, 50)
+    layer_index = sprite_add_layer(test_sprite, new_layer_bitmap, "new_layer")
     assert layer_index > -1
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    FreeBitmap(new_layer_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    free_bitmap(new_layer_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteAddToVelocity_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(400, 300))
-    SpriteAddToVelocity(test_sprite, VectorTo(10, 10))
-    UpdateSprite(test_sprite)
-    assert SpriteX(test_sprite) == 410
-    assert SpriteY(test_sprite) == 310
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(400, 300))
+    sprite_add_to_velocity(test_sprite, vector_to(10, 10))
+    update_sprite(test_sprite)
+    assert sprite_x(test_sprite) == 410
+    assert sprite_y(test_sprite) == 310
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteAddValue_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddValue(test_sprite, "health")
-    assert SpriteHasValue(test_sprite, "health") is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_value(test_sprite, "health")
+    assert sprite_has_value(test_sprite, "health") is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteAddValueWithDefault_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddValueWithDefault(test_sprite, "health", 100.0)
-    assert SpriteHasValue(test_sprite, "health") is True
-    assert SpriteValue(test_sprite, "health") == 100.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_value_with_default(test_sprite, "health", 100.0)
+    assert sprite_has_value(test_sprite, "health") is True
+    assert sprite_value(test_sprite, "health") == 100.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteAnchorPoint_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_anchor_point = SpriteAnchorPoint(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_anchor_point = sprite_anchor_point(test_sprite)
     assert test_anchor_point.x == 50
     assert test_anchor_point.y == 50
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteAnchorPosition_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100, 100))
-    test_anchor_position = SpriteAnchorPosition(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100, 100))
+    test_anchor_position = sprite_anchor_position(test_sprite)
     assert test_anchor_position.x == 100
     assert test_anchor_position.y == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteAnimationHasEnded_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimation(test_sprite, "default")
-    UpdateSpriteAnimation(test_sprite)
-    assert SpriteAnimationHasEnded(test_sprite) is False
-    UpdateSpriteAnimation(test_sprite)
-    assert SpriteAnimationHasEnded(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation(test_sprite, "default")
+    update_sprite_animation(test_sprite)
+    assert sprite_animation_has_ended(test_sprite) is False
+    update_sprite_animation(test_sprite)
+    assert sprite_animation_has_ended(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteAnimationName_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimation(test_sprite, "default")
-    test_animation_name = SpriteAnimationName(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation(test_sprite, "default")
+    test_animation_name = sprite_animation_name(test_sprite)
     assert test_animation_name == "default"
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteAt_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(400, 300))
-    ProcessEvents()
-    assert SpriteAt(test_sprite, PointAt(400, 300)) is True
-    assert SpriteAt(test_sprite, PointAt(500, 400)) is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(400, 300))
+    process_events()
+    assert sprite_at(test_sprite, point_at(400, 300)) is True
+    assert sprite_at(test_sprite, point_at(500, 400)) is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteBringLayerForward_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    initial_layer_position = SpriteVisibleIndexOfLayer(test_sprite, layer_index)
-    SpriteBringLayerForward(test_sprite, layer_index)
-    new_layer_position = SpriteVisibleIndexOfLayer(test_sprite, layer_index)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    initial_layer_position = sprite_visible_index_of_layer(test_sprite, layer_index)
+    sprite_bring_layer_forward(test_sprite, layer_index)
+    new_layer_position = sprite_visible_index_of_layer(test_sprite, layer_index)
     assert new_layer_position > initial_layer_position
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteBringLayerToFront_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteBringLayerToFront(test_sprite, layer_index)
-    assert SpriteVisibleIndexOfLayer(test_sprite, layer_index) == SpriteVisibleLayerCount(test_sprite)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_bring_layer_to_front(test_sprite, layer_index)
+    assert sprite_visible_index_of_layer(test_sprite, layer_index) == sprite_visible_layer_count(test_sprite)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteCallOnEvent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteCallOnEvent(test_sprite, OnSpriteEvent())
-    ProcessEvents()
-    SimulateMouseClick(Mousebutton.Left)
-    ProcessEvents()
-    assert SpriteEventOccurred(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_call_on_event(test_sprite, _on_sprite_event())
+    process_events()
+    simulate_mouse_click(Mousebutton.Left)
+    process_events()
+    assert sprite_event_occurred(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteCircle_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_circle = SpriteCircle(test_sprite)
-    assert PointInCircle(PointAt(50, 50), test_circle) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_circle = sprite_circle(test_sprite)
+    assert point_in_circle(point_at(50, 50), test_circle) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteCollisionBitmap_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    collision_bitmap = SpriteCollisionBitmap(test_sprite)
-    assert BitmapWidth(collision_bitmap) == 100
-    assert BitmapHeight(collision_bitmap) == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    collision_bitmap = sprite_collision_bitmap(test_sprite)
+    assert bitmap_width(collision_bitmap) == 100
+    assert bitmap_height(collision_bitmap) == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteCollisionCircle_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_circle = SpriteCollisionCircle(test_sprite)
-    assert PointInCircle(PointAt(50, 50), test_circle) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_circle = sprite_collision_circle(test_sprite)
+    assert point_in_circle(point_at(50, 50), test_circle) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteCollisionKind_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetCollisionKind(test_sprite, CollisionTestKind.PixelCollisions)
-    assert SpriteCollisionKind(test_sprite) == CollisionTestKind.PixelCollisions
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_collision_kind(test_sprite, CollisionTestKind.PixelCollisions)
+    assert sprite_collision_kind(test_sprite) == CollisionTestKind.PixelCollisions
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteCollisionRectangle_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_rectangle = SpriteCollisionRectangle(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_rectangle = sprite_collision_rectangle(test_sprite)
     assert test_rectangle.width == 100
     assert test_rectangle.height == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteCurrentCell_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimation(test_sprite, 0)
-    UpdateSprite(test_sprite)
-    assert SpriteCurrentCell(test_sprite) == 0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation(test_sprite, 0)
+    update_sprite(test_sprite)
+    assert sprite_current_cell(test_sprite) == 0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteCurrentCellRectangle_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_rectangle = SpriteCurrentCellRectangle(test_sprite)
-    assert RectangleLeft(test_rectangle) == 0
-    assert RectangleTop(test_rectangle) == 0
-    assert RectangleRight(test_rectangle) == BitmapWidth(test_bitmap)
-    assert RectangleBottom(test_rectangle) == BitmapHeight(test_bitmap)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_rectangle = sprite_current_cell_rectangle(test_sprite)
+    assert rectangle_left(test_rectangle) == 0
+    assert rectangle_top(test_rectangle) == 0
+    assert rectangle_right(test_rectangle) == bitmap_width(test_bitmap)
+    assert rectangle_bottom(test_rectangle) == bitmap_height(test_bitmap)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteDx_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetDx(test_sprite, 5.0)
-    assert SpriteDx(test_sprite) == 5.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_dx(test_sprite, 5.0)
+    assert sprite_dx(test_sprite) == 5.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteDy_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetDy(test_sprite, 5.0)
-    assert SpriteDy(test_sprite) == 5.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_dy(test_sprite, 5.0)
+    assert sprite_dy(test_sprite) == 5.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteHasValue_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddValue(test_sprite, "health")
-    assert SpriteHasValue(test_sprite, "health") is True
-    assert SpriteHasValue(test_sprite, "mana") is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_value(test_sprite, "health")
+    assert sprite_has_value(test_sprite, "health") is True
+    assert sprite_has_value(test_sprite, "mana") is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteHeading_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetVelocity(test_sprite, VectorTo(1.0, 1.0))
-    test_heading = SpriteHeading(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_velocity(test_sprite, vector_to(1.0, 1.0))
+    test_heading = sprite_heading(test_sprite)
     assert 45.0 <= test_heading <= 45.01
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteHeight_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    assert SpriteHeight(test_sprite) == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    assert sprite_height(test_sprite) == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteHideLayerNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteHideLayerNamed(test_sprite, "layer2")
-    assert SpriteLayerVisible(test_sprite, layer_index) is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_hide_layer_named(test_sprite, "layer2")
+    assert sprite_layer_visible(test_sprite, layer_index) is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteHideLayer_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteShowLayer(test_sprite, layer_index)
-    SpriteHideLayer(test_sprite, layer_index)
-    assert SpriteLayerVisible(test_sprite, layer_index) is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_show_layer(test_sprite, layer_index)
+    sprite_hide_layer(test_sprite, layer_index)
+    assert sprite_layer_visible(test_sprite, layer_index) is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    test_layer_bitmap = SpriteLayerNamed(test_sprite, "layer2")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    test_layer_bitmap = sprite_layer_named(test_sprite, "layer2")
     assert test_layer_bitmap is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerAtIndex_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    test_layer_bitmap = SpriteLayerAtIndex(test_sprite, layer_index)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    test_layer_bitmap = sprite_layer_at_index(test_sprite, layer_index)
     assert test_layer_bitmap is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerCircleNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_circle = SpriteLayerCircleNamed(test_sprite, "layer1")
-    assert PointInCircle(PointAt(50, 50), test_circle) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_circle = sprite_layer_circle_named(test_sprite, "layer1")
+    assert point_in_circle(point_at(50, 50), test_circle) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerCircleAtIndex_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_circle = SpriteLayerCircleAtIndex(test_sprite, 0)
-    assert PointInCircle(PointAt(50, 50), test_circle) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_circle = sprite_layer_circle_at_index(test_sprite, 0)
+    assert point_in_circle(point_at(50, 50), test_circle) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerCount_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    assert SpriteLayerCount(test_sprite) == 1
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    assert SpriteLayerCount(test_sprite) == 2
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    assert sprite_layer_count(test_sprite) == 1
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    assert sprite_layer_count(test_sprite) == 2
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerHeightNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    assert SpriteLayerHeightNamed(test_sprite, "layer2") == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    assert sprite_layer_height_named(test_sprite, "layer2") == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerHeight_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_height = SpriteLayerHeight(test_sprite, 0)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_height = sprite_layer_height(test_sprite, 0)
     assert layer_height == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerIndex_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    assert SpriteLayerIndex(test_sprite, "layer2") == layer_index
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    assert sprite_layer_index(test_sprite, "layer2") == layer_index
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerName_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    assert SpriteLayerName(test_sprite, layer_index) == "layer2"
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    assert sprite_layer_name(test_sprite, layer_index) == "layer2"
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerOffsetNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetLayerOffsetNamed(test_sprite, "layer1", VectorTo(10, 10))
-    layer_offset = SpriteLayerOffsetNamed(test_sprite, "layer1")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_layer_offset_named(test_sprite, "layer1", vector_to(10, 10))
+    layer_offset = sprite_layer_offset_named(test_sprite, "layer1")
     assert layer_offset.x == 10
     assert layer_offset.y == 10
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerOffset_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteSetLayerOffsetAtIndex(test_sprite, layer_index, VectorTo(10, 10))
-    assert SpriteLayerOffset(test_sprite, layer_index) == VectorTo(10, 10)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_set_layer_offset_at_index(test_sprite, layer_index, vector_to(10, 10))
+    assert sprite_layer_offset(test_sprite, layer_index) == vector_to(10, 10)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerRectangleNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_rectangle = SpriteLayerRectangleNamed(test_sprite, "layer1")
-    assert RectangleLeft(test_rectangle) == 0
-    assert RectangleTop(test_rectangle) == 0
-    assert RectangleRight(test_rectangle) == 100
-    assert RectangleBottom(test_rectangle) == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_rectangle = sprite_layer_rectangle_named(test_sprite, "layer1")
+    assert rectangle_left(test_rectangle) == 0
+    assert rectangle_top(test_rectangle) == 0
+    assert rectangle_right(test_rectangle) == 100
+    assert rectangle_bottom(test_rectangle) == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerRectangleAtIndex_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    test_rectangle = SpriteLayerRectangleAtIndex(test_sprite, 0)
-    assert test_rectangle.width == BitmapWidth(test_bitmap)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    test_rectangle = sprite_layer_rectangle_at_index(test_sprite, 0)
+    assert test_rectangle.width == bitmap_width(test_bitmap)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerWidthNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    assert SpriteLayerWidthNamed(test_sprite, "layer2") == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    assert sprite_layer_width_named(test_sprite, "layer2") == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLayerWidth_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    assert SpriteLayerWidth(test_sprite, 0) == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    assert sprite_layer_width(test_sprite, 0) == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteLocationMatrix_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100.0, 100.0))
-    SpriteSetRotation(test_sprite, 45.0)
-    test_matrix = SpriteLocationMatrix(test_sprite)
-    test_point = PointAt(50.0, 50.0)
-    result_point = MatrixMultiplyPoint(test_matrix, test_point)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100.0, 100.0))
+    sprite_set_rotation(test_sprite, 45.0)
+    test_matrix = sprite_location_matrix(test_sprite)
+    test_point = point_at(50.0, 50.0)
+    result_point = matrix_multiply_point(test_matrix, test_point)
     assert 149.0 <= result_point.x <= 150.0
     assert 149.0 <= result_point.y <= 150.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteMass_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetMass(test_sprite, 10.0)
-    assert SpriteMass(test_sprite) == 10.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_mass(test_sprite, 10.0)
+    assert sprite_mass(test_sprite) == 10.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteMoveFromAnchorPoint_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetMoveFromAnchorPoint(test_sprite, true)
-    assert SpriteMoveFromAnchorPoint(test_sprite) is True
-    SpriteSetMoveFromAnchorPoint(test_sprite, false)
-    assert SpriteMoveFromAnchorPoint(test_sprite) is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_move_from_anchor_point(test_sprite, true)
+    assert sprite_move_from_anchor_point(test_sprite) is True
+    sprite_set_move_from_anchor_point(test_sprite, false)
+    assert sprite_move_from_anchor_point(test_sprite) is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteMoveToTakingSeconds_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100, 100))
-    SpriteMoveToTakingSeconds(test_sprite, PointAt(400, 300), 2.0)
-    ProcessEvents()
-    assert PointInCircle(PointAt(400, 300), SpriteCollisionCircle(test_sprite)) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100, 100))
+    sprite_move_to_taking_seconds(test_sprite, point_at(400, 300), 2.0)
+    process_events()
+    assert point_in_circle(point_at(400, 300), sprite_collision_circle(test_sprite)) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteName_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    assert SpriteName(test_sprite) == "test_sprite"
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    assert sprite_name(test_sprite) == "test_sprite"
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    named_sprite = SpriteNamed("test_sprite")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    named_sprite = sprite_named("test_sprite")
     assert named_sprite is not None
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteOffscreen_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(0, 0))
-    assert SpriteOffscreen(test_sprite) is False
-    SpriteSetPosition(test_sprite, PointAt(-100, -100))
-    assert SpriteOffscreen(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(0, 0))
+    assert sprite_offscreen(test_sprite) is False
+    sprite_set_position(test_sprite, point_at(-100, -100))
+    assert sprite_offscreen(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteOnScreenAtPoint_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100, 100))
-    DrawSprite(test_sprite)
-    RefreshScreen()
-    assert SpriteOnScreenAtPoint(test_sprite, PointAt(100, 100)) is True
-    assert SpriteOnScreenAtPoint(test_sprite, PointAt(1000, 1000)) is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100, 100))
+    draw_sprite(test_sprite)
+    refresh_screen()
+    assert sprite_on_screen_at_point(test_sprite, point_at(100, 100)) is True
+    assert sprite_on_screen_at_point(test_sprite, point_at(1000, 1000)) is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteOnScreenAt_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100, 100))
-    assert SpriteOnScreenAt(test_sprite, 100, 100) is True
-    assert SpriteOnScreenAt(test_sprite, 1000, 1000) is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100, 100))
+    assert sprite_on_screen_at(test_sprite, 100, 100) is True
+    assert sprite_on_screen_at(test_sprite, 1000, 1000) is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpritePosition_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100.0, 100.0))
-    test_position = SpritePosition(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100.0, 100.0))
+    test_position = sprite_position(test_sprite)
     assert test_position.x == 100.0
     assert test_position.y == 100.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteReplayAnimation_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimation(test_sprite, 0)
-    SpriteReplayAnimation(test_sprite)
-    assert SpriteAnimationHasEnded(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation(test_sprite, 0)
+    sprite_replay_animation(test_sprite)
+    assert sprite_animation_has_ended(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteReplayAnimationWithSound_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteReplayAnimationWithSound(test_sprite, true)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_replay_animation_with_sound(test_sprite, true)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteRotation_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetRotation(test_sprite, 45.0)
-    assert SpriteRotation(test_sprite) == 45.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_rotation(test_sprite, 45.0)
+    assert sprite_rotation(test_sprite) == 45.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteScale_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetScale(test_sprite, 2.0)
-    assert SpriteScale(test_sprite) == 2.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_scale(test_sprite, 2.0)
+    assert sprite_scale(test_sprite) == 2.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteScreenRectangle_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100, 100))
-    test_rectangle = SpriteScreenRectangle(test_sprite)
-    assert RectangleLeft(test_rectangle) == 100
-    assert RectangleTop(test_rectangle) == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100, 100))
+    test_rectangle = sprite_screen_rectangle(test_sprite)
+    assert rectangle_left(test_rectangle) == 100
+    assert rectangle_top(test_rectangle) == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSendLayerBackward_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteSendLayerBackward(test_sprite, layer_index)
-    assert SpriteVisibleIndexOfLayer(test_sprite, layer_index) < 1
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_send_layer_backward(test_sprite, layer_index)
+    assert sprite_visible_index_of_layer(test_sprite, layer_index) < 1
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSendLayerToBack_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteSendLayerToBack(test_sprite, layer_index)
-    assert SpriteVisibleIndexOfLayer(test_sprite, layer_index) == 0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_send_layer_to_back(test_sprite, layer_index)
+    assert sprite_visible_index_of_layer(test_sprite, layer_index) == 0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetAnchorPoint_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetAnchorPoint(test_sprite, PointAt(50, 50))
-    test_anchor_point = SpriteAnchorPoint(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_anchor_point(test_sprite, point_at(50, 50))
+    test_anchor_point = sprite_anchor_point(test_sprite)
     assert test_anchor_point.x == 50
     assert test_anchor_point.y == 50
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetCollisionBitmap_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetCollisionBitmap(test_sprite, test_bitmap)
-    assert SpriteCollisionBitmap(test_sprite) == test_bitmap
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_collision_bitmap(test_sprite, test_bitmap)
+    assert sprite_collision_bitmap(test_sprite) == test_bitmap
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetCollisionKind_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetCollisionKind(test_sprite, CollisionTestKind.PixelCollisions)
-    assert SpriteCollisionKind(test_sprite) == CollisionTestKind.PixelCollisions
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_collision_kind(test_sprite, CollisionTestKind.PixelCollisions)
+    assert sprite_collision_kind(test_sprite) == CollisionTestKind.PixelCollisions
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetDx_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetDx(test_sprite, 5.0)
-    assert SpriteDx(test_sprite) == 5.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_dx(test_sprite, 5.0)
+    assert sprite_dx(test_sprite) == 5.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetDy_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetDy(test_sprite, 5.0)
-    assert SpriteDy(test_sprite) == 5.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_dy(test_sprite, 5.0)
+    assert sprite_dy(test_sprite) == 5.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetHeading_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetHeading(test_sprite, 45.0)
-    assert SpriteHeading(test_sprite) == 45.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_heading(test_sprite, 45.0)
+    assert sprite_heading(test_sprite) == 45.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetLayerOffsetNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetLayerOffsetNamed(test_sprite, "layer1", VectorTo(10.0, 10.0))
-    test_offset = SpriteLayerOffsetNamed(test_sprite, "layer1")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_layer_offset_named(test_sprite, "layer1", vector_to(10.0, 10.0))
+    test_offset = sprite_layer_offset_named(test_sprite, "layer1")
     assert test_offset.x == 10.0
     assert test_offset.y == 10.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetLayerOffsetAtIndex_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetLayerOffsetAtIndex(test_sprite, 0, VectorTo(10.0, 10.0))
-    assert SpriteLayerOffset(test_sprite, 0) == VectorTo(10.0, 10.0)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_layer_offset_at_index(test_sprite, 0, vector_to(10.0, 10.0))
+    assert sprite_layer_offset(test_sprite, 0) == vector_to(10.0, 10.0)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetMass_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetMass(test_sprite, 10.0)
-    assert SpriteMass(test_sprite) == 10.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_mass(test_sprite, 10.0)
+    assert sprite_mass(test_sprite) == 10.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetMoveFromAnchorPoint_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetMoveFromAnchorPoint(test_sprite, true)
-    assert SpriteMoveFromAnchorPoint(test_sprite) is True
-    SpriteSetMoveFromAnchorPoint(test_sprite, false)
-    assert SpriteMoveFromAnchorPoint(test_sprite) is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_move_from_anchor_point(test_sprite, true)
+    assert sprite_move_from_anchor_point(test_sprite) is True
+    sprite_set_move_from_anchor_point(test_sprite, false)
+    assert sprite_move_from_anchor_point(test_sprite) is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetPosition_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100, 100))
-    assert SpriteX(test_sprite) == 100
-    assert SpriteY(test_sprite) == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100, 100))
+    assert sprite_x(test_sprite) == 100
+    assert sprite_y(test_sprite) == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetRotation_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetRotation(test_sprite, 45.0)
-    assert SpriteRotation(test_sprite) == 45.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_rotation(test_sprite, 45.0)
+    assert sprite_rotation(test_sprite) == 45.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetScale_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetScale(test_sprite, 2.0)
-    assert SpriteScale(test_sprite) == 2.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_scale(test_sprite, 2.0)
+    assert sprite_scale(test_sprite) == 2.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetSpeed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetSpeed(test_sprite, 5.0)
-    assert SpriteSpeed(test_sprite) == 5.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_speed(test_sprite, 5.0)
+    assert sprite_speed(test_sprite) == 5.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetValueNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddValue(test_sprite, "test_value")
-    SpriteSetValueNamed(test_sprite, "test_value", 10.5)
-    assert SpriteValue(test_sprite, "test_value") == 10.5
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_value(test_sprite, "test_value")
+    sprite_set_value_named(test_sprite, "test_value", 10.5)
+    assert sprite_value(test_sprite, "test_value") == 10.5
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetVelocity_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetVelocity(test_sprite, VectorTo(5.0, 5.0))
-    UpdateSprite(test_sprite)
-    assert SpriteAt(test_sprite, PointAt(5.0, 5.0)) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_velocity(test_sprite, vector_to(5.0, 5.0))
+    update_sprite(test_sprite)
+    assert sprite_at(test_sprite, point_at(5.0, 5.0)) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetX_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetX(test_sprite, 150.0)
-    assert SpriteX(test_sprite) == 150.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_x(test_sprite, 150.0)
+    assert sprite_x(test_sprite) == 150.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSetY_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetY(test_sprite, 300.0)
-    assert SpriteY(test_sprite) == 300.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_y(test_sprite, 300.0)
+    assert sprite_y(test_sprite) == 300.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteShowLayerNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    result = SpriteShowLayerNamed(test_sprite, "layer2")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    result = sprite_show_layer_named(test_sprite, "layer2")
     assert result == 1
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteShowLayer_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteHideLayer(test_sprite, 1)
-    result = SpriteShowLayer(test_sprite, 1)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_hide_layer(test_sprite, 1)
+    result = sprite_show_layer(test_sprite, 1)
     assert result == 1
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteSpeed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetVelocity(test_sprite, VectorTo(5.0, 5.0))
-    test_speed = SpriteSpeed(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_velocity(test_sprite, vector_to(5.0, 5.0))
+    test_speed = sprite_speed(test_sprite)
     assert test_speed == 7.0710678118654755
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteStartAnimationNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimationNamed(test_sprite, "test_animation")
-    assert SpriteAnimationName(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation_named(test_sprite, "test_animation")
+    assert sprite_animation_name(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteStartAnimationNamedWithSound_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimationNamedWithSound(test_sprite, "test_animation", true)
-    UpdateSprite(test_sprite)
-    assert SpriteAnimationHasEnded(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation_named_with_sound(test_sprite, "test_animation", true)
+    update_sprite(test_sprite)
+    assert sprite_animation_has_ended(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteStartAnimation_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimation(test_sprite, 0)
-    UpdateSprite(test_sprite)
-    assert SpriteAnimationHasEnded(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation(test_sprite, 0)
+    update_sprite(test_sprite)
+    assert sprite_animation_has_ended(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteStartAnimationWithSound_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimationWithSound(test_sprite, 0, true)
-    UpdateSprite(test_sprite)
-    assert SpriteAnimationHasEnded(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation_with_sound(test_sprite, 0, true)
+    update_sprite(test_sprite)
+    assert sprite_animation_has_ended(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteStopCallingOnEvent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteCallOnEvent(test_sprite, OnSpriteEvent())
-    ProcessEvents()
-    SimulateSpriteEvent(test_sprite)
-    ProcessEvents()
-    assert OnSpriteEventCalled() is True
-    SpriteStopCallingOnEvent(test_sprite, OnSpriteEvent())
-    ProcessEvents()
-    SimulateSpriteEvent(test_sprite)
-    ProcessEvents()
-    assert OnSpriteEventCalled() is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_call_on_event(test_sprite, _on_sprite_event())
+    process_events()
+    simulate_sprite_event(test_sprite)
+    process_events()
+    assert _on_sprite_event_called() is True
+    sprite_stop_calling_on_event(test_sprite, _on_sprite_event())
+    process_events()
+    simulate_sprite_event(test_sprite)
+    process_events()
+    assert _on_sprite_event_called() is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteToggleLayerVisibleNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteToggleLayerVisibleNamed(test_sprite, "layer2")
-    assert SpriteVisibleLayerCount(test_sprite) is False
-    SpriteToggleLayerVisibleNamed(test_sprite, "layer2")
-    assert SpriteVisibleLayerCount(test_sprite) == 2
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_toggle_layer_visible_named(test_sprite, "layer2")
+    assert sprite_visible_layer_count(test_sprite) is False
+    sprite_toggle_layer_visible_named(test_sprite, "layer2")
+    assert sprite_visible_layer_count(test_sprite) == 2
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteToggleLayerVisible_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteHideLayer(test_sprite, layer_index)
-    SpriteToggleLayerVisible(test_sprite, layer_index)
-    assert SpriteVisibleLayerCount(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_hide_layer(test_sprite, layer_index)
+    sprite_toggle_layer_visible(test_sprite, layer_index)
+    assert sprite_visible_layer_count(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteValue_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddValue(test_sprite, "test_value", 10.0)
-    sprite_value_result = SpriteValue(test_sprite, "test_value")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_value(test_sprite, "test_value", 10.0)
+    sprite_value_result = sprite_value(test_sprite, "test_value")
     assert sprite_value_result == 10.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteValueCount_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddValue(test_sprite, "health")
-    SpriteAddValue(test_sprite, "speed")
-    assert SpriteValueCount(test_sprite) == 2
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_value(test_sprite, "health")
+    sprite_add_value(test_sprite, "speed")
+    assert sprite_value_count(test_sprite) == 2
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteVelocity_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetVelocity(test_sprite, VectorTo(5.0, 5.0))
-    test_velocity = SpriteVelocity(test_sprite)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_velocity(test_sprite, vector_to(5.0, 5.0))
+    test_velocity = sprite_velocity(test_sprite)
     assert test_velocity.x == 5.0
     assert test_velocity.y == 5.0
-    FreeAllSprites()
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_all_sprites()
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteVisibleIndexOfLayerNamed_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    layer_index = SpriteVisibleIndexOfLayerNamed(test_sprite, "layer2")
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    layer_index = sprite_visible_index_of_layer_named(test_sprite, "layer2")
     assert layer_index == 1
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteVisibleIndexOfLayer_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    layer_index = SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteShowLayer(test_sprite, layer_index)
-    assert SpriteVisibleIndexOfLayer(test_sprite, layer_index) == 1
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_show_layer(test_sprite, layer_index)
+    assert sprite_visible_index_of_layer(test_sprite, layer_index) == 1
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteVisibleLayer_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteShowLayer(test_sprite, "layer2")
-    assert SpriteVisibleLayer(test_sprite, 1) == 1
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_show_layer(test_sprite, "layer2")
+    assert sprite_visible_layer(test_sprite, 1) == 1
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteVisibleLayerCount_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    assert SpriteVisibleLayerCount(test_sprite) == 1
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteShowLayer(test_sprite, "layer2")
-    assert SpriteVisibleLayerCount(test_sprite) == 2
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    assert sprite_visible_layer_count(test_sprite) == 1
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_show_layer(test_sprite, "layer2")
+    assert sprite_visible_layer_count(test_sprite) == 2
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteVisibleLayerId_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteAddLayer(test_sprite, test_bitmap, "layer2")
-    SpriteShowLayer(test_sprite, "layer2")
-    assert SpriteVisibleLayerId(test_sprite, 1) == 1
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_add_layer(test_sprite, test_bitmap, "layer2")
+    sprite_show_layer(test_sprite, "layer2")
+    assert sprite_visible_layer_id(test_sprite, 1) == 1
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteWidth_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    assert SpriteWidth(test_sprite) == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    assert sprite_width(test_sprite) == 100
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteX_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetX(test_sprite, 150.0)
-    assert SpriteX(test_sprite) == 150.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_x(test_sprite, 150.0)
+    assert sprite_x(test_sprite) == 150.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_SpriteY_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetY(test_sprite, 200.0)
-    assert SpriteY(test_sprite) == 200.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_y(test_sprite, 200.0)
+    assert sprite_y(test_sprite) == 200.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_StopCallingOnSpriteEvent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    CallOnSpriteEvent(OnSpriteEvent())
-    ProcessEvents()
-    SimulateSpriteEvent(test_sprite)
-    ProcessEvents()
-    assert SpriteEventOccurred(test_sprite) is True
-    StopCallingOnSpriteEvent(OnSpriteEvent())
-    ProcessEvents()
-    SimulateSpriteEvent(test_sprite)
-    ProcessEvents()
-    assert SpriteEventOccurred(test_sprite) is False
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    call_on_sprite_event(_on_sprite_event())
+    process_events()
+    simulate_sprite_event(test_sprite)
+    process_events()
+    assert sprite_event_occurred(test_sprite) is True
+    stop_calling_on_sprite_event(_on_sprite_event())
+    process_events()
+    simulate_sprite_event(test_sprite)
+    process_events()
+    assert sprite_event_occurred(test_sprite) is False
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateAllSprites_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite1 = CreateSprite(test_bitmap)
-    test_sprite2 = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite1, PointAt(100, 100))
-    SpriteSetPosition(test_sprite2, PointAt(200, 200))
-    SpriteSetVelocity(test_sprite1, VectorTo(1, 1))
-    SpriteSetVelocity(test_sprite2, VectorTo(-1, -1))
-    UpdateAllSprites()
-    assert SpritePosition(test_sprite1) != PointAt(100, 100)
-    assert SpritePosition(test_sprite2) != PointAt(200, 200)
-    FreeAllSprites()
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite1 = create_sprite(test_bitmap)
+    test_sprite2 = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite1, point_at(100, 100))
+    sprite_set_position(test_sprite2, point_at(200, 200))
+    sprite_set_velocity(test_sprite1, vector_to(1, 1))
+    sprite_set_velocity(test_sprite2, vector_to(-1, -1))
+    update_all_sprites()
+    assert sprite_position(test_sprite1) != point_at(100, 100)
+    assert sprite_position(test_sprite2) != point_at(200, 200)
+    free_all_sprites()
+    close_window(test_window)
 
 
 def test_UpdateAllSpritesPercent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite1 = CreateSprite(test_bitmap)
-    test_sprite2 = CreateSprite(test_bitmap)
-    SpriteSetVelocity(test_sprite1, VectorTo(1.0, 1.0))
-    SpriteSetVelocity(test_sprite2, VectorTo(-1.0, -1.0))
-    UpdateAllSpritesPercent(0.5)
-    assert SpriteAt(test_sprite1, PointAt(50.0, 50.0)) is True
-    assert SpriteAt(test_sprite2, PointAt(50.0, 50.0)) is True
-    FreeAllSprites()
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite1 = create_sprite(test_bitmap)
+    test_sprite2 = create_sprite(test_bitmap)
+    sprite_set_velocity(test_sprite1, vector_to(1.0, 1.0))
+    sprite_set_velocity(test_sprite2, vector_to(-1.0, -1.0))
+    update_all_sprites_percent(0.5)
+    assert sprite_at(test_sprite1, point_at(50.0, 50.0)) is True
+    assert sprite_at(test_sprite2, point_at(50.0, 50.0)) is True
+    free_all_sprites()
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateSprite_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetVelocity(test_sprite, VectorTo(1.0, 1.0))
-    UpdateSprite(test_sprite)
-    assert SpriteX(test_sprite) != 0.0
-    assert SpriteY(test_sprite) != 0.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_velocity(test_sprite, vector_to(1.0, 1.0))
+    update_sprite(test_sprite)
+    assert sprite_x(test_sprite) != 0.0
+    assert sprite_y(test_sprite) != 0.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateSpriteWithSound_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetVelocity(test_sprite, VectorTo(1.0, 1.0))
-    SpriteStartAnimation(test_sprite, 0, true)
-    UpdateSpriteWithSound(test_sprite, true)
-    assert SpriteX(test_sprite) != 0.0
-    assert SpriteY(test_sprite) != 0.0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_velocity(test_sprite, vector_to(1.0, 1.0))
+    sprite_start_animation(test_sprite, 0, true)
+    update_sprite_with_sound(test_sprite, true)
+    assert sprite_x(test_sprite) != 0.0
+    assert sprite_y(test_sprite) != 0.0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateSpritePercent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(100.0, 100.0))
-    SpriteSetVelocity(test_sprite, VectorTo(1.0, 1.0))
-    UpdateSpritePercent(test_sprite, 0.5)
-    assert PointInCircle(PointAt(100.5, 100.5), SpriteCollisionCircle(test_sprite)) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(100.0, 100.0))
+    sprite_set_velocity(test_sprite, vector_to(1.0, 1.0))
+    update_sprite_percent(test_sprite, 0.5)
+    assert point_in_circle(point_at(100.5, 100.5), sprite_collision_circle(test_sprite)) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateSpritePercentWithSound_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(400, 300))
-    UpdateSpritePercentWithSound(test_sprite, 0.5, true)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(400, 300))
+    update_sprite_percent_with_sound(test_sprite, 0.5, true)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateSpriteAnimation_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteStartAnimation(test_sprite, 0)
-    UpdateSpriteAnimation(test_sprite)
-    assert SpriteCurrentCell(test_sprite) > 0
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_start_animation(test_sprite, 0)
+    update_sprite_animation(test_sprite)
+    assert sprite_current_cell(test_sprite) > 0
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateSpriteAnimationWithSound_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    UpdateSpriteAnimationWithSound(test_sprite, true)
-    assert SpriteAnimationHasEnded(test_sprite) is True
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    update_sprite_animation_with_sound(test_sprite, true)
+    assert sprite_animation_has_ended(test_sprite) is True
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateSpriteAnimationPercent_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    UpdateSpriteAnimationPercent(test_sprite, 0.5)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    update_sprite_animation_percent(test_sprite, 0.5)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_UpdateSpriteAnimationPercentWithSound_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    UpdateSpriteAnimationPercentWithSound(test_sprite, 0.5, true)
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    update_sprite_animation_percent_with_sound(test_sprite, 0.5, true)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_VectorFromCenterSpriteToPointPoint_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite, PointAt(400, 300))
-    test_vector = VectorFromCenterSpriteToPointPoint(test_sprite, PointAt(500, 400))
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite, point_at(400, 300))
+    test_vector = vector_from_center_sprite_to_point_point(test_sprite, point_at(500, 400))
     assert test_vector.x == 100
     assert test_vector.y == 100
-    FreeSprite(test_sprite)
-    FreeBitmap(test_bitmap)
-    CloseWindow(test_window)
+    free_sprite(test_sprite)
+    free_bitmap(test_bitmap)
+    close_window(test_window)
 
 
 def test_VectorFromTo_integration():
-    test_window = OpenWindow("Test Window", 800, 600)
-    test_bitmap = CreateBitmap("test_bitmap", 100, 100)
-    test_sprite1 = CreateSprite(test_bitmap)
-    test_sprite2 = CreateSprite(test_bitmap)
-    SpriteSetPosition(test_sprite1, PointAt(100, 100))
-    SpriteSetPosition(test_sprite2, PointAt(200, 200))
-    test_vector = VectorFromTo(test_sprite1, test_sprite2)
+    test_window = open_window("Test Window", 800, 600)
+    test_bitmap = create_bitmap("test_bitmap", 100, 100)
+    test_sprite1 = create_sprite(test_bitmap)
+    test_sprite2 = create_sprite(test_bitmap)
+    sprite_set_position(test_sprite1, point_at(100, 100))
+    sprite_set_position(test_sprite2, point_at(200, 200))
+    test_vector = vector_from_to(test_sprite1, test_sprite2)
     assert test_vector.x == 100
     assert test_vector.y == 100
-    FreeAllSprites()
-    CloseWindow(test_window)
+    free_all_sprites()
+    close_window(test_window)
 

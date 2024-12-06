@@ -5,47 +5,47 @@ TIntegrationTests = class(TTestCase)
 published
 procedure TIntegrationTests.TestDeregisterFreeNotifierIntegration;
 begin
-    register_free_notifier(testNotifier);
-    deregister_free_notifier(testNotifier);
+    RegisterFreeNotifier(testNotifier);
+    DeregisterFreeNotifier(testNotifier);
     AssertNull(testNotifier);
 end;
 procedure TIntegrationTests.TestPathToResourceIntegration;
 begin
-    set_resources_path("resources");
-    imagePath := path_to_resource("test_image.png", ResourceKind.IMAGE_RESOURCE);
+    SetResourcesPath("resources");
+    imagePath := PathToResource("test_image.png", ResourceKind.IMAGE_RESOURCE);
     AssertNotEquals(imagePath, "");
-    textPath := path_to_resource("nonexistent_file.txt", ResourceKind.ANIMATION_RESOURCE);
+    textPath := PathToResource("nonexistent_file.txt", ResourceKind.ANIMATION_RESOURCE);
     AssertEquals(textPath, "");
 end;
 procedure TIntegrationTests.TestPathToResourcesIntegration;
 begin
-    resourcePath := path_to_resources();
+    resourcePath := PathToResources();
     AssertNotNull(resourcePath);
-    set_resources_path("/new/resources");
-    newResourcePath := path_to_resources();
+    SetResourcesPath("/new/resources");
+    newResourcePath := PathToResources();
     AssertEquals(newResourcePath, "/new/resources");
 end;
 procedure TIntegrationTests.TestPathToResourcesForKindIntegration;
 begin
-    set_resources_path("resources");
-    imagePath := path_to_resources(ResourceKind.IMAGE_RESOURCE);
+    SetResourcesPath("resources");
+    imagePath := PathToResources(ResourceKind.IMAGE_RESOURCE);
     AssertEquals(imagePath, "resources/images");
-    soundPath := path_to_resources(ResourceKind.SOUND_RESOURCE);
+    soundPath := PathToResources(ResourceKind.SOUND_RESOURCE);
     AssertEquals(soundPath, "resources/sounds");
 end;
 procedure TIntegrationTests.TestRegisterFreeNotifierIntegration;
 begin
-    register_free_notifier(free_notifier());
+    RegisterFreeNotifier(FreeNotifier());
     AssertTrue(notifierCalled);
-    deregister_free_notifier(free_notifier());
+    DeregisterFreeNotifier(FreeNotifier());
     AssertFalse(notifierCalled);
 end;
 procedure TIntegrationTests.TestSetResourcesPathIntegration;
 begin
-    set_resources_path("/resources");
-    AssertEquals(path_to_resources(), "/resources");
-    set_resources_path("/new/resources");
-    AssertEquals(path_to_resources(), "/new/resources");
+    SetResourcesPath("/resources");
+    AssertEquals(PathToResources(), "/resources");
+    SetResourcesPath("/new/resources");
+    AssertEquals(PathToResources(), "/new/resources");
 end;
 end;
 

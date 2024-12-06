@@ -5,79 +5,79 @@ TIntegrationTests = class(TTestCase)
 published
 procedure TIntegrationTests.TestReadCharIntegration;
 begin
-    write("Please type a character: ");
-    testChar := read_char();
-    write_line("You typed: ", testChar);
+    Write("Please type a character: ");
+    testChar := ReadChar();
+    WriteLine("You typed: ", testChar);
     AssertNotNull(testChar);
 end;
 procedure TIntegrationTests.TestReadLineIntegration;
 begin
-    write("Please enter your name: ");
-    testInput := read_line();
+    Write("Please enter your name: ");
+    testInput := ReadLine();
     AssertNotEquals(testInput, "");
-    write_line("You entered: ", testInput);
+    WriteLine("You entered: ", testInput);
 end;
 procedure TIntegrationTests.TestTerminalHasInputIntegration;
 begin
-    write("Type something and press Enter: ");
-    process_events();
-    AssertFalse(terminal_has_input());
-    testInput := read_line();
-    process_events();
-    AssertTrue(terminal_has_input());
+    Write("Type something and press Enter: ");
+    ProcessEvents();
+    AssertFalse(TerminalHasInput());
+    testInput := ReadLine();
+    ProcessEvents();
+    AssertTrue(TerminalHasInput());
 end;
 procedure TIntegrationTests.TestWriteCharIntegration;
 begin
-    write("A");
-    AssertTrue(terminal_has_input());
-    testChar := read_char();
+    Write("A");
+    AssertTrue(TerminalHasInput());
+    testChar := ReadChar();
     AssertEquals(testChar, "A");
 end;
 procedure TIntegrationTests.TestWriteDoubleIntegration;
 begin
-    write(3.14);
-    AssertTrue(terminal_has_input());
+    Write(3.14);
+    AssertTrue(TerminalHasInput());
 end;
 procedure TIntegrationTests.TestWriteIntIntegration;
 begin
-    write(42);
-    AssertTrue(terminal_has_input());
+    Write(42);
+    AssertTrue(TerminalHasInput());
 end;
 procedure TIntegrationTests.TestWriteIntegration;
 begin
-    write("Test String");
-    AssertTrue(terminal_has_input());
-    testOutput := read_line();
+    Write("Test String");
+    AssertTrue(TerminalHasInput());
+    testOutput := ReadLine();
     AssertEquals(testOutput, "Test String");
 end;
 procedure TIntegrationTests.TestWriteLineCharIntegration;
 begin
-    write_line("A");
-    AssertTrue(terminal_has_input());
-    testChar := read_char();
+    WriteLine("A");
+    AssertTrue(TerminalHasInput());
+    testChar := ReadChar();
     AssertEquals(testChar, "A");
 end;
 procedure TIntegrationTests.TestWriteLineEmptyIntegration;
 begin
-    write("Test line");
-    write_line();
-    write("Next line");
-    AssertTrue(terminal_has_input());
+    Write("Test line");
+    WriteLine();
+    Write("Next line");
+    AssertTrue(TerminalHasInput());
 end;
 procedure TIntegrationTests.TestWriteLineDoubleIntegration;
 begin
-    write_line(42.5);
-    AssertTrue(terminal_has_input());
+    WriteLine(42.5);
+    AssertTrue(TerminalHasInput());
 end;
 procedure TIntegrationTests.TestWriteLineIntIntegration;
 begin
-    write_line(42);
-    AssertTrue(terminal_has_input());
+    WriteLine(42);
+    AssertTrue(TerminalHasInput());
 end;
 procedure TIntegrationTests.TestWriteLineIntegration;
 begin
-    write_line("Test Line");
-    AssertTrue(terminal_has_input());
+    WriteLine("Test Line");
+    AssertTrue(TerminalHasInput());
 end;
 end;
 

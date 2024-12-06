@@ -32,7 +32,7 @@ module LanguageConfig
       variable_syntax: ->(var_name) { var_name.to_camel_case.to_s },
       enum_syntax: ->(enum_type, enum_value, include_semicolon = true) { "#{enum_type.to_pascal_case}.#{enum_value.to_upper_case}#{include_semicolon ? ";\n" : ''}" },
       function_pointer_syntax: ->(name) { "nil;\n" }, # TODO
-      function_syntax: ->(func_name, params, include_semicolon = true) { "#{func_name.to_snake_case}(#{params})#{include_semicolon ? ";" : ''}" },
+      function_syntax: ->(func_name, params, include_semicolon = true) { "#{func_name.to_pascal_case}(#{params})#{include_semicolon ? ";" : ''}" },
       field_syntax: ->(variable_value, field_name) { "#{variable_value}.#{field_name}" },
       matrix_access_syntax: ->(row, col) { "[#{row}, #{col}]" },
       loop_syntax: ->(iterations) { "for i := 0 to #{iterations - 1} do\n" },

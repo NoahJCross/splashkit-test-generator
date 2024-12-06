@@ -15,10 +15,10 @@ module LanguageConfig
       ],
       test_header: ->(func_name) { "\ndef test_#{func_name.to_pascal_case}_integration():\n" },
       variable_declaration: ->(var_name) { "#{var_name.to_snake_case} = " },
-      variable_syntax: ->(var_name) { var_name.to_snake_case.to_s },
+      variable_syntax: ->(var_name) { var_name.to_snake_case },
       enum_syntax: ->(enum_type, enum_value, include_semicolon = true) { "#{enum_type.to_pascal_case}.#{enum_value.to_pascal_case}#{include_semicolon ? ";\n" : ''}" },
       function_pointer_syntax: ->(name) { "None\n" }, # TODO: Implement Python callback
-      function_syntax: ->(func_name, params, _ = true) { "#{func_name.to_pascal_case}(#{params})" },
+      function_syntax: ->(func_name, params, _ = true) { "#{func_name.to_snake_case}(#{params})" },
       field_syntax: ->(variable_value, field_name) { "#{variable_value}.#{field_name}" },
       matrix_access_syntax: ->(row, col) { "[#{row}, #{col}]" },
       loop_syntax: ->(iterations) { "for _ in range(#{iterations}):\n" },

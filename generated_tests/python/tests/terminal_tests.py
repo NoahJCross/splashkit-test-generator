@@ -3,77 +3,77 @@ from splashkit import *
 
 
 def test_ReadChar_integration():
-    Write("Please type a character: ")
-    test_char = ReadChar()
-    WriteLine("You typed: ", test_char)
+    write("Please type a character: ")
+    test_char = read_char()
+    write_line("You typed: ", test_char)
     assert test_char is not None
 
 
 def test_ReadLine_integration():
-    Write("Please enter your name: ")
-    test_input = ReadLine()
+    write("Please enter your name: ")
+    test_input = read_line()
     assert test_input != ""
-    WriteLine("You entered: ", test_input)
+    write_line("You entered: ", test_input)
 
 
 def test_TerminalHasInput_integration():
-    Write("Type something and press Enter: ")
-    ProcessEvents()
-    assert TerminalHasInput() is False
-    test_input = ReadLine()
-    ProcessEvents()
-    assert TerminalHasInput() is True
+    write("Type something and press Enter: ")
+    process_events()
+    assert terminal_has_input() is False
+    test_input = read_line()
+    process_events()
+    assert terminal_has_input() is True
 
 
 def test_WriteChar_integration():
-    WriteChar("A")
-    assert TerminalHasInput() is True
-    test_char = ReadChar()
+    write_char("A")
+    assert terminal_has_input() is True
+    test_char = read_char()
     assert test_char == "A"
 
 
 def test_WriteDouble_integration():
-    WriteDouble(3.14)
-    assert TerminalHasInput() is True
+    write_double(3.14)
+    assert terminal_has_input() is True
 
 
 def test_WriteInt_integration():
-    WriteInt(42)
-    assert TerminalHasInput() is True
+    write_int(42)
+    assert terminal_has_input() is True
 
 
 def test_Write_integration():
-    Write("Test String")
-    assert TerminalHasInput() is True
-    test_output = ReadLine()
+    write("Test String")
+    assert terminal_has_input() is True
+    test_output = read_line()
     assert test_output == "Test String"
 
 
 def test_WriteLineChar_integration():
-    WriteLineChar("A")
-    assert TerminalHasInput() is True
-    test_char = ReadChar()
+    write_line_char("A")
+    assert terminal_has_input() is True
+    test_char = read_char()
     assert test_char == "A"
 
 
 def test_WriteLineEmpty_integration():
-    Write("Test line")
-    WriteLine()
-    Write("Next line")
-    assert TerminalHasInput() is True
+    write("Test line")
+    write_line()
+    write("Next line")
+    assert terminal_has_input() is True
 
 
 def test_WriteLineDouble_integration():
-    WriteLineDouble(42.5)
-    assert TerminalHasInput() is True
+    write_line_double(42.5)
+    assert terminal_has_input() is True
 
 
 def test_WriteLineInt_integration():
-    WriteLineInt(42)
-    assert TerminalHasInput() is True
+    write_line_int(42)
+    assert terminal_has_input() is True
 
 
 def test_WriteLine_integration():
-    WriteLine("Test Line")
-    assert TerminalHasInput() is True
+    write_line("Test Line")
+    assert terminal_has_input() is True
 

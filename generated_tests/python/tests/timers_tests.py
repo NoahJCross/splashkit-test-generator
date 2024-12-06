@@ -3,197 +3,197 @@ from splashkit import *
 
 
 def test_CreateTimer_integration():
-    test_timer = CreateTimer("test_timer")
+    test_timer = create_timer("test_timer")
     assert test_timer is not None
-    FreeTimer(test_timer)
-    assert HasTimerNamed("test_timer") is False
+    free_timer(test_timer)
+    assert has_timer_named("test_timer") is False
 
 
 def test_FreeAllTimers_integration():
-    test_timer_1 = CreateTimer("test_timer_1")
-    test_timer_2 = CreateTimer("test_timer_2")
-    StartTimer(test_timer_1)
-    StartTimer(test_timer_2)
-    FreeAllTimers()
-    assert HasTimerNamed("test_timer_1") is False
-    assert HasTimerNamed("test_timer_2") is False
+    test_timer_1 = create_timer("test_timer_1")
+    test_timer_2 = create_timer("test_timer_2")
+    start_timer(test_timer_1)
+    start_timer(test_timer_2)
+    free_all_timers()
+    assert has_timer_named("test_timer_1") is False
+    assert has_timer_named("test_timer_2") is False
 
 
 def test_FreeTimer_integration():
-    test_timer = CreateTimer("test_timer")
-    FreeTimer(test_timer)
-    assert HasTimerNamed("test_timer") is False
+    test_timer = create_timer("test_timer")
+    free_timer(test_timer)
+    assert has_timer_named("test_timer") is False
 
 
 def test_HasTimerNamed_integration():
-    CreateTimer("test_timer")
-    assert HasTimerNamed("test_timer") is True
-    FreeAllTimers()
-    assert HasTimerNamed("test_timer") is False
+    create_timer("test_timer")
+    assert has_timer_named("test_timer") is True
+    free_all_timers()
+    assert has_timer_named("test_timer") is False
 
 
 def test_PauseTimerNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    initial_ticks = TimerTicks(test_timer)
-    PauseTimer("test_timer")
-    paused_ticks = TimerTicks(test_timer)
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    initial_ticks = timer_ticks(test_timer)
+    pause_timer("test_timer")
+    paused_ticks = timer_ticks(test_timer)
     assert initial_ticks == paused_ticks
-    FreeAllTimers()
+    free_all_timers()
 
 
 def test_PauseTimer_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    PauseTimer(test_timer)
-    initial_ticks = TimerTicks(test_timer)
-    Delay(1000)
-    final_ticks = TimerTicks(test_timer)
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    pause_timer(test_timer)
+    initial_ticks = timer_ticks(test_timer)
+    delay(1000)
+    final_ticks = timer_ticks(test_timer)
     assert initial_ticks == final_ticks
-    FreeAllTimers()
+    free_all_timers()
 
 
 def test_ResetTimerNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    ProcessEvents()
-    assert TimerTicks(test_timer) > 0
-    ResetTimer("test_timer")
-    ProcessEvents()
-    assert TimerTicks(test_timer) == 0
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    process_events()
+    assert timer_ticks(test_timer) > 0
+    reset_timer("test_timer")
+    process_events()
+    assert timer_ticks(test_timer) == 0
+    free_all_timers()
 
 
 def test_ResetTimer_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    initial_ticks = TimerTicks(test_timer)
-    ResetTimer(test_timer)
-    assert TimerTicks(test_timer) == 0
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    initial_ticks = timer_ticks(test_timer)
+    reset_timer(test_timer)
+    assert timer_ticks(test_timer) == 0
+    free_all_timers()
 
 
 def test_ResumeTimerNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    PauseTimer(test_timer)
-    initial_ticks = TimerTicks(test_timer)
-    ProcessEvents()
-    ResumeTimer("test_timer")
-    ProcessEvents()
-    final_ticks = TimerTicks(test_timer)
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    pause_timer(test_timer)
+    initial_ticks = timer_ticks(test_timer)
+    process_events()
+    resume_timer("test_timer")
+    process_events()
+    final_ticks = timer_ticks(test_timer)
     assert final_ticks > initial_ticks
-    FreeAllTimers()
+    free_all_timers()
 
 
 def test_ResumeTimer_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    PauseTimer(test_timer)
-    initial_ticks = TimerTicks(test_timer)
-    ProcessEvents()
-    ResumeTimer(test_timer)
-    ProcessEvents()
-    final_ticks = TimerTicks(test_timer)
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    pause_timer(test_timer)
+    initial_ticks = timer_ticks(test_timer)
+    process_events()
+    resume_timer(test_timer)
+    process_events()
+    final_ticks = timer_ticks(test_timer)
     assert final_ticks > initial_ticks
-    FreeAllTimers()
+    free_all_timers()
 
 
 def test_StartTimerNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimerNamed("test_timer")
-    timer_state = TimerStartedNamed("test_timer")
+    test_timer = create_timer("test_timer")
+    start_timer__named("test_timer")
+    timer_state = timer_started__named("test_timer")
     assert timer_state is True
-    FreeAllTimers()
+    free_all_timers()
 
 
 def test_StartTimer_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    timer_state = TimerStarted(test_timer)
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    timer_state = timer_started(test_timer)
     assert timer_state is True
-    FreeTimer(test_timer)
+    free_timer(test_timer)
 
 
 def test_StopTimerNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    ProcessEvents()
-    assert TimerTicks(test_timer) > 0
-    StopTimer("test_timer")
-    ProcessEvents()
-    assert TimerTicks(test_timer) == 0
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    process_events()
+    assert timer_ticks(test_timer) > 0
+    stop_timer("test_timer")
+    process_events()
+    assert timer_ticks(test_timer) == 0
+    free_all_timers()
 
 
 def test_StopTimer_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    ProcessEvents()
-    assert TimerStarted(test_timer) is True
-    StopTimer(test_timer)
-    ProcessEvents()
-    assert TimerStarted(test_timer) is False
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    process_events()
+    assert timer_started(test_timer) is True
+    stop_timer(test_timer)
+    process_events()
+    assert timer_started(test_timer) is False
+    free_all_timers()
 
 
 def test_TimerNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    fetched_timer = TimerNamed("test_timer")
-    assert TimerStarted(fetched_timer) is True
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    fetched_timer = timer_named("test_timer")
+    assert timer_started(fetched_timer) is True
+    free_all_timers()
 
 
 def test_TimerPausedNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    assert TimerPausedNamed("test_timer") is False
-    PauseTimer(test_timer)
-    assert TimerPausedNamed("test_timer") is True
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    assert timer_paused__named("test_timer") is False
+    pause_timer(test_timer)
+    assert timer_paused__named("test_timer") is True
+    free_all_timers()
 
 
 def test_TimerPaused_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    assert TimerPaused(test_timer) is False
-    PauseTimer(test_timer)
-    assert TimerPaused(test_timer) is True
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    assert timer_paused(test_timer) is False
+    pause_timer(test_timer)
+    assert timer_paused(test_timer) is True
+    free_all_timers()
 
 
 def test_TimerStartedNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    assert TimerStarted("test_timer") is True
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    assert timer_started("test_timer") is True
+    free_all_timers()
 
 
 def test_TimerStarted_integration():
-    test_timer = CreateTimer("test_timer")
-    assert TimerStarted(test_timer) is False
-    StartTimer(test_timer)
-    assert TimerStarted(test_timer) is True
-    FreeAllTimers()
+    test_timer = create_timer("test_timer")
+    assert timer_started(test_timer) is False
+    start_timer(test_timer)
+    assert timer_started(test_timer) is True
+    free_all_timers()
 
 
 def test_TimerTicksNamed_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    initial_ticks = TimerTicks("test_timer")
-    Delay(1000)
-    after_delay_ticks = TimerTicks("test_timer")
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    initial_ticks = timer_ticks("test_timer")
+    delay(1000)
+    after_delay_ticks = timer_ticks("test_timer")
     assert after_delay_ticks > initial_ticks
-    FreeAllTimers()
+    free_all_timers()
 
 
 def test_TimerTicks_integration():
-    test_timer = CreateTimer("test_timer")
-    StartTimer(test_timer)
-    initial_ticks = TimerTicks(test_timer)
-    Delay(1000)
-    after_delay_ticks = TimerTicks(test_timer)
+    test_timer = create_timer("test_timer")
+    start_timer(test_timer)
+    initial_ticks = timer_ticks(test_timer)
+    delay(1000)
+    after_delay_ticks = timer_ticks(test_timer)
     assert after_delay_ticks > initial_ticks
-    FreeTimer(test_timer)
+    free_timer(test_timer)
 

@@ -3,97 +3,97 @@ from splashkit import *
 
 
 def test_HasGpio_integration():
-    test_gpio_capability = HasGpio()
+    test_gpio_capability = has_gpio()
     assert test_gpio_capability is True
-    test_gpio_capability = HasGpio()
+    test_gpio_capability = has_gpio()
     assert test_gpio_capability is False
 
 
 def test_RaspiCleanup_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin11, PinModes.GpioOutput)
-    RaspiWrite(Pins.Pin11, PinValues.GpioHigh)
-    RaspiCleanup()
-    assert RaspiGetMode(Pins.Pin11) == PinModes.GpioInput
-    assert RaspiRead(Pins.Pin11) == PinValues.GpioLow
+    raspi_init()
+    raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
+    raspi_write(Pins.Pin11, PinValues.GpioHigh)
+    raspi_cleanup()
+    assert raspi_get_mode(Pins.Pin11) == PinModes.GpioInput
+    assert raspi_read(Pins.Pin11) == PinValues.GpioLow
 
 
 def test_RaspiGetMode_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin11, PinModes.GpioOutput)
-    test_mode = RaspiGetMode(Pins.Pin11)
+    raspi_init()
+    raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
+    test_mode = raspi_get_mode(Pins.Pin11)
     assert test_mode == PinModes.GpioOutput
-    RaspiCleanup()
+    raspi_cleanup()
 
 
 def test_RaspiInit_integration():
-    has_gpio_capability = HasGpio()
+    has_gpio_capability = has_gpio()
 if assert has_gpio_capability is True
 :
-        RaspiInit()
-        assert HasGpio() is True
-        RaspiCleanup()
+        raspi_init()
+        assert has_gpio() is True
+        raspi_cleanup()
 
     else:
-        assert HasGpio() is False
+        assert has_gpio() is False
 
 
 
 def test_RaspiRead_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin11, PinModes.GpioOutput)
-    RaspiWrite(Pins.Pin11, PinValues.GpioHigh)
-    test_read_value = RaspiRead(Pins.Pin11)
+    raspi_init()
+    raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
+    raspi_write(Pins.Pin11, PinValues.GpioHigh)
+    test_read_value = raspi_read(Pins.Pin11)
     assert test_read_value == PinValues.GpioHigh
-    RaspiCleanup()
+    raspi_cleanup()
 
 
 def test_RaspiSetMode_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin11, PinModes.GpioOutput)
-    assert RaspiGetMode(Pins.Pin11) == PinModes.GpioOutput
-    RaspiCleanup()
+    raspi_init()
+    raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
+    assert raspi_get_mode(Pins.Pin11) == PinModes.GpioOutput
+    raspi_cleanup()
 
 
 def test_RaspiSetPullUpDown_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin11, PinModes.GpioInput)
-    RaspiSetPullUpDown(Pins.Pin11, PullUpDown.PudUp)
-    test_pin_value = RaspiRead(Pins.Pin11)
+    raspi_init()
+    raspi_set_mode(Pins.Pin11, PinModes.GpioInput)
+    raspi_set_pull_up_down(Pins.Pin11, PullUpDown.PudUp)
+    test_pin_value = raspi_read(Pins.Pin11)
     assert test_pin_value == PinValues.GpioHigh
-    RaspiSetPullUpDown(Pins.Pin11, PullUpDown.PudDown)
-    test_pin_value = RaspiRead(Pins.Pin11)
+    raspi_set_pull_up_down(Pins.Pin11, PullUpDown.PudDown)
+    test_pin_value = raspi_read(Pins.Pin11)
     assert test_pin_value == PinValues.GpioLow
-    RaspiCleanup()
+    raspi_cleanup()
 
 
 def test_RaspiSetPwmDutycycle_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin18, PinModes.PwmOutput)
-    RaspiSetPwmDutycycle(Pins.Pin18, 50)
-    RaspiCleanup()
+    raspi_init()
+    raspi_set_mode(Pins.Pin18, PinModes.PwmOutput)
+    raspi_set_pwm_dutycycle(Pins.Pin18, 50)
+    raspi_cleanup()
 
 
 def test_RaspiSetPwmFrequency_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin18, PinModes.PwmOutput)
-    RaspiSetPwmFrequency(Pins.Pin18, 1000)
-    RaspiCleanup()
+    raspi_init()
+    raspi_set_mode(Pins.Pin18, PinModes.PwmOutput)
+    raspi_set_pwm_frequency(Pins.Pin18, 1000)
+    raspi_cleanup()
 
 
 def test_RaspiSetPwmRange_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin11, PinModes.GpioPwm)
-    RaspiSetPwmRange(Pins.Pin11, 1024)
-    RaspiSetPwmDutycycle(Pins.Pin11, 512)
-    RaspiCleanup()
+    raspi_init()
+    raspi_set_mode(Pins.Pin11, PinModes.GpioPwm)
+    raspi_set_pwm_range(Pins.Pin11, 1024)
+    raspi_set_pwm_dutycycle(Pins.Pin11, 512)
+    raspi_cleanup()
 
 
 def test_RaspiWrite_integration():
-    RaspiInit()
-    RaspiSetMode(Pins.Pin11, PinModes.GpioOutput)
-    RaspiWrite(Pins.Pin11, PinValues.GpioHigh)
-    test_pin_value = RaspiRead(Pins.Pin11)
+    raspi_init()
+    raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
+    raspi_write(Pins.Pin11, PinValues.GpioHigh)
+    test_pin_value = raspi_read(Pins.Pin11)
     assert test_pin_value == PinValues.GpioHigh
-    RaspiCleanup()
+    raspi_cleanup()
 

@@ -3,439 +3,439 @@ from splashkit import *
 
 
 def test_AudioReady_integration():
-    assert AudioReady() is False
-    OpenAudio()
-    assert AudioReady() is True
-    CloseAudio()
-    assert AudioReady() is False
+    assert audio_ready() is False
+    open_audio()
+    assert audio_ready() is True
+    close_audio()
+    assert audio_ready() is False
 
 
 def test_CloseAudio_integration():
-    OpenAudio()
-    CloseAudio()
-    assert AudioReady() is False
+    open_audio()
+    close_audio()
+    assert audio_ready() is False
 
 
 def test_OpenAudio_integration():
-    assert AudioReady() is False
-    OpenAudio()
-    assert AudioReady() is True
-    CloseAudio()
-    assert AudioReady() is False
+    assert audio_ready() is False
+    open_audio()
+    assert audio_ready() is True
+    close_audio()
+    assert audio_ready() is False
 
 
 def test_FadeMusicInNamed_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    FadeMusicInNamed("test_music", 1000)
-    assert MusicVolume() > 0.0
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    fade_music_in_named("test_music", 1000)
+    assert music_volume() > 0.0
+    free_music(test_music)
+    close_audio()
 
 
 def test_FadeMusicInNamedWithTimes_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    FadeMusicInNamedWithTimes("test_music", 2, 1000)
-    assert MusicVolume() > 0.0
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    fade_music_in_named_with_times("test_music", 2, 1000)
+    assert music_volume() > 0.0
+    free_music(test_music)
+    close_audio()
 
 
 def test_FadeMusicIn_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    FadeMusicIn(test_music, 1000)
-    assert MusicVolume() > 0.0
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    fade_music_in(test_music, 1000)
+    assert music_volume() > 0.0
+    free_music(test_music)
+    close_audio()
 
 
 def test_FadeMusicInWithTimes_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    FadeMusicInWithTimes(test_music, 2, 1000)
-    assert MusicVolume() > 0.0
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    fade_music_in_with_times(test_music, 2, 1000)
+    assert music_volume() > 0.0
+    free_music(test_music)
+    close_audio()
 
 
 def test_FadeMusicOut_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    FadeMusicOut(1000)
-    assert MusicPlaying() is False
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    fade_music_out(1000)
+    assert music_playing() is False
+    free_music(test_music)
+    close_audio()
 
 
 def test_FreeAllMusic_integration():
-    OpenAudio()
-    test_music1 = LoadMusic("test_music1", "280.mp3")
-    test_music2 = LoadMusic("test_music2", "test.ogg")
-    FreeAllMusic()
-    assert HasMusic("test_music1") is False
-    assert HasMusic("test_music2") is False
-    CloseAudio()
+    open_audio()
+    test_music1 = load_music("test_music1", "280.mp3")
+    test_music2 = load_music("test_music2", "test.ogg")
+    free_all_music()
+    assert has_music("test_music1") is False
+    assert has_music("test_music2") is False
+    close_audio()
 
 
 def test_FreeMusic_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    FreeMusic(test_music)
-    assert MusicPlaying() is False
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    free_music(test_music)
+    assert music_playing() is False
+    close_audio()
 
 
 def test_HasMusic_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    assert HasMusic("test_music") is True
-    FreeMusic(test_music)
-    assert HasMusic("test_music") is False
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    assert has_music("test_music") is True
+    free_music(test_music)
+    assert has_music("test_music") is False
+    close_audio()
 
 
 def test_LoadMusic_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    assert MusicValid(test_music) is True
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    assert music_valid(test_music) is True
+    free_music(test_music)
+    close_audio()
 
 
 def test_MusicFilename_integration():
-    test_music = LoadMusic("test_music", "280.mp3")
-    filename = MusicFilename(test_music)
+    test_music = load_music("test_music", "280.mp3")
+    filename = music_filename(test_music)
     assert filename == "280.mp3"
-    FreeMusic(test_music)
+    free_music(test_music)
 
 
 def test_MusicName_integration():
-    test_music = LoadMusic("test_music", "280.mp3")
-    music_name_result = MusicName(test_music)
+    test_music = load_music("test_music", "280.mp3")
+    music_name_result = music_name(test_music)
     assert music_name_result == "test_music"
-    FreeMusic(test_music)
+    free_music(test_music)
 
 
 def test_MusicNamed_integration():
-    test_music = LoadMusic("test_music", "280.mp3")
-    retrieved_music = MusicNamed("test_music")
+    test_music = load_music("test_music", "280.mp3")
+    retrieved_music = music_named("test_music")
     assert test_music == retrieved_music
-    FreeMusic(test_music)
+    free_music(test_music)
 
 
 def test_MusicPlaying_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    assert MusicPlaying() is True
-    PauseMusic()
-    assert MusicPlaying() is False
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    assert music_playing() is True
+    pause_music()
+    assert music_playing() is False
+    free_music(test_music)
+    close_audio()
 
 
 def test_MusicValid_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    assert MusicValid(test_music) is True
-    FreeMusic(test_music)
-    assert MusicValid(test_music) is False
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    assert music_valid(test_music) is True
+    free_music(test_music)
+    assert music_valid(test_music) is False
+    close_audio()
 
 
 def test_MusicVolume_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    SetMusicVolume(0.5)
-    assert MusicVolume() == 0.5
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    set_music_volume(0.5)
+    assert music_volume() == 0.5
+    free_music(test_music)
+    close_audio()
 
 
 def test_PauseMusic_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    PauseMusic()
-    assert MusicPlaying() is False
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    pause_music()
+    assert music_playing() is False
+    free_music(test_music)
+    close_audio()
 
 
 def test_PlayMusicNamed_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusicNamed("test_music")
-    assert MusicPlaying() is True
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music_named("test_music")
+    assert music_playing() is True
+    free_music(test_music)
+    close_audio()
 
 
 def test_PlayMusicNamedWithTimes_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusicNamedWithTimes("test_music", 2)
-    assert MusicPlaying() is True
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music_named_with_times("test_music", 2)
+    assert music_playing() is True
+    free_music(test_music)
+    close_audio()
 
 
 def test_PlayMusic_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    assert MusicPlaying() is True
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    assert music_playing() is True
+    free_music(test_music)
+    close_audio()
 
 
 def test_PlayMusicWithTimes_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusicWithTimes(test_music, 2)
-    assert MusicPlaying() is True
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music_with_times(test_music, 2)
+    assert music_playing() is True
+    free_music(test_music)
+    close_audio()
 
 
 def test_PlayMusicWithTimesAndVolume_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusicWithTimesAndVolume(test_music, 2, 0.5)
-    assert MusicPlaying() is True
-    assert 0.45 <= MusicVolume() <= 0.55
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music_with_times_and_volume(test_music, 2, 0.5)
+    assert music_playing() is True
+    assert 0.45 <= music_volume() <= 0.55
+    free_music(test_music)
+    close_audio()
 
 
 def test_ResumeMusic_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    PauseMusic()
-    assert MusicPlaying() is False
-    ResumeMusic()
-    assert MusicPlaying() is True
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    pause_music()
+    assert music_playing() is False
+    resume_music()
+    assert music_playing() is True
+    free_music(test_music)
+    close_audio()
 
 
 def test_SetMusicVolume_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    SetMusicVolume(0.5)
-    assert MusicVolume() == 0.5
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    set_music_volume(0.5)
+    assert music_volume() == 0.5
+    free_music(test_music)
+    close_audio()
 
 
 def test_StopMusic_integration():
-    OpenAudio()
-    test_music = LoadMusic("test_music", "280.mp3")
-    PlayMusic(test_music)
-    StopMusic()
-    assert MusicPlaying() is False
-    FreeMusic(test_music)
-    CloseAudio()
+    open_audio()
+    test_music = load_music("test_music", "280.mp3")
+    play_music(test_music)
+    stop_music()
+    assert music_playing() is False
+    free_music(test_music)
+    close_audio()
 
 
 def test_FadeAllSoundEffectsOut_integration():
-    OpenAudio()
-    test_sound1 = LoadSoundEffect("test_sound1", "test.ogg")
-    test_sound2 = LoadSoundEffect("test_sound2", "error.wav")
-    PlaySoundEffect(test_sound1)
-    PlaySoundEffect(test_sound2)
-    FadeAllSoundEffectsOut(1000)
-    assert SoundEffectPlaying(test_sound1) is False
-    assert SoundEffectPlaying(test_sound2) is False
-    FreeAllSoundEffects()
-    CloseAudio()
+    open_audio()
+    test_sound1 = load_sound_effect("test_sound1", "test.ogg")
+    test_sound2 = load_sound_effect("test_sound2", "error.wav")
+    play_sound_effect(test_sound1)
+    play_sound_effect(test_sound2)
+    fade_all_sound_effects_out(1000)
+    assert sound_effect_playing(test_sound1) is False
+    assert sound_effect_playing(test_sound2) is False
+    free_all_sound_effects()
+    close_audio()
 
 
 def test_FadeSoundEffectOut_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffect(test_sound)
-    FadeSoundEffectOut(test_sound, 1000)
-    assert SoundEffectPlaying(test_sound) is False
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect(test_sound)
+    fade_sound_effect_out(test_sound, 1000)
+    assert sound_effect_playing(test_sound) is False
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_FreeAllSoundEffects_integration():
-    OpenAudio()
-    test_sound1 = LoadSoundEffect("test_sound1", "test.ogg")
-    test_sound2 = LoadSoundEffect("test_sound2", "error.wav")
-    FreeAllSoundEffects()
-    assert HasSoundEffect("test_sound1") is False
-    assert HasSoundEffect("test_sound2") is False
-    CloseAudio()
+    open_audio()
+    test_sound1 = load_sound_effect("test_sound1", "test.ogg")
+    test_sound2 = load_sound_effect("test_sound2", "error.wav")
+    free_all_sound_effects()
+    assert has_sound_effect("test_sound1") is False
+    assert has_sound_effect("test_sound2") is False
+    close_audio()
 
 
 def test_FreeSoundEffect_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffect(test_sound)
-    FreeSoundEffect(test_sound)
-    assert SoundEffectValid(test_sound) is False
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect(test_sound)
+    free_sound_effect(test_sound)
+    assert sound_effect_valid(test_sound) is False
+    close_audio()
 
 
 def test_HasSoundEffect_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    assert HasSoundEffect("test_sound") is True
-    FreeSoundEffect(test_sound)
-    assert HasSoundEffect("test_sound") is False
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    assert has_sound_effect("test_sound") is True
+    free_sound_effect(test_sound)
+    assert has_sound_effect("test_sound") is False
+    close_audio()
 
 
 def test_LoadSoundEffect_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    assert SoundEffectValid(test_sound) is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    assert sound_effect_valid(test_sound) is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_PlaySoundEffectNamed_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffectNamed("test_sound")
-    assert SoundEffectPlayingNamed("test_sound") is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect_named("test_sound")
+    assert sound_effect_playing_named("test_sound") is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_PlaySoundEffectNamedWithVolume_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffectNamedWithVolume("test_sound", 0.5)
-    assert SoundEffectPlayingNamed("test_sound") is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect_named_with_volume("test_sound", 0.5)
+    assert sound_effect_playing_named("test_sound") is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_PlaySoundEffectNamedWithTimes_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffectNamedWithTimes("test_sound", 3)
-    assert SoundEffectPlayingNamed("test_sound") is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect_named_with_times("test_sound", 3)
+    assert sound_effect_playing_named("test_sound") is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_PlaySoundEffectNamedWithTimesAndVolume_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffectNamedWithTimesAndVolume("test_sound", 2, 0.5)
-    assert SoundEffectPlayingNamed("test_sound") is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect_named_with_times_and_volume("test_sound", 2, 0.5)
+    assert sound_effect_playing_named("test_sound") is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_PlaySoundEffect_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffect(test_sound)
-    assert SoundEffectPlaying(test_sound) is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect(test_sound)
+    assert sound_effect_playing(test_sound) is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_PlaySoundEffectWithVolume_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffectWithVolume(test_sound, 0.5)
-    assert SoundEffectPlaying(test_sound) is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect_with_volume(test_sound, 0.5)
+    assert sound_effect_playing(test_sound) is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_PlaySoundEffectWithTimes_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffectWithTimes(test_sound, 3)
-    assert SoundEffectPlaying(test_sound) is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect_with_times(test_sound, 3)
+    assert sound_effect_playing(test_sound) is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_PlaySoundEffectWithTimesAndVolume_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffectWithTimesAndVolume(test_sound, 2, 0.5)
-    assert SoundEffectPlaying(test_sound) is True
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect_with_times_and_volume(test_sound, 2, 0.5)
+    assert sound_effect_playing(test_sound) is True
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_SoundEffectFilename_integration():
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    test_filename = SoundEffectFilename(test_sound)
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    test_filename = sound_effect_filename(test_sound)
     assert test_filename == "test.ogg"
-    FreeSoundEffect(test_sound)
+    free_sound_effect(test_sound)
 
 
 def test_SoundEffectName_integration():
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    test_sound_name = SoundEffectName(test_sound)
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    test_sound_name = sound_effect_name(test_sound)
     assert test_sound_name == "test_sound"
-    FreeSoundEffect(test_sound)
+    free_sound_effect(test_sound)
 
 
 def test_SoundEffectNamed_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    retrieved_sound = SoundEffectNamed("test_sound")
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    retrieved_sound = sound_effect_named("test_sound")
     assert test_sound == retrieved_sound
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_SoundEffectPlayingNamed_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffect("test_sound")
-    assert SoundEffectPlayingNamed("test_sound") is True
-    StopSoundEffect("test_sound")
-    assert SoundEffectPlayingNamed("test_sound") is False
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect("test_sound")
+    assert sound_effect_playing_named("test_sound") is True
+    stop_sound_effect("test_sound")
+    assert sound_effect_playing_named("test_sound") is False
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_SoundEffectPlaying_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffect(test_sound)
-    assert SoundEffectPlaying(test_sound) is True
-    StopSoundEffect(test_sound)
-    assert SoundEffectPlaying(test_sound) is False
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect(test_sound)
+    assert sound_effect_playing(test_sound) is True
+    stop_sound_effect(test_sound)
+    assert sound_effect_playing(test_sound) is False
+    free_sound_effect(test_sound)
+    close_audio()
 
 
 def test_SoundEffectValid_integration():
-    OpenAudio()
-    test_sound_effect = LoadSoundEffect("test_sound", "test.ogg")
-    assert SoundEffectValid(test_sound_effect) is True
-    FreeSoundEffect(test_sound_effect)
-    CloseAudio()
+    open_audio()
+    test_sound_effect = load_sound_effect("test_sound", "test.ogg")
+    assert sound_effect_valid(test_sound_effect) is True
+    free_sound_effect(test_sound_effect)
+    close_audio()
 
 
 def test_StopSoundEffectNamed_integration():
-    OpenAudio()
-    test_sound = LoadSoundEffect("test_sound", "test.ogg")
-    PlaySoundEffect("test_sound")
-    StopSoundEffectNamed("test_sound")
-    assert SoundEffectPlayingNamed("test_sound") is False
-    FreeSoundEffect(test_sound)
-    CloseAudio()
+    open_audio()
+    test_sound = load_sound_effect("test_sound", "test.ogg")
+    play_sound_effect("test_sound")
+    stop_sound_effect_named("test_sound")
+    assert sound_effect_playing_named("test_sound") is False
+    free_sound_effect(test_sound)
+    close_audio()
 
