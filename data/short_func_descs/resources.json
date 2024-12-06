@@ -1,0 +1,46 @@
+{
+  "tests": [
+    {
+      "description": "Remove the function from the list of functions receiving notification\nof resource freeing.",
+      "name": "deregister_free_notifier",
+      "return_description": null,
+      "signature": "void deregister_free_notifier(free_notifier *handler);",
+      "unique_global_name": "deregister_free_notifier"
+    },
+    {
+      "description": "Gets the path to a give file of a certain resource kind.",
+      "name": "path_to_resource",
+      "return_description": "The full path to the resource.",
+      "signature": "string path_to_resource(const string &filename,resource_kind kind);",
+      "unique_global_name": "path_to_resource"
+    },
+    {
+      "description": "Returns the path to the resources folder for the SplashKit program. This\nwill be auto detected at startup, but can be changed using\n`set_resources_path`.",
+      "name": "path_to_resources",
+      "return_description": "Path to SplashKit Resources folder.",
+      "signature": "string path_to_resources();",
+      "unique_global_name": "path_to_resources"
+    },
+    {
+      "description": "Returns the path to the folder containing a given resource kind. This is\nthe path SplashkKit will search when you load a resource.",
+      "name": "path_to_resources",
+      "return_description": "The path to the folder containing this kind of resource.",
+      "signature": "string path_to_resources(resource_kind kind);",
+      "unique_global_name": "path_to_resources_for_kind"
+    },
+    {
+      "description": "Register a function to be called when any resource is freed.",
+      "name": "register_free_notifier",
+      "return_description": null,
+      "signature": "void register_free_notifier(free_notifier *fn);",
+      "unique_global_name": "register_free_notifier"
+    },
+    {
+      "description": "Sets the path to the SplashKit resources folder. Resource paths are then\nlocated within this folder.",
+      "name": "set_resources_path",
+      "return_description": null,
+      "signature": "void set_resources_path(const string &path);",
+      "unique_global_name": "set_resources_path"
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "group": "logging",
+  "tests": [
+    {
+      "name": "close_log_process",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "init_custom_logger",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_logging"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            },
+            {
+              "value_type": "primitive",
+              "value": "LOG_CONSOLE_AND_FILE"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "log",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "INFO"
+            },
+            {
+              "value_type": "primitive",
+              "value": "Test message"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_log_process",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "file_exists"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "test_logging.log"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "delete_file",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_logging.log"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "init_custom_logger",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "init_custom_logger",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "LOG_CONSOLE"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "log",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "INFO"
+            },
+            {
+              "value_type": "primitive",
+              "value": "This message should appear in the console."
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "log",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "INFO"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "This message should appear in the console."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "init_custom_logger",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "LOG_FILE_ONLY"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "log",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "INFO"
+            },
+            {
+              "value_type": "primitive",
+              "value": "This message should only appear in the log file."
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "log",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "INFO"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "This message should only appear in the log file."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_log_process",
+          "args": []
+        }
+      ]
+    },
+    {
+      "name": "init_custom_logger__name_override_mode",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "init_custom_logger__name_override_mode",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_app"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            },
+            {
+              "value_type": "primitive",
+              "value": "LOG_CONSOLE_AND_FILE"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "log",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "INFO"
+            },
+            {
+              "value_type": "primitive",
+              "value": "This message should appear in both console and file."
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "file_exists"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "test_app.log"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "init_custom_logger__name_override_mode",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_app"
+            },
+            {
+              "value_type": "primitive",
+              "value": false
+            },
+            {
+              "value_type": "primitive",
+              "value": "LOG_FILE_ONLY"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "log",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "INFO"
+            },
+            {
+              "value_type": "primitive",
+              "value": "This message should only appear in the file."
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "file_exists"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "test_app.log"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_log_process",
+          "args": []
+        }
+      ]
+    },
+    {
+      "name": "log",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "init_custom_logger",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_logging"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            },
+            {
+              "value_type": "primitive",
+              "value": "LOG_CONSOLE_AND_FILE"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "log",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "INFO"
+            },
+            {
+              "value_type": "primitive",
+              "value": "This is an info message"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "log",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "INFO"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "This is an info message"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_log_process",
+          "args": []
+        }
+      ]
+    }
+  ]
+}

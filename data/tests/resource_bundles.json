@@ -1,0 +1,204 @@
+{
+  "group": "resource_bundles",
+  "tests": [
+    {
+      "name": "free_resource_bundle",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_resource_bundle",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test"
+            },
+            {
+              "value_type": "primitive",
+              "value": "test.txt"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_resource_bundle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_resource_bundle",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_resource_bundle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "has_resource_bundle",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_resource_bundle",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test"
+            },
+            {
+              "value_type": "primitive",
+              "value": "test.txt"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_resource_bundle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_resource_bundle",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_resource_bundle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_resource_bundle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "nonexistent"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "load_resource_bundle",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_resource_bundle",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bundle"
+            },
+            {
+              "value_type": "primitive",
+              "value": "test_bundle.txt"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_resource_bundle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_bundle"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_resource_bundle",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bundle"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_resource_bundle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_bundle"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

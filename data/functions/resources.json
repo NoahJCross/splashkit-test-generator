@@ -1,0 +1,322 @@
+{
+  "functions": [
+    {
+      "signature": "void deregister_free_notifier(free_notifier *handler);",
+      "name": "deregister_free_notifier",
+      "method_name": null,
+      "unique_global_name": "deregister_free_notifier",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Remove the function from the list of functions receiving notification\nof resource freeing.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "handler": {
+          "type": "free_notifier",
+          "description": "The function to remove",
+          "is_pointer": true,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "resources",
+        "static": "resources"
+      },
+      "signatures": {
+        "cpp": [
+          "void deregister_free_notifier(free_notifier *handler)"
+        ],
+        "rust": [
+          "pub fn deregister_free_notifier(handler: free_notifier)"
+        ],
+        "python": [
+          "def deregister_free_notifier(handler):"
+        ],
+        "pascal": [
+          "procedure DeregisterFreeNotifier(handler: FreeNotifier)"
+        ],
+        "csharp": [
+          "public static void Resources.DeregisterFreeNotifier(FreeNotifier handler);",
+          "public static void SplashKit.DeregisterFreeNotifier(FreeNotifier handler);"
+        ]
+      }
+    },
+    {
+      "signature": "string path_to_resource(const string &filename,resource_kind kind);",
+      "name": "path_to_resource",
+      "method_name": null,
+      "unique_global_name": "path_to_resource",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Gets the path to a give file of a certain resource kind.",
+      "brief": null,
+      "return": {
+        "type": "string",
+        "description": "The full path to the resource.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "filename": {
+          "type": "string",
+          "description": "The name of the file of the resource kind.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "kind": {
+          "type": "resource_kind",
+          "description": "The kind of resource you are loading.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "resources",
+        "static": "resources"
+      },
+      "signatures": {
+        "cpp": [
+          "string path_to_resource(const string &filename, resource_kind kind)"
+        ],
+        "rust": [
+          "pub fn path_to_resource(filename: &String, kind: resource_kind) -> String"
+        ],
+        "python": [
+          "def path_to_resource(filename, kind):"
+        ],
+        "pascal": [
+          "function PathToResource(const filename: String; kind: ResourceKind): String"
+        ],
+        "csharp": [
+          "public static string Resources.PathToResource(string filename, ResourceKind kind);",
+          "public static string SplashKit.PathToResource(string filename, ResourceKind kind);"
+        ]
+      }
+    },
+    {
+      "signature": "string path_to_resources();",
+      "name": "path_to_resources",
+      "method_name": null,
+      "unique_global_name": "path_to_resources",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns the path to the resources folder for the SplashKit program. This\nwill be auto detected at startup, but can be changed using\n`set_resources_path`.",
+      "brief": null,
+      "return": {
+        "type": "string",
+        "description": "Path to SplashKit Resources folder.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {},
+      "attributes": {
+        "group": "resources",
+        "static": "resources"
+      },
+      "signatures": {
+        "cpp": [
+          "string path_to_resources()"
+        ],
+        "rust": [
+          "pub fn path_to_resources() -> String"
+        ],
+        "python": [
+          "def path_to_resources():"
+        ],
+        "pascal": [
+          "function PathToResources(): String"
+        ],
+        "csharp": [
+          "public static string Resources.PathToResources();",
+          "public static string SplashKit.PathToResources();"
+        ]
+      }
+    },
+    {
+      "signature": "string path_to_resources(resource_kind kind);",
+      "name": "path_to_resources",
+      "method_name": null,
+      "unique_global_name": "path_to_resources_for_kind",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns the path to the folder containing a given resource kind. This is\nthe path SplashkKit will search when you load a resource.",
+      "brief": null,
+      "return": {
+        "type": "string",
+        "description": "The path to the folder containing this kind of resource.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "kind": {
+          "type": "resource_kind",
+          "description": "The type of resource you want the path for.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "for_kind",
+        "group": "resources",
+        "static": "resources"
+      },
+      "signatures": {
+        "cpp": [
+          "string path_to_resources(resource_kind kind)"
+        ],
+        "rust": [
+          "pub fn path_to_resources(kind: resource_kind) -> String"
+        ],
+        "python": [
+          "def path_to_resources_for_kind(kind):"
+        ],
+        "pascal": [
+          "function PathToResources(kind: ResourceKind): String"
+        ],
+        "csharp": [
+          "public static string Resources.PathToResources(ResourceKind kind);",
+          "public static string SplashKit.PathToResources(ResourceKind kind);"
+        ]
+      }
+    },
+    {
+      "signature": "void register_free_notifier(free_notifier *fn);",
+      "name": "register_free_notifier",
+      "method_name": null,
+      "unique_global_name": "register_free_notifier",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Register a function to be called when any resource is freed.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "fn": {
+          "type": "free_notifier",
+          "description": "The function to be called when a resource is freed.",
+          "is_pointer": true,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "resources",
+        "static": "resources"
+      },
+      "signatures": {
+        "cpp": [
+          "void register_free_notifier(free_notifier *fn)"
+        ],
+        "rust": [
+          "pub fn register_free_notifier(fn: free_notifier)"
+        ],
+        "python": [
+          "def register_free_notifier(fn):"
+        ],
+        "pascal": [
+          "procedure RegisterFreeNotifier(fn: FreeNotifier)"
+        ],
+        "csharp": [
+          "public static void Resources.RegisterFreeNotifier(FreeNotifier fn);",
+          "public static void SplashKit.RegisterFreeNotifier(FreeNotifier fn);"
+        ]
+      }
+    },
+    {
+      "signature": "void set_resources_path(const string &path);",
+      "name": "set_resources_path",
+      "method_name": null,
+      "unique_global_name": "set_resources_path",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Sets the path to the SplashKit resources folder. Resource paths are then\nlocated within this folder.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "path": {
+          "type": "string",
+          "description": "The file path to the SplashKit Resources folder.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "resources",
+        "static": "resources"
+      },
+      "signatures": {
+        "cpp": [
+          "void set_resources_path(const string &path)"
+        ],
+        "rust": [
+          "pub fn set_resources_path(path: &String)"
+        ],
+        "python": [
+          "def set_resources_path(path):"
+        ],
+        "pascal": [
+          "procedure SetResourcesPath(const path: String)"
+        ],
+        "csharp": [
+          "public static void Resources.SetResourcesPath(string path);",
+          "public static void SplashKit.SetResourcesPath(string path);"
+        ]
+      }
+    }
+  ]
+}

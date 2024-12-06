@@ -1,0 +1,544 @@
+{
+  "example": "#include \"graphics.h\"\n#include \"terminal.h\"\n#include \"window_manager.h\"\n#include \"utils.h\"\n#include \"input.h\"\n#include \"interface.h\"\n#include <vector>\n#include <iostream>\nusing namespace std;\nusing namespace splashkit_lib;\n\nvoid run_ui_test()\n{\n open_window(\"Test UI\", 600, 600);\n\n font fontA = load_font(\"interface font 1\", \"arial.ttf\");\n font fontB = load_font(\"interface font 2\", \"kochi-gothic-subst.ttf\");\n set_interface_font(fontA);\n set_interface_font_size(12);\n\n bool checkbox_val = false;\n float val1 = 0;\n float val2 = 0;\n float val3 = 0;\n std::string text_box_val1 = \"Type here!\";\n std::string text_box_val2 = \"And here!\";\n\n animation_script player_animations = load_animation_script(\"player_animations\", \"player_animations.txt\");\n animation anim = create_animation(player_animations, \"Fly\");\n bitmap player = load_bitmap(\"player\", \"player.png\");\n bitmap_set_cell_details(player, 300/4, 42, 4, 1, 4);\n bool scale_image = true;\n\n while( not quit_requested() )\n {\n process_events();\n\n clear_screen(COLOR_WHITE);\n\n if (start_panel(\"My Window\", rectangle_from(300, 4, 240, 186)))\n {\n if (header(\"Buttons!\"))\n {\n paragraph(\"Here we test out a couple of buttons! Hopefully they work!\");\n set_interface_font(fontB);\n paragraph(\"ここではボタンをいくつか試してみます！ ちゃんと押せるといいですね！\");\n set_interface_font(fontA);\n\n if (button(\"First:\", \"Button1\"))\n {\n write_line(\"Button1 pressed\");\n }\n\n disable_interface();\n if (button(\"Disabled:\", \"Disabled button\"))\n {\n write_line(\"I can't be pressed!\");\n }\n enable_interface();\n\n start_custom_layout();\n add_column(60);\n add_column(60);\n add_column(-1);\n\n label_element(\"Second:\");\n if (button(\"Button2\"))\n {\n open_popup(\"My Popup\");\n }\n if (button(\"Button3\"))\n {\n open_popup(\"My Popup\");\n checkbox_val = true;\n }\n\n reset_layout();\n\n checkbox_val = checkbox(\"Did they work?\", checkbox_val);\n\n bitmap_button(\"Image!\", player, option_scale_bmp(scale_image?0.45f:1.f,scale_image?0.45f:1.f, option_with_animation(anim)));\n scale_image = checkbox(\"Scale icon?\", scale_image);\n update_animation(anim);\n\n if ( animation_ended(anim) )\n assign_animation(anim, player_animations, \"Fly\");\n }\n\n if (start_popup(\"My Popup\"))\n {\n set_interface_font(fontB);\n set_interface_font_size(14);\n\n label_element(\"Hi world!\");\n\n set_interface_font(fontA);\n\n label_element(\"Hello world!\");\n\n set_interface_font_size(12);\n\n end_popup(\"My Popup\");\n }\n\n if (header(\"Sliders!\"))\n {\n val1 = slider(\"Slider\", val1, -25, 25);\n\n val2 = slider(val2, 0, 100);\n val3 = slider(val3, -25, 25);\n\n checkbox(\"Currently dragging third slider?\", last_element_changed());\n }\n\n\n if (header(\"Text/Number boxes!\"))\n {\n val3 = number_box(\"Number: \", val3, 1.0);\n\n text_box_val1 = text_box(\"Text:\", text_box_val1);\n if (last_element_confirmed())\n {\n checkbox_val = true;\n }\n set_interface_font(fontB);\n text_box_val2 = text_box(\"Text:\", text_box_val2);\n set_interface_font(fontA);\n }\n\n label_element(\"Is reading text: \" + (std::string)(reading_text()?\"Yea\":\"Nay\"));\n end_panel(\"My Window\");\n }\n\n\n if (start_panel(\"Second Window\", rectangle_from(300, 200, 240, 186)))\n {\n start_inset(\"TreeView\", -25);\n if (start_treenode(\"Node1\"))\n {\n if (start_treenode(\"Inner Node\"))\n {\n button(\"Hello!\");\n slider(\"Slider\", 6, 0, 10);\n end_treenode(\"Inner Node\");\n }\n end_treenode(\"Node1\");\n }\n if (start_treenode(\"Node2\"))\n {\n button(\"Hello again!\");\n checkbox(\"It works right?\", true);\n end_treenode(\"Node2\");\n }\n\n end_inset(\"TreeView\");\n\n end_panel(\"Second Window\");\n }\n\n paragraph(\"Here we can see that elements can also be drawn directly onto the main window! Including paragraphs of text like this.\", {40, 20, 200, 64});\n if (button(\"Button1\", rectangle_from(40, 140, 64, 20)))\n {\n write_line(\"Button1 pressed\");\n }\n val2 = slider(val2, 0, 40, {40, 170, 150, 20});\n text_box_val2 = text_box(text_box_val2, rectangle_from(40, 200, 150, 20));\n\n interface_style_panel(rectangle_from(0, 600-200, 600, 200));\n\n draw_interface();\n\n refresh_screen(60);\n\n if (quit_requested() ) break;\n }\n\n close_window(window_named(\"Test UI\"));\n}",
+  "tests": [
+    {
+      "description": "Adds a column to the current layout with width `width`.\n\n- Positive values of width just specify the width in pixels.\n- 0 means use the default control width - not always a good choice.\n- Negative values specify filling to the right _until_ `width + 1` pixels away from the edge.\n- e.g -1 fills entirely to the right, while -20 leaves a 19 pixel gap on the right.",
+      "name": "add_column",
+      "return_description": null,
+      "signature": "void add_column(int width);",
+      "unique_global_name": "add_column"
+    },
+    {
+      "description": "Adds a column to the current layout with width `width` percentage of the container's width.",
+      "name": "add_column_relative",
+      "return_description": null,
+      "signature": "void add_column_relative(double width);",
+      "unique_global_name": "add_column_relative"
+    },
+    {
+      "description": "Creates a button with a bitmap in it, and no label.\nReturns whether the button was clicked.",
+      "name": "bitmap_button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool bitmap_button(bitmap bmp);",
+      "unique_global_name": "bitmap_button"
+    },
+    {
+      "description": "Creates a button with a bitmap in it at a specific position on screen.\nReturns whether the button was clicked.",
+      "name": "bitmap_button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool bitmap_button(bitmap bmp,const rectangle& rect);",
+      "unique_global_name": "bitmap_button_at_position"
+    },
+    {
+      "description": "Creates a button with a bitmap in it at a specific position on screen.\nReturns whether the button was clicked.",
+      "name": "bitmap_button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool bitmap_button(bitmap bmp,const rectangle& rect,drawing_options opts);",
+      "unique_global_name": "bitmap_button_at_position_with_options"
+    },
+    {
+      "description": "Creates a button with a bitmap in it, and no label.\nReturns whether the button was clicked.",
+      "name": "bitmap_button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool bitmap_button(bitmap bmp,drawing_options opts);",
+      "unique_global_name": "bitmap_button_with_options"
+    },
+    {
+      "description": "Creates a button with a bitmap in it and a label.\nReturns whether the button was clicked.",
+      "name": "bitmap_button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool bitmap_button(const string& label_text,bitmap bmp);",
+      "unique_global_name": "bitmap_button_labeled"
+    },
+    {
+      "description": "Creates a button with a bitmap in it and a label.\nReturns whether the button was clicked.",
+      "name": "bitmap_button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool bitmap_button(const string& label_text,bitmap bmp,drawing_options opts);",
+      "unique_global_name": "bitmap_button_labeled_with_options"
+    },
+    {
+      "description": "Creates a button at a specific position on screen.\nReturns whether the button was clicked.",
+      "name": "button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool button(const string& text,const rectangle& rect);",
+      "unique_global_name": "button_at_position"
+    },
+    {
+      "description": "Creates a button without a label.\nReturns whether the button was clicked.",
+      "name": "button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool button(const string& text);",
+      "unique_global_name": "button"
+    },
+    {
+      "description": "Creates a button with a label.\nReturns whether the button was clicked.\n\nExample usage:\n```c++\n// Test if clicked:\nif (button(\"Button 1\", \"Click me!\"))\n{\n// do stuff..\n}\n```",
+      "name": "button",
+      "return_description": "Whether the button was clicked",
+      "signature": "bool button(const string& label_text,const string& text);",
+      "unique_global_name": "button_labeled"
+    },
+    {
+      "description": "Creates a checkbox at a specific position on screen.\nReturns the updated value of the checkbox.",
+      "name": "checkbox",
+      "return_description": "The updated value of the checkbox",
+      "signature": "bool checkbox(const string& text,const bool& value,const rectangle& rect);",
+      "unique_global_name": "checkbox_at_position"
+    },
+    {
+      "description": "Creates a checkbox.\nReturns the updated value of the checkbox.",
+      "name": "checkbox",
+      "return_description": "The updated value of the checkbox",
+      "signature": "bool checkbox(const string& text,const bool& value);",
+      "unique_global_name": "checkbox"
+    },
+    {
+      "description": "Creates a checkbox with a label.\nReturns the updated value of the checkbox.\n\nExample usage:\n```c++\nmy_bool = checkbox(\"Checkbox 1\", \"Enabled?\", my_bool);\n```",
+      "name": "checkbox",
+      "return_description": "The updated value of the checkbox",
+      "signature": "bool checkbox(const string& label_text,const string& text,const bool& value);",
+      "unique_global_name": "checkbox_labeled"
+    },
+    {
+      "description": "Creates a set of RGBA sliders to adjust a color, at a specific position on screen.\nReturns the updated color value of the slider.",
+      "name": "color_slider",
+      "return_description": "The updated value of the slider",
+      "signature": "color color_slider(const color& clr,const rectangle& rect);",
+      "unique_global_name": "color_slider_at_position"
+    },
+    {
+      "description": "Creates a set of RGBA sliders to adjust a color.\nReturns the updated color value of the slider.",
+      "name": "color_slider",
+      "return_description": "The updated value of the slider",
+      "signature": "color color_slider(const color& clr);",
+      "unique_global_name": "color_slider"
+    },
+    {
+      "description": "Creates a set of RGBA sliders to adjust a color, with a label.\nReturns the updated color value of the slider.\n\nExample usage:\n```c++\nmy_color = color_slider(\"Player Color\", my_color);\n```",
+      "name": "color_slider",
+      "return_description": "The updated value of the slider",
+      "signature": "color color_slider(const string& label_text,const color& clr);",
+      "unique_global_name": "color_slider_labeled"
+    },
+    {
+      "description": "Disables the interface temporarily. Elements created after this function will appear disabled and cannot be interacted with.",
+      "name": "disable_interface",
+      "return_description": null,
+      "signature": "void disable_interface();",
+      "unique_global_name": "disable_interface"
+    },
+    {
+      "description": "Draws the user interface that all the previous calls (such as `start_panel`, `button`, etc) have created.\n\n**Make sure to call this!** Without calling it, the interface won't be visible.",
+      "name": "draw_interface",
+      "return_description": null,
+      "signature": "void draw_interface();",
+      "unique_global_name": "draw_interface"
+    },
+    {
+      "description": "Re-enables the interface, reverses the effects of disabling the interface.",
+      "name": "enable_interface",
+      "return_description": null,
+      "signature": "void enable_interface();",
+      "unique_global_name": "enable_interface"
+    },
+    {
+      "description": "Finishes the creation of an inset area.",
+      "name": "end_inset",
+      "return_description": null,
+      "signature": "void end_inset(const string& name);",
+      "unique_global_name": "end_inset"
+    },
+    {
+      "description": "Finishes the creation of a panel.",
+      "name": "end_panel",
+      "return_description": null,
+      "signature": "void end_panel(const string& name);",
+      "unique_global_name": "end_panel"
+    },
+    {
+      "description": "Finishes the creation of a popup.",
+      "name": "end_popup",
+      "return_description": null,
+      "signature": "void end_popup(const string& name);",
+      "unique_global_name": "end_popup"
+    },
+    {
+      "description": "Finishes the creation of a tree node.",
+      "name": "end_treenode",
+      "return_description": null,
+      "signature": "void end_treenode(const string& label_text);",
+      "unique_global_name": "end_treenode"
+    },
+    {
+      "description": "Begins placing elements inside the current column. Must be paired with a call to `leave_column`.",
+      "name": "enter_column",
+      "return_description": null,
+      "signature": "void enter_column();",
+      "unique_global_name": "enter_column"
+    },
+    {
+      "description": "Returns the width of element labels.\n\nDefault is 60 pixels.",
+      "name": "get_interface_label_width",
+      "return_description": "The width of labels",
+      "signature": "int get_interface_label_width();",
+      "unique_global_name": "get_interface_label_width"
+    },
+    {
+      "description": "Creates a collapsable header with a label.\nReturns whether the header is expanded or not.\n\nNote: Unlike `start_panel` and other similar functions, there is\nno need to 'end' this one. Example usage:\n```c++\nif (header(\"Section A\"))\n{\n// elements inside header go here\n}\n```",
+      "name": "header",
+      "return_description": "Whether the header is expanded or not",
+      "signature": "bool header(const string& label_text);",
+      "unique_global_name": "header"
+    },
+    {
+      "description": "Creates a set of HSBA (hue, saturation, brightness, alpha) sliders to adjust a color, at a specific position on screen.\nReturns the updated color value of the slider.",
+      "name": "hsb_color_slider",
+      "return_description": "The updated value of the slider",
+      "signature": "color hsb_color_slider(const color& clr,const rectangle& rect);",
+      "unique_global_name": "hsb_color_slider_at_position"
+    },
+    {
+      "description": "Creates a set of HSBA (hue, saturation, brightness, alpha) sliders to adjust a color.\nReturns the updated color value of the slider.",
+      "name": "hsb_color_slider",
+      "return_description": "The updated value of the slider",
+      "signature": "color hsb_color_slider(const color& clr);",
+      "unique_global_name": "hsb_color_slider"
+    },
+    {
+      "description": "Creates a set of HSBA (hue, saturation, brightness, alpha) sliders to adjust a color, with a label.\nReturns the updated color value of the slider.\n\nExample usage:\n```c++\nmy_color = hsb_color_slider(\"Player Color\", my_color);\n```",
+      "name": "hsb_color_slider",
+      "return_description": "The updated value of the slider",
+      "signature": "color hsb_color_slider(const string& label_text,const color& clr);",
+      "unique_global_name": "hsb_color_slider_labeled"
+    },
+    {
+      "description": "Returns if the interface is currently enabled or not.",
+      "name": "interface_enabled",
+      "return_description": "Whether the interface is currently enabled or not",
+      "signature": "bool interface_enabled();",
+      "unique_global_name": "interface_enabled"
+    },
+    {
+      "description": "A utility function to show a 'Style Panel', which will allows you to experiment with different interface styles.",
+      "name": "interface_style_panel",
+      "return_description": null,
+      "signature": "void interface_style_panel(const rectangle& initial_rectangle);",
+      "unique_global_name": "interface_style_panel"
+    },
+    {
+      "description": "Creates a label with the given text.",
+      "name": "label_element",
+      "return_description": null,
+      "signature": "void label_element(const string& text);",
+      "unique_global_name": "label_element"
+    },
+    {
+      "description": "Creates a label at a specific position on screen.",
+      "name": "label_element",
+      "return_description": null,
+      "signature": "void label_element(const string& text,const rectangle& rect);",
+      "unique_global_name": "label_element_at_position"
+    },
+    {
+      "description": "Returns if the last created element was changed at all (such as dragged, typed in, etc)",
+      "name": "last_element_changed",
+      "return_description": "Whether the last created element was changed",
+      "signature": "bool last_element_changed();",
+      "unique_global_name": "last_element_changed"
+    },
+    {
+      "description": "Returns if the last created element was 'confirmed' (such as clicking a button, or hitting enter in a text box)",
+      "name": "last_element_confirmed",
+      "return_description": "Whether the last created element was confirmed",
+      "signature": "bool last_element_confirmed();",
+      "unique_global_name": "last_element_confirmed"
+    },
+    {
+      "description": "Stops placing elements inside the current column and moves to the next one.",
+      "name": "leave_column",
+      "return_description": null,
+      "signature": "void leave_column();",
+      "unique_global_name": "leave_column"
+    },
+    {
+      "description": "Creates a number entry box at a specific position on screen.\nReturns the updated value of the number box.",
+      "name": "number_box",
+      "return_description": "The updated value of the slider",
+      "signature": "float number_box(const float& value,float step,const rectangle& rect);",
+      "unique_global_name": "number_box_at_position"
+    },
+    {
+      "description": "Creates a number entry box with a label.\nReturns the updated value of the number box.",
+      "name": "number_box",
+      "return_description": "The updated value of the slider",
+      "signature": "float number_box(const float& value,float step);",
+      "unique_global_name": "number_box"
+    },
+    {
+      "description": "Creates a number entry box with a label.\nReturns the updated value of the number box.\n\nExample usage:\n```c++\nmy_float = number_box(\"Percentage\", my_float, 1);\n```",
+      "name": "number_box",
+      "return_description": "The updated value of the slider",
+      "signature": "float number_box(const string& label_text,const float& value,float step);",
+      "unique_global_name": "number_box_labeled"
+    },
+    {
+      "description": "Makes the popup named `name` open/popup at the cursor's position.",
+      "name": "open_popup",
+      "return_description": null,
+      "signature": "void open_popup(const string& name);",
+      "unique_global_name": "open_popup"
+    },
+    {
+      "description": "Creates a paragraph of text that auto-wraps.",
+      "name": "paragraph",
+      "return_description": null,
+      "signature": "void paragraph(const string& text);",
+      "unique_global_name": "paragraph"
+    },
+    {
+      "description": "Creates a paragraph of text that auto-wraps at a specific position on screen.",
+      "name": "paragraph",
+      "return_description": null,
+      "signature": "void paragraph(const string& text,const rectangle& rect);",
+      "unique_global_name": "paragraph_at_position"
+    },
+    {
+      "description": "Resets to the default layout of a single column with default height.",
+      "name": "reset_layout",
+      "return_description": null,
+      "signature": "void reset_layout();",
+      "unique_global_name": "reset_layout"
+    },
+    {
+      "description": "Sets the color of accents in the interface, and the contrast of how strongly they appear when hovering/interacting.",
+      "name": "set_interface_accent_color",
+      "return_description": null,
+      "signature": "void set_interface_accent_color(color clr,float contrast);",
+      "unique_global_name": "set_interface_accent_color"
+    },
+    {
+      "description": "Sets the interface's border color.",
+      "name": "set_interface_border_color",
+      "return_description": null,
+      "signature": "void set_interface_border_color(color clr);",
+      "unique_global_name": "set_interface_border_color"
+    },
+    {
+      "description": "A convenience function to set the majority of the interface's colors in one go.\nSome colors will be automatically chosen based on the parameters (such as text color).",
+      "name": "set_interface_colors_auto",
+      "return_description": null,
+      "signature": "void set_interface_colors_auto(color main_clr,color accent_clr,float contrast,float accent_contrast,float border_contrast);",
+      "unique_global_name": "set_interface_colors_auto"
+    },
+    {
+      "description": "Sets the main color of elements in the interface, and the contrast between their frame and internal pieces.",
+      "name": "set_interface_element_color",
+      "return_description": null,
+      "signature": "void set_interface_element_color(color clr,float contrast);",
+      "unique_global_name": "set_interface_element_color"
+    },
+    {
+      "description": "Sets the style of element's shadows. Use a fully transparent color to disable them.",
+      "name": "set_interface_element_shadows",
+      "return_description": null,
+      "signature": "void set_interface_element_shadows(int radius,color clr,point_2d offset);",
+      "unique_global_name": "set_interface_element_shadows"
+    },
+    {
+      "description": "Sets the interface's font.",
+      "name": "set_interface_font",
+      "return_description": null,
+      "signature": "void set_interface_font(const string& fnt);",
+      "unique_global_name": "set_interface_font_font_as_string"
+    },
+    {
+      "description": "Sets the interface's font.",
+      "name": "set_interface_font",
+      "return_description": null,
+      "signature": "void set_interface_font(font fnt);",
+      "unique_global_name": "set_interface_font"
+    },
+    {
+      "description": "Sets the interface's font size.",
+      "name": "set_interface_font_size",
+      "return_description": null,
+      "signature": "void set_interface_font_size(int size);",
+      "unique_global_name": "set_interface_font_size"
+    },
+    {
+      "description": "Sets the width of element labels. This is the maximum width\nin pixels that a label can span in front of an element.\n\nDefault is 60 pixels.",
+      "name": "set_interface_label_width",
+      "return_description": null,
+      "signature": "void set_interface_label_width(int width);",
+      "unique_global_name": "set_interface_label_width"
+    },
+    {
+      "description": "Sets the style of panel's shadows. Use a fully transparent color to disable them.",
+      "name": "set_interface_panel_shadows",
+      "return_description": null,
+      "signature": "void set_interface_panel_shadows(int radius,color clr,point_2d offset);",
+      "unique_global_name": "set_interface_panel_shadows"
+    },
+    {
+      "description": "Sets color of text drawn directly onto the main window",
+      "name": "set_interface_root_text_color",
+      "return_description": null,
+      "signature": "void set_interface_root_text_color(color clr);",
+      "unique_global_name": "set_interface_root_text_color"
+    },
+    {
+      "description": "Sets the style of all interface shadows. Use a fully transparent color to disable them.",
+      "name": "set_interface_shadows",
+      "return_description": null,
+      "signature": "void set_interface_shadows(int radius,color clr,point_2d offset);",
+      "unique_global_name": "set_interface_shadows"
+    },
+    {
+      "description": "Sets the spacing within the interface.",
+      "name": "set_interface_spacing",
+      "return_description": null,
+      "signature": "void set_interface_spacing(int spacing,int padding);",
+      "unique_global_name": "set_interface_spacing"
+    },
+    {
+      "description": "Sets the interface style to one of the presets in the interface_style enum.",
+      "name": "set_interface_style",
+      "return_description": null,
+      "signature": "void set_interface_style(interface_style style);",
+      "unique_global_name": "set_interface_style"
+    },
+    {
+      "description": "Sets the interface style to one of the presets in the interface_style enum.\nAlso accepts a color used to customize the interface.",
+      "name": "set_interface_style",
+      "return_description": null,
+      "signature": "void set_interface_style(interface_style style,color clr);",
+      "unique_global_name": "set_interface_style_with_color"
+    },
+    {
+      "description": "Sets the interface's text color.",
+      "name": "set_interface_text_color",
+      "return_description": null,
+      "signature": "void set_interface_text_color(color clr);",
+      "unique_global_name": "set_interface_text_color"
+    },
+    {
+      "description": "Sets the height of each row in the interface in pixels.\n0 resets to default.",
+      "name": "set_layout_height",
+      "return_description": null,
+      "signature": "void set_layout_height(int height);",
+      "unique_global_name": "set_layout_height"
+    },
+    {
+      "description": "Starts layouting all elements onto a single row. Reset with `reset_layout()`.",
+      "name": "single_line_layout",
+      "return_description": null,
+      "signature": "void single_line_layout();",
+      "unique_global_name": "single_line_layout"
+    },
+    {
+      "description": "Creates a slider at a specific position on screen.\nReturns the updated value of the slider.",
+      "name": "slider",
+      "return_description": "The updated value of the slider",
+      "signature": "float slider(const float& value,float min_value,float max_value,const rectangle& rect);",
+      "unique_global_name": "slider_at_position"
+    },
+    {
+      "description": "Creates a slider without a label.\nReturns the updated value of the slider.",
+      "name": "slider",
+      "return_description": "The updated value of the slider",
+      "signature": "float slider(const float& value,float min_value,float max_value);",
+      "unique_global_name": "slider"
+    },
+    {
+      "description": "Creates a slider with a label.\nReturns the updated value of the slider.\n\nExample usage:\n```c++\nmy_float = slider(\"Percentage\", my_float, 0, 100);\n```",
+      "name": "slider",
+      "return_description": "The updated value of the slider",
+      "signature": "float slider(const string& label_text,const float& value,float min_value,float max_value);",
+      "unique_global_name": "slider_labeled"
+    },
+    {
+      "description": "Adds `count` columns to the current layout, with equal widths",
+      "name": "split_into_columns",
+      "return_description": null,
+      "signature": "void split_into_columns(int count);",
+      "unique_global_name": "split_into_columns"
+    },
+    {
+      "description": "Adds `count` columns to the current layout, with equal widths.\nHas extra parameter `last_width`, which lets you specify a specific\nwidth (in pixels) for the last column.",
+      "name": "split_into_columns",
+      "return_description": null,
+      "signature": "void split_into_columns(int count,int last_width);",
+      "unique_global_name": "split_into_columns_with_last_width"
+    },
+    {
+      "description": "Adds `count` columns to the current layout, with equal widths.\nHas extra parameter `last_width`, which lets you specify a specific\nwidth (relative to the width of the container, between 0 and 1) for the last column.",
+      "name": "split_into_columns_relative",
+      "return_description": null,
+      "signature": "void split_into_columns_relative(int count,double last_width);",
+      "unique_global_name": "split_into_columns_relative_with_last_width"
+    },
+    {
+      "description": "Clears the default layout so that a custom layout can be made.",
+      "name": "start_custom_layout",
+      "return_description": null,
+      "signature": "void start_custom_layout();",
+      "unique_global_name": "start_custom_layout"
+    },
+    {
+      "description": "Starts the creation of an inset area inside an arbitrary rectangle.\n\nThe function **must** be accompanied by a call to `end_inset`\nwith the same name.",
+      "name": "start_inset",
+      "return_description": null,
+      "signature": "void start_inset(const string& name,const rectangle& rect);",
+      "unique_global_name": "start_inset_at_position"
+    },
+    {
+      "description": "Starts the creation of an inset area inside a panel/popup.\n\nUse as follows:\n```c++\nstart_inset(\"Inset area\", 60);\n// elements inside area goes here\nend_inset(\"Inset area\");\n\n```\nThe function **must** be accompanied by a call to `end_inset`\nwith the same name.",
+      "name": "start_inset",
+      "return_description": null,
+      "signature": "void start_inset(const string& name,int height);",
+      "unique_global_name": "start_inset"
+    },
+    {
+      "description": "Starts the creation of a draggable panel with a title bar.\nReturns whether the panel is visible or not.\n\nUse as follows:\n```c++\nif (start_panel(\"My panel\", rectangle_from(0,0,100,100)))\n{\n// Rest of interface goes here\nend_panel(\"My panel\");\n}\n```\nAfter calling this, you can then call functions to\nadd elements such as buttons and text boxes inside the panel.\nThe function **must** be accompanied by a call to `end_panel`,\nthat is only called if the panel is visible, and is passed the same `name`.",
+      "name": "start_panel",
+      "return_description": "Whether the panel is visible or not",
+      "signature": "bool start_panel(const string& name,rectangle initial_rectangle);",
+      "unique_global_name": "start_panel"
+    },
+    {
+      "description": "Starts the creation of a popup.\nReturns whether the popup is visible or not.\n\nUsage is the same as `start_panel`, other than the 'starting rectangle' will be automatically calculated.\nThe function **must** be accompanied by a call to `end_popup`\nwith the same name.",
+      "name": "start_popup",
+      "return_description": "Whether the popup is visible or not",
+      "signature": "bool start_popup(const string& name);",
+      "unique_global_name": "start_popup"
+    },
+    {
+      "description": "Starts the creation of a tree node (such as those in a file tree view).\nReturns whether the tree node is expanded or not.\n\nUsage is the same as `start_panel`.\nThe function **must** be accompanied by a call to `end_treenode`\nwith the same name.",
+      "name": "start_treenode",
+      "return_description": "Whether the tree node is expanded or not",
+      "signature": "bool start_treenode(const string& label_text);",
+      "unique_global_name": "start_treenode"
+    },
+    {
+      "description": "Creates a text entry box with a label.\nReturns the updated value of the text box.",
+      "name": "text_box",
+      "return_description": "The updated value of the text box",
+      "signature": "string text_box(const string& value);",
+      "unique_global_name": "text_box"
+    },
+    {
+      "description": "Creates a text entry box at a specific position on screen.\nReturns the updated value of the text box.\n\nExample usage:\n```c++\nmy_string = text_box(\"Name\", my_string);\n```",
+      "name": "text_box",
+      "return_description": "The updated value of the text box",
+      "signature": "string text_box(const string& value,const rectangle& rect);",
+      "unique_global_name": "text_box_at_position"
+    },
+    {
+      "description": "Creates a text entry box with a label.\nReturns the updated value of the text box.\n\nExample usage:\n```c++\nmy_string = text_box(\"Name\", my_string);\n```",
+      "name": "text_box",
+      "return_description": "The updated value of the text box",
+      "signature": "string text_box(const string& label_text,const string& value);",
+      "unique_global_name": "text_box_labeled"
+    }
+  ]
+}

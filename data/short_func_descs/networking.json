@@ -1,0 +1,838 @@
+{
+  "example": "#include \"window_manager.h\"\n#include \"networking.h\"\n\n#include \"assert.h\"\n\n#include <iostream>\n\n#define TEST_IP \"127.0.0.1\"\n#define TEST_IP_HEX \"0x7F000001\"\n\nusing namespace splashkit_lib;\n\nvoid run_encoding_decoding_tests()\n{\n assert(ipv4_to_hex(\"127.0.0\") == \"0x7F000000\");\n assert(ipv4_to_str(ipv4_to_dec(\"127.0.0\")) == \"127.0.0.0\");\n assert(ipv4_to_str(ipv4_to_dec(\"127,0.0\")) == \"127.0.0.0\");\n assert(ipv4_to_str(ipv4_to_dec(\"\")) == \"0.0.0.0\");\n\n int too_small_int = 4000;\n assert(ipv4_to_str(too_small_int) == \"0.0.15.160\");\n\n assert(ipv4_to_str(ipv4_to_dec(TEST_IP)) == TEST_IP);\n assert(dec_to_hex(ipv4_to_dec(TEST_IP)) == TEST_IP_HEX);\n assert(ipv4_to_hex(TEST_IP) == TEST_IP_HEX);\n assert(hex_str_to_ipv4(TEST_IP_HEX) == TEST_IP);\n assert(my_ip() == \"127.0.0.1\");\n}\n\nvoid run_networking_test()\n{\n run_encoding_decoding_tests();\n}//\n//  test_udp_networking.cpp\n//  splashkit\n//\n//  Ported by James Armstrong on 15/09/2016.\n//\n\n#include <iostream>\n\n#include \"easylogging++.h\"\n\n#include \"networking.h\"\n#include \"utils.h\"\n\nconst int SERVER1_PORT = 5000;\nconst int SERVER2_PORT = SERVER1_PORT + 1;\n\nusing namespace splashkit_lib;\nusing namespace std;\n\nserver_socket svr;\nconnection lConA, lConB, lTmp, lTmpA;\nbool lMskReceived = false;\nmessage msk;\n\nvoid pause_test()\n{\n    cout << \"Please enter to continue;\";\n    char input;\n    cin >> input;\n}\n\nvoid check_messages()\n{\n    cout << \"Checking for messages\" << endl;\n    check_network_activity();\n\n\n    if (has_messages())\n    {\n        cout << \"Reading messages received for client\" << endl;\n        while (has_messages(lConA))\n        {\n            msk = read_message(lConA);\n            cout << \" -> \" << message_data(msk) << \" from \" << message_host(msk) << \":\" << message_port(msk) << endl;\n            close_message(msk);\n        }\n\n        cout << \"Reading messages received for ToSvr client\" << endl;\n        while (has_messages(\"ToSvr\"))\n        {\n            msk = read_message(\"ToSvr\");\n            cout << \" -> \" << message_data(msk) << \" from \" << message_host(msk) << \":\" << message_port(msk) << endl;\n            close_message(msk);\n        }\n\n        for (int i = 0; i < connection_count(svr); ++i)\n        {\n            lTmp = retrieve_connection(svr, i);\n            if (has_messages(lTmp))\n            {\n                cout << \" -> \" << read_message_data(lTmp) << \" from \" << connection_port(lTmp) << endl;\n            }\n        }\n\n        pause_test();\n    }\n    else\n    {\n        cout << \"No messages received\" << endl;\n    }\n}\n\nvoid run_tcp_networking_test()\n{\n    cout << \"Starting\" << endl;\n\n    svr = create_server(\"svr1\", SERVER1_PORT);\n    create_server(\"svr2\", SERVER2_PORT);\n\n    cout << \"Listening on \" << SERVER1_PORT << \" and \" << SERVER2_PORT << \".\" << endl;\n    pause_test();\n\n    //cout << \"Attempting to open connection twice (should fail):  \"<<  Assigned(CreateServer(\"svr3 \" <<  SERVER2_PORT)));\n\n    cout << \"Connecting to Port (x2)  \" <<  SERVER1_PORT << endl;\n    lConA = open_connection(\"lConA\", \"127.0.0.1\", SERVER1_PORT);\n    open_connection(\"ToSvr\", \"127.0.0.1\", SERVER1_PORT);\n\n    cout << \"ToSvr is open:  \" <<  is_connection_open(\"ToSvr\") << endl;\n    cout << \"Fred is open:  \" <<  is_connection_open(\"Fred\") << endl;\n\n    check_network_activity();\n\n    cout << \"Are there new connections?  \" <<  has_new_connections() << endl;\n    cout << \"New Connection to  \" <<  SERVER1_PORT << \":  \" <<  server_has_new_connection(svr) << endl;\n    cout << \" Number of connections:  \" <<  connection_count(svr) << endl;\n\n    lConB = last_connection(svr);\n\n    check_network_activity();\n    cout << \"Are there new connections?  \" <<  has_new_connections() << endl;\n    cout << \"New Connection to  \" <<  SERVER1_PORT << \":  \" <<  server_has_new_connection(svr) << endl;\n    cout << \" Number of connections:  \" <<  connection_count(svr) << endl;\n\n    pause_test();\n    cout << \"Checking for messages -- shouldn't be any\" << endl;\n    check_messages();\n\n    cout << \"Sending messages\" << endl;\n    send_message_to(\"To server --> from client\", lConA);\n    send_message_to(\"How are you :)\", lConA);\n    send_message_to(\"To server --> from named client\", \"ToSvr\");\n    send_message_to(string(509 - 4, '7'), lConA);\n    send_message_to(\"1234567\", lConA);\n    send_message_to(\"0987654\", lConA);\n    send_message_to(string(876, 'A'), lConA);\n\n    send_message_to(string(509 - 4, '7'), lConB);\n    send_message_to(\"Hello Client\", lConB);\n    send_message_to(string(876, 'A'), lConB);\n\n    pause_test();\n    check_messages();\n    check_messages();\n    check_messages();\n\n    cout << \"Closing client -  \" << close_connection(lConA) << endl;\n    pause_test();\n\n    cout << \"Client still:  \" << lConA << endl;\n    cout << \"Test message send (to closed client):  \" << send_message_to(string(\"A\", 876), lConB);\n\n    pause_test();\n    cout << \"Test message send (expect false):  \" << send_message_to(string(\"A\", 876), lConB) << endl;\n\n    cout << \"Server still connected to client:  \" << is_connection_open(retrieve_connection(svr, 0)) << endl;\n\n    cout << \"Closing server\"\n    \"s client connection (should already by closed -- just testing):  \" << close_connection(lConB) << endl;\n    cout << \"Server connections:  \" << connection_count(svr) << endl;\n    pause_test();\n\n    cout << \"Checking for activity\" << endl;\n    check_network_activity();\n\n    cout << \"Opening a new connection\" << endl;\n\n    lConA = open_connection(\"lConA1\", \"127.0.0.1\", SERVER1_PORT);\n    cout << \"Reconnected:  \" << lConA << endl;\n\n    check_network_activity();\n    lConB = last_connection(svr);\n    cout << \"Connections =  \" << connection_count(svr) << endl;\n\n    send_message_to(\"New connection --> to server\", lConA);\n    send_message_to(\"New connection --> to client\", lConB);\n\n    check_messages();\n\n    cout << \"Closing server:  \" << close_server(svr) << endl;\n    pause_test();\n\n    cout << \"Can connect to old server?  \" << open_connection(\"oldsvr\", \"127.0.0.1\", SERVER1_PORT) << endl;\n    pause_test();\n\n    cout << \"Restarting server...\" << endl;\n    svr = create_server(\"svr1\", SERVER1_PORT);\n\n    reconnect(lConA);\n    reconnect(\"ToSvr\");\n\n    check_network_activity();\n    lConB = last_connection(svr);\n\n    check_network_activity();\n\n    broadcast_message(\"Hello Everyone\");\n    broadcast_message(\"Hello Everyone on svr\", svr);\n\n    send_message_to(\"Another message --> to server\", lConA);\n    send_message_to(\"Another message --> to client\", lConB);\n    send_message_to(\"Another message --> from named client\", \"ToSvr\");\n    send_message_to(\"Another message --> to named client\", last_connection(svr));\n\n    check_messages();\n    check_messages();\n\n    cout << \"Close all\" << endl;\n    close_all_connections();\n    close_all_servers();\n}\n//\n//  test_udp_networking.cpp\n//  splashkit\n//\n//  Ported by James Armstrong on 15/09/2016.\n//\n\n#include <iostream>\n\n#include \"easylogging++.h\"\n\n#include \"networking.h\"\n#include \"utils.h\"\n\nconst int LISTEN_PORTB = 5000;\n\nusing namespace splashkit_lib;\nusing namespace std;\n\nvoid pause_tcp_test()\n{\n    cout << \"Please enter to continue;\";\n    char input;\n    cin >> input;\n}\n\nvoid run_udp_networking_test()\n{\n    cout << \"Listening for UDP connections on port \" << LISTEN_PORTB << endl;\n    server_socket server = create_server(\"MyServer\", LISTEN_PORTB, UDP);\n    pause_tcp_test();\n\n    cout << \"Creating connection to send data to server\" << endl;\n    connection to_server = open_connection(\"to_server\", \"127.0.0.1\", LISTEN_PORTB, UDP);\n    pause_tcp_test();\n\n    cout << \"Sending message to server\" << endl;\n    send_message_to(\"Hello UDP\", to_server);\n    delay(1000);\n\n    cout << \"Checking activity\" << endl;\n    check_network_activity();\n    cout << \"Server got message: \" << has_messages(server) << endl;\n    message msg = read_message(server);\n    cout << \"Message \" << message_data(msg) << endl;\n    pause_tcp_test();\n\n    cout << \"Sending message to client \" << message_host(msg) << \":\" << message_port(msg) << endl;\n    connection to_client = open_connection(\"to_client\", message_host(msg), message_port(msg), UDP);\n    close_message(msg);\n\n    cout << \"Connection created\" << endl;\n    send_message_to(\"Hello Client\", to_client);\n    delay(100);\n    check_network_activity();\n\n    cout << \"Client got message \" << has_messages(\"to_server\") << endl;\n    cout << \"Message \" << read_message_data(to_server) << endl;\n\n    close_connection(to_server);\n\n    cout << \"Closing UDP socket on port \" << LISTEN_PORTB << endl;\n    close_server(server);\n\n    cout << \"Close all\" << endl;\n    close_all_connections();\n    close_all_servers();\n}//\n//  test_web_server.cpp\n//  splashkit\n//\n//  Created by James Armstrong http://github.com/jarmstrong\n//\n\n#include \"resources.h\"\n#include \"web_server.h\"\n#include \"json.h\"\n\n#include <iostream>\n#include <functional>\n#include <vector>\n\n\nusing namespace std;\nusing namespace splashkit_lib;\n\nbool handle_request(http_request r)\n{\n    string uri = request_uri(r);\n    cout << \"Matching routes for \" << uri << \"\\n\";\n    if (uri.find(\"/stop\") != string::npos)\n    {\n        string user = request_query_parameter(r, \"user\", \"\");\n        if ( user != \"admin\" )\n        {\n            send_response(r, \"No auth for \" + user + \" to stop\");\n            return false;\n        }\n        cout << \"Matched to the stop route\\n\";\n        // do not send response on close, to test that you can still stop the server.\n        // send_response(r, \"Goodbye\");\n        return true;\n    }\n    else\n    {\n        cout << \"Sending request response.\\n\";\n        send_response(r, \"Hello World\");\n        return false;\n    }\n}\n\nvoid run_single_server_test()\n{\n    cout << \"Starting web server on http://localhost:8080\\n\";\n    web_server server = start_web_server(8080);\n\n    bool running = true;\n    while (running)\n    {\n        // Navigating to http://localhost:8080 will invoke begin_request_handler().\n        cout << \"Waiting for web request\\n\";\n        http_request request = next_web_request(server);\n\n        cout << \"Received request checking if valid\\n\";\n        if (request)\n        {\n            cout << \"Request is valid.\\n\";\n        }\n        else\n        {\n            cout << \"Request is invalid.\\n\";\n        }\n\n        if (handle_request(request))\n        {\n            running = false;\n        }\n    }\n\n    if (has_incoming_requests(server))\n    {\n        cerr << \"Still has requests...\\n\";\n    }\n\n    cout << \"Closing the server.\\n\";\n    stop_web_server(server);\n    cout << \"Server is closed.\\n\";\n}\n\nvoid run_multiple_server_test()\n{\n    cout << \"Starting two localhost servers on 8080 and 8081\\n\";\n    auto server1 = start_web_server(8080);\n    auto server2 = start_web_server(8081);\n\n    bool server1_up = true;\n    bool server2_up = true;\n    while (server1_up || server2_up)\n    {\n        if (server1_up)\n        {\n            cout << \"Load http://localhost:8080 or .../stop\\n\";\n            auto r1 = next_web_request(server1);\n\n            if (handle_request(r1))\n            {\n                server1_up = false;\n                cout << \"Server 1 down\\n\";\n            }\n        }\n\n        if (server2_up)\n        {\n            cout << \"Load http://localhost:8081 or .../stop\\n\";\n            auto r2 = next_web_request(server2);\n\n            if (handle_request(r2))\n            {\n                server2_up = false;\n                cout << \"Server 2 down\\n\";\n            }\n        }\n    }\n\n    stop_web_server(server1);\n    stop_web_server(server2);\n}\n\njson load_person()\n{\n    cout << \"Reading \" << \"person.json\" << \" from disk\" << endl;\n    json j = json_from_file(\"person.json\");\n    return j;\n}\n\nvoid test_send_json_response()\n{\n    auto server = start_web_server();\n\n    string json = json_to_string(load_person());\n\n    bool running = true;\n    while (running)\n    {\n        auto request = next_web_request(server);\n\n        send_response(request, HTTP_STATUS_OK, json, \"application/json\");\n    }\n}\n\nstatic vector<pair<string, function<void()>>> tests;\n\nvoid add_tests()\n{\n    tests.push_back({\"Single Server\", run_single_server_test});\n    tests.push_back({\"Multiple Servers\", run_multiple_server_test});\n    tests.push_back({\"Send JSON Response\", test_send_json_response});\n}\n\nvoid run_web_server_tests()\n{\n    add_tests();\n\n    cout << \"=== Web Server Tests === \\n\";\n\n    for (int i = 0; i < tests.size(); ++i)\n    {\n        auto test = tests[i];\n        cout << i << \": \" << test.first << \"\\n\";\n    }\n\n    cout << \"Select test to run: \";\n\n    int option = 0;\n    cin >> option;\n\n    if (option >= 0 && option < tests.size())\n    {\n        tests[option].second();\n    }\n}//\n//  test_web_service.cpp\n//  splashkit\n//\n//  Created by James Armstrong http://github.com/jarmstrong\n//\n\n#include \"window_manager.h\"\n#include \"text.h\"\n#include \"input.h\"\n#include \"json.h\"\n#include \"web_server.h\"\n\n#include \"easylogging++.h\"\n\n#include <string>\n#include <sstream>\n#include <vector>\n#include <iostream>\n#include <exception>\n\n\nusing namespace std;\nusing namespace splashkit_lib;\n\nstruct person\n{\n    string name;\n    string address;\n    double age;\n};\n\nstatic vector<person> people;\n\nstatic map<http_method, map<string, function<void(http_request, string)>>> routes;\n\njson person_to_json(person p)\n{\n    json j = create_json();\n    json_set_string(j, \"name\", p.name);\n    json_set_string(j, \"address\", p.address);\n    json_set_number(j, \"age\", p.age);\n    return j;\n}\n\nperson json_to_person(json j)\n{\n    person p;\n    p.name = json_read_string(j, \"name\");\n    p.address = json_read_string(j, \"address\");\n    p.age = json_read_number(j, \"age\");\n    return p;\n}\n\nvoid add_person(string name, string address, int age)\n{\n    person p;\n    p.name = name;\n    p.address = address;\n    p.age = age;\n    people.push_back(p);\n}\n\nstring people_to_json()\n{\n    vector<json> peoples;\n    for (person p : people)\n    {\n        json j = person_to_json(p);\n        peoples.push_back(j);\n    }\n\n    json result = create_json();\n    json_set_array(result, \"people\", peoples);\n    return json_to_string(result);\n}\n\n/**\n * POST\n * GET\n * PUT\n * DELETE\n */\n\n/**\n * / -> list of end points\n * /people -> list of names (GET ALL PEOPLE, POST ADD PERSON)\n * /people/:id  -> a single name (PUT, GET, DELETE)\n */\n\nstring get_url_link(string stub, string uri)\n{\n    return string(\"<a href=\\\"\") + uri + \"\\\">\" + stub + \"</a>\";\n}\n\nvoid root_route(http_request request, string uri)\n{\n    send_html_file_response(request, \"index.html\");\n}\n\nvoid names_get_routes(http_request request, string uri)\n{\n    vector<string> stubs = split_uri_stubs(uri);\n\n    if (stubs.size() == 1)\n    {\n        string j = people_to_json();\n        send_response(request, HTTP_STATUS_OK, j, \"application/json\");\n    }\n    else\n    {\n        try\n        {\n            int id = stoi(stubs[1]);\n            string json_person = json_to_string(person_to_json(people.at(id)));\n            send_response(request, HTTP_STATUS_OK, json_person, \"application/json\");\n        } catch (...)\n        {\n            send_response(request, HTTP_STATUS_OK, \"<h1>No ID exists.</h1>\", \"text/html\");\n        }\n    }\n}\n\nvoid names_post_routes(http_request request, string uri)\n{\n    vector<string> stubs = split_uri_stubs(uri);\n\n    if (stubs.size() == 1)\n    {\n        json p = json_from_string(request_body(request));\n        if (json_count_keys(p) != 0)\n        {\n            people.push_back(json_to_person(p));\n            send_response(request, \"Person addition success.\");\n        }\n        else\n        {\n            send_response(request, \"Invalid or empty JSON received.\");\n        }\n    }\n    else\n    {\n        send_response(request, \"Person addition failed.\");\n    }\n}\n\nvoid names_delete_route(http_request request, string uri)\n{\n    vector<string> stubs = split_uri_stubs(uri);\n    try\n    {\n        int id = stoi(stubs[1]);\n        people.erase(people.begin() + id);\n        send_response(request, \"Person has now been deleted.\");\n    } catch(...)\n    {\n        send_response(request, HTTP_STATUS_OK, \"<h1>No ID exists.</h1>\", \"text/html\");\n    }\n}\n\nvoid post_person_route(http_request request, string uri)\n{\n    send_html_file_response(request, \"post.html\");\n}\n\nvoid get_person_route(http_request request, string uri)\n{\n    send_html_file_response(request, \"get.html\");\n}\n\nvoid api_login_route(http_request request, string uri)\n{\n  send_response(request, HTTP_STATUS_OK, \"Check your cookies\", \"text\", {\"Set-Cookie: user=admin\"});\n}\n\nvoid add_routes()\n{\n    routes[HTTP_GET_METHOD].insert({\"\", root_route});\n\n    routes[HTTP_GET_METHOD].insert({\"login\", api_login_route});\n\n    routes[HTTP_GET_METHOD].insert({\"names\", names_get_routes});\n    routes[HTTP_POST_METHOD].insert({\"names\", names_post_routes});\n    routes[HTTP_DELETE_METHOD].insert({\"names\", names_delete_route});\n\n    routes[HTTP_GET_METHOD].insert({\"post_person\", post_person_route});\n    routes[HTTP_GET_METHOD].insert({\"get_person\", get_person_route});\n}\n\nvoid run_restful_web_service()\n{\n    auto server = start_web_server();\n\n    add_person(\"Peter Jenkins\", \"39 Fifty Street\", 15);\n    add_person(\"Paul Peterson\", \"23 Fifty Street\", 27);\n    add_person(\"Jerry Smith\", \"1 Sixty Street\", 55);\n\n    add_routes();\n\n    window w1 = open_window(\"Running Web Service.\", 200, 100);\n    draw_text(\"Close to end\", COLOR_BLACK, 0, 0);\n    refresh_window(w1);\n\n    while ( not window_close_requested(w1))\n    {\n        process_events();\n\n        if ( not has_incoming_requests(server)) continue;\n\n        auto request = next_web_request(server);\n\n        http_method method = request_method(request);\n\n        string uri = request_uri(request);\n\n        if (uri.find(\"favicon.ico\") != string::npos)\n        {\n            continue;\n        }\n\n        vector<string> stubs = split_uri_stubs(uri);\n\n        auto it = routes[method].find(stubs[0]);\n        if (it != routes[method].end())\n        {\n            LOG(DEBUG) << \"Route matched for \" << uri;\n            it->second(request, uri);\n        }\n        else\n        {\n            LOG(DEBUG) << \"No route matched for \" << uri;\n            send_response(request, \"No route matching.\");\n        }\n    }\n\n    close_window(w1);\n}\n",
+  "tests": [
+    {
+      "description": "Accept new connections for all servers.",
+      "name": "accept_all_new_connections",
+      "return_description": "True if there were accepted connections",
+      "signature": "bool accept_all_new_connections();",
+      "unique_global_name": "accept_all_new_connections"
+    },
+    {
+      "description": "Accept new connections for a server",
+      "name": "accept_new_connection",
+      "return_description": "True if a connection was accepted",
+      "signature": "bool accept_new_connection(server_socket server);",
+      "unique_global_name": "accept_new_connection"
+    },
+    {
+      "description": "Broadcast a message to all connections of a server.",
+      "name": "broadcast_message",
+      "return_description": null,
+      "signature": "void broadcast_message(const string &a_msg,server_socket svr);",
+      "unique_global_name": "broadcast_message"
+    },
+    {
+      "description": "Broadcase a message to all of the connections.",
+      "name": "broadcast_message",
+      "return_description": null,
+      "signature": "void broadcast_message(const string &a_msg);",
+      "unique_global_name": "broadcast_message_to_all"
+    },
+    {
+      "description": "Broadcast a message to all connections of a server.",
+      "name": "broadcast_message",
+      "return_description": null,
+      "signature": "void broadcast_message(const string &a_msg,const string &name);",
+      "unique_global_name": "broadcast_message_to_server_named"
+    },
+    {
+      "description": "Check network activity, looking for new connections and messages.",
+      "name": "check_network_activity",
+      "return_description": null,
+      "signature": "void check_network_activity();",
+      "unique_global_name": "check_network_activity"
+    },
+    {
+      "description": "Clear all of the messages from a server or connection with the supplied name.",
+      "name": "clear_messages",
+      "return_description": null,
+      "signature": "void clear_messages(const string &name);",
+      "unique_global_name": "clear_messages_from_name"
+    },
+    {
+      "description": "Clear all of the messages from a connection.",
+      "name": "clear_messages",
+      "return_description": null,
+      "signature": "void clear_messages(connection a_connection);",
+      "unique_global_name": "clear_messages_from_connection"
+    },
+    {
+      "description": "Clear all of the messages from a server.",
+      "name": "clear_messages",
+      "return_description": null,
+      "signature": "void clear_messages(server_socket svr);",
+      "unique_global_name": "clear_messages_from_server"
+    },
+    {
+      "description": "Close all of the connections you have opened. This does not close\nconnections to servers.",
+      "name": "close_all_connections",
+      "return_description": null,
+      "signature": "void close_all_connections();",
+      "unique_global_name": "close_all_connections"
+    },
+    {
+      "description": "Close all of the servers that are currently open.",
+      "name": "close_all_servers",
+      "return_description": null,
+      "signature": "void close_all_servers();",
+      "unique_global_name": "close_all_servers"
+    },
+    {
+      "description": "Close the connection",
+      "name": "close_connection",
+      "return_description": "True if this succeeds.",
+      "signature": "bool close_connection(connection a_connection);",
+      "unique_global_name": "close_connection"
+    },
+    {
+      "description": "Close the connection",
+      "name": "close_connection",
+      "return_description": "True if this succeeds.",
+      "signature": "bool close_connection(const string &name);",
+      "unique_global_name": "close_connection_named"
+    },
+    {
+      "description": "Closes the message.",
+      "name": "close_message",
+      "return_description": null,
+      "signature": "void close_message(message msg);",
+      "unique_global_name": "close_message"
+    },
+    {
+      "description": "Closes the server with the indicated name.",
+      "name": "close_server",
+      "return_description": "True if the server was closed successfully",
+      "signature": "bool close_server(const string &name);",
+      "unique_global_name": "close_server_named"
+    },
+    {
+      "description": "Closes the server, all connections with clients will be shut and\nthe port will be closed.",
+      "name": "close_server",
+      "return_description": "True if the close was successful",
+      "signature": "bool close_server(server_socket svr);",
+      "unique_global_name": "close_server"
+    },
+    {
+      "description": "Returns the number of clients connected to a server.",
+      "name": "connection_count",
+      "return_description": "The number of connected clients",
+      "signature": "unsigned int connection_count(const string &name);",
+      "unique_global_name": "connection_count_named"
+    },
+    {
+      "description": "Returns the number of clients connected to a server.",
+      "name": "connection_count",
+      "return_description": "The number of connected clients",
+      "signature": "unsigned int connection_count(server_socket server);",
+      "unique_global_name": "connection_count"
+    },
+    {
+      "description": "Gets the ip address of the passed in connection.",
+      "name": "connection_ip",
+      "return_description": "The ip addres of the connection",
+      "signature": "unsigned int connection_ip(connection a_connection);",
+      "unique_global_name": "connection_ip"
+    },
+    {
+      "description": "Gets the ip address of the connection with the supplied name.",
+      "name": "connection_ip",
+      "return_description": "The connection's ip address",
+      "signature": "unsigned int connection_ip(const string &name);",
+      "unique_global_name": "connection_ip_from_name"
+    },
+    {
+      "description": "Fetch the connection with the indicated name.",
+      "name": "connection_named",
+      "return_description": "The connection with that name",
+      "signature": "connection connection_named(const string &name);",
+      "unique_global_name": "connection_named"
+    },
+    {
+      "description": "Gets the port of the connection.",
+      "name": "connection_port",
+      "return_description": "The port of the connection.",
+      "signature": "unsigned short int connection_port(connection a_connection);",
+      "unique_global_name": "connection_port"
+    },
+    {
+      "description": "Gets the part of the connection.",
+      "name": "connection_port",
+      "return_description": "The port of the connection",
+      "signature": "unsigned short int connection_port(const string &name);",
+      "unique_global_name": "connection_port_from_name"
+    },
+    {
+      "description": "Creates a new TCP server that can accept connections from other programs.",
+      "name": "create_server",
+      "return_description": "A new server with the indicated details",
+      "signature": "server_socket create_server(const string &name,unsigned short int port);",
+      "unique_global_name": "create_server_with_port"
+    },
+    {
+      "description": "Creates a new server that can accept connections from other programs.",
+      "name": "create_server",
+      "return_description": "A new server with the indicated details",
+      "signature": "server_socket create_server(const string &name,unsigned short int port,connection_type protocol);",
+      "unique_global_name": "create_server_with_port_and_protocol"
+    },
+    {
+      "description": "Converts the supplied decimal integer into it's hexadecimal representation.\ne.g. 0x7F000001 from 2130706433",
+      "name": "dec_to_hex",
+      "return_description": "hexadecimal representation of the supplied decimal integer",
+      "signature": "string dec_to_hex(unsigned int a_dec);",
+      "unique_global_name": "dec_to_hex"
+    },
+    {
+      "description": "Get the oldest new connections made to the server, and\nreduces the new connection count by 1.",
+      "name": "fetch_new_connection",
+      "return_description": "The oldest new connection",
+      "signature": "connection fetch_new_connection(server_socket server);",
+      "unique_global_name": "fetch_new_connection"
+    },
+    {
+      "description": "Does the connection with the supplied name exist?",
+      "name": "has_connection",
+      "return_description": "True if there is a connection with the supplied name",
+      "signature": "bool has_connection(const string &name);",
+      "unique_global_name": "has_connection"
+    },
+    {
+      "description": "Checks if there are any messages waiting to be read.",
+      "name": "has_messages",
+      "return_description": "True if there are any messages waiting to be read",
+      "signature": "bool has_messages();",
+      "unique_global_name": "has_messages"
+    },
+    {
+      "description": "Checks if a connection has messages waiting to be read.",
+      "name": "has_messages",
+      "return_description": "True if there are any messages on the connection.",
+      "signature": "bool has_messages(connection con);",
+      "unique_global_name": "has_messages_on_connection"
+    },
+    {
+      "description": "Checks if a server or connection has any messages.",
+      "name": "has_messages",
+      "return_description": "[description]",
+      "signature": "bool has_messages(const string &name);",
+      "unique_global_name": "has_messages_on_name"
+    },
+    {
+      "description": "Checks if a server has any messages waiting to be read.",
+      "name": "has_messages",
+      "return_description": "True if there are messages on the server.",
+      "signature": "bool has_messages(server_socket svr);",
+      "unique_global_name": "has_messages_on_server"
+    },
+    {
+      "description": "Checks if any of the servers have new connections.",
+      "name": "has_new_connections",
+      "return_description": "True if there is one or more servers with new connections.",
+      "signature": "bool has_new_connections();",
+      "unique_global_name": "has_new_connections"
+    },
+    {
+      "description": "Checks if there is a server with the indicated name.",
+      "name": "has_server",
+      "return_description": "True if there is a server with that name",
+      "signature": "bool has_server(const string &name);",
+      "unique_global_name": "has_server"
+    },
+    {
+      "description": "The supplied hexadecimal string is translated into ipv4 standard address string.\nFunction handles hex strings starting with or without 0x.\ne.g. 127.0.0.1 from 0x7F000001",
+      "name": "hex_str_to_ipv4",
+      "return_description": "standard ipv4 address using format X.X.X.X",
+      "signature": "string hex_str_to_ipv4(const string &a_hex);",
+      "unique_global_name": "hex_str_to_ipv4"
+    },
+    {
+      "description": "The supplied hexadecimal string is converted into it's decimal representation\ne.g. 7F into 127",
+      "name": "hex_to_dec_string",
+      "return_description": "decimal representation of supplied hex string",
+      "signature": "string hex_to_dec_string(const string &a_hex);",
+      "unique_global_name": "hex_to_dec_string"
+    },
+    {
+      "description": "Encodes the supplied ipv4 address string (in format X.X.X.X) into a single integer\ne.g. 127.0.0.1 into 2130706433",
+      "name": "ipv4_to_dec",
+      "return_description": "encoded ipv4 string",
+      "signature": "unsigned int ipv4_to_dec(const string &a_ip);",
+      "unique_global_name": "ipv4_to_dec"
+    },
+    {
+      "description": "Converts an ipv4 address into it's hexadecimal representation\ne.g. 0x7F000001 from 127.0.0.1",
+      "name": "ipv4_to_hex",
+      "return_description": "hexadecimal representation of ipc4 string",
+      "signature": "string ipv4_to_hex(const string& a_ip);",
+      "unique_global_name": "ipv4_to_hex"
+    },
+    {
+      "description": "Decodes the supplied unsigned 32 bit integer into it's ipv4 address form\ne.g. 2130706433 into 127.0.0.1",
+      "name": "ipv4_to_str",
+      "return_description": "ipv4 address string in X.X.X.X format",
+      "signature": "string ipv4_to_str(unsigned int ip);",
+      "unique_global_name": "ipv4_to_str"
+    },
+    {
+      "description": "Checks if the connection currently is open.",
+      "name": "is_connection_open",
+      "return_description": "True if the connection is open.",
+      "signature": "bool is_connection_open(connection con);",
+      "unique_global_name": "is_connection_open"
+    },
+    {
+      "description": "Checks if the connection with the supplied name currently is open.",
+      "name": "is_connection_open",
+      "return_description": "True if the connection is open.",
+      "signature": "bool is_connection_open(const string &name);",
+      "unique_global_name": "is_connection_open_from_name"
+    },
+    {
+      "description": "Gets the last client that connected to a server.",
+      "name": "last_connection",
+      "return_description": "The last connection made to that server",
+      "signature": "connection last_connection(const string &name);",
+      "unique_global_name": "last_connection_named"
+    },
+    {
+      "description": "Gets the last client that connected to a server.",
+      "name": "last_connection",
+      "return_description": "The last connection made to that server",
+      "signature": "connection last_connection(server_socket server);",
+      "unique_global_name": "last_connection"
+    },
+    {
+      "description": "Returns the connection that sent a message.",
+      "name": "message_connection",
+      "return_description": "The connection that sent the message",
+      "signature": "connection message_connection(message msg);",
+      "unique_global_name": "message_connection"
+    },
+    {
+      "description": "Returns the number of messages on a server.",
+      "name": "message_count",
+      "return_description": "The number of messages on the server",
+      "signature": "unsigned int message_count(server_socket svr);",
+      "unique_global_name": "message_count_on_server"
+    },
+    {
+      "description": "Returns the number of messages on a connection.",
+      "name": "message_count",
+      "return_description": "The number of messages to be read from the connection",
+      "signature": "unsigned int message_count(connection a_connection);",
+      "unique_global_name": "message_count_on_connection"
+    },
+    {
+      "description": "Returns the number of messages on a server or connection.",
+      "name": "message_count",
+      "return_description": "The number of messages on the server or connection",
+      "signature": "unsigned int message_count(const string &name);",
+      "unique_global_name": "message_count_from_name"
+    },
+    {
+      "description": "Gets the body of a message as a string.",
+      "name": "message_data",
+      "return_description": "The string body of the message",
+      "signature": "string message_data(message msg);",
+      "unique_global_name": "message_data"
+    },
+    {
+      "description": "Gets the body of a message as a list of bytes.",
+      "name": "message_data_bytes",
+      "return_description": "The body of the message as bytes",
+      "signature": "vector<int8_t> message_data_bytes(message msg);",
+      "unique_global_name": "message_data_bytes"
+    },
+    {
+      "description": "Returns the host who made the message.",
+      "name": "message_host",
+      "return_description": "The host who sent the message",
+      "signature": "string message_host(message msg);",
+      "unique_global_name": "message_host"
+    },
+    {
+      "description": "Returns the port used to send a message.",
+      "name": "message_port",
+      "return_description": "The port of the message",
+      "signature": "unsigned short int message_port(message msg);",
+      "unique_global_name": "message_port"
+    },
+    {
+      "description": "Returns the protocol used to send a message.",
+      "name": "message_protocol",
+      "return_description": "The protocol used to sent the message",
+      "signature": "connection_type message_protocol(message msg);",
+      "unique_global_name": "message_protocol"
+    },
+    {
+      "description": "Returns the ipv4 string of the localhost loopback for the current computer.",
+      "name": "my_ip",
+      "return_description": "ipv4 address string in X.X.X.X format",
+      "signature": "string my_ip();",
+      "unique_global_name": "my_ip"
+    },
+    {
+      "description": "Returns the name SplashKit would use for a connection made to a server\nfrom a host to a port.",
+      "name": "name_for_connection",
+      "return_description": "The name SplashKit would use for this connection",
+      "signature": "string name_for_connection(const string host,const unsigned int port);",
+      "unique_global_name": "name_for_connection"
+    },
+    {
+      "description": "Get the number of new connections made to the server.\nThe count will increase as the server accepts new connections.\nThe count decreases each time you fetch a new connection, or\ncan be set to 0 if you reset the new connection count.",
+      "name": "new_connection_count",
+      "return_description": "The number of new connections",
+      "signature": "int new_connection_count(server_socket server);",
+      "unique_global_name": "new_connection_count"
+    },
+    {
+      "description": "Opens a TCP connection to a server using the supplied details.",
+      "name": "open_connection",
+      "return_description": "A new connection to the indicated server",
+      "signature": "connection open_connection(const string &name,const string &host,unsigned short int port);",
+      "unique_global_name": "open_connection"
+    },
+    {
+      "description": "Opens a connection to a server using the supplied details.",
+      "name": "open_connection",
+      "return_description": "A new connection to the indicated server",
+      "signature": "connection open_connection(const string &name,const string &host,unsigned short int port,connection_type protocol);",
+      "unique_global_name": "open_connection_with_protocol"
+    },
+    {
+      "description": "Read a message from the network (from a server or connection).",
+      "name": "read_message",
+      "return_description": "The first message from the network.",
+      "signature": "message read_message();",
+      "unique_global_name": "read_message"
+    },
+    {
+      "description": "Reads the first message from the connection.",
+      "name": "read_message",
+      "return_description": "The first message read from the connection",
+      "signature": "message read_message(connection a_connection);",
+      "unique_global_name": "read_message_from_connection"
+    },
+    {
+      "description": "Reads the first message from a connection or server.",
+      "name": "read_message",
+      "return_description": "The first message read from the connection or server",
+      "signature": "message read_message(const string &name);",
+      "unique_global_name": "read_message_from_name"
+    },
+    {
+      "description": "Reads the first message from the server.",
+      "name": "read_message",
+      "return_description": "The first message read from the server",
+      "signature": "message read_message(server_socket svr);",
+      "unique_global_name": "read_message_from_server"
+    },
+    {
+      "description": "Read message data from a connection or server.",
+      "name": "read_message_data",
+      "return_description": "The data from the first message from the server or connection",
+      "signature": "string read_message_data(const string &name);",
+      "unique_global_name": "read_message_data_from_name"
+    },
+    {
+      "description": "Read message data from a connection.",
+      "name": "read_message_data",
+      "return_description": "The data from the first message on the connection",
+      "signature": "string read_message_data(connection a_connection);",
+      "unique_global_name": "read_message_data_from_connection"
+    },
+    {
+      "description": "Read message data from a server.",
+      "name": "read_message_data",
+      "return_description": "The data from the first message on the server",
+      "signature": "string read_message_data(server_socket svr);",
+      "unique_global_name": "read_message_data_from_server"
+    },
+    {
+      "description": "Attempt to reconnect the connection.",
+      "name": "reconnect",
+      "return_description": null,
+      "signature": "void reconnect(connection a_connection);",
+      "unique_global_name": "reconnect"
+    },
+    {
+      "description": "Attempt to reconnect the connection.",
+      "name": "reconnect",
+      "return_description": null,
+      "signature": "void reconnect(const string &name);",
+      "unique_global_name": "reconnect_from_name"
+    },
+    {
+      "description": "Close and release the resources used by all of the connections.",
+      "name": "release_all_connections",
+      "return_description": null,
+      "signature": "void release_all_connections();",
+      "unique_global_name": "release_all_connections"
+    },
+    {
+      "description": "Allows you to reset the new connection count to 0.\n(The connections are kept)",
+      "name": "reset_new_connection_count",
+      "return_description": null,
+      "signature": "void reset_new_connection_count(server_socket server);",
+      "unique_global_name": "reset_new_connection_count"
+    },
+    {
+      "description": "Get a connection from the server.",
+      "name": "retrieve_connection",
+      "return_description": "The connection at the supplied index",
+      "signature": "connection retrieve_connection(const string &name,int idx);",
+      "unique_global_name": "retrieve_connection_named"
+    },
+    {
+      "description": "Get a connection from the server.",
+      "name": "retrieve_connection",
+      "return_description": "The connection at the supplied index",
+      "signature": "connection retrieve_connection(server_socket server,int idx);",
+      "unique_global_name": "retrieve_connection"
+    },
+    {
+      "description": "Send a message to the connection.",
+      "name": "send_message_to",
+      "return_description": "True if the message sends.",
+      "signature": "bool send_message_to(const string &a_msg,connection a_connection);",
+      "unique_global_name": "send_message_to_connection"
+    },
+    {
+      "description": "Send a message to the connection with the given name.",
+      "name": "send_message_to",
+      "return_description": "True if the message sends",
+      "signature": "bool send_message_to(const string &a_msg,const string &name);",
+      "unique_global_name": "send_message_to_name"
+    },
+    {
+      "description": "Checks of there are new connections waiting for a server.",
+      "name": "server_has_new_connection",
+      "return_description": "True if the server has new connections",
+      "signature": "bool server_has_new_connection(const string &name);",
+      "unique_global_name": "server_has_new_connection_named"
+    },
+    {
+      "description": "Checks of there are new connections waiting for a server.",
+      "name": "server_has_new_connection",
+      "return_description": "True if the server has new connections",
+      "signature": "bool server_has_new_connection(server_socket server);",
+      "unique_global_name": "server_has_new_connection"
+    },
+    {
+      "description": "Gets the server with the indicated name.",
+      "name": "server_named",
+      "return_description": "The server",
+      "signature": "server_socket server_named(const string &name);",
+      "unique_global_name": "server_named"
+    },
+    {
+      "description": "Change the size of the UDP packets.",
+      "name": "set_udp_packet_size",
+      "return_description": null,
+      "signature": "void set_udp_packet_size(unsigned int udp_packet_size);",
+      "unique_global_name": "set_udp_packet_size"
+    },
+    {
+      "description": "Returns the size SplashKit is using for UDP packets.",
+      "name": "udp_packet_size",
+      "return_description": "The size of UDP packets.",
+      "signature": "unsigned int udp_packet_size();",
+      "unique_global_name": "udp_packet_size"
+    },
+    {
+      "description": "Download an image from a web server and load it into SplashKit so that\nyou can use it.",
+      "name": "download_bitmap",
+      "return_description": "The bitmap that was loaded",
+      "signature": "bitmap download_bitmap(const string &name,const string &url,unsigned short port);",
+      "unique_global_name": "download_bitmap"
+    },
+    {
+      "description": "Download a font from a web server and load it into SplashKit so that\nyou can use it.",
+      "name": "download_font",
+      "return_description": "The font that was loaded",
+      "signature": "font download_font(const string &name,const string &url,unsigned short port);",
+      "unique_global_name": "download_font"
+    },
+    {
+      "description": "Download a music file from a web server and load it into SplashKit so\nthat you can use it.",
+      "name": "download_music",
+      "return_description": "The music that was loaded",
+      "signature": "music download_music(const string &name,const string &url,unsigned short port);",
+      "unique_global_name": "download_music"
+    },
+    {
+      "description": "Download a sound effect from a web server and load it into SplashKit so\nthat you can use it.",
+      "name": "download_sound_effect",
+      "return_description": "The sound effect that was loaded",
+      "signature": "sound_effect download_sound_effect(const string &name,const string &url,unsigned short port);",
+      "unique_global_name": "download_sound_effect"
+    },
+    {
+      "description": "Free the response resource.",
+      "name": "free_response",
+      "return_description": null,
+      "signature": "void free_response (http_response response);",
+      "unique_global_name": "free_response"
+    },
+    {
+      "description": "Make a get request to access a resource on the internet.",
+      "name": "http_get",
+      "return_description": "The response with all of the data received",
+      "signature": "http_response http_get(const string &url,unsigned short port);",
+      "unique_global_name": "http_get"
+    },
+    {
+      "description": "Post the supplied information to the indicated url with the given headers.",
+      "name": "http_post",
+      "return_description": "The response from the server",
+      "signature": "http_response http_post(const string &url,unsigned short port,const string &body,const vector<string> &headers);",
+      "unique_global_name": "http_post_with_headers"
+    },
+    {
+      "description": "Post the supplied information to the indicated url.",
+      "name": "http_post",
+      "return_description": "The response from the server",
+      "signature": "http_response http_post(const string &url,unsigned short port,string body);",
+      "unique_global_name": "http_post"
+    },
+    {
+      "description": "Read the HTTP response and convert it to text",
+      "name": "http_response_to_string",
+      "return_description": "The data from the response as text",
+      "signature": "string http_response_to_string(http_response response);",
+      "unique_global_name": "http_response_to_string"
+    },
+    {
+      "description": "Save the HTTP response downloaded into a file.",
+      "name": "save_response_to_file",
+      "return_description": null,
+      "signature": "void save_response_to_file(http_response response,string path);",
+      "unique_global_name": "save_response_to_file"
+    },
+    {
+      "description": "Returns true if the given `web_sever` has pending requests.",
+      "name": "has_incoming_requests",
+      "return_description": "Returns a `bool` denoting whether the `web_server` has pending requests.",
+      "signature": "bool has_incoming_requests(web_server server);",
+      "unique_global_name": "has_incoming_requests"
+    },
+    {
+      "description": "Checks if a request wants to delete a given resource.",
+      "name": "is_delete_request_for",
+      "return_description": "True if the request is a HTTP DELETE request for `path`",
+      "signature": "bool is_delete_request_for(http_request request,const string &path);",
+      "unique_global_name": "is_delete_request_for"
+    },
+    {
+      "description": "Checks if a request wants to get a given resource.",
+      "name": "is_get_request_for",
+      "return_description": "True if the request is a HTTP GET request for `path`",
+      "signature": "bool is_get_request_for(http_request request,const string &path);",
+      "unique_global_name": "is_get_request_for"
+    },
+    {
+      "description": "Checks if a request wants to check options for given resource.",
+      "name": "is_options_request_for",
+      "return_description": "True if the request is a HTTP OPTIONS request for `path`",
+      "signature": "bool is_options_request_for(http_request request,const string &path);",
+      "unique_global_name": "is_options_request_for"
+    },
+    {
+      "description": "Checks if a request wants to create (post) a given resource.",
+      "name": "is_post_request_for",
+      "return_description": "True if the request is a HTTP POST request for `path`",
+      "signature": "bool is_post_request_for(http_request request,const string &path);",
+      "unique_global_name": "is_post_request_for"
+    },
+    {
+      "description": "Checks if a request wants to update (put) a given resource.",
+      "name": "is_put_request_for",
+      "return_description": "True if the request is a HTTP PUT request for `path`",
+      "signature": "bool is_put_request_for(http_request request,const string &path);",
+      "unique_global_name": "is_put_request_for"
+    },
+    {
+      "description": "Checks if a request is after a given resource.",
+      "name": "is_request_for",
+      "return_description": "True if the request is for the indicated method and path",
+      "signature": "bool is_request_for(http_request request,http_method method,const string &path);",
+      "unique_global_name": "is_request_for"
+    },
+    {
+      "description": "Checks if a request wants to trace a given resource.",
+      "name": "is_trace_request_for",
+      "return_description": "True if the request is a HTTP TRACE request for `path`",
+      "signature": "bool is_trace_request_for(http_request request,const string &path);",
+      "unique_global_name": "is_trace_request_for"
+    },
+    {
+      "description": "Returns the next request on a given `web_server` instance",
+      "name": "next_web_request",
+      "return_description": "Returns the next request on the given `web_server` instance.",
+      "signature": "http_request next_web_request(web_server server);",
+      "unique_global_name": "next_web_request"
+    },
+    {
+      "description": "Returns the body of the request.",
+      "name": "request_body",
+      "return_description": "The body of the request.",
+      "signature": "string request_body(http_request r);",
+      "unique_global_name": "request_body"
+    },
+    {
+      "description": "Returns true if the parameter exists in the query string.",
+      "name": "request_has_query_parameter",
+      "return_description": "True if the parameter exists in the user's request.",
+      "signature": "bool request_has_query_parameter(http_request r,const string &name);",
+      "unique_global_name": "request_has_query_parameter"
+    },
+    {
+      "description": "Returns the headers of the request.",
+      "name": "request_headers",
+      "return_description": "The headers of the request.",
+      "signature": "vector<string> request_headers(http_request r);",
+      "unique_global_name": "request_headers"
+    },
+    {
+      "description": "Returns the HTTP method of the client request.",
+      "name": "request_method",
+      "return_description": "Returns the request method.",
+      "signature": "http_method request_method(http_request r);",
+      "unique_global_name": "request_method"
+    },
+    {
+      "description": "Returns the value of a parameter from within the query string, or the supplied default\nif no matching parameter is found.",
+      "name": "request_query_parameter",
+      "return_description": "Returns value of the parameter from the query string, or the default value if the parameter is not found.",
+      "signature": "string request_query_parameter(http_request r,const string &name,const string &default_value);",
+      "unique_global_name": "request_query_parameter"
+    },
+    {
+      "description": "Returns the URI query string of the client request.",
+      "name": "request_query_string",
+      "return_description": "Returns the requested URI queries in the form of a string.",
+      "signature": "string request_query_string(http_request r);",
+      "unique_global_name": "request_query_string"
+    },
+    {
+      "description": "Returns the server URI of the client request.",
+      "name": "request_uri",
+      "return_description": "Returns the requested URI in the form of a string.",
+      "signature": "string request_uri(http_request r);",
+      "unique_global_name": "request_uri"
+    },
+    {
+      "description": "Returns an array of strings representing each stub of the URI.\n\nFor example a request sent to http://localhost:8080/names/0 returns...\n\n[\"names\", \"0\"]",
+      "name": "request_uri_stubs",
+      "return_description": "The array of stubs as strings.",
+      "signature": "vector<string> request_uri_stubs(http_request r);",
+      "unique_global_name": "request_uri_stubs"
+    },
+    {
+      "description": "Serves a css file to the given `http_request`.",
+      "name": "send_css_file_response",
+      "return_description": null,
+      "signature": "void send_css_file_response(http_request r,const string &filename);",
+      "unique_global_name": "send_css_file_response"
+    },
+    {
+      "description": "Serves a file to the given `http_request`.",
+      "name": "send_file_response",
+      "return_description": null,
+      "signature": "void send_file_response(http_request r,const string &filename,const string &content_type);",
+      "unique_global_name": "send_file_response"
+    },
+    {
+      "description": "Serves a HTML file to the given `http_request`.",
+      "name": "send_html_file_response",
+      "return_description": null,
+      "signature": "void send_html_file_response(http_request r,const string &filename);",
+      "unique_global_name": "send_html_file_response"
+    },
+    {
+      "description": "Serves a javascript file to the given `http_request`.",
+      "name": "send_javascript_file_response",
+      "return_description": null,
+      "signature": "void send_javascript_file_response(http_request r,const string &filename);",
+      "unique_global_name": "send_javascript_file_response"
+    },
+    {
+      "description": "Sends a response with no content to a `http_request`.",
+      "name": "send_response",
+      "return_description": null,
+      "signature": "void send_response(http_request r);",
+      "unique_global_name": "send_response_empty"
+    },
+    {
+      "description": "Sends a message to a given `http_request`.",
+      "name": "send_response",
+      "return_description": null,
+      "signature": "void send_response(http_request r,const string &message);",
+      "unique_global_name": "send_response"
+    },
+    {
+      "description": "Sends a response code to a given `http_request`.",
+      "name": "send_response",
+      "return_description": null,
+      "signature": "void send_response(http_request r,http_status_code code);",
+      "unique_global_name": "send_response_json_with_status"
+    },
+    {
+      "description": "Sends a message to a given `http_request` with the specified content type.",
+      "name": "send_response",
+      "return_description": null,
+      "signature": "void send_response(http_request r,http_status_code code,const string &message);",
+      "unique_global_name": "send_response_with_status"
+    },
+    {
+      "description": "Sends a message to a given `http_request` with the specified content type.",
+      "name": "send_response",
+      "return_description": null,
+      "signature": "void send_response(http_request r,http_status_code code,const string &message,const string &content_type);",
+      "unique_global_name": "send_response_with_status_and_content_type"
+    },
+    {
+      "description": "Sends a message to a given `http_request` with the specified content type.",
+      "name": "send_response",
+      "return_description": null,
+      "signature": "void send_response(http_request r,http_status_code code,const string &message,const string &content_type,const vector<string> &headers);",
+      "unique_global_name": "send_response_with_status_and_content_type_and_headers"
+    },
+    {
+      "description": "Send a JSON response to a given `http_request`",
+      "name": "send_response",
+      "return_description": null,
+      "signature": "void send_response(http_request r,json j);",
+      "unique_global_name": "send_response_json"
+    },
+    {
+      "description": "Returns an array of strings representing each stub of the URI.\n\nFor example a request sent to http://localhost:8080/names/0 returns...\n\n[\"names\", \"0\"]",
+      "name": "split_uri_stubs",
+      "return_description": "The array of stubs as strings.",
+      "signature": "vector<string> split_uri_stubs(const string &uri);",
+      "unique_global_name": "split_uri_stubs"
+    },
+    {
+      "description": "Creates a new web server listening for connections on port 8080.",
+      "name": "start_web_server",
+      "return_description": "Returns a new `web_sever` instance.",
+      "signature": "web_server start_web_server();",
+      "unique_global_name": "start_web_server_with_default_port"
+    },
+    {
+      "description": "Starts the web server on a given port number.",
+      "name": "start_web_server",
+      "return_description": "Returns a new `web_server` instance.",
+      "signature": "web_server start_web_server(unsigned short port);",
+      "unique_global_name": "start_web_server"
+    },
+    {
+      "description": "Stops a given `web_server` instance.",
+      "name": "stop_web_server",
+      "return_description": null,
+      "signature": "void stop_web_server(web_server server);",
+      "unique_global_name": "stop_web_server"
+    }
+  ]
+}

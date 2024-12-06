@@ -1,0 +1,335 @@
+{
+  "group": "resources",
+  "tests": [
+    {
+      "name": "deregister_free_notifier",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "register_free_notifier",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_notifier"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_free_notifier",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_notifier"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_notifier"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "path_to_resource",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "set_resources_path",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "resources"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "path_to_resource",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_image.png"
+            },
+            {
+              "value_type": "enum",
+              "enum_type": "resource_kind",
+              "value": "IMAGE_RESOURCE"
+            }
+          ],
+          "store_result": "image_path"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "image_path"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": ""
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "path_to_resource",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "nonexistent_file.txt"
+            },
+            {
+              "value_type": "enum",
+              "enum_type": "resource_kind",
+              "value": "ANIMATION_RESOURCE"
+            }
+          ],
+          "store_result": "text_path"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "text_path"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "path_to_resources",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "path_to_resources",
+          "args": [],
+          "store_result": "resource_path"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "resource_path"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_resources_path",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "/new/resources"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "path_to_resources",
+          "args": [],
+          "store_result": "new_resource_path"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "new_resource_path"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "/new/resources"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "path_to_resources_for_kind",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "set_resources_path",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "resources"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "path_to_resources_for_kind",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "resource_kind",
+              "value": "IMAGE_RESOURCE"
+            }
+          ],
+          "store_result": "image_path"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "image_path"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "resources/images"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "path_to_resources_for_kind",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "resource_kind",
+              "value": "SOUND_RESOURCE"
+            }
+          ],
+          "store_result": "sound_path"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "sound_path"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "resources/sounds"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "register_free_notifier",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "register_free_notifier",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "free_notifier",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "notifier_called"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_free_notifier",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "free_notifier",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "notifier_called"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_resources_path",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "set_resources_path",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "/resources"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "path_to_resources",
+              "args": []
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "/resources"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_resources_path",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "/new/resources"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "path_to_resources",
+              "args": []
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "/new/resources"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

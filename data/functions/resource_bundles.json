@@ -1,0 +1,174 @@
+{
+  "functions": [
+    {
+      "signature": "void free_resource_bundle(const string name);",
+      "name": "free_resource_bundle",
+      "method_name": null,
+      "unique_global_name": "free_resource_bundle",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "When you are finished with the resources in a bundle, you can free them all\nby calling this procedure. It will free the resource bundle and all of the\nassociated resources.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "name": {
+          "type": "string",
+          "description": "The name of the resource bundle to be freed",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "resource_bundles",
+        "static": "resource_bundle"
+      },
+      "signatures": {
+        "cpp": [
+          "void free_resource_bundle(const string name)"
+        ],
+        "rust": [
+          "pub fn free_resource_bundle(name: String)"
+        ],
+        "python": [
+          "def free_resource_bundle(name):"
+        ],
+        "pascal": [
+          "procedure FreeResourceBundle(name: String)"
+        ],
+        "csharp": [
+          "public static void ResourceBundle.FreeResourceBundle(string name);",
+          "public static void SplashKit.FreeResourceBundle(string name);"
+        ]
+      }
+    },
+    {
+      "signature": "bool has_resource_bundle(const string &name);",
+      "name": "has_resource_bundle",
+      "method_name": null,
+      "unique_global_name": "has_resource_bundle",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns true when the named resource bundle has already been loaded.",
+      "brief": null,
+      "return": {
+        "type": "bool",
+        "description": "True when the bundle is already loaded.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "name": {
+          "type": "string",
+          "description": "The name of the resource bundle.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "resource_bundles",
+        "static": "resource_bundle"
+      },
+      "signatures": {
+        "cpp": [
+          "bool has_resource_bundle(const string &name)"
+        ],
+        "rust": [
+          "pub fn has_resource_bundle(name: &String) -> bool"
+        ],
+        "python": [
+          "def has_resource_bundle(name):"
+        ],
+        "pascal": [
+          "function HasResourceBundle(const name: String): Boolean"
+        ],
+        "csharp": [
+          "public static bool ResourceBundle.HasResourceBundle(string name);",
+          "public static bool SplashKit.HasResourceBundle(string name);"
+        ]
+      }
+    },
+    {
+      "signature": "void load_resource_bundle(const string &name,const string &filename);",
+      "name": "load_resource_bundle",
+      "method_name": null,
+      "unique_global_name": "load_resource_bundle",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Loads all of the resources in the resource bundle. The resource bundle is a\ntext file that describes the resources you want to load. These rescources\nare then loaded when you call this procedure, and can all be released when\nyou call `release_resource_bundle`.\n\nSave the resource bundle text files into your projects `Resources` in the\n`bundles` folder. Use the following as the format for each of the\nresources.\n\nStart a line with a `//` to have it ignored when the bundle is loaded. This\ncan be used to add comments to your bundle.\n\n\n-  To load an **animation** use the format:\n\n```\nANIM,name,filename\n```\n\nFor example, the following will load an animation named \"WalkingScript\" that\nloads the animation from \"kermit.txt\" in your games animation `Resources`.\n\n```\nANIM,WalkingScript,kermit.txt\n```\n\n-  To load a **bitmap** use the format: \n\n```\nBMP,name,filename\n```\n\nFor example, the following will load a bitmap named \"Logo\" using the\n\"Logo.png\" file.\n\n```\nBITMAP,Logo,logo.png\n```\n\n-  To load a **bitmap** that has a number of cells, you can extend the\nbitmap format with the cell details. This has the format:\n\n```\nBMP,name,filename,cell-width,cell-height,columns,rows,count\n```\n\nThe following will setup the \"Player\" bitmap to have cells that are 75\npixels wide, and 42 pixels height. There are 4 columns in 1 row, giving\na total of 4 cells.\n\n```\nBITMAP,Player,player.png,75,42,4,1,4\n```\n\n-  To load a font use FONT,name,filename. For example, the following loads a\nfont named \"GameFont\" that represents the \"demolition.otf\".\n\n```\nFONT,GameFont,demolition.otf\n```\n\n-  To load music, use MUSIC,name,filename. The following loads \"GameMusic\"\nfor the \"magical_night.ogg\" file.\n\n```\nMUSIC,GameMusic,magical_night.ogg\n```\n\n-  To load a sound effect, use SOUND,name,filename. For example the following\nloads \"error\" from the \"error.wav\" file.\n\n```\nSOUND,error,error.wav\n```\n\n-  To create a timer use TIMER,name. The following creates a timer named as\n\"my timer\".\n\n```\nTIMER,my timer\n```\n\n-  You can also load another resource bundle using BUNDLE,name,filename.\nThe following loads \"another bundle\" from the \"another.txt\" file.\n\n```\nBUNDLE,another bundle,another.txt\n```",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "name": {
+          "type": "string",
+          "description": "The name of the bundle when it is loaded.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "filename": {
+          "type": "string",
+          "description": "The filename to load.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "resource_bundles",
+        "static": "resource_bundle"
+      },
+      "signatures": {
+        "cpp": [
+          "void load_resource_bundle(const string &name, const string &filename)"
+        ],
+        "rust": [
+          "pub fn load_resource_bundle(name: &String, filename: &String)"
+        ],
+        "python": [
+          "def load_resource_bundle(name, filename):"
+        ],
+        "pascal": [
+          "procedure LoadResourceBundle(const name: String; const filename: String)"
+        ],
+        "csharp": [
+          "public static void ResourceBundle.LoadResourceBundle(string name, string filename);",
+          "public static void SplashKit.LoadResourceBundle(string name, string filename);"
+        ]
+      }
+    }
+  ]
+}

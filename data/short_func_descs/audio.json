@@ -1,0 +1,361 @@
+{
+  "resources": {
+    "sound_effects": {
+      "test": "test.ogg",
+      "text_message": "http://soundbible.com/grab.php?id=2155&type=wav",
+      "dancing": "dancingFrog.wav",
+      "error": "error.wav",
+      "streety_sword": "30248__streety__sword7.flac"
+    },
+    "music": {
+      "dance": "dancingFrog.wav",
+      "music": "http://www.royaltyfreemusic.com/music_clips/free/Heartland_1.mp3"
+    }
+  },
+  "example": "#include \"audio.h\"\n#include \"music.h\"\n#include \"web_client.h\"\n\n#include \"utils.h\"\n\n#include <iostream>\nusing namespace std;\nusing namespace splashkit_lib;\n\nvoid run_audio_tests()\n{\n    cout << \"Starting Audio Tests...\" << endl;\n\n    cout << \"    Audio should be ready? \" << audio_ready() << endl;\n    \n    cout << \"    Closing audio...\" << endl;\n    close_audio();\n\n    cout << \"    Audio should not be ready? \" << audio_ready() << endl;\n\n    delay(500);\n    \n    cout << \"    Opening audio...\" << endl;\n    open_audio();\n\n    cout << \"    Is audio ready? \" << audio_ready() << endl;\n    \n    cout << \"    Have not loaded a sound yet. Is a sound effect loaded? \" << has_sound_effect(\"test\") << endl;\n\n    sound_effect s1 = load_sound_effect(\"test\", \"test.ogg\");\n    \n    cout << \"    Loaded sound effect. Is there a sound effect loaded? \" << has_sound_effect(\"test\") << endl;\n    \n    cout << \"    Downloading sound effect...\" << endl;\n    download_sound_effect(\"text message 2\", \"http://soundbible.com/grab.php?id=2155&type=wav\", 80);\n    play_sound_effect(\"text message 2\", 2, 0.8);\n    delay(5000);\n    \n    cout << \"    Downloading music...\" << endl;\n    download_music(\"music\", \"http://www.royaltyfreemusic.com/music_clips/free/Heartland_1.mp3\", 80);\n    play_music(\"music\");\n    delay(5000);\n    \n    play_sound_effect(s1, 1, 1.0f);\n    \n    delay(2000);\n    \n    cout << \"    Playing named sound effect once at full volume\" << endl;\n    play_sound_effect(sound_effect_named(\"test\"), 1, 1.0f);\n    \n    \n    delay(2000);\n    \n    cout << \"    Playing sound effect twice\" << endl;\n    play_sound_effect(sound_effect_named(\"test\"), 2);\n    \n    delay(5000);\n    \n    cout << \"    Playing sound effect\" << endl;\n    play_sound_effect(sound_effect_named(\"test\"), 1);\n    delay(1000);\n    cout << \"    Stopping sound effect\" << endl;\n    stop_sound_effect(sound_effect_named(\"test1\"));\n    \n    sound_effect s2 = load_sound_effect(\"dancing\",\"dancingFrog.wav\");\n    cout << \"    Fading out sound effect over 2 seconds\" << endl;\n    play_sound_effect(s2);\n    fade_sound_effect_out(s2, 2000);\n    delay(3000);\n    cout << \"    Fading out all sound effects over 5 seconds\" << endl;\n    play_sound_effect(s2);\n    fade_all_sound_effects_out(5000);\n    \n    delay(6000);\n    \n    free_sound_effect(s1);\n\n    load_sound_effect(\"test2\", \"error.wav\");\n    load_sound_effect(\"test3\", \"30248__streety__sword7.flac\");\n\n    free_all_sound_effects();\n    \n    load_music(\"dance\", \"dancingFrog.wav\");\n    \n    cout << \"    Playing music...\" << endl;\n    play_music(music_named(\"dance\"), 1, 1.0f);\n    \n    delay(5000);\n    \n    cout << \"    Pausing music...\" << endl;\n    pause_music();\n    \n    delay(2000);\n    \n    cout << \"    Resuming music...\" << endl;\n    resume_music();\n    \n    delay(5000);\n    \n    cout << \"    Stopping music...\" << endl;\n    stop_music();\n    \n    delay(2000);\n    cout << \"    Fading in music over 2 secs...\" << endl;\n    fade_music_in(\"dance\", 2000);\n    delay(5000);\n    cout << \"    Fading out music over 5 secs...\" << endl;\n    fade_music_out(5000);\n    delay(5000);\n\n    cout << \"    Closing audio...\" << endl;\n    close_audio();\n\n    cout << \"    Is audio ready? \" << audio_ready() << endl;\n\n    cout << \"Audio Tests Ended\" << endl;\n    delay(5000);\n}",
+  "tests": [
+    {
+      "description": "Checks if SplashKit audio currently ready to be used.\n\nShould this return `false`, you may want to use `open_audio`\nto enable audio.",
+      "name": "audio_ready",
+      "return_description": "Returns `true` if the audio has been initalised.",
+      "signature": "bool audio_ready();",
+      "unique_global_name": "audio_ready"
+    },
+    {
+      "description": "Turns off audio, stopping all current sounds effects and music.",
+      "name": "close_audio",
+      "return_description": null,
+      "signature": "void close_audio();",
+      "unique_global_name": "close_audio"
+    },
+    {
+      "description": "Starts the SplashKit audio system working.",
+      "name": "open_audio",
+      "return_description": null,
+      "signature": "void open_audio();",
+      "unique_global_name": "open_audio"
+    },
+    {
+      "description": "Fades music file matching the name to full volume over a specified number of milliseconds",
+      "name": "fade_music_in",
+      "return_description": null,
+      "signature": "void fade_music_in(const string &name,int ms);",
+      "unique_global_name": "fade_music_in_named"
+    },
+    {
+      "description": "Fades music file matching the name to full volume over a specified number of milliseconds\nand loops a specified number of times",
+      "name": "fade_music_in",
+      "return_description": null,
+      "signature": "void fade_music_in(const string &name,int times,int ms);",
+      "unique_global_name": "fade_music_in_named_with_times"
+    },
+    {
+      "description": "Fades music up to full volume over a specified number of milliseconds.",
+      "name": "fade_music_in",
+      "return_description": null,
+      "signature": "void fade_music_in(music data,int ms);",
+      "unique_global_name": "fade_music_in"
+    },
+    {
+      "description": "Fades music up to full volume over a specified number of milliseconds\nfor a specified number of times.",
+      "name": "fade_music_in",
+      "return_description": null,
+      "signature": "void fade_music_in(music data,int times,int ms);",
+      "unique_global_name": "fade_music_in_with_times"
+    },
+    {
+      "description": "Fades music outover a specified number of milliseconds",
+      "name": "fade_music_out",
+      "return_description": null,
+      "signature": "void fade_music_out(int ms);",
+      "unique_global_name": "fade_music_out"
+    },
+    {
+      "description": "Releases all of the music files that have been loaded.",
+      "name": "free_all_music",
+      "return_description": null,
+      "signature": "void free_all_music();",
+      "unique_global_name": "free_all_music"
+    },
+    {
+      "description": "Releases the SplashKit resources associated with music.",
+      "name": "free_music",
+      "return_description": null,
+      "signature": "void free_music(music effect);",
+      "unique_global_name": "free_music"
+    },
+    {
+      "description": "Determines if SplashKit has a music file loaded for the supplied name.\nThis checks against all music files loaded, those loaded without a name\nare assigned the filename as a default. If this returns `false`, you may\nwant to use `load_music` to load in a specific sound effect and give\nit the desired name.",
+      "name": "has_music",
+      "return_description": "Returns `true` if there is a music file with the given `name` has\nhas been loaded.",
+      "signature": "bool has_music(const string &name);",
+      "unique_global_name": "has_music"
+    },
+    {
+      "description": "Loads and returns a music value. The supplied `filename` is used to\nlocate the music file to load. The supplied `name` indicates the\nname to use to refer to this Music value. The `music` can then be\nretrieved by passing this `name` to the `music_named` function.",
+      "name": "load_music",
+      "return_description": "A new music resource",
+      "signature": "music load_music(const string &name,const string &filename);",
+      "unique_global_name": "load_music"
+    },
+    {
+      "description": "Returns the filename the of the music data",
+      "name": "music_filename",
+      "return_description": "Returns a string with the filename of the `music` file.",
+      "signature": "string music_filename(music data);",
+      "unique_global_name": "music_filename"
+    },
+    {
+      "description": "Returns the name that SplashKit uses to refer to this music data",
+      "name": "music_name",
+      "return_description": "Returns a string with the name of the `music` that SplashKit refers to.",
+      "signature": "string music_name(music data);",
+      "unique_global_name": "music_name"
+    },
+    {
+      "description": "Retrieves a `music` that has been loaded into SplashKit.",
+      "name": "music_named",
+      "return_description": "Returns the `music` that has been loaded with the specified\n`name` using `load_music`.",
+      "signature": "music music_named(const string &name);",
+      "unique_global_name": "music_named"
+    },
+    {
+      "description": "Checks whether music is currently playing.",
+      "name": "music_playing",
+      "return_description": "Returns true or false value representing whether music is currently playing.",
+      "signature": "bool music_playing();",
+      "unique_global_name": "music_playing"
+    },
+    {
+      "description": "Lets you test if music value is valid. This will return true when it is a valid music.",
+      "name": "music_valid",
+      "return_description": "true when the music is valid.",
+      "signature": "bool music_valid(music m);",
+      "unique_global_name": "music_valid"
+    },
+    {
+      "description": "Returns the volume of the currently playing `music`.",
+      "name": "music_volume",
+      "return_description": "Returns the percentage of the currently playing `music`.",
+      "signature": "double music_volume();",
+      "unique_global_name": "music_volume"
+    },
+    {
+      "description": "Pauses currently playing music - see resume_music to continue playing.",
+      "name": "pause_music",
+      "return_description": null,
+      "signature": "void pause_music();",
+      "unique_global_name": "pause_music"
+    },
+    {
+      "description": "Plays the music file that matches the name once at full volume.",
+      "name": "play_music",
+      "return_description": null,
+      "signature": "void play_music(const string &name);",
+      "unique_global_name": "play_music_named"
+    },
+    {
+      "description": "Plays the music file that matches the name a specified number of times at full volume.",
+      "name": "play_music",
+      "return_description": null,
+      "signature": "void play_music(const string &name,int times);",
+      "unique_global_name": "play_music_named_with_times"
+    },
+    {
+      "description": "Plays a music file once at full volume.",
+      "name": "play_music",
+      "return_description": null,
+      "signature": "void play_music(music data);",
+      "unique_global_name": "play_music"
+    },
+    {
+      "description": "Plays a music file a specified number of times at full volume.",
+      "name": "play_music",
+      "return_description": null,
+      "signature": "void play_music(music data,int times);",
+      "unique_global_name": "play_music_with_times"
+    },
+    {
+      "description": "Plays a music file for a specified number of times and playback volume.",
+      "name": "play_music",
+      "return_description": null,
+      "signature": "void play_music(music data,int times,double volume);",
+      "unique_global_name": "play_music_with_times_and_volume"
+    },
+    {
+      "description": "Resumes currently paused music - see pause_music to pause playing music.",
+      "name": "resume_music",
+      "return_description": null,
+      "signature": "void resume_music();",
+      "unique_global_name": "resume_music"
+    },
+    {
+      "description": "Sets the volume of the currently playing `music`. Must be between 0 and 1, e.g. 0.1 is 10%.",
+      "name": "set_music_volume",
+      "return_description": null,
+      "signature": "void set_music_volume(double volume);",
+      "unique_global_name": "set_music_volume"
+    },
+    {
+      "description": "Stops currently playing music.",
+      "name": "stop_music",
+      "return_description": null,
+      "signature": "void stop_music();",
+      "unique_global_name": "stop_music"
+    },
+    {
+      "description": "Fades out all `sound_effect`s over the specified milliseconds.",
+      "name": "fade_all_sound_effects_out",
+      "return_description": null,
+      "signature": "void fade_all_sound_effects_out(int ms);",
+      "unique_global_name": "fade_all_sound_effects_out"
+    },
+    {
+      "description": "Fades out the `sound_effect` over the specified milliseconds.",
+      "name": "fade_sound_effect_out",
+      "return_description": null,
+      "signature": "void fade_sound_effect_out(sound_effect effect,int ms);",
+      "unique_global_name": "fade_sound_effect_out"
+    },
+    {
+      "description": "Releases all of the sound effects that have been loaded.",
+      "name": "free_all_sound_effects",
+      "return_description": null,
+      "signature": "void free_all_sound_effects();",
+      "unique_global_name": "free_all_sound_effects"
+    },
+    {
+      "description": "Releases the SplashKit resources associated with the sound effect.",
+      "name": "free_sound_effect",
+      "return_description": null,
+      "signature": "void free_sound_effect(sound_effect effect);",
+      "unique_global_name": "free_sound_effect"
+    },
+    {
+      "description": "Determines if SplashKit has a sound effect loaded for the supplied name.\nThis checks against all sounds loaded, those loaded without a name\nare assigned the filename as a default. If this returns `false`, you may\nwant to use `load_sound_effect` to load in a specific sound effect and give\nit the desired name.",
+      "name": "has_sound_effect",
+      "return_description": "Returns `true` if there is a sound effect with the given `name` has\nhas been loaded.",
+      "signature": "bool has_sound_effect(const string &name);",
+      "unique_global_name": "has_sound_effect"
+    },
+    {
+      "description": "The supplied `filename` is used to locate the sound effect to load. The\nsupplied `name` indicates the name to use to refer to this `sound_effect`.\nThe `sound_effect` can then be retrieved by passing this `name` to\nthe `sound_effect_named` function.",
+      "name": "load_sound_effect",
+      "return_description": "A new `sound_effect` with the initialised values provided.",
+      "signature": "sound_effect load_sound_effect(const string &name,const string &filename);",
+      "unique_global_name": "load_sound_effect"
+    },
+    {
+      "description": "Plays a sound effect once at full volume.",
+      "name": "play_sound_effect",
+      "return_description": null,
+      "signature": "void play_sound_effect(const string &name);",
+      "unique_global_name": "play_sound_effect_named"
+    },
+    {
+      "description": "Plays a sound effect once at full volume.",
+      "name": "play_sound_effect",
+      "return_description": null,
+      "signature": "void play_sound_effect(const string &name,double volume);",
+      "unique_global_name": "play_sound_effect_named_with_volume"
+    },
+    {
+      "description": "Plays a sound effect for a specified number of times at full volume.",
+      "name": "play_sound_effect",
+      "return_description": null,
+      "signature": "void play_sound_effect(const string &name,int times);",
+      "unique_global_name": "play_sound_effect_named_with_times"
+    },
+    {
+      "description": "Plays a sound effect for a specified number of times and playback volume.",
+      "name": "play_sound_effect",
+      "return_description": null,
+      "signature": "void play_sound_effect(const string &name,int times,double volume);",
+      "unique_global_name": "play_sound_effect_named_with_times_and_volume"
+    },
+    {
+      "description": "Plays a sound effect once at full volume.",
+      "name": "play_sound_effect",
+      "return_description": null,
+      "signature": "void play_sound_effect(sound_effect effect);",
+      "unique_global_name": "play_sound_effect"
+    },
+    {
+      "description": "Plays a sound effect once at playback volume.",
+      "name": "play_sound_effect",
+      "return_description": null,
+      "signature": "void play_sound_effect(sound_effect effect,double volume);",
+      "unique_global_name": "play_sound_effect_with_volume"
+    },
+    {
+      "description": "Plays a sound effect once at full volume.",
+      "name": "play_sound_effect",
+      "return_description": null,
+      "signature": "void play_sound_effect(sound_effect effect,int times);",
+      "unique_global_name": "play_sound_effect_with_times"
+    },
+    {
+      "description": "This version of `play_sound_effect` allows you to control both the number\nof times the `sound_effect` is repeated and its playback volume.",
+      "name": "play_sound_effect",
+      "return_description": null,
+      "signature": "void play_sound_effect(sound_effect effect,int times,double volume);",
+      "unique_global_name": "play_sound_effect_with_times_and_volume"
+    },
+    {
+      "description": "Returns the filename of the `sound_effect` that has been loaded by SplashKit",
+      "name": "sound_effect_filename",
+      "return_description": "Returns the filename of the `sound_effect` that has been loaded",
+      "signature": "string sound_effect_filename(sound_effect effect);",
+      "unique_global_name": "sound_effect_filename"
+    },
+    {
+      "description": "Returns the name of the `sound_effect` that has been loaded by SplashKit",
+      "name": "sound_effect_name",
+      "return_description": "Returns the name of the `sound_effect` that has been loaded",
+      "signature": "string sound_effect_name(sound_effect effect);",
+      "unique_global_name": "sound_effect_name"
+    },
+    {
+      "description": "Retrieves a `sound_effect` that has been loaded into SplashKit. If the\nsound effect has not been loaded, this will attempt to use the name to\nlocate the file for you. If a file can be found, the sound effect is loaded\nand returned.",
+      "name": "sound_effect_named",
+      "return_description": "Returns the `sound_effect` that has been loaded with the specified\n`name` using `load_sound_effect`.",
+      "signature": "sound_effect sound_effect_named(const string &name);",
+      "unique_global_name": "sound_effect_named"
+    },
+    {
+      "description": "Checks whether the `sound_effect` that matches the name is currently playing",
+      "name": "sound_effect_playing",
+      "return_description": "Returns whether the \"sound_effect\" that matches the name is currently playing or not",
+      "signature": "bool sound_effect_playing(const string &name);",
+      "unique_global_name": "sound_effect_playing_named"
+    },
+    {
+      "description": "Checks whether the `sound_effect` is currently playing",
+      "name": "sound_effect_playing",
+      "return_description": "Returns whether the \"sound_effect\" is currently playing or not",
+      "signature": "bool sound_effect_playing(sound_effect effect);",
+      "unique_global_name": "sound_effect_playing"
+    },
+    {
+      "description": "Lets you test if a sound effect is valid. This will return true when it is a valid sound effect.",
+      "name": "sound_effect_valid",
+      "return_description": "true when the sound effect is valid.",
+      "signature": "bool sound_effect_valid(sound_effect effect);",
+      "unique_global_name": "sound_effect_valid"
+    },
+    {
+      "description": "Stops the `sound_effect` that matches the name, if it is currently playing.",
+      "name": "stop_sound_effect",
+      "return_description": null,
+      "signature": "void stop_sound_effect(const string &name);",
+      "unique_global_name": "stop_sound_effect_named"
+    },
+    {
+      "description": "Stops the `sound_effect` if it is currently playing",
+      "name": "stop_sound_effect",
+      "return_description": null,
+      "signature": "void stop_sound_effect(sound_effect effect);",
+      "unique_global_name": "stop_sound_effect"
+    }
+  ]
+}

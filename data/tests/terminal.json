@@ -1,0 +1,461 @@
+{
+  "group": "terminal",
+  "tests": [
+    {
+      "name": "read_char",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Please type a character: "
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "read_char",
+          "args": [],
+          "store_result": "test_char"
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "You typed: "
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_char"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_char"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "read_line",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Please enter your name: "
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "read_line",
+          "args": [],
+          "store_result": "test_input"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_input"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": ""
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "You entered: "
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "terminal_has_input",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Type something and press Enter: "
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "read_line",
+          "args": [],
+          "store_result": "test_input"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_char",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write_char",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "read_char",
+          "args": [],
+          "store_result": "test_char"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_char"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_double",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.14
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_int",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write_int",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 42
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test String"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "read_line",
+          "args": [],
+          "store_result": "test_output"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_output"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "Test String"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line_char",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write_line_char",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "read_char",
+          "args": [],
+          "store_result": "test_char"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_char"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line_empty",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test line"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "write",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Next line"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line_double",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write_line_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 42.5
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line_int",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write_line_int",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 42
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "write_line",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Line"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "terminal_has_input",
+              "args": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1117 @@
+{
+  "tests": [
+    {
+      "description": "Returns the alpha of the supplied color.",
+      "name": "alpha_of",
+      "return_description": "The alpha component of the color",
+      "signature": "int alpha_of(color c);",
+      "unique_global_name": "alpha_of"
+    },
+    {
+      "description": "Returns the blue of the supplied color.",
+      "name": "blue_of",
+      "return_description": "The blue component of the color",
+      "signature": "int blue_of(color c);",
+      "unique_global_name": "blue_of"
+    },
+    {
+      "description": "Returns the brightness of the supplied color.",
+      "name": "brightness_of",
+      "return_description": "The brightness component of the color",
+      "signature": "double brightness_of(color c);",
+      "unique_global_name": "brightness_of"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `alice_blue`.",
+      "name": "color_alice_blue",
+      "return_description": "A new `color` set to `alice_blue`.",
+      "signature": "color color_alice_blue();",
+      "unique_global_name": "color_alice_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `antique_white`.",
+      "name": "color_antique_white",
+      "return_description": "A new `color` set to `antique_white`.",
+      "signature": "color color_antique_white();",
+      "unique_global_name": "color_antique_white"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `aqua`.",
+      "name": "color_aqua",
+      "return_description": "A new `color` set to `aqua`.",
+      "signature": "color color_aqua();",
+      "unique_global_name": "color_aqua"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `aquamarine`.",
+      "name": "color_aquamarine",
+      "return_description": "A new `color` set to `aquamarine`.",
+      "signature": "color color_aquamarine();",
+      "unique_global_name": "color_aquamarine"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `azure`.",
+      "name": "color_azure",
+      "return_description": "A new `color` set to `azure`.",
+      "signature": "color color_azure();",
+      "unique_global_name": "color_azure"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `beige`.",
+      "name": "color_beige",
+      "return_description": "A new `color` set to `beige`.",
+      "signature": "color color_beige();",
+      "unique_global_name": "color_beige"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `bisque`.",
+      "name": "color_bisque",
+      "return_description": "A new `color` set to `bisque`.",
+      "signature": "color color_bisque();",
+      "unique_global_name": "color_bisque"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `black`.",
+      "name": "color_black",
+      "return_description": "A new `color` set to `black`.",
+      "signature": "color color_black();",
+      "unique_global_name": "color_black"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `blanched_almond`.",
+      "name": "color_blanched_almond",
+      "return_description": "A new `color` set to `blanched_almond`.",
+      "signature": "color color_blanched_almond();",
+      "unique_global_name": "color_blanched_almond"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `blue`.",
+      "name": "color_blue",
+      "return_description": "A new `color` set to `blue`.",
+      "signature": "color color_blue();",
+      "unique_global_name": "color_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `blue_violet`.",
+      "name": "color_blue_violet",
+      "return_description": "A new `color` set to `blue_violet`.",
+      "signature": "color color_blue_violet();",
+      "unique_global_name": "color_blue_violet"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `bright_green`.",
+      "name": "color_bright_green",
+      "return_description": "A new `color` set to `bright_green`.",
+      "signature": "color color_bright_green();",
+      "unique_global_name": "color_bright_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `brown`.",
+      "name": "color_brown",
+      "return_description": "A new `color` set to `brown`.",
+      "signature": "color color_brown();",
+      "unique_global_name": "color_brown"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `burly_wood`.",
+      "name": "color_burly_wood",
+      "return_description": "A new `color` set to `burly_wood`.",
+      "signature": "color color_burly_wood();",
+      "unique_global_name": "color_burly_wood"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `cadet_blue`.",
+      "name": "color_cadet_blue",
+      "return_description": "A new `color` set to `cadet_blue`.",
+      "signature": "color color_cadet_blue();",
+      "unique_global_name": "color_cadet_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `chartreuse`.",
+      "name": "color_chartreuse",
+      "return_description": "A new `color` set to `chartreuse`.",
+      "signature": "color color_chartreuse();",
+      "unique_global_name": "color_chartreuse"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `chocolate`.",
+      "name": "color_chocolate",
+      "return_description": "A new `color` set to `chocolate`.",
+      "signature": "color color_chocolate();",
+      "unique_global_name": "color_chocolate"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `coral`.",
+      "name": "color_coral",
+      "return_description": "A new `color` set to `coral`.",
+      "signature": "color color_coral();",
+      "unique_global_name": "color_coral"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `cornflower_blue`.",
+      "name": "color_cornflower_blue",
+      "return_description": "A new `color` set to `cornflower_blue`.",
+      "signature": "color color_cornflower_blue();",
+      "unique_global_name": "color_cornflower_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `cornsilk`.",
+      "name": "color_cornsilk",
+      "return_description": "A new `color` set to `cornsilk`.",
+      "signature": "color color_cornsilk();",
+      "unique_global_name": "color_cornsilk"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `crimson`.",
+      "name": "color_crimson",
+      "return_description": "A new `color` set to `crimson`.",
+      "signature": "color color_crimson();",
+      "unique_global_name": "color_crimson"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `cyan`.",
+      "name": "color_cyan",
+      "return_description": "A new `color` set to `cyan`.",
+      "signature": "color color_cyan();",
+      "unique_global_name": "color_cyan"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_blue`.",
+      "name": "color_dark_blue",
+      "return_description": "A new `color` set to `dark_blue`.",
+      "signature": "color color_dark_blue();",
+      "unique_global_name": "color_dark_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_cyan`.",
+      "name": "color_dark_cyan",
+      "return_description": "A new `color` set to `dark_cyan`.",
+      "signature": "color color_dark_cyan();",
+      "unique_global_name": "color_dark_cyan"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_goldenrod`.",
+      "name": "color_dark_goldenrod",
+      "return_description": "A new `color` set to `dark_goldenrod`.",
+      "signature": "color color_dark_goldenrod();",
+      "unique_global_name": "color_dark_goldenrod"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_gray`.",
+      "name": "color_dark_gray",
+      "return_description": "A new `color` set to `dark_gray`.",
+      "signature": "color color_dark_gray();",
+      "unique_global_name": "color_dark_gray"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_green`.",
+      "name": "color_dark_green",
+      "return_description": "A new `color` set to `dark_green`.",
+      "signature": "color color_dark_green();",
+      "unique_global_name": "color_dark_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_khaki`.",
+      "name": "color_dark_khaki",
+      "return_description": "A new `color` set to `dark_khaki`.",
+      "signature": "color color_dark_khaki();",
+      "unique_global_name": "color_dark_khaki"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_magenta`.",
+      "name": "color_dark_magenta",
+      "return_description": "A new `color` set to `dark_magenta`.",
+      "signature": "color color_dark_magenta();",
+      "unique_global_name": "color_dark_magenta"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_olive_green`.",
+      "name": "color_dark_olive_green",
+      "return_description": "A new `color` set to `dark_olive_green`.",
+      "signature": "color color_dark_olive_green();",
+      "unique_global_name": "color_dark_olive_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_orange`.",
+      "name": "color_dark_orange",
+      "return_description": "A new `color` set to `dark_orange`.",
+      "signature": "color color_dark_orange();",
+      "unique_global_name": "color_dark_orange"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_orchid`.",
+      "name": "color_dark_orchid",
+      "return_description": "A new `color` set to `dark_orchid`.",
+      "signature": "color color_dark_orchid();",
+      "unique_global_name": "color_dark_orchid"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_red`.",
+      "name": "color_dark_red",
+      "return_description": "A new `color` set to `dark_red`.",
+      "signature": "color color_dark_red();",
+      "unique_global_name": "color_dark_red"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_salmon`.",
+      "name": "color_dark_salmon",
+      "return_description": "A new `color` set to `dark_salmon`.",
+      "signature": "color color_dark_salmon();",
+      "unique_global_name": "color_dark_salmon"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_sea_green`.",
+      "name": "color_dark_sea_green",
+      "return_description": "A new `color` set to `dark_sea_green`.",
+      "signature": "color color_dark_sea_green();",
+      "unique_global_name": "color_dark_sea_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_slate_blue`.",
+      "name": "color_dark_slate_blue",
+      "return_description": "A new `color` set to `dark_slate_blue`.",
+      "signature": "color color_dark_slate_blue();",
+      "unique_global_name": "color_dark_slate_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_slate_gray`.",
+      "name": "color_dark_slate_gray",
+      "return_description": "A new `color` set to `dark_slate_gray`.",
+      "signature": "color color_dark_slate_gray();",
+      "unique_global_name": "color_dark_slate_gray"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_turquoise`.",
+      "name": "color_dark_turquoise",
+      "return_description": "A new `color` set to `dark_turquoise`.",
+      "signature": "color color_dark_turquoise();",
+      "unique_global_name": "color_dark_turquoise"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dark_violet`.",
+      "name": "color_dark_violet",
+      "return_description": "A new `color` set to `dark_violet`.",
+      "signature": "color color_dark_violet();",
+      "unique_global_name": "color_dark_violet"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `deep_pink`.",
+      "name": "color_deep_pink",
+      "return_description": "A new `color` set to `deep_pink`.",
+      "signature": "color color_deep_pink();",
+      "unique_global_name": "color_deep_pink"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `deep_sky_blue`.",
+      "name": "color_deep_sky_blue",
+      "return_description": "A new `color` set to `deep_sky_blue`.",
+      "signature": "color color_deep_sky_blue();",
+      "unique_global_name": "color_deep_sky_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dim_gray`.",
+      "name": "color_dim_gray",
+      "return_description": "A new `color` set to `dim_gray`.",
+      "signature": "color color_dim_gray();",
+      "unique_global_name": "color_dim_gray"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `dodger_blue`.",
+      "name": "color_dodger_blue",
+      "return_description": "A new `color` set to `dodger_blue`.",
+      "signature": "color color_dodger_blue();",
+      "unique_global_name": "color_dodger_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `firebrick`.",
+      "name": "color_firebrick",
+      "return_description": "A new `color` set to `firebrick`.",
+      "signature": "color color_firebrick();",
+      "unique_global_name": "color_firebrick"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `floral_white`.",
+      "name": "color_floral_white",
+      "return_description": "A new `color` set to `floral_white`.",
+      "signature": "color color_floral_white();",
+      "unique_global_name": "color_floral_white"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `forest_green`.",
+      "name": "color_forest_green",
+      "return_description": "A new `color` set to `forest_green`.",
+      "signature": "color color_forest_green();",
+      "unique_global_name": "color_forest_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `fuchsia`.",
+      "name": "color_fuchsia",
+      "return_description": "A new `color` set to `fuchsia`.",
+      "signature": "color color_fuchsia();",
+      "unique_global_name": "color_fuchsia"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `gainsboro`.",
+      "name": "color_gainsboro",
+      "return_description": "A new `color` set to `gainsboro`.",
+      "signature": "color color_gainsboro();",
+      "unique_global_name": "color_gainsboro"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `ghost_white`.",
+      "name": "color_ghost_white",
+      "return_description": "A new `color` set to `ghost_white`.",
+      "signature": "color color_ghost_white();",
+      "unique_global_name": "color_ghost_white"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `gold`.",
+      "name": "color_gold",
+      "return_description": "A new `color` set to `gold`.",
+      "signature": "color color_gold();",
+      "unique_global_name": "color_gold"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `goldenrod`.",
+      "name": "color_goldenrod",
+      "return_description": "A new `color` set to `goldenrod`.",
+      "signature": "color color_goldenrod();",
+      "unique_global_name": "color_goldenrod"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `gray`.",
+      "name": "color_gray",
+      "return_description": "A new `color` set to `gray`.",
+      "signature": "color color_gray();",
+      "unique_global_name": "color_gray"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `green`.",
+      "name": "color_green",
+      "return_description": "A new `color` set to `green`.",
+      "signature": "color color_green();",
+      "unique_global_name": "color_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `green_yellow`.",
+      "name": "color_green_yellow",
+      "return_description": "A new `color` set to `green_yellow`.",
+      "signature": "color color_green_yellow();",
+      "unique_global_name": "color_green_yellow"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `honeydew`.",
+      "name": "color_honeydew",
+      "return_description": "A new `color` set to `honeydew`.",
+      "signature": "color color_honeydew();",
+      "unique_global_name": "color_honeydew"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `hot_pink`.",
+      "name": "color_hot_pink",
+      "return_description": "A new `color` set to `hot_pink`.",
+      "signature": "color color_hot_pink();",
+      "unique_global_name": "color_hot_pink"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `indian_red`.",
+      "name": "color_indian_red",
+      "return_description": "A new `color` set to `indian_red`.",
+      "signature": "color color_indian_red();",
+      "unique_global_name": "color_indian_red"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `indigo`.",
+      "name": "color_indigo",
+      "return_description": "A new `color` set to `indigo`.",
+      "signature": "color color_indigo();",
+      "unique_global_name": "color_indigo"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `ivory`.",
+      "name": "color_ivory",
+      "return_description": "A new `color` set to `ivory`.",
+      "signature": "color color_ivory();",
+      "unique_global_name": "color_ivory"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `khaki`.",
+      "name": "color_khaki",
+      "return_description": "A new `color` set to `khaki`.",
+      "signature": "color color_khaki();",
+      "unique_global_name": "color_khaki"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `lavender`.",
+      "name": "color_lavender",
+      "return_description": "A new `color` set to `lavender`.",
+      "signature": "color color_lavender();",
+      "unique_global_name": "color_lavender"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `lavender_blush`.",
+      "name": "color_lavender_blush",
+      "return_description": "A new `color` set to `lavender_blush`.",
+      "signature": "color color_lavender_blush();",
+      "unique_global_name": "color_lavender_blush"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `lawn_green`.",
+      "name": "color_lawn_green",
+      "return_description": "A new `color` set to `lawn_green`.",
+      "signature": "color color_lawn_green();",
+      "unique_global_name": "color_lawn_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `lemon_chiffon`.",
+      "name": "color_lemon_chiffon",
+      "return_description": "A new `color` set to `lemon_chiffon`.",
+      "signature": "color color_lemon_chiffon();",
+      "unique_global_name": "color_lemon_chiffon"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_blue`.",
+      "name": "color_light_blue",
+      "return_description": "A new `color` set to `light_blue`.",
+      "signature": "color color_light_blue();",
+      "unique_global_name": "color_light_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_coral`.",
+      "name": "color_light_coral",
+      "return_description": "A new `color` set to `light_coral`.",
+      "signature": "color color_light_coral();",
+      "unique_global_name": "color_light_coral"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_cyan`.",
+      "name": "color_light_cyan",
+      "return_description": "A new `color` set to `light_cyan`.",
+      "signature": "color color_light_cyan();",
+      "unique_global_name": "color_light_cyan"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_goldenrod_yellow`.",
+      "name": "color_light_goldenrod_yellow",
+      "return_description": "A new `color` set to `light_goldenrod_yellow`.",
+      "signature": "color color_light_goldenrod_yellow();",
+      "unique_global_name": "color_light_goldenrod_yellow"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_gray`.",
+      "name": "color_light_gray",
+      "return_description": "A new `color` set to `light_gray`.",
+      "signature": "color color_light_gray();",
+      "unique_global_name": "color_light_gray"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_green`.",
+      "name": "color_light_green",
+      "return_description": "A new `color` set to `light_green`.",
+      "signature": "color color_light_green();",
+      "unique_global_name": "color_light_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_pink`.",
+      "name": "color_light_pink",
+      "return_description": "A new `color` set to `light_pink`.",
+      "signature": "color color_light_pink();",
+      "unique_global_name": "color_light_pink"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_salmon`.",
+      "name": "color_light_salmon",
+      "return_description": "A new `color` set to `light_salmon`.",
+      "signature": "color color_light_salmon();",
+      "unique_global_name": "color_light_salmon"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_sea_green`.",
+      "name": "color_light_sea_green",
+      "return_description": "A new `color` set to `light_sea_green`.",
+      "signature": "color color_light_sea_green();",
+      "unique_global_name": "color_light_sea_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_sky_blue`.",
+      "name": "color_light_sky_blue",
+      "return_description": "A new `color` set to `light_sky_blue`.",
+      "signature": "color color_light_sky_blue();",
+      "unique_global_name": "color_light_sky_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_slate_gray`.",
+      "name": "color_light_slate_gray",
+      "return_description": "A new `color` set to `light_slate_gray`.",
+      "signature": "color color_light_slate_gray();",
+      "unique_global_name": "color_light_slate_gray"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_steel_blue`.",
+      "name": "color_light_steel_blue",
+      "return_description": "A new `color` set to `light_steel_blue`.",
+      "signature": "color color_light_steel_blue();",
+      "unique_global_name": "color_light_steel_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `light_yellow`.",
+      "name": "color_light_yellow",
+      "return_description": "A new `color` set to `light_yellow`.",
+      "signature": "color color_light_yellow();",
+      "unique_global_name": "color_light_yellow"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `lime`.",
+      "name": "color_lime",
+      "return_description": "A new `color` set to `lime`.",
+      "signature": "color color_lime();",
+      "unique_global_name": "color_lime"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `lime_green`.",
+      "name": "color_lime_green",
+      "return_description": "A new `color` set to `lime_green`.",
+      "signature": "color color_lime_green();",
+      "unique_global_name": "color_lime_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `linen`.",
+      "name": "color_linen",
+      "return_description": "A new `color` set to `linen`.",
+      "signature": "color color_linen();",
+      "unique_global_name": "color_linen"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `magenta`.",
+      "name": "color_magenta",
+      "return_description": "A new `color` set to `magenta`.",
+      "signature": "color color_magenta();",
+      "unique_global_name": "color_magenta"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `maroon`.",
+      "name": "color_maroon",
+      "return_description": "A new `color` set to `maroon`.",
+      "signature": "color color_maroon();",
+      "unique_global_name": "color_maroon"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_aquamarine`.",
+      "name": "color_medium_aquamarine",
+      "return_description": "A new `color` set to `medium_aquamarine`.",
+      "signature": "color color_medium_aquamarine();",
+      "unique_global_name": "color_medium_aquamarine"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_blue`.",
+      "name": "color_medium_blue",
+      "return_description": "A new `color` set to `medium_blue`.",
+      "signature": "color color_medium_blue();",
+      "unique_global_name": "color_medium_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_orchid`.",
+      "name": "color_medium_orchid",
+      "return_description": "A new `color` set to `medium_orchid`.",
+      "signature": "color color_medium_orchid();",
+      "unique_global_name": "color_medium_orchid"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_purple`.",
+      "name": "color_medium_purple",
+      "return_description": "A new `color` set to `medium_purple`.",
+      "signature": "color color_medium_purple();",
+      "unique_global_name": "color_medium_purple"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_sea_green`.",
+      "name": "color_medium_sea_green",
+      "return_description": "A new `color` set to `medium_sea_green`.",
+      "signature": "color color_medium_sea_green();",
+      "unique_global_name": "color_medium_sea_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_slate_blue`.",
+      "name": "color_medium_slate_blue",
+      "return_description": "A new `color` set to `medium_slate_blue`.",
+      "signature": "color color_medium_slate_blue();",
+      "unique_global_name": "color_medium_slate_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_spring_green`.",
+      "name": "color_medium_spring_green",
+      "return_description": "A new `color` set to `medium_spring_green`.",
+      "signature": "color color_medium_spring_green();",
+      "unique_global_name": "color_medium_spring_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_turquoise`.",
+      "name": "color_medium_turquoise",
+      "return_description": "A new `color` set to `medium_turquoise`.",
+      "signature": "color color_medium_turquoise();",
+      "unique_global_name": "color_medium_turquoise"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `medium_violet_red`.",
+      "name": "color_medium_violet_red",
+      "return_description": "A new `color` set to `medium_violet_red`.",
+      "signature": "color color_medium_violet_red();",
+      "unique_global_name": "color_medium_violet_red"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `midnight_blue`.",
+      "name": "color_midnight_blue",
+      "return_description": "A new `color` set to `midnight_blue`.",
+      "signature": "color color_midnight_blue();",
+      "unique_global_name": "color_midnight_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `mint_cream`.",
+      "name": "color_mint_cream",
+      "return_description": "A new `color` set to `mint_cream`.",
+      "signature": "color color_mint_cream();",
+      "unique_global_name": "color_mint_cream"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `misty_rose`.",
+      "name": "color_misty_rose",
+      "return_description": "A new `color` set to `misty_rose`.",
+      "signature": "color color_misty_rose();",
+      "unique_global_name": "color_misty_rose"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `moccasin`.",
+      "name": "color_moccasin",
+      "return_description": "A new `color` set to `moccasin`.",
+      "signature": "color color_moccasin();",
+      "unique_global_name": "color_moccasin"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `navajo_white`.",
+      "name": "color_navajo_white",
+      "return_description": "A new `color` set to `navajo_white`.",
+      "signature": "color color_navajo_white();",
+      "unique_global_name": "color_navajo_white"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `navy`.",
+      "name": "color_navy",
+      "return_description": "A new `color` set to `navy`.",
+      "signature": "color color_navy();",
+      "unique_global_name": "color_navy"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `old_lace`.",
+      "name": "color_old_lace",
+      "return_description": "A new `color` set to `old_lace`.",
+      "signature": "color color_old_lace();",
+      "unique_global_name": "color_old_lace"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `olive`.",
+      "name": "color_olive",
+      "return_description": "A new `color` set to `olive`.",
+      "signature": "color color_olive();",
+      "unique_global_name": "color_olive"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `olive_drab`.",
+      "name": "color_olive_drab",
+      "return_description": "A new `color` set to `olive_drab`.",
+      "signature": "color color_olive_drab();",
+      "unique_global_name": "color_olive_drab"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `orange`.",
+      "name": "color_orange",
+      "return_description": "A new `color` set to `orange`.",
+      "signature": "color color_orange();",
+      "unique_global_name": "color_orange"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `orange_red`.",
+      "name": "color_orange_red",
+      "return_description": "A new `color` set to `orange_red`.",
+      "signature": "color color_orange_red();",
+      "unique_global_name": "color_orange_red"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `orchid`.",
+      "name": "color_orchid",
+      "return_description": "A new `color` set to `orchid`.",
+      "signature": "color color_orchid();",
+      "unique_global_name": "color_orchid"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `pale_goldenrod`.",
+      "name": "color_pale_goldenrod",
+      "return_description": "A new `color` set to `pale_goldenrod`.",
+      "signature": "color color_pale_goldenrod();",
+      "unique_global_name": "color_pale_goldenrod"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `pale_green`.",
+      "name": "color_pale_green",
+      "return_description": "A new `color` set to `pale_green`.",
+      "signature": "color color_pale_green();",
+      "unique_global_name": "color_pale_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `pale_turquoise`.",
+      "name": "color_pale_turquoise",
+      "return_description": "A new `color` set to `pale_turquoise`.",
+      "signature": "color color_pale_turquoise();",
+      "unique_global_name": "color_pale_turquoise"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `pale_violet_red`.",
+      "name": "color_pale_violet_red",
+      "return_description": "A new `color` set to `pale_violet_red`.",
+      "signature": "color color_pale_violet_red();",
+      "unique_global_name": "color_pale_violet_red"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `papaya_whip`.",
+      "name": "color_papaya_whip",
+      "return_description": "A new `color` set to `papaya_whip`.",
+      "signature": "color color_papaya_whip();",
+      "unique_global_name": "color_papaya_whip"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `peach_puff`.",
+      "name": "color_peach_puff",
+      "return_description": "A new `color` set to `peach_puff`.",
+      "signature": "color color_peach_puff();",
+      "unique_global_name": "color_peach_puff"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `peru`.",
+      "name": "color_peru",
+      "return_description": "A new `color` set to `peru`.",
+      "signature": "color color_peru();",
+      "unique_global_name": "color_peru"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `pink`.",
+      "name": "color_pink",
+      "return_description": "A new `color` set to `pink`.",
+      "signature": "color color_pink();",
+      "unique_global_name": "color_pink"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `plum`.",
+      "name": "color_plum",
+      "return_description": "A new `color` set to `plum`.",
+      "signature": "color color_plum();",
+      "unique_global_name": "color_plum"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `powder_blue`.",
+      "name": "color_powder_blue",
+      "return_description": "A new `color` set to `powder_blue`.",
+      "signature": "color color_powder_blue();",
+      "unique_global_name": "color_powder_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `purple`.",
+      "name": "color_purple",
+      "return_description": "A new `color` set to `purple`.",
+      "signature": "color color_purple();",
+      "unique_global_name": "color_purple"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `red`.",
+      "name": "color_red",
+      "return_description": "A new `color` set to `red`.",
+      "signature": "color color_red();",
+      "unique_global_name": "color_red"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `rosy_brown`.",
+      "name": "color_rosy_brown",
+      "return_description": "A new `color` set to `rosy_brown`.",
+      "signature": "color color_rosy_brown();",
+      "unique_global_name": "color_rosy_brown"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `royal_blue`.",
+      "name": "color_royal_blue",
+      "return_description": "A new `color` set to `royal_blue`.",
+      "signature": "color color_royal_blue();",
+      "unique_global_name": "color_royal_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `saddle_brown`.",
+      "name": "color_saddle_brown",
+      "return_description": "A new `color` set to `saddle_brown`.",
+      "signature": "color color_saddle_brown();",
+      "unique_global_name": "color_saddle_brown"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `salmon`.",
+      "name": "color_salmon",
+      "return_description": "A new `color` set to `salmon`.",
+      "signature": "color color_salmon();",
+      "unique_global_name": "color_salmon"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `sandy_brown`.",
+      "name": "color_sandy_brown",
+      "return_description": "A new `color` set to `sandy_brown`.",
+      "signature": "color color_sandy_brown();",
+      "unique_global_name": "color_sandy_brown"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `sea_green`.",
+      "name": "color_sea_green",
+      "return_description": "A new `color` set to `sea_green`.",
+      "signature": "color color_sea_green();",
+      "unique_global_name": "color_sea_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `sea_shell`.",
+      "name": "color_sea_shell",
+      "return_description": "A new `color` set to `sea_shell`.",
+      "signature": "color color_sea_shell();",
+      "unique_global_name": "color_sea_shell"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `sienna`.",
+      "name": "color_sienna",
+      "return_description": "A new `color` set to `sienna`.",
+      "signature": "color color_sienna();",
+      "unique_global_name": "color_sienna"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `silver`.",
+      "name": "color_silver",
+      "return_description": "A new `color` set to `silver`.",
+      "signature": "color color_silver();",
+      "unique_global_name": "color_silver"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `sky_blue`.",
+      "name": "color_sky_blue",
+      "return_description": "A new `color` set to `sky_blue`.",
+      "signature": "color color_sky_blue();",
+      "unique_global_name": "color_sky_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `slate_blue`.",
+      "name": "color_slate_blue",
+      "return_description": "A new `color` set to `slate_blue`.",
+      "signature": "color color_slate_blue();",
+      "unique_global_name": "color_slate_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `slate_gray`.",
+      "name": "color_slate_gray",
+      "return_description": "A new `color` set to `slate_gray`.",
+      "signature": "color color_slate_gray();",
+      "unique_global_name": "color_slate_gray"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `snow`.",
+      "name": "color_snow",
+      "return_description": "A new `color` set to `snow`.",
+      "signature": "color color_snow();",
+      "unique_global_name": "color_snow"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `spring_green`.",
+      "name": "color_spring_green",
+      "return_description": "A new `color` set to `spring_green`.",
+      "signature": "color color_spring_green();",
+      "unique_global_name": "color_spring_green"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `steel_blue`.",
+      "name": "color_steel_blue",
+      "return_description": "A new `color` set to `steel_blue`.",
+      "signature": "color color_steel_blue();",
+      "unique_global_name": "color_steel_blue"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `swinburne_red`.",
+      "name": "color_swinburne_red",
+      "return_description": "A new `color` set to `swinburne_red`.",
+      "signature": "color color_swinburne_red();",
+      "unique_global_name": "color_swinburne_red"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `tan`.",
+      "name": "color_tan",
+      "return_description": "A new `color` set to `tan`.",
+      "signature": "color color_tan();",
+      "unique_global_name": "color_tan"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `teal`.",
+      "name": "color_teal",
+      "return_description": "A new `color` set to `teal`.",
+      "signature": "color color_teal();",
+      "unique_global_name": "color_teal"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `thistle`.",
+      "name": "color_thistle",
+      "return_description": "A new `color` set to `thistle`.",
+      "signature": "color color_thistle();",
+      "unique_global_name": "color_thistle"
+    },
+    {
+      "description": "Returns a string representation of the color.\nFormat will be a hex string starting with a #,\nfollowed by the red, green, blue, and alpha\nvalues of the color.",
+      "name": "color_to_string",
+      "return_description": "A hex string representing the color",
+      "signature": "string color_to_string(color c);",
+      "unique_global_name": "color_to_string"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `tomato`.",
+      "name": "color_tomato",
+      "return_description": "A new `color` set to `tomato`.",
+      "signature": "color color_tomato();",
+      "unique_global_name": "color_tomato"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `transparent`.",
+      "name": "color_transparent",
+      "return_description": "A `transparent` color (i.e., a color with an `alpha` of 0).",
+      "signature": "color color_transparent();",
+      "unique_global_name": "color_transparent"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `turquoise`.",
+      "name": "color_turquoise",
+      "return_description": "A new `color` set to `turquoise`.",
+      "signature": "color color_turquoise();",
+      "unique_global_name": "color_turquoise"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `violet`.",
+      "name": "color_violet",
+      "return_description": "A new `color` set to `violet`.",
+      "signature": "color color_violet();",
+      "unique_global_name": "color_violet"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `wheat`.",
+      "name": "color_wheat",
+      "return_description": "A new `color` set to `wheat`.",
+      "signature": "color color_wheat();",
+      "unique_global_name": "color_wheat"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `white`.",
+      "name": "color_white",
+      "return_description": "A new `color` set to `white`.",
+      "signature": "color color_white();",
+      "unique_global_name": "color_white"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `white_smoke`.",
+      "name": "color_white_smoke",
+      "return_description": "A new `color` set to `white_smoke`.",
+      "signature": "color color_white_smoke();",
+      "unique_global_name": "color_white_smoke"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `yellow`.",
+      "name": "color_yellow",
+      "return_description": "A new `color` set to `yellow`.",
+      "signature": "color color_yellow();",
+      "unique_global_name": "color_yellow"
+    },
+    {
+      "description": "Generates a new `color` associated to the color `yellow_green`.",
+      "name": "color_yellow_green",
+      "return_description": "A new `color` set to `yellow_green`.",
+      "signature": "color color_yellow_green();",
+      "unique_global_name": "color_yellow_green"
+    },
+    {
+      "description": "Returns the green of the supplied color.",
+      "name": "green_of",
+      "return_description": "The green component of the color",
+      "signature": "int green_of(color c);",
+      "unique_global_name": "green_of"
+    },
+    {
+      "description": "Returs a color from a combination of hue, saturation, and brightness.",
+      "name": "hsb_color",
+      "return_description": "The color from its hue, saturation and brightness.",
+      "signature": "color hsb_color(double hue,double saturation,double brightness);",
+      "unique_global_name": "hsb_color"
+    },
+    {
+      "description": "Returns the hue of the supplied color.",
+      "name": "hue_of",
+      "return_description": "The hue component of the color",
+      "signature": "double hue_of(color c);",
+      "unique_global_name": "hue_of"
+    },
+    {
+      "description": "Creates and returns a random color where the color and its opacity are\nrandom.",
+      "name": "random_color",
+      "return_description": "A random color",
+      "signature": "color random_color();",
+      "unique_global_name": "random_color"
+    },
+    {
+      "description": "Creates and returns a random color where the color is random, but the\nopacity is set to the passed in value.",
+      "name": "random_rgb_color",
+      "return_description": "A random color with the set alpha",
+      "signature": "color random_rgb_color(int alpha);",
+      "unique_global_name": "random_rgb_color"
+    },
+    {
+      "description": "Returns the red of the supplied color.",
+      "name": "red_of",
+      "return_description": "The red component of the color",
+      "signature": "int red_of(color c);",
+      "unique_global_name": "red_of"
+    },
+    {
+      "description": "Gets a color given its RGB components. Each of the components has\na value between 0 and 1.",
+      "name": "rgb_color",
+      "return_description": "The color from its different component",
+      "signature": "color rgb_color(double red,double green,double blue);",
+      "unique_global_name": "rgb_color_from_double"
+    },
+    {
+      "description": "Gets a color given its RGB components. Each of the components has\na value between 0 and 255.",
+      "name": "rgb_color",
+      "return_description": "The color from its different component",
+      "signature": "color rgb_color(int red,int green,int blue);",
+      "unique_global_name": "rgb_color"
+    },
+    {
+      "description": "Gets a color given its color components. Each of the components has\na value between 0 and 1.0.",
+      "name": "rgba_color",
+      "return_description": "The color from its different component",
+      "signature": "color rgba_color(double red,double green,double blue,double alpha);",
+      "unique_global_name": "rgba_color_from_double"
+    },
+    {
+      "description": "Gets a color given its color components. Each of the components has\na value between 0 and 255.",
+      "name": "rgba_color",
+      "return_description": "The color from its different component",
+      "signature": "color rgba_color(int red,int green,int blue,int alpha);",
+      "unique_global_name": "rgba_color"
+    },
+    {
+      "description": "Returns the saturation of the supplied color.",
+      "name": "saturation_of",
+      "return_description": "The saturation component of the color",
+      "signature": "double saturation_of(color c);",
+      "unique_global_name": "saturation_of"
+    },
+    {
+      "description": "Returns a color for the passed in color string.\nThe format must be #, followed by the hex values\nfor the red, green, blue, and alpha components\nof the color.",
+      "name": "string_to_color",
+      "return_description": "The color represented in the string",
+      "signature": "color string_to_color(string str);",
+      "unique_global_name": "string_to_color"
+    }
+  ]
+}

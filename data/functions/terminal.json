@@ -1,0 +1,599 @@
+{
+  "functions": [
+    {
+      "signature": "char read_char();",
+      "name": "read_char",
+      "method_name": null,
+      "unique_global_name": "read_char",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Get a single character input by the user.",
+      "brief": null,
+      "return": {
+        "type": "char",
+        "description": "The character typed by the user.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {},
+      "attributes": {
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "char read_char()"
+        ],
+        "rust": [
+          "pub fn read_char() -> c_char"
+        ],
+        "python": [
+          "def read_char():"
+        ],
+        "pascal": [
+          "function ReadChar(): Char"
+        ],
+        "csharp": [
+          "public static char Terminal.ReadChar();",
+          "public static char SplashKit.ReadChar();"
+        ]
+      }
+    },
+    {
+      "signature": "string read_line();",
+      "name": "read_line",
+      "method_name": null,
+      "unique_global_name": "read_line",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Read a line of text from the terminal. The user will see the text as\nthey type it.",
+      "brief": null,
+      "return": {
+        "type": "string",
+        "description": "The text entered by the user.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {},
+      "attributes": {
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "string read_line()"
+        ],
+        "rust": [
+          "pub fn read_line() -> String"
+        ],
+        "python": [
+          "def read_line():"
+        ],
+        "pascal": [
+          "function ReadLine(): String"
+        ],
+        "csharp": [
+          "public static string Terminal.ReadLine();",
+          "public static string SplashKit.ReadLine();"
+        ]
+      }
+    },
+    {
+      "signature": "bool terminal_has_input();",
+      "name": "terminal_has_input",
+      "method_name": null,
+      "unique_global_name": "terminal_has_input",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Checks if there is data waiting to be read by read line or read char.",
+      "brief": null,
+      "return": {
+        "type": "bool",
+        "description": "true if there is data waiting to be read.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {},
+      "attributes": {
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "bool terminal_has_input()"
+        ],
+        "rust": [
+          "pub fn terminal_has_input() -> bool"
+        ],
+        "python": [
+          "def terminal_has_input():"
+        ],
+        "pascal": [
+          "function TerminalHasInput(): Boolean"
+        ],
+        "csharp": [
+          "public static bool Terminal.TerminalHasInput();",
+          "public static bool SplashKit.TerminalHasInput();"
+        ]
+      }
+    },
+    {
+      "signature": "void write(char data);",
+      "name": "write",
+      "method_name": null,
+      "unique_global_name": "write_char",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Write the passed in data to the terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "data": {
+          "type": "char",
+          "description": "The character to write",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "char",
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write(char data)"
+        ],
+        "rust": [
+          "pub fn write(data: c_char)"
+        ],
+        "python": [
+          "def write_char(data):"
+        ],
+        "pascal": [
+          "procedure Write(data: Char)"
+        ],
+        "csharp": [
+          "public static void Terminal.Write(char data);",
+          "public static void SplashKit.Write(char data);"
+        ]
+      }
+    },
+    {
+      "signature": "void write(double data);",
+      "name": "write",
+      "method_name": null,
+      "unique_global_name": "write_double",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Write the passed in data to the terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "data": {
+          "type": "double",
+          "description": "The text to write",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "double",
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write(double data)"
+        ],
+        "rust": [
+          "pub fn write(data: f64)"
+        ],
+        "python": [
+          "def write_double(data):"
+        ],
+        "pascal": [
+          "procedure Write(data: Double)"
+        ],
+        "csharp": [
+          "public static void Terminal.Write(double data);",
+          "public static void SplashKit.Write(double data);"
+        ]
+      }
+    },
+    {
+      "signature": "void write(int data);",
+      "name": "write",
+      "method_name": null,
+      "unique_global_name": "write_int",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Write the passed in data to the terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "data": {
+          "type": "int",
+          "description": "The text to write",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "int",
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write(int data)"
+        ],
+        "rust": [
+          "pub fn write(data: i32)"
+        ],
+        "python": [
+          "def write_int(data):"
+        ],
+        "pascal": [
+          "procedure Write(data: Integer)"
+        ],
+        "csharp": [
+          "public static void Terminal.Write(int data);",
+          "public static void SplashKit.Write(int data);"
+        ]
+      }
+    },
+    {
+      "signature": "void write(string text);",
+      "name": "write",
+      "method_name": null,
+      "unique_global_name": "write",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Write the supplied text to the Terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "text": {
+          "type": "string",
+          "description": "The text to write",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write(string text)"
+        ],
+        "rust": [
+          "pub fn write(text: String)"
+        ],
+        "python": [
+          "def write(text):"
+        ],
+        "pascal": [
+          "procedure Write(text: String)"
+        ],
+        "csharp": [
+          "public static void Terminal.Write(string text);",
+          "public static void SplashKit.Write(string text);"
+        ]
+      }
+    },
+    {
+      "signature": "void write_line(char data);",
+      "name": "write_line",
+      "method_name": null,
+      "unique_global_name": "write_line_char",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Write the passed in data, then move to the next line/row of the terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "data": {
+          "type": "char",
+          "description": "The character to write",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "char",
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write_line(char data)"
+        ],
+        "rust": [
+          "pub fn write_line(data: c_char)"
+        ],
+        "python": [
+          "def write_line_char(data):"
+        ],
+        "pascal": [
+          "procedure WriteLine(data: Char)"
+        ],
+        "csharp": [
+          "public static void Terminal.WriteLine(char data);",
+          "public static void SplashKit.WriteLine(char data);"
+        ]
+      }
+    },
+    {
+      "signature": "void write_line();",
+      "name": "write_line",
+      "method_name": null,
+      "unique_global_name": "write_line_empty",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Move to the next line/row of the terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {},
+      "attributes": {
+        "suffix": "empty",
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write_line()"
+        ],
+        "rust": [
+          "pub fn write_line()"
+        ],
+        "python": [
+          "def write_line_empty():"
+        ],
+        "pascal": [
+          "procedure WriteLine()"
+        ],
+        "csharp": [
+          "public static void Terminal.WriteLine();",
+          "public static void SplashKit.WriteLine();"
+        ]
+      }
+    },
+    {
+      "signature": "void write_line(double data);",
+      "name": "write_line",
+      "method_name": null,
+      "unique_global_name": "write_line_double",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Write the passed in data, then move to the next line/row of the terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "data": {
+          "type": "double",
+          "description": "The text to write",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "double",
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write_line(double data)"
+        ],
+        "rust": [
+          "pub fn write_line(data: f64)"
+        ],
+        "python": [
+          "def write_line_double(data):"
+        ],
+        "pascal": [
+          "procedure WriteLine(data: Double)"
+        ],
+        "csharp": [
+          "public static void Terminal.WriteLine(double data);",
+          "public static void SplashKit.WriteLine(double data);"
+        ]
+      }
+    },
+    {
+      "signature": "void write_line(int data);",
+      "name": "write_line",
+      "method_name": null,
+      "unique_global_name": "write_line_int",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Write the passed in data, then move to the next line/row of the terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "data": {
+          "type": "int",
+          "description": "The text to write",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "int",
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write_line(int data)"
+        ],
+        "rust": [
+          "pub fn write_line(data: i32)"
+        ],
+        "python": [
+          "def write_line_int(data):"
+        ],
+        "pascal": [
+          "procedure WriteLine(data: Integer)"
+        ],
+        "csharp": [
+          "public static void Terminal.WriteLine(int data);",
+          "public static void SplashKit.WriteLine(int data);"
+        ]
+      }
+    },
+    {
+      "signature": "void write_line(string line);",
+      "name": "write_line",
+      "method_name": null,
+      "unique_global_name": "write_line",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Write the passed in text, then move to the next line/row of the terminal.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "line": {
+          "type": "string",
+          "description": "The text to write",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "group": "terminal",
+        "static": "terminal"
+      },
+      "signatures": {
+        "cpp": [
+          "void write_line(string line)"
+        ],
+        "rust": [
+          "pub fn write_line(line: String)"
+        ],
+        "python": [
+          "def write_line(line):"
+        ],
+        "pascal": [
+          "procedure WriteLine(line: String)"
+        ],
+        "csharp": [
+          "public static void Terminal.WriteLine(string line);",
+          "public static void SplashKit.WriteLine(string line);"
+        ]
+      }
+    }
+  ]
+}

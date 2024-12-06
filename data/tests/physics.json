@@ -1,0 +1,7403 @@
+{
+  "group": "physics",
+  "tests": [
+    {
+      "name": "bitmap_circle_collision_at_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_circle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_circle_collision_at_point",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_point"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_circle"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_circle_collision",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_circle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_circle_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_circle"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_circle_collision_for_cell_with_translation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "clear_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "function",
+              "function_name": "color_black",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_circle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_translation"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_circle_collision_for_cell_with_translation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_translation"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_circle"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_circle_collision_for_cell_at_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_circle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_circle_collision_for_cell_at_point",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_point"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_circle"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_circle_collision_for_cell",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_circle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_circle_collision_for_cell",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_circle"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_collision",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_bitmaps",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_collision_at_points",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            }
+          ],
+          "store_result": "test_point1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "test_point2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_collision_at_points",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point2"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_bitmaps",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_collision_for_cells_with_translations",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            }
+          ],
+          "store_result": "matrix1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "matrix2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_collision_for_cells_with_translations",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "matrix1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "matrix2"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_collision_for_cells_at_points",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Collision Test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "test_bitmap2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_point1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 125.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 125.0
+            }
+          ],
+          "store_result": "test_point2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_collision_for_cells_at_points",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point2"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_bitmaps",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_collision_for_cells",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_collision_for_cells",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_collision_for_cells",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_bitmaps",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_point_collision_with_translation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "clear_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "function",
+              "function_name": "color_black",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_translation"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150
+            },
+            {
+              "value_type": "primitive",
+              "value": 150
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_point_collision_with_translation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_translation"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_point_collision_at_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "test_bmp_pt"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "test_pt"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_point_collision_at_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bmp_pt"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_pt"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_point_collision",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "clear_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "function",
+              "function_name": "color_black",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_point_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_point_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_point_collision_for_cell_with_translation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_translation"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_point_collision_for_cell_with_translation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_translation"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_point_collision_for_cell_at_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_point_collision_for_cell_at_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_point_collision_for_cell",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_point_collision_for_cell",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_rectangle_collision_at_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_rectangle_collision_at_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_rectangle_collision",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_rectangle_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_rectangle_collision_for_cell_with_translation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_translation"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_rectangle_collision_for_cell_with_translation",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_translation"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_rectangle"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_rectangle_collision_for_cell_at_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_rectangle_collision_for_cell_at_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bitmap_rectangle_collision_for_cell",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "bitmap_rectangle_collision_for_cell",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sprite_bitmap_collision",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Collision Test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ],
+          "store_result": "test_sprite"
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_bitmap_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_bitmap_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_sprites",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_bitmaps",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sprite_bitmap_collision_with_cell_at_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ],
+          "store_result": "test_sprite"
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_bitmap_collision_with_cell_at_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 50
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 50
+                }
+              ]
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_sprites",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sprite_bitmap_collision_with_cell",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ],
+          "store_result": "test_sprite"
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_bitmap_collision_with_cell",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_sprites",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_bitmaps",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sprite_collision",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap_1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "test_bitmap_1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap_2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            }
+          ],
+          "store_result": "test_bitmap_2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap_1"
+            }
+          ],
+          "store_result": "test_sprite_1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap_2"
+            }
+          ],
+          "store_result": "test_sprite_2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_set_position",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite_1"
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_set_position",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite_2"
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 150
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 150
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "sprite_collision",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_sprite_1"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_sprite_2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_set_position",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite_2"
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "sprite_collision",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_sprite_1"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_sprite_2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_sprites",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_bitmaps",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sprite_point_collision",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ],
+          "store_result": "test_sprite"
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_point_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 50
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 50
+                }
+              ]
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_point_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                }
+              ]
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_sprites",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sprite_rectangle_collision",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ],
+          "store_result": "test_sprite"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_rectangle_collision",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            }
+          ],
+          "store_result": "collision_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "collision_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_sprites",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "apply_matrix_to_quad",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "identity_matrix",
+          "args": [],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "quad_from",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                }
+              ]
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                }
+              ]
+            }
+          ],
+          "store_result": "test_quad"
+        },
+        {
+          "step_type": "function",
+          "function_name": "apply_matrix_to_quad",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_quad"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "quad_point"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "apply_matrix_to_triangle",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "triangle_from",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                }
+              ]
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 1.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                }
+              ]
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 1.0
+                }
+              ]
+            }
+          ],
+          "store_result": "test_triangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "apply_matrix_to_triangle",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_triangle"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "triangle_to_string",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_triangle"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "Triangle(x1: 1.0, y1: 1.0, x2: 2.0, y2: 1.0, x3: 1.0, y3: 2.0)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "identity_matrix",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "identity_matrix",
+          "args": [],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_matrix_access",
+              "variable_name": "test_matrix",
+              "row": 0,
+              "col": 0
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_matrix_access",
+              "variable_name": "test_matrix",
+              "row": 1,
+              "col": 1
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          }
+        },
+
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_matrix_access",
+              "variable_name": "test_matrix",
+              "row": 0,
+              "col": 1
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_matrix_access",
+              "variable_name": "test_matrix",
+              "row": 1,
+              "col": 0
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "matrix_inverse",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "identity_matrix",
+          "args": [],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_inverse",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            }
+          ],
+          "store_result": "inverse_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_matrix",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "inverse_matrix"
+            }
+          ],
+          "store_result": "result_matrix"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vectors_equal",
+              "args": [
+                {
+                  "value_type": "function",
+                  "function_name": "vector_to",
+                  "args": [
+                    {
+                      "value_type": "primitive",
+                      "value": 1.0
+                    },
+                    {
+                      "value_type": "primitive",
+                      "value": 0.0
+                    }
+                  ]
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "matrix_multiply_point",
+                  "args": [
+                    {
+                      "value_type": "variable",
+                      "variable_name": "result_matrix"
+                    },
+                    {
+                      "value_type": "function",
+                      "function_name": "vector_to",
+                      "args": [
+                        {
+                          "value_type": "primitive",
+                          "value": 1.0
+                        },
+                        {
+                          "value_type": "primitive",
+                          "value": 0.0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "matrix_multiply_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "identity_matrix",
+          "args": [],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 20.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "result_point"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 20.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "matrix_multiply_matrix",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "identity_matrix",
+          "args": [],
+          "store_result": "test_matrix1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rotation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 45
+            }
+          ],
+          "store_result": "test_matrix2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_matrix",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix2"
+            }
+          ],
+          "store_result": "result_matrix"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_matrix_access",
+              "variable_name": "result_matrix",
+              "row": 0,
+              "col": 0
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "cosine",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 45
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_matrix_access",
+              "variable_name": "result_matrix",
+              "row": 0,
+              "col": 1
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "sine",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 45
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "matrix_multiply_vector",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "scale_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "matrix_to_string",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "identity_matrix",
+          "args": [],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_to_string",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            }
+          ],
+          "store_result": "test_matrix_string"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_matrix_string"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "[1, 0, 0, 1, 0, 0]"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "rotation_matrix",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "rotation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 45.0
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.99
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 1.01
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 44.0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 46.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "scale_matrix_from_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            }
+          ],
+          "store_result": "test_scale"
+        },
+        {
+          "step_type": "function",
+          "function_name": "scale_matrix_from_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_scale"
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "scale_matrix_from_vector",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            }
+          ],
+          "store_result": "test_scale_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "scale_matrix_from_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_scale_vector"
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "scale_matrix",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "scale_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "scale_rotate_translate_matrix",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            }
+          ],
+          "store_result": "test_scale"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 20.0
+            }
+          ],
+          "store_result": "test_translate"
+        },
+        {
+          "step_type": "function",
+          "function_name": "scale_rotate_translate_matrix",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_scale"
+            },
+            {
+              "value_type": "primitive",
+              "value": 45.0
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_translate"
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "result_point"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 10.1
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 23.0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 23.1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "translation_matrix_to_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 20.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix_to_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 5.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 5.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "result_point"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 15.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 25.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "translation_matrix_from_vector",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 20.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix_from_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "result_point"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 20.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "translation_matrix",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "translation_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 20.0
+            }
+          ],
+          "store_result": "test_matrix"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "result_point"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 20.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "angle_between",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_vector1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "angle_between",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector2"
+            }
+          ],
+          "store_result": "test_angle"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_angle"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 89.9
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 90.1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "dot_product",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          ],
+          "store_result": "test_vector2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "dot_product",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector2"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 11.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "is_zero_vector",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_zero_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_non_zero_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "is_zero_vector",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_zero_vector"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "is_zero_vector",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_non_zero_vector"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ray_intersection_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_from_pt"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_heading"
+        },
+        {
+          "step_type": "function",
+          "function_name": "line_from",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 2.0
+                }
+              ]
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 2.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                }
+              ]
+            }
+          ],
+          "store_result": "test_line"
+        },
+        {
+          "step_type": "function",
+          "function_name": "ray_intersection_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_from_pt"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_heading"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_line"
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                }
+              ]
+            }
+          ],
+          "store_result": "intersection_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "intersection_result"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "unit_vector",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "unit_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "test_unit_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_unit_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_unit_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_add",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          ],
+          "store_result": "test_vector1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_add",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector2"
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "result_vector",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 6.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_angle",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_angle",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "test_angle"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_angle"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 45.0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 45.001
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_from_angle",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_from_angle",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 45.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.99
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 1.01
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 44.0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 46.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_from_line",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "line_from",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                }
+              ]
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 10.0
+                }
+              ]
+            }
+          ],
+          "store_result": "test_line"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_from_line",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_line"
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_vector",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_vector",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_from_point_to_rect",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_from_point_to_rect",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rect"
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_in_rect",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_vector_inside"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            }
+          ],
+          "store_result": "test_vector_outside"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_in_rect",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector_inside"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_rect"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_in_rect",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector_outside"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_rect"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_invert",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_invert",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "inverted_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_to",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": -3.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": -4.0
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "inverted_vector"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_limit",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_limit",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5.0
+            }
+          ],
+          "store_result": "limited_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "less_than_or_equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "limited_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 5.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vectors_equal",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "limited_vector"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_magnitude",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_magnitude",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "test_magnitude"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_magnitude"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 5.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_magnitude_squared",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_magnitude_squared",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 25.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_multiply",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_multiply",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            },
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_normal",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_normal",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "normal_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "normal_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 5.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "normal_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 53.1301
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_out_of_circle_from_circle",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_circle_src"
+        },
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 75.0
+            }
+          ],
+          "store_result": "test_circle_bounds"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          ],
+          "store_result": "test_velocity"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_out_of_circle_from_circle",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_circle_src"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_circle_bounds"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_velocity"
+            }
+          ],
+          "store_result": "test_result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "circles_intersect",
+              "args": [
+                {
+                  "value_type": "function",
+                  "function_name": "circle_at",
+                  "args": [
+                    {
+                      "value_type": "function",
+                      "function_name": "point_offset_by",
+                      "args": [
+                        {
+                          "value_type": "function",
+                          "function_name": "center_point",
+                          "args": [
+                            {
+                              "value_type": "variable",
+                              "variable_name": "test_circle_src"
+                            }
+                          ]
+                        },
+                        {
+                          "value_type": "variable",
+                          "variable_name": "test_result_vector"
+                        }
+                      ]
+                    },
+                    {
+                      "value_type": "function",
+                      "function_name": "circle_radius",
+                      "args": [
+                        {
+                          "value_type": "variable",
+                          "variable_name": "test_circle_src"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_circle_bounds"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_out_of_circle_from_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_circle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          ],
+          "store_result": "test_velocity"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_out_of_circle_from_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_circle"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_velocity"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_result"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_out_of_rect_from_circle",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "circle_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_circle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_velocity"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_out_of_rect_from_circle",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_circle"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_velocity"
+            }
+          ],
+          "store_result": "test_result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vector_out_of_rect_from_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_velocity"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_out_of_rect_from_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_velocity"
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "point_in_rectangle",
+              "args": [
+                {
+                  "value_type": "function",
+                  "function_name": "point_offset_by",
+                  "args": [
+                    {
+                      "value_type": "variable",
+                      "variable_name": "test_point"
+                    },
+                    {
+                      "value_type": "variable",
+                      "variable_name": "result_vector"
+                    }
+                  ]
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_rectangle"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_out_of_rect_from_rect",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ],
+          "store_result": "test_src_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            }
+          ],
+          "store_result": "test_bounds_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            }
+          ],
+          "store_result": "test_velocity"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_out_of_rect_from_rect",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_src_rect"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_bounds_rect"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_velocity"
+            }
+          ],
+          "store_result": "test_result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_point_to_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_start_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_end_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_point_to_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_start_point"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_end_point"
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_to",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 3.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 4.0
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_subtract",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_subtract",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector2"
+            }
+          ],
+          "store_result": "result_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 3.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "result_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 45.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_to_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_vector",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 3.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_vector",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_to",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_magnitude",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 5.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vector_angle",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 53.1301
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vector_to_string",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 4.0
+            }
+          ],
+          "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to_string",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_vector"
+            }
+          ],
+          "store_result": "test_string"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_string"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "Vector(3.0, 4.0)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vectors_equal",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector2"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vectors_equal",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector1"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          ],
+          "store_result": "test_vector3"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vectors_equal",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector1"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector3"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "vectors_not_equal",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          ],
+          "store_result": "test_vector2"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vectors_not_equal",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector1"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          ],
+          "store_result": "test_vector3"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "vectors_not_equal",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector1"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_vector3"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

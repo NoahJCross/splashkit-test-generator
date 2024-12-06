@@ -1,0 +1,2452 @@
+{
+  "functions": [
+    {
+      "signature": "int animation_count(animation_script script);",
+      "name": "animation_count",
+      "method_name": null,
+      "unique_global_name": "animation_count",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns the number of `animation`s within an `animation_script`.",
+      "brief": null,
+      "return": {
+        "type": "int",
+        "description": "Returns an `int` equal to the total number of animations in the script.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to count the animations in.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation_script",
+        "getter": "animation_count",
+        "self": "script",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "int animation_count(animation_script script)"
+        ],
+        "rust": [
+          "pub fn animation_count(script: animation_script) -> i32"
+        ],
+        "python": [
+          "def animation_count(script):"
+        ],
+        "pascal": [
+          "function AnimationCount(script: AnimationScript): Integer"
+        ],
+        "csharp": [
+          "public int AnimationScript.AnimationCount { get }",
+          "public static int SplashKit.AnimationCount(AnimationScript script);"
+        ]
+      }
+    },
+    {
+      "signature": "int animation_current_cell(animation anim);",
+      "name": "animation_current_cell",
+      "method_name": null,
+      "unique_global_name": "animation_current_cell",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns the current cell (the part of the image or sprite) of this\nanimation. This can be used to animate an image or sprite.",
+      "brief": null,
+      "return": {
+        "type": "int",
+        "description": "Returns the current cell of the animation passed to the method.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to return the cell of.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "getter": "current_cell",
+        "self": "anim",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "int animation_current_cell(animation anim)"
+        ],
+        "rust": [
+          "pub fn animation_current_cell(anim: animation) -> i32"
+        ],
+        "python": [
+          "def animation_current_cell(anim):"
+        ],
+        "pascal": [
+          "function AnimationCurrentCell(anim: Animation): Integer"
+        ],
+        "csharp": [
+          "public int Animation.CurrentCell { get }",
+          "public static int SplashKit.AnimationCurrentCell(Animation anim);"
+        ]
+      }
+    },
+    {
+      "signature": "vector_2d animation_current_vector(animation anim);",
+      "name": "animation_current_vector",
+      "method_name": null,
+      "unique_global_name": "animation_current_vector",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns the `vector_2d` assigned to the current frame in the animation.",
+      "brief": null,
+      "return": {
+        "type": "vector_2d",
+        "description": "Returns the `vector_2d` assigned to the current frame in the animation.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The animation to check the vector of.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "getter": "current_vector",
+        "group": "animations",
+        "static": "animation",
+        "self": "anim"
+      },
+      "signatures": {
+        "cpp": [
+          "vector_2d animation_current_vector(animation anim)"
+        ],
+        "rust": [
+          "pub fn animation_current_vector(anim: animation) -> vector_2d"
+        ],
+        "python": [
+          "def animation_current_vector(anim):"
+        ],
+        "pascal": [
+          "function AnimationCurrentVector(anim: Animation): Vector2D"
+        ],
+        "csharp": [
+          "public Vector2D Animation.CurrentVector { get }",
+          "public static Vector2D SplashKit.AnimationCurrentVector(Animation anim);"
+        ]
+      }
+    },
+    {
+      "signature": "bool animation_ended(animation anim);",
+      "name": "animation_ended",
+      "method_name": null,
+      "unique_global_name": "animation_ended",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Checks if an `animation` has ended.",
+      "brief": null,
+      "return": {
+        "type": "bool",
+        "description": "Returns a `bool` denoting whether the `animation` has ended.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The animation to check.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "getter": "ended",
+        "group": "animations",
+        "static": "animation",
+        "self": "anim"
+      },
+      "signatures": {
+        "cpp": [
+          "bool animation_ended(animation anim)"
+        ],
+        "rust": [
+          "pub fn animation_ended(anim: animation) -> bool"
+        ],
+        "python": [
+          "def animation_ended(anim):"
+        ],
+        "pascal": [
+          "function AnimationEnded(anim: Animation): Boolean"
+        ],
+        "csharp": [
+          "public bool Animation.Ended { get }",
+          "public static bool SplashKit.AnimationEnded(Animation anim);"
+        ]
+      }
+    },
+    {
+      "signature": "bool animation_entered_frame(animation anim);",
+      "name": "animation_entered_frame",
+      "method_name": null,
+      "unique_global_name": "animation_entered_frame",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns true if the `animation` entered a new frame on its last update.\nThis can be used to trigger actions on frames within an animation.",
+      "brief": null,
+      "return": {
+        "type": "bool",
+        "description": "Returns a `bool` denoting whether the `animation` has ended.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The animation to check.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "getter": "entered_frame",
+        "group": "animations",
+        "static": "animation",
+        "self": "anim"
+      },
+      "signatures": {
+        "cpp": [
+          "bool animation_entered_frame(animation anim)"
+        ],
+        "rust": [
+          "pub fn animation_entered_frame(anim: animation) -> bool"
+        ],
+        "python": [
+          "def animation_entered_frame(anim):"
+        ],
+        "pascal": [
+          "function AnimationEnteredFrame(anim: Animation): Boolean"
+        ],
+        "csharp": [
+          "public bool Animation.EnteredFrame { get }",
+          "public static bool SplashKit.AnimationEnteredFrame(Animation anim);"
+        ]
+      }
+    },
+    {
+      "signature": "float animation_frame_time(animation anim);",
+      "name": "animation_frame_time",
+      "method_name": null,
+      "unique_global_name": "animation_frame_time",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns the amount of time spent in the current frame. When this\nexceeds the frames duration the animation moves to the next frame.",
+      "brief": null,
+      "return": {
+        "type": "float",
+        "description": "Returns the amount of time spent in the current frame as a `float`.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The animation to check.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "getter": "frame_time",
+        "group": "animations",
+        "static": "animation",
+        "self": "anim"
+      },
+      "signatures": {
+        "cpp": [
+          "float animation_frame_time(animation anim)"
+        ],
+        "rust": [
+          "pub fn animation_frame_time(anim: animation) -> f32"
+        ],
+        "python": [
+          "def animation_frame_time(anim):"
+        ],
+        "pascal": [
+          "function AnimationFrameTime(anim: Animation): Single"
+        ],
+        "csharp": [
+          "public float Animation.FrameTime { get }",
+          "public static float SplashKit.AnimationFrameTime(Animation anim);"
+        ]
+      }
+    },
+    {
+      "signature": "int animation_index(animation_script script,const string &name);",
+      "name": "animation_index",
+      "method_name": "animation_index",
+      "unique_global_name": "animation_index",
+      "unique_method_name": "animation_script.animation_index",
+      "suffix_name": null,
+      "description": "Searches an `animation_script` for an `animation` and returns its\nindex.",
+      "brief": null,
+      "return": {
+        "type": "int",
+        "description": "Returns the index of the `animation` in the `animation_script`",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to look for the `animation` in.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the `animation` to look for.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation_script",
+        "method": "animation_index",
+        "self": "script",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "int animation_index(animation_script script, const string &name)"
+        ],
+        "rust": [
+          "pub fn animation_index(script: animation_script, name: &String) -> i32"
+        ],
+        "python": [
+          "def animation_index(script, name):"
+        ],
+        "pascal": [
+          "function AnimationIndex(script: AnimationScript; const name: String): Integer"
+        ],
+        "csharp": [
+          "public int AnimationScript.AnimationIndex(string name);",
+          "public static int SplashKit.AnimationIndex(AnimationScript script, string name);"
+        ]
+      }
+    },
+    {
+      "signature": "string animation_name(animation temp);",
+      "name": "animation_name",
+      "method_name": null,
+      "unique_global_name": "animation_name",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Searches an `animation_script` for an animation and returns its name.",
+      "brief": null,
+      "return": {
+        "type": "string",
+        "description": "Returns the name of the `animation` in the `animation_script`.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "temp": {
+          "type": "animation",
+          "description": "The `animation` to search for.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "getter": "name",
+        "self": "temp",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "string animation_name(animation temp)"
+        ],
+        "rust": [
+          "pub fn animation_name(temp: animation) -> String"
+        ],
+        "python": [
+          "def animation_name(temp):"
+        ],
+        "pascal": [
+          "function AnimationName(temp: Animation): String"
+        ],
+        "csharp": [
+          "public string Animation.Name { get }",
+          "public static string SplashKit.AnimationName(Animation temp);"
+        ]
+      }
+    },
+    {
+      "signature": "string animation_script_name(animation_script script);",
+      "name": "animation_script_name",
+      "method_name": null,
+      "unique_global_name": "animation_script_name",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Retuns the name of an `animation_script`.",
+      "brief": null,
+      "return": {
+        "type": "string",
+        "description": "Returns a `string` that is the name of the animation script passed to the method.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to return the name of.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation_script",
+        "getter": "name",
+        "self": "script",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "string animation_script_name(animation_script script)"
+        ],
+        "rust": [
+          "pub fn animation_script_name(script: animation_script) -> String"
+        ],
+        "python": [
+          "def animation_script_name(script):"
+        ],
+        "pascal": [
+          "function AnimationScriptName(script: AnimationScript): String"
+        ],
+        "csharp": [
+          "public string AnimationScript.Name { get }",
+          "public static string SplashKit.AnimationScriptName(AnimationScript script);"
+        ]
+      }
+    },
+    {
+      "signature": "animation_script animation_script_named(const string &name);",
+      "name": "animation_script_named",
+      "method_name": null,
+      "unique_global_name": "animation_script_named",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Loads and returns a `animation_script`. The supplied filename is\nused to locate the `animation_script` to load. The supplied name\nindicates the name to use to refer to this in SplashKit. The\n`animation_script` can then be retrieved by passing this name to\nthe animation_script_named method.",
+      "brief": null,
+      "return": {
+        "type": "animation_script",
+        "description": "Returns the newly loaded `animation_script`.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "name": {
+          "type": "string",
+          "description": "Indicates the name used to locate the animation_script to load",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "static": "animation",
+        "group": "animations"
+      },
+      "signatures": {
+        "cpp": [
+          "animation_script animation_script_named(const string &name)"
+        ],
+        "rust": [
+          "pub fn animation_script_named(name: &String) -> animation_script"
+        ],
+        "python": [
+          "def animation_script_named(name):"
+        ],
+        "pascal": [
+          "function AnimationScriptNamed(const name: String): AnimationScript"
+        ],
+        "csharp": [
+          "public static AnimationScript Animation.AnimationScriptNamed(string name);",
+          "public static AnimationScript SplashKit.AnimationScriptNamed(string name);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,animation_script script,const string &name);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_with_script",
+      "unique_method_name": "animation.assign_with_script",
+      "suffix_name": null,
+      "description": "Setup an `animation` to follow the script from an indicated name.\nThis will switch the animation to use the supplied script.\nIt locates the name of the animation with the animation script and\nsets the `anim` to start at that point in the script.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to assign the `animation` to.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "self": "anim",
+        "suffix": "with_script",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, animation_script script, const string &name)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, script: animation_script, name: &String)"
+        ],
+        "python": [
+          "def assign_animation_with_script(anim, script, name):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; script: AnimationScript; const name: String)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(AnimationScript script, string name);",
+          "public static void SplashKit.AssignAnimation(Animation anim, AnimationScript script, string name);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,animation_script script,const string &name,bool with_sound);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_with_script_and_sound",
+      "unique_method_name": "animation.assign_with_script_and_sound",
+      "suffix_name": null,
+      "description": "Assigns an `animation` to an `animation_script`. This may play a\nsound effect if the animation is set to play a sound effect on its\nfirst frame.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to assign the `animation` to.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "self": "anim",
+        "suffix": "with_script_and_sound",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, animation_script script, const string &name, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, script: animation_script, name: &String, with_sound: bool)"
+        ],
+        "python": [
+          "def assign_animation_with_script_and_sound(anim, script, name, with_sound):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; script: AnimationScript; const name: String; withSound: Boolean)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(AnimationScript script, string name, bool withSound);",
+          "public static void SplashKit.AssignAnimation(Animation anim, AnimationScript script, string name, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,animation_script script,int idx);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_index_with_script",
+      "unique_method_name": "animation.assign_index_with_script",
+      "suffix_name": null,
+      "description": "Assigns an `animation` to an `animation_script`.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to assign the `animation` to.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "idx": {
+          "type": "int",
+          "description": "The index of the `animation` to create.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "self": "anim",
+        "suffix": "index_with_script",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, animation_script script, int idx)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, script: animation_script, idx: i32)"
+        ],
+        "python": [
+          "def assign_animation_index_with_script(anim, script, idx):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; script: AnimationScript; idx: Integer)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(AnimationScript script, int idx);",
+          "public static void SplashKit.AssignAnimation(Animation anim, AnimationScript script, int idx);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,animation_script script,int idx,bool with_sound);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_index_with_script_and_sound",
+      "unique_method_name": "animation.assign_index_with_script_and_sound",
+      "suffix_name": null,
+      "description": "Assigns an `animation` to an `animation_script`. This may play a\nsound effect if the animation is set to play a sound effect on its\nfirst frame.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to assign the `animation` to.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "idx": {
+          "type": "int",
+          "description": "The index of the `animation` to create.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "self": "anim",
+        "suffix": "index_with_script_and_sound",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, animation_script script, int idx, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, script: animation_script, idx: i32, with_sound: bool)"
+        ],
+        "python": [
+          "def assign_animation_index_with_script_and_sound(anim, script, idx, with_sound):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; script: AnimationScript; idx: Integer; withSound: Boolean)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(AnimationScript script, int idx, bool withSound);",
+          "public static void SplashKit.AssignAnimation(Animation anim, AnimationScript script, int idx, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,const string &script_name,const string &name);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_with_script_named",
+      "unique_method_name": "animation.assign_with_script_named",
+      "suffix_name": null,
+      "description": "Assigns an `animation` to an `animation_script`.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "script_name": {
+          "type": "string",
+          "description": "The name of the `animation_script` to assign the `animation` to.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "self": "anim",
+        "suffix": "with_script_named",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, const string &script_name, const string &name)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, script_name: &String, name: &String)"
+        ],
+        "python": [
+          "def assign_animation_with_script_named(anim, script_name, name):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; const scriptName: String; const name: String)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(string scriptName, string name);",
+          "public static void SplashKit.AssignAnimation(Animation anim, string scriptName, string name);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,const string &script_name,const string &name,bool with_sound);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_with_script_named_and_sound",
+      "unique_method_name": "animation.assign_with_script_named_and_sound",
+      "suffix_name": null,
+      "description": "Assigns an `animation` to an `animation_script`. This may play a\nsound effect if the animation is set to play a sound effect on its\nfirst frame.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "script_name": {
+          "type": "string",
+          "description": "The name of the `animation_script` to assign the `animation` to.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the `animation` to be assigned",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "self": "anim",
+        "suffix": "with_script_named_and_sound",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, const string &script_name, const string &name, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, script_name: &String, name: &String, with_sound: bool)"
+        ],
+        "python": [
+          "def assign_animation_with_script_named_and_sound(anim, script_name, name, with_sound):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; const scriptName: String; const name: String; withSound: Boolean)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(string scriptName, string name, bool withSound);",
+          "public static void SplashKit.AssignAnimation(Animation anim, string scriptName, string name, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,int idx);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_index",
+      "unique_method_name": "animation.assign_index",
+      "suffix_name": null,
+      "description": "Setup an `animation` to follow the script from an indicated index.\nThis uses the index from the current animation script and\nsets the supplied animation to start at that point in the script.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "idx": {
+          "type": "int",
+          "description": "The index of the animation to use from its current script.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "suffix": "index",
+        "group": "animations",
+        "static": "animation",
+        "self": "anim"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, int idx)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, idx: i32)"
+        ],
+        "python": [
+          "def assign_animation_index(anim, idx):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; idx: Integer)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(int idx);",
+          "public static void SplashKit.AssignAnimation(Animation anim, int idx);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,int idx,bool with_sound);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_index_with_sound",
+      "unique_method_name": "animation.assign_index_with_sound",
+      "suffix_name": null,
+      "description": "Setup an `animation` to follow the script from an indicated index.\nThis uses the index from the current animation script and\nsets the supplied animation to start at that point in the script.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "idx": {
+          "type": "int",
+          "description": "The index of the animation to use from its current script.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "suffix": "index_with_sound",
+        "group": "animations",
+        "static": "animation",
+        "self": "anim"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, int idx, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, idx: i32, with_sound: bool)"
+        ],
+        "python": [
+          "def assign_animation_index_with_sound(anim, idx, with_sound):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; idx: Integer; withSound: Boolean)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(int idx, bool withSound);",
+          "public static void SplashKit.AssignAnimation(Animation anim, int idx, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,string name);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation",
+      "unique_method_name": "animation.assign",
+      "suffix_name": null,
+      "description": "Setup an `animation` to follow the script from an indicated name.\nThis locates the name of the animation from the current animation script and\nsets the supplied animation to start at that point in the script.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the animation to use from its current script.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "group": "animations",
+        "static": "animation",
+        "self": "anim"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, string name)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, name: String)"
+        ],
+        "python": [
+          "def assign_animation(anim, name):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; name: String)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(string name);",
+          "public static void SplashKit.AssignAnimation(Animation anim, string name);"
+        ]
+      }
+    },
+    {
+      "signature": "void assign_animation(animation anim,string name,bool with_sound);",
+      "name": "assign_animation",
+      "method_name": "assign",
+      "unique_global_name": "assign_animation_with_sound",
+      "unique_method_name": "animation.assign_with_sound",
+      "suffix_name": null,
+      "description": "Setup an `animation` to follow the script from an indicated name.\nThis locates the name of the animation from the current animation script and\nsets the supplied animation to start at that point in the script.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to be assigned.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the animation to use from its current script.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "assign",
+        "suffix": "with_sound",
+        "group": "animations",
+        "static": "animation",
+        "self": "anim"
+      },
+      "signatures": {
+        "cpp": [
+          "void assign_animation(animation anim, string name, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn assign_animation(anim: animation, name: String, with_sound: bool)"
+        ],
+        "python": [
+          "def assign_animation_with_sound(anim, name, with_sound):"
+        ],
+        "pascal": [
+          "procedure AssignAnimation(anim: Animation; name: String; withSound: Boolean)"
+        ],
+        "csharp": [
+          "public void Animation.AssignAnimation(string name, bool withSound);",
+          "public static void SplashKit.AssignAnimation(Animation anim, string name, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "animation create_animation(animation_script script,int idx,bool with_sound);",
+      "name": "create_animation",
+      "method_name": null,
+      "unique_global_name": "create_animation_from_index_with_sound",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Creates an animation from an `animation_script`. This may play a\nsound effect if the animation is set to play a sound effect on its\nfirst frame.",
+      "brief": null,
+      "return": {
+        "type": "animation",
+        "description": "Returns the newly created `animation_script`.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to create the `animation` from.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "idx": {
+          "type": "int",
+          "description": "The index of the `animation` to create.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "from_index_with_sound",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "animation create_animation(animation_script script, int idx, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn create_animation(script: animation_script, idx: i32, with_sound: bool) -> animation"
+        ],
+        "python": [
+          "def create_animation_from_index_with_sound(script, idx, with_sound):"
+        ],
+        "pascal": [
+          "function CreateAnimation(script: AnimationScript; idx: Integer; withSound: Boolean): Animation"
+        ],
+        "csharp": [
+          "public static Animation Animation.CreateAnimation(AnimationScript script, int idx, bool withSound);",
+          "public static Animation SplashKit.CreateAnimation(AnimationScript script, int idx, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "animation create_animation(animation_script script,const string &name);",
+      "name": "create_animation",
+      "method_name": "create_animation",
+      "unique_global_name": "create_animation",
+      "unique_method_name": "animation_script.create_animation",
+      "suffix_name": null,
+      "description": "Creates an animation from an `animation_script`.",
+      "brief": null,
+      "return": {
+        "type": "animation",
+        "description": "Returns the newly created `animation`",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to create the `animation` from",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name for the new `animation`",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation_script",
+        "method": "create_animation",
+        "self": "script",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "animation create_animation(animation_script script, const string &name)"
+        ],
+        "rust": [
+          "pub fn create_animation(script: animation_script, name: &String) -> animation"
+        ],
+        "python": [
+          "def create_animation(script, name):"
+        ],
+        "pascal": [
+          "function CreateAnimation(script: AnimationScript; const name: String): Animation"
+        ],
+        "csharp": [
+          "public Animation AnimationScript.CreateAnimation(string name);",
+          "public static Animation SplashKit.CreateAnimation(AnimationScript script, string name);"
+        ]
+      }
+    },
+    {
+      "signature": "animation create_animation(animation_script script,const string &name,bool with_sound);",
+      "name": "create_animation",
+      "method_name": "create_animation",
+      "unique_global_name": "create_animation_with_sound",
+      "unique_method_name": "animation_script.create_animation_with_sound",
+      "suffix_name": null,
+      "description": "Creates an animation from a `animation_script`. This may play a\nsound effect if the animation is set to play a sound effect on\nits first frame.",
+      "brief": null,
+      "return": {
+        "type": "animation",
+        "description": "Returns the newly created `animation`.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to create the `animation` from",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name for the new `animation`",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation_script",
+        "method": "create_animation",
+        "self": "script",
+        "suffix": "with_sound",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "animation create_animation(animation_script script, const string &name, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn create_animation(script: animation_script, name: &String, with_sound: bool) -> animation"
+        ],
+        "python": [
+          "def create_animation_with_sound(script, name, with_sound):"
+        ],
+        "pascal": [
+          "function CreateAnimation(script: AnimationScript; const name: String; withSound: Boolean): Animation"
+        ],
+        "csharp": [
+          "public Animation AnimationScript.CreateAnimation(string name, bool withSound);",
+          "public static Animation SplashKit.CreateAnimation(AnimationScript script, string name, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "animation create_animation(const string &script_name,const string &name);",
+      "name": "create_animation",
+      "method_name": null,
+      "unique_global_name": "create_animation_from_script_named",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Creates an animation from an `animation_script`'s name. This may\nplay a sound effect if the animation is set to play a sound effect\non its first frame.",
+      "brief": null,
+      "return": {
+        "type": "animation",
+        "description": "Returns the newly created `animation`",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script_name": {
+          "type": "string",
+          "description": "The name of the `animation_script` to create the `animation` from",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name for the new `animation`",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "from_script_named",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "animation create_animation(const string &script_name, const string &name)"
+        ],
+        "rust": [
+          "pub fn create_animation(script_name: &String, name: &String) -> animation"
+        ],
+        "python": [
+          "def create_animation_from_script_named(script_name, name):"
+        ],
+        "pascal": [
+          "function CreateAnimation(const scriptName: String; const name: String): Animation"
+        ],
+        "csharp": [
+          "public static Animation Animation.CreateAnimation(string scriptName, string name);",
+          "public static Animation SplashKit.CreateAnimation(string scriptName, string name);"
+        ]
+      }
+    },
+    {
+      "signature": "animation create_animation(const string &script_name,const string &name,bool with_sound);",
+      "name": "create_animation",
+      "method_name": null,
+      "unique_global_name": "create_animation_from_script_named_with_sound",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Creates an animation from an `animation_script`'s name. This may\nplay a sound effect if the animation is set to play a sound effect\non its first frame.",
+      "brief": null,
+      "return": {
+        "type": "animation",
+        "description": "Returns the newly created `animation`",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script_name": {
+          "type": "string",
+          "description": "The name of the `animation_script` to create the `animation` from",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name for the new `animation`",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "from_script_named_with_sound",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "animation create_animation(const string &script_name, const string &name, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn create_animation(script_name: &String, name: &String, with_sound: bool) -> animation"
+        ],
+        "python": [
+          "def create_animation_from_script_named_with_sound(script_name, name, with_sound):"
+        ],
+        "pascal": [
+          "function CreateAnimation(const scriptName: String; const name: String; withSound: Boolean): Animation"
+        ],
+        "csharp": [
+          "public static Animation Animation.CreateAnimation(string scriptName, string name, bool withSound);",
+          "public static Animation SplashKit.CreateAnimation(string scriptName, string name, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "void free_all_animation_scripts();",
+      "name": "free_all_animation_scripts",
+      "method_name": "free_all",
+      "unique_global_name": "free_all_animation_scripts",
+      "unique_method_name": ".free_all",
+      "suffix_name": null,
+      "description": "Frees all loaded `animation_script`s.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {},
+      "attributes": {
+        "method": "free_all",
+        "static": "animation",
+        "group": "animations"
+      },
+      "signatures": {
+        "cpp": [
+          "void free_all_animation_scripts()"
+        ],
+        "rust": [
+          "pub fn free_all_animation_scripts()"
+        ],
+        "python": [
+          "def free_all_animation_scripts():"
+        ],
+        "pascal": [
+          "procedure FreeAllAnimationScripts()"
+        ],
+        "csharp": [
+          "public static void Animation.FreeAllAnimationScripts();",
+          "public static void SplashKit.FreeAllAnimationScripts();"
+        ]
+      }
+    },
+    {
+      "signature": "void free_animation(animation ani);",
+      "name": "free_animation",
+      "method_name": null,
+      "unique_global_name": "free_animation",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Disposes of the resources used in the animation.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "ani": {
+          "type": "animation",
+          "description": "The `animation` to be disposed of.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "destructor": true,
+        "self": "ani",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void free_animation(animation ani)"
+        ],
+        "rust": [
+          "pub fn free_animation(ani: animation)"
+        ],
+        "python": [
+          "def free_animation(ani):"
+        ],
+        "pascal": [
+          "procedure FreeAnimation(ani: Animation)"
+        ],
+        "csharp": [
+          "public void Animation.FreeAnimation();",
+          "public static void SplashKit.FreeAnimation(Animation ani);"
+        ]
+      }
+    },
+    {
+      "signature": "void free_animation_script(animation_script script_to_free);",
+      "name": "free_animation_script",
+      "method_name": null,
+      "unique_global_name": "free_animation_script",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Frees loaded animation frames data. Use this when you will no\nlonger be using the animation for any purpose, including within\nsprite.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script_to_free": {
+          "type": "animation_script",
+          "description": "The `animation_script` to be freed.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation_script",
+        "destructor": true,
+        "self": "script_to_free",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void free_animation_script(animation_script script_to_free)"
+        ],
+        "rust": [
+          "pub fn free_animation_script(script_to_free: animation_script)"
+        ],
+        "python": [
+          "def free_animation_script(script_to_free):"
+        ],
+        "pascal": [
+          "procedure FreeAnimationScript(scriptToFree: AnimationScript)"
+        ],
+        "csharp": [
+          "public void AnimationScript.FreeAnimationScript();",
+          "public static void SplashKit.FreeAnimationScript(AnimationScript scriptToFree);"
+        ]
+      }
+    },
+    {
+      "signature": "void free_animation_script(const string &name);",
+      "name": "free_animation_script",
+      "method_name": null,
+      "unique_global_name": "free_animation_script_with_name",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Frees loaded `animation_script` data. Use this when you will no\nlonger be using the animation for any purpose, including within\nsprite.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "name": {
+          "type": "string",
+          "description": "The name of the `animation_script` to be freed.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "static": "animation",
+        "suffix": "with_name",
+        "group": "animations"
+      },
+      "signatures": {
+        "cpp": [
+          "void free_animation_script(const string &name)"
+        ],
+        "rust": [
+          "pub fn free_animation_script(name: &String)"
+        ],
+        "python": [
+          "def free_animation_script_with_name(name):"
+        ],
+        "pascal": [
+          "procedure FreeAnimationScript(const name: String)"
+        ],
+        "csharp": [
+          "public static void Animation.FreeAnimationScript(string name);",
+          "public static void SplashKit.FreeAnimationScript(string name);"
+        ]
+      }
+    },
+    {
+      "signature": "bool has_animation_named(animation_script script,const string &name);",
+      "name": "has_animation_named",
+      "method_name": null,
+      "unique_global_name": "has_animation_named",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Returns whether an `animation_script` has been loaded with the\ngiven name.",
+      "brief": null,
+      "return": {
+        "type": "bool",
+        "description": "Returns a `bool` that denotes whether the `animation_script` has been loaded.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "script": {
+          "type": "animation_script",
+          "description": "The `animation_script` to check.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the `animation_script` to look for.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation_script",
+        "self": "script",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "bool has_animation_named(animation_script script, const string &name)"
+        ],
+        "rust": [
+          "pub fn has_animation_named(script: animation_script, name: &String) -> bool"
+        ],
+        "python": [
+          "def has_animation_named(script, name):"
+        ],
+        "pascal": [
+          "function HasAnimationNamed(script: AnimationScript; const name: String): Boolean"
+        ],
+        "csharp": [
+          "public bool AnimationScript.HasAnimationNamed(string name);",
+          "public static bool SplashKit.HasAnimationNamed(AnimationScript script, string name);"
+        ]
+      }
+    },
+    {
+      "signature": "bool has_animation_script(const string &name);",
+      "name": "has_animation_script",
+      "method_name": null,
+      "unique_global_name": "has_animation_script",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Determines if SplashKit has animation frames loaded for the\nsupplied name. This checks against all loaded animation frames,\nthose loaded without a name are assigned the filename as a default.",
+      "brief": null,
+      "return": {
+        "type": "bool",
+        "description": "Returns the `bool` that denotes if the animation has the `animation_script`",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "name": {
+          "type": "string",
+          "description": "The name of the animation script to look for.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "static": "animation",
+        "group": "animations"
+      },
+      "signatures": {
+        "cpp": [
+          "bool has_animation_script(const string &name)"
+        ],
+        "rust": [
+          "pub fn has_animation_script(name: &String) -> bool"
+        ],
+        "python": [
+          "def has_animation_script(name):"
+        ],
+        "pascal": [
+          "function HasAnimationScript(const name: String): Boolean"
+        ],
+        "csharp": [
+          "public static bool Animation.HasAnimationScript(string name);",
+          "public static bool SplashKit.HasAnimationScript(string name);"
+        ]
+      }
+    },
+    {
+      "signature": "animation_script load_animation_script(const string &name,const string &filename);",
+      "name": "load_animation_script",
+      "method_name": null,
+      "unique_global_name": "load_animation_script",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Load animation details from an animation frames file.",
+      "brief": null,
+      "return": {
+        "type": "animation_script",
+        "description": "Returns the newly loaded `animation_script`.",
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "name": {
+          "type": "string",
+          "description": "The name of the `animation_script`.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "filename": {
+          "type": "string",
+          "description": "The file to load the `animation_script` from.",
+          "is_pointer": false,
+          "is_const": true,
+          "is_reference": true,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation_script",
+        "constructor": true,
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "animation_script load_animation_script(const string &name, const string &filename)"
+        ],
+        "rust": [
+          "pub fn load_animation_script(name: &String, filename: &String) -> animation_script"
+        ],
+        "python": [
+          "def load_animation_script(name, filename):"
+        ],
+        "pascal": [
+          "function LoadAnimationScript(const name: String; const filename: String): AnimationScript"
+        ],
+        "csharp": [
+          "public static AnimationScript SplashKit.LoadAnimationScript(string name, string filename);",
+          "public AnimationScript(string name, string filename);"
+        ]
+      }
+    },
+    {
+      "signature": "void restart_animation(animation anim);",
+      "name": "restart_animation",
+      "method_name": "restart",
+      "unique_global_name": "restart_animation",
+      "unique_method_name": "animation.restart",
+      "suffix_name": null,
+      "description": "Restarts an `animation`.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to restart.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "restart",
+        "self": "anim",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void restart_animation(animation anim)"
+        ],
+        "rust": [
+          "pub fn restart_animation(anim: animation)"
+        ],
+        "python": [
+          "def restart_animation(anim):"
+        ],
+        "pascal": [
+          "procedure RestartAnimation(anim: Animation)"
+        ],
+        "csharp": [
+          "public void Animation.RestartAnimation();",
+          "public static void SplashKit.RestartAnimation(Animation anim);"
+        ]
+      }
+    },
+    {
+      "signature": "void restart_animation(animation anim,bool with_sound);",
+      "name": "restart_animation",
+      "method_name": "restart",
+      "unique_global_name": "restart_animation_with_sound",
+      "unique_method_name": "animation.restart_with_sound",
+      "suffix_name": null,
+      "description": "Restarts an `animation`. This may play a sound effect if the first\nframe triggers a sound.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to restart.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "restart",
+        "self": "anim",
+        "suffix": "with_sound",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void restart_animation(animation anim, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn restart_animation(anim: animation, with_sound: bool)"
+        ],
+        "python": [
+          "def restart_animation_with_sound(anim, with_sound):"
+        ],
+        "pascal": [
+          "procedure RestartAnimation(anim: Animation; withSound: Boolean)"
+        ],
+        "csharp": [
+          "public void Animation.RestartAnimation(bool withSound);",
+          "public static void SplashKit.RestartAnimation(Animation anim, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "void update_animation(animation anim,float pct,bool with_sound);",
+      "name": "update_animation",
+      "method_name": null,
+      "unique_global_name": "update_animation_percent_with_sound",
+      "unique_method_name": null,
+      "suffix_name": null,
+      "description": "Updates the animation, updating the time spent and possibly moving to\na new frame in the animation. This may play a sound effect if the new\nframe triggers a sound.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to update.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "pct": {
+          "type": "float",
+          "description": "The amount that the frame time will be incremented",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "with_sound": {
+          "type": "bool",
+          "description": "Denotes whether the `animation` should play audio.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "suffix": "percent_with_sound",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void update_animation(animation anim, float pct, bool with_sound)"
+        ],
+        "rust": [
+          "pub fn update_animation(anim: animation, pct: f32, with_sound: bool)"
+        ],
+        "python": [
+          "def update_animation_percent_with_sound(anim, pct, with_sound):"
+        ],
+        "pascal": [
+          "procedure UpdateAnimation(anim: Animation; pct: Single; withSound: Boolean)"
+        ],
+        "csharp": [
+          "public static void Animation.UpdateAnimation(Animation anim, float pct, bool withSound);",
+          "public static void SplashKit.UpdateAnimation(Animation anim, float pct, bool withSound);"
+        ]
+      }
+    },
+    {
+      "signature": "void update_animation(animation anim);",
+      "name": "update_animation",
+      "method_name": "update",
+      "unique_global_name": "update_animation",
+      "unique_method_name": "animation.update",
+      "suffix_name": null,
+      "description": "Updates the animation, updating the time spent and possibly moving to\na new frame in the animation. This may play a sound effect if the new\nframe triggers a sound.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to update.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "update",
+        "self": "anim",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void update_animation(animation anim)"
+        ],
+        "rust": [
+          "pub fn update_animation(anim: animation)"
+        ],
+        "python": [
+          "def update_animation(anim):"
+        ],
+        "pascal": [
+          "procedure UpdateAnimation(anim: Animation)"
+        ],
+        "csharp": [
+          "public void Animation.UpdateAnimation();",
+          "public static void SplashKit.UpdateAnimation(Animation anim);"
+        ]
+      }
+    },
+    {
+      "signature": "void update_animation(animation anim,float pct);",
+      "name": "update_animation",
+      "method_name": "update",
+      "unique_global_name": "update_animation_percent",
+      "unique_method_name": "animation.update_percent",
+      "suffix_name": null,
+      "description": "Updates the animation, updating the time spent and possibly moving to\na new frame in the animation. This may play a sound effect if the new\nframe triggers a sound.",
+      "brief": null,
+      "return": {
+        "type": "void",
+        "description": null,
+        "is_pointer": false,
+        "is_reference": false,
+        "is_vector": false,
+        "type_parameter": null
+      },
+      "parameters": {
+        "anim": {
+          "type": "animation",
+          "description": "The `animation` to update.",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "pct": {
+          "type": "float",
+          "description": "The amount that the frame time will be incremented",
+          "is_pointer": false,
+          "is_const": false,
+          "is_reference": false,
+          "is_array": false,
+          "array_dimension_sizes": [],
+          "is_vector": false,
+          "type_parameter": null
+        }
+      },
+      "attributes": {
+        "class": "animation",
+        "method": "update",
+        "self": "anim",
+        "suffix": "percent",
+        "group": "animations",
+        "static": "animation"
+      },
+      "signatures": {
+        "cpp": [
+          "void update_animation(animation anim, float pct)"
+        ],
+        "rust": [
+          "pub fn update_animation(anim: animation, pct: f32)"
+        ],
+        "python": [
+          "def update_animation_percent(anim, pct):"
+        ],
+        "pascal": [
+          "procedure UpdateAnimation(anim: Animation; pct: Single)"
+        ],
+        "csharp": [
+          "public void Animation.UpdateAnimation(float pct);",
+          "public static void SplashKit.UpdateAnimation(Animation anim, float pct);"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "example": "//\n//  test_terminal.cpp\n//  splashkit\n//\n//  Created by Andrew Cain on 8/10/16.\n//  Copyright © 2016 Andrew Cain. All rights reserved.\n//\n\n#include \"terminal.h\"\n#include \"utils.h\"\n#include <iostream>\n\nusing namespace std;\nusing namespace splashkit_lib;\n\nvoid test_simple_terminal()\n{\n    write_line(\"Hello World!\" + to_string(10));\n    write(\"Hello\");\n    write(\" \");\n    write(\"World!\");\n    write_line();\n    write_line(\"Test character output\");\n    write('a');\n    write_line();\n    write_line('c');\n    delay(1000);\n}\n\nvoid run_terminal_test()\n{\n    test_simple_terminal();\n}",
+  "tests": [
+    {
+      "description": "Get a single character input by the user.",
+      "name": "read_char",
+      "return_description": "The character typed by the user.",
+      "signature": "char read_char();",
+      "unique_global_name": "read_char"
+    },
+    {
+      "description": "Read a line of text from the terminal. The user will see the text as\nthey type it.",
+      "name": "read_line",
+      "return_description": "The text entered by the user.",
+      "signature": "string read_line();",
+      "unique_global_name": "read_line"
+    },
+    {
+      "description": "Checks if there is data waiting to be read by read line or read char.",
+      "name": "terminal_has_input",
+      "return_description": "true if there is data waiting to be read.",
+      "signature": "bool terminal_has_input();",
+      "unique_global_name": "terminal_has_input"
+    },
+    {
+      "description": "Write the passed in data to the terminal.",
+      "name": "write",
+      "return_description": null,
+      "signature": "void write(char data);",
+      "unique_global_name": "write_char"
+    },
+    {
+      "description": "Write the passed in data to the terminal.",
+      "name": "write",
+      "return_description": null,
+      "signature": "void write(double data);",
+      "unique_global_name": "write_double"
+    },
+    {
+      "description": "Write the passed in data to the terminal.",
+      "name": "write",
+      "return_description": null,
+      "signature": "void write(int data);",
+      "unique_global_name": "write_int"
+    },
+    {
+      "description": "Write the supplied text to the Terminal.",
+      "name": "write",
+      "return_description": null,
+      "signature": "void write(string text);",
+      "unique_global_name": "write"
+    },
+    {
+      "description": "Write the passed in data, then move to the next line/row of the terminal.",
+      "name": "write_line",
+      "return_description": null,
+      "signature": "void write_line(char data);",
+      "unique_global_name": "write_line_char"
+    },
+    {
+      "description": "Move to the next line/row of the terminal.",
+      "name": "write_line",
+      "return_description": null,
+      "signature": "void write_line();",
+      "unique_global_name": "write_line_empty"
+    },
+    {
+      "description": "Write the passed in data, then move to the next line/row of the terminal.",
+      "name": "write_line",
+      "return_description": null,
+      "signature": "void write_line(double data);",
+      "unique_global_name": "write_line_double"
+    },
+    {
+      "description": "Write the passed in data, then move to the next line/row of the terminal.",
+      "name": "write_line",
+      "return_description": null,
+      "signature": "void write_line(int data);",
+      "unique_global_name": "write_line_int"
+    },
+    {
+      "description": "Write the passed in text, then move to the next line/row of the terminal.",
+      "name": "write_line",
+      "return_description": null,
+      "signature": "void write_line(string line);",
+      "unique_global_name": "write_line"
+    }
+  ]
+}

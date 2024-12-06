@@ -1,0 +1,1275 @@
+{
+  "group": "utilities",
+  "tests": [
+    {
+      "name": "contains",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "contains",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "SplashKit is awesome"
+            },
+            {
+              "value_type": "primitive",
+              "value": "awesome"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "contains",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "SplashKit is awesome"
+            },
+            {
+              "value_type": "primitive",
+              "value": "unreal"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "convert_to_double",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "convert_to_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "123.456"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 123.456
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "convert_to_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "-123.456"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": -123.456
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "convert_to_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "invalid"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "convert_to_integer",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "convert_to_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "123"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 123
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "convert_to_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "-456"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": -456
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "convert_to_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "123.456"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 123
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "convert_to_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "abc"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "throws",
+            "value1": {
+              "value_type": "function",
+              "function_name": "convert_to_integer",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "abc"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "index_of",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "index_of",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "splashkit library"
+            },
+            {
+              "value_type": "primitive",
+              "value": "library"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 10
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "index_of",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "splashkit library"
+            },
+            {
+              "value_type": "primitive",
+              "value": "unreal"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": -1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "is_double",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "is_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "123.456"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "123"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "-123.456"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "SplashKit"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": ""
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "is_integer",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "is_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "123"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "123.456"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "-123"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "SplashKit"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_integer",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": ""
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "is_number",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "is_number",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "123.456"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "is_number",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "abc"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "length_of",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "length_of",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "SplashKit"
+            }
+          ],
+          "store_result": "test_length"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_length"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 9
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "length_of",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": ""
+            }
+          ],
+          "store_result": "test_length_empty"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_length_empty"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "replace_all",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "replace_all",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "hello world"
+            },
+            {
+              "value_type": "primitive",
+              "value": "world"
+            },
+            {
+              "value_type": "primitive",
+              "value": "SplashKit"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "hello SplashKit"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "replace_all",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "aaaa"
+            },
+            {
+              "value_type": "primitive",
+              "value": "a"
+            },
+            {
+              "value_type": "primitive",
+              "value": "b"
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "bbbb"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "replace_all",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test"
+            },
+            {
+              "value_type": "primitive",
+              "value": "t"
+            },
+            {
+              "value_type": "primitive",
+              "value": ""
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "es"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "split",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "split",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "splashkit library"
+            },
+            {
+              "value_type": "primitive",
+              "value": " "
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "length_of",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_result"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 2
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "index_of",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_result",
+                  "index": 0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "splashkit"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "index_of",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_result",
+                  "index": 1
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "library"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "to_lowercase",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "to_lowercase",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "SPLASHKIT"
+            }
+          ],
+          "store_result": "test_lowercase"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_lowercase"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "splashkit"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "to_lowercase",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": ""
+            }
+          ],
+          "store_result": "test_empty"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_empty"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "to_uppercase",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "to_uppercase",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "hello"
+            }
+          ],
+          "store_result": "test_uppercase"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_uppercase"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "HELLO"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "trim",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "trim",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "  Hello, World!  "
+            }
+          ],
+          "store_result": "test_trimmed"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_trimmed"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "Hello, World!"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "trim",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": " \t\n  "
+            }
+          ],
+          "store_result": "test_empty_trimmed"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_empty_trimmed"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "rnd_range",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "rnd_range",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1
+            },
+            {
+              "value_type": "primitive",
+              "value": 10
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 1
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "rnd",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "rnd",
+          "args": [],
+          "store_result": "test_random"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_random"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "less_than",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_random"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 1.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "rnd_int",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "rnd_int",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10
+            }
+          ],
+          "store_result": "test_result"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_result"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "current_ticks",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "current_ticks",
+          "args": [],
+          "store_result": "test_ticks"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_ticks"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "delay",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "current_ticks",
+          "args": [],
+          "store_result": "test_start_time"
+        },
+        {
+          "step_type": "function",
+          "function_name": "delay",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1000
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "current_ticks",
+          "args": [],
+          "store_result": "test_end_time"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "function",
+              "function_name": "current_ticks",
+              "args": []
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_start_time"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "function",
+              "function_name": "current_ticks",
+              "args": []
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_start_time"
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 1100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "display_dialog",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "load_font",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_font"
+            },
+            {
+              "value_type": "primitive",
+              "value": "path/to/font.ttf"
+            }
+          ],
+          "store_result": "test_font"
+        },
+        {
+          "step_type": "function",
+          "function_name": "display_dialog",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Title"
+            },
+            {
+              "value_type": "primitive",
+              "value": "This is a test message."
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_font"
+            },
+            {
+              "value_type": "primitive",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_font",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_font"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "file_as_string",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "file_as_string",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_file.txt"
+            },
+            {
+              "value_type": "enum",
+              "enum_type": "resource_kind",
+              "value": "BUNDLE_RESOURCE"
+            }
+          ],
+          "store_result": "test_file_content"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_file_content"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

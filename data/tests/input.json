@@ -1,0 +1,3883 @@
+{
+  "group": "input",
+  "tests": [
+    {
+      "name": "process_events",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_typed",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_mouse_click",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "MouseButton",
+              "value": "Left"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_clicked",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "MouseButton",
+                  "value": "Left"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "quit_requested",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "quit_requested",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "Escape"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "quit_requested",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reset_quit",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "quit_requested",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "reset_quit",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "quit_requested",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "any_key_pressed",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "any_key_pressed",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "any_key_pressed",
+              "args": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "deregister_callback_on_key_down",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "register_callback_on_key_down",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_down",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_down",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_down",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "B"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "B"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deregister_callback_on_key_typed",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "register_callback_on_key_typed",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_typed",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_typed",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_typed",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_typed",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "B"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_typed",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "B"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "deregister_callback_on_key_up",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "register_callback_on_key_up",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_up",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_up",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_up",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_up",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "B"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_up",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "B"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "key_down",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_release",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "key_name",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "key_name",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ],
+          "store_result": "test_key_name1"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_key_name1"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "key_name",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "Enter"
+            }
+          ],
+          "store_result": "test_key_name2"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_key_name2"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "Enter"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "key_released",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_released",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_release",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_released",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "key_typed",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_typed",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_typed",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "key_up",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_up",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_up",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_release",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_up",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "register_callback_on_key_down",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "register_callback_on_key_down",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_down",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_down",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_down",
+              "args": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "register_callback_on_key_typed",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "register_callback_on_key_typed",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_typed",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_typed",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "KeyCode",
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_typed",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_typed",
+              "args": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "register_callback_on_key_up",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "register_callback_on_key_up",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_up",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_release",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "_key_up"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_up",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "_on_key_up",
+              "args": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hide_mouse",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "hide_mouse",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mouse_clicked",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_clicked",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "MouseButton",
+                  "value": "Left"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_mouse_click",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "MouseButton",
+              "value": "Left"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_clicked",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "MouseButton",
+                  "value": "Left"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "mouse_down",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "MouseButton",
+                  "value": "Left"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_mouse_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "MouseButton",
+              "value": "Left"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "MouseButton",
+                  "value": "Left"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_mouse_release",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "MouseButton",
+              "value": "Left"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "MouseButton",
+                  "value": "Left"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "mouse_movement",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_mouse",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "mouse_movement",
+          "args": [],
+          "store_result": "test_movement"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_movement",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_movement",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 100.0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mouse_position",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_mouse",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 400.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 300.0
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "mouse_position",
+          "args": [],
+          "store_result": "test_position"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_position",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 400.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_position",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 300.0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mouse_position_vector",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_mouse",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 400.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 300.0
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "mouse_position_vector",
+          "args": [],
+          "store_result": "test_mouse_position"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_mouse_position",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 400.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_mouse_position",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 300.0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mouse_shown",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "show_mouse",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "hide_mouse",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mouse_up",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_up",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "MouseButton",
+                  "value": "Left"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_mouse_click",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "MouseButton",
+              "value": "Left"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_up",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "MouseButton",
+                  "value": "Left"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "mouse_wheel_scroll",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_wheel_scroll",
+              "args": []
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "vector_from_angle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0.0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_mouse_wheel_scroll",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 5.0
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_wheel_scroll",
+              "args": []
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "vector_from_angle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 5.0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mouse_x",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_mouse",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 400.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 300.0
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_x",
+              "args": []
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 399.0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 401.0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mouse_y",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_mouse",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 400.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 300.0
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_y",
+              "args": []
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 300.0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "move_mouse",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_mouse",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 400.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 300.0
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_x",
+              "args": []
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 399.0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 401.0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "range",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_y",
+              "args": []
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 299.0
+            },
+            "value3": {
+              "value_type": "primitive",
+              "value": 301.0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "move_mouse_to_point",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_mouse_to_point",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 400.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 300.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_position",
+              "args": []
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 400.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 300.0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "show_mouse",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "hide_mouse",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "show_mouse",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "show_mouse_with_boolean",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "show_mouse_with_boolean",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "show_mouse_with_boolean",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": false
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "draw_collected_text",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "load_font",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_font"
+            },
+            {
+              "value_type": "primitive",
+              "value": "path/to/font.ttf"
+            }
+          ],
+          "store_result": "test_font"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "rectangle_from",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "draw_collected_text",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "color_black",
+              "args": []
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_font"
+            },
+            {
+              "value_type": "primitive",
+              "value": 18
+            },
+            {
+              "value_type": "function",
+              "function_name": "option_defaults",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "refresh_screen",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "get_pixel",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 105
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 115
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "color_black",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_font",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_font"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "end_reading_text",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "rectangle_from",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 30.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "end_reading_text_in_window",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 30.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reading_text",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "rectangle_from",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 30.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reading_text_in_window",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 30.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            },
+            { "value_type": "variable", "variable_name": "test_rectangle" }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "start_reading_text",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 30.0
+            }
+          ],
+          "store_result": "test_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_rect"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "start_reading_text_with_initial_text",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 30.0
+            }
+          ],
+          "store_result": "test_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text_with_initial_text",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_rect"
+            },
+            {
+              "value_type": "primitive",
+              "value": "Initial Text"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "start_reading_text_in_window",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 30.0
+            }
+          ],
+          "store_result": "test_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rect"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "start_reading_text_in_window_with_initial_text",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 30.0
+            }
+          ],
+          "store_result": "test_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text_in_window_with_initial_text",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rect"
+            },
+            {
+              "value_type": "primitive",
+              "value": "Initial Text"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "text_entry_cancelled",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "rectangle_from",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 30.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "text_entry_cancelled",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "Escape"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "text_entry_cancelled",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "text_entry_cancelled_in_window",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 30.0
+            }
+          ],
+          "store_result": "test_rect"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rect"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "text_entry_cancelled_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "Escape"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "text_entry_cancelled_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "text_input",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "rectangle_from",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 30.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "text_input",
+              "args": []
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "text_input_in_window",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "rectangle_from",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 30.0
+            }
+          ],
+          "store_result": "test_rectangle"
+        },
+        {
+          "step_type": "function",
+          "function_name": "start_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_rectangle"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "simulate_key_press",
+          "args": [
+            {
+              "value_type": "enum",
+              "enum_type": "KeyCode",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "text_input_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "end_reading_text_in_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

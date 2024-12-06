@@ -1,0 +1,967 @@
+{
+  "example": "//\n//  test_sprites.cpp\n//  splashkit\n//\n//  Created by Andrew Cain on 25/08/2016.\n//  Copyright © 2016 Andrew Cain. All rights reserved.\n//\n\n#include \"collisions.h\"\n#include \"geometry.h\"\n#include \"graphics.h\"\n#include \"images.h\"\n#include \"input.h\"\n#include \"sprites.h\"\n#include \"window_manager.h\"\n\nusing namespace splashkit_lib;\n\nvoid run_sprite_test()\n{\n    sprite sprt, s2;\n    triangle tri, init_tri;\n    triangle tri_b, init_tri_b;\n    rectangle r;\n    quad q;\n\n    open_window(\"Sprite Rotation\", 600, 600);\n    \n    hide_mouse();\n\n    sprt = create_sprite(\"rocket_sprt.png\");\n    sprite_set_move_from_anchor_point(sprt, true);\n    sprite_set_x(sprt, 300);\n    sprite_set_y(sprt, 300);\n\n    s2 = create_sprite(bitmap_named(\"rocket_sprt.png\"));\n    sprite_set_move_from_anchor_point(s2, true);\n    sprite_set_x(s2, 100);\n    sprite_set_y(s2, 100);\n\n    r = rectangle_from(400, 100, 100, 50);\n    q = quad_from(r);\n    apply_matrix(matrix_multiply(translation_matrix(0, 50), rotation_matrix(45)), q);\n\n    init_tri = triangle_from(0, 0, bitmap_width(bitmap_named(\"rocket_sprt.png\")), bitmap_height(bitmap_named(\"rocket_sprt.png\")), 0, bitmap_height(bitmap_named(\"rocket_sprt.png\")));\n    init_tri_b = triangle_from(bitmap_width(bitmap_named(\"rocket_sprt.png\")), 0, bitmap_width(bitmap_named(\"rocket_sprt.png\")), bitmap_height(bitmap_named(\"rocket_sprt.png\")), 0, 0);\n\n    while ( not quit_requested() )\n    {\n        process_events();\n\n        clear_screen(COLOR_WHITE);\n\n        if ( key_down(LEFT_KEY) )\n            sprite_set_rotation(sprt, sprite_rotation(sprt) - 5);\n\n        if ( key_down(RIGHT_KEY) )\n            sprite_set_rotation(sprt, sprite_rotation(sprt) + 5);\n\n        if ( key_down(LEFT_SHIFT_KEY) or key_down(RIGHT_SHIFT_KEY) )\n        {\n            if ( key_down(UP_KEY) )\n                sprite_set_scale(sprt, sprite_scale(sprt) + 0.1);\n\n            if ( key_down(DOWN_KEY) )\n                sprite_set_scale(sprt, sprite_scale(sprt) - 0.1);\n        }\n        else\n        {\n            if ( key_down(UP_KEY) )\n                sprite_set_dy(sprt, sprite_dy(sprt) - 0.1);\n\n            if ( key_down(DOWN_KEY) )\n                sprite_set_dy(sprt, sprite_dy(sprt) + 0.1);\n        }\n\n        if ( key_typed(NUM_0_KEY) ) sprite_set_rotation(sprt, 0);\n        if ( key_typed(NUM_9_KEY) ) sprite_set_rotation(sprt, 45);\n\n        tri = init_tri;\n        tri_b = init_tri_b;\n        \n        apply_matrix(sprite_location_matrix(sprt), tri);\n        apply_matrix(sprite_location_matrix(sprt), tri_b);\n        \n        fill_triangle(COLOR_GREEN, tri);\n        fill_triangle(COLOR_GREEN, tri_b);\n\n        tri = init_tri;\n        tri_b = init_tri_b;\n        apply_matrix(sprite_location_matrix(s2), tri);\n        apply_matrix(sprite_location_matrix(s2), tri_b);\n        \n        fill_triangle(COLOR_BLUE, tri);\n        fill_triangle(COLOR_BLUE, tri_b);\n        // FillQuad(RGBAColor(0,0,255,62), q);\n\n        draw_sprite(sprt);\n        draw_sprite(s2);\n        \n        if (sprite_rectangle_collision(sprt, r))\n\t\t{\n            draw_rectangle(COLOR_RED, r);\n\t\t}\n        else\n\t\t{\n            draw_rectangle(COLOR_PURPLE, r);\n\t\t}\n\n        draw_bitmap(\"ufo.png\", 400, 300);\n\n        if (sprite_bitmap_collision(sprt, bitmap_named(\"ufo.png\"), 400, 300))\n\t\t{\n            draw_rectangle(COLOR_PURPLE, 400, 300, bitmap_width(bitmap_named(\"ufo.png\")), bitmap_height(bitmap_named(\"ufo.png\")));\n\t\t}\n\n        if (sprite_at(sprt, mouse_position()))\n\t\t{\n            draw_circle(COLOR_RED, sprite_collision_circle(sprt));\n            draw_circle(COLOR_RED, mouse_x(), mouse_y(), 1);\n\t\t}\n        else\n        {\n            draw_circle(COLOR_PLUM, mouse_x(), mouse_y(), 1);\n            draw_circle(COLOR_GREEN, sprite_collision_circle(sprt));\n        }\n\n        update_sprite(sprt);\n\n        if (sprite_collision(sprt, s2))\n\t\t{\n            draw_circle(COLOR_RED, sprite_collision_circle(s2));\n\t\t}\n\n        draw_rectangle(COLOR_GREEN, sprite_collision_rectangle(sprt));\n\n        draw_line(COLOR_GREEN, line_from(center_point(sprt), matrix_multiply(rotation_matrix(sprite_rotation(sprt)), vector_multiply(sprite_velocity(sprt), 30.0))));\n\n        refresh_screen(60);\n    }\n    \n    show_mouse();\n    \n    close_all_windows();\n}",
+  "resources": {
+    "images": ["rocket_sprt.png", "ufo.png"]
+  },
+  "tests": [
+    {
+      "description": "Call the supplied function for all sprites in the current pack.",
+      "name": "call_for_all_sprites",
+      "return_description": null,
+      "signature": "void call_for_all_sprites(sprite_float_function *fn,float val);",
+      "unique_global_name": "call_for_all_sprites_with_value"
+    },
+    {
+      "description": "Call the supplied function for all sprites in the current pack.",
+      "name": "call_for_all_sprites",
+      "return_description": null,
+      "signature": "void call_for_all_sprites(sprite_function *fn);",
+      "unique_global_name": "call_for_all_sprites"
+    },
+    {
+      "description": "Register a procedure to be called when an events occur on any sprite.",
+      "name": "call_on_sprite_event",
+      "return_description": null,
+      "signature": "void call_on_sprite_event(sprite_event_handler *handler);",
+      "unique_global_name": "call_on_sprite_event"
+    },
+    {
+      "description": "Returns the center point of the passed in sprite. This is based on the sprite's\nPosition, Width and Height.",
+      "name": "center_point",
+      "return_description": "The center point of the sprite",
+      "signature": "point_2d center_point(sprite s);",
+      "unique_global_name": "center_point"
+    },
+    {
+      "description": "Creates a sprite for the passed in bitmap image. The sprite will use the\ncell information within the bitmap if it is animated at a later stage.\n\nThis version of create_sprite will initialise the sprite to use\npixel level collisions, no animations, and have one layer named 'layer1'.\nThis version of the constructor will assign a default name to the sprite\nfor resource management purposes.",
+      "name": "create_sprite",
+      "return_description": "The new sprite with image.",
+      "signature": "sprite create_sprite(bitmap layer);",
+      "unique_global_name": "create_sprite"
+    },
+    {
+      "description": "Creates a sprite for the passed in bitmap image. The sprite will use the\ncell information within the bitmap if it is animated at a later stage.\nThis version of `create_sprite` will initialise the sprite to use\npixel level collisions, the specified animation template, the layer have\nname 'layer1'.\n\nThis version of the constructor will assign a default name to the sprite\nfor resource management purposes.",
+      "name": "create_sprite",
+      "return_description": "The new sprite with image and animation script.",
+      "signature": "sprite create_sprite(bitmap layer,animation_script ani);",
+      "unique_global_name": "create_sprite_with_animation"
+    },
+    {
+      "description": "Creates a sprite for the passed in bitmap image. The sprite will use the\ncell information within the bitmap if it is animated at a later stage.\n\nThis version of create_sprite will initialise the sprite to use\npixel level collisions, no animations, and have one layer named 'layer1'.\nThis version of the constructor will assign a default name to the sprite\nfor resource management purposes.",
+      "name": "create_sprite",
+      "return_description": "The new sprite with image.",
+      "signature": "sprite create_sprite(const string &bitmap_name);",
+      "unique_global_name": "create_sprite_with_bitmap_named"
+    },
+    {
+      "description": "Creates a sprite for the passed in bitmap image. The sprite will use the\ncell information within the sprite if it is animated at a later stage.\nThis version of create_sprite will initialise the sprite to use pixel level\ncollisions, no animation, the layer have name 'layer1'.",
+      "name": "create_sprite",
+      "return_description": "The new sprite with image and name.",
+      "signature": "sprite create_sprite(const string &name,bitmap layer);",
+      "unique_global_name": "create_sprite_named"
+    },
+    {
+      "description": "Creates a sprite for the passed in bitmap image. The sprite will use the cell\ninformation within the sprite if it is animated at a later stage. This\nversion of create_sprite will initialise the sprite to use pixel level\ncollisions, the specified animation template, the layer have name 'layer1'.",
+      "name": "create_sprite",
+      "return_description": "The new sprite with image, animation, and name.",
+      "signature": "sprite create_sprite(const string &name,bitmap layer,animation_script ani);",
+      "unique_global_name": "create_sprite_named_with_animation"
+    },
+    {
+      "description": "Creates a sprite. The bitmap_name is used to indicate the bitmap the sprite\nwill use, and the animation_name is used to indicate which animation_script\nto use.",
+      "name": "create_sprite",
+      "return_description": "The new sprite with the image and animation.",
+      "signature": "sprite create_sprite(const string &bitmap_name,const string &animation_name);",
+      "unique_global_name": "create_sprite_with_bitmap_and_animation_named"
+    },
+    {
+      "description": "Create a new sprite_pack with a given name. This pack can then be\nselected and used to control which sprites are drawn/updated in\nthe calls to draw_all_sprites and update_all_sprites.",
+      "name": "create_sprite_pack",
+      "return_description": null,
+      "signature": "void create_sprite_pack(const string &name);",
+      "unique_global_name": "create_sprite_pack"
+    },
+    {
+      "description": "Returns the name of the currently selected sprite_pack.",
+      "name": "current_sprite_pack",
+      "return_description": "The name of the current sprite pack.",
+      "signature": "string current_sprite_pack();",
+      "unique_global_name": "current_sprite_pack"
+    },
+    {
+      "description": "draws all of the sprites in the current sprite pack. Packs can be\nswitched to select between different sets of sprites.",
+      "name": "draw_all_sprites",
+      "return_description": null,
+      "signature": "void draw_all_sprites();",
+      "unique_global_name": "draw_all_sprites"
+    },
+    {
+      "description": "Draws the sprite at its position in the game offset by a given amount. Only\nuse this method when you want to draw the sprite displaced from its location\nin your game. Otherwise you should change the sprite's location and then\nuse the standard ''draw_sprite'' routine.",
+      "name": "draw_sprite",
+      "return_description": null,
+      "signature": "void draw_sprite(sprite s,const vector_2d &offset);",
+      "unique_global_name": "draw_sprite_offset_by"
+    },
+    {
+      "description": "Draws the sprite at its location in the world. This is affected by the\nposition of the camera and the sprites current location.\n\nThis is the standard routine for drawing sprites to the screen and should be\nused in most cases.",
+      "name": "draw_sprite",
+      "return_description": null,
+      "signature": "void draw_sprite(sprite s);",
+      "unique_global_name": "draw_sprite"
+    },
+    {
+      "description": "Draws the sprite at its position in the game offset by a given amount. Only\nuse this method when you want to draw the sprite displaced from its location\nin your game. Otherwise you should change the sprite's location and then\nuse the standard `draw_sprite` routine.",
+      "name": "draw_sprite",
+      "return_description": null,
+      "signature": "void draw_sprite(sprite s,double x_offset,double y_offset);",
+      "unique_global_name": "draw_sprite_offset_x_y"
+    },
+    {
+      "description": "Releases all of the sprites that have been loaded.",
+      "name": "free_all_sprites",
+      "return_description": null,
+      "signature": "void free_all_sprites();",
+      "unique_global_name": "free_all_sprites"
+    },
+    {
+      "description": "Free the resources associated with a sprite.",
+      "name": "free_sprite",
+      "return_description": null,
+      "signature": "void free_sprite(sprite s);",
+      "unique_global_name": "free_sprite"
+    },
+    {
+      "description": "Frees the sprite pack and all of its sprites.",
+      "name": "free_sprite_pack",
+      "return_description": null,
+      "signature": "void free_sprite_pack(const string &name);",
+      "unique_global_name": "free_sprite_pack"
+    },
+    {
+      "description": "Determines if SplashKit has a sprite for the supplied name.\nThis checks against all sprites, those loaded without a name\nare assigned a default.",
+      "name": "has_sprite",
+      "return_description": "True if you have created a sprite with this name.",
+      "signature": "bool has_sprite(const string &name);",
+      "unique_global_name": "has_sprite"
+    },
+    {
+      "description": "Indicates if a given sprite_pack has already been created.",
+      "name": "has_sprite_pack",
+      "return_description": "True if a sprite pack exists with the indicated name.",
+      "signature": "bool has_sprite_pack(const string &name);",
+      "unique_global_name": "has_sprite_pack"
+    },
+    {
+      "description": "moves the sprite as indicated by its velocity. You can call this directly ot\nalternatively, this action is performed when the sprite is updated using\nthe ''update_sprite'' routine.",
+      "name": "move_sprite",
+      "return_description": null,
+      "signature": "void move_sprite(sprite s);",
+      "unique_global_name": "move_sprite"
+    },
+    {
+      "description": "Moves the sprite a given distance based on the value passed in rather than\nbased on the sprite's velocity. Typically this method is used to apply\nother movement actions to the sprite and the velocity of the sprite is\nused the intended movement of the sprite.",
+      "name": "move_sprite",
+      "return_description": null,
+      "signature": "void move_sprite(sprite s,const vector_2d &distance);",
+      "unique_global_name": "move_sprite_by_vector"
+    },
+    {
+      "description": "Moves the sprite a percentage of a given distance based on the value\npassed in rather than based on the sprite's velocity. Typically this\nmethod is used to apply other movement actions to the sprite and the\nvelocity of the sprite is used the intended movement of the sprite.",
+      "name": "move_sprite",
+      "return_description": null,
+      "signature": "void move_sprite(sprite s,const vector_2d &distance,float pct);",
+      "unique_global_name": "move_sprite_by_vector_percent"
+    },
+    {
+      "description": "Moves the sprite as indicated by a percentage of its velocity. You can call\nthis directly ot alternatively, this action is performed when the sprite is\nupdated using the ''update_sprite'' routines that require a percentage.",
+      "name": "move_sprite",
+      "return_description": null,
+      "signature": "void move_sprite(sprite s,float pct);",
+      "unique_global_name": "move_sprite_percent"
+    },
+    {
+      "description": "This method moves a sprite to a given position in the game.",
+      "name": "move_sprite_to",
+      "return_description": null,
+      "signature": "void move_sprite_to(sprite s,double x,double y);",
+      "unique_global_name": "move_sprite_to"
+    },
+    {
+      "description": "Selects the named sprite_pack (if it has been created). The\nselected sprite_pack determines which sprites are drawn and updated\nwith the draw_all_sprites and update_all_sprites code.",
+      "name": "select_sprite_pack",
+      "return_description": null,
+      "signature": "void select_sprite_pack(const string &name);",
+      "unique_global_name": "select_sprite_pack"
+    },
+    {
+      "description": "Adds a new layer to the sprite.",
+      "name": "sprite_add_layer",
+      "return_description": "The index of the new layer.",
+      "signature": "int sprite_add_layer(sprite s,bitmap new_layer,const string &layer_name);",
+      "unique_global_name": "sprite_add_layer"
+    },
+    {
+      "description": "Alters the current velocity of the sprite, adding the passed in vector_2d to the current velocity.\nWhen the sprite is updated (see `update_sprite`)\nthis vector_2d is used to move the sprite.",
+      "name": "sprite_add_to_velocity",
+      "return_description": null,
+      "signature": "void sprite_add_to_velocity(sprite s,const vector_2d &value);",
+      "unique_global_name": "sprite_add_to_velocity"
+    },
+    {
+      "description": "Adds a new kind of value to the sprite",
+      "name": "sprite_add_value",
+      "return_description": null,
+      "signature": "void sprite_add_value(sprite s,const string &name);",
+      "unique_global_name": "sprite_add_value"
+    },
+    {
+      "description": "Adds a new kind of value to the sprite, setting the initial value\nto the value passed in.",
+      "name": "sprite_add_value",
+      "return_description": null,
+      "signature": "void sprite_add_value(sprite s,const string &name,float init_val);",
+      "unique_global_name": "sprite_add_value_with_default"
+    },
+    {
+      "description": "Returns the anchor point of the sprite. This is the point around which the\nsprite rotates. This is in sprite coordinates, so as if the sprite is drawn\nat 0,0.",
+      "name": "sprite_anchor_point",
+      "return_description": "The anchor point of the sprite.",
+      "signature": "point_2d sprite_anchor_point(sprite s);",
+      "unique_global_name": "sprite_anchor_point"
+    },
+    {
+      "description": "The sprite anchor position, is the location of the anchor point in world\ncoordinates, based upon the position of the sprite.",
+      "name": "sprite_anchor_position",
+      "return_description": "The location of the sprite's anchor point positioned at the sprite's location",
+      "signature": "point_2d sprite_anchor_position(sprite s);",
+      "unique_global_name": "sprite_anchor_position"
+    },
+    {
+      "description": "Indicates if the sprites animation has ended.",
+      "name": "sprite_animation_has_ended",
+      "return_description": "True if the sprite animation has ended.",
+      "signature": "bool sprite_animation_has_ended(sprite s);",
+      "unique_global_name": "sprite_animation_has_ended"
+    },
+    {
+      "description": "Returns the name of the sprite's current animation.",
+      "name": "sprite_animation_name",
+      "return_description": "The name of the current animation.",
+      "signature": "string sprite_animation_name(sprite s);",
+      "unique_global_name": "sprite_animation_name"
+    },
+    {
+      "description": "Determines if a sprite is at a given point.",
+      "name": "sprite_at",
+      "return_description": "True if the sprite is at the given point",
+      "signature": "bool sprite_at(sprite s,const point_2d &pt);",
+      "unique_global_name": "sprite_at"
+    },
+    {
+      "description": "Sends the layer specified forward in the visible layer order.",
+      "name": "sprite_bring_layer_forward",
+      "return_description": null,
+      "signature": "void sprite_bring_layer_forward(sprite s,int visible_layer);",
+      "unique_global_name": "sprite_bring_layer_forward"
+    },
+    {
+      "description": "Sends the layer specified to the front in the visible layer order.",
+      "name": "sprite_bring_layer_to_front",
+      "return_description": null,
+      "signature": "void sprite_bring_layer_to_front(sprite s,int visible_layer);",
+      "unique_global_name": "sprite_bring_layer_to_front"
+    },
+    {
+      "description": "Register a procedure to call when events occur on the sprite.",
+      "name": "sprite_call_on_event",
+      "return_description": null,
+      "signature": "void sprite_call_on_event(sprite s,sprite_event_handler *handler);",
+      "unique_global_name": "sprite_call_on_event"
+    },
+    {
+      "description": "Gets a circle in the bounds of the base layer of the indicated sprite.",
+      "name": "sprite_circle",
+      "return_description": "A bounding circle that surrounds the sprite",
+      "signature": "circle sprite_circle(sprite s);",
+      "unique_global_name": "sprite_circle"
+    },
+    {
+      "description": "Returns the bitmap used by the sprite to determine if it has collided with\nother objects in the game.",
+      "name": "sprite_collision_bitmap",
+      "return_description": "The bitmap used for collisions with this sprite.",
+      "signature": "bitmap sprite_collision_bitmap(sprite s);",
+      "unique_global_name": "sprite_collision_bitmap"
+    },
+    {
+      "description": "Gets a circle in the bounds of the indicated sprite's collision rectangle.",
+      "name": "sprite_collision_circle",
+      "return_description": "A bounding circle that surrounds the sprite",
+      "signature": "circle sprite_collision_circle(sprite s);",
+      "unique_global_name": "sprite_collision_circle"
+    },
+    {
+      "description": "Returns the kind of collision used with this sprite. This is used when\ndetermining if the sprite has collided with other objects in the game.",
+      "name": "sprite_collision_kind",
+      "return_description": "The kind of collisions performed with this sprite.",
+      "signature": "collision_test_kind sprite_collision_kind(sprite s);",
+      "unique_global_name": "sprite_collision_kind"
+    },
+    {
+      "description": "Returns the collision rectangle for the specified sprite.",
+      "name": "sprite_collision_rectangle",
+      "return_description": "A collision rectangle that surrounds the sprite.",
+      "signature": "rectangle sprite_collision_rectangle(sprite s);",
+      "unique_global_name": "sprite_collision_rectangle"
+    },
+    {
+      "description": "Returns the current animation cell for an animated sprite. The cell is\nupdated when the sprite's animation data is updated.",
+      "name": "sprite_current_cell",
+      "return_description": "The current cell animation of the sprite.",
+      "signature": "int sprite_current_cell(sprite s);",
+      "unique_global_name": "sprite_current_cell"
+    },
+    {
+      "description": "Returns a rectangle of the current cell within the sprite's image. This is used\nto determine what part of the bitmap should be used when the sprite is drawn.",
+      "name": "sprite_current_cell_rectangle",
+      "return_description": "The current cell rectangle of the sprite.",
+      "signature": "rectangle sprite_current_cell_rectangle(sprite s);",
+      "unique_global_name": "sprite_current_cell_rectangle"
+    },
+    {
+      "description": "Returns the X value of the sprite's velocity.",
+      "name": "sprite_dx",
+      "return_description": "The x component of the sprite's velocity.",
+      "signature": "float sprite_dx(sprite s);",
+      "unique_global_name": "sprite_dx"
+    },
+    {
+      "description": "Returns the Y value of the sprite's velocity.",
+      "name": "sprite_dy",
+      "return_description": "The y component of the sprite's velocity.",
+      "signature": "float sprite_dy(sprite s);",
+      "unique_global_name": "sprite_dy"
+    },
+    {
+      "description": "Indicates if the sprite has a value with the given name.",
+      "name": "sprite_has_value",
+      "return_description": "True if the sprite has a value with that name.",
+      "signature": "bool sprite_has_value(sprite s,string name);",
+      "unique_global_name": "sprite_has_value"
+    },
+    {
+      "description": "Returns the direction the sprite is heading in degrees.",
+      "name": "sprite_heading",
+      "return_description": "The angle of the sprite velocity.",
+      "signature": "float sprite_heading(sprite s);",
+      "unique_global_name": "sprite_heading"
+    },
+    {
+      "description": "The current height of the sprite (aligned to the Y axis).",
+      "name": "sprite_height",
+      "return_description": "The height of the sprite in pixels.",
+      "signature": "int sprite_height(sprite s);",
+      "unique_global_name": "sprite_height"
+    },
+    {
+      "description": "Hide the specified layer of the sprite.",
+      "name": "sprite_hide_layer",
+      "return_description": null,
+      "signature": "void sprite_hide_layer(sprite s,const string &name);",
+      "unique_global_name": "sprite_hide_layer_named"
+    },
+    {
+      "description": "Hide the specified layer of the sprite.",
+      "name": "sprite_hide_layer",
+      "return_description": null,
+      "signature": "void sprite_hide_layer(sprite s,int id);",
+      "unique_global_name": "sprite_hide_layer"
+    },
+    {
+      "description": "Returns the bitmap of the indicated layer of the sprite.",
+      "name": "sprite_layer",
+      "return_description": "The bitmap at the layer with the indicated name",
+      "signature": "bitmap sprite_layer(sprite s,const string &name);",
+      "unique_global_name": "sprite_layer_named"
+    },
+    {
+      "description": "Returns the bitmap of the indicated layer of the sprite.",
+      "name": "sprite_layer",
+      "return_description": "The bitmap of the sprite at that layer",
+      "signature": "bitmap sprite_layer(sprite s,int idx);",
+      "unique_global_name": "sprite_layer_at_index"
+    },
+    {
+      "description": "Gets a circle in the bounds of the indicated layer.",
+      "name": "sprite_layer_circle",
+      "return_description": "A bounding circle that surrounds the sprite's layer",
+      "signature": "circle sprite_layer_circle(sprite s,const string &name);",
+      "unique_global_name": "sprite_layer_circle_named"
+    },
+    {
+      "description": "Gets a circle in the bounds of the indicated layer.",
+      "name": "sprite_layer_circle",
+      "return_description": "A bounding circle that surrounds the sprite's layer",
+      "signature": "circle sprite_layer_circle(sprite s,int idx);",
+      "unique_global_name": "sprite_layer_circle_at_index"
+    },
+    {
+      "description": "Returns the number of layers within the sprite.",
+      "name": "sprite_layer_count",
+      "return_description": "The number of image layers in the sprite.",
+      "signature": "int sprite_layer_count(sprite s);",
+      "unique_global_name": "sprite_layer_count"
+    },
+    {
+      "description": "The height of a given layer of the sprite (aligned to the Y axis).",
+      "name": "sprite_layer_height",
+      "return_description": "The height of the sprite's layer in pixels.",
+      "signature": "int sprite_layer_height(sprite s,const string &name);",
+      "unique_global_name": "sprite_layer_height_named"
+    },
+    {
+      "description": "The height of a given layer of the sprite (aligned to the Y axis).",
+      "name": "sprite_layer_height",
+      "return_description": "The height of the sprite's layer in pixels.",
+      "signature": "int sprite_layer_height(sprite s,int idx);",
+      "unique_global_name": "sprite_layer_height"
+    },
+    {
+      "description": "Returns the index of the specified layer.",
+      "name": "sprite_layer_index",
+      "return_description": "The index of the layer in the sprite",
+      "signature": "int sprite_layer_index(sprite s,const string &name);",
+      "unique_global_name": "sprite_layer_index"
+    },
+    {
+      "description": "Returns the name of the specified layer.",
+      "name": "sprite_layer_name",
+      "return_description": "The name of the sprite's layer at that index",
+      "signature": "string sprite_layer_name(sprite s,int idx);",
+      "unique_global_name": "sprite_layer_name"
+    },
+    {
+      "description": "Gets the offset of the specified layer.",
+      "name": "sprite_layer_offset",
+      "return_description": "The offset of the named layer in the sprite.",
+      "signature": "vector_2d sprite_layer_offset(sprite s,const string &name);",
+      "unique_global_name": "sprite_layer_offset_named"
+    },
+    {
+      "description": "Gets the offset of the specified layer.",
+      "name": "sprite_layer_offset",
+      "return_description": "The offset of the layer in the sprite.",
+      "signature": "vector_2d sprite_layer_offset(sprite s,int idx);",
+      "unique_global_name": "sprite_layer_offset"
+    },
+    {
+      "description": "Gets a rectangle that surrounds the indicated layer.",
+      "name": "sprite_layer_rectangle",
+      "return_description": "A bounding rectangle that surrounds the sprite's layer",
+      "signature": "rectangle sprite_layer_rectangle(sprite s,const string &name);",
+      "unique_global_name": "sprite_layer_rectangle_named"
+    },
+    {
+      "description": "Gets a rectangle that surrounds the indicated layer.",
+      "name": "sprite_layer_rectangle",
+      "return_description": "A bounding rectangle that surrounds the sprite's layer",
+      "signature": "rectangle sprite_layer_rectangle(sprite s,int idx);",
+      "unique_global_name": "sprite_layer_rectangle_at_index"
+    },
+    {
+      "description": "The width of a given layer of the sprite (aligned to the X axis).",
+      "name": "sprite_layer_width",
+      "return_description": "The width of the sprite's layer in pixels.",
+      "signature": "int sprite_layer_width(sprite s,const string &name);",
+      "unique_global_name": "sprite_layer_width_named"
+    },
+    {
+      "description": "The width of a given layer of the sprite (aligned to the X axis).",
+      "name": "sprite_layer_width",
+      "return_description": "The width of the sprite's layer in pixels.",
+      "signature": "int sprite_layer_width(sprite s,int idx);",
+      "unique_global_name": "sprite_layer_width"
+    },
+    {
+      "description": "Returns a matrix that can be used to transform points into the coordinate\nspace of the passed in sprite.",
+      "name": "sprite_location_matrix",
+      "return_description": "A matrix that transforms points into the sprites coordinate\nspace.",
+      "signature": "matrix_2d sprite_location_matrix(sprite s);",
+      "unique_global_name": "sprite_location_matrix"
+    },
+    {
+      "description": "This indicates the mass of the sprite for any of the collide methods from\nPhysics. The mass of two colliding sprites will determine the relative\nvelocitys after the collision.",
+      "name": "sprite_mass",
+      "return_description": "The mass of the sprite.",
+      "signature": "float sprite_mass(sprite s);",
+      "unique_global_name": "sprite_mass"
+    },
+    {
+      "description": "Indicates if the sprite is moved from its anchor point, or from its top left.\nWhen this returns true the location of the sprite will indicate its anchor point.\nWhen this returns false the location of the sprite is its top left corner.",
+      "name": "sprite_move_from_anchor_point",
+      "return_description": "True if the sprite moves from its anchor point.",
+      "signature": "bool sprite_move_from_anchor_point(sprite s);",
+      "unique_global_name": "sprite_move_from_anchor_point"
+    },
+    {
+      "description": "This void starts the sprite moving to the indicated\ndestination point, over a specified number of seconds. When the\nsprite arrives it will raise the sprite_arrived event.",
+      "name": "sprite_move_to",
+      "return_description": null,
+      "signature": "void sprite_move_to(sprite s,const point_2d &pt,float taking_seconds);",
+      "unique_global_name": "sprite_move_to_taking_seconds"
+    },
+    {
+      "description": "Returns the name of the sprite. This name is used for resource management\nand can be used to interact with the sprite in various routines.",
+      "name": "sprite_name",
+      "return_description": "The name of the sprite.",
+      "signature": "string sprite_name(sprite s);",
+      "unique_global_name": "sprite_name"
+    },
+    {
+      "description": "Returns the `sprite` with the specified name.",
+      "name": "sprite_named",
+      "return_description": "The sprite with that name.",
+      "signature": "sprite sprite_named(const string &name);",
+      "unique_global_name": "sprite_named"
+    },
+    {
+      "description": "Returns true if the sprite is entirely off the current screen.",
+      "name": "sprite_offscreen",
+      "return_description": "True if the sprite is entirely off the current window.",
+      "signature": "bool sprite_offscreen(sprite s);",
+      "unique_global_name": "sprite_offscreen"
+    },
+    {
+      "description": "Returns true if a pixel of the `sprite` `s` is at the screen location\nspecified (`pt`), which is converted to a world location.",
+      "name": "sprite_on_screen_at",
+      "return_description": "True if the sprite would draw something at this coordinate on\nthe screen when drawn.",
+      "signature": "bool sprite_on_screen_at(sprite s,const point_2d &pt);",
+      "unique_global_name": "sprite_on_screen_at_point"
+    },
+    {
+      "description": "Returns true if a pixel of the `sprite` `s` is at the screen location\nspecified.",
+      "name": "sprite_on_screen_at",
+      "return_description": "True if the sprite would draw something at this coordinate on\nthe screen when drawn.",
+      "signature": "bool sprite_on_screen_at(sprite s,double x,double y);",
+      "unique_global_name": "sprite_on_screen_at"
+    },
+    {
+      "description": "Returns the sprite's position.",
+      "name": "sprite_position",
+      "return_description": "The location of the sprite.",
+      "signature": "point_2d sprite_position(sprite s);",
+      "unique_global_name": "sprite_position"
+    },
+    {
+      "description": "Restart the sprite's current animation, this will play a sound if the\nfirst cell of the animation is associated with a sound effect.",
+      "name": "sprite_replay_animation",
+      "return_description": null,
+      "signature": "void sprite_replay_animation(sprite s);",
+      "unique_global_name": "sprite_replay_animation"
+    },
+    {
+      "description": "Restart the sprite's current animation, this will play a sound if\nwith_sound is true and the first cell of the animation is associated\nwith a sound effect.",
+      "name": "sprite_replay_animation",
+      "return_description": null,
+      "signature": "void sprite_replay_animation(sprite s,bool with_sound);",
+      "unique_global_name": "sprite_replay_animation_with_sound"
+    },
+    {
+      "description": "This indicates the angle of rotation of the sprite. This will rotate any\nimages of the sprite before drawing, which can be very slow. avoid using\nthis method with bitmap based sprites where possible.",
+      "name": "sprite_rotation",
+      "return_description": "The angle of the sprite rotation.",
+      "signature": "float sprite_rotation(sprite s);",
+      "unique_global_name": "sprite_rotation"
+    },
+    {
+      "description": "This indicates the scale of the sprite. This will scale any\nimages of the sprite before drawing, which can be very slow. avoid using\nthis method with bitmap based sprites where possible.",
+      "name": "sprite_scale",
+      "return_description": "The scale of the sprite.",
+      "signature": "float sprite_scale(sprite s);",
+      "unique_global_name": "sprite_scale"
+    },
+    {
+      "description": "Returns the rectangle representing the location of the sprite on the\nscreen.",
+      "name": "sprite_screen_rectangle",
+      "return_description": "A rectangle indicating where the sprite is on the screen.",
+      "signature": "rectangle sprite_screen_rectangle(sprite s);",
+      "unique_global_name": "sprite_screen_rectangle"
+    },
+    {
+      "description": "Sends the layer specified backward in the visible layer order.",
+      "name": "sprite_send_layer_backward",
+      "return_description": null,
+      "signature": "void sprite_send_layer_backward(sprite s,int visible_layer);",
+      "unique_global_name": "sprite_send_layer_backward"
+    },
+    {
+      "description": "Sends the layer specified to the back in the visible layer order.",
+      "name": "sprite_send_layer_to_back",
+      "return_description": null,
+      "signature": "void sprite_send_layer_to_back(sprite s,int visible_layer);",
+      "unique_global_name": "sprite_send_layer_to_back"
+    },
+    {
+      "description": "Allows you to set the anchor point for the sprite. This is the point around\nwhich the sprite rotates. This is in sprite coordinates, as if the sprite\nis drawn at 0,0.",
+      "name": "sprite_set_anchor_point",
+      "return_description": null,
+      "signature": "void sprite_set_anchor_point(sprite s,const point_2d &pt);",
+      "unique_global_name": "sprite_set_anchor_point"
+    },
+    {
+      "description": "Sets the bitmap used by the sprite to determine if it has collided with\nother objects in the game. By default the collision_bitmap is set to the\nbitmap from the sprite's first layer.",
+      "name": "sprite_set_collision_bitmap",
+      "return_description": null,
+      "signature": "void sprite_set_collision_bitmap(sprite s,bitmap bmp);",
+      "unique_global_name": "sprite_set_collision_bitmap"
+    },
+    {
+      "description": "Sets the kind of collision used with this sprite. This is used when\ndetermining if the sprite has collided with other objects in the game.",
+      "name": "sprite_set_collision_kind",
+      "return_description": null,
+      "signature": "void sprite_set_collision_kind(sprite s,collision_test_kind value);",
+      "unique_global_name": "sprite_set_collision_kind"
+    },
+    {
+      "description": "Sets the X value of the sprite's velocity.",
+      "name": "sprite_set_dx",
+      "return_description": null,
+      "signature": "void sprite_set_dx(sprite s,float value);",
+      "unique_global_name": "sprite_set_dx"
+    },
+    {
+      "description": "Sets the Y value of the sprite's velocity.",
+      "name": "sprite_set_dy",
+      "return_description": null,
+      "signature": "void sprite_set_dy(sprite s,float value);",
+      "unique_global_name": "sprite_set_dy"
+    },
+    {
+      "description": "Alters the direction the sprite is heading without changing the speed.",
+      "name": "sprite_set_heading",
+      "return_description": null,
+      "signature": "void sprite_set_heading(sprite s,float value);",
+      "unique_global_name": "sprite_set_heading"
+    },
+    {
+      "description": "Sets the offset of the specified layer. The offset is used when the layer\nis drawn in the sprite, and moves the image relative to the sprite.",
+      "name": "sprite_set_layer_offset",
+      "return_description": null,
+      "signature": "void sprite_set_layer_offset(sprite s,const string &name,const vector_2d &value);",
+      "unique_global_name": "sprite_set_layer_offset_named"
+    },
+    {
+      "description": "Sets the offset of the specified layer.",
+      "name": "sprite_set_layer_offset",
+      "return_description": null,
+      "signature": "void sprite_set_layer_offset(sprite s,int idx,const vector_2d &value);",
+      "unique_global_name": "sprite_set_layer_offset_at_index"
+    },
+    {
+      "description": "Allows you to change the mass of a sprite.",
+      "name": "sprite_set_mass",
+      "return_description": null,
+      "signature": "void sprite_set_mass(sprite s,float value);",
+      "unique_global_name": "sprite_set_mass"
+    },
+    {
+      "description": "Allows you to indicate if the sprite is moved from its anchor point, or from its\ntop left.\n\nWhen set to true the location of the sprite will be its anchor point.\nWhen set to false the location of the sprite is its top left corner.",
+      "name": "sprite_set_move_from_anchor_point",
+      "return_description": null,
+      "signature": "void sprite_set_move_from_anchor_point(sprite s,bool value);",
+      "unique_global_name": "sprite_set_move_from_anchor_point"
+    },
+    {
+      "description": "Sets the sprite's position.",
+      "name": "sprite_set_position",
+      "return_description": null,
+      "signature": "void sprite_set_position(sprite s,const point_2d &value);",
+      "unique_global_name": "sprite_set_position"
+    },
+    {
+      "description": "Allows you to change the rotation of a sprite.",
+      "name": "sprite_set_rotation",
+      "return_description": null,
+      "signature": "void sprite_set_rotation(sprite s,float value);",
+      "unique_global_name": "sprite_set_rotation"
+    },
+    {
+      "description": "Allows you to change the scale of a sprite.",
+      "name": "sprite_set_scale",
+      "return_description": null,
+      "signature": "void sprite_set_scale(sprite s,float value);",
+      "unique_global_name": "sprite_set_scale"
+    },
+    {
+      "description": "Alters the speed of the sprite without effecting the direction.",
+      "name": "sprite_set_speed",
+      "return_description": null,
+      "signature": "void sprite_set_speed(sprite s,float value);",
+      "unique_global_name": "sprite_set_speed"
+    },
+    {
+      "description": "Assigns a value to the sprite.",
+      "name": "sprite_set_value",
+      "return_description": null,
+      "signature": "void sprite_set_value(sprite s,const string &name,float val);",
+      "unique_global_name": "sprite_set_value_named"
+    },
+    {
+      "description": "Sets the current velocity of the sprite. When the sprite is updated\n(see `update_sprite`) this vector_2d is used to move the sprite.",
+      "name": "sprite_set_velocity",
+      "return_description": null,
+      "signature": "void sprite_set_velocity(sprite s,const vector_2d &value);",
+      "unique_global_name": "sprite_set_velocity"
+    },
+    {
+      "description": "Sets the X position of the sprite.",
+      "name": "sprite_set_x",
+      "return_description": null,
+      "signature": "void sprite_set_x(sprite s,float value);",
+      "unique_global_name": "sprite_set_x"
+    },
+    {
+      "description": "Sets the Y position of the sprite.",
+      "name": "sprite_set_y",
+      "return_description": null,
+      "signature": "void sprite_set_y(sprite s,float value);",
+      "unique_global_name": "sprite_set_y"
+    },
+    {
+      "description": "Show the specified layer of the sprite.",
+      "name": "sprite_show_layer",
+      "return_description": "The index of the layer shown, or -1 if no layer found.",
+      "signature": "int sprite_show_layer(sprite s,const string &name);",
+      "unique_global_name": "sprite_show_layer_named"
+    },
+    {
+      "description": "Show the specified layer of the sprite.",
+      "name": "sprite_show_layer",
+      "return_description": "The index of the layer shown, or -1 if no layer found.",
+      "signature": "int sprite_show_layer(sprite s,int id);",
+      "unique_global_name": "sprite_show_layer"
+    },
+    {
+      "description": "Returns the current speed (distance travelled per update) of the sprite.",
+      "name": "sprite_speed",
+      "return_description": "The speed of the sprite (pixels per update).",
+      "signature": "float sprite_speed(sprite s);",
+      "unique_global_name": "sprite_speed"
+    },
+    {
+      "description": "Start playing an animation from the sprite's animation template.\nThis will play a sound effect if the first cell of the animation\nhas a sound.",
+      "name": "sprite_start_animation",
+      "return_description": null,
+      "signature": "void sprite_start_animation(sprite s,const string &named);",
+      "unique_global_name": "sprite_start_animation_named"
+    },
+    {
+      "description": "Start playing an animation from the sprite's animation template.\nThe with_sound parameter determines whether to play a sound effect\nif the first cell of the animation has a sound.",
+      "name": "sprite_start_animation",
+      "return_description": null,
+      "signature": "void sprite_start_animation(sprite s,const string &named,bool with_sound);",
+      "unique_global_name": "sprite_start_animation_named_with_sound"
+    },
+    {
+      "description": "Start playing an animation from the sprite's animation template.\nThis will play a sound effect if the first cell of the animation\nhas a sound.",
+      "name": "sprite_start_animation",
+      "return_description": null,
+      "signature": "void sprite_start_animation(sprite s,int idx);",
+      "unique_global_name": "sprite_start_animation"
+    },
+    {
+      "description": "Start playing an animation from the sprite's animation template.\nThe with_sound parameter determines whether to play a sound effect\nif the first cell of the animation has a sound.",
+      "name": "sprite_start_animation",
+      "return_description": null,
+      "signature": "void sprite_start_animation(sprite s,int idx,bool with_sound);",
+      "unique_global_name": "sprite_start_animation_with_sound"
+    },
+    {
+      "description": "Removes an event handler from the sprite, stopping events from this\nsprite calling the indicated method.",
+      "name": "sprite_stop_calling_on_event",
+      "return_description": null,
+      "signature": "void sprite_stop_calling_on_event(sprite s,sprite_event_handler *handler);",
+      "unique_global_name": "sprite_stop_calling_on_event"
+    },
+    {
+      "description": "Toggle the visibility of the specified layer of the sprite.",
+      "name": "sprite_toggle_layer_visible",
+      "return_description": null,
+      "signature": "void sprite_toggle_layer_visible(sprite s,const string &name);",
+      "unique_global_name": "sprite_toggle_layer_visible_named"
+    },
+    {
+      "description": "Toggle the visibility of the specified layer of the sprite.",
+      "name": "sprite_toggle_layer_visible",
+      "return_description": null,
+      "signature": "void sprite_toggle_layer_visible(sprite s,int id);",
+      "unique_global_name": "sprite_toggle_layer_visible"
+    },
+    {
+      "description": "Returns the indicated value of the sprite",
+      "name": "sprite_value",
+      "return_description": "The value from the sprite's data store.",
+      "signature": "float sprite_value(sprite s,const string &name);",
+      "unique_global_name": "sprite_value"
+    },
+    {
+      "description": "Returns the number of sprite's values.",
+      "name": "sprite_value_count",
+      "return_description": "The number of values stored in the sprite.",
+      "signature": "int sprite_value_count(sprite s);",
+      "unique_global_name": "sprite_value_count"
+    },
+    {
+      "description": "Returns the current velocity of the sprite. When the sprite is updated\n(see `update_sprite`) this vector_2d is used to move the sprite.",
+      "name": "sprite_velocity",
+      "return_description": "The sprite's velocity.",
+      "signature": "vector_2d sprite_velocity(sprite s);",
+      "unique_global_name": "sprite_velocity"
+    },
+    {
+      "description": "Returns the index (z-order) of the sprite's layer.",
+      "name": "sprite_visible_index_of_layer",
+      "return_description": "The z index of the sprite's layer",
+      "signature": "int sprite_visible_index_of_layer(sprite s,const string &name);",
+      "unique_global_name": "sprite_visible_index_of_layer_named"
+    },
+    {
+      "description": "Returns the index (z-order) of the sprite's layer.",
+      "name": "sprite_visible_index_of_layer",
+      "return_description": "The z index of the sprite's layer",
+      "signature": "int sprite_visible_index_of_layer(sprite s,int id);",
+      "unique_global_name": "sprite_visible_index_of_layer"
+    },
+    {
+      "description": "Returns the index of the n'th (idx parameter) visible layer.",
+      "name": "sprite_visible_layer",
+      "return_description": "The layer index of the selected visible layer.",
+      "signature": "int sprite_visible_layer(sprite s,int idx);",
+      "unique_global_name": "sprite_visible_layer"
+    },
+    {
+      "description": "Returns the number of layers that are currently visible for the sprite.",
+      "name": "sprite_visible_layer_count",
+      "return_description": "The number of visible layers for the sprite.",
+      "signature": "int sprite_visible_layer_count(sprite s);",
+      "unique_global_name": "sprite_visible_layer_count"
+    },
+    {
+      "description": "Returns the id of the layer at index `idx` that is currently visible.\nIndex 0 is the background, with larger indexes moving toward the foreground.\nThis returns -1 if there are no visible layers.",
+      "name": "sprite_visible_layer_id",
+      "return_description": "The layer index of the visible layer.",
+      "signature": "int sprite_visible_layer_id(sprite s,int idx);",
+      "unique_global_name": "sprite_visible_layer_id"
+    },
+    {
+      "description": "The current Width of the sprite (aligned to the X axis).",
+      "name": "sprite_width",
+      "return_description": "The width of the sprite's layer in pixels.",
+      "signature": "int sprite_width(sprite s);",
+      "unique_global_name": "sprite_width"
+    },
+    {
+      "description": "Returns the X position of the sprite.",
+      "name": "sprite_x",
+      "return_description": "The x location of the sprite",
+      "signature": "float sprite_x(sprite s);",
+      "unique_global_name": "sprite_x"
+    },
+    {
+      "description": "Returns the Y position of the sprite.",
+      "name": "sprite_y",
+      "return_description": "The sprite's y location.",
+      "signature": "float sprite_y(sprite s);",
+      "unique_global_name": "sprite_y"
+    },
+    {
+      "description": "Removes an global event handler, stopping events calling the indicated void.",
+      "name": "stop_calling_on_sprite_event",
+      "return_description": null,
+      "signature": "void stop_calling_on_sprite_event(sprite_event_handler *handler);",
+      "unique_global_name": "stop_calling_on_sprite_event"
+    },
+    {
+      "description": "Update all of the sprites in the current sprite pack.",
+      "name": "update_all_sprites",
+      "return_description": null,
+      "signature": "void update_all_sprites();",
+      "unique_global_name": "update_all_sprites"
+    },
+    {
+      "description": "Update all of the sprites in the current sprite pack, passing in a\npercentage value to indicate the percentage to update.",
+      "name": "update_all_sprites",
+      "return_description": null,
+      "signature": "void update_all_sprites(float pct);",
+      "unique_global_name": "update_all_sprites_percent"
+    },
+    {
+      "description": "Update the position and animation details of the sprite.\nThis will play a sound effect if the new cell of the animation\nhas a sound.",
+      "name": "update_sprite",
+      "return_description": null,
+      "signature": "void update_sprite(sprite s);",
+      "unique_global_name": "update_sprite"
+    },
+    {
+      "description": "Update the position and animation details of the sprite.\nThis will play a sound effect if the new cell of the animation\nhas a sound and with_sound is true.",
+      "name": "update_sprite",
+      "return_description": null,
+      "signature": "void update_sprite(sprite s,bool with_sound);",
+      "unique_global_name": "update_sprite_with_sound"
+    },
+    {
+      "description": "Update the position and animation details of the sprite by a\ngiven percentage of a single unit of movement/animation.\nThis will play a sound effect if the new cell of the animation\nhas a sound.",
+      "name": "update_sprite",
+      "return_description": null,
+      "signature": "void update_sprite(sprite s,float pct);",
+      "unique_global_name": "update_sprite_percent"
+    },
+    {
+      "description": "Update the position and animation details of the sprite by a\ngiven percentage of a single unit of movement/animation.\nThis will play a sound effect if the new cell of the animation\nhas a sound and with_sound is true.",
+      "name": "update_sprite",
+      "return_description": null,
+      "signature": "void update_sprite(sprite s,float pct,bool with_sound);",
+      "unique_global_name": "update_sprite_percent_with_sound"
+    },
+    {
+      "description": "Updates the animation details of the sprite.\nThis will play a sound effect if the new cell of the animation\nhas a sound.",
+      "name": "update_sprite_animation",
+      "return_description": null,
+      "signature": "void update_sprite_animation(sprite s);",
+      "unique_global_name": "update_sprite_animation"
+    },
+    {
+      "description": "Update the animation details of the sprite.\nThis will play a sound effect if the new cell of the animation\nhas a sound and with_sound is true.",
+      "name": "update_sprite_animation",
+      "return_description": null,
+      "signature": "void update_sprite_animation(sprite s,bool with_sound);",
+      "unique_global_name": "update_sprite_animation_with_sound"
+    },
+    {
+      "description": "Update the animation details of the sprite by a\ngiven percentage of a single unit of movement/animation.\nThis will play a sound effect if the new cell of the animation\nhas a sound.",
+      "name": "update_sprite_animation",
+      "return_description": null,
+      "signature": "void update_sprite_animation(sprite s,float pct);",
+      "unique_global_name": "update_sprite_animation_percent"
+    },
+    {
+      "description": "Update the position and animation details of the sprite by a\ngiven percentage of a single unit of movement/animation.\nThis will play a sound effect if the new cell of the animation\nhas a sound and with_sound is true.",
+      "name": "update_sprite_animation",
+      "return_description": null,
+      "signature": "void update_sprite_animation(sprite s,float pct,bool with_sound);",
+      "unique_global_name": "update_sprite_animation_percent_with_sound"
+    },
+    {
+      "description": "Returns a `vector_2d` that is the difference in location from the center of\nthe sprite `s` to the point `pt`.",
+      "name": "vector_from_center_sprite_to_point",
+      "return_description": "A vector pointing from the sprite to the point.",
+      "signature": "vector_2d vector_from_center_sprite_to_point(sprite s,const point_2d &pt);",
+      "unique_global_name": "vector_from_center_sprite_to_point_point"
+    },
+    {
+      "description": "Returns a `vector_2d` that is the difference in the position of two sprites\n(`s1` and `s2`).",
+      "name": "vector_from_to",
+      "return_description": "A vector that points from s1 to s2.",
+      "signature": "vector_2d vector_from_to(sprite s1,sprite s2);",
+      "unique_global_name": "vector_from_to"
+    }
+  ]
+}

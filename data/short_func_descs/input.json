@@ -1,0 +1,306 @@
+{
+  "example": "//\n//  test_input.cpp\n//  splashkit\n//\n//  Created by Andrew Cain on 15/08/2016.\n//  Copyright © 2016 Andrew Cain. All rights reserved.\n//\n\n#include \"graphics.h\"\n#include \"input.h\"\n#include \"text.h\"\n\nusing namespace splashkit_lib;\nusing namespace std;\n\nstatic string _key_typed = \"\", _key_down = \"\", _key_up = \"\";\n\nvoid _on_key_typed(int code)\n{\n    _key_typed = key_name( static_cast<key_code>(code));\n}\n\nvoid _on_key_down(int code)\n{\n    _key_down = key_name( static_cast<key_code>(code) );\n}\n\nvoid _on_key_up(int code)\n{\n    _key_up = key_name( static_cast<key_code>(code) );\n}\n\nvoid run_input_test()\n{\n    register_callback_on_key_typed(&_on_key_typed);\n    register_callback_on_key_down(&_on_key_down);\n    register_callback_on_key_up(&_on_key_up);\n    \n    rectangle rect = { 230.0f, 50.0f, 200.0f, 30.0f };\n    \n    window w1 = open_window(\"Test Input\", 600, 600);\n    window w2 = open_window(\"Test Input Window 2\", 600, 600);\n    \n    load_font(\"hara\", \"hara.ttf\");\n    load_font(\"kochi\", \"kochi-gothic-subst\");\n    \n    start_reading_text(rect);\n    \n    set_current_window(w2);\n    \n    start_reading_text(rect, \"スプラッシュ・キット\");\n    \n    color back = COLOR_WHEAT;\n    \n    while ( (not quit_requested()) && ( reading_text(w1) || reading_text(w2) ) )\n    {\n        process_events();\n        \n        set_current_window(w1);\n        \n        if ( not text_entry_cancelled(w1) )\n            clear_screen(COLOR_WHITE);\n        else\n            clear_screen(COLOR_PERU);\n        \n        draw_text(\"Enter english string: \", COLOR_NAVY, \"hara\", 18, 30, 50);\n        draw_collected_text(COLOR_BLACK, font_named(\"hara\"), 18, option_defaults());\n        \n        if ( not reading_text(w1) )\n        {\n            draw_text(string(\"Read: \"), COLOR_BLUE, \"hara\", 18, 30, 80);\n            draw_text(text_input(w1), COLOR_BLUE, \"hara\", 18, 30, 110);\n        }\n        \n        string location = \"Mouse location: \";\n        location += to_string(mouse_x()) + \":\" + to_string(mouse_y());\n        \n        string left_clicked = \"Left click status: \";\n        left_clicked += to_string(mouse_clicked(LEFT_BUTTON)) + \" up: \" + to_string(mouse_up(LEFT_BUTTON)) + \" down: \" + to_string(mouse_down(LEFT_BUTTON));\n        \n        string right_clicked = \"Right click status: \";\n        right_clicked += to_string(mouse_clicked(RIGHT_BUTTON)) + \" up: \" + to_string(mouse_up(RIGHT_BUTTON)) + \" down: \" + to_string(mouse_down(RIGHT_BUTTON));\n        \n        string key_details = \"T key is \";\n        if ( key_down(T_KEY) ) key_details += \"down\";\n        if ( key_up(T_KEY) ) key_details += \"up\";\n        if ( key_released(T_KEY) ) key_details += \" - released\";\n        if ( key_typed(T_KEY) ) key_details += \" - typed\";\n\n        if ( key_typed(F_KEY) ) window_toggle_fullscreen(window_with_focus());\n        if ( key_typed(B_KEY) ) window_toggle_border(window_with_focus());\n\n        draw_text(location, COLOR_PLUM, \"hara\", 14, 18, 200);\n        draw_text(left_clicked, COLOR_PLUM, \"hara\", 14, 18, 220);\n        draw_text(right_clicked, COLOR_PLUM, \"hara\", 14, 18, 240);\n        draw_text(key_details, COLOR_PLUM, \"hara\", 14, 18, 280);\n        draw_text(_key_down, COLOR_PLUM, \"hara\", 14, 18, 300);\n        draw_text(_key_up, COLOR_PLUM, \"hara\", 14, 18, 320);\n        draw_text(_key_typed, COLOR_PLUM, \"hara\", 14, 18, 340);\n        \n        set_current_window(w2);\n        \n        if ( key_typed(C_KEY) )\n        {\n            back = random_rgb_color(255);\n        }\n        \n        clear_screen(back);\n        draw_text(\"Enter Japanese string: \", COLOR_NAVY, \"hara\", 18, 30, 50);\n        draw_collected_text(COLOR_BLACK, font_named(\"kochi\"), 18, option_defaults());\n        \n        if ( not reading_text(w2) )\n        {\n            draw_text(string(\"Read: \"), COLOR_BLUE, \"hara\", 18, 30, 80);\n            draw_text(text_input(w2), COLOR_BLUE, \"kochi\", 18, 30, 110);\n        }\n        \n        // Get location of mouse in W2\n        location = \"Mouse location: \";\n        location += to_string(mouse_x()) + \":\" + to_string(mouse_y());\n        \n        draw_text(location, COLOR_PLUM, \"hara\", 14, 18, 200);\n        draw_text(left_clicked, COLOR_PLUM, \"hara\", 14, 18, 220);\n        draw_text(right_clicked, COLOR_PLUM, \"hara\", 14, 18, 240);\n        draw_text(key_details, COLOR_PLUM, \"hara\", 14, 18, 280);\n        draw_text(_key_down, COLOR_PLUM, \"hara\", 14, 18, 300);\n        draw_text(_key_up, COLOR_PLUM, \"hara\", 14, 18, 320);\n        draw_text(_key_typed, COLOR_PLUM, \"hara\", 14, 18, 340);\n        \n        refresh_screen();\n    }\n    \n    close_window(\"Test Input\");\n    close_window(\"Test Input Window 2\");\n    \n    deregister_callback_on_key_typed(&_on_key_typed);\n    deregister_callback_on_key_down(&_on_key_down);\n    deregister_callback_on_key_up(&_on_key_up);\n    \n    free_all_fonts();\n}",
+  "tests": [
+    {
+      "description": "ProcessEvents allows SplashKit to react to user interactions. This\nprocedure checks the current keyboard and mouse states and should be\ncalled once within your game loop to check user interaction.\n\nSide Effects\n- Reads user interaction events\n- Updates keys down, text input, etc.",
+      "name": "process_events",
+      "return_description": null,
+      "signature": "void process_events();",
+      "unique_global_name": "process_events"
+    },
+    {
+      "description": "Checks to see if the user has asked for the application to quit. This\nvalue is updated by the `process_events` routine. Also see\n`window_close_requested`.",
+      "name": "quit_requested",
+      "return_description": "True if the application has been requested to close.",
+      "signature": "bool quit_requested();",
+      "unique_global_name": "quit_requested"
+    },
+    {
+      "description": "Cancels a quit request, ensuring the quit requested will return false.",
+      "name": "reset_quit",
+      "return_description": null,
+      "signature": "void reset_quit();",
+      "unique_global_name": "reset_quit"
+    },
+    {
+      "description": "Checks to see if any key has been pressed since the last time\n`process_events` was called.",
+      "name": "any_key_pressed",
+      "return_description": "True if any key was pressed.",
+      "signature": "bool any_key_pressed();",
+      "unique_global_name": "any_key_pressed"
+    },
+    {
+      "description": "Remove the registered callback from receiving events related to key down actions.",
+      "name": "deregister_callback_on_key_down",
+      "return_description": null,
+      "signature": "void deregister_callback_on_key_down(key_callback *callback);",
+      "unique_global_name": "deregister_callback_on_key_down"
+    },
+    {
+      "description": "Remove the registered callback from receiving events related to key typed actions.",
+      "name": "deregister_callback_on_key_typed",
+      "return_description": null,
+      "signature": "void deregister_callback_on_key_typed(key_callback *callback);",
+      "unique_global_name": "deregister_callback_on_key_typed"
+    },
+    {
+      "description": "Remove the registered callback from receiving events related to key up actions.",
+      "name": "deregister_callback_on_key_up",
+      "return_description": null,
+      "signature": "void deregister_callback_on_key_up(key_callback *callback);",
+      "unique_global_name": "deregister_callback_on_key_up"
+    },
+    {
+      "description": "Returns true when the key requested is being held down. This is updated\nas part of the `process_events` call. Use the key codes from `key_code`\nto specify the key to be checked.",
+      "name": "key_down",
+      "return_description": "True if the key is currently held down",
+      "signature": "bool key_down(key_code key);",
+      "unique_global_name": "key_down"
+    },
+    {
+      "description": "The `key_name` function returns a string name for a given `key_code`. For\nexample, `COMMA_KEY` returns the string 'Comma'. This function could be used\nto display more meaningful key names for configuring game controls, etc.",
+      "name": "key_name",
+      "return_description": "The name of the key",
+      "signature": "string key_name(key_code key);",
+      "unique_global_name": "key_name"
+    },
+    {
+      "description": "Returns true if the specified key was released since the last time\n`process_events` was called. This occurs only once for the key that is\nreleased and will not return true again until the key is pressed down and\nreleased again.",
+      "name": "key_released",
+      "return_description": "True if the key was just released",
+      "signature": "bool key_released(key_code key);",
+      "unique_global_name": "key_released"
+    },
+    {
+      "description": "Returns true when the key requested is just pressed down. This is updated\nas part of the `process_events` call. Use the key codes from `key_code`\nto specify the key to be checked. this will only occur once for that key that is\npressed and will not return true again until the key is released and presssed down again",
+      "name": "key_typed",
+      "return_description": "True if the key was just pressed down",
+      "signature": "bool key_typed(key_code key);",
+      "unique_global_name": "key_typed"
+    },
+    {
+      "description": "Returns false when the key requested is being held down. This is updated\nas part of the `process_events` call. Use the key codes from `key_code`\nto specify the key to be checked.",
+      "name": "key_up",
+      "return_description": "True if the key is currently up",
+      "signature": "bool key_up(key_code key);",
+      "unique_global_name": "key_up"
+    },
+    {
+      "description": "Register the passed in callback function to receive notification of key down\ncalls. This will be called in response to `process_events`, for each key that\nthe user presses down.",
+      "name": "register_callback_on_key_down",
+      "return_description": null,
+      "signature": "void register_callback_on_key_down(key_callback *callback);",
+      "unique_global_name": "register_callback_on_key_down"
+    },
+    {
+      "description": "Register the passed in callback function to receive notification of key typed\ncalls. This will be called in response to `process_events`, when the user initially\npresses a key down.",
+      "name": "register_callback_on_key_typed",
+      "return_description": null,
+      "signature": "void register_callback_on_key_typed(key_callback *callback);",
+      "unique_global_name": "register_callback_on_key_typed"
+    },
+    {
+      "description": "Register the passed in callback function to receive notification of key up\ncalls. This will be called in response to `process_events`, for each key that\nthe user releases.",
+      "name": "register_callback_on_key_up",
+      "return_description": null,
+      "signature": "void register_callback_on_key_up(key_callback *callback);",
+      "unique_global_name": "register_callback_on_key_up"
+    },
+    {
+      "description": "Tells the mouse cursor to hide (no longer visible) if it is currently\nshowing. Use `ShowMouse` to make the mouse cursor visible again.",
+      "name": "hide_mouse",
+      "return_description": null,
+      "signature": "void hide_mouse();",
+      "unique_global_name": "hide_mouse"
+    },
+    {
+      "description": "Returns true if the specified button was clicked since the last time\n`process_events` was called.",
+      "name": "mouse_clicked",
+      "return_description": "True if the mouse button was clicked",
+      "signature": "bool mouse_clicked(mouse_button button);",
+      "unique_global_name": "mouse_clicked"
+    },
+    {
+      "description": "Returns `true` if the specified button is currently pressed down.",
+      "name": "mouse_down",
+      "return_description": "True if the mouse button is down",
+      "signature": "bool mouse_down(mouse_button button);",
+      "unique_global_name": "mouse_down"
+    },
+    {
+      "description": "Returns the amount of accumulated mouse movement, since the last time\n`process_events` was called, as a `vector_2d`.",
+      "name": "mouse_movement",
+      "return_description": "The movement of the mouse since the last process events",
+      "signature": "vector_2d mouse_movement();",
+      "unique_global_name": "mouse_movement"
+    },
+    {
+      "description": "Returns the current window position of the mouse as a `Point2D`",
+      "name": "mouse_position",
+      "return_description": "The position of the mouse in the current window.",
+      "signature": "point_2d mouse_position();",
+      "unique_global_name": "mouse_position"
+    },
+    {
+      "description": "Returns The current window position of the mouse as a `Vector`",
+      "name": "mouse_position_vector",
+      "return_description": "The offset from the window origin to the mouse.",
+      "signature": "vector_2d mouse_position_vector();",
+      "unique_global_name": "mouse_position_vector"
+    },
+    {
+      "description": "Returns `true` if the mouse is currently visible, `false` if not.",
+      "name": "mouse_shown",
+      "return_description": "True if the mouse is shown.",
+      "signature": "bool mouse_shown();",
+      "unique_global_name": "mouse_shown"
+    },
+    {
+      "description": "Returns `true` if the specified button is currently up.",
+      "name": "mouse_up",
+      "return_description": "True if the mouse button is up (i.e. not down)",
+      "signature": "bool mouse_up(mouse_button button);",
+      "unique_global_name": "mouse_up"
+    },
+    {
+      "description": "Returns the amount the mouse wheel was scrolled since the last call\nto `process_events`. The result is a vector containing the x and y\namounts scrolled. Scroll left generates a negative x, scroll right a\npositive x. Scroll backward is negative y, scroll forward positive y.\nNote that on MacOS the directions may be inverted by OS settings.",
+      "name": "mouse_wheel_scroll",
+      "return_description": "The distance and direction of the mouse scroll since the last\n`process_events`",
+      "signature": "vector_2d mouse_wheel_scroll();",
+      "unique_global_name": "mouse_wheel_scroll"
+    },
+    {
+      "description": "Returns the current x value of the mouse's position.",
+      "name": "mouse_x",
+      "return_description": "The distance of the mouse from the left edge of the current\nwindow location",
+      "signature": "float mouse_x();",
+      "unique_global_name": "mouse_x"
+    },
+    {
+      "description": "Returns the current y value of the mouse's position.",
+      "name": "mouse_y",
+      "return_description": "The distance of the mouse from the top edge of the current\nwindow location",
+      "signature": "float mouse_y();",
+      "unique_global_name": "mouse_y"
+    },
+    {
+      "description": "Moves the mouse cursor to the specified screen location.",
+      "name": "move_mouse",
+      "return_description": null,
+      "signature": "void move_mouse(double x,double y);",
+      "unique_global_name": "move_mouse"
+    },
+    {
+      "description": "Moves the mouse cursor to the specified screen location.",
+      "name": "move_mouse",
+      "return_description": null,
+      "signature": "void move_mouse(point_2d point);",
+      "unique_global_name": "move_mouse_to_point"
+    },
+    {
+      "description": "Tells the mouse cursor to be visible if it was previously hidden with\nby a `HideMouse` or `SetMouseVisible`(False) call.",
+      "name": "show_mouse",
+      "return_description": null,
+      "signature": "void show_mouse();",
+      "unique_global_name": "show_mouse"
+    },
+    {
+      "description": "Used to explicitly set the mouse cursors visible state (if it is showing\nin the window or not) based on the show parameter.",
+      "name": "show_mouse",
+      "return_description": null,
+      "signature": "void show_mouse(bool show);",
+      "unique_global_name": "show_mouse_with_boolean"
+    },
+    {
+      "description": "Draw the text that the user is currently enterring on the current window.",
+      "name": "draw_collected_text",
+      "return_description": null,
+      "signature": "void draw_collected_text(color clr,font fnt,int font_size,const drawing_options &opts);",
+      "unique_global_name": "draw_collected_text"
+    },
+    {
+      "description": "Ends reading text in for the current window.",
+      "name": "end_reading_text",
+      "return_description": null,
+      "signature": "void end_reading_text();",
+      "unique_global_name": "end_reading_text"
+    },
+    {
+      "description": "Ends reading text for the passed in window.",
+      "name": "end_reading_text",
+      "return_description": null,
+      "signature": "void end_reading_text(window wind);",
+      "unique_global_name": "end_reading_text_in_window"
+    },
+    {
+      "description": "Returns true when the current window is reading text.",
+      "name": "reading_text",
+      "return_description": "True when window is setup to read input from the user.",
+      "signature": "bool reading_text();",
+      "unique_global_name": "reading_text"
+    },
+    {
+      "description": "Returns true when the window is reading text.",
+      "name": "reading_text",
+      "return_description": "True when window is setup to read input from the user.",
+      "signature": "bool reading_text(window wind);",
+      "unique_global_name": "reading_text_in_window"
+    },
+    {
+      "description": "Start reading text in the current window within the bounds of the\nsupplied rectangle.",
+      "name": "start_reading_text",
+      "return_description": null,
+      "signature": "void start_reading_text(rectangle rect);",
+      "unique_global_name": "start_reading_text"
+    },
+    {
+      "description": "Start reading text in the current window within the bounds of the\nsupplied rectangle. The text will start with an initial value.",
+      "name": "start_reading_text",
+      "return_description": null,
+      "signature": "void start_reading_text(rectangle rect,string initial_text);",
+      "unique_global_name": "start_reading_text_with_initial_text"
+    },
+    {
+      "description": "Start reading text in the window within the bounds of the\nsupplied rectangle.",
+      "name": "start_reading_text",
+      "return_description": null,
+      "signature": "void start_reading_text(window wind,rectangle rect);",
+      "unique_global_name": "start_reading_text_in_window"
+    },
+    {
+      "description": "Start reading text in the window within the bounds of the\nsupplied rectangle. The text will start with an initial value.",
+      "name": "start_reading_text",
+      "return_description": null,
+      "signature": "void start_reading_text(window wind,rectangle rect,string initial_text);",
+      "unique_global_name": "start_reading_text_in_window_with_initial_text"
+    },
+    {
+      "description": "Did the user press escape and cancel the enterring of text?",
+      "name": "text_entry_cancelled",
+      "return_description": "True when the use has cancelled text entry",
+      "signature": "bool text_entry_cancelled();",
+      "unique_global_name": "text_entry_cancelled"
+    },
+    {
+      "description": "Did the user press escape and cancel the enterring of text?",
+      "name": "text_entry_cancelled",
+      "return_description": "True when the use has cancelled text entry",
+      "signature": "bool text_entry_cancelled(window wind);",
+      "unique_global_name": "text_entry_cancelled_in_window"
+    },
+    {
+      "description": "The text the user has currently enterred on the current window.",
+      "name": "text_input",
+      "return_description": "The user's text entry",
+      "signature": "string text_input();",
+      "unique_global_name": "text_input"
+    },
+    {
+      "description": "The text the user has currently enterred on the current window.",
+      "name": "text_input",
+      "return_description": "The user's text entry",
+      "signature": "string text_input(window wind);",
+      "unique_global_name": "text_input_in_window"
+    }
+  ]
+}

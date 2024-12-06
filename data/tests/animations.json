@@ -1,0 +1,3215 @@
+{
+  "group": "animations",
+  "tests": [
+    {
+      "name": "animation_count",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_count",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "script"
+            }
+          ],
+          "store_result": "count"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "count"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_current_cell",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_current_cell",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "current_cell"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "current_cell"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": -1
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_current_vector",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_current_vector",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "current_vector"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "current_vector",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "current_vector",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_ended",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_ended",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_ended",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_ended",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_entered_frame",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation_percent",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": 20
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_entered_frame",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_entered_frame",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_frame_time",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_frame_time",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "frame_time"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "frame_time"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_index",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_index",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ],
+          "store_result": "index"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "index"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": -1
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_index",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "NonExistentAnimation"
+            }
+          ],
+          "store_result": "non_existent_index"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "non_existent_index"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": -1
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_name",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "anim_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_script_name",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_script_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ],
+          "store_result": "script_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "script_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "kermit"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation_script_named",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_script_named",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            }
+          ],
+          "store_result": "loaded_script"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "loaded_script"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_script_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "loaded_script"
+            }
+          ],
+          "store_result": "script_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "script_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "kermit"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_with_script",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation_with_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_with_script_and_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation_with_script_and_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkleft"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkleft"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_index_with_script",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_index_with_script_and_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation_index_with_script_and_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_with_script_named",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation_with_script_named",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_with_script_named_and_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation_with_script_named_and_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_index",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_current_cell",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_index_with_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            },
+            {
+              "value_type": "primitive",
+              "value": false
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation_index_with_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_entered_frame",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assign_animation_with_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "assign_animation_with_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "create_animation_from_index_with_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation_from_index_with_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "anim_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "create_animation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "anim_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "create_animation_with_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation_with_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "anim_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "create_animation_from_script_named",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation_from_script_named",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "anim_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "create_animation_from_script_named_with_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation_from_script_named_with_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "anim_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "free_all_animation_scripts",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_animation_script",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "kermit"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_all_animation_scripts",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_animation_script",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "kermit"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "free_animation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "free_animation_script",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "script"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "script"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "has_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            }
+          ],
+          "store_result": "script_exists"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "script_exists"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "free_animation_script_with_name",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_animation_script",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "kermit"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script_with_name",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_animation_script",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "kermit"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "has_animation_named",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "has_animation_named",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ],
+          "store_result": "has_walkfront"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "has_walkfront"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "has_animation_named",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "NonExistentAnimation"
+            }
+          ],
+          "store_result": "has_nonexistent"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "has_nonexistent"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "has_animation_script",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_animation_script",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "kermit"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_animation_script",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "kermit"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "load_animation_script",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_animation"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "loaded_script"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "loaded_script"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_script_name",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "loaded_script"
+            }
+          ],
+          "store_result": "script_name"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "script_name"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "test_animation"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "loaded_script"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "has_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_animation"
+            }
+          ],
+          "store_result": "script_exists"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "script_exists"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "restart_animation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_ended",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "anim_ended"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim_ended"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "restart_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "animation_ended",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ],
+          "store_result": "anim_ended_after_restart"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "anim_ended_after_restart"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "restart_animation_with_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "restart_animation_with_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_current_cell",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 3
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "update_animation_percent_with_sound",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation_percent_with_sound",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.5
+            },
+            {
+              "value_type": "primitive",
+              "value": true
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_frame_time",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "update_animation",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "moonwalkback"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_current_cell",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "update_animation_percent",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "load_animation_script",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "kermit"
+            },
+            {
+              "value_type": "primitive",
+              "value": "kermit.txt"
+            }
+          ],
+          "store_result": "kermit_script"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            },
+            {
+              "value_type": "primitive",
+              "value": "walkfront"
+            }
+          ],
+          "store_result": "anim"
+        },
+        {
+          "step_type": "function",
+          "function_name": "update_animation_percent",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.5
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "function",
+              "function_name": "animation_frame_time",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "anim"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "anim"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_animation_script",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "kermit_script"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
