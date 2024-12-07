@@ -23,6 +23,10 @@ module LanguageConfig
       matrix_access_syntax: ->(row, col) { "[#{row}, #{col}]" },
       loop_syntax: ->(iterations) { "for _ in range(#{iterations}):\n" },
       if_syntax: ->(condition) { "if #{condition}:\n" },
+      if_greater_than: ->(value1, value2) { "#{value1} > #{value2}" },
+      if_true: ->(value) { "#{value} is True" },
+      if_false: ->(value) { "#{value} is False" },
+      if_equal: ->(value1, value2) { "#{value1} == #{value2}" },
       while_syntax: ->(condition) { "while #{condition}:\n" },
       footer: "\n",
       else_syntax: "else:\n",
@@ -47,7 +51,8 @@ module LanguageConfig
         '1. Install SplashKit SDK following instructions at https://splashkit.io/installation/',
         '2. Install pytest: pip install pytest'
       ].join("\n"),
-      run_command: 'skm python3 integration_tests.py'
+      run_command: 'skm python3 integration_tests.py',
+      if_not_equal: ->(value1, value2) { "#{value1} != #{value2}" },
     }.freeze
   end
 end

@@ -55,6 +55,9 @@ module ValueFormatter
     # Formats variable field values
     def format_variable_field_value(value, functions, config)
       variable_value = format_variable_value(value, functions, config)
+      if !value[:variable_field]
+        raise "Variable field is required for variable field value #{JSON.pretty_generate(value)}"
+      end
       config[:field_syntax].call(variable_value, value[:variable_field])
     end
 

@@ -1858,7 +1858,7 @@
               "value": "array_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "list",
               "value": [
                 {
                   "value_type": "variable",

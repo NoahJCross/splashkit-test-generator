@@ -46,7 +46,7 @@ module TestGenerator
 
       # Set up directories for generated tests
       def setup_directories(language)
-        base_dir = "generated_tests/#{language}"
+        base_dir = "generated_tests1/#{language}"
         Dir.mkdir(base_dir) unless Dir.exist?(base_dir)
         tests_dir = "#{base_dir}/tests"
         Dir.mkdir(tests_dir) unless Dir.exist?(tests_dir)
@@ -155,9 +155,13 @@ module TestGenerator
         test_code
       end
 
-      # Write a variable step in the test TODO
+      # Write a variable step
       def write_variable_step(step, _)
-        indent(ValueFormatter.format_variable_value(step, @functions, @config) + "todo")
+          if step[:value_type] == 'reference'
+            indent(@config[:variable_declaration].call(step[:variable_name]) + @config[:variable_syntax].call(step[:value]))
+          else
+            indent(@config[:variable_declaration].call(step[:variable_name]) + ValueFormatter.format_value(step, @functions, @config))
+          end
       end
 
       # Write a specific test step based on its type
@@ -184,6 +188,8 @@ module TestGenerator
       def write_function_call(function_name, args, step)
         if step[:store_result]
           @config[:variable_declaration].call(step[:store_result]) + @config[:function_syntax].call(function_name, args)
+        elsif step[:variable_name]
+          @config[:variable_syntax].call(step[:variable_name]) + ' = ' + @config[:function_syntax].call(function_name, args)
         else
           @config[:function_syntax].call(function_name, args)
         end
@@ -208,7 +214,7 @@ module TestGenerator
         loop_code = @config[:loop_syntax].call(step[:iterations])
         @indent_level += 1
         step[:loop_steps].each do |inner_step|
-          loop_code << write_step_code(inner_step, function_name)
+          loop_code << write_test_step(inner_step, function_name)
         end
         @indent_level -= 1
         loop_code << @config[:footer]
@@ -217,7 +223,10 @@ module TestGenerator
 
       # Write an if step in the test
       def write_if_step(step, function_name)
-        condition_code = write_assertion_step(step, function_name)
+        # Extract the comparison details
+        comparison = step[:compare]
+        condition_code = write_condition_code(comparison)
+
         if_code = @config[:if_syntax].call(condition_code)
         @indent_level += 1
         step[:then_steps].each do |then_step|
@@ -226,6 +235,47 @@ module TestGenerator
         @indent_level -= 1
         if_code << @config[:footer]
         write_else_steps(step, if_code, function_name)
+      end
+
+      # Generate condition code based on comparison details
+      def write_condition_code(comparison)
+        case comparison[:compare_type]
+        when 'greater_than'
+          # Use the if_greater_than syntax from the config
+          @config[:if_greater_than].call(
+            ValueFormatter.format_value(comparison[:value1], @functions, @config),
+            ValueFormatter.format_value(comparison[:value2], @functions, @config)
+          )
+        when 'true'
+          # Use the if_true syntax from the config
+          @config[:if_true].call(
+            ValueFormatter.format_value(comparison[:value1], @functions, @config)
+          )
+        when 'false'
+          @config[:if_false].call(
+            ValueFormatter.format_value(comparison[:value1], @functions, @config)
+          )
+        when "equal"
+          @config[:if_equal].call(
+            ValueFormatter.format_value(comparison[:value1], @functions, @config),
+            ValueFormatter.format_value(comparison[:value2], @functions, @config)
+          )
+        when 'not_equal'
+          @config[:if_not_equal].call(
+            ValueFormatter.format_value(comparison[:value1], @functions, @config),
+            ValueFormatter.format_value(comparison[:value2], @functions, @config)
+          )
+        else
+          raise "Unsupported comparison type: #{comparison[:compare_type]}"
+        end
+      end
+
+      def write_break_step(_, _)
+        indent('break;')
+      end
+
+      def write_reassignment_step(step, _)
+        write_function_step(step, _)
       end
 
       # Write else steps for an if statement
@@ -237,20 +287,20 @@ module TestGenerator
             if_code << write_test_step(else_step, function_name)
           end
           @indent_level -= 1
+          if_code << @config[:footer]
         end
-        if_code << @config[:footer]
         if_code
       end
 
       # Write a while step
       def write_while_step(step, function_name)
-        while_code = @config[:while_syntax].call(write_assertion_step(step[:condition], function_name).strip)
+        while_code = indent(@config[:while_syntax].call(write_condition_code(step[:compare]).strip))
         @indent_level += 1
         step[:while_steps].each do |inner_step|
-          while_code << write_step_code(inner_step, function_name)
+          while_code << write_test_step(inner_step, function_name)
         end
         @indent_level -= 1
-        while_code << @config[:footer]
+        while_code << indent(@config[:footer])
         while_code
       end
     end

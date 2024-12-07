@@ -11677,7 +11677,7 @@
           "store_result": "test_number_of_displays"
         },
         {
-          "step_type": "if",
+          "step_type": "assertion",
           "compare": {
             "compare_type": "greater_than",
             "value1": {
@@ -11688,86 +11688,84 @@
               "value_type": "primitive",
               "value": 0
             }
-          },
-          "then_steps": [
+          }
+        },
+
+        {
+          "step_type": "function",
+          "function_name": "display_details",
+          "args": [
             {
-              "step_type": "function",
-              "function_name": "display_details",
+              "value_type": "primitive",
+              "value": 0
+            }
+          ],
+          "store_result": "test_display"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_display"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "function",
+              "function_name": "display_width",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": 0
-                }
-              ],
-              "store_result": "test_display"
-            },
-            {
-              "step_type": "assertion",
-              "compare": {
-                "compare_type": "not_null",
-                "value1": {
                   "value_type": "variable",
                   "variable_name": "test_display"
                 }
-              }
+              ]
             },
-            {
-              "step_type": "assertion",
-              "compare": {
-                "compare_type": "greater_than",
-                "value1": {
-                  "value_type": "function",
-                  "function_name": "display_width",
-                  "args": [
-                    {
-                      "value_type": "variable",
-                      "variable_name": "test_display"
-                    }
-                  ]
-                },
-                "value2": {
-                  "value_type": "primitive",
-                  "value": 0
-                }
-              }
-            },
-            {
-              "step_type": "assertion",
-              "compare": {
-                "compare_type": "greater_than",
-                "value1": {
-                  "value_type": "function",
-                  "function_name": "display_height",
-                  "args": [
-                    {
-                      "value_type": "variable",
-                      "variable_name": "test_display"
-                    }
-                  ]
-                },
-                "value2": {
-                  "value_type": "primitive",
-                  "value": 0
-                }
-              }
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
             }
-          ],
-          "else_steps": [
-            {
-              "step_type": "assertion",
-              "compare": {
-                "compare_type": "equal",
-                "value1": {
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "greater_than",
+            "value1": {
+              "value_type": "function",
+              "function_name": "display_height",
+              "args": [
+                {
                   "value_type": "variable",
-                  "variable_name": "test_number_of_displays"
-                },
-                "value2": {
-                  "value_type": "primitive",
-                  "value": 0
+                  "variable_name": "test_display"
                 }
-              }
+              ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
             }
-          ]
+          }
+        },
+
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_number_of_displays"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
+            }
+          }
         }
       ]
     },

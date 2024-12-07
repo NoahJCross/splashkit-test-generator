@@ -37,13 +37,17 @@ module LanguageConfig
       matrix_access_syntax: ->(row, col) { "[#{row}, #{col}]" },
       loop_syntax: ->(iterations) { "for (int i = 0; i < #{iterations}; i++) {\n" },
       if_syntax: ->(condition) { "if (#{condition}) {\n" },
+      if_greater_than: ->(value1, value2) { "#{value1} > #{value2}" },
+      if_true: ->(value) { "#{value} == true" },
+      if_false: ->(value) { "!#{value}" },
+      if_equal: ->(value1, value2) { "#{value1} == #{value2}" },
       while_syntax: ->(condition) { "while (#{condition}) {\n" },
       footer: "}\n",
       break_syntax: "break;\n",
       else_syntax: "else\n{\n",
       naming_convention: :pascal_case,
-      assert_equal: ->(value1, value2) { "Assert.Equal(#{value2}, #{value1});\n" },
-      assert_not_equal: ->(value1, value2) { "Assert.NotEqual(#{value2}, #{value1});\n" },
+      assert_equal: ->(value1, value2) { "Assert.Equal(#{value1}, #{value2});\n" },
+      assert_not_equal: ->(value1, value2) { "Assert.NotEqual(#{value1}, #{value2});\n" },
       assert_greater_than: ->(value1, value2) { "Assert.True(#{value1} > #{value2});\n" },
       assert_less_than: ->(value1, value2) { "Assert.True(#{value1} < #{value2});\n" },
       assert_null: ->(value) { "Assert.Null(#{value});\n" },
@@ -62,7 +66,8 @@ module LanguageConfig
         '3. Install Xunit: dotnet add package Xunit',
         '4. Add SplashKit: dotnet add package SplashKit'
       ].join("\n"),
-      run_command: 'dotnet test'
+      run_command: 'dotnet test',
+      if_not_equal: ->(value1, value2) { "#{value1} != #{value2}" },
     }.freeze
   end
 end

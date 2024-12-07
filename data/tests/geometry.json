@@ -1398,8 +1398,15 @@
           "store_result": "test_heading"
         },
         {
-          "step_type": "variable",
-          "variable_name": "test_point2"
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_point2"
         },
         {
           "step_type": "function",
@@ -1558,12 +1565,34 @@
       ]
     },
     {
-      "step_type": "variable",
-      "variable_name": "test_point1"
+      "step_type": "function",
+      "function_name": "point_at",
+      "args": [
+        {
+          "value_type": "primitive",
+          "value": 0.0
+        },
+        {
+          "value_type": "primitive",
+          "value": 0.0
+        }
+      ],
+      "store_result": "test_point1"
     },
     {
-      "step_type": "variable",
-      "variable_name": "test_point2"
+      "step_type": "function",
+      "function_name": "point_at",
+      "args": [
+        {
+          "value_type": "primitive",
+          "value": 0.0
+        },
+        {
+          "value_type": "primitive",
+          "value": 0.0
+        }
+      ],
+      "store_result": "test_point2"
     },
     {
       "name": "tangent_points",
@@ -1735,12 +1764,34 @@
           "store_result": "test_vector"
         },
         {
-          "step_type": "variable",
-          "variable_name": "test_point1"
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_point1"
         },
         {
-          "step_type": "variable",
-          "variable_name": "test_point2"
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_point2"
         },
         {
           "step_type": "function",
@@ -2258,6 +2309,12 @@
           "store_result": "test_line2"
         },
         {
+          "step_type": "variable",
+          "variable_type": "primitive",
+          "variable_name": "test_index",
+          "value": 0
+        },
+        {
           "step_type": "function",
           "function_name": "closest_point_on_lines",
           "args": [
@@ -2271,8 +2328,8 @@
               "list_values": ["test_line1", "test_line2"]
             },
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "variable",
+              "variable_name": "test_index"
             }
           ],
           "store_result": "test_closest_point"
@@ -2653,8 +2710,19 @@
           "store_result": "test_line2"
         },
         {
-          "step_type": "variable",
-          "variable_name": "test_point"
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
+            }
+          ],
+          "store_result": "test_point"
         },
         {
           "step_type": "function",

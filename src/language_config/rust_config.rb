@@ -31,6 +31,10 @@ module LanguageConfig
       matrix_access_syntax: ->(row, col) { "[#{row}, #{col}]" },
       loop_syntax: ->(iterations) { "for _ in 0..#{iterations} {\n" },
       if_syntax: ->(condition) { "if #{condition} {\n" },
+      if_greater_than: ->(value1, value2) { "#{value1} > #{value2}" },
+      if_true: ->(value) { "#{value} == true" },
+      if_false: ->(value) { "#{value} == false" },
+      if_equal: ->(value1, value2) { "#{value1} == #{value2}" },
       while_syntax: ->(condition) { "while #{condition} {\n" },
       footer: "}\n",
       else_syntax: "else {\n",
@@ -57,8 +61,8 @@ module LanguageConfig
         '   splashkit = "*"',
         '4. Move integration_tests.rs to splashkit_tests/src/lib.rs'
       ].join("\n"),
-      run_command: 'cd splashkit_tests && cargo test'
-
+      run_command: 'cd splashkit_tests && cargo test',
+      if_not_equal: ->(value1, value2) { "#{value1} != #{value2}" },
     }.freeze
   end
 end

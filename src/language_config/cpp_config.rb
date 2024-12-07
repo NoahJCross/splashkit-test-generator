@@ -23,6 +23,10 @@ module LanguageConfig
       matrix_access_syntax: ->(row, col) { "[#{row}][#{col}]" },
       loop_syntax: ->(iterations) { "for (int i = 0; i < #{iterations}; ++i) {\n" },
       if_syntax: ->(condition) { "if (#{condition}) {\n" },
+      if_greater_than: ->(value1, value2) { "#{value1} > #{value2}" },
+      if_true: ->(value) { "#{value} == true" },
+      if_false: ->(value) { "#{value} == false" },
+      if_equal: ->(value1, value2) { "#{value1} == #{value2}" },
       while_syntax: ->(condition) { "while (#{condition}) {\n" },
       footer: "}\n",
       else_syntax: "else {\n",
@@ -46,7 +50,8 @@ module LanguageConfig
         '2. Install Catch2: sudo apt-get install catch2 (Ubuntu) or brew install catch2 (macOS)',
         '3. Compile: g++ integration_tests.cpp -l SplashKit -o integration_tests'
       ].join("\n"),
-      run_command: './integration_tests'
+      run_command: './integration_tests',
+      if_not_equal: ->(value1, value2) { "#{value1} != #{value2}" }
     }.freeze
   end
 end

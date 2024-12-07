@@ -37,6 +37,10 @@ module LanguageConfig
       matrix_access_syntax: ->(row, col) { "[#{row}, #{col}]" },
       loop_syntax: ->(iterations) { "for i := 0 to #{iterations - 1} do\n" },
       if_syntax: ->(condition) { "if #{condition} then\n" },
+      if_greater_than: ->(value1, value2) { "#{value1} > #{value2}" },
+      if_true: ->(value) { "#{value} = true" },
+      if_false: ->(value) { "#{value} = false" },
+      if_equal: ->(value1, value2) { "#{value1} = #{value2}" },
       while_syntax: ->(condition) { "while #{condition} do\n" },
       footer: "end;\n",
       else_syntax: "else\n",
@@ -62,7 +66,8 @@ module LanguageConfig
         '   fppkg install fptest',
         '3. Compile: fpc integration_tests.pas'
       ].join("\n"),
-      run_command: './integration_tests'
+      run_command: './integration_tests',
+      if_not_equal: ->(value1, value2) { "#{value1} <> #{value2}" }
     }.freeze
   end
 end

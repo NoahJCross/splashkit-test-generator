@@ -34,8 +34,9 @@
           "compare": {
             "compare_type": "equal",
             "value2": {
-              "value_type": "variable",
-              "variable_name": "test_camera_position"
+              "value_type": "variable_field",
+              "variable_name": "test_camera_position",
+              "variable_field": "x"
             },
             "value1": {
               "value_type": "primitive",
@@ -48,8 +49,9 @@
           "compare": {
             "compare_type": "equal",
             "value2": {
-              "value_type": "variable",
-              "variable_name": "test_camera_position"
+              "value_type": "variable_field",
+              "variable_name": "test_camera_position",
+              "variable_field": "y"
             },
             "value1": {
               "value_type": "primitive",
