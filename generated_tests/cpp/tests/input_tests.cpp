@@ -80,9 +80,9 @@ TEST_CASE("key_down_integration") {
 }
 TEST_CASE("key_name_integration") {
     auto test_key_name1 = key_name(KeyCode::A);
-    REQUIRE(test_key_name1 == "A");
+    REQUIRE("A" == test_key_name1);
     auto test_key_name2 = key_name(KeyCode::ENTER);
-    REQUIRE(test_key_name2 == "Enter");
+    REQUIRE("Enter" == test_key_name2);
 }
 TEST_CASE("key_released_integration") {
     process_events();
@@ -132,7 +132,7 @@ TEST_CASE("register_callback_on_key_up_integration") {
     simulate_key_press(KeyCode::A);
     simulate_key_release(KeyCode::A);
     process_events();
-    REQUIRE(_key_up == "A");
+    REQUIRE("A" == _key_up);
     deregister_callback_on_key_up(_on_key_up());
 }
 TEST_CASE("hide_mouse_integration") {
@@ -166,8 +166,8 @@ TEST_CASE("mouse_movement_integration") {
     move_mouse(100.0, 100.0);
     process_events();
     auto test_movement = mouse_movement();
-    REQUIRE(test_movement->x == 100.0);
-    REQUIRE(test_movement->y == 100.0);
+    REQUIRE(100.0 == test_movement->x);
+    REQUIRE(100.0 == test_movement->y);
     close_window(test_window);
 }
 TEST_CASE("mouse_position_integration") {
@@ -175,8 +175,8 @@ TEST_CASE("mouse_position_integration") {
     move_mouse(400.0, 300.0);
     process_events();
     auto test_position = mouse_position();
-    REQUIRE(test_position->x == 400.0);
-    REQUIRE(test_position->y == 300.0);
+    REQUIRE(400.0 == test_position->x);
+    REQUIRE(300.0 == test_position->y);
     close_window(test_window);
 }
 TEST_CASE("mouse_position_vector_integration") {
@@ -184,8 +184,8 @@ TEST_CASE("mouse_position_vector_integration") {
     move_mouse(400.0, 300.0);
     process_events();
     auto test_mouse_position = mouse_position_vector();
-    REQUIRE(test_mouse_position->x == 400.0);
-    REQUIRE(test_mouse_position->y == 300.0);
+    REQUIRE(400.0 == test_mouse_position->x);
+    REQUIRE(300.0 == test_mouse_position->y);
     close_window(test_window);
 }
 TEST_CASE("mouse_shown_integration") {
@@ -208,7 +208,7 @@ TEST_CASE("mouse_up_integration") {
 TEST_CASE("mouse_wheel_scroll_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     process_events();
-    REQUIRE(mouse_wheel_scroll() == vector_from_angle(0.0, 0.0));
+    REQUIRE(vector_from_angle(0.0, 0.0) == mouse_wheel_scroll());
     simulate_mouse_wheel_scroll(10.0, 5.0);
     process_events();
     REQUIRE(mouse_wheel_scroll());
@@ -225,7 +225,7 @@ TEST_CASE("mouse_y_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_mouse(400.0, 300.0);
     process_events();
-    REQUIRE(mouse_y() == 300.0);
+    REQUIRE(300.0 == mouse_y());
     close_window(test_window);
 }
 TEST_CASE("move_mouse_integration") {
@@ -241,7 +241,7 @@ TEST_CASE("move_mouse_to_point_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_mouse(point_at(400.0, 300.0));
     process_events();
-    REQUIRE(mouse_position() == point_at(400.0, 300.0));
+    REQUIRE(point_at(400.0, 300.0) == mouse_position());
     close_window(test_window);
 }
 TEST_CASE("show_mouse_integration") {
@@ -273,7 +273,7 @@ TEST_CASE("draw_collected_text_integration") {
     process_events();
     draw_collected_text(color_black(), test_font, 18, option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(test_window, 105, 115) == color_black());
+    REQUIRE(color_black() == get_pixel(test_window, 105, 115));
     end_reading_text();
     free_font(test_font);
     close_window(test_window);
@@ -386,7 +386,7 @@ TEST_CASE("text_input_integration") {
     process_events();
     simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(text_input() == "A");
+    REQUIRE("A" == text_input());
     end_reading_text();
     close_window(test_window);
 }
@@ -397,7 +397,7 @@ TEST_CASE("text_input_in_window_integration") {
     process_events();
     simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(text_input(test_window) == "A");
+    REQUIRE("A" == text_input(test_window));
     end_reading_text(test_window);
     close_window(test_window);
 }

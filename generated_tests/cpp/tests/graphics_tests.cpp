@@ -120,8 +120,8 @@ TEST_CASE("fill_circle_on_window_with_options_integration") {
 TEST_CASE("current_clip_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     auto test_clip = current_clip();
-    REQUIRE(test_clip->width == 800);
-    REQUIRE(test_clip->height == 600);
+    REQUIRE(800 == test_clip->width);
+    REQUIRE(600 == test_clip->height);
     close_window(test_window);
 }
 TEST_CASE("current_clip_for_bitmap_integration") {
@@ -129,16 +129,16 @@ TEST_CASE("current_clip_for_bitmap_integration") {
     auto test_rectangle = rectangle_from(10, 10, 50, 50);
     push_clip(test_bitmap, test_rectangle);
     auto test_clip = current_clip(test_bitmap);
-    REQUIRE(rectangle_left(test_clip) == 10);
-    REQUIRE(rectangle_top(test_clip) == 10);
-    REQUIRE(test_clip->width == 50);
-    REQUIRE(test_clip->height == 50);
+    REQUIRE(10 == rectangle_left(test_clip));
+    REQUIRE(10 == rectangle_top(test_clip));
+    REQUIRE(50 == test_clip->width);
+    REQUIRE(50 == test_clip->height);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("current_clip_for_window_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     auto test_clip = current_clip(test_window);
-    REQUIRE(rectangle_from(0, 0, 800, 600) == test_clip);
+    REQUIRE(test_clip == rectangle_from(0, 0, 800, 600));
     close_window(test_window);
 }
 TEST_CASE("pop_clip_for_window_integration") {
@@ -146,10 +146,10 @@ TEST_CASE("pop_clip_for_window_integration") {
     auto test_rectangle = rectangle_from(100, 100, 200, 200);
     push_clip(test_window, test_rectangle);
     auto test_current_clip = current_clip(test_window);
-    REQUIRE(test_current_clip == test_rectangle);
+    REQUIRE(test_rectangle == test_current_clip);
     pop_clip(test_window);
     auto test_current_clip_after_pop = current_clip(test_window);
-    REQUIRE(rectangle_from(0, 0, 800, 600) == test_current_clip_after_pop);
+    REQUIRE(test_current_clip_after_pop == rectangle_from(0, 0, 800, 600));
     close_window(test_window);
 }
 TEST_CASE("pop_clip_integration") {
@@ -168,7 +168,7 @@ TEST_CASE("pop_clip_for_bitmap_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     push_clip(test_bitmap, rectangle_from(0, 0, 50, 50));
     pop_clip(test_bitmap);
-    REQUIRE(current_clip(test_bitmap) == rectangle_from(0, 0, 100, 100));
+    REQUIRE(rectangle_from(0, 0, 100, 100) == current_clip(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("push_clip_for_window_integration") {
@@ -176,7 +176,7 @@ TEST_CASE("push_clip_for_window_integration") {
     auto test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     push_clip(test_window, test_rectangle);
     auto test_current_clip = current_clip(test_window);
-    REQUIRE(test_current_clip == test_rectangle);
+    REQUIRE(test_rectangle == test_current_clip);
     refresh_screen();
     close_window(test_window);
 }
@@ -185,10 +185,10 @@ TEST_CASE("push_clip_for_bitmap_integration") {
     auto test_rectangle = rectangle_from(50, 50, 100, 100);
     push_clip(test_bitmap, test_rectangle);
     auto test_current_clip = current_clip(test_bitmap);
-    REQUIRE(rectangle_left(test_current_clip) == 50);
-    REQUIRE(rectangle_top(test_current_clip) == 50);
-    REQUIRE(test_current_clip->width == 100);
-    REQUIRE(test_current_clip->height == 100);
+    REQUIRE(50 == rectangle_left(test_current_clip));
+    REQUIRE(50 == rectangle_top(test_current_clip));
+    REQUIRE(100 == test_current_clip->width);
+    REQUIRE(100 == test_current_clip->height);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("push_clip_integration") {
@@ -196,14 +196,14 @@ TEST_CASE("push_clip_integration") {
     auto test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     push_clip(test_rectangle);
     auto test_current_clip = current_clip();
-    REQUIRE(test_current_clip == test_rectangle);
+    REQUIRE(test_rectangle == test_current_clip);
     close_window(test_window);
 }
 TEST_CASE("reset_clip_for_bitmap_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     push_clip(test_bitmap, rectangle_from(10, 10, 50, 50));
     reset_clip(test_bitmap);
-    REQUIRE(current_clip(test_bitmap) == rectangle_from(0, 0, 100, 100));
+    REQUIRE(rectangle_from(0, 0, 100, 100) == current_clip(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("reset_clip_integration") {
@@ -211,7 +211,7 @@ TEST_CASE("reset_clip_integration") {
     push_clip(rectangle_from(100, 100, 200, 200));
     reset_clip();
     auto test_clip_rect = current_clip();
-    REQUIRE(rectangle_from(0, 0, 800, 600) == test_clip_rect);
+    REQUIRE(test_clip_rect == rectangle_from(0, 0, 800, 600));
     close_window(test_window);
 }
 TEST_CASE("reset_clip_for_window_integration") {
@@ -219,7 +219,7 @@ TEST_CASE("reset_clip_for_window_integration") {
     push_clip(test_window, rectangle_from(100, 100, 200, 200));
     reset_clip(test_window);
     auto test_clip_rect = current_clip(test_window);
-    REQUIRE(rectangle_from(0, 0, 800, 600) == test_clip_rect);
+    REQUIRE(test_clip_rect == rectangle_from(0, 0, 800, 600));
     close_window(test_window);
 }
 TEST_CASE("set_clip_integration") {
@@ -227,7 +227,7 @@ TEST_CASE("set_clip_integration") {
     auto test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     set_clip(test_rectangle);
     auto test_current_clip = current_clip();
-    REQUIRE(test_current_clip == test_rectangle);
+    REQUIRE(test_rectangle == test_current_clip);
     close_window(test_window);
 }
 TEST_CASE("set_clip_for_bitmap_integration") {
@@ -235,7 +235,7 @@ TEST_CASE("set_clip_for_bitmap_integration") {
     auto test_rectangle = rectangle_from(50, 50, 100, 100);
     set_clip(test_bitmap, test_rectangle);
     auto test_current_clip = current_clip(test_bitmap);
-    REQUIRE(test_current_clip == test_rectangle);
+    REQUIRE(test_rectangle == test_current_clip);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("set_clip_for_window_integration") {
@@ -243,7 +243,7 @@ TEST_CASE("set_clip_for_window_integration") {
     auto test_rectangle = rectangle_from(100, 100, 200, 200);
     set_clip(test_window, test_rectangle);
     auto test_current_clip = current_clip(test_window);
-    REQUIRE(test_current_clip == test_rectangle);
+    REQUIRE(test_rectangle == test_current_clip);
     close_window(test_window);
 }
 TEST_CASE("option_defaults_integration") {
@@ -350,10 +350,10 @@ TEST_CASE("option_line_width_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line(color_black(), 100.0, 100.0, 200.0, 200.0, option_line_width(1));
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
     draw_line(color_black(), 300.0, 300.0, 400.0, 400.0, option_line_width(5));
     refresh_screen();
-    REQUIRE(get_pixel(point_at(300.0, 300.0)) == color_black());
+    REQUIRE(color_black() == get_pixel(point_at(300.0, 300.0)));
     close_window(test_window);
 }
 TEST_CASE("option_line_width_with_options_integration") {
@@ -745,20 +745,20 @@ TEST_CASE("clear_screen_to_white_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
     clear_screen();
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) != color_black());
+    REQUIRE(color_black() != get_pixel(point_at(100.0, 100.0)));
     close_window(test_window);
 }
 TEST_CASE("clear_screen_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    REQUIRE(get_pixel(point_at(400.0, 300.0)) == color_black());
+    REQUIRE(color_black() == get_pixel(point_at(400.0, 300.0)));
     clear_screen(color_white());
     refresh_screen();
-    REQUIRE(get_pixel(point_at(400.0, 300.0)) != color_black());
+    REQUIRE(color_black() != get_pixel(point_at(400.0, 300.0)));
     close_window(test_window);
 }
 TEST_CASE("display_details_integration") {
@@ -768,7 +768,7 @@ TEST_CASE("display_details_integration") {
     REQUIRE(test_display != nullptr);
     REQUIRE(display_width(test_display) > 0);
     REQUIRE(display_height(test_display) > 0);
-    REQUIRE(test_number_of_displays == 0);
+    REQUIRE(0 == test_number_of_displays);
 }
 TEST_CASE("display_height_integration") {
     auto test_display = display_details(0);
@@ -793,7 +793,7 @@ TEST_CASE("display_x_integration") {
 TEST_CASE("display_y_integration") {
     auto test_display = display_details(0);
     auto test_y = display_y(test_display);
-    REQUIRE(test_y != -1);
+    REQUIRE(-1 != test_y);
 }
 TEST_CASE("number_of_displays_integration") {
     auto test_display_count = number_of_displays();
@@ -821,13 +821,13 @@ TEST_CASE("save_bitmap_integration") {
 TEST_CASE("screen_height_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     auto test_height = screen_height();
-    REQUIRE(test_height == 600);
+    REQUIRE(600 == test_height);
     close_window(test_window);
 }
 TEST_CASE("screen_width_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     auto test_width = screen_width();
-    REQUIRE(test_width == 800);
+    REQUIRE(800 == test_width);
     close_window(test_window);
 }
 TEST_CASE("take_screenshot_integration") {
@@ -848,141 +848,141 @@ TEST_CASE("bitmap_bounding_circle_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_point = point_at(50.0, 50.0);
     auto test_circle = bitmap_bounding_circle(test_bitmap, test_point);
-    REQUIRE(circle_radius(test_circle) == 50.0);
-    REQUIRE(center_point(test_circle) == test_point);
+    REQUIRE(50.0 == circle_radius(test_circle));
+    REQUIRE(test_point == center_point(test_circle));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_bounding_rectangle_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_rectangle = bitmap_bounding_rectangle(test_bitmap);
-    REQUIRE(test_rectangle->width == bitmap_width(test_bitmap));
-    REQUIRE(test_rectangle->height == bitmap_height(test_bitmap));
+    REQUIRE(bitmap_width(test_bitmap) == test_rectangle->width);
+    REQUIRE(bitmap_height(test_bitmap) == test_rectangle->height);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_bounding_rectangle_at_location_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_rectangle = bitmap_bounding_rectangle(test_bitmap, 50.0, 50.0);
-    REQUIRE(rectangle_left(test_rectangle) == 50.0);
-    REQUIRE(rectangle_top(test_rectangle) == 50.0);
-    REQUIRE(rectangle_right(test_rectangle) == 150.0);
-    REQUIRE(rectangle_bottom(test_rectangle) == 150.0);
+    REQUIRE(50.0 == rectangle_left(test_rectangle));
+    REQUIRE(50.0 == rectangle_top(test_rectangle));
+    REQUIRE(150.0 == rectangle_right(test_rectangle));
+    REQUIRE(150.0 == rectangle_bottom(test_rectangle));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_center_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_center = bitmap_cell_center(test_bitmap);
-    REQUIRE(test_center->x == 50.0);
-    REQUIRE(test_center->y == 50.0);
+    REQUIRE(50.0 == test_center->x);
+    REQUIRE(50.0 == test_center->y);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_circle_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_circle = bitmap_cell_circle(test_bitmap, 50.0, 50.0);
-    REQUIRE(circle_radius(test_circle) == 50.0);
-    REQUIRE(circle_x(test_circle) == 50.0);
-    REQUIRE(circle_y(test_circle) == 50.0);
+    REQUIRE(50.0 == circle_radius(test_circle));
+    REQUIRE(50.0 == circle_x(test_circle));
+    REQUIRE(50.0 == circle_y(test_circle));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_circle_at_point_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4);
     auto test_circle = bitmap_cell_circle(test_bitmap, point_at(100, 100));
-    REQUIRE(circle_x(test_circle) == 125);
-    REQUIRE(circle_y(test_circle) == 125);
-    REQUIRE(circle_radius(test_circle) == 25);
+    REQUIRE(125 == circle_x(test_circle));
+    REQUIRE(125 == circle_y(test_circle));
+    REQUIRE(25 == circle_radius(test_circle));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_circle_at_point_with_scale_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4);
     auto test_circle = bitmap_cell_circle(test_bitmap, point_at(100.0, 100.0), 2.0);
-    REQUIRE(circle_radius(test_circle) == 50.0);
+    REQUIRE(50.0 == circle_radius(test_circle));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_columns_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    REQUIRE(bitmap_cell_columns(test_bitmap) == 5);
+    REQUIRE(5 == bitmap_cell_columns(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_count_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    REQUIRE(bitmap_cell_count(test_bitmap) == 25);
+    REQUIRE(25 == bitmap_cell_count(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_height_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    REQUIRE(bitmap_cell_height(test_bitmap) == 20);
+    REQUIRE(20 == bitmap_cell_height(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_offset_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
     auto test_offset = bitmap_cell_offset(test_bitmap, 5);
-    REQUIRE(test_offset->x == 75);
-    REQUIRE(test_offset->y == 0);
+    REQUIRE(75 == test_offset->x);
+    REQUIRE(0 == test_offset->y);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_rectangle_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
     auto test_rectangle = bitmap_cell_rectangle(test_bitmap);
-    REQUIRE(test_rectangle->width == 25);
-    REQUIRE(test_rectangle->height == 25);
+    REQUIRE(25 == test_rectangle->width);
+    REQUIRE(25 == test_rectangle->height);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_rectangle_at_point_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
     auto test_rectangle = bitmap_cell_rectangle(test_bitmap, point_at(50.0, 50.0));
-    REQUIRE(rectangle_left(test_rectangle) == 50.0);
-    REQUIRE(rectangle_top(test_rectangle) == 50.0);
-    REQUIRE(rectangle_right(test_rectangle) == 75.0);
-    REQUIRE(rectangle_bottom(test_rectangle) == 75.0);
+    REQUIRE(50.0 == rectangle_left(test_rectangle));
+    REQUIRE(50.0 == rectangle_top(test_rectangle));
+    REQUIRE(75.0 == rectangle_right(test_rectangle));
+    REQUIRE(75.0 == rectangle_bottom(test_rectangle));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_rows_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    REQUIRE(bitmap_cell_rows(test_bitmap) == 5);
+    REQUIRE(5 == bitmap_cell_rows(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_cell_width_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
-    REQUIRE(bitmap_cell_width(test_bitmap) == 25);
+    REQUIRE(25 == bitmap_cell_width(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_center_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_center = bitmap_center(test_bitmap);
-    REQUIRE(test_center->x == 50.0);
-    REQUIRE(test_center->y == 50.0);
+    REQUIRE(50.0 == test_center->x);
+    REQUIRE(50.0 == test_center->y);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_filename_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_filename = bitmap_filename(test_bitmap);
-    REQUIRE(test_filename == "");
+    REQUIRE("" == test_filename);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_height_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_height = bitmap_height(test_bitmap);
-    REQUIRE(test_height == 100);
+    REQUIRE(100 == test_height);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_height_of_bitmap_named_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    REQUIRE(bitmap_height("test_bitmap") == 100);
+    REQUIRE(100 == bitmap_height("test_bitmap"));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_name_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_bitmap_name = bitmap_name(test_bitmap);
-    REQUIRE(test_bitmap_name == "test_bitmap");
+    REQUIRE("test_bitmap" == test_bitmap_name);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_named_integration") {
@@ -997,20 +997,20 @@ TEST_CASE("bitmap_rectangle_of_cell_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
     auto test_rectangle = bitmap_rectangle_of_cell(test_bitmap, 5);
-    REQUIRE(rectangle_left(test_rectangle) == 0);
-    REQUIRE(rectangle_top(test_rectangle) == 75);
-    REQUIRE(rectangle_right(test_rectangle) == 25);
-    REQUIRE(rectangle_bottom(test_rectangle) == 100);
+    REQUIRE(0 == rectangle_left(test_rectangle));
+    REQUIRE(75 == rectangle_top(test_rectangle));
+    REQUIRE(25 == rectangle_right(test_rectangle));
+    REQUIRE(100 == rectangle_bottom(test_rectangle));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_set_cell_details_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    REQUIRE(bitmap_cell_width(test_bitmap) == 20);
-    REQUIRE(bitmap_cell_height(test_bitmap) == 20);
-    REQUIRE(bitmap_cell_columns(test_bitmap) == 5);
-    REQUIRE(bitmap_cell_rows(test_bitmap) == 5);
-    REQUIRE(bitmap_cell_count(test_bitmap) == 25);
+    REQUIRE(20 == bitmap_cell_width(test_bitmap));
+    REQUIRE(20 == bitmap_cell_height(test_bitmap));
+    REQUIRE(5 == bitmap_cell_columns(test_bitmap));
+    REQUIRE(5 == bitmap_cell_rows(test_bitmap));
+    REQUIRE(25 == bitmap_cell_count(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_valid_integration") {
@@ -1022,7 +1022,7 @@ TEST_CASE("bitmap_valid_integration") {
 TEST_CASE("bitmap_width_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     auto test_width = bitmap_width(test_bitmap);
-    REQUIRE(test_width == 100);
+    REQUIRE(100 == test_width);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("bitmap_width_of_bitmap_named_integration") {
@@ -1030,7 +1030,7 @@ TEST_CASE("bitmap_width_of_bitmap_named_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_bitmap(bitmap_named("test_bitmap"), 100, 100);
     refresh_screen();
-    REQUIRE(bitmap_width("test_bitmap") == 100);
+    REQUIRE(100 == bitmap_width("test_bitmap"));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
@@ -1056,8 +1056,8 @@ TEST_CASE("clear_bitmap_named_integration") {
 TEST_CASE("create_bitmap_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     REQUIRE(test_bitmap != nullptr);
-    REQUIRE(bitmap_width(test_bitmap) == 100);
-    REQUIRE(bitmap_height(test_bitmap) == 100);
+    REQUIRE(100 == bitmap_width(test_bitmap));
+    REQUIRE(100 == bitmap_height(test_bitmap));
     free_bitmap(test_bitmap);
 }
 TEST_CASE("draw_bitmap_integration") {
@@ -1212,8 +1212,8 @@ TEST_CASE("draw_line_record_integration") {
     auto test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
     draw_line(color_black(), test_line);
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_line_record_with_options_integration") {
@@ -1221,40 +1221,40 @@ TEST_CASE("draw_line_record_with_options_integration") {
     auto test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
     draw_line(color_black(), test_line, option_line_width(3, option_defaults()));
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_line_point_to_point_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line(color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0));
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_line_point_to_point_with_options_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line(color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0), option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_line_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line(color_black(), 100.0, 100.0, 200.0, 200.0);
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_line_with_options_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line(color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_line_on_bitmap_record_integration") {
@@ -1310,8 +1310,8 @@ TEST_CASE("draw_line_on_window_record_integration") {
     auto test_line = line_from(point_at(100.0, 100.0), point_at(700.0, 500.0));
     draw_line_on_window(test_window, color_black(), test_line);
     refresh_screen();
-    REQUIRE(get_pixel(test_window, point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(test_window, point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(test_window, point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(test_window, point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_line_on_window_record_with_options_integration") {
@@ -1319,73 +1319,73 @@ TEST_CASE("draw_line_on_window_record_with_options_integration") {
     auto test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
     draw_line_on_window(test_window, color_black(), test_line, option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(test_window, point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(test_window, point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(test_window, point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(test_window, point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_line_on_window_point_to_point_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line_on_window(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0));
     refresh_screen();
-    REQUIRE(get_pixel(test_window, 100.0, 100.0) == color_black());
-    REQUIRE(get_pixel(test_window, 99.0, 99.0) != color_black());
+    REQUIRE(color_black() == get_pixel(test_window, 100.0, 100.0));
+    REQUIRE(color_black() != get_pixel(test_window, 99.0, 99.0));
     close_window(test_window);
 }
 TEST_CASE("draw_line_on_window_point_to_point_with_options_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line_on_window(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0), option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(test_window, 100.0, 100.0) == color_black());
-    REQUIRE(get_pixel(test_window, 99.0, 99.0) != color_black());
+    REQUIRE(color_black() == get_pixel(test_window, 100.0, 100.0));
+    REQUIRE(color_black() != get_pixel(test_window, 99.0, 99.0));
     close_window(test_window);
 }
 TEST_CASE("draw_line_on_window_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 200.0);
     refresh_screen();
-    REQUIRE(get_pixel(test_window, 100.0, 100.0) == color_black());
-    REQUIRE(get_pixel(test_window, 99.0, 99.0) != color_black());
+    REQUIRE(color_black() == get_pixel(test_window, 100.0, 100.0));
+    REQUIRE(color_black() != get_pixel(test_window, 99.0, 99.0));
     close_window(test_window);
 }
 TEST_CASE("draw_line_on_window_with_options_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_line_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(test_window, 100.0, 100.0) == color_black());
-    REQUIRE(get_pixel(test_window, 99.0, 99.0) != color_black());
+    REQUIRE(color_black() == get_pixel(test_window, 100.0, 100.0));
+    REQUIRE(color_black() != get_pixel(test_window, 99.0, 99.0));
     close_window(test_window);
 }
 TEST_CASE("draw_pixel_at_point_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_pixel_at_point_with_options_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), point_at(100.0, 100.0), option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_pixel_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_pixel_with_options_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0, option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_pixel_on_bitmap_at_point_integration") {
@@ -1428,8 +1428,8 @@ TEST_CASE("draw_pixel_on_window_at_point_integration") {
     auto test_point = point_at(100.0, 100.0);
     draw_pixel_on_window(test_window, test_color, test_point);
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_pixel_on_window_at_point_with_options_integration") {
@@ -1437,66 +1437,66 @@ TEST_CASE("draw_pixel_on_window_at_point_with_options_integration") {
     auto test_point = point_at(100.0, 100.0);
     draw_pixel_on_window(test_window, color_black(), test_point, option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_pixel_on_window_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel_on_window(test_window, color_black(), 100.0, 100.0);
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("draw_pixel_on_window_with_options_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel_on_window(test_window, color_black(), 100.0, 100.0, option_defaults());
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
-    REQUIRE(get_pixel(point_at(99.0, 99.0)) != color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
+    REQUIRE(color_black() != get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 TEST_CASE("get_pixel_from_bitmap_at_point_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     draw_pixel_on_bitmap(test_bitmap, color_black(), point_at(50.0, 50.0));
     auto test_color = get_pixel(test_bitmap, point_at(50.0, 50.0));
-    REQUIRE(color_black() == test_color);
+    REQUIRE(test_color == color_black());
     free_bitmap(test_bitmap);
 }
 TEST_CASE("get_pixel_from_bitmap_integration") {
     auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
     draw_pixel_on_bitmap(test_bitmap, color_black(), 50.0, 50.0);
     auto test_pixel_color = get_pixel(test_bitmap, 50.0, 50.0);
-    REQUIRE(test_pixel_color == color_black());
+    REQUIRE(color_black() == test_pixel_color);
     free_bitmap(test_bitmap);
 }
 TEST_CASE("get_pixel_at_point_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    REQUIRE(get_pixel(point_at(100.0, 100.0)) == color_black());
+    REQUIRE(color_black() == get_pixel(point_at(100.0, 100.0)));
     close_window(test_window);
 }
 TEST_CASE("get_pixel_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    REQUIRE(get_pixel(100.0, 100.0) == color_black());
+    REQUIRE(color_black() == get_pixel(100.0, 100.0));
     close_window(test_window);
 }
 TEST_CASE("get_pixel_from_window_at_point_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    REQUIRE(get_pixel(test_window, point_at(100.0, 100.0)) == color_black());
+    REQUIRE(color_black() == get_pixel(test_window, point_at(100.0, 100.0)));
     close_window(test_window);
 }
 TEST_CASE("get_pixel_from_window_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    REQUIRE(get_pixel(test_window, 100.0, 100.0) == color_black());
+    REQUIRE(color_black() == get_pixel(test_window, 100.0, 100.0));
     close_window(test_window);
 }
 TEST_CASE("get_pixel_from_window_at_point_from_window_integration") {
@@ -1504,7 +1504,7 @@ TEST_CASE("get_pixel_from_window_at_point_from_window_integration") {
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
     auto test_pixel = get_pixel_from_window(test_window, point_at(100.0, 100.0));
-    REQUIRE(color_black() == test_pixel);
+    REQUIRE(test_pixel == color_black());
     close_window(test_window);
 }
 TEST_CASE("get_pixel_from_window_from_window_integration") {
@@ -1512,7 +1512,7 @@ TEST_CASE("get_pixel_from_window_from_window_integration") {
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
     auto test_pixel_color = get_pixel(test_window, 100.0, 100.0);
-    REQUIRE(color_black() == test_pixel_color);
+    REQUIRE(test_pixel_color == color_black());
     close_window(test_window);
 }
 TEST_CASE("draw_quad_integration") {
@@ -2010,7 +2010,7 @@ TEST_CASE("get_font_style_name_as_string_integration") {
 TEST_CASE("get_font_style_integration") {
     auto test_font = load_font("test_font", "hara.ttf");
     auto test_style = get_font_style(test_font);
-    REQUIRE(test_style != FontStyle::BOLD_FONT);
+    REQUIRE(FontStyle::BOLD_FONT != test_style);
     free_font(test_font);
 }
 TEST_CASE("get_system_font_integration") {
@@ -2047,7 +2047,7 @@ TEST_CASE("set_font_style_name_as_string_integration") {
     set_font_style("test_font", FontStyle::BOLD_FONT);
     draw_text("Bold Text", color_black(), "test_font", 24, 100.0, 100.0);
     refresh_screen();
-    REQUIRE(get_font_style("test_font") == FontStyle::BOLD_FONT);
+    REQUIRE(FontStyle::BOLD_FONT == get_font_style("test_font"));
     close_window(test_window);
     free_font(test_font);
 }
@@ -2055,7 +2055,7 @@ TEST_CASE("set_font_style_integration") {
     auto test_font = font_named("hara");
     set_font_style(test_font, FontStyle::BOLD_FONT);
     auto test_style = get_font_style(test_font);
-    REQUIRE(test_style == FontStyle::BOLD_FONT);
+    REQUIRE(FontStyle::BOLD_FONT == test_style);
     free_font(test_font);
 }
 TEST_CASE("text_height_font_named_integration") {

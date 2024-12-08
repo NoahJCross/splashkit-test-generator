@@ -39,6 +39,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "test_center_point"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "point_at",
               "args": [
@@ -51,10 +55,6 @@
                   "value": 100.0
                 }
               ]
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "test_center_point"
             }
           }
         }
@@ -315,12 +315,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_radius"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 50.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_radius"
             }
           }
         }
@@ -540,6 +540,16 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
+              "function_name": "circle_radius",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_circle"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
               "function_name": "point_point_distance",
               "args": [
                 {
@@ -565,16 +575,6 @@
                       "variable_name": "test_triangle"
                     }
                   ]
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "function",
-              "function_name": "circle_radius",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_circle"
                 }
               ]
             }
@@ -609,6 +609,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "circle_x",
               "args": [
@@ -617,10 +621,6 @@
                   "variable_name": "test_circle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         }
@@ -653,6 +653,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "circle_y",
               "args": [
@@ -661,10 +665,6 @@
                   "variable_name": "test_circle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 150.0
             }
           }
         }
@@ -927,6 +927,16 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
+              "function_name": "circle_radius",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_circle"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
               "function_name": "point_point_distance",
               "args": [
                 {
@@ -936,16 +946,6 @@
                 {
                   "value_type": "variable",
                   "variable_name": "test_point"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "function",
-              "function_name": "circle_radius",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_circle"
                 }
               ]
             }
@@ -1121,6 +1121,16 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
+              "function_name": "circle_radius",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_circle"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
               "function_name": "point_point_distance",
               "args": [
                 {
@@ -1136,16 +1146,6 @@
                 {
                   "value_type": "variable",
                   "variable_name": "test_closest_point"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "function",
-              "function_name": "circle_radius",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_circle"
                 }
               ]
             }
@@ -1319,6 +1319,16 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
+              "function_name": "circle_radius",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_circle"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
               "function_name": "point_point_distance",
               "args": [
                 {
@@ -1328,16 +1338,6 @@
                 {
                   "value_type": "variable",
                   "variable_name": "test_distant_point"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "function",
-              "function_name": "circle_radius",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_circle"
                 }
               ]
             }
@@ -1446,13 +1446,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_point1",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 50.0
             }
           }
         },
@@ -1461,13 +1461,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_point1",
               "variable_field": "y"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         }
@@ -1921,12 +1921,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_cosine_0"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 1.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_cosine_0"
             }
           }
         },
@@ -1946,12 +1946,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_cosine_90"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 0.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_cosine_90"
             }
           }
         },
@@ -1971,12 +1971,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_cosine_180"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": -1.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_cosine_180"
             }
           }
         }
@@ -2001,12 +2001,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_sine_0"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 0.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_sine_0"
             }
           }
         },
@@ -2026,12 +2026,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_sine_90"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 1.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_sine_90"
             }
           }
         },
@@ -2051,12 +2051,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_sine_180"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 0.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_sine_180"
             }
           }
         },
@@ -2076,12 +2076,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_sine_270"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": -1.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_sine_270"
             }
           }
         }
@@ -2189,6 +2189,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "point_point_distance",
               "args": [
@@ -2211,10 +2215,6 @@
                   "variable_name": "test_closest_point"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         }
@@ -2320,8 +2320,14 @@
           "target_type": "line",
           "variable_name": "test_lines",
           "value": [
-            { "value_type": "variable", "variable_name": "test_line1" },
-            { "value_type": "variable", "variable_name": "test_line2" }
+            {
+              "value_type": "variable",
+              "variable_name": "test_line1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_line2"
+            }
           ]
         },
         {
@@ -2348,6 +2354,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "point_point_distance",
               "args": [
@@ -2360,10 +2370,6 @@
                   "variable_name": "test_closest_point"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         }
@@ -2422,6 +2428,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 141.421356
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "line_length",
               "args": [
@@ -2430,10 +2440,6 @@
                   "variable_name": "test_line"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 141.421356
             }
           }
         }
@@ -2583,14 +2589,14 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable_field",
-              "variable_name": "test_line",
-              "variable_field": "start_point"
-            },
-            "value2": {
               "value_type": "function",
               "function_name": "point_at_origin",
               "args": []
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_line",
+              "variable_field": "start_point"
             }
           }
         },
@@ -2599,11 +2605,6 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable_field",
-              "variable_name": "test_line",
-              "variable_field": "end_point"
-            },
-            "value2": {
               "value_type": "function",
               "function_name": "point_at",
               "args": [
@@ -2616,6 +2617,11 @@
                   "value": 50.0
                 }
               ]
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_line",
+              "variable_field": "end_point"
             }
           }
         }
@@ -2652,6 +2658,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 14.1421356
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "line_length",
               "args": [
@@ -2660,10 +2670,6 @@
                   "variable_name": "test_line"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 14.1421356
             }
           }
         }
@@ -2914,8 +2920,14 @@
           "target_type": "line",
           "value_type": "list",
           "value": [
-            { "value_type": "variable", "variable_name": "test_line1" },
-            { "value_type": "variable", "variable_name": "test_line2" }
+            {
+              "value_type": "variable",
+              "variable_name": "test_line1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_line2"
+            }
           ]
         },
         {
@@ -3137,12 +3149,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_length"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 5.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_length"
             }
           }
         }
@@ -3202,12 +3214,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 25.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_result"
             }
           }
         }
@@ -3267,6 +3279,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "point_point_distance",
               "args": [
@@ -3289,10 +3305,6 @@
                   ]
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         }
@@ -3340,13 +3352,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": -1.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_normal",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": -1.0
             }
           }
         },
@@ -3355,13 +3367,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_normal",
               "variable_field": "y"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1.0
             }
           }
         }
@@ -3421,12 +3433,12 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_line_string"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": ""
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_line_string"
             }
           }
         }
@@ -3474,6 +3486,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 4
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "size",
               "args": [
@@ -3482,10 +3498,6 @@
                   "variable_name": "test_lines"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 4
             }
           }
         }
@@ -3559,6 +3571,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 3
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "size",
               "args": [
@@ -3567,10 +3583,6 @@
                   "variable_name": "test_lines"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 3
             }
           }
         }
@@ -3699,13 +3711,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_point",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 10.0
             }
           }
         },
@@ -3714,13 +3726,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 20.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_point",
               "variable_field": "y"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 20.0
             }
           }
         }
@@ -3740,13 +3752,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_point",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -3755,13 +3767,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_point",
               "variable_field": "y"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         }
@@ -4448,12 +4460,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_distance"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 0.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_distance"
             }
           }
         }
@@ -4512,13 +4524,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 15.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_start_point",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 15.0
             }
           }
         },
@@ -4527,13 +4539,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 30.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_result_point",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 30.0
             }
           }
         }
@@ -4573,13 +4585,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_point",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 10.0
             }
           }
         },
@@ -4588,13 +4600,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 20.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_point",
               "variable_field": "y"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 20.0
             }
           }
         }
@@ -4908,12 +4920,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_angle"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 0.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_angle"
             }
           }
         }
@@ -4972,12 +4984,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_distance"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 5.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_distance"
             }
           }
         }
@@ -5017,12 +5029,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_string"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "Point(10, 20)"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_string"
             }
           }
         }
@@ -6202,6 +6214,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 2
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "size",
               "args": [
@@ -6210,10 +6226,6 @@
                   "variable_name": "test_triangles"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 2
             }
           }
         }
@@ -6265,6 +6277,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -6273,10 +6289,6 @@
                   "variable_name": "test_inset_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 10.0
             }
           }
         },
@@ -6285,6 +6297,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -6293,10 +6309,6 @@
                   "variable_name": "test_inset_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 10.0
             }
           }
         },
@@ -6305,6 +6317,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 90.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -6313,10 +6329,6 @@
                   "variable_name": "test_inset_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 90.0
             }
           }
         },
@@ -6325,6 +6337,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 90.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -6333,10 +6349,6 @@
                   "variable_name": "test_inset_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 90.0
             }
           }
         }
@@ -6411,6 +6423,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 5.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -6419,10 +6435,6 @@
                   "variable_name": "test_intersection"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 5.0
             }
           }
         },
@@ -6431,6 +6443,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 5.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -6439,10 +6455,6 @@
                   "variable_name": "test_intersection"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 5.0
             }
           }
         },
@@ -6451,6 +6463,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -6459,10 +6475,6 @@
                   "variable_name": "test_intersection"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 10.0
             }
           }
         },
@@ -6471,6 +6483,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -6479,10 +6495,6 @@
                   "variable_name": "test_intersection"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 10.0
             }
           }
         }
@@ -6526,6 +6538,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -6534,10 +6550,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 50.0
             }
           }
         },
@@ -6546,6 +6558,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -6554,10 +6570,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 50.0
             }
           }
         },
@@ -6566,6 +6578,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -6574,10 +6590,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 150.0
             }
           }
         },
@@ -6586,6 +6598,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 150.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -6594,10 +6610,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 150.0
             }
           }
         }
@@ -6796,6 +6808,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -6804,10 +6820,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -6816,6 +6828,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -6824,10 +6840,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -6836,6 +6848,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -6844,10 +6860,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -6856,6 +6868,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -6864,10 +6880,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         }
@@ -6941,6 +6953,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -6949,10 +6965,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -6961,6 +6973,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -6969,10 +6985,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -6981,6 +6993,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -6989,10 +7005,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -7001,6 +7013,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -7009,10 +7025,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         }
@@ -7049,6 +7061,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 80.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -7057,10 +7073,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 80.0
             }
           }
         }
@@ -7114,6 +7126,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "point_point_distance",
               "args": [
@@ -7136,10 +7152,6 @@
                   "variable_name": "test_center_point"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         }
@@ -7187,6 +7199,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -7195,10 +7211,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 10.0
             }
           }
         },
@@ -7207,6 +7219,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 20.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -7215,10 +7231,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 20.0
             }
           }
         },
@@ -7227,6 +7239,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 60.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -7235,10 +7251,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 60.0
             }
           }
         },
@@ -7247,6 +7259,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -7255,10 +7271,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 50.0
             }
           }
         }
@@ -7317,6 +7329,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -7325,10 +7341,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -7337,6 +7349,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -7345,10 +7361,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -7357,6 +7369,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -7365,10 +7381,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -7377,6 +7389,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -7385,10 +7401,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         }
@@ -7425,6 +7437,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 10.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -7433,10 +7449,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 10.0
             }
           }
         },
@@ -7445,6 +7457,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 20.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -7453,10 +7469,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 20.0
             }
           }
         },
@@ -7465,6 +7477,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 60.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -7473,10 +7489,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 60.0
             }
           }
         },
@@ -7485,6 +7497,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_bottom",
               "args": [
@@ -7493,10 +7509,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 50.0
             }
           }
         }
@@ -7544,12 +7556,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_left"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 10.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_left"
             }
           }
         }
@@ -7611,6 +7623,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 30.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_left",
               "args": [
@@ -7619,10 +7635,6 @@
                   "variable_name": "test_offset_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 30.0
             }
           }
         },
@@ -7631,6 +7643,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 40.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_top",
               "args": [
@@ -7639,10 +7655,6 @@
                   "variable_name": "test_offset_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 40.0
             }
           }
         }
@@ -7679,6 +7691,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 60.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "rectangle_right",
               "args": [
@@ -7687,10 +7703,6 @@
                   "variable_name": "test_rectangle"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 60.0
             }
           }
         }
@@ -7738,12 +7750,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_string"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "Rectangle(x: 10, y: 20, width: 30, height: 40)"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_string"
             }
           }
         }
@@ -7791,12 +7803,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_top"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 20.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_top"
             }
           }
         }
@@ -7946,13 +7958,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 50.0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_barycenter",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 50.0
             }
           }
         },
@@ -7961,13 +7973,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 28.866666666666667
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_barycenter",
               "variable_field": "y"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 28.866666666666667
             }
           }
         }
@@ -8344,12 +8356,12 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_triangle_string"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": ""
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_triangle_string"
             }
           }
         }

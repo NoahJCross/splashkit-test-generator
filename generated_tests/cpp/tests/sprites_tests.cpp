@@ -37,9 +37,9 @@ TEST_CASE("call_on_sprite_event_integration") {
     auto test_sprite = create_sprite(test_bitmap);
     call_on_sprite_event(_on_sprite_event());
     process_events();
-    simulate_mouse_click(Mousebutton::LEFT);
+    simulate_mouse_click(MouseButton::LEFT);
     process_events();
-    REQUIRE(mouse_clicked(Mousebutton::LEFT));
+    REQUIRE(mouse_clicked(MouseButton::LEFT));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -429,7 +429,7 @@ TEST_CASE("sprite_call_on_event_integration") {
     auto test_sprite = create_sprite(test_bitmap);
     sprite_call_on_event(test_sprite, _on_sprite_event());
     process_events();
-    simulate_mouse_click(Mousebutton::LEFT);
+    simulate_mouse_click(MouseButton::LEFT);
     process_events();
     REQUIRE(sprite_event_occurred(test_sprite));
     free_sprite(test_sprite);

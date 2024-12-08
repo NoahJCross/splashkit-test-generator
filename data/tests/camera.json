@@ -34,13 +34,13 @@
           "compare": {
             "compare_type": "equal",
             "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value1": {
               "value_type": "variable_field",
               "variable_name": "test_camera_position",
               "variable_field": "x"
-            },
-            "value1": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -49,13 +49,13 @@
           "compare": {
             "compare_type": "equal",
             "value2": {
+              "value_type": "primitive",
+              "value": 0.0
+            },
+            "value1": {
               "value_type": "variable_field",
               "variable_name": "test_camera_position",
               "variable_field": "y"
-            },
-            "value1": {
-              "value_type": "primitive",
-              "value": 0.0
             }
           }
         },
@@ -118,13 +118,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_x",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -187,13 +187,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 200.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_y",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 200.0
             }
           }
         },
@@ -296,11 +296,6 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
-              "function_name": "camera_position",
-              "args": []
-            },
-            "value2": {
-              "value_type": "function",
               "function_name": "point_at",
               "args": [
                 {
@@ -312,6 +307,11 @@
                   "value": 50.0
                 }
               ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "camera_position",
+              "args": []
             }
           }
         },
@@ -418,11 +418,6 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
-              "function_name": "camera_position",
-              "args": []
-            },
-            "value2": {
-              "value_type": "function",
               "function_name": "point_at",
               "args": [
                 {
@@ -434,6 +429,11 @@
                   "value": 50.0
                 }
               ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "camera_position",
+              "args": []
             }
           }
         },
@@ -511,13 +511,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_x",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -526,13 +526,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_y",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -589,13 +589,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_x",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -604,13 +604,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_y",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -674,11 +674,6 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
-              "function_name": "camera_position",
-              "args": []
-            },
-            "value2": {
-              "value_type": "function",
               "function_name": "point_at",
               "args": [
                 {
@@ -690,6 +685,11 @@
                   "value": 100.0
                 }
               ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "camera_position",
+              "args": []
             }
           }
         },
@@ -746,13 +746,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_x",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -761,13 +761,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_y",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -1239,13 +1239,13 @@
           "compare": {
             "compare_type": "equal",
             "value2": {
-              "value_type": "variable",
-              "variable_name": "test_center"
-            },
-            "value1": {
               "value_type": "function",
               "function_name": "todo",
               "args": []
+            },
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_center"
             }
           }
         },
@@ -1254,13 +1254,13 @@
           "compare": {
             "compare_type": "equal",
             "value2": {
-              "value_type": "variable",
-              "variable_name": "test_center"
-            },
-            "value1": {
               "value_type": "function",
               "function_name": "todo",
               "args": []
+            },
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_center"
             }
           }
         },
@@ -1309,13 +1309,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 800
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_rectangle",
               "variable_field": "width"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 800
             }
           }
         },
@@ -1324,13 +1324,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 600
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_rectangle",
               "variable_field": "height"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 600
             }
           }
         },
@@ -1394,11 +1394,6 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
-              "function_name": "camera_position",
-              "args": []
-            },
-            "value2": {
-              "value_type": "function",
               "function_name": "point_at",
               "args": [
                 {
@@ -1410,6 +1405,11 @@
                   "value": 100.0
                 }
               ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "camera_position",
+              "args": []
             }
           }
         },
@@ -1462,13 +1462,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_x",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -1521,13 +1521,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100.0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "camera_y",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100.0
             }
           }
         },
@@ -1611,13 +1611,13 @@
           "compare": {
             "compare_type": "equal",
             "value2": {
-              "value_type": "variable",
-              "variable_name": "test_screen_point"
-            },
-            "value1": {
               "value_type": "function",
               "function_name": "todo",
               "args": []
+            },
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_screen_point"
             }
           }
         },
@@ -1626,13 +1626,13 @@
           "compare": {
             "compare_type": "equal",
             "value2": {
-              "value_type": "variable",
-              "variable_name": "test_screen_point"
-            },
-            "value1": {
               "value_type": "function",
               "function_name": "todo",
               "args": []
+            },
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_screen_point"
             }
           }
         },
@@ -1710,21 +1710,21 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
-              "function_name": "rectangle_left",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "screen_rectangle"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "function",
               "function_name": "to_screen_x",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": 100.0
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "rectangle_left",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "screen_rectangle"
                 }
               ]
             }
@@ -1736,21 +1736,21 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
-              "function_name": "rectangle_top",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "screen_rectangle"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "function",
               "function_name": "to_screen_y",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": 100.0
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "rectangle_top",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "screen_rectangle"
                 }
               ]
             }
@@ -1797,12 +1797,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_screen_x"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 50.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_screen_x"
             }
           }
         }
@@ -1866,12 +1866,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_screen_y"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 50.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_screen_y"
             }
           }
         },
@@ -1955,13 +1955,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "test_world_point"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "todo",
               "args": []
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "test_world_point"
             }
           }
         },
@@ -1970,13 +1970,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "test_world_point"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "todo",
               "args": []
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "test_world_point"
             }
           }
         },
@@ -2050,13 +2050,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_world_x"
-            },
-            "value2": {
               "value_type": "function",
               "function_name": "camera_x",
               "args": []
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_world_x"
             }
           }
         },
@@ -2130,12 +2130,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_world_y"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 400.0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_world_y"
             }
           }
         },
@@ -2165,10 +2165,6 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_vector"
-            },
-            "value2": {
               "value_type": "function",
               "function_name": "vector_from_angle",
               "args": [
@@ -2181,6 +2177,10 @@
                   "value": 0.0
                 }
               ]
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_vector"
             }
           }
         }
@@ -2224,13 +2224,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 800
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_area",
               "variable_field": "width"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 800
             }
           }
         },
@@ -2239,13 +2239,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 600
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "test_area",
               "variable_field": "height"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 600
             }
           }
         },

@@ -97,19 +97,19 @@ TEST_CASE("load_music_integration") {
 TEST_CASE("music_filename_integration") {
     auto test_music = load_music("test_music", "280.mp3");
     auto filename = music_filename(test_music);
-    REQUIRE(filename == "280.mp3");
+    REQUIRE("280.mp3" == filename);
     free_music(test_music);
 }
 TEST_CASE("music_name_integration") {
     auto test_music = load_music("test_music", "280.mp3");
     auto music_name_result = music_name(test_music);
-    REQUIRE(music_name_result == "test_music");
+    REQUIRE("test_music" == music_name_result);
     free_music(test_music);
 }
 TEST_CASE("music_named_integration") {
     auto test_music = load_music("test_music", "280.mp3");
     auto retrieved_music = music_named("test_music");
-    REQUIRE(test_music == retrieved_music);
+    REQUIRE(retrieved_music == test_music);
     free_music(test_music);
 }
 TEST_CASE("music_playing_integration") {
@@ -135,7 +135,7 @@ TEST_CASE("music_volume_integration") {
     auto test_music = load_music("test_music", "280.mp3");
     play_music(test_music);
     set_music_volume(0.5);
-    REQUIRE(music_volume() == 0.5);
+    REQUIRE(0.5 == music_volume());
     free_music(test_music);
     close_audio();
 }
@@ -205,7 +205,7 @@ TEST_CASE("set_music_volume_integration") {
     auto test_music = load_music("test_music", "280.mp3");
     play_music(test_music);
     set_music_volume(0.5);
-    REQUIRE(music_volume() == 0.5);
+    REQUIRE(0.5 == music_volume());
     free_music(test_music);
     close_audio();
 }
@@ -338,20 +338,20 @@ TEST_CASE("play_sound_effect_with_times_and_volume_integration") {
 TEST_CASE("sound_effect_filename_integration") {
     auto test_sound = load_sound_effect("test_sound", "test.ogg");
     auto test_filename = sound_effect_filename(test_sound);
-    REQUIRE(test_filename == "test.ogg");
+    REQUIRE("test.ogg" == test_filename);
     free_sound_effect(test_sound);
 }
 TEST_CASE("sound_effect_name_integration") {
     auto test_sound = load_sound_effect("test_sound", "test.ogg");
     auto test_sound_name = sound_effect_name(test_sound);
-    REQUIRE(test_sound_name == "test_sound");
+    REQUIRE("test_sound" == test_sound_name);
     free_sound_effect(test_sound);
 }
 TEST_CASE("sound_effect_named_integration") {
     open_audio();
     auto test_sound = load_sound_effect("test_sound", "test.ogg");
     auto retrieved_sound = sound_effect_named("test_sound");
-    REQUIRE(test_sound == retrieved_sound);
+    REQUIRE(retrieved_sound == test_sound);
     free_sound_effect(test_sound);
     close_audio();
 }

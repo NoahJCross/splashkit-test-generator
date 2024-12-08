@@ -185,13 +185,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "current_vector",
               "variable_field": "x"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0
             }
           }
         },
@@ -200,13 +200,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0
+            },
+            "value2": {
               "value_type": "variable_field",
               "variable_name": "current_vector",
               "variable_field": "y"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0
             }
           }
         },
@@ -623,12 +623,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "non_existent_index"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": -1
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "non_existent_index"
             }
           }
         },
@@ -693,12 +693,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "anim_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "moonwalkback"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
             }
           }
         },
@@ -758,12 +758,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "script_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "kermit"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "script_name"
             }
           }
         },
@@ -834,12 +834,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "script_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "kermit"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "script_name"
             }
           }
         },
@@ -911,6 +911,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_name",
               "args": [
@@ -919,10 +923,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "walkfront"
             }
           }
         },
@@ -1008,6 +1008,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "walkleft"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_name",
               "args": [
@@ -1016,10 +1020,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "walkleft"
             }
           }
         },
@@ -1101,6 +1101,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_name",
               "args": [
@@ -1109,10 +1113,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "walkfront"
             }
           }
         },
@@ -1198,6 +1198,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_name",
               "args": [
@@ -1206,10 +1210,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "walkfront"
             }
           }
         },
@@ -1291,6 +1291,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_name",
               "args": [
@@ -1299,10 +1303,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "walkfront"
             }
           }
         },
@@ -1388,6 +1388,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_name",
               "args": [
@@ -1396,10 +1400,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "walkfront"
             }
           }
         },
@@ -1477,6 +1477,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_current_cell",
               "args": [
@@ -1485,10 +1489,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0
             }
           }
         },
@@ -1659,6 +1659,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_name",
               "args": [
@@ -1667,10 +1671,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "walkfront"
             }
           }
         },
@@ -1752,6 +1752,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "walkfront"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_name",
               "args": [
@@ -1760,10 +1764,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "walkfront"
             }
           }
         },
@@ -1852,12 +1852,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "anim_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "walkfront"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
             }
           }
         },
@@ -1942,12 +1942,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "anim_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "moonwalkback"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
             }
           }
         },
@@ -2036,12 +2036,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "anim_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "moonwalkback"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
             }
           }
         },
@@ -2126,12 +2126,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "anim_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "moonwalkback"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
             }
           }
         },
@@ -2220,12 +2220,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "anim_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "moonwalkback"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "anim_name"
             }
           }
         },
@@ -2682,12 +2682,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "script_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "test_animation"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "script_name"
             }
           }
         },
@@ -2907,6 +2907,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 3
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_current_cell",
               "args": [
@@ -2915,10 +2919,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 3
             }
           }
         },
@@ -3085,6 +3085,10 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "animation_current_cell",
               "args": [
@@ -3093,10 +3097,6 @@
                   "variable_name": "anim"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0
             }
           }
         },

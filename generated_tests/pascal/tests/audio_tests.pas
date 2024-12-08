@@ -112,21 +112,21 @@ procedure TIntegrationTests.TestMusicFilenameIntegration;
 begin
     testMusic := LoadMusic("test_music", "280.mp3");
     filename := MusicFilename(testMusic);
-    AssertEquals(filename, "280.mp3");
+    AssertEquals("280.mp3", filename);
     FreeMusic(testMusic);
 end;
 procedure TIntegrationTests.TestMusicNameIntegration;
 begin
     testMusic := LoadMusic("test_music", "280.mp3");
     musicNameResult := MusicName(testMusic);
-    AssertEquals(musicNameResult, "test_music");
+    AssertEquals("test_music", musicNameResult);
     FreeMusic(testMusic);
 end;
 procedure TIntegrationTests.TestMusicNamedIntegration;
 begin
     testMusic := LoadMusic("test_music", "280.mp3");
     retrievedMusic := MusicNamed("test_music");
-    AssertEquals(testMusic, retrievedMusic);
+    AssertEquals(retrievedMusic, testMusic);
     FreeMusic(testMusic);
 end;
 procedure TIntegrationTests.TestMusicPlayingIntegration;
@@ -155,7 +155,7 @@ begin
     testMusic := LoadMusic("test_music", "280.mp3");
     PlayMusic(testMusic);
     SetMusicVolume(0.5);
-    AssertEquals(MusicVolume(), 0.5);
+    AssertEquals(0.5, MusicVolume());
     FreeMusic(testMusic);
     CloseAudio();
 end;
@@ -233,7 +233,7 @@ begin
     testMusic := LoadMusic("test_music", "280.mp3");
     PlayMusic(testMusic);
     SetMusicVolume(0.5);
-    AssertEquals(MusicVolume(), 0.5);
+    AssertEquals(0.5, MusicVolume());
     FreeMusic(testMusic);
     CloseAudio();
 end;
@@ -382,14 +382,14 @@ procedure TIntegrationTests.TestSoundEffectFilenameIntegration;
 begin
     testSound := LoadSoundEffect("test_sound", "test.ogg");
     testFilename := SoundEffectFilename(testSound);
-    AssertEquals(testFilename, "test.ogg");
+    AssertEquals("test.ogg", testFilename);
     FreeSoundEffect(testSound);
 end;
 procedure TIntegrationTests.TestSoundEffectNameIntegration;
 begin
     testSound := LoadSoundEffect("test_sound", "test.ogg");
     testSoundName := SoundEffectName(testSound);
-    AssertEquals(testSoundName, "test_sound");
+    AssertEquals("test_sound", testSoundName);
     FreeSoundEffect(testSound);
 end;
 procedure TIntegrationTests.TestSoundEffectNamedIntegration;
@@ -397,7 +397,7 @@ begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "test.ogg");
     retrievedSound := SoundEffectNamed("test_sound");
-    AssertEquals(testSound, retrievedSound);
+    AssertEquals(retrievedSound, testSound);
     FreeSoundEffect(testSound);
     CloseAudio();
 end;

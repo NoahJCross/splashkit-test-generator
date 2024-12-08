@@ -89,9 +89,9 @@ def test_KeyDown_integration():
 
 def test_KeyName_integration():
     test_key_name1 = key_name(KeyCode.A)
-    assert test_key_name1 == "A"
+    assert "A" == test_key_name1
     test_key_name2 = key_name(KeyCode.Enter)
-    assert test_key_name2 == "Enter"
+    assert "Enter" == test_key_name2
 
 
 def test_KeyReleased_integration():
@@ -147,7 +147,7 @@ def test_RegisterCallbackOnKeyUp_integration():
     simulate_key_press(KeyCode.A)
     simulate_key_release(KeyCode.A)
     process_events()
-    assert _key_up == "A"
+    assert "A" == _key_up
     deregister_callback_on_key_up(_on_key_up())
 
 
@@ -185,8 +185,8 @@ def test_MouseMovement_integration():
     move_mouse(100.0, 100.0)
     process_events()
     test_movement = mouse_movement()
-    assert test_movement.x == 100.0
-    assert test_movement.y == 100.0
+    assert 100.0 == test_movement.x
+    assert 100.0 == test_movement.y
     close_window(test_window)
 
 
@@ -195,8 +195,8 @@ def test_MousePosition_integration():
     move_mouse(400.0, 300.0)
     process_events()
     test_position = mouse_position()
-    assert test_position.x == 400.0
-    assert test_position.y == 300.0
+    assert 400.0 == test_position.x
+    assert 300.0 == test_position.y
     close_window(test_window)
 
 
@@ -205,8 +205,8 @@ def test_MousePositionVector_integration():
     move_mouse(400.0, 300.0)
     process_events()
     test_mouse_position = mouse_position_vector()
-    assert test_mouse_position.x == 400.0
-    assert test_mouse_position.y == 300.0
+    assert 400.0 == test_mouse_position.x
+    assert 300.0 == test_mouse_position.y
     close_window(test_window)
 
 
@@ -232,7 +232,7 @@ def test_MouseUp_integration():
 def test_MouseWheelScroll_integration():
     test_window = open_window("Test Window", 800, 600)
     process_events()
-    assert mouse_wheel_scroll() == vector_from_angle(0.0, 0.0)
+    assert vector_from_angle(0.0, 0.0) == mouse_wheel_scroll()
     simulate_mouse_wheel_scroll(10.0, 5.0)
     process_events()
     assert mouse_wheel_scroll() is True
@@ -251,7 +251,7 @@ def test_MouseY_integration():
     test_window = open_window("Test Window", 800, 600)
     move_mouse(400.0, 300.0)
     process_events()
-    assert mouse_y() == 300.0
+    assert 300.0 == mouse_y()
     close_window(test_window)
 
 
@@ -269,7 +269,7 @@ def test_MoveMouseToPoint_integration():
     test_window = open_window("Test Window", 800, 600)
     move_mouse_to_point(point_at(400.0, 300.0))
     process_events()
-    assert mouse_position() == point_at(400.0, 300.0)
+    assert point_at(400.0, 300.0) == mouse_position()
     close_window(test_window)
 
 
@@ -304,7 +304,7 @@ def test_DrawCollectedText_integration():
     process_events()
     draw_collected_text(color_black(), test_font, 18, option_defaults())
     refresh_screen()
-    assert get_pixel(test_window, 105, 115) == color_black()
+    assert color_black() == get_pixel(test_window, 105, 115)
     end_reading_text()
     free_font(test_font)
     close_window(test_window)
@@ -428,7 +428,7 @@ def test_TextInput_integration():
     process_events()
     simulate_key_press(KeyCode.A)
     process_events()
-    assert text_input() == "A"
+    assert "A" == text_input()
     end_reading_text()
     close_window(test_window)
 
@@ -440,7 +440,7 @@ def test_TextInputInWindow_integration():
     process_events()
     simulate_key_press(KeyCode.A)
     process_events()
-    assert text_input_in_window(test_window) == "A"
+    assert "A" == text_input_in_window(test_window)
     end_reading_text_in_window(test_window)
     close_window(test_window)
 

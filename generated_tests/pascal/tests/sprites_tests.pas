@@ -42,9 +42,9 @@ begin
     testSprite := CreateSprite(testBitmap);
     CallOnSpriteEvent(OnSpriteEvent());
     ProcessEvents();
-    SimulateMouseClick(Mousebutton.LEFT);
+    SimulateMouseClick(MouseButton.LEFT);
     ProcessEvents();
-    AssertTrue(MouseClicked(Mousebutton.LEFT));
+    AssertTrue(MouseClicked(MouseButton.LEFT));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -470,7 +470,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteCallOnEvent(testSprite, OnSpriteEvent());
     ProcessEvents();
-    SimulateMouseClick(Mousebutton.LEFT);
+    SimulateMouseClick(MouseButton.LEFT);
     ProcessEvents();
     AssertTrue(SpriteEventOccurred(testSprite));
     FreeSprite(testSprite);

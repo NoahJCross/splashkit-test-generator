@@ -4270,7 +4270,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "apply_matrix",
+          "function_name": "apply_matrix_to_quad",
           "args": [
             {
               "value_type": "variable",
@@ -4397,7 +4397,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "apply_matrix",
+          "function_name": "apply_matrix_to_triangle",
           "args": [
             {
               "value_type": "variable",
@@ -4579,7 +4579,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_matrix",
           "args": [
             {
               "value_type": "variable",
@@ -4663,7 +4663,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_point",
           "args": [
             {
               "value_type": "variable",
@@ -4739,7 +4739,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_matrix",
           "args": [
             {
               "value_type": "variable",
@@ -4819,7 +4819,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_vector",
           "args": [
             {
               "value_type": "variable",
@@ -4926,7 +4926,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_point",
           "args": [
             {
               "value_type": "variable",
@@ -5017,7 +5017,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_point",
           "args": [
             {
               "value_type": "variable",
@@ -5108,7 +5108,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_point",
           "args": [
             {
               "value_type": "variable",
@@ -5222,7 +5222,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_point",
           "args": [
             {
               "value_type": "variable",
@@ -5313,7 +5313,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_vector",
           "args": [
             {
               "value_type": "variable",
@@ -5404,7 +5404,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_point",
           "args": [
             {
               "value_type": "variable",
@@ -5484,7 +5484,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "matrix_multiply",
+          "function_name": "matrix_multiply_point",
           "args": [
             {
               "value_type": "variable",

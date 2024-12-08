@@ -144,8 +144,8 @@ fn test_fill_circle_on_window_with_options_integration() {
 fn test_current_clip_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_clip = current_clip();
-    assert_eq!(test_clip.width, 800);
-    assert_eq!(test_clip.height, 600);
+    assert_eq!(800, test_clip.width);
+    assert_eq!(600, test_clip.height);
     close_window(test_window);
 }
 #[test]
@@ -154,17 +154,17 @@ fn test_current_clip_for_bitmap_integration() {
     let test_rectangle = rectangle_from(10, 10, 50, 50);
     push_clip(test_bitmap, test_rectangle);
     let test_clip = current_clip(test_bitmap);
-    assert_eq!(rectangle_left(test_clip), 10);
-    assert_eq!(rectangle_top(test_clip), 10);
-    assert_eq!(test_clip.width, 50);
-    assert_eq!(test_clip.height, 50);
+    assert_eq!(10, rectangle_left(test_clip));
+    assert_eq!(10, rectangle_top(test_clip));
+    assert_eq!(50, test_clip.width);
+    assert_eq!(50, test_clip.height);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_current_clip_for_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_clip = current_clip(test_window);
-    assert_eq!(rectangle_from(0, 0, 800, 600), test_clip);
+    assert_eq!(test_clip, rectangle_from(0, 0, 800, 600));
     close_window(test_window);
 }
 #[test]
@@ -173,10 +173,10 @@ fn test_pop_clip_for_window_integration() {
     let test_rectangle = rectangle_from(100, 100, 200, 200);
     push_clip(test_window, test_rectangle);
     let test_current_clip = current_clip(test_window);
-    assert_eq!(test_current_clip, test_rectangle);
+    assert_eq!(test_rectangle, test_current_clip);
     pop_clip(test_window);
     let test_current_clip_after_pop = current_clip(test_window);
-    assert_eq!(rectangle_from(0, 0, 800, 600), test_current_clip_after_pop);
+    assert_eq!(test_current_clip_after_pop, rectangle_from(0, 0, 800, 600));
     close_window(test_window);
 }
 #[test]
@@ -197,7 +197,7 @@ fn test_pop_clip_for_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     push_clip(test_bitmap, rectangle_from(0, 0, 50, 50));
     pop_clip(test_bitmap);
-    assert_eq!(current_clip(test_bitmap), rectangle_from(0, 0, 100, 100));
+    assert_eq!(rectangle_from(0, 0, 100, 100), current_clip(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -206,7 +206,7 @@ fn test_push_clip_for_window_integration() {
     let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     push_clip_for_window(test_window, test_rectangle);
     let test_current_clip = current_clip_for_window(test_window);
-    assert_eq!(test_current_clip, test_rectangle);
+    assert_eq!(test_rectangle, test_current_clip);
     refresh_screen();
     close_window(test_window);
 }
@@ -216,10 +216,10 @@ fn test_push_clip_for_bitmap_integration() {
     let test_rectangle = rectangle_from(50, 50, 100, 100);
     push_clip(test_bitmap, test_rectangle);
     let test_current_clip = current_clip(test_bitmap);
-    assert_eq!(rectangle_left(test_current_clip), 50);
-    assert_eq!(rectangle_top(test_current_clip), 50);
-    assert_eq!(test_current_clip.width, 100);
-    assert_eq!(test_current_clip.height, 100);
+    assert_eq!(50, rectangle_left(test_current_clip));
+    assert_eq!(50, rectangle_top(test_current_clip));
+    assert_eq!(100, test_current_clip.width);
+    assert_eq!(100, test_current_clip.height);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -228,7 +228,7 @@ fn test_push_clip_integration() {
     let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     push_clip(test_rectangle);
     let test_current_clip = current_clip();
-    assert_eq!(test_current_clip, test_rectangle);
+    assert_eq!(test_rectangle, test_current_clip);
     close_window(test_window);
 }
 #[test]
@@ -236,7 +236,7 @@ fn test_reset_clip_for_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     push_clip(test_bitmap, rectangle_from(10, 10, 50, 50));
     reset_clip_for_bitmap(test_bitmap);
-    assert_eq!(current_clip_for_bitmap(test_bitmap), rectangle_from(0, 0, 100, 100));
+    assert_eq!(rectangle_from(0, 0, 100, 100), current_clip_for_bitmap(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -245,7 +245,7 @@ fn test_reset_clip_integration() {
     push_clip(rectangle_from(100, 100, 200, 200));
     reset_clip();
     let test_clip_rect = current_clip();
-    assert_eq!(rectangle_from(0, 0, 800, 600), test_clip_rect);
+    assert_eq!(test_clip_rect, rectangle_from(0, 0, 800, 600));
     close_window(test_window);
 }
 #[test]
@@ -254,7 +254,7 @@ fn test_reset_clip_for_window_integration() {
     push_clip(test_window, rectangle_from(100, 100, 200, 200));
     reset_clip_for_window(test_window);
     let test_clip_rect = current_clip_for_window(test_window);
-    assert_eq!(rectangle_from(0, 0, 800, 600), test_clip_rect);
+    assert_eq!(test_clip_rect, rectangle_from(0, 0, 800, 600));
     close_window(test_window);
 }
 #[test]
@@ -263,7 +263,7 @@ fn test_set_clip_integration() {
     let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     set_clip(test_rectangle);
     let test_current_clip = current_clip();
-    assert_eq!(test_current_clip, test_rectangle);
+    assert_eq!(test_rectangle, test_current_clip);
     close_window(test_window);
 }
 #[test]
@@ -272,7 +272,7 @@ fn test_set_clip_for_bitmap_integration() {
     let test_rectangle = rectangle_from(50, 50, 100, 100);
     set_clip(test_bitmap, test_rectangle);
     let test_current_clip = current_clip(test_bitmap);
-    assert_eq!(test_current_clip, test_rectangle);
+    assert_eq!(test_rectangle, test_current_clip);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -281,7 +281,7 @@ fn test_set_clip_for_window_integration() {
     let test_rectangle = rectangle_from(100, 100, 200, 200);
     set_clip(test_window, test_rectangle);
     let test_current_clip = current_clip(test_window);
-    assert_eq!(test_current_clip, test_rectangle);
+    assert_eq!(test_rectangle, test_current_clip);
     close_window(test_window);
 }
 #[test]
@@ -400,10 +400,10 @@ fn test_option_line_width_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line(color_black(), 100.0, 100.0, 200.0, 200.0, option_line_width(1));
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
     draw_line(color_black(), 300.0, 300.0, 400.0, 400.0, option_line_width(5));
     refresh_screen();
-    assert_eq!(get_pixel(point_at(300.0, 300.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(300.0, 300.0)));
     close_window(test_window);
 }
 #[test]
@@ -839,10 +839,10 @@ fn test_clear_screen_to_white_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
     clear_screen();
     refresh_screen();
-    assert_ne!(get_pixel(point_at(100.0, 100.0)), color_black());
+    assert_ne!(color_black(), get_pixel(point_at(100.0, 100.0)));
     close_window(test_window);
 }
 #[test]
@@ -850,10 +850,10 @@ fn test_clear_screen_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(get_pixel(point_at(400.0, 300.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(400.0, 300.0)));
     clear_screen(color_white());
     refresh_screen();
-    assert_ne!(get_pixel(point_at(400.0, 300.0)), color_black());
+    assert_ne!(color_black(), get_pixel(point_at(400.0, 300.0)));
     close_window(test_window);
 }
 #[test]
@@ -864,7 +864,7 @@ fn test_display_details_integration() {
     assert!(test_display.is_some());
     assert!(display_width(test_display) > 0);
     assert!(display_height(test_display) > 0);
-    assert_eq!(test_number_of_displays, 0);
+    assert_eq!(0, test_number_of_displays);
 }
 #[test]
 fn test_display_height_integration() {
@@ -894,7 +894,7 @@ fn test_display_x_integration() {
 fn test_display_y_integration() {
     let test_display = display_details(0);
     let test_y = display_y(test_display);
-    assert_ne!(test_y, -1);
+    assert_ne!(-1, test_y);
 }
 #[test]
 fn test_number_of_displays_integration() {
@@ -927,14 +927,14 @@ fn test_save_bitmap_integration() {
 fn test_screen_height_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_height = screen_height();
-    assert_eq!(test_height, 600);
+    assert_eq!(600, test_height);
     close_window(test_window);
 }
 #[test]
 fn test_screen_width_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_width = screen_width();
-    assert_eq!(test_width, 800);
+    assert_eq!(800, test_width);
     close_window(test_window);
 }
 #[test]
@@ -958,43 +958,43 @@ fn test_bitmap_bounding_circle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_point = point_at(50.0, 50.0);
     let test_circle = bitmap_bounding_circle(test_bitmap, test_point);
-    assert_eq!(circle_radius(test_circle), 50.0);
-    assert_eq!(center_point(test_circle), test_point);
+    assert_eq!(50.0, circle_radius(test_circle));
+    assert_eq!(test_point, center_point(test_circle));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_bounding_rectangle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_rectangle = bitmap_bounding_rectangle(test_bitmap);
-    assert_eq!(test_rectangle.width, bitmap_width(test_bitmap));
-    assert_eq!(test_rectangle.height, bitmap_height(test_bitmap));
+    assert_eq!(bitmap_width(test_bitmap), test_rectangle.width);
+    assert_eq!(bitmap_height(test_bitmap), test_rectangle.height);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_bounding_rectangle_at_location_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_rectangle = bitmap_bounding_rectangle_at_location(test_bitmap, 50.0, 50.0);
-    assert_eq!(rectangle_left(test_rectangle), 50.0);
-    assert_eq!(rectangle_top(test_rectangle), 50.0);
-    assert_eq!(rectangle_right(test_rectangle), 150.0);
-    assert_eq!(rectangle_bottom(test_rectangle), 150.0);
+    assert_eq!(50.0, rectangle_left(test_rectangle));
+    assert_eq!(50.0, rectangle_top(test_rectangle));
+    assert_eq!(150.0, rectangle_right(test_rectangle));
+    assert_eq!(150.0, rectangle_bottom(test_rectangle));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_center_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_center = bitmap_cell_center(test_bitmap);
-    assert_eq!(test_center.x, 50.0);
-    assert_eq!(test_center.y, 50.0);
+    assert_eq!(50.0, test_center.x);
+    assert_eq!(50.0, test_center.y);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_circle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_circle = bitmap_cell_circle(test_bitmap, 50.0, 50.0);
-    assert_eq!(circle_radius(test_circle), 50.0);
-    assert_eq!(circle_x(test_circle), 50.0);
-    assert_eq!(circle_y(test_circle), 50.0);
+    assert_eq!(50.0, circle_radius(test_circle));
+    assert_eq!(50.0, circle_x(test_circle));
+    assert_eq!(50.0, circle_y(test_circle));
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1002,9 +1002,9 @@ fn test_bitmap_cell_circle_at_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4);
     let test_circle = bitmap_cell_circle_at_point(test_bitmap, point_at(100, 100));
-    assert_eq!(circle_x(test_circle), 125);
-    assert_eq!(circle_y(test_circle), 125);
-    assert_eq!(circle_radius(test_circle), 25);
+    assert_eq!(125, circle_x(test_circle));
+    assert_eq!(125, circle_y(test_circle));
+    assert_eq!(25, circle_radius(test_circle));
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1012,28 +1012,28 @@ fn test_bitmap_cell_circle_at_point_with_scale_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4);
     let test_circle = bitmap_cell_circle_at_point_with_scale(test_bitmap, point_at(100.0, 100.0), 2.0);
-    assert_eq!(circle_radius(test_circle), 50.0);
+    assert_eq!(50.0, circle_radius(test_circle));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_columns_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    assert_eq!(bitmap_cell_columns(test_bitmap), 5);
+    assert_eq!(5, bitmap_cell_columns(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_count_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    assert_eq!(bitmap_cell_count(test_bitmap), 25);
+    assert_eq!(25, bitmap_cell_count(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_height_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    assert_eq!(bitmap_cell_height(test_bitmap), 20);
+    assert_eq!(20, bitmap_cell_height(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1041,8 +1041,8 @@ fn test_bitmap_cell_offset_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
     let test_offset = bitmap_cell_offset(test_bitmap, 5);
-    assert_eq!(test_offset.x, 75);
-    assert_eq!(test_offset.y, 0);
+    assert_eq!(75, test_offset.x);
+    assert_eq!(0, test_offset.y);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1050,8 +1050,8 @@ fn test_bitmap_cell_rectangle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
     let test_rectangle = bitmap_cell_rectangle(test_bitmap);
-    assert_eq!(test_rectangle.width, 25);
-    assert_eq!(test_rectangle.height, 25);
+    assert_eq!(25, test_rectangle.width);
+    assert_eq!(25, test_rectangle.height);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1059,59 +1059,59 @@ fn test_bitmap_cell_rectangle_at_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
     let test_rectangle = bitmap_cell_rectangle_at_point(test_bitmap, point_at(50.0, 50.0));
-    assert_eq!(rectangle_left(test_rectangle), 50.0);
-    assert_eq!(rectangle_top(test_rectangle), 50.0);
-    assert_eq!(rectangle_right(test_rectangle), 75.0);
-    assert_eq!(rectangle_bottom(test_rectangle), 75.0);
+    assert_eq!(50.0, rectangle_left(test_rectangle));
+    assert_eq!(50.0, rectangle_top(test_rectangle));
+    assert_eq!(75.0, rectangle_right(test_rectangle));
+    assert_eq!(75.0, rectangle_bottom(test_rectangle));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_rows_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    assert_eq!(bitmap_cell_rows(test_bitmap), 5);
+    assert_eq!(5, bitmap_cell_rows(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_width_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
-    assert_eq!(bitmap_cell_width(test_bitmap), 25);
+    assert_eq!(25, bitmap_cell_width(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_center_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_center = bitmap_center(test_bitmap);
-    assert_eq!(test_center.x, 50.0);
-    assert_eq!(test_center.y, 50.0);
+    assert_eq!(50.0, test_center.x);
+    assert_eq!(50.0, test_center.y);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_filename_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_filename = bitmap_filename(test_bitmap);
-    assert_eq!(test_filename, "");
+    assert_eq!("", test_filename);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_height_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_height = bitmap_height(test_bitmap);
-    assert_eq!(test_height, 100);
+    assert_eq!(100, test_height);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_height_of_bitmap_named_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    assert_eq!(bitmap_height_of_bitmap_named("test_bitmap"), 100);
+    assert_eq!(100, bitmap_height_of_bitmap_named("test_bitmap"));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_name_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_bitmap_name = bitmap_name(test_bitmap);
-    assert_eq!(test_bitmap_name, "test_bitmap");
+    assert_eq!("test_bitmap", test_bitmap_name);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1128,21 +1128,21 @@ fn test_bitmap_rectangle_of_cell_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
     let test_rectangle = bitmap_rectangle_of_cell(test_bitmap, 5);
-    assert_eq!(rectangle_left(test_rectangle), 0);
-    assert_eq!(rectangle_top(test_rectangle), 75);
-    assert_eq!(rectangle_right(test_rectangle), 25);
-    assert_eq!(rectangle_bottom(test_rectangle), 100);
+    assert_eq!(0, rectangle_left(test_rectangle));
+    assert_eq!(75, rectangle_top(test_rectangle));
+    assert_eq!(25, rectangle_right(test_rectangle));
+    assert_eq!(100, rectangle_bottom(test_rectangle));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_set_cell_details_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25);
-    assert_eq!(bitmap_cell_width(test_bitmap), 20);
-    assert_eq!(bitmap_cell_height(test_bitmap), 20);
-    assert_eq!(bitmap_cell_columns(test_bitmap), 5);
-    assert_eq!(bitmap_cell_rows(test_bitmap), 5);
-    assert_eq!(bitmap_cell_count(test_bitmap), 25);
+    assert_eq!(20, bitmap_cell_width(test_bitmap));
+    assert_eq!(20, bitmap_cell_height(test_bitmap));
+    assert_eq!(5, bitmap_cell_columns(test_bitmap));
+    assert_eq!(5, bitmap_cell_rows(test_bitmap));
+    assert_eq!(25, bitmap_cell_count(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1156,7 +1156,7 @@ fn test_bitmap_valid_integration() {
 fn test_bitmap_width_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_width = bitmap_width(test_bitmap);
-    assert_eq!(test_width, 100);
+    assert_eq!(100, test_width);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1165,7 +1165,7 @@ fn test_bitmap_width_of_bitmap_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_bitmap(bitmap_named("test_bitmap"), 100, 100);
     refresh_screen();
-    assert_eq!(bitmap_width_of_bitmap_named("test_bitmap"), 100);
+    assert_eq!(100, bitmap_width_of_bitmap_named("test_bitmap"));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
@@ -1194,8 +1194,8 @@ fn test_clear_bitmap_named_integration() {
 fn test_create_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     assert!(test_bitmap.is_some());
-    assert_eq!(bitmap_width(test_bitmap), 100);
-    assert_eq!(bitmap_height(test_bitmap), 100);
+    assert_eq!(100, bitmap_width(test_bitmap));
+    assert_eq!(100, bitmap_height(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1368,8 +1368,8 @@ fn test_draw_line_record_integration() {
     let test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
     draw_line(color_black(), test_line);
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1378,8 +1378,8 @@ fn test_draw_line_record_with_options_integration() {
     let test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
     draw_line_record_with_options(color_black(), test_line, option_line_width(3, option_defaults()));
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1387,8 +1387,8 @@ fn test_draw_line_point_to_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line_point_to_point(color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0));
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1396,8 +1396,8 @@ fn test_draw_line_point_to_point_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line_point_to_point_with_options(color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0), option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1405,8 +1405,8 @@ fn test_draw_line_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line(color_black(), 100.0, 100.0, 200.0, 200.0);
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1414,8 +1414,8 @@ fn test_draw_line_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line_with_options(color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1478,8 +1478,8 @@ fn test_draw_line_on_window_record_integration() {
     let test_line = line_from(point_at(100.0, 100.0), point_at(700.0, 500.0));
     draw_line_on_window(test_window, color_black(), test_line);
     refresh_screen();
-    assert_eq!(get_pixel(test_window, point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(test_window, point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(test_window, point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(test_window, point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1488,8 +1488,8 @@ fn test_draw_line_on_window_record_with_options_integration() {
     let test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
     draw_line_on_window(test_window, color_black(), test_line, option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(test_window, point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(test_window, point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(test_window, point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(test_window, point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1497,8 +1497,8 @@ fn test_draw_line_on_window_point_to_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line_on_window(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0));
     refresh_screen();
-    assert_eq!(get_pixel(test_window, 100.0, 100.0), color_black());
-    assert_ne!(get_pixel(test_window, 99.0, 99.0), color_black());
+    assert_eq!(color_black(), get_pixel(test_window, 100.0, 100.0));
+    assert_ne!(color_black(), get_pixel(test_window, 99.0, 99.0));
     close_window(test_window);
 }
 #[test]
@@ -1506,8 +1506,8 @@ fn test_draw_line_on_window_point_to_point_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line_on_window(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0), option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(test_window, 100.0, 100.0), color_black());
-    assert_ne!(get_pixel(test_window, 99.0, 99.0), color_black());
+    assert_eq!(color_black(), get_pixel(test_window, 100.0, 100.0));
+    assert_ne!(color_black(), get_pixel(test_window, 99.0, 99.0));
     close_window(test_window);
 }
 #[test]
@@ -1515,8 +1515,8 @@ fn test_draw_line_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 200.0);
     refresh_screen();
-    assert_eq!(get_pixel(test_window, 100.0, 100.0), color_black());
-    assert_ne!(get_pixel(test_window, 99.0, 99.0), color_black());
+    assert_eq!(color_black(), get_pixel(test_window, 100.0, 100.0));
+    assert_ne!(color_black(), get_pixel(test_window, 99.0, 99.0));
     close_window(test_window);
 }
 #[test]
@@ -1524,8 +1524,8 @@ fn test_draw_line_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_line_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(test_window, 100.0, 100.0), color_black());
-    assert_ne!(get_pixel(test_window, 99.0, 99.0), color_black());
+    assert_eq!(color_black(), get_pixel(test_window, 100.0, 100.0));
+    assert_ne!(color_black(), get_pixel(test_window, 99.0, 99.0));
     close_window(test_window);
 }
 #[test]
@@ -1533,8 +1533,8 @@ fn test_draw_pixel_at_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1542,9 +1542,9 @@ fn test_draw_pixel_at_point_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel_at_point_with_options(color_black(), point_at(100.0, 100.0), option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1552,8 +1552,8 @@ fn test_draw_pixel_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1561,8 +1561,8 @@ fn test_draw_pixel_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0, option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1610,8 +1610,8 @@ fn test_draw_pixel_on_window_at_point_integration() {
     let test_point = point_at(100.0, 100.0);
     draw_pixel_on_window(test_window, test_color, test_point);
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1620,8 +1620,8 @@ fn test_draw_pixel_on_window_at_point_with_options_integration() {
     let test_point = point_at(100.0, 100.0);
     draw_pixel_on_window(test_window, color_black(), test_point, option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1629,8 +1629,8 @@ fn test_draw_pixel_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel_on_window(test_window, color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1638,8 +1638,8 @@ fn test_draw_pixel_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel_on_window(test_window, color_black(), 100.0, 100.0, option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(point_at(100.0, 100.0)), color_black());
-    assert_ne!(get_pixel(point_at(99.0, 99.0)), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
     close_window(test_window);
 }
 #[test]
@@ -1647,7 +1647,7 @@ fn test_get_pixel_from_bitmap_at_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     draw_pixel_on_bitmap(test_bitmap, color_black(), point_at(50.0, 50.0));
     let test_color = get_pixel_from_bitmap_at_point(test_bitmap, point_at(50.0, 50.0));
-    assert_eq!(color_black(), test_color);
+    assert_eq!(test_color, color_black());
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1655,7 +1655,7 @@ fn test_get_pixel_from_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     draw_pixel_on_bitmap(test_bitmap, color_black(), 50.0, 50.0);
     let test_pixel_color = get_pixel_from_bitmap(test_bitmap, 50.0, 50.0);
-    assert_eq!(test_pixel_color, color_black());
+    assert_eq!(color_black(), test_pixel_color);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1663,7 +1663,7 @@ fn test_get_pixel_at_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    assert_eq!(get_pixel_at_point(point_at(100.0, 100.0)), color_black());
+    assert_eq!(color_black(), get_pixel_at_point(point_at(100.0, 100.0)));
     close_window(test_window);
 }
 #[test]
@@ -1671,7 +1671,7 @@ fn test_get_pixel_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(get_pixel(100.0, 100.0), color_black());
+    assert_eq!(color_black(), get_pixel(100.0, 100.0));
     close_window(test_window);
 }
 #[test]
@@ -1679,7 +1679,7 @@ fn test_get_pixel_from_window_at_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    assert_eq!(get_pixel_from_window_at_point(test_window, point_at(100.0, 100.0)), color_black());
+    assert_eq!(color_black(), get_pixel_from_window_at_point(test_window, point_at(100.0, 100.0)));
     close_window(test_window);
 }
 #[test]
@@ -1687,7 +1687,7 @@ fn test_get_pixel_from_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(get_pixel_from_window(test_window, 100.0, 100.0), color_black());
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100.0, 100.0));
     close_window(test_window);
 }
 #[test]
@@ -1696,7 +1696,7 @@ fn test_get_pixel_from_window_at_point_from_window_integration() {
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
     let test_pixel = get_pixel_from_window_at_point_from_window(test_window, point_at(100.0, 100.0));
-    assert_eq!(color_black(), test_pixel);
+    assert_eq!(test_pixel, color_black());
     close_window(test_window);
 }
 #[test]
@@ -1705,7 +1705,7 @@ fn test_get_pixel_from_window_from_window_integration() {
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
     let test_pixel_color = get_pixel_from_window(test_window, 100.0, 100.0);
-    assert_eq!(color_black(), test_pixel_color);
+    assert_eq!(test_pixel_color, color_black());
     close_window(test_window);
 }
 #[test]
@@ -2266,7 +2266,7 @@ fn test_get_font_style_name_as_string_integration() {
 fn test_get_font_style_integration() {
     let test_font = load_font("test_font", "hara.ttf");
     let test_style = get_font_style(test_font);
-    assert_ne!(test_style, FontStyle::BoldFont);
+    assert_ne!(FontStyle::BoldFont, test_style);
     free_font(test_font);
 }
 #[test]
@@ -2308,7 +2308,7 @@ fn test_set_font_style_name_as_string_integration() {
     set_font_style_name_as_string("test_font", FontStyle::BoldFont);
     draw_text("Bold Text", color_black(), "test_font", 24, 100.0, 100.0);
     refresh_screen();
-    assert_eq!(get_font_style_name_as_string("test_font"), FontStyle::BoldFont);
+    assert_eq!(FontStyle::BoldFont, get_font_style_name_as_string("test_font"));
     close_window(test_window);
     free_font(test_font);
 }
@@ -2317,7 +2317,7 @@ fn test_set_font_style_integration() {
     let test_font = font_named("hara");
     set_font_style(test_font, FontStyle::BoldFont);
     let test_style = get_font_style(test_font);
-    assert_eq!(test_style, FontStyle::BoldFont);
+    assert_eq!(FontStyle::BoldFont, test_style);
     free_font(test_font);
 }
 #[test]

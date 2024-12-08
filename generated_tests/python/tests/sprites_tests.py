@@ -40,9 +40,9 @@ def test_CallOnSpriteEvent_integration():
     test_sprite = create_sprite(test_bitmap)
     call_on_sprite_event(_on_sprite_event())
     process_events()
-    simulate_mouse_click(Mousebutton.Left)
+    simulate_mouse_click(MouseButton.Left)
     process_events()
-    assert mouse_clicked(Mousebutton.Left) is True
+    assert mouse_clicked(MouseButton.Left) is True
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -468,7 +468,7 @@ def test_SpriteCallOnEvent_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_call_on_event(test_sprite, _on_sprite_event())
     process_events()
-    simulate_mouse_click(Mousebutton.Left)
+    simulate_mouse_click(MouseButton.Left)
     process_events()
     assert sprite_event_occurred(test_sprite) is True
     free_sprite(test_sprite)

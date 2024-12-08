@@ -110,21 +110,21 @@ def test_LoadMusic_integration():
 def test_MusicFilename_integration():
     test_music = load_music("test_music", "280.mp3")
     filename = music_filename(test_music)
-    assert filename == "280.mp3"
+    assert "280.mp3" == filename
     free_music(test_music)
 
 
 def test_MusicName_integration():
     test_music = load_music("test_music", "280.mp3")
     music_name_result = music_name(test_music)
-    assert music_name_result == "test_music"
+    assert "test_music" == music_name_result
     free_music(test_music)
 
 
 def test_MusicNamed_integration():
     test_music = load_music("test_music", "280.mp3")
     retrieved_music = music_named("test_music")
-    assert test_music == retrieved_music
+    assert retrieved_music == test_music
     free_music(test_music)
 
 
@@ -153,7 +153,7 @@ def test_MusicVolume_integration():
     test_music = load_music("test_music", "280.mp3")
     play_music(test_music)
     set_music_volume(0.5)
-    assert music_volume() == 0.5
+    assert 0.5 == music_volume()
     free_music(test_music)
     close_audio()
 
@@ -231,7 +231,7 @@ def test_SetMusicVolume_integration():
     test_music = load_music("test_music", "280.mp3")
     play_music(test_music)
     set_music_volume(0.5)
-    assert music_volume() == 0.5
+    assert 0.5 == music_volume()
     free_music(test_music)
     close_audio()
 
@@ -380,14 +380,14 @@ def test_PlaySoundEffectWithTimesAndVolume_integration():
 def test_SoundEffectFilename_integration():
     test_sound = load_sound_effect("test_sound", "test.ogg")
     test_filename = sound_effect_filename(test_sound)
-    assert test_filename == "test.ogg"
+    assert "test.ogg" == test_filename
     free_sound_effect(test_sound)
 
 
 def test_SoundEffectName_integration():
     test_sound = load_sound_effect("test_sound", "test.ogg")
     test_sound_name = sound_effect_name(test_sound)
-    assert test_sound_name == "test_sound"
+    assert "test_sound" == test_sound_name
     free_sound_effect(test_sound)
 
 
@@ -395,7 +395,7 @@ def test_SoundEffectNamed_integration():
     open_audio()
     test_sound = load_sound_effect("test_sound", "test.ogg")
     retrieved_sound = sound_effect_named("test_sound")
-    assert test_sound == retrieved_sound
+    assert retrieved_sound == test_sound
     free_sound_effect(test_sound)
     close_audio()
 

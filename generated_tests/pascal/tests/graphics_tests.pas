@@ -139,8 +139,8 @@ procedure TIntegrationTests.TestCurrentClipIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testClip := CurrentClip();
-    AssertEquals(testClip.width, 800);
-    AssertEquals(testClip.height, 600);
+    AssertEquals(800, testClip.width);
+    AssertEquals(600, testClip.height);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestCurrentClipForBitmapIntegration;
@@ -149,17 +149,17 @@ begin
     testRectangle := RectangleFrom(10, 10, 50, 50);
     PushClip(testBitmap, testRectangle);
     testClip := CurrentClip(testBitmap);
-    AssertEquals(RectangleLeft(testClip), 10);
-    AssertEquals(RectangleTop(testClip), 10);
-    AssertEquals(testClip.width, 50);
-    AssertEquals(testClip.height, 50);
+    AssertEquals(10, RectangleLeft(testClip));
+    AssertEquals(10, RectangleTop(testClip));
+    AssertEquals(50, testClip.width);
+    AssertEquals(50, testClip.height);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestCurrentClipForWindowIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testClip := CurrentClip(testWindow);
-    AssertEquals(RectangleFrom(0, 0, 800, 600), testClip);
+    AssertEquals(testClip, RectangleFrom(0, 0, 800, 600));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestPopClipForWindowIntegration;
@@ -168,10 +168,10 @@ begin
     testRectangle := RectangleFrom(100, 100, 200, 200);
     PushClip(testWindow, testRectangle);
     testCurrentClip := CurrentClip(testWindow);
-    AssertEquals(testCurrentClip, testRectangle);
+    AssertEquals(testRectangle, testCurrentClip);
     PopClip(testWindow);
     testCurrentClipAfterPop := CurrentClip(testWindow);
-    AssertEquals(RectangleFrom(0, 0, 800, 600), testCurrentClipAfterPop);
+    AssertEquals(testCurrentClipAfterPop, RectangleFrom(0, 0, 800, 600));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestPopClipIntegration;
@@ -192,7 +192,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     PushClip(testBitmap, RectangleFrom(0, 0, 50, 50));
     PopClip(testBitmap);
-    AssertEquals(CurrentClip(testBitmap), RectangleFrom(0, 0, 100, 100));
+    AssertEquals(RectangleFrom(0, 0, 100, 100), CurrentClip(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestPushClipForWindowIntegration;
@@ -201,7 +201,7 @@ begin
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     PushClip(testWindow, testRectangle);
     testCurrentClip := CurrentClip(testWindow);
-    AssertEquals(testCurrentClip, testRectangle);
+    AssertEquals(testRectangle, testCurrentClip);
     RefreshScreen();
     CloseWindow(testWindow);
 end;
@@ -211,10 +211,10 @@ begin
     testRectangle := RectangleFrom(50, 50, 100, 100);
     PushClip(testBitmap, testRectangle);
     testCurrentClip := CurrentClip(testBitmap);
-    AssertEquals(RectangleLeft(testCurrentClip), 50);
-    AssertEquals(RectangleTop(testCurrentClip), 50);
-    AssertEquals(testCurrentClip.width, 100);
-    AssertEquals(testCurrentClip.height, 100);
+    AssertEquals(50, RectangleLeft(testCurrentClip));
+    AssertEquals(50, RectangleTop(testCurrentClip));
+    AssertEquals(100, testCurrentClip.width);
+    AssertEquals(100, testCurrentClip.height);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestPushClipIntegration;
@@ -223,7 +223,7 @@ begin
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     PushClip(testRectangle);
     testCurrentClip := CurrentClip();
-    AssertEquals(testCurrentClip, testRectangle);
+    AssertEquals(testRectangle, testCurrentClip);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestResetClipForBitmapIntegration;
@@ -231,7 +231,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     PushClip(testBitmap, RectangleFrom(10, 10, 50, 50));
     ResetClip(testBitmap);
-    AssertEquals(CurrentClip(testBitmap), RectangleFrom(0, 0, 100, 100));
+    AssertEquals(RectangleFrom(0, 0, 100, 100), CurrentClip(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestResetClipIntegration;
@@ -240,7 +240,7 @@ begin
     PushClip(RectangleFrom(100, 100, 200, 200));
     ResetClip();
     testClipRect := CurrentClip();
-    AssertEquals(RectangleFrom(0, 0, 800, 600), testClipRect);
+    AssertEquals(testClipRect, RectangleFrom(0, 0, 800, 600));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestResetClipForWindowIntegration;
@@ -249,7 +249,7 @@ begin
     PushClip(testWindow, RectangleFrom(100, 100, 200, 200));
     ResetClip(testWindow);
     testClipRect := CurrentClip(testWindow);
-    AssertEquals(RectangleFrom(0, 0, 800, 600), testClipRect);
+    AssertEquals(testClipRect, RectangleFrom(0, 0, 800, 600));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestSetClipIntegration;
@@ -258,7 +258,7 @@ begin
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     SetClip(testRectangle);
     testCurrentClip := CurrentClip();
-    AssertEquals(testCurrentClip, testRectangle);
+    AssertEquals(testRectangle, testCurrentClip);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestSetClipForBitmapIntegration;
@@ -267,7 +267,7 @@ begin
     testRectangle := RectangleFrom(50, 50, 100, 100);
     SetClip(testBitmap, testRectangle);
     testCurrentClip := CurrentClip(testBitmap);
-    AssertEquals(testCurrentClip, testRectangle);
+    AssertEquals(testRectangle, testCurrentClip);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestSetClipForWindowIntegration;
@@ -276,7 +276,7 @@ begin
     testRectangle := RectangleFrom(100, 100, 200, 200);
     SetClip(testWindow, testRectangle);
     testCurrentClip := CurrentClip(testWindow);
-    AssertEquals(testCurrentClip, testRectangle);
+    AssertEquals(testRectangle, testCurrentClip);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestOptionDefaultsIntegration;
@@ -395,10 +395,10 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionLineWidth(1));
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
     DrawLine(ColorBlack(), 300.0, 300.0, 400.0, 400.0, OptionLineWidth(5));
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(300.0, 300.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(300.0, 300.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestOptionLineWidthWithOptionsIntegration;
@@ -834,10 +834,10 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), 100.0, 100.0);
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
     ClearScreen();
     RefreshScreen();
-    AssertNotEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestClearScreenIntegration;
@@ -845,10 +845,10 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), 100.0, 100.0);
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(400.0, 300.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(400.0, 300.0)));
     ClearScreen(ColorWhite());
     RefreshScreen();
-    AssertNotEquals(GetPixel(PointAt(400.0, 300.0)), ColorBlack());
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(400.0, 300.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDisplayDetailsIntegration;
@@ -859,7 +859,7 @@ begin
     AssertNotNull(testDisplay);
     AssertTrue(DisplayWidth(testDisplay) > 0);
     AssertTrue(DisplayHeight(testDisplay) > 0);
-    AssertEquals(testNumberOfDisplays, 0);
+    AssertEquals(0, testNumberOfDisplays);
 end;
 procedure TIntegrationTests.TestDisplayHeightIntegration;
 begin
@@ -889,7 +889,7 @@ procedure TIntegrationTests.TestDisplayYIntegration;
 begin
     testDisplay := DisplayDetails(0);
     testY := DisplayY(testDisplay);
-    AssertNotEquals(testY, -1);
+    AssertNotEquals(-1, testY);
 end;
 procedure TIntegrationTests.TestNumberOfDisplaysIntegration;
 begin
@@ -922,14 +922,14 @@ procedure TIntegrationTests.TestScreenHeightIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testHeight := ScreenHeight();
-    AssertEquals(testHeight, 600);
+    AssertEquals(600, testHeight);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestScreenWidthIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testWidth := ScreenWidth();
-    AssertEquals(testWidth, 800);
+    AssertEquals(800, testWidth);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestTakeScreenshotIntegration;
@@ -953,43 +953,43 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testPoint := PointAt(50.0, 50.0);
     testCircle := BitmapBoundingCircle(testBitmap, testPoint);
-    AssertEquals(CircleRadius(testCircle), 50.0);
-    AssertEquals(CenterPoint(testCircle), testPoint);
+    AssertEquals(50.0, CircleRadius(testCircle));
+    AssertEquals(testPoint, CenterPoint(testCircle));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapBoundingRectangleIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testRectangle := BitmapBoundingRectangle(testBitmap);
-    AssertEquals(testRectangle.width, BitmapWidth(testBitmap));
-    AssertEquals(testRectangle.height, BitmapHeight(testBitmap));
+    AssertEquals(BitmapWidth(testBitmap), testRectangle.width);
+    AssertEquals(BitmapHeight(testBitmap), testRectangle.height);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapBoundingRectangleAtLocationIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testRectangle := BitmapBoundingRectangle(testBitmap, 50.0, 50.0);
-    AssertEquals(RectangleLeft(testRectangle), 50.0);
-    AssertEquals(RectangleTop(testRectangle), 50.0);
-    AssertEquals(RectangleRight(testRectangle), 150.0);
-    AssertEquals(RectangleBottom(testRectangle), 150.0);
+    AssertEquals(50.0, RectangleLeft(testRectangle));
+    AssertEquals(50.0, RectangleTop(testRectangle));
+    AssertEquals(150.0, RectangleRight(testRectangle));
+    AssertEquals(150.0, RectangleBottom(testRectangle));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellCenterIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testCenter := BitmapCellCenter(testBitmap);
-    AssertEquals(testCenter.x, 50.0);
-    AssertEquals(testCenter.y, 50.0);
+    AssertEquals(50.0, testCenter.x);
+    AssertEquals(50.0, testCenter.y);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellCircleIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testCircle := BitmapCellCircle(testBitmap, 50.0, 50.0);
-    AssertEquals(CircleRadius(testCircle), 50.0);
-    AssertEquals(CircleX(testCircle), 50.0);
-    AssertEquals(CircleY(testCircle), 50.0);
+    AssertEquals(50.0, CircleRadius(testCircle));
+    AssertEquals(50.0, CircleX(testCircle));
+    AssertEquals(50.0, CircleY(testCircle));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellCircleAtPointIntegration;
@@ -997,9 +997,9 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
     testCircle := BitmapCellCircle(testBitmap, PointAt(100, 100));
-    AssertEquals(CircleX(testCircle), 125);
-    AssertEquals(CircleY(testCircle), 125);
-    AssertEquals(CircleRadius(testCircle), 25);
+    AssertEquals(125, CircleX(testCircle));
+    AssertEquals(125, CircleY(testCircle));
+    AssertEquals(25, CircleRadius(testCircle));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellCircleAtPointWithScaleIntegration;
@@ -1007,28 +1007,28 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
     testCircle := BitmapCellCircle(testBitmap, PointAt(100.0, 100.0), 2.0);
-    AssertEquals(CircleRadius(testCircle), 50.0);
+    AssertEquals(50.0, CircleRadius(testCircle));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellColumnsIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-    AssertEquals(BitmapCellColumns(testBitmap), 5);
+    AssertEquals(5, BitmapCellColumns(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellCountIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-    AssertEquals(BitmapCellCount(testBitmap), 25);
+    AssertEquals(25, BitmapCellCount(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellHeightIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-    AssertEquals(BitmapCellHeight(testBitmap), 20);
+    AssertEquals(20, BitmapCellHeight(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellOffsetIntegration;
@@ -1036,8 +1036,8 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     testOffset := BitmapCellOffset(testBitmap, 5);
-    AssertEquals(testOffset.x, 75);
-    AssertEquals(testOffset.y, 0);
+    AssertEquals(75, testOffset.x);
+    AssertEquals(0, testOffset.y);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellRectangleIntegration;
@@ -1045,8 +1045,8 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     testRectangle := BitmapCellRectangle(testBitmap);
-    AssertEquals(testRectangle.width, 25);
-    AssertEquals(testRectangle.height, 25);
+    AssertEquals(25, testRectangle.width);
+    AssertEquals(25, testRectangle.height);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellRectangleAtPointIntegration;
@@ -1054,59 +1054,59 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     testRectangle := BitmapCellRectangle(testBitmap, PointAt(50.0, 50.0));
-    AssertEquals(RectangleLeft(testRectangle), 50.0);
-    AssertEquals(RectangleTop(testRectangle), 50.0);
-    AssertEquals(RectangleRight(testRectangle), 75.0);
-    AssertEquals(RectangleBottom(testRectangle), 75.0);
+    AssertEquals(50.0, RectangleLeft(testRectangle));
+    AssertEquals(50.0, RectangleTop(testRectangle));
+    AssertEquals(75.0, RectangleRight(testRectangle));
+    AssertEquals(75.0, RectangleBottom(testRectangle));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellRowsIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-    AssertEquals(BitmapCellRows(testBitmap), 5);
+    AssertEquals(5, BitmapCellRows(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCellWidthIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
-    AssertEquals(BitmapCellWidth(testBitmap), 25);
+    AssertEquals(25, BitmapCellWidth(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapCenterIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testCenter := BitmapCenter(testBitmap);
-    AssertEquals(testCenter.x, 50.0);
-    AssertEquals(testCenter.y, 50.0);
+    AssertEquals(50.0, testCenter.x);
+    AssertEquals(50.0, testCenter.y);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapFilenameIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testFilename := BitmapFilename(testBitmap);
-    AssertEquals(testFilename, "");
+    AssertEquals("", testFilename);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapHeightIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testHeight := BitmapHeight(testBitmap);
-    AssertEquals(testHeight, 100);
+    AssertEquals(100, testHeight);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapHeightOfBitmapNamedIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
-    AssertEquals(BitmapHeight("test_bitmap"), 100);
+    AssertEquals(100, BitmapHeight("test_bitmap"));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapNameIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testBitmapName := BitmapName(testBitmap);
-    AssertEquals(testBitmapName, "test_bitmap");
+    AssertEquals("test_bitmap", testBitmapName);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapNamedIntegration;
@@ -1123,21 +1123,21 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     testRectangle := BitmapRectangleOfCell(testBitmap, 5);
-    AssertEquals(RectangleLeft(testRectangle), 0);
-    AssertEquals(RectangleTop(testRectangle), 75);
-    AssertEquals(RectangleRight(testRectangle), 25);
-    AssertEquals(RectangleBottom(testRectangle), 100);
+    AssertEquals(0, RectangleLeft(testRectangle));
+    AssertEquals(75, RectangleTop(testRectangle));
+    AssertEquals(25, RectangleRight(testRectangle));
+    AssertEquals(100, RectangleBottom(testRectangle));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapSetCellDetailsIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-    AssertEquals(BitmapCellWidth(testBitmap), 20);
-    AssertEquals(BitmapCellHeight(testBitmap), 20);
-    AssertEquals(BitmapCellColumns(testBitmap), 5);
-    AssertEquals(BitmapCellRows(testBitmap), 5);
-    AssertEquals(BitmapCellCount(testBitmap), 25);
+    AssertEquals(20, BitmapCellWidth(testBitmap));
+    AssertEquals(20, BitmapCellHeight(testBitmap));
+    AssertEquals(5, BitmapCellColumns(testBitmap));
+    AssertEquals(5, BitmapCellRows(testBitmap));
+    AssertEquals(25, BitmapCellCount(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapValidIntegration;
@@ -1151,7 +1151,7 @@ procedure TIntegrationTests.TestBitmapWidthIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testWidth := BitmapWidth(testBitmap);
-    AssertEquals(testWidth, 100);
+    AssertEquals(100, testWidth);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestBitmapWidthOfBitmapNamedIntegration;
@@ -1160,7 +1160,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawBitmap(BitmapNamed("test_bitmap"), 100, 100);
     RefreshScreen();
-    AssertEquals(BitmapWidth("test_bitmap"), 100);
+    AssertEquals(100, BitmapWidth("test_bitmap"));
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
 end;
@@ -1189,8 +1189,8 @@ procedure TIntegrationTests.TestCreateBitmapIntegration;
 begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     AssertNotNull(testBitmap);
-    AssertEquals(BitmapWidth(testBitmap), 100);
-    AssertEquals(BitmapHeight(testBitmap), 100);
+    AssertEquals(100, BitmapWidth(testBitmap));
+    AssertEquals(100, BitmapHeight(testBitmap));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestDrawBitmapIntegration;
@@ -1363,8 +1363,8 @@ begin
     testLine := LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0));
     DrawLine(ColorBlack(), testLine);
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineRecordWithOptionsIntegration;
@@ -1373,8 +1373,8 @@ begin
     testLine := LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0));
     DrawLine(ColorBlack(), testLine, OptionLineWidth(3, OptionDefaults()));
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLinePointToPointIntegration;
@@ -1382,8 +1382,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLine(ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0));
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLinePointToPointWithOptionsIntegration;
@@ -1391,8 +1391,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLine(ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0), OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineIntegration;
@@ -1400,8 +1400,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0);
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineWithOptionsIntegration;
@@ -1409,8 +1409,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineOnBitmapRecordIntegration;
@@ -1473,8 +1473,8 @@ begin
     testLine := LineFrom(PointAt(100.0, 100.0), PointAt(700.0, 500.0));
     DrawLineOnWindow(testWindow, ColorBlack(), testLine);
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(testWindow, PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(testWindow, PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineOnWindowRecordWithOptionsIntegration;
@@ -1483,8 +1483,8 @@ begin
     testLine := LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0));
     DrawLineOnWindow(testWindow, ColorBlack(), testLine, OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(testWindow, PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(testWindow, PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineOnWindowPointToPointIntegration;
@@ -1492,8 +1492,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLineOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0));
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
-    AssertNotEquals(GetPixel(testWindow, 99.0, 99.0), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+    AssertNotEquals(ColorBlack(), GetPixel(testWindow, 99.0, 99.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineOnWindowPointToPointWithOptionsIntegration;
@@ -1501,8 +1501,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLineOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0), OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
-    AssertNotEquals(GetPixel(testWindow, 99.0, 99.0), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+    AssertNotEquals(ColorBlack(), GetPixel(testWindow, 99.0, 99.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineOnWindowIntegration;
@@ -1510,8 +1510,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLineOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0);
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
-    AssertNotEquals(GetPixel(testWindow, 99.0, 99.0), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+    AssertNotEquals(ColorBlack(), GetPixel(testWindow, 99.0, 99.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawLineOnWindowWithOptionsIntegration;
@@ -1519,8 +1519,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawLineOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
-    AssertNotEquals(GetPixel(testWindow, 99.0, 99.0), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+    AssertNotEquals(ColorBlack(), GetPixel(testWindow, 99.0, 99.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawPixelAtPointIntegration;
@@ -1528,8 +1528,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawPixelAtPointWithOptionsIntegration;
@@ -1537,9 +1537,9 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0), OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawPixelIntegration;
@@ -1547,8 +1547,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), 100.0, 100.0);
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawPixelWithOptionsIntegration;
@@ -1556,8 +1556,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), 100.0, 100.0, OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawPixelOnBitmapAtPointIntegration;
@@ -1605,8 +1605,8 @@ begin
     testPoint := PointAt(100.0, 100.0);
     DrawPixelOnWindow(testWindow, testColor, testPoint);
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawPixelOnWindowAtPointWithOptionsIntegration;
@@ -1615,8 +1615,8 @@ begin
     testPoint := PointAt(100.0, 100.0);
     DrawPixelOnWindow(testWindow, ColorBlack(), testPoint, OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawPixelOnWindowIntegration;
@@ -1624,8 +1624,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixelOnWindow(testWindow, ColorBlack(), 100.0, 100.0);
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawPixelOnWindowWithOptionsIntegration;
@@ -1633,8 +1633,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixelOnWindow(testWindow, ColorBlack(), 100.0, 100.0, OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
-    AssertNotEquals(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+    AssertNotEquals(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestGetPixelFromBitmapAtPointIntegration;
@@ -1642,7 +1642,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
     testColor := GetPixel(testBitmap, PointAt(50.0, 50.0));
-    AssertEquals(ColorBlack(), testColor);
+    AssertEquals(testColor, ColorBlack());
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestGetPixelFromBitmapIntegration;
@@ -1650,7 +1650,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
     testPixelColor := GetPixel(testBitmap, 50.0, 50.0);
-    AssertEquals(testPixelColor, ColorBlack());
+    AssertEquals(ColorBlack(), testPixelColor);
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestGetPixelAtPointIntegration;
@@ -1658,7 +1658,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
     RefreshScreen();
-    AssertEquals(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestGetPixelIntegration;
@@ -1666,7 +1666,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), 100.0, 100.0);
     RefreshScreen();
-    AssertEquals(GetPixel(100.0, 100.0), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(100.0, 100.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestGetPixelFromWindowAtPointIntegration;
@@ -1674,7 +1674,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, PointAt(100.0, 100.0)), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, PointAt(100.0, 100.0)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestGetPixelFromWindowIntegration;
@@ -1682,7 +1682,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     DrawPixel(ColorBlack(), 100.0, 100.0);
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestGetPixelFromWindowAtPointFromWindowIntegration;
@@ -1691,7 +1691,7 @@ begin
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
     RefreshScreen();
     testPixel := GetPixelFromWindow(testWindow, PointAt(100.0, 100.0));
-    AssertEquals(ColorBlack(), testPixel);
+    AssertEquals(testPixel, ColorBlack());
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestGetPixelFromWindowFromWindowIntegration;
@@ -1700,7 +1700,7 @@ begin
     DrawPixel(ColorBlack(), 100.0, 100.0);
     RefreshScreen();
     testPixelColor := GetPixel(testWindow, 100.0, 100.0);
-    AssertEquals(ColorBlack(), testPixelColor);
+    AssertEquals(testPixelColor, ColorBlack());
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawQuadIntegration;
@@ -2261,7 +2261,7 @@ procedure TIntegrationTests.TestGetFontStyleIntegration;
 begin
     testFont := LoadFont("test_font", "hara.ttf");
     testStyle := GetFontStyle(testFont);
-    AssertNotEquals(testStyle, FontStyle.BOLD_FONT);
+    AssertNotEquals(FontStyle.BOLD_FONT, testStyle);
     FreeFont(testFont);
 end;
 procedure TIntegrationTests.TestGetSystemFontIntegration;
@@ -2303,7 +2303,7 @@ begin
     SetFontStyle("test_font", FontStyle.BOLD_FONT);
     DrawText("Bold Text", ColorBlack(), "test_font", 24, 100.0, 100.0);
     RefreshScreen();
-    AssertEquals(GetFontStyle("test_font"), FontStyle.BOLD_FONT);
+    AssertEquals(FontStyle.BOLD_FONT, GetFontStyle("test_font"));
     CloseWindow(testWindow);
     FreeFont(testFont);
 end;
@@ -2312,7 +2312,7 @@ begin
     testFont := FontNamed("hara");
     SetFontStyle(testFont, FontStyle.BOLD_FONT);
     testStyle := GetFontStyle(testFont);
-    AssertEquals(testStyle, FontStyle.BOLD_FONT);
+    AssertEquals(FontStyle.BOLD_FONT, testStyle);
     FreeFont(testFont);
 end;
 procedure TIntegrationTests.TestTextHeightFontNamedIntegration;

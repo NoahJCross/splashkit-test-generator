@@ -5,7 +5,7 @@ from splashkit import *
 def test_CenterPoint_integration():
     test_circle = circle_at(100.0, 100.0, 50.0)
     test_center_point = center_point(test_circle)
-    assert point_at(100.0, 100.0) == test_center_point
+    assert test_center_point == point_at(100.0, 100.0)
 
 
 def test_CircleAt_integration():
@@ -29,7 +29,7 @@ def test_CircleAtFromPoints_integration():
 def test_CircleRadius_integration():
     test_circle = circle_at(100.0, 100.0, 50.0)
     test_radius = circle_radius(test_circle)
-    assert test_radius == 50.0
+    assert 50.0 == test_radius
 
 
 def test_CircleTriangleIntersect_integration():
@@ -44,17 +44,17 @@ def test_CircleTriangleIntersectGetClosestPoint_integration():
     test_triangle = triangle_from(point_at(50.0, 50.0), point_at(150.0, 50.0), point_at(100.0, 150.0))
     test_result = circle_triangle_intersect_get_closest_point(test_circle, test_triangle, point_at(0.0, 0.0))
     assert test_result is True
-    assert point_point_distance(center_point(test_circle), closest_point_on_triangle_from_circle(test_circle, test_triangle)) == circle_radius(test_circle)
+    assert circle_radius(test_circle) == point_point_distance(center_point(test_circle), closest_point_on_triangle_from_circle(test_circle, test_triangle))
 
 
 def test_CircleX_integration():
     test_circle = circle_at(100.0, 100.0, 50.0)
-    assert circle_x(test_circle) == 100.0
+    assert 100.0 == circle_x(test_circle)
 
 
 def test_CircleY_integration():
     test_circle = circle_at(100.0, 150.0, 50.0)
-    assert circle_y(test_circle) == 150.0
+    assert 150.0 == circle_y(test_circle)
 
 
 def test_CirclesIntersect_integration():
@@ -78,7 +78,7 @@ def test_ClosestPointOnCircle_integration():
     test_circle = circle_at(100.0, 100.0, 50.0)
     test_point = point_at(150.0, 100.0)
     test_closest_point = closest_point_on_circle(test_point, test_circle)
-    assert point_point_distance(test_closest_point, test_point) == circle_radius(test_circle)
+    assert circle_radius(test_circle) == point_point_distance(test_closest_point, test_point)
 
 
 def test_ClosestPointOnLineFromCircle_integration():
@@ -93,7 +93,7 @@ def test_ClosestPointOnRectFromCircle_integration():
     test_rectangle = rectangle_from(150.0, 50.0, 100.0, 100.0)
     test_closest_point = closest_point_on_rect_from_circle(test_circle, test_rectangle)
     assert point_in_rectangle(test_closest_point, test_rectangle) is True
-    assert point_point_distance(center_point(test_circle), test_closest_point) == circle_radius(test_circle)
+    assert circle_radius(test_circle) == point_point_distance(center_point(test_circle), test_closest_point)
 
 
 def test_ClosestPointOnTriangleFromCircle_integration():
@@ -107,7 +107,7 @@ def test_DistantPointOnCircle_integration():
     test_circle = circle_at(100.0, 100.0, 50.0)
     test_point = point_at(100.0, 150.0)
     test_distant_point = distant_point_on_circle(test_point, test_circle)
-    assert point_point_distance(test_point, test_distant_point) == circle_radius(test_circle)
+    assert circle_radius(test_circle) == point_point_distance(test_point, test_distant_point)
 
 
 def test_DistantPointOnCircleHeading_integration():
@@ -117,8 +117,8 @@ def test_DistantPointOnCircleHeading_integration():
     test_point2 = point_at(0.0)
     test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, test_point2)
     assert test_result is True
-    assert test_point1.x == 50.0
-    assert test_point1.y == 100.0
+    assert 50.0 == test_point1.x
+    assert 100.0 == test_point1.y
 
 
 def test_RayCircleIntersectDistance_integration():
@@ -151,22 +151,22 @@ def test_WidestPoints_integration():
 
 def test_Cosine_integration():
     test_cosine_0 = cosine(0.0)
-    assert test_cosine_0 == 1.0
+    assert 1.0 == test_cosine_0
     test_cosine_90 = cosine(90.0)
-    assert test_cosine_90 == 0.0
+    assert 0.0 == test_cosine_90
     test_cosine_180 = cosine(180.0)
-    assert test_cosine_180 == -1.0
+    assert -1.0 == test_cosine_180
 
 
 def test_Sine_integration():
     test_sine_0 = sine(0.0)
-    assert test_sine_0 == 0.0
+    assert 0.0 == test_sine_0
     test_sine_90 = sine(90.0)
-    assert test_sine_90 == 1.0
+    assert 1.0 == test_sine_90
     test_sine_180 = sine(180.0)
-    assert test_sine_180 == 0.0
+    assert 0.0 == test_sine_180
     test_sine_270 = sine(270.0)
-    assert test_sine_270 == -1.0
+    assert -1.0 == test_sine_270
 
 
 def test_Tangent_integration():
@@ -177,7 +177,7 @@ def test_Tangent_integration():
 def test_ClosestPointOnLine_integration():
     test_line = line_from(point_at(0.0, 0.0), point_at(10.0, 10.0))
     test_closest_point = closest_point_on_line(point_at(5.0, 5.0), test_line)
-    assert point_point_distance(point_at(5.0, 5.0), test_closest_point) == 0.0
+    assert 0.0 == point_point_distance(point_at(5.0, 5.0), test_closest_point)
 
 
 def test_ClosestPointOnLines_integration():
@@ -187,14 +187,14 @@ def test_ClosestPointOnLines_integration():
     test_index = {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
     test_lines = {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
     test_closest_point = closest_point_on_lines(test_from_pt, test_lines, test_index)
-    assert point_point_distance(test_from_pt, test_closest_point) == 0.0
+    assert 0.0 == point_point_distance(test_from_pt, test_closest_point)
 
 
 def test_LineFromPointToPoint_integration():
     test_start_point = point_at(0.0, 0.0)
     test_end_point = point_at(100.0, 100.0)
     test_line = line_from_point_to_point(test_start_point, test_end_point)
-    assert line_length(test_line) == 141.421356
+    assert 141.421356 == line_length(test_line)
 
 
 def test_LineFromStartWithOffset_integration():
@@ -208,13 +208,13 @@ def test_LineFromStartWithOffset_integration():
 def test_LineFromVector_integration():
     test_vector = vector_from_angle(100.0, 50.0)
     test_line = line_from_vector(test_vector)
-    assert test_line.start_point == point_at_origin()
-    assert test_line.end_point == point_at(100.0, 50.0)
+    assert point_at_origin() == test_line.start_point
+    assert point_at(100.0, 50.0) == test_line.end_point
 
 
 def test_LineFrom_integration():
     test_line = line_from(0.0, 0.0, 10.0, 10.0)
-    assert line_length(test_line) == 14.1421356
+    assert 14.1421356 == line_length(test_line)
 
 
 def test_LineIntersectionPoint_integration():
@@ -252,44 +252,44 @@ def test_LineIntersectsRect_integration():
 def test_LineLength_integration():
     test_line = line_from(point_at(0.0, 0.0), point_at(3.0, 4.0))
     test_length = line_length(test_line)
-    assert test_length == 5.0
+    assert 5.0 == test_length
 
 
 def test_LineLengthSquared_integration():
     test_line = line_from(point_at(0.0, 0.0), point_at(3.0, 4.0))
     test_result = line_length_squared(test_line)
-    assert test_result == 25.0
+    assert 25.0 == test_result
 
 
 def test_LineMidPoint_integration():
     test_line = line_from(point_at(0.0, 0.0), point_at(100.0, 100.0))
     test_mid_point = line_mid_point(test_line)
-    assert point_point_distance(test_mid_point, point_at(50.0, 50.0)) == 0.0
+    assert 0.0 == point_point_distance(test_mid_point, point_at(50.0, 50.0))
 
 
 def test_LineNormal_integration():
     test_line = line_from(0.0, 0.0, 1.0, 1.0)
     test_normal = line_normal(test_line)
-    assert test_normal.x == -1.0
-    assert test_normal.y == 1.0
+    assert -1.0 == test_normal.x
+    assert 1.0 == test_normal.y
 
 
 def test_LineToString_integration():
     test_line = line_from(point_at(0.0, 0.0), point_at(100.0, 100.0))
     test_line_string = line_to_string(test_line)
-    assert test_line_string != ""
+    assert "" != test_line_string
 
 
 def test_LinesFromRectangle_integration():
     test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0)
     test_lines = lines_from_rectangle(test_rectangle)
-    assert size(test_lines) == 4
+    assert 4 == size(test_lines)
 
 
 def test_LinesFromTriangle_integration():
     test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 86.6))
     test_lines = lines_from_triangle(test_triangle)
-    assert size(test_lines) == 3
+    assert 3 == size(test_lines)
 
 
 def test_LinesIntersect_integration():
@@ -301,14 +301,14 @@ def test_LinesIntersect_integration():
 
 def test_PointAt_integration():
     test_point = point_at(10.0, 20.0)
-    assert test_point.x == 10.0
-    assert test_point.y == 20.0
+    assert 10.0 == test_point.x
+    assert 20.0 == test_point.y
 
 
 def test_PointAtOrigin_integration():
     test_point = point_at_origin()
-    assert test_point.x == 0.0
-    assert test_point.y == 0.0
+    assert 0.0 == test_point.x
+    assert 0.0 == test_point.y
 
 
 def test_PointInCircle_integration():
@@ -356,22 +356,22 @@ def test_PointLineDistance_integration():
     test_point = point_at(0.0, 0.0)
     test_line = line_from(0.0, 0.0, 10.0, 10.0)
     test_distance = point_line_distance(test_point, test_line)
-    assert test_distance == 0.0
+    assert 0.0 == test_distance
 
 
 def test_PointOffsetBy_integration():
     test_start_point = point_at(10.0, 20.0)
     test_offset = vector_from_angle(5.0, 10.0)
     test_result_point = point_offset_by(test_start_point, test_offset)
-    assert test_start_point.x == 15.0
-    assert test_result_point.x == 30.0
+    assert 15.0 == test_start_point.x
+    assert 30.0 == test_result_point.x
 
 
 def test_PointOffsetFromOrigin_integration():
     test_vector = vector_from_angle(10.0, 20.0)
     test_point = point_offset_from_origin(test_vector)
-    assert test_point.x == 10.0
-    assert test_point.y == 20.0
+    assert 10.0 == test_point.x
+    assert 20.0 == test_point.y
 
 
 def test_PointOnLine_integration():
@@ -396,20 +396,20 @@ def test_PointPointAngle_integration():
     test_point1 = point_at(0.0, 0.0)
     test_point2 = point_at(1.0, 0.0)
     test_angle = point_point_angle(test_point1, test_point2)
-    assert test_angle == 0.0
+    assert 0.0 == test_angle
 
 
 def test_PointPointDistance_integration():
     test_point1 = point_at(0.0, 0.0)
     test_point2 = point_at(3.0, 4.0)
     test_distance = point_point_distance(test_point1, test_point2)
-    assert test_distance == 5.0
+    assert 5.0 == test_distance
 
 
 def test_PointToString_integration():
     test_point = point_at(10.0, 20.0)
     test_string = point_to_string(test_point)
-    assert test_string == "Point(10, 20)"
+    assert "Point(10, 20)" == test_string
 
 
 def test_RandomBitmapPoint_integration():
@@ -491,35 +491,35 @@ def test_SetQuadPoint_integration():
 def test_TrianglesFrom_integration():
     test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0))
     test_triangles = triangles_from(test_quad)
-    assert size(test_triangles) == 2
+    assert 2 == size(test_triangles)
 
 
 def test_InsetRectangle_integration():
     test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0)
     test_inset_rectangle = inset_rectangle(test_rectangle, 10.0)
-    assert rectangle_left(test_inset_rectangle) == 10.0
-    assert rectangle_top(test_inset_rectangle) == 10.0
-    assert rectangle_right(test_inset_rectangle) == 90.0
-    assert rectangle_bottom(test_inset_rectangle) == 90.0
+    assert 10.0 == rectangle_left(test_inset_rectangle)
+    assert 10.0 == rectangle_top(test_inset_rectangle)
+    assert 90.0 == rectangle_right(test_inset_rectangle)
+    assert 90.0 == rectangle_bottom(test_inset_rectangle)
 
 
 def test_Intersection_integration():
     test_rect1 = rectangle_from(0.0, 0.0, 10.0, 10.0)
     test_rect2 = rectangle_from(5.0, 5.0, 10.0, 10.0)
     test_intersection = intersection(test_rect1, test_rect2)
-    assert rectangle_left(test_intersection) == 5.0
-    assert rectangle_top(test_intersection) == 5.0
-    assert rectangle_right(test_intersection) == 10.0
-    assert rectangle_bottom(test_intersection) == 10.0
+    assert 5.0 == rectangle_left(test_intersection)
+    assert 5.0 == rectangle_top(test_intersection)
+    assert 10.0 == rectangle_right(test_intersection)
+    assert 10.0 == rectangle_bottom(test_intersection)
 
 
 def test_RectangleAroundCircle_integration():
     test_circle = circle_at(100.0, 100.0, 50.0)
     test_rectangle = rectangle_around_circle(test_circle)
-    assert rectangle_left(test_rectangle) == 50.0
-    assert rectangle_top(test_rectangle) == 50.0
-    assert rectangle_right(test_rectangle) == 150.0
-    assert rectangle_bottom(test_rectangle) == 150.0
+    assert 50.0 == rectangle_left(test_rectangle)
+    assert 50.0 == rectangle_top(test_rectangle)
+    assert 150.0 == rectangle_right(test_rectangle)
+    assert 150.0 == rectangle_bottom(test_rectangle)
 
 
 def test_RectangleAroundLine_integration():
@@ -532,87 +532,87 @@ def test_RectangleAroundLine_integration():
 def test_RectangleAroundQuad_integration():
     test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0))
     test_rectangle = rectangle_around_quad(test_quad)
-    assert rectangle_left(test_rectangle) == 0.0
-    assert rectangle_top(test_rectangle) == 0.0
-    assert rectangle_right(test_rectangle) == 100.0
-    assert rectangle_bottom(test_rectangle) == 100.0
+    assert 0.0 == rectangle_left(test_rectangle)
+    assert 0.0 == rectangle_top(test_rectangle)
+    assert 100.0 == rectangle_right(test_rectangle)
+    assert 100.0 == rectangle_bottom(test_rectangle)
 
 
 def test_RectangleAroundTriangle_integration():
     test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 100.0))
     test_rectangle = rectangle_around_triangle(test_triangle)
-    assert rectangle_left(test_rectangle) == 0.0
-    assert rectangle_top(test_rectangle) == 0.0
-    assert rectangle_right(test_rectangle) == 100.0
-    assert rectangle_bottom(test_rectangle) == 100.0
+    assert 0.0 == rectangle_left(test_rectangle)
+    assert 0.0 == rectangle_top(test_rectangle)
+    assert 100.0 == rectangle_right(test_rectangle)
+    assert 100.0 == rectangle_bottom(test_rectangle)
 
 
 def test_RectangleBottom_integration():
     test_rectangle = rectangle_from(10.0, 20.0, 50.0, 60.0)
-    assert rectangle_bottom(test_rectangle) == 80.0
+    assert 80.0 == rectangle_bottom(test_rectangle)
 
 
 def test_RectangleCenter_integration():
     test_rectangle = rectangle_from(point_at(0.0, 0.0), 100.0, 100.0)
     test_center_point = rectangle_center(test_rectangle)
-    assert point_point_distance(point_at(50.0, 50.0), test_center_point) == 0.0
+    assert 0.0 == point_point_distance(point_at(50.0, 50.0), test_center_point)
 
 
 def test_RectangleFromPointAndSize_integration():
     test_point = point_at(10.0, 20.0)
     test_rectangle = rectangle_from_point_and_size(test_point, 50.0, 30.0)
-    assert rectangle_left(test_rectangle) == 10.0
-    assert rectangle_top(test_rectangle) == 20.0
-    assert rectangle_right(test_rectangle) == 60.0
-    assert rectangle_bottom(test_rectangle) == 50.0
+    assert 10.0 == rectangle_left(test_rectangle)
+    assert 20.0 == rectangle_top(test_rectangle)
+    assert 60.0 == rectangle_right(test_rectangle)
+    assert 50.0 == rectangle_bottom(test_rectangle)
 
 
 def test_RectangleFromPoints_integration():
     test_point1 = point_at(0.0, 0.0)
     test_point2 = point_at(100.0, 100.0)
     test_rectangle = rectangle_from(test_point1, test_point2)
-    assert rectangle_left(test_rectangle) == 0.0
-    assert rectangle_top(test_rectangle) == 0.0
-    assert rectangle_right(test_rectangle) == 100.0
-    assert rectangle_bottom(test_rectangle) == 100.0
+    assert 0.0 == rectangle_left(test_rectangle)
+    assert 0.0 == rectangle_top(test_rectangle)
+    assert 100.0 == rectangle_right(test_rectangle)
+    assert 100.0 == rectangle_bottom(test_rectangle)
 
 
 def test_RectangleFrom_integration():
     test_rectangle = rectangle_from(10.0, 20.0, 50.0, 30.0)
-    assert rectangle_left(test_rectangle) == 10.0
-    assert rectangle_top(test_rectangle) == 20.0
-    assert rectangle_right(test_rectangle) == 60.0
-    assert rectangle_bottom(test_rectangle) == 50.0
+    assert 10.0 == rectangle_left(test_rectangle)
+    assert 20.0 == rectangle_top(test_rectangle)
+    assert 60.0 == rectangle_right(test_rectangle)
+    assert 50.0 == rectangle_bottom(test_rectangle)
 
 
 def test_RectangleLeft_integration():
     test_rectangle = rectangle_from(10.0, 20.0, 50.0, 60.0)
     test_left = rectangle_left(test_rectangle)
-    assert test_left == 10.0
+    assert 10.0 == test_left
 
 
 def test_RectangleOffsetBy_integration():
     test_rectangle = rectangle_from(10.0, 10.0, 50.0, 50.0)
     test_offset_rectangle = rectangle_offset_by(test_rectangle, vector_from_angle(20.0, 30.0))
-    assert rectangle_left(test_offset_rectangle) == 30.0
-    assert rectangle_top(test_offset_rectangle) == 40.0
+    assert 30.0 == rectangle_left(test_offset_rectangle)
+    assert 40.0 == rectangle_top(test_offset_rectangle)
 
 
 def test_RectangleRight_integration():
     test_rectangle = rectangle_from(10.0, 20.0, 50.0, 60.0)
-    assert rectangle_right(test_rectangle) == 60.0
+    assert 60.0 == rectangle_right(test_rectangle)
 
 
 def test_RectangleToString_integration():
     test_rectangle = rectangle_from(10.0, 20.0, 30.0, 40.0)
     test_string = rectangle_to_string(test_rectangle)
-    assert test_string == "Rectangle(x: 10, y: 20, width: 30, height: 40)"
+    assert "Rectangle(x: 10, y: 20, width: 30, height: 40)" == test_string
 
 
 def test_RectangleTop_integration():
     test_rectangle = rectangle_from(10.0, 20.0, 50.0, 60.0)
     test_top = rectangle_top(test_rectangle)
-    assert test_top == 20.0
+    assert 20.0 == test_top
 
 
 def test_RectanglesIntersect_integration():
@@ -625,8 +625,8 @@ def test_RectanglesIntersect_integration():
 def test_TriangleBarycenter_integration():
     test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 86.6))
     test_barycenter = triangle_barycenter(test_triangle)
-    assert test_barycenter.x == 50.0
-    assert test_barycenter.y == 28.866666666666667
+    assert 50.0 == test_barycenter.x
+    assert 28.866666666666667 == test_barycenter.y
 
 
 def test_TriangleFrom_integration():
@@ -653,7 +653,7 @@ def test_TriangleRectangleIntersect_integration():
 def test_TriangleToString_integration():
     test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 100.0))
     test_triangle_string = triangle_to_string(test_triangle)
-    assert test_triangle_string != ""
+    assert "" != test_triangle_string
 
 
 def test_TrianglesIntersect_integration():

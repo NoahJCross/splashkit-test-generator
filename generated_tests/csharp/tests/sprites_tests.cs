@@ -47,9 +47,9 @@ namespace SplashKitTests
             var testSprite = CreateSprite(testBitmap);
             CallOnSpriteEvent(OnSpriteEvent());
             ProcessEvents();
-            SimulateMouseClick(Mousebutton.Left);
+            SimulateMouseClick(MouseButton.Left);
             ProcessEvents();
-            Assert.True(MouseClicked(Mousebutton.Left));
+            Assert.True(MouseClicked(MouseButton.Left));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -511,7 +511,7 @@ namespace SplashKitTests
             var testSprite = CreateSprite(testBitmap);
             SpriteCallOnEvent(testSprite, OnSpriteEvent());
             ProcessEvents();
-            SimulateMouseClick(Mousebutton.Left);
+            SimulateMouseClick(MouseButton.Left);
             ProcessEvents();
             Assert.True(SpriteEventOccurred(testSprite));
             FreeSprite(testSprite);

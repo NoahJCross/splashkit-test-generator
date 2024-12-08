@@ -102,9 +102,9 @@ namespace SplashKitTests
         public void TestKeyNameIntegration()
         {
             var testKeyName1 = KeyName(KeyCode.A);
-            Assert.Equal(testKeyName1, "A");
+            Assert.Equal("A", testKeyName1);
             var testKeyName2 = KeyName(KeyCode.Enter);
-            Assert.Equal(testKeyName2, "Enter");
+            Assert.Equal("Enter", testKeyName2);
         }
         [Fact]
         public void TestKeyReleasedIntegration()
@@ -166,7 +166,7 @@ namespace SplashKitTests
             SimulateKeyPress(KeyCode.A);
             SimulateKeyRelease(KeyCode.A);
             ProcessEvents();
-            Assert.Equal(KeyUp, "A");
+            Assert.Equal("A", KeyUp);
             DeregisterCallbackOnKeyUp(OnKeyUp());
         }
         [Fact]
@@ -208,8 +208,8 @@ namespace SplashKitTests
             MoveMouse(100.0, 100.0);
             ProcessEvents();
             var testMovement = MouseMovement();
-            Assert.Equal(testMovement.X, 100.0);
-            Assert.Equal(testMovement.Y, 100.0);
+            Assert.Equal(100.0, testMovement.X);
+            Assert.Equal(100.0, testMovement.Y);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -219,8 +219,8 @@ namespace SplashKitTests
             MoveMouse(400.0, 300.0);
             ProcessEvents();
             var testPosition = MousePosition();
-            Assert.Equal(testPosition.X, 400.0);
-            Assert.Equal(testPosition.Y, 300.0);
+            Assert.Equal(400.0, testPosition.X);
+            Assert.Equal(300.0, testPosition.Y);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -230,8 +230,8 @@ namespace SplashKitTests
             MoveMouse(400.0, 300.0);
             ProcessEvents();
             var testMousePosition = MousePositionVector();
-            Assert.Equal(testMousePosition.X, 400.0);
-            Assert.Equal(testMousePosition.Y, 300.0);
+            Assert.Equal(400.0, testMousePosition.X);
+            Assert.Equal(300.0, testMousePosition.Y);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -260,7 +260,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             ProcessEvents();
-            Assert.Equal(MouseWheelScroll(), VectorFromAngle(0.0, 0.0));
+            Assert.Equal(VectorFromAngle(0.0, 0.0), MouseWheelScroll());
             SimulateMouseWheelScroll(10.0, 5.0);
             ProcessEvents();
             Assert.True(MouseWheelScroll());
@@ -281,7 +281,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveMouse(400.0, 300.0);
             ProcessEvents();
-            Assert.Equal(MouseY(), 300.0);
+            Assert.Equal(300.0, MouseY());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -301,7 +301,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveMouse(PointAt(400.0, 300.0));
             ProcessEvents();
-            Assert.Equal(MousePosition(), PointAt(400.0, 300.0));
+            Assert.Equal(PointAt(400.0, 300.0), MousePosition());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -339,7 +339,7 @@ namespace SplashKitTests
             ProcessEvents();
             DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(GetPixel(testWindow, 105, 115), ColorBlack());
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105, 115));
             EndReadingText();
             FreeFont(testFont);
             CloseWindow(testWindow);
@@ -474,7 +474,7 @@ namespace SplashKitTests
             ProcessEvents();
             SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.Equal(TextInput(), "A");
+            Assert.Equal("A", TextInput());
             EndReadingText();
             CloseWindow(testWindow);
         }
@@ -487,7 +487,7 @@ namespace SplashKitTests
             ProcessEvents();
             SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.Equal(TextInput(testWindow), "A");
+            Assert.Equal("A", TextInput(testWindow));
             EndReadingText(testWindow);
             CloseWindow(testWindow);
         }

@@ -127,7 +127,7 @@ namespace SplashKitTests
         {
             var testMusic = LoadMusic("test_music", "280.mp3");
             var filename = MusicFilename(testMusic);
-            Assert.Equal(filename, "280.mp3");
+            Assert.Equal("280.mp3", filename);
             FreeMusic(testMusic);
         }
         [Fact]
@@ -135,7 +135,7 @@ namespace SplashKitTests
         {
             var testMusic = LoadMusic("test_music", "280.mp3");
             var musicNameResult = MusicName(testMusic);
-            Assert.Equal(musicNameResult, "test_music");
+            Assert.Equal("test_music", musicNameResult);
             FreeMusic(testMusic);
         }
         [Fact]
@@ -143,7 +143,7 @@ namespace SplashKitTests
         {
             var testMusic = LoadMusic("test_music", "280.mp3");
             var retrievedMusic = MusicNamed("test_music");
-            Assert.Equal(testMusic, retrievedMusic);
+            Assert.Equal(retrievedMusic, testMusic);
             FreeMusic(testMusic);
         }
         [Fact]
@@ -175,7 +175,7 @@ namespace SplashKitTests
             var testMusic = LoadMusic("test_music", "280.mp3");
             PlayMusic(testMusic);
             SetMusicVolume(0.5);
-            Assert.Equal(MusicVolume(), 0.5);
+            Assert.Equal(0.5, MusicVolume());
             FreeMusic(testMusic);
             CloseAudio();
         }
@@ -261,7 +261,7 @@ namespace SplashKitTests
             var testMusic = LoadMusic("test_music", "280.mp3");
             PlayMusic(testMusic);
             SetMusicVolume(0.5);
-            Assert.Equal(MusicVolume(), 0.5);
+            Assert.Equal(0.5, MusicVolume());
             FreeMusic(testMusic);
             CloseAudio();
         }
@@ -426,7 +426,7 @@ namespace SplashKitTests
         {
             var testSound = LoadSoundEffect("test_sound", "test.ogg");
             var testFilename = SoundEffectFilename(testSound);
-            Assert.Equal(testFilename, "test.ogg");
+            Assert.Equal("test.ogg", testFilename);
             FreeSoundEffect(testSound);
         }
         [Fact]
@@ -434,7 +434,7 @@ namespace SplashKitTests
         {
             var testSound = LoadSoundEffect("test_sound", "test.ogg");
             var testSoundName = SoundEffectName(testSound);
-            Assert.Equal(testSoundName, "test_sound");
+            Assert.Equal("test_sound", testSoundName);
             FreeSoundEffect(testSound);
         }
         [Fact]
@@ -443,7 +443,7 @@ namespace SplashKitTests
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "test.ogg");
             var retrievedSound = SoundEffectNamed("test_sound");
-            Assert.Equal(testSound, retrievedSound);
+            Assert.Equal(retrievedSound, testSound);
             FreeSoundEffect(testSound);
             CloseAudio();
         }

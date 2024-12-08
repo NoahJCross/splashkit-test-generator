@@ -91,9 +91,9 @@ end;
 procedure TIntegrationTests.TestKeyNameIntegration;
 begin
     testKeyName1 := KeyName(KeyCode.A);
-    AssertEquals(testKeyName1, "A");
+    AssertEquals("A", testKeyName1);
     testKeyName2 := KeyName(KeyCode.ENTER);
-    AssertEquals(testKeyName2, "Enter");
+    AssertEquals("Enter", testKeyName2);
 end;
 procedure TIntegrationTests.TestKeyReleasedIntegration;
 begin
@@ -149,7 +149,7 @@ begin
     SimulateKeyPress(KeyCode.A);
     SimulateKeyRelease(KeyCode.A);
     ProcessEvents();
-    AssertEquals(KeyUp, "A");
+    AssertEquals("A", KeyUp);
     DeregisterCallbackOnKeyUp(OnKeyUp());
 end;
 procedure TIntegrationTests.TestHideMouseIntegration;
@@ -187,8 +187,8 @@ begin
     MoveMouse(100.0, 100.0);
     ProcessEvents();
     testMovement := MouseMovement();
-    AssertEquals(testMovement.x, 100.0);
-    AssertEquals(testMovement.y, 100.0);
+    AssertEquals(100.0, testMovement.x);
+    AssertEquals(100.0, testMovement.y);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestMousePositionIntegration;
@@ -197,8 +197,8 @@ begin
     MoveMouse(400.0, 300.0);
     ProcessEvents();
     testPosition := MousePosition();
-    AssertEquals(testPosition.x, 400.0);
-    AssertEquals(testPosition.y, 300.0);
+    AssertEquals(400.0, testPosition.x);
+    AssertEquals(300.0, testPosition.y);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestMousePositionVectorIntegration;
@@ -207,8 +207,8 @@ begin
     MoveMouse(400.0, 300.0);
     ProcessEvents();
     testMousePosition := MousePositionVector();
-    AssertEquals(testMousePosition.x, 400.0);
-    AssertEquals(testMousePosition.y, 300.0);
+    AssertEquals(400.0, testMousePosition.x);
+    AssertEquals(300.0, testMousePosition.y);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestMouseShownIntegration;
@@ -234,7 +234,7 @@ procedure TIntegrationTests.TestMouseWheelScrollIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     ProcessEvents();
-    AssertEquals(MouseWheelScroll(), VectorFromAngle(0.0, 0.0));
+    AssertEquals(VectorFromAngle(0.0, 0.0), MouseWheelScroll());
     SimulateMouseWheelScroll(10.0, 5.0);
     ProcessEvents();
     AssertTrue(MouseWheelScroll());
@@ -253,7 +253,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     MoveMouse(400.0, 300.0);
     ProcessEvents();
-    AssertEquals(MouseY(), 300.0);
+    AssertEquals(300.0, MouseY());
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestMoveMouseIntegration;
@@ -271,7 +271,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     MoveMouse(PointAt(400.0, 300.0));
     ProcessEvents();
-    AssertEquals(MousePosition(), PointAt(400.0, 300.0));
+    AssertEquals(PointAt(400.0, 300.0), MousePosition());
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestShowMouseIntegration;
@@ -306,7 +306,7 @@ begin
     ProcessEvents();
     DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
     RefreshScreen();
-    AssertEquals(GetPixel(testWindow, 105, 115), ColorBlack());
+    AssertEquals(ColorBlack(), GetPixel(testWindow, 105, 115));
     EndReadingText();
     FreeFont(testFont);
     CloseWindow(testWindow);
@@ -430,7 +430,7 @@ begin
     ProcessEvents();
     SimulateKeyPress(KeyCode.A);
     ProcessEvents();
-    AssertEquals(TextInput(), "A");
+    AssertEquals("A", TextInput());
     EndReadingText();
     CloseWindow(testWindow);
 end;
@@ -442,7 +442,7 @@ begin
     ProcessEvents();
     SimulateKeyPress(KeyCode.A);
     ProcessEvents();
-    AssertEquals(TextInput(testWindow), "A");
+    AssertEquals("A", TextInput(testWindow));
     EndReadingText(testWindow);
     CloseWindow(testWindow);
 end;

@@ -47,9 +47,9 @@ fn test_call_on_sprite_event_integration() {
     let test_sprite = create_sprite(test_bitmap);
     call_on_sprite_event(_on_sprite_event());
     process_events();
-    simulate_mouse_click(Mousebutton::Left);
+    simulate_mouse_click(MouseButton::Left);
     process_events();
-    assert!(mouse_clicked(Mousebutton::Left));
+    assert!(mouse_clicked(MouseButton::Left));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -475,7 +475,7 @@ fn test_sprite_call_on_event_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_call_on_event(test_sprite, _on_sprite_event());
     process_events();
-    simulate_mouse_click(Mousebutton::Left);
+    simulate_mouse_click(MouseButton::Left);
     process_events();
     assert!(sprite_event_occurred(test_sprite));
     free_sprite(test_sprite);

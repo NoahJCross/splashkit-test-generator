@@ -24,8 +24,8 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     currentVector := AnimationCurrentVector(anim);
-    AssertEquals(currentVector.x, 0);
-    AssertEquals(currentVector.y, 0);
+    AssertEquals(0, currentVector.x);
+    AssertEquals(0, currentVector.y);
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -68,7 +68,7 @@ begin
     index := AnimationIndex(script, "walkfront");
     AssertTrue(index > -1);
     nonExistentIndex := AnimationIndex(script, "NonExistentAnimation");
-    AssertEquals(nonExistentIndex, -1);
+    AssertEquals(-1, nonExistentIndex);
     FreeAnimationScript(script);
 end;
 procedure TIntegrationTests.TestAnimationNameIntegration;
@@ -76,7 +76,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     animName := AnimationName(anim);
-    AssertEquals(animName, "moonwalkback");
+    AssertEquals("moonwalkback", animName);
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -84,7 +84,7 @@ procedure TIntegrationTests.TestAnimationScriptNameIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     scriptName := AnimationScriptName(kermitScript);
-    AssertEquals(scriptName, "kermit");
+    AssertEquals("kermit", scriptName);
     FreeAnimationScript(kermitScript);
 end;
 procedure TIntegrationTests.TestAnimationScriptNamedIntegration;
@@ -93,7 +93,7 @@ begin
     loadedScript := AnimationScriptNamed("kermit");
     AssertNotNull(loadedScript);
     scriptName := AnimationScriptName(loadedScript);
-    AssertEquals(scriptName, "kermit");
+    AssertEquals("kermit", scriptName);
     FreeAnimationScript(kermitScript);
 end;
 procedure TIntegrationTests.TestAssignAnimationWithScriptIntegration;
@@ -101,7 +101,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssignAnimation(anim, kermitScript, "walkfront");
-    AssertEquals(AnimationName(anim), "walkfront");
+    AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
 end;
@@ -110,7 +110,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "walkfront");
     AssignAnimation(anim, kermitScript, "walkleft", true);
-    AssertEquals(AnimationName(anim), "walkleft");
+    AssertEquals("walkleft", AnimationName(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -119,7 +119,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssignAnimation(anim, kermitScript, 0);
-    AssertEquals(AnimationName(anim), "walkfront");
+    AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
 end;
@@ -128,7 +128,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssignAnimation(anim, kermitScript, 0, true);
-    AssertEquals(AnimationName(anim), "walkfront");
+    AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
 end;
@@ -137,7 +137,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssignAnimation(anim, "kermit", "walkfront");
-    AssertEquals(AnimationName(anim), "walkfront");
+    AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
 end;
@@ -146,7 +146,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "walkfront");
     AssignAnimation(anim, "kermit", "walkfront", true);
-    AssertEquals(AnimationName(anim), "walkfront");
+    AssertEquals("walkfront", AnimationName(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -155,7 +155,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssignAnimation(anim, 0);
-    AssertEquals(AnimationCurrentCell(anim), 0);
+    AssertEquals(0, AnimationCurrentCell(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -173,7 +173,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssignAnimation(anim, "walkfront");
-    AssertEquals(AnimationName(anim), "walkfront");
+    AssertEquals("walkfront", AnimationName(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -182,7 +182,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssignAnimation(anim, "walkfront", true);
-    AssertEquals(AnimationName(anim), "walkfront");
+    AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
 end;
@@ -192,7 +192,7 @@ begin
     anim := CreateAnimation(kermitScript, 0, true);
     AssertNotNull(anim);
     animName := AnimationName(anim);
-    AssertEquals(animName, "walkfront");
+    AssertEquals("walkfront", animName);
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -202,7 +202,7 @@ begin
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssertNotNull(anim);
     animName := AnimationName(anim);
-    AssertEquals(animName, "moonwalkback");
+    AssertEquals("moonwalkback", animName);
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -212,7 +212,7 @@ begin
     anim := CreateAnimation(kermitScript, "moonwalkback", true);
     AssertNotNull(anim);
     animName := AnimationName(anim);
-    AssertEquals(animName, "moonwalkback");
+    AssertEquals("moonwalkback", animName);
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
 end;
@@ -222,7 +222,7 @@ begin
     anim := CreateAnimation("kermit", "moonwalkback");
     AssertNotNull(anim);
     animName := AnimationName(anim);
-    AssertEquals(animName, "moonwalkback");
+    AssertEquals("moonwalkback", animName);
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -232,7 +232,7 @@ begin
     anim := CreateAnimation(kermitScript, "moonwalkback", true);
     AssertNotNull(anim);
     animName := AnimationName(anim);
-    AssertEquals(animName, "moonwalkback");
+    AssertEquals("moonwalkback", animName);
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
 end;
@@ -287,7 +287,7 @@ begin
     loadedScript := LoadAnimationScript("test_animation", "kermit.txt");
     AssertNotNull(loadedScript);
     scriptName := AnimationScriptName(loadedScript);
-    AssertEquals(scriptName, "test_animation");
+    AssertEquals("test_animation", scriptName);
     FreeAnimationScript(loadedScript);
     scriptExists := HasAnimationScript("test_animation");
     AssertFalse(scriptExists);
@@ -311,7 +311,7 @@ begin
     anim := CreateAnimation(kermitScript, "moonwalkback", true);
     UpdateAnimation(anim);
     RestartAnimation(anim, true);
-    AssertEquals(AnimationCurrentCell(anim), 3);
+    AssertEquals(3, AnimationCurrentCell(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -329,7 +329,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     UpdateAnimation(anim);
-    AssertNotEquals(AnimationCurrentCell(anim), 0);
+    AssertNotEquals(0, AnimationCurrentCell(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;

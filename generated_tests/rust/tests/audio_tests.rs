@@ -117,21 +117,21 @@ fn test_load_music_integration() {
 fn test_music_filename_integration() {
     let test_music = load_music("test_music", "280.mp3");
     let filename = music_filename(test_music);
-    assert_eq!(filename, "280.mp3");
+    assert_eq!("280.mp3", filename);
     free_music(test_music);
 }
 #[test]
 fn test_music_name_integration() {
     let test_music = load_music("test_music", "280.mp3");
     let music_name_result = music_name(test_music);
-    assert_eq!(music_name_result, "test_music");
+    assert_eq!("test_music", music_name_result);
     free_music(test_music);
 }
 #[test]
 fn test_music_named_integration() {
     let test_music = load_music("test_music", "280.mp3");
     let retrieved_music = music_named("test_music");
-    assert_eq!(test_music, retrieved_music);
+    assert_eq!(retrieved_music, test_music);
     free_music(test_music);
 }
 #[test]
@@ -160,7 +160,7 @@ fn test_music_volume_integration() {
     let test_music = load_music("test_music", "280.mp3");
     play_music(test_music);
     set_music_volume(0.5);
-    assert_eq!(music_volume(), 0.5);
+    assert_eq!(0.5, music_volume());
     free_music(test_music);
     close_audio();
 }
@@ -238,7 +238,7 @@ fn test_set_music_volume_integration() {
     let test_music = load_music("test_music", "280.mp3");
     play_music(test_music);
     set_music_volume(0.5);
-    assert_eq!(music_volume(), 0.5);
+    assert_eq!(0.5, music_volume());
     free_music(test_music);
     close_audio();
 }
@@ -387,14 +387,14 @@ fn test_play_sound_effect_with_times_and_volume_integration() {
 fn test_sound_effect_filename_integration() {
     let test_sound = load_sound_effect("test_sound", "test.ogg");
     let test_filename = sound_effect_filename(test_sound);
-    assert_eq!(test_filename, "test.ogg");
+    assert_eq!("test.ogg", test_filename);
     free_sound_effect(test_sound);
 }
 #[test]
 fn test_sound_effect_name_integration() {
     let test_sound = load_sound_effect("test_sound", "test.ogg");
     let test_sound_name = sound_effect_name(test_sound);
-    assert_eq!(test_sound_name, "test_sound");
+    assert_eq!("test_sound", test_sound_name);
     free_sound_effect(test_sound);
 }
 #[test]
@@ -402,7 +402,7 @@ fn test_sound_effect_named_integration() {
     open_audio();
     let test_sound = load_sound_effect("test_sound", "test.ogg");
     let retrieved_sound = sound_effect_named("test_sound");
-    assert_eq!(test_sound, retrieved_sound);
+    assert_eq!(retrieved_sound, test_sound);
     free_sound_effect(test_sound);
     close_audio();
 }

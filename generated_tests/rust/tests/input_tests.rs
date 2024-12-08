@@ -96,9 +96,9 @@ fn test_key_down_integration() {
 #[test]
 fn test_key_name_integration() {
     let test_key_name1 = key_name(KeyCode::A);
-    assert_eq!(test_key_name1, "A");
+    assert_eq!("A", test_key_name1);
     let test_key_name2 = key_name(KeyCode::Enter);
-    assert_eq!(test_key_name2, "Enter");
+    assert_eq!("Enter", test_key_name2);
 }
 #[test]
 fn test_key_released_integration() {
@@ -154,7 +154,7 @@ fn test_register_callback_on_key_up_integration() {
     simulate_key_press(KeyCode::A);
     simulate_key_release(KeyCode::A);
     process_events();
-    assert_eq!(_key_up, "A");
+    assert_eq!("A", _key_up);
     deregister_callback_on_key_up(_on_key_up());
 }
 #[test]
@@ -192,8 +192,8 @@ fn test_mouse_movement_integration() {
     move_mouse(100.0, 100.0);
     process_events();
     let test_movement = mouse_movement();
-    assert_eq!(test_movement.x, 100.0);
-    assert_eq!(test_movement.y, 100.0);
+    assert_eq!(100.0, test_movement.x);
+    assert_eq!(100.0, test_movement.y);
     close_window(test_window);
 }
 #[test]
@@ -202,8 +202,8 @@ fn test_mouse_position_integration() {
     move_mouse(400.0, 300.0);
     process_events();
     let test_position = mouse_position();
-    assert_eq!(test_position.x, 400.0);
-    assert_eq!(test_position.y, 300.0);
+    assert_eq!(400.0, test_position.x);
+    assert_eq!(300.0, test_position.y);
     close_window(test_window);
 }
 #[test]
@@ -212,8 +212,8 @@ fn test_mouse_position_vector_integration() {
     move_mouse(400.0, 300.0);
     process_events();
     let test_mouse_position = mouse_position_vector();
-    assert_eq!(test_mouse_position.x, 400.0);
-    assert_eq!(test_mouse_position.y, 300.0);
+    assert_eq!(400.0, test_mouse_position.x);
+    assert_eq!(300.0, test_mouse_position.y);
     close_window(test_window);
 }
 #[test]
@@ -239,7 +239,7 @@ fn test_mouse_up_integration() {
 fn test_mouse_wheel_scroll_integration() {
     let test_window = open_window("Test Window", 800, 600);
     process_events();
-    assert_eq!(mouse_wheel_scroll(), vector_from_angle(0.0, 0.0));
+    assert_eq!(vector_from_angle(0.0, 0.0), mouse_wheel_scroll());
     simulate_mouse_wheel_scroll(10.0, 5.0);
     process_events();
     assert!(mouse_wheel_scroll());
@@ -258,7 +258,7 @@ fn test_mouse_y_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_mouse(400.0, 300.0);
     process_events();
-    assert_eq!(mouse_y(), 300.0);
+    assert_eq!(300.0, mouse_y());
     close_window(test_window);
 }
 #[test]
@@ -276,7 +276,7 @@ fn test_move_mouse_to_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_mouse_to_point(point_at(400.0, 300.0));
     process_events();
-    assert_eq!(mouse_position(), point_at(400.0, 300.0));
+    assert_eq!(point_at(400.0, 300.0), mouse_position());
     close_window(test_window);
 }
 #[test]
@@ -311,7 +311,7 @@ fn test_draw_collected_text_integration() {
     process_events();
     draw_collected_text(color_black(), test_font, 18, option_defaults());
     refresh_screen();
-    assert_eq!(get_pixel(test_window, 105, 115), color_black());
+    assert_eq!(color_black(), get_pixel(test_window, 105, 115));
     end_reading_text();
     free_font(test_font);
     close_window(test_window);
@@ -435,7 +435,7 @@ fn test_text_input_integration() {
     process_events();
     simulate_key_press(KeyCode::A);
     process_events();
-    assert_eq!(text_input(), "A");
+    assert_eq!("A", text_input());
     end_reading_text();
     close_window(test_window);
 }
@@ -447,7 +447,7 @@ fn test_text_input_in_window_integration() {
     process_events();
     simulate_key_press(KeyCode::A);
     process_events();
-    assert_eq!(text_input_in_window(test_window), "A");
+    assert_eq!("A", text_input_in_window(test_window));
     end_reading_text_in_window(test_window);
     close_window(test_window);
 }

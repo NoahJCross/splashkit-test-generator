@@ -7,7 +7,7 @@ procedure TIntegrationTests.TestCenterPointIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testCenterPoint := CenterPoint(testCircle);
-    AssertEquals(PointAt(100.0, 100.0), testCenterPoint);
+    AssertEquals(testCenterPoint, PointAt(100.0, 100.0));
 end;
 procedure TIntegrationTests.TestCircleAtIntegration;
 begin
@@ -31,7 +31,7 @@ procedure TIntegrationTests.TestCircleRadiusIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testRadius := CircleRadius(testCircle);
-    AssertEquals(testRadius, 50.0);
+    AssertEquals(50.0, testRadius);
 end;
 procedure TIntegrationTests.TestCircleTriangleIntersectIntegration;
 begin
@@ -46,17 +46,17 @@ begin
     testTriangle := TriangleFrom(PointAt(50.0, 50.0), PointAt(150.0, 50.0), PointAt(100.0, 150.0));
     testResult := CircleTriangleIntersect(testCircle, testTriangle, PointAt(0.0, 0.0));
     AssertTrue(testResult);
-    AssertEquals(PointPointDistance(CenterPoint(testCircle), ClosestPointOnTriangleFromCircle(testCircle, testTriangle)), CircleRadius(testCircle));
+    AssertEquals(CircleRadius(testCircle), PointPointDistance(CenterPoint(testCircle), ClosestPointOnTriangleFromCircle(testCircle, testTriangle)));
 end;
 procedure TIntegrationTests.TestCircleXIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
-    AssertEquals(CircleX(testCircle), 100.0);
+    AssertEquals(100.0, CircleX(testCircle));
 end;
 procedure TIntegrationTests.TestCircleYIntegration;
 begin
     testCircle := CircleAt(100.0, 150.0, 50.0);
-    AssertEquals(CircleY(testCircle), 150.0);
+    AssertEquals(150.0, CircleY(testCircle));
 end;
 procedure TIntegrationTests.TestCirclesIntersectIntegration;
 begin
@@ -80,7 +80,7 @@ begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testPoint := PointAt(150.0, 100.0);
     testClosestPoint := ClosestPointOnCircle(testPoint, testCircle);
-    AssertEquals(PointPointDistance(testClosestPoint, testPoint), CircleRadius(testCircle));
+    AssertEquals(CircleRadius(testCircle), PointPointDistance(testClosestPoint, testPoint));
 end;
 procedure TIntegrationTests.TestClosestPointOnLineFromCircleIntegration;
 begin
@@ -95,7 +95,7 @@ begin
     testRectangle := RectangleFrom(150.0, 50.0, 100.0, 100.0);
     testClosestPoint := ClosestPointOnRectFromCircle(testCircle, testRectangle);
     AssertTrue(PointInRectangle(testClosestPoint, testRectangle));
-    AssertEquals(PointPointDistance(CenterPoint(testCircle), testClosestPoint), CircleRadius(testCircle));
+    AssertEquals(CircleRadius(testCircle), PointPointDistance(CenterPoint(testCircle), testClosestPoint));
 end;
 procedure TIntegrationTests.TestClosestPointOnTriangleFromCircleIntegration;
 begin
@@ -109,7 +109,7 @@ begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testPoint := PointAt(100.0, 150.0);
     testDistantPoint := DistantPointOnCircle(testPoint, testCircle);
-    AssertEquals(PointPointDistance(testPoint, testDistantPoint), CircleRadius(testCircle));
+    AssertEquals(CircleRadius(testCircle), PointPointDistance(testPoint, testDistantPoint));
 end;
 procedure TIntegrationTests.TestDistantPointOnCircleHeadingIntegration;
 begin
@@ -119,8 +119,8 @@ begin
     testPoint2 := PointAt(0.0);
     testResult := DistantPointOnCircleHeading(testPoint1, testCircle, testHeading, testPoint2);
     AssertTrue(testResult);
-    AssertEquals(testPoint1.x, 50.0);
-    AssertEquals(testPoint1.y, 100.0);
+    AssertEquals(50.0, testPoint1.x);
+    AssertEquals(100.0, testPoint1.y);
 end;
 procedure TIntegrationTests.TestRayCircleIntersectDistanceIntegration;
 begin
@@ -153,22 +153,22 @@ end;
 procedure TIntegrationTests.TestCosineIntegration;
 begin
     testCosine0 := Cosine(0.0);
-    AssertEquals(testCosine0, 1.0);
+    AssertEquals(1.0, testCosine0);
     testCosine90 := Cosine(90.0);
-    AssertEquals(testCosine90, 0.0);
+    AssertEquals(0.0, testCosine90);
     testCosine180 := Cosine(180.0);
-    AssertEquals(testCosine180, -1.0);
+    AssertEquals(-1.0, testCosine180);
 end;
 procedure TIntegrationTests.TestSineIntegration;
 begin
     testSine0 := Sine(0.0);
-    AssertEquals(testSine0, 0.0);
+    AssertEquals(0.0, testSine0);
     testSine90 := Sine(90.0);
-    AssertEquals(testSine90, 1.0);
+    AssertEquals(1.0, testSine90);
     testSine180 := Sine(180.0);
-    AssertEquals(testSine180, 0.0);
+    AssertEquals(0.0, testSine180);
     testSine270 := Sine(270.0);
-    AssertEquals(testSine270, -1.0);
+    AssertEquals(-1.0, testSine270);
 end;
 procedure TIntegrationTests.TestTangentIntegration;
 begin
@@ -179,7 +179,7 @@ procedure TIntegrationTests.TestClosestPointOnLineIntegration;
 begin
     testLine := LineFrom(PointAt(0.0, 0.0), PointAt(10.0, 10.0));
     testClosestPoint := ClosestPointOnLine(PointAt(5.0, 5.0), testLine);
-    AssertEquals(PointPointDistance(PointAt(5.0, 5.0), testClosestPoint), 0.0);
+    AssertEquals(0.0, PointPointDistance(PointAt(5.0, 5.0), testClosestPoint));
 end;
 procedure TIntegrationTests.TestClosestPointOnLinesIntegration;
 begin
@@ -189,14 +189,14 @@ begin
     testIndex := {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
     testLines := {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
     testClosestPoint := ClosestPointOnLines(testFromPt, testLines, testIndex);
-    AssertEquals(PointPointDistance(testFromPt, testClosestPoint), 0.0);
+    AssertEquals(0.0, PointPointDistance(testFromPt, testClosestPoint));
 end;
 procedure TIntegrationTests.TestLineFromPointToPointIntegration;
 begin
     testStartPoint := PointAt(0.0, 0.0);
     testEndPoint := PointAt(100.0, 100.0);
     testLine := LineFrom(testStartPoint, testEndPoint);
-    AssertEquals(LineLength(testLine), 141.421356);
+    AssertEquals(141.421356, LineLength(testLine));
 end;
 procedure TIntegrationTests.TestLineFromStartWithOffsetIntegration;
 begin
@@ -210,13 +210,13 @@ procedure TIntegrationTests.TestLineFromVectorIntegration;
 begin
     testVector := VectorFromAngle(100.0, 50.0);
     testLine := LineFrom(testVector);
-    AssertEquals(testLine.start_point, PointAtOrigin());
-    AssertEquals(testLine.end_point, PointAt(100.0, 50.0));
+    AssertEquals(PointAtOrigin(), testLine.start_point);
+    AssertEquals(PointAt(100.0, 50.0), testLine.end_point);
 end;
 procedure TIntegrationTests.TestLineFromIntegration;
 begin
     testLine := LineFrom(0.0, 0.0, 10.0, 10.0);
-    AssertEquals(LineLength(testLine), 14.1421356);
+    AssertEquals(14.1421356, LineLength(testLine));
 end;
 procedure TIntegrationTests.TestLineIntersectionPointIntegration;
 begin
@@ -254,44 +254,44 @@ procedure TIntegrationTests.TestLineLengthIntegration;
 begin
     testLine := LineFrom(PointAt(0.0, 0.0), PointAt(3.0, 4.0));
     testLength := LineLength(testLine);
-    AssertEquals(testLength, 5.0);
+    AssertEquals(5.0, testLength);
 end;
 procedure TIntegrationTests.TestLineLengthSquaredIntegration;
 begin
     testLine := LineFrom(PointAt(0.0, 0.0), PointAt(3.0, 4.0));
     testResult := LineLengthSquared(testLine);
-    AssertEquals(testResult, 25.0);
+    AssertEquals(25.0, testResult);
 end;
 procedure TIntegrationTests.TestLineMidPointIntegration;
 begin
     testLine := LineFrom(PointAt(0.0, 0.0), PointAt(100.0, 100.0));
     testMidPoint := LineMidPoint(testLine);
-    AssertEquals(PointPointDistance(testMidPoint, PointAt(50.0, 50.0)), 0.0);
+    AssertEquals(0.0, PointPointDistance(testMidPoint, PointAt(50.0, 50.0)));
 end;
 procedure TIntegrationTests.TestLineNormalIntegration;
 begin
     testLine := LineFrom(0.0, 0.0, 1.0, 1.0);
     testNormal := LineNormal(testLine);
-    AssertEquals(testNormal.x, -1.0);
-    AssertEquals(testNormal.y, 1.0);
+    AssertEquals(-1.0, testNormal.x);
+    AssertEquals(1.0, testNormal.y);
 end;
 procedure TIntegrationTests.TestLineToStringIntegration;
 begin
     testLine := LineFrom(PointAt(0.0, 0.0), PointAt(100.0, 100.0));
     testLineString := LineToString(testLine);
-    AssertNotEquals(testLineString, "");
+    AssertNotEquals("", testLineString);
 end;
 procedure TIntegrationTests.TestLinesFromRectangleIntegration;
 begin
     testRectangle := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     testLines := LinesFrom(testRectangle);
-    AssertEquals(Size(testLines), 4);
+    AssertEquals(4, Size(testLines));
 end;
 procedure TIntegrationTests.TestLinesFromTriangleIntegration;
 begin
     testTriangle := TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 86.6));
     testLines := LinesFrom(testTriangle);
-    AssertEquals(Size(testLines), 3);
+    AssertEquals(3, Size(testLines));
 end;
 procedure TIntegrationTests.TestLinesIntersectIntegration;
 begin
@@ -303,14 +303,14 @@ end;
 procedure TIntegrationTests.TestPointAtIntegration;
 begin
     testPoint := PointAt(10.0, 20.0);
-    AssertEquals(testPoint.x, 10.0);
-    AssertEquals(testPoint.y, 20.0);
+    AssertEquals(10.0, testPoint.x);
+    AssertEquals(20.0, testPoint.y);
 end;
 procedure TIntegrationTests.TestPointAtOriginIntegration;
 begin
     testPoint := PointAtOrigin();
-    AssertEquals(testPoint.x, 0.0);
-    AssertEquals(testPoint.y, 0.0);
+    AssertEquals(0.0, testPoint.x);
+    AssertEquals(0.0, testPoint.y);
 end;
 procedure TIntegrationTests.TestPointInCircleIntegration;
 begin
@@ -358,22 +358,22 @@ begin
     testPoint := PointAt(0.0, 0.0);
     testLine := LineFrom(0.0, 0.0, 10.0, 10.0);
     testDistance := PointLineDistance(testPoint, testLine);
-    AssertEquals(testDistance, 0.0);
+    AssertEquals(0.0, testDistance);
 end;
 procedure TIntegrationTests.TestPointOffsetByIntegration;
 begin
     testStartPoint := PointAt(10.0, 20.0);
     testOffset := VectorFromAngle(5.0, 10.0);
     testResultPoint := PointOffsetBy(testStartPoint, testOffset);
-    AssertEquals(testStartPoint.x, 15.0);
-    AssertEquals(testResultPoint.x, 30.0);
+    AssertEquals(15.0, testStartPoint.x);
+    AssertEquals(30.0, testResultPoint.x);
 end;
 procedure TIntegrationTests.TestPointOffsetFromOriginIntegration;
 begin
     testVector := VectorFromAngle(10.0, 20.0);
     testPoint := PointOffsetFromOrigin(testVector);
-    AssertEquals(testPoint.x, 10.0);
-    AssertEquals(testPoint.y, 20.0);
+    AssertEquals(10.0, testPoint.x);
+    AssertEquals(20.0, testPoint.y);
 end;
 procedure TIntegrationTests.TestPointOnLineIntegration;
 begin
@@ -398,20 +398,20 @@ begin
     testPoint1 := PointAt(0.0, 0.0);
     testPoint2 := PointAt(1.0, 0.0);
     testAngle := PointPointAngle(testPoint1, testPoint2);
-    AssertEquals(testAngle, 0.0);
+    AssertEquals(0.0, testAngle);
 end;
 procedure TIntegrationTests.TestPointPointDistanceIntegration;
 begin
     testPoint1 := PointAt(0.0, 0.0);
     testPoint2 := PointAt(3.0, 4.0);
     testDistance := PointPointDistance(testPoint1, testPoint2);
-    AssertEquals(testDistance, 5.0);
+    AssertEquals(5.0, testDistance);
 end;
 procedure TIntegrationTests.TestPointToStringIntegration;
 begin
     testPoint := PointAt(10.0, 20.0);
     testString := PointToString(testPoint);
-    AssertEquals(testString, "Point(10, 20)");
+    AssertEquals("Point(10, 20)", testString);
 end;
 procedure TIntegrationTests.TestRandomBitmapPointIntegration;
 begin
@@ -493,35 +493,35 @@ procedure TIntegrationTests.TestTrianglesFromIntegration;
 begin
     testQuad := QuadFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(0.0, 100.0), PointAt(100.0, 100.0));
     testTriangles := TrianglesFrom(testQuad);
-    AssertEquals(Size(testTriangles), 2);
+    AssertEquals(2, Size(testTriangles));
 end;
 procedure TIntegrationTests.TestInsetRectangleIntegration;
 begin
     testRectangle := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     testInsetRectangle := InsetRectangle(testRectangle, 10.0);
-    AssertEquals(RectangleLeft(testInsetRectangle), 10.0);
-    AssertEquals(RectangleTop(testInsetRectangle), 10.0);
-    AssertEquals(RectangleRight(testInsetRectangle), 90.0);
-    AssertEquals(RectangleBottom(testInsetRectangle), 90.0);
+    AssertEquals(10.0, RectangleLeft(testInsetRectangle));
+    AssertEquals(10.0, RectangleTop(testInsetRectangle));
+    AssertEquals(90.0, RectangleRight(testInsetRectangle));
+    AssertEquals(90.0, RectangleBottom(testInsetRectangle));
 end;
 procedure TIntegrationTests.TestIntersectionIntegration;
 begin
     testRect1 := RectangleFrom(0.0, 0.0, 10.0, 10.0);
     testRect2 := RectangleFrom(5.0, 5.0, 10.0, 10.0);
     testIntersection := Intersection(testRect1, testRect2);
-    AssertEquals(RectangleLeft(testIntersection), 5.0);
-    AssertEquals(RectangleTop(testIntersection), 5.0);
-    AssertEquals(RectangleRight(testIntersection), 10.0);
-    AssertEquals(RectangleBottom(testIntersection), 10.0);
+    AssertEquals(5.0, RectangleLeft(testIntersection));
+    AssertEquals(5.0, RectangleTop(testIntersection));
+    AssertEquals(10.0, RectangleRight(testIntersection));
+    AssertEquals(10.0, RectangleBottom(testIntersection));
 end;
 procedure TIntegrationTests.TestRectangleAroundCircleIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testRectangle := RectangleAround(testCircle);
-    AssertEquals(RectangleLeft(testRectangle), 50.0);
-    AssertEquals(RectangleTop(testRectangle), 50.0);
-    AssertEquals(RectangleRight(testRectangle), 150.0);
-    AssertEquals(RectangleBottom(testRectangle), 150.0);
+    AssertEquals(50.0, RectangleLeft(testRectangle));
+    AssertEquals(50.0, RectangleTop(testRectangle));
+    AssertEquals(150.0, RectangleRight(testRectangle));
+    AssertEquals(150.0, RectangleBottom(testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleAroundLineIntegration;
 begin
@@ -534,87 +534,87 @@ procedure TIntegrationTests.TestRectangleAroundQuadIntegration;
 begin
     testQuad := QuadFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(0.0, 100.0), PointAt(100.0, 100.0));
     testRectangle := RectangleAround(testQuad);
-    AssertEquals(RectangleLeft(testRectangle), 0.0);
-    AssertEquals(RectangleTop(testRectangle), 0.0);
-    AssertEquals(RectangleRight(testRectangle), 100.0);
-    AssertEquals(RectangleBottom(testRectangle), 100.0);
+    AssertEquals(0.0, RectangleLeft(testRectangle));
+    AssertEquals(0.0, RectangleTop(testRectangle));
+    AssertEquals(100.0, RectangleRight(testRectangle));
+    AssertEquals(100.0, RectangleBottom(testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleAroundTriangleIntegration;
 begin
     testTriangle := TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 100.0));
     testRectangle := RectangleAround(testTriangle);
-    AssertEquals(RectangleLeft(testRectangle), 0.0);
-    AssertEquals(RectangleTop(testRectangle), 0.0);
-    AssertEquals(RectangleRight(testRectangle), 100.0);
-    AssertEquals(RectangleBottom(testRectangle), 100.0);
+    AssertEquals(0.0, RectangleLeft(testRectangle));
+    AssertEquals(0.0, RectangleTop(testRectangle));
+    AssertEquals(100.0, RectangleRight(testRectangle));
+    AssertEquals(100.0, RectangleBottom(testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleBottomIntegration;
 begin
     testRectangle := RectangleFrom(10.0, 20.0, 50.0, 60.0);
-    AssertEquals(RectangleBottom(testRectangle), 80.0);
+    AssertEquals(80.0, RectangleBottom(testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleCenterIntegration;
 begin
     testRectangle := RectangleFrom(PointAt(0.0, 0.0), 100.0, 100.0);
     testCenterPoint := RectangleCenter(testRectangle);
-    AssertEquals(PointPointDistance(PointAt(50.0, 50.0), testCenterPoint), 0.0);
+    AssertEquals(0.0, PointPointDistance(PointAt(50.0, 50.0), testCenterPoint));
 end;
 procedure TIntegrationTests.TestRectangleFromPointAndSizeIntegration;
 begin
     testPoint := PointAt(10.0, 20.0);
     testRectangle := RectangleFrom(testPoint, 50.0, 30.0);
-    AssertEquals(RectangleLeft(testRectangle), 10.0);
-    AssertEquals(RectangleTop(testRectangle), 20.0);
-    AssertEquals(RectangleRight(testRectangle), 60.0);
-    AssertEquals(RectangleBottom(testRectangle), 50.0);
+    AssertEquals(10.0, RectangleLeft(testRectangle));
+    AssertEquals(20.0, RectangleTop(testRectangle));
+    AssertEquals(60.0, RectangleRight(testRectangle));
+    AssertEquals(50.0, RectangleBottom(testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleFromPointsIntegration;
 begin
     testPoint1 := PointAt(0.0, 0.0);
     testPoint2 := PointAt(100.0, 100.0);
     testRectangle := RectangleFrom(testPoint1, testPoint2);
-    AssertEquals(RectangleLeft(testRectangle), 0.0);
-    AssertEquals(RectangleTop(testRectangle), 0.0);
-    AssertEquals(RectangleRight(testRectangle), 100.0);
-    AssertEquals(RectangleBottom(testRectangle), 100.0);
+    AssertEquals(0.0, RectangleLeft(testRectangle));
+    AssertEquals(0.0, RectangleTop(testRectangle));
+    AssertEquals(100.0, RectangleRight(testRectangle));
+    AssertEquals(100.0, RectangleBottom(testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleFromIntegration;
 begin
     testRectangle := RectangleFrom(10.0, 20.0, 50.0, 30.0);
-    AssertEquals(RectangleLeft(testRectangle), 10.0);
-    AssertEquals(RectangleTop(testRectangle), 20.0);
-    AssertEquals(RectangleRight(testRectangle), 60.0);
-    AssertEquals(RectangleBottom(testRectangle), 50.0);
+    AssertEquals(10.0, RectangleLeft(testRectangle));
+    AssertEquals(20.0, RectangleTop(testRectangle));
+    AssertEquals(60.0, RectangleRight(testRectangle));
+    AssertEquals(50.0, RectangleBottom(testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleLeftIntegration;
 begin
     testRectangle := RectangleFrom(10.0, 20.0, 50.0, 60.0);
     testLeft := RectangleLeft(testRectangle);
-    AssertEquals(testLeft, 10.0);
+    AssertEquals(10.0, testLeft);
 end;
 procedure TIntegrationTests.TestRectangleOffsetByIntegration;
 begin
     testRectangle := RectangleFrom(10.0, 10.0, 50.0, 50.0);
     testOffsetRectangle := RectangleOffsetBy(testRectangle, VectorFromAngle(20.0, 30.0));
-    AssertEquals(RectangleLeft(testOffsetRectangle), 30.0);
-    AssertEquals(RectangleTop(testOffsetRectangle), 40.0);
+    AssertEquals(30.0, RectangleLeft(testOffsetRectangle));
+    AssertEquals(40.0, RectangleTop(testOffsetRectangle));
 end;
 procedure TIntegrationTests.TestRectangleRightIntegration;
 begin
     testRectangle := RectangleFrom(10.0, 20.0, 50.0, 60.0);
-    AssertEquals(RectangleRight(testRectangle), 60.0);
+    AssertEquals(60.0, RectangleRight(testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleToStringIntegration;
 begin
     testRectangle := RectangleFrom(10.0, 20.0, 30.0, 40.0);
     testString := RectangleToString(testRectangle);
-    AssertEquals(testString, "Rectangle(x: 10, y: 20, width: 30, height: 40)");
+    AssertEquals("Rectangle(x: 10, y: 20, width: 30, height: 40)", testString);
 end;
 procedure TIntegrationTests.TestRectangleTopIntegration;
 begin
     testRectangle := RectangleFrom(10.0, 20.0, 50.0, 60.0);
     testTop := RectangleTop(testRectangle);
-    AssertEquals(testTop, 20.0);
+    AssertEquals(20.0, testTop);
 end;
 procedure TIntegrationTests.TestRectanglesIntersectIntegration;
 begin
@@ -627,8 +627,8 @@ procedure TIntegrationTests.TestTriangleBarycenterIntegration;
 begin
     testTriangle := TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 86.6));
     testBarycenter := TriangleBarycenter(testTriangle);
-    AssertEquals(testBarycenter.x, 50.0);
-    AssertEquals(testBarycenter.y, 28.866666666666667);
+    AssertEquals(50.0, testBarycenter.x);
+    AssertEquals(28.866666666666667, testBarycenter.y);
 end;
 procedure TIntegrationTests.TestTriangleFromIntegration;
 begin
@@ -655,7 +655,7 @@ procedure TIntegrationTests.TestTriangleToStringIntegration;
 begin
     testTriangle := TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 100.0));
     testTriangleString := TriangleToString(testTriangle);
-    AssertNotEquals(testTriangleString, "");
+    AssertNotEquals("", testTriangleString);
 end;
 procedure TIntegrationTests.TestTrianglesIntersectIntegration;
 begin

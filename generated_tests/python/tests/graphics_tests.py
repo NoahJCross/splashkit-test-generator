@@ -137,8 +137,8 @@ def test_FillCircleOnWindowWithOptions_integration():
 def test_CurrentClip_integration():
     test_window = open_window("Test Window", 800, 600)
     test_clip = current_clip()
-    assert test_clip.width == 800
-    assert test_clip.height == 600
+    assert 800 == test_clip.width
+    assert 600 == test_clip.height
     close_window(test_window)
 
 
@@ -147,17 +147,17 @@ def test_CurrentClipForBitmap_integration():
     test_rectangle = rectangle_from(10, 10, 50, 50)
     push_clip(test_bitmap, test_rectangle)
     test_clip = current_clip(test_bitmap)
-    assert rectangle_left(test_clip) == 10
-    assert rectangle_top(test_clip) == 10
-    assert test_clip.width == 50
-    assert test_clip.height == 50
+    assert 10 == rectangle_left(test_clip)
+    assert 10 == rectangle_top(test_clip)
+    assert 50 == test_clip.width
+    assert 50 == test_clip.height
     free_bitmap(test_bitmap)
 
 
 def test_CurrentClipForWindow_integration():
     test_window = open_window("Test Window", 800, 600)
     test_clip = current_clip(test_window)
-    assert rectangle_from(0, 0, 800, 600) == test_clip
+    assert test_clip == rectangle_from(0, 0, 800, 600)
     close_window(test_window)
 
 
@@ -166,10 +166,10 @@ def test_PopClipForWindow_integration():
     test_rectangle = rectangle_from(100, 100, 200, 200)
     push_clip(test_window, test_rectangle)
     test_current_clip = current_clip(test_window)
-    assert test_current_clip == test_rectangle
+    assert test_rectangle == test_current_clip
     pop_clip(test_window)
     test_current_clip_after_pop = current_clip(test_window)
-    assert rectangle_from(0, 0, 800, 600) == test_current_clip_after_pop
+    assert test_current_clip_after_pop == rectangle_from(0, 0, 800, 600)
     close_window(test_window)
 
 
@@ -190,7 +190,7 @@ def test_PopClipForBitmap_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     push_clip(test_bitmap, rectangle_from(0, 0, 50, 50))
     pop_clip(test_bitmap)
-    assert current_clip(test_bitmap) == rectangle_from(0, 0, 100, 100)
+    assert rectangle_from(0, 0, 100, 100) == current_clip(test_bitmap)
     free_bitmap(test_bitmap)
 
 
@@ -199,7 +199,7 @@ def test_PushClipForWindow_integration():
     test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0)
     push_clip_for_window(test_window, test_rectangle)
     test_current_clip = current_clip_for_window(test_window)
-    assert test_current_clip == test_rectangle
+    assert test_rectangle == test_current_clip
     refresh_screen()
     close_window(test_window)
 
@@ -209,10 +209,10 @@ def test_PushClipForBitmap_integration():
     test_rectangle = rectangle_from(50, 50, 100, 100)
     push_clip(test_bitmap, test_rectangle)
     test_current_clip = current_clip(test_bitmap)
-    assert rectangle_left(test_current_clip) == 50
-    assert rectangle_top(test_current_clip) == 50
-    assert test_current_clip.width == 100
-    assert test_current_clip.height == 100
+    assert 50 == rectangle_left(test_current_clip)
+    assert 50 == rectangle_top(test_current_clip)
+    assert 100 == test_current_clip.width
+    assert 100 == test_current_clip.height
     free_bitmap(test_bitmap)
 
 
@@ -221,7 +221,7 @@ def test_PushClip_integration():
     test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0)
     push_clip(test_rectangle)
     test_current_clip = current_clip()
-    assert test_current_clip == test_rectangle
+    assert test_rectangle == test_current_clip
     close_window(test_window)
 
 
@@ -229,7 +229,7 @@ def test_ResetClipForBitmap_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     push_clip(test_bitmap, rectangle_from(10, 10, 50, 50))
     reset_clip_for_bitmap(test_bitmap)
-    assert current_clip_for_bitmap(test_bitmap) == rectangle_from(0, 0, 100, 100)
+    assert rectangle_from(0, 0, 100, 100) == current_clip_for_bitmap(test_bitmap)
     free_bitmap(test_bitmap)
 
 
@@ -238,7 +238,7 @@ def test_ResetClip_integration():
     push_clip(rectangle_from(100, 100, 200, 200))
     reset_clip()
     test_clip_rect = current_clip()
-    assert rectangle_from(0, 0, 800, 600) == test_clip_rect
+    assert test_clip_rect == rectangle_from(0, 0, 800, 600)
     close_window(test_window)
 
 
@@ -247,7 +247,7 @@ def test_ResetClipForWindow_integration():
     push_clip(test_window, rectangle_from(100, 100, 200, 200))
     reset_clip_for_window(test_window)
     test_clip_rect = current_clip_for_window(test_window)
-    assert rectangle_from(0, 0, 800, 600) == test_clip_rect
+    assert test_clip_rect == rectangle_from(0, 0, 800, 600)
     close_window(test_window)
 
 
@@ -256,7 +256,7 @@ def test_SetClip_integration():
     test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0)
     set_clip(test_rectangle)
     test_current_clip = current_clip()
-    assert test_current_clip == test_rectangle
+    assert test_rectangle == test_current_clip
     close_window(test_window)
 
 
@@ -265,7 +265,7 @@ def test_SetClipForBitmap_integration():
     test_rectangle = rectangle_from(50, 50, 100, 100)
     set_clip(test_bitmap, test_rectangle)
     test_current_clip = current_clip(test_bitmap)
-    assert test_current_clip == test_rectangle
+    assert test_rectangle == test_current_clip
     free_bitmap(test_bitmap)
 
 
@@ -274,7 +274,7 @@ def test_SetClipForWindow_integration():
     test_rectangle = rectangle_from(100, 100, 200, 200)
     set_clip(test_window, test_rectangle)
     test_current_clip = current_clip(test_window)
-    assert test_current_clip == test_rectangle
+    assert test_rectangle == test_current_clip
     close_window(test_window)
 
 
@@ -393,10 +393,10 @@ def test_OptionLineWidth_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line(color_black(), 100.0, 100.0, 200.0, 200.0, option_line_width(1))
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
     draw_line(color_black(), 300.0, 300.0, 400.0, 400.0, option_line_width(5))
     refresh_screen()
-    assert get_pixel(point_at(300.0, 300.0)) == color_black()
+    assert color_black() == get_pixel(point_at(300.0, 300.0))
     close_window(test_window)
 
 
@@ -832,10 +832,10 @@ def test_ClearScreenToWhite_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), 100.0, 100.0)
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
     clear_screen()
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) != color_black()
+    assert color_black() != get_pixel(point_at(100.0, 100.0))
     close_window(test_window)
 
 
@@ -843,10 +843,10 @@ def test_ClearScreen_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), 100.0, 100.0)
     refresh_screen()
-    assert get_pixel(point_at(400.0, 300.0)) == color_black()
+    assert color_black() == get_pixel(point_at(400.0, 300.0))
     clear_screen(color_white())
     refresh_screen()
-    assert get_pixel(point_at(400.0, 300.0)) != color_black()
+    assert color_black() != get_pixel(point_at(400.0, 300.0))
     close_window(test_window)
 
 
@@ -857,7 +857,7 @@ def test_DisplayDetails_integration():
     assert test_display is not None
     assert display_width(test_display) > 0
     assert display_height(test_display) > 0
-    assert test_number_of_displays == 0
+    assert 0 == test_number_of_displays
 
 
 def test_DisplayHeight_integration():
@@ -887,7 +887,7 @@ def test_DisplayX_integration():
 def test_DisplayY_integration():
     test_display = display_details(0)
     test_y = display_y(test_display)
-    assert test_y != -1
+    assert -1 != test_y
 
 
 def test_NumberOfDisplays_integration():
@@ -920,14 +920,14 @@ def test_SaveBitmap_integration():
 def test_ScreenHeight_integration():
     test_window = open_window("Test Window", 800, 600)
     test_height = screen_height()
-    assert test_height == 600
+    assert 600 == test_height
     close_window(test_window)
 
 
 def test_ScreenWidth_integration():
     test_window = open_window("Test Window", 800, 600)
     test_width = screen_width()
-    assert test_width == 800
+    assert 800 == test_width
     close_window(test_window)
 
 
@@ -951,43 +951,43 @@ def test_BitmapBoundingCircle_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_point = point_at(50.0, 50.0)
     test_circle = bitmap_bounding_circle(test_bitmap, test_point)
-    assert circle_radius(test_circle) == 50.0
-    assert center_point(test_circle) == test_point
+    assert 50.0 == circle_radius(test_circle)
+    assert test_point == center_point(test_circle)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapBoundingRectangle_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_rectangle = bitmap_bounding_rectangle(test_bitmap)
-    assert test_rectangle.width == bitmap_width(test_bitmap)
-    assert test_rectangle.height == bitmap_height(test_bitmap)
+    assert bitmap_width(test_bitmap) == test_rectangle.width
+    assert bitmap_height(test_bitmap) == test_rectangle.height
     free_bitmap(test_bitmap)
 
 
 def test_BitmapBoundingRectangleAtLocation_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_rectangle = bitmap_bounding_rectangle_at_location(test_bitmap, 50.0, 50.0)
-    assert rectangle_left(test_rectangle) == 50.0
-    assert rectangle_top(test_rectangle) == 50.0
-    assert rectangle_right(test_rectangle) == 150.0
-    assert rectangle_bottom(test_rectangle) == 150.0
+    assert 50.0 == rectangle_left(test_rectangle)
+    assert 50.0 == rectangle_top(test_rectangle)
+    assert 150.0 == rectangle_right(test_rectangle)
+    assert 150.0 == rectangle_bottom(test_rectangle)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapCellCenter_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_center = bitmap_cell_center(test_bitmap)
-    assert test_center.x == 50.0
-    assert test_center.y == 50.0
+    assert 50.0 == test_center.x
+    assert 50.0 == test_center.y
     free_bitmap(test_bitmap)
 
 
 def test_BitmapCellCircle_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_circle = bitmap_cell_circle(test_bitmap, 50.0, 50.0)
-    assert circle_radius(test_circle) == 50.0
-    assert circle_x(test_circle) == 50.0
-    assert circle_y(test_circle) == 50.0
+    assert 50.0 == circle_radius(test_circle)
+    assert 50.0 == circle_x(test_circle)
+    assert 50.0 == circle_y(test_circle)
     free_bitmap(test_bitmap)
 
 
@@ -995,9 +995,9 @@ def test_BitmapCellCircleAtPoint_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4)
     test_circle = bitmap_cell_circle_at_point(test_bitmap, point_at(100, 100))
-    assert circle_x(test_circle) == 125
-    assert circle_y(test_circle) == 125
-    assert circle_radius(test_circle) == 25
+    assert 125 == circle_x(test_circle)
+    assert 125 == circle_y(test_circle)
+    assert 25 == circle_radius(test_circle)
     free_bitmap(test_bitmap)
 
 
@@ -1005,28 +1005,28 @@ def test_BitmapCellCircleAtPointWithScale_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4)
     test_circle = bitmap_cell_circle_at_point_with_scale(test_bitmap, point_at(100.0, 100.0), 2.0)
-    assert circle_radius(test_circle) == 50.0
+    assert 50.0 == circle_radius(test_circle)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapCellColumns_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25)
-    assert bitmap_cell_columns(test_bitmap) == 5
+    assert 5 == bitmap_cell_columns(test_bitmap)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapCellCount_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25)
-    assert bitmap_cell_count(test_bitmap) == 25
+    assert 25 == bitmap_cell_count(test_bitmap)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapCellHeight_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25)
-    assert bitmap_cell_height(test_bitmap) == 20
+    assert 20 == bitmap_cell_height(test_bitmap)
     free_bitmap(test_bitmap)
 
 
@@ -1034,8 +1034,8 @@ def test_BitmapCellOffset_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16)
     test_offset = bitmap_cell_offset(test_bitmap, 5)
-    assert test_offset.x == 75
-    assert test_offset.y == 0
+    assert 75 == test_offset.x
+    assert 0 == test_offset.y
     free_bitmap(test_bitmap)
 
 
@@ -1043,8 +1043,8 @@ def test_BitmapCellRectangle_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16)
     test_rectangle = bitmap_cell_rectangle(test_bitmap)
-    assert test_rectangle.width == 25
-    assert test_rectangle.height == 25
+    assert 25 == test_rectangle.width
+    assert 25 == test_rectangle.height
     free_bitmap(test_bitmap)
 
 
@@ -1052,59 +1052,59 @@ def test_BitmapCellRectangleAtPoint_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16)
     test_rectangle = bitmap_cell_rectangle_at_point(test_bitmap, point_at(50.0, 50.0))
-    assert rectangle_left(test_rectangle) == 50.0
-    assert rectangle_top(test_rectangle) == 50.0
-    assert rectangle_right(test_rectangle) == 75.0
-    assert rectangle_bottom(test_rectangle) == 75.0
+    assert 50.0 == rectangle_left(test_rectangle)
+    assert 50.0 == rectangle_top(test_rectangle)
+    assert 75.0 == rectangle_right(test_rectangle)
+    assert 75.0 == rectangle_bottom(test_rectangle)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapCellRows_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25)
-    assert bitmap_cell_rows(test_bitmap) == 5
+    assert 5 == bitmap_cell_rows(test_bitmap)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapCellWidth_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16)
-    assert bitmap_cell_width(test_bitmap) == 25
+    assert 25 == bitmap_cell_width(test_bitmap)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapCenter_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_center = bitmap_center(test_bitmap)
-    assert test_center.x == 50.0
-    assert test_center.y == 50.0
+    assert 50.0 == test_center.x
+    assert 50.0 == test_center.y
     free_bitmap(test_bitmap)
 
 
 def test_BitmapFilename_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_filename = bitmap_filename(test_bitmap)
-    assert test_filename == ""
+    assert "" == test_filename
     free_bitmap(test_bitmap)
 
 
 def test_BitmapHeight_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_height = bitmap_height(test_bitmap)
-    assert test_height == 100
+    assert 100 == test_height
     free_bitmap(test_bitmap)
 
 
 def test_BitmapHeightOfBitmapNamed_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
-    assert bitmap_height_of_bitmap_named("test_bitmap") == 100
+    assert 100 == bitmap_height_of_bitmap_named("test_bitmap")
     free_bitmap(test_bitmap)
 
 
 def test_BitmapName_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_bitmap_name = bitmap_name(test_bitmap)
-    assert test_bitmap_name == "test_bitmap"
+    assert "test_bitmap" == test_bitmap_name
     free_bitmap(test_bitmap)
 
 
@@ -1121,21 +1121,21 @@ def test_BitmapRectangleOfCell_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16)
     test_rectangle = bitmap_rectangle_of_cell(test_bitmap, 5)
-    assert rectangle_left(test_rectangle) == 0
-    assert rectangle_top(test_rectangle) == 75
-    assert rectangle_right(test_rectangle) == 25
-    assert rectangle_bottom(test_rectangle) == 100
+    assert 0 == rectangle_left(test_rectangle)
+    assert 75 == rectangle_top(test_rectangle)
+    assert 25 == rectangle_right(test_rectangle)
+    assert 100 == rectangle_bottom(test_rectangle)
     free_bitmap(test_bitmap)
 
 
 def test_BitmapSetCellDetails_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     bitmap_set_cell_details(test_bitmap, 20, 20, 5, 5, 25)
-    assert bitmap_cell_width(test_bitmap) == 20
-    assert bitmap_cell_height(test_bitmap) == 20
-    assert bitmap_cell_columns(test_bitmap) == 5
-    assert bitmap_cell_rows(test_bitmap) == 5
-    assert bitmap_cell_count(test_bitmap) == 25
+    assert 20 == bitmap_cell_width(test_bitmap)
+    assert 20 == bitmap_cell_height(test_bitmap)
+    assert 5 == bitmap_cell_columns(test_bitmap)
+    assert 5 == bitmap_cell_rows(test_bitmap)
+    assert 25 == bitmap_cell_count(test_bitmap)
     free_bitmap(test_bitmap)
 
 
@@ -1149,7 +1149,7 @@ def test_BitmapValid_integration():
 def test_BitmapWidth_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_width = bitmap_width(test_bitmap)
-    assert test_width == 100
+    assert 100 == test_width
     free_bitmap(test_bitmap)
 
 
@@ -1158,7 +1158,7 @@ def test_BitmapWidthOfBitmapNamed_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_bitmap(bitmap_named("test_bitmap"), 100, 100)
     refresh_screen()
-    assert bitmap_width_of_bitmap_named("test_bitmap") == 100
+    assert 100 == bitmap_width_of_bitmap_named("test_bitmap")
     free_bitmap(test_bitmap)
     close_window(test_window)
 
@@ -1187,8 +1187,8 @@ def test_ClearBitmapNamed_integration():
 def test_CreateBitmap_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     assert test_bitmap is not None
-    assert bitmap_width(test_bitmap) == 100
-    assert bitmap_height(test_bitmap) == 100
+    assert 100 == bitmap_width(test_bitmap)
+    assert 100 == bitmap_height(test_bitmap)
     free_bitmap(test_bitmap)
 
 
@@ -1361,8 +1361,8 @@ def test_DrawLineRecord_integration():
     test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0))
     draw_line(color_black(), test_line)
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1371,8 +1371,8 @@ def test_DrawLineRecordWithOptions_integration():
     test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0))
     draw_line_record_with_options(color_black(), test_line, option_line_width(3, option_defaults()))
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1380,8 +1380,8 @@ def test_DrawLinePointToPoint_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line_point_to_point(color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0))
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1389,8 +1389,8 @@ def test_DrawLinePointToPointWithOptions_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line_point_to_point_with_options(color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0), option_defaults())
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1398,8 +1398,8 @@ def test_DrawLine_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line(color_black(), 100.0, 100.0, 200.0, 200.0)
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1407,8 +1407,8 @@ def test_DrawLineWithOptions_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line_with_options(color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults())
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1471,8 +1471,8 @@ def test_DrawLineOnWindowRecord_integration():
     test_line = line_from(point_at(100.0, 100.0), point_at(700.0, 500.0))
     draw_line_on_window(test_window, color_black(), test_line)
     refresh_screen()
-    assert get_pixel(test_window, point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(test_window, point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(test_window, point_at(100.0, 100.0))
+    assert color_black() != get_pixel(test_window, point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1481,8 +1481,8 @@ def test_DrawLineOnWindowRecordWithOptions_integration():
     test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0))
     draw_line_on_window(test_window, color_black(), test_line, option_defaults())
     refresh_screen()
-    assert get_pixel(test_window, point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(test_window, point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(test_window, point_at(100.0, 100.0))
+    assert color_black() != get_pixel(test_window, point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1490,8 +1490,8 @@ def test_DrawLineOnWindowPointToPoint_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line_on_window(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0))
     refresh_screen()
-    assert get_pixel(test_window, 100.0, 100.0) == color_black()
-    assert get_pixel(test_window, 99.0, 99.0) != color_black()
+    assert color_black() == get_pixel(test_window, 100.0, 100.0)
+    assert color_black() != get_pixel(test_window, 99.0, 99.0)
     close_window(test_window)
 
 
@@ -1499,8 +1499,8 @@ def test_DrawLineOnWindowPointToPointWithOptions_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line_on_window(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0), option_defaults())
     refresh_screen()
-    assert get_pixel(test_window, 100.0, 100.0) == color_black()
-    assert get_pixel(test_window, 99.0, 99.0) != color_black()
+    assert color_black() == get_pixel(test_window, 100.0, 100.0)
+    assert color_black() != get_pixel(test_window, 99.0, 99.0)
     close_window(test_window)
 
 
@@ -1508,8 +1508,8 @@ def test_DrawLineOnWindow_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 200.0)
     refresh_screen()
-    assert get_pixel(test_window, 100.0, 100.0) == color_black()
-    assert get_pixel(test_window, 99.0, 99.0) != color_black()
+    assert color_black() == get_pixel(test_window, 100.0, 100.0)
+    assert color_black() != get_pixel(test_window, 99.0, 99.0)
     close_window(test_window)
 
 
@@ -1517,8 +1517,8 @@ def test_DrawLineOnWindowWithOptions_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_line_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults())
     refresh_screen()
-    assert get_pixel(test_window, 100.0, 100.0) == color_black()
-    assert get_pixel(test_window, 99.0, 99.0) != color_black()
+    assert color_black() == get_pixel(test_window, 100.0, 100.0)
+    assert color_black() != get_pixel(test_window, 99.0, 99.0)
     close_window(test_window)
 
 
@@ -1526,8 +1526,8 @@ def test_DrawPixelAtPoint_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), point_at(100.0, 100.0))
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1535,9 +1535,9 @@ def test_DrawPixelAtPointWithOptions_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel_at_point_with_options(color_black(), point_at(100.0, 100.0), option_defaults())
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1545,8 +1545,8 @@ def test_DrawPixel_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), 100.0, 100.0)
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1554,8 +1554,8 @@ def test_DrawPixelWithOptions_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), 100.0, 100.0, option_defaults())
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1603,8 +1603,8 @@ def test_DrawPixelOnWindowAtPoint_integration():
     test_point = point_at(100.0, 100.0)
     draw_pixel_on_window(test_window, test_color, test_point)
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1613,8 +1613,8 @@ def test_DrawPixelOnWindowAtPointWithOptions_integration():
     test_point = point_at(100.0, 100.0)
     draw_pixel_on_window(test_window, color_black(), test_point, option_defaults())
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1622,8 +1622,8 @@ def test_DrawPixelOnWindow_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel_on_window(test_window, color_black(), 100.0, 100.0)
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1631,8 +1631,8 @@ def test_DrawPixelOnWindowWithOptions_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel_on_window(test_window, color_black(), 100.0, 100.0, option_defaults())
     refresh_screen()
-    assert get_pixel(point_at(100.0, 100.0)) == color_black()
-    assert get_pixel(point_at(99.0, 99.0)) != color_black()
+    assert color_black() == get_pixel(point_at(100.0, 100.0))
+    assert color_black() != get_pixel(point_at(99.0, 99.0))
     close_window(test_window)
 
 
@@ -1640,7 +1640,7 @@ def test_GetPixelFromBitmapAtPoint_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     draw_pixel_on_bitmap(test_bitmap, color_black(), point_at(50.0, 50.0))
     test_color = get_pixel_from_bitmap_at_point(test_bitmap, point_at(50.0, 50.0))
-    assert color_black() == test_color
+    assert test_color == color_black()
     free_bitmap(test_bitmap)
 
 
@@ -1648,7 +1648,7 @@ def test_GetPixelFromBitmap_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     draw_pixel_on_bitmap(test_bitmap, color_black(), 50.0, 50.0)
     test_pixel_color = get_pixel_from_bitmap(test_bitmap, 50.0, 50.0)
-    assert test_pixel_color == color_black()
+    assert color_black() == test_pixel_color
     free_bitmap(test_bitmap)
 
 
@@ -1656,7 +1656,7 @@ def test_GetPixelAtPoint_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), point_at(100.0, 100.0))
     refresh_screen()
-    assert get_pixel_at_point(point_at(100.0, 100.0)) == color_black()
+    assert color_black() == get_pixel_at_point(point_at(100.0, 100.0))
     close_window(test_window)
 
 
@@ -1664,7 +1664,7 @@ def test_GetPixel_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), 100.0, 100.0)
     refresh_screen()
-    assert get_pixel(100.0, 100.0) == color_black()
+    assert color_black() == get_pixel(100.0, 100.0)
     close_window(test_window)
 
 
@@ -1672,7 +1672,7 @@ def test_GetPixelFromWindowAtPoint_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), point_at(100.0, 100.0))
     refresh_screen()
-    assert get_pixel_from_window_at_point(test_window, point_at(100.0, 100.0)) == color_black()
+    assert color_black() == get_pixel_from_window_at_point(test_window, point_at(100.0, 100.0))
     close_window(test_window)
 
 
@@ -1680,7 +1680,7 @@ def test_GetPixelFromWindow_integration():
     test_window = open_window("Test Window", 800, 600)
     draw_pixel(color_black(), 100.0, 100.0)
     refresh_screen()
-    assert get_pixel_from_window(test_window, 100.0, 100.0) == color_black()
+    assert color_black() == get_pixel_from_window(test_window, 100.0, 100.0)
     close_window(test_window)
 
 
@@ -1689,7 +1689,7 @@ def test_GetPixelFromWindowAtPointFromWindow_integration():
     draw_pixel(color_black(), point_at(100.0, 100.0))
     refresh_screen()
     test_pixel = get_pixel_from_window_at_point_from_window(test_window, point_at(100.0, 100.0))
-    assert color_black() == test_pixel
+    assert test_pixel == color_black()
     close_window(test_window)
 
 
@@ -1698,7 +1698,7 @@ def test_GetPixelFromWindowFromWindow_integration():
     draw_pixel(color_black(), 100.0, 100.0)
     refresh_screen()
     test_pixel_color = get_pixel_from_window(test_window, 100.0, 100.0)
-    assert color_black() == test_pixel_color
+    assert test_pixel_color == color_black()
     close_window(test_window)
 
 
@@ -2259,7 +2259,7 @@ def test_GetFontStyleNameAsString_integration():
 def test_GetFontStyle_integration():
     test_font = load_font("test_font", "hara.ttf")
     test_style = get_font_style(test_font)
-    assert test_style != FontStyle.BoldFont
+    assert FontStyle.BoldFont != test_style
     free_font(test_font)
 
 
@@ -2301,7 +2301,7 @@ def test_SetFontStyleNameAsString_integration():
     set_font_style_name_as_string("test_font", FontStyle.BoldFont)
     draw_text("Bold Text", color_black(), "test_font", 24, 100.0, 100.0)
     refresh_screen()
-    assert get_font_style_name_as_string("test_font") == FontStyle.BoldFont
+    assert FontStyle.BoldFont == get_font_style_name_as_string("test_font")
     close_window(test_window)
     free_font(test_font)
 
@@ -2310,7 +2310,7 @@ def test_SetFontStyle_integration():
     test_font = font_named("hara")
     set_font_style(test_font, FontStyle.BoldFont)
     test_style = get_font_style(test_font)
-    assert test_style == FontStyle.BoldFont
+    assert FontStyle.BoldFont == test_style
     free_font(test_font)
 
 

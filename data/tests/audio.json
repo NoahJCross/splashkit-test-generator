@@ -793,12 +793,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "filename"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "280.mp3"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "filename"
             }
           }
         },
@@ -848,12 +848,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "music_name_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "test_music"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "music_name_result"
             }
           }
         },
@@ -904,11 +904,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_music"
+              "variable_name": "retrieved_music"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "retrieved_music"
+              "variable_name": "test_music"
             }
           }
         },
@@ -1121,13 +1121,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.5
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "music_volume",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.5
             }
           }
         },
@@ -1684,13 +1684,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.5
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "music_volume",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.5
             }
           }
         },
@@ -2839,12 +2839,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_filename"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "test.ogg"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_filename"
             }
           }
         },
@@ -2894,12 +2894,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_sound_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "test_sound"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_sound_name"
             }
           }
         },
@@ -2955,11 +2955,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_sound"
+              "variable_name": "retrieved_sound"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "retrieved_sound"
+              "variable_name": "test_sound"
             }
           }
         },
