@@ -362,10 +362,10 @@ namespace SplashKitTests
         public void TestIdentityMatrixIntegration()
         {
             var testMatrix = IdentityMatrix();
-            Assert.Equal(1.0, testMatrix[0, 0]);
-            Assert.Equal(1.0, testMatrix[1, 1]);
-            Assert.Equal(0.0, testMatrix[0, 1]);
-            Assert.Equal(0.0, testMatrix[1, 0]);
+            Assert.Equal(1.0, [testMatrix, 0]);
+            Assert.Equal(1.0, [testMatrix, 1]);
+            Assert.Equal(0.0, [testMatrix, 1]);
+            Assert.Equal(0.0, [testMatrix, 0]);
         }
         [Fact]
         public void TestMatrixInverseIntegration()
@@ -390,8 +390,8 @@ namespace SplashKitTests
             var testMatrix1 = IdentityMatrix();
             var testMatrix2 = RotationMatrix(45);
             var resultMatrix = MatrixMultiply(testMatrix1, testMatrix2);
-            Assert.Equal(Cosine(45), resultMatrix[0, 0]);
-            Assert.Equal(Sine(45), resultMatrix[0, 1]);
+            Assert.Equal(Cosine(45), [resultMatrix, 0]);
+            Assert.Equal(Sine(45), [resultMatrix, 1]);
         }
         [Fact]
         public void TestMatrixMultiplyVectorIntegration()

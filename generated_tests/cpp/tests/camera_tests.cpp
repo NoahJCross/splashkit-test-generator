@@ -4,8 +4,8 @@
 TEST_CASE("camera_position_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     auto test_camera_position = camera_position();
-    REQUIRE(0.0 == test_camera_position);
-    REQUIRE(0.0 == test_camera_position);
+    REQUIRE(0.0 == test_camera_position->x);
+    REQUIRE(0.0 == test_camera_position->y);
     close_window(test_window);
 }
 TEST_CASE("camera_x_integration") {

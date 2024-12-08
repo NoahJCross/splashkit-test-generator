@@ -17,7 +17,8 @@
               "value": true
             },
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_mode",
               "value": "LOG_CONSOLE_AND_FILE"
             }
           ]
@@ -27,7 +28,8 @@
           "function_name": "log",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_level",
               "value": "INFO"
             },
             {
@@ -75,7 +77,8 @@
           "function_name": "init_custom_logger",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_mode",
               "value": "LOG_CONSOLE"
             }
           ]
@@ -85,7 +88,8 @@
           "function_name": "log",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_level",
               "value": "INFO"
             },
             {
@@ -103,7 +107,8 @@
               "function_name": "log",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "enum",
+                  "enum_type": "log_level",
                   "value": "INFO"
                 },
                 {
@@ -119,7 +124,8 @@
           "function_name": "init_custom_logger",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_mode",
               "value": "LOG_FILE_ONLY"
             }
           ]
@@ -129,7 +135,8 @@
           "function_name": "log",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_level",
               "value": "INFO"
             },
             {
@@ -147,7 +154,8 @@
               "function_name": "log",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "enum",
+                  "enum_type": "log_level",
                   "value": "INFO"
                 },
                 {
@@ -181,7 +189,8 @@
               "value": true
             },
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_mode",
               "value": "LOG_CONSOLE_AND_FILE"
             }
           ]
@@ -191,7 +200,8 @@
           "function_name": "log",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_level",
               "value": "INFO"
             },
             {
@@ -227,7 +237,8 @@
               "value": false
             },
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_mode",
               "value": "LOG_FILE_ONLY"
             }
           ]
@@ -237,7 +248,8 @@
           "function_name": "log",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_level",
               "value": "INFO"
             },
             {
@@ -283,7 +295,8 @@
               "value": true
             },
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_mode",
               "value": "LOG_CONSOLE_AND_FILE"
             }
           ]
@@ -293,7 +306,8 @@
           "function_name": "log",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "enum",
+              "enum_type": "log_level",
               "value": "INFO"
             },
             {
@@ -311,7 +325,8 @@
               "function_name": "log",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "enum",
+                  "enum_type": "log_level",
                   "value": "INFO"
                 },
                 {

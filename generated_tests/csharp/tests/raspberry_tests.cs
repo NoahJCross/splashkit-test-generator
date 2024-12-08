@@ -20,8 +20,8 @@ namespace SplashKitTests
             RaspiSetMode(Pins.Pin11, PinModes.GpioOutput);
             RaspiWrite(Pins.Pin11, PinValues.GpioHigh);
             RaspiCleanup();
-            Assert.Equal(PinModes.GpioInput, RaspiGetMode(Pins.Pin11));
-            Assert.Equal(PinValues.GpioLow, RaspiRead(Pins.Pin11));
+            Assert.Equal(RaspiGetMode(Pins.Pin11), PinModes.GpioInput);
+            Assert.Equal(RaspiRead(Pins.Pin11), PinValues.GpioLow);
         }
         [Fact]
         public void TestRaspiGetModeIntegration()
@@ -29,15 +29,14 @@ namespace SplashKitTests
             RaspiInit();
             RaspiSetMode(Pins.Pin11, PinModes.GpioOutput);
             var testMode = RaspiGetMode(Pins.Pin11);
-            Assert.Equal(PinModes.GpioOutput, testMode);
+            Assert.Equal(testMode, PinModes.GpioOutput);
             RaspiCleanup();
         }
         [Fact]
         public void TestRaspiInitIntegration()
         {
             var hasGpioCapability = HasGpio();
-if (Assert.True(hasGpioCapability);
-) {
+if (hasGpioCapability == true) {
                 RaspiInit();
                 Assert.True(HasGpio());
                 RaspiCleanup();
@@ -54,7 +53,7 @@ if (Assert.True(hasGpioCapability);
             RaspiSetMode(Pins.Pin11, PinModes.GpioOutput);
             RaspiWrite(Pins.Pin11, PinValues.GpioHigh);
             var testReadValue = RaspiRead(Pins.Pin11);
-            Assert.Equal(PinValues.GpioHigh, testReadValue);
+            Assert.Equal(testReadValue, PinValues.GpioHigh);
             RaspiCleanup();
         }
         [Fact]
@@ -62,7 +61,7 @@ if (Assert.True(hasGpioCapability);
         {
             RaspiInit();
             RaspiSetMode(Pins.Pin11, PinModes.GpioOutput);
-            Assert.Equal(PinModes.GpioOutput, RaspiGetMode(Pins.Pin11));
+            Assert.Equal(RaspiGetMode(Pins.Pin11), PinModes.GpioOutput);
             RaspiCleanup();
         }
         [Fact]
@@ -72,10 +71,10 @@ if (Assert.True(hasGpioCapability);
             RaspiSetMode(Pins.Pin11, PinModes.GpioInput);
             RaspiSetPullUpDown(Pins.Pin11, PullUpDown.PudUp);
             var testPinValue = RaspiRead(Pins.Pin11);
-            Assert.Equal(PinValues.GpioHigh, testPinValue);
+            Assert.Equal(testPinValue, PinValues.GpioHigh);
             RaspiSetPullUpDown(Pins.Pin11, PullUpDown.PudDown);
             var testPinValue = RaspiRead(Pins.Pin11);
-            Assert.Equal(PinValues.GpioLow, testPinValue);
+            Assert.Equal(testPinValue, PinValues.GpioLow);
             RaspiCleanup();
         }
         [Fact]
@@ -110,7 +109,7 @@ if (Assert.True(hasGpioCapability);
             RaspiSetMode(Pins.Pin11, PinModes.GpioOutput);
             RaspiWrite(Pins.Pin11, PinValues.GpioHigh);
             var testPinValue = RaspiRead(Pins.Pin11);
-            Assert.Equal(PinValues.GpioHigh, testPinValue);
+            Assert.Equal(testPinValue, PinValues.GpioHigh);
             RaspiCleanup();
         }
     }

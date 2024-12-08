@@ -233,7 +233,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     ProcessEvents();
     AssertFalse(WindowCloseRequested("Test Window"));
-    SimulateKeyPress(Keycode.ESCAPE);
+    SimulateKeyPress(KeyCode.ESCAPE);
     ProcessEvents();
     AssertTrue(WindowCloseRequested("Test Window"));
     CloseWindow(testWindow);
@@ -243,7 +243,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     ProcessEvents();
     AssertFalse(WindowCloseRequested(testWindow));
-    SimulateKeyPress(Keycode.ESCAPE);
+    SimulateKeyPress(KeyCode.ESCAPE);
     ProcessEvents();
     AssertTrue(WindowCloseRequested(testWindow));
     CloseWindow(testWindow);

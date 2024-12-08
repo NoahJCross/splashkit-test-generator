@@ -35,8 +35,7 @@ fn test_raspi_get_mode_integration() {
 #[test]
 fn test_raspi_init_integration() {
     let has_gpio_capability = has_gpio();
-if assert!(has_gpio_capability);
- {
+if has_gpio_capability == true {
         raspi_init();
         assert!(has_gpio());
         raspi_cleanup();

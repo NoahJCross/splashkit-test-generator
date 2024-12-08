@@ -2315,6 +2315,16 @@
           "value": 0
         },
         {
+          "step_type": "variable",
+          "variable_type": "list",
+          "target_type": "line",
+          "variable_name": "test_lines",
+          "value": [
+            { "value_type": "variable", "variable_name": "test_line1" },
+            { "value_type": "variable", "variable_name": "test_line2" }
+          ]
+        },
+        {
           "step_type": "function",
           "function_name": "closest_point_on_lines",
           "args": [
@@ -2323,9 +2333,8 @@
               "variable_name": "test_from_pt"
             },
             {
-              "value_type": "list",
-              "list_name": "test_lines",
-              "list_values": ["test_line1", "test_line2"]
+              "value_type": "variable",
+              "variable_name": "test_lines"
             },
             {
               "value_type": "variable",
@@ -2900,6 +2909,16 @@
           "store_result": "test_line2"
         },
         {
+          "step_type": "variable",
+          "variable_name": "test_lines",
+          "target_type": "line",
+          "value_type": "list",
+          "value": [
+            { "value_type": "variable", "variable_name": "test_line1" },
+            { "value_type": "variable", "variable_name": "test_line2" }
+          ]
+        },
+        {
           "step_type": "function",
           "function_name": "line_intersects_lines",
           "args": [
@@ -2908,9 +2927,8 @@
               "variable_name": "test_line"
             },
             {
-              "value_type": "list",
-              "list_name": "test_lines",
-              "list_values": ["test_line1", "test_line2"]
+              "value_type": "variable",
+              "variable_name": "test_lines"
             }
           ],
           "store_result": "test_result"

@@ -231,7 +231,7 @@ def test_WindowCloseRequestedNamed_integration():
     test_window = open_window("Test Window", 800, 600)
     process_events()
     assert window_close_requested_named("Test Window") is False
-    simulate_key_press(Keycode.Escape)
+    simulate_key_press(KeyCode.Escape)
     process_events()
     assert window_close_requested_named("Test Window") is True
     close_window(test_window)
@@ -241,7 +241,7 @@ def test_WindowCloseRequested_integration():
     test_window = open_window("Test Window", 800, 600)
     process_events()
     assert window_close_requested(test_window) is False
-    simulate_key_press(Keycode.Escape)
+    simulate_key_press(KeyCode.Escape)
     process_events()
     assert window_close_requested(test_window) is True
     close_window(test_window)

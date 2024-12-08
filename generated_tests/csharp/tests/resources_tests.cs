@@ -17,9 +17,9 @@ namespace SplashKitTests
         {
             SetResourcesPath("resources");
             var imagePath = PathToResource("test_image.png", ResourceKind.ImageResource);
-            Assert.NotEqual("", imagePath);
+            Assert.NotEqual(imagePath, "");
             var textPath = PathToResource("nonexistent_file.txt", ResourceKind.AnimationResource);
-            Assert.Equal("", textPath);
+            Assert.Equal(textPath, "");
         }
         [Fact]
         public void TestPathToResourcesIntegration()
@@ -28,16 +28,16 @@ namespace SplashKitTests
             Assert.NotNull(resourcePath);
             SetResourcesPath("/new/resources");
             var newResourcePath = PathToResources();
-            Assert.Equal("/new/resources", newResourcePath);
+            Assert.Equal(newResourcePath, "/new/resources");
         }
         [Fact]
         public void TestPathToResourcesForKindIntegration()
         {
             SetResourcesPath("resources");
             var imagePath = PathToResources(ResourceKind.ImageResource);
-            Assert.Equal("resources/images", imagePath);
+            Assert.Equal(imagePath, "resources/images");
             var soundPath = PathToResources(ResourceKind.SoundResource);
-            Assert.Equal("resources/sounds", soundPath);
+            Assert.Equal(soundPath, "resources/sounds");
         }
         [Fact]
         public void TestRegisterFreeNotifierIntegration()
@@ -51,9 +51,9 @@ namespace SplashKitTests
         public void TestSetResourcesPathIntegration()
         {
             SetResourcesPath("/resources");
-            Assert.Equal("/resources", PathToResources());
+            Assert.Equal(PathToResources(), "/resources");
             SetResourcesPath("/new/resources");
-            Assert.Equal("/new/resources", PathToResources());
+            Assert.Equal(PathToResources(), "/new/resources");
         }
     }
 }

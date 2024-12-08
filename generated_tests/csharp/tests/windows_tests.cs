@@ -12,7 +12,7 @@ namespace SplashKitTests
             var testColor = ColorBlack();
             ClearWindow(testWindow, testColor);
             RefreshWindow(testWindow);
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(WindowWidth(testWindow), WindowHeight(testWindow))));
+            Assert.Equal(GetPixel(PointAt(WindowWidth(testWindow), WindowHeight(testWindow))), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -54,7 +54,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetCurrentWindow(testWindow);
-            Assert.Equal(testWindow, CurrentWindow());
+            Assert.Equal(CurrentWindow(), testWindow);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -71,7 +71,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetCurrentWindow(testWindow);
-            Assert.Equal(600, CurrentWindowHeight());
+            Assert.Equal(CurrentWindowHeight(), 600);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -118,7 +118,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetCurrentWindow(testWindow);
-            Assert.Equal(800, CurrentWindowWidth());
+            Assert.Equal(CurrentWindowWidth(), 800);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -127,7 +127,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveWindowTo(testWindow, 100, 200);
             SetCurrentWindow(testWindow);
-            Assert.Equal(100, CurrentWindowX());
+            Assert.Equal(CurrentWindowX(), 100);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -165,8 +165,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveCurrentWindowTo(100, 100);
-            Assert.Equal(100, CurrentWindowX());
-            Assert.Equal(100, CurrentWindowY());
+            Assert.Equal(CurrentWindowX(), 100);
+            Assert.Equal(CurrentWindowY(), 100);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -175,8 +175,8 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveWindowTo("Test Window", 100, 100);
             ProcessEvents();
-            Assert.Equal(100, WindowX("Test Window"));
-            Assert.Equal(100, WindowY("Test Window"));
+            Assert.Equal(WindowX("Test Window"), 100);
+            Assert.Equal(WindowY("Test Window"), 100);
             CloseWindow("Test Window");
         }
         [Fact]
@@ -184,8 +184,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveWindowTo(testWindow, 100, 100);
-            Assert.Equal(100, WindowX(testWindow));
-            Assert.Equal(100, WindowY(testWindow));
+            Assert.Equal(WindowX(testWindow), 100);
+            Assert.Equal(WindowY(testWindow), 100);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -218,8 +218,8 @@ namespace SplashKitTests
             SetCurrentWindow(testWindow);
             ResizeCurrentWindow(1024, 768);
             ProcessEvents();
-            Assert.Equal(1024, CurrentWindowWidth());
-            Assert.Equal(768, CurrentWindowHeight());
+            Assert.Equal(CurrentWindowWidth(), 1024);
+            Assert.Equal(CurrentWindowHeight(), 768);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -227,8 +227,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             ResizeWindow(testWindow, 1024, 768);
-            Assert.Equal(1024, WindowWidth(testWindow));
-            Assert.Equal(768, WindowHeight(testWindow));
+            Assert.Equal(WindowWidth(testWindow), 1024);
+            Assert.Equal(WindowHeight(testWindow), 768);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -255,7 +255,7 @@ namespace SplashKitTests
         public void TestWindowCaptionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            Assert.Equal("Test Window", WindowCaption(testWindow));
+            Assert.Equal(WindowCaption(testWindow), "Test Window");
             CloseWindow(testWindow);
         }
         [Fact]
@@ -264,7 +264,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ProcessEvents();
             Assert.False(WindowCloseRequested("Test Window"));
-            SimulateKeyPress(Keycode.Escape);
+            SimulateKeyPress(KeyCode.Escape);
             ProcessEvents();
             Assert.True(WindowCloseRequested("Test Window"));
             CloseWindow(testWindow);
@@ -275,7 +275,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ProcessEvents();
             Assert.False(WindowCloseRequested(testWindow));
-            SimulateKeyPress(Keycode.Escape);
+            SimulateKeyPress(KeyCode.Escape);
             ProcessEvents();
             Assert.True(WindowCloseRequested(testWindow));
             CloseWindow(testWindow);
@@ -310,14 +310,14 @@ namespace SplashKitTests
         public void TestWindowHeightNamedIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            Assert.Equal(600, WindowHeight("Test Window"));
+            Assert.Equal(WindowHeight("Test Window"), 600);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestWindowHeightIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            Assert.Equal(600, WindowHeight(testWindow));
+            Assert.Equal(WindowHeight(testWindow), 600);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -344,7 +344,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var retrievedWindow = WindowNamed("Test Window");
-            Assert.Equal(retrievedWindow, testWindow);
+            Assert.Equal(testWindow, retrievedWindow);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -412,21 +412,21 @@ namespace SplashKitTests
             var initialFullscreenState = WindowIsFullscreen(testWindow);
             WindowToggleFullscreen(testWindow);
             var newFullscreenState = WindowIsFullscreen(testWindow);
-            Assert.NotEqual(newFullscreenState, initialFullscreenState);
+            Assert.NotEqual(initialFullscreenState, newFullscreenState);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestWindowWidthNamedIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            Assert.Equal(800, WindowWidth("Test Window"));
+            Assert.Equal(WindowWidth("Test Window"), 800);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestWindowWidthIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            Assert.Equal(800, WindowWidth(testWindow));
+            Assert.Equal(WindowWidth(testWindow), 800);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -436,10 +436,10 @@ namespace SplashKitTests
             var testWindow2 = OpenWindow("Test Window 2", 800, 600);
             SetCurrentWindow(testWindow1);
             var focusedWindow = WindowWithFocus();
-            Assert.Equal(testWindow1, focusedWindow);
+            Assert.Equal(focusedWindow, testWindow1);
             SetCurrentWindow(testWindow2);
             var focusedWindow = WindowWithFocus();
-            Assert.Equal(testWindow2, focusedWindow);
+            Assert.Equal(focusedWindow, testWindow2);
             CloseWindow(testWindow1);
             CloseWindow(testWindow2);
         }
@@ -448,7 +448,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveWindowTo("Test Window", 100, 200);
-            Assert.Equal(100, WindowX("Test Window"));
+            Assert.Equal(WindowX("Test Window"), 100);
             CloseWindow("Test Window");
         }
         [Fact]
@@ -464,7 +464,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveWindowTo("Test Window", 100, 200);
             var testWindowY = WindowY("Test Window");
-            Assert.Equal(200, testWindowY);
+            Assert.Equal(testWindowY, 200);
             CloseWindow("Test Window");
         }
         [Fact]
@@ -472,7 +472,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveWindowTo(testWindow, 100, 200);
-            Assert.Equal(200, WindowY(testWindow));
+            Assert.Equal(WindowY(testWindow), 200);
             CloseWindow(testWindow);
         }
     }

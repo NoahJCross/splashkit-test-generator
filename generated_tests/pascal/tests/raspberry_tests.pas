@@ -30,8 +30,7 @@ end;
 procedure TIntegrationTests.TestRaspiInitIntegration;
 begin
     hasGpioCapability := HasGpio();
-if AssertTrue(hasGpioCapability);
- then
+if hasGpioCapability = true then
         RaspiInit();
         AssertTrue(HasGpio());
         RaspiCleanup();

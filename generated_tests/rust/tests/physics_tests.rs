@@ -322,7 +322,7 @@ fn test_apply_matrix_to_quad_integration() {
     let test_matrix = identity_matrix();
     let test_quad = quad_from(point_at(100, 100), point_at(200, 100), point_at(200, 200), point_at(100, 200));
     apply_matrix_to_quad(test_matrix, test_quad);
-    assert_eq!(point_at(100, 100), quad_point);
+    assert_eq!(quad_point, point_at(100, 100));
     close_window(test_window);
 }
 #[test]
@@ -330,15 +330,15 @@ fn test_apply_matrix_to_triangle_integration() {
     let test_triangle = triangle_from(point_at(0.0, 0.0), point_at(1.0, 0.0), point_at(0.0, 1.0));
     let test_matrix = translation_matrix(1.0, 1.0);
     apply_matrix_to_triangle(test_matrix, test_triangle);
-    assert_eq!(triangle_to_string(test_triangle), "Triangle(x1: 1.0, y1: 1.0, x2: 2.0, y2: 1.0, x3: 1.0, y3: 2.0)");
+    assert_eq!("Triangle(x1: 1.0, y1: 1.0, x2: 2.0, y2: 1.0, x3: 1.0, y3: 2.0)", triangle_to_string(test_triangle));
 }
 #[test]
 fn test_identity_matrix_integration() {
     let test_matrix = identity_matrix();
-    assert_eq!(test_matrix[0, 0], 1.0);
-    assert_eq!(test_matrix[1, 1], 1.0);
-    assert_eq!(test_matrix[0, 1], 0.0);
-    assert_eq!(test_matrix[1, 0], 0.0);
+    assert_eq!(1.0, [test_matrix, 0]);
+    assert_eq!(1.0, [test_matrix, 1]);
+    assert_eq!(0.0, [test_matrix, 1]);
+    assert_eq!(0.0, [test_matrix, 0]);
 }
 #[test]
 fn test_matrix_inverse_integration() {
@@ -352,30 +352,30 @@ fn test_matrix_multiply_point_integration() {
     let test_matrix = identity_matrix();
     let test_point = point_at(10.0, 20.0);
     let result_point = matrix_multiply_point(test_matrix, test_point);
-    assert_eq!(result_point.x, 10.0);
-    assert_eq!(result_point.y, 20.0);
+    assert_eq!(10.0, result_point.x);
+    assert_eq!(20.0, result_point.y);
 }
 #[test]
 fn test_matrix_multiply_matrix_integration() {
     let test_matrix1 = identity_matrix();
     let test_matrix2 = rotation_matrix(45);
     let result_matrix = matrix_multiply_matrix(test_matrix1, test_matrix2);
-    assert_eq!(result_matrix[0, 0], cosine(45));
-    assert_eq!(result_matrix[0, 1], sine(45));
+    assert_eq!(cosine(45), [result_matrix, 0]);
+    assert_eq!(sine(45), [result_matrix, 1]);
 }
 #[test]
 fn test_matrix_multiply_vector_integration() {
     let test_vector = vector_to(1.0, 1.0);
     let test_matrix = scale_matrix(2.0);
     let result_vector = matrix_multiply_vector(test_matrix, test_vector);
-    assert_eq!(result_vector.x, 2.0);
-    assert_eq!(result_vector.y, 2.0);
+    assert_eq!(2.0, result_vector.x);
+    assert_eq!(2.0, result_vector.y);
 }
 #[test]
 fn test_matrix_to_string_integration() {
     let test_matrix = identity_matrix();
     let test_matrix_string = matrix_to_string(test_matrix);
-    assert_eq!(test_matrix_string, "[1, 0, 0, 1, 0, 0]");
+    assert_eq!("[1, 0, 0, 1, 0, 0]", test_matrix_string);
 }
 #[test]
 fn test_rotation_matrix_integration() {
@@ -391,8 +391,8 @@ fn test_scale_matrix_from_point_integration() {
     let test_matrix = scale_matrix_from_point(test_scale);
     let test_vector = vector_to(1.0, 1.0);
     let result_vector = matrix_multiply_vector(test_matrix, test_vector);
-    assert_eq!(result_vector.x, 2.0);
-    assert_eq!(result_vector.y, 3.0);
+    assert_eq!(2.0, result_vector.x);
+    assert_eq!(3.0, result_vector.y);
 }
 #[test]
 fn test_scale_matrix_from_vector_integration() {
@@ -400,16 +400,16 @@ fn test_scale_matrix_from_vector_integration() {
     let test_matrix = scale_matrix_from_vector(test_scale_vector);
     let test_vector = vector_to(1.0, 1.0);
     let result_vector = matrix_multiply_vector(test_matrix, test_vector);
-    assert_eq!(result_vector.x, 2.0);
-    assert_eq!(result_vector.y, 3.0);
+    assert_eq!(2.0, result_vector.x);
+    assert_eq!(3.0, result_vector.y);
 }
 #[test]
 fn test_scale_matrix_integration() {
     let test_matrix = scale_matrix(2.0);
     let test_vector = vector_to(1.0, 1.0);
     let result_vector = matrix_multiply_vector(test_matrix, test_vector);
-    assert_eq!(result_vector.x, 2.0);
-    assert_eq!(result_vector.y, 2.0);
+    assert_eq!(2.0, result_vector.x);
+    assert_eq!(2.0, result_vector.y);
 }
 #[test]
 fn test_scale_rotate_translate_matrix_integration() {
@@ -427,8 +427,8 @@ fn test_translation_matrix_to_point_integration() {
     let test_matrix = translation_matrix_to_point(test_point);
     let test_vector = point_at(5.0, 5.0);
     let result_point = matrix_multiply_vector(test_matrix, test_vector);
-    assert_eq!(result_point.x, 15.0);
-    assert_eq!(result_point.y, 25.0);
+    assert_eq!(15.0, result_point.x);
+    assert_eq!(25.0, result_point.y);
 }
 #[test]
 fn test_translation_matrix_from_vector_integration() {
@@ -436,16 +436,16 @@ fn test_translation_matrix_from_vector_integration() {
     let test_matrix = translation_matrix_from_vector(test_vector);
     let test_point = point_at(0.0, 0.0);
     let result_point = matrix_multiply_point(test_matrix, test_point);
-    assert_eq!(result_point.x, 10.0);
-    assert_eq!(result_point.y, 20.0);
+    assert_eq!(10.0, result_point.x);
+    assert_eq!(20.0, result_point.y);
 }
 #[test]
 fn test_translation_matrix_integration() {
     let test_matrix = translation_matrix(10.0, 20.0);
     let test_point = point_at(0.0, 0.0);
     let result_point = matrix_multiply_point(test_matrix, test_point);
-    assert_eq!(result_point.x, 10.0);
-    assert_eq!(result_point.y, 20.0);
+    assert_eq!(10.0, result_point.x);
+    assert_eq!(20.0, result_point.y);
 }
 #[test]
 fn test_angle_between_integration() {
@@ -459,7 +459,7 @@ fn test_dot_product_integration() {
     let test_vector1 = vector_to(3.0, 4.0);
     let test_vector2 = vector_to(1.0, 2.0);
     let test_result = dot_product(test_vector1, test_vector2);
-    assert_eq!(test_result, 11.0);
+    assert_eq!(11.0, test_result);
 }
 #[test]
 fn test_is_zero_vector_integration() {
@@ -480,16 +480,16 @@ fn test_ray_intersection_point_integration() {
 fn test_unit_vector_integration() {
     let test_vector = vector_to(3.0, 4.0);
     let test_unit_vector = unit_vector(test_vector);
-    assert_eq!(vector_magnitude(test_unit_vector), 1.0);
-    assert_eq!(vector_angle(test_unit_vector), vector_angle(test_vector));
+    assert_eq!(1.0, vector_magnitude(test_unit_vector));
+    assert_eq!(vector_angle(test_vector), vector_angle(test_unit_vector));
 }
 #[test]
 fn test_vector_add_integration() {
     let test_vector1 = vector_to(1.0, 2.0);
     let test_vector2 = vector_to(3.0, 4.0);
     let result_vector = vector_add(test_vector1, test_vector2);
-    assert_eq!(result_vector.x, 4.0);
-    assert_eq!(result_vector.y, 6.0);
+    assert_eq!(4.0, result_vector.x);
+    assert_eq!(6.0, result_vector.y);
 }
 #[test]
 fn test_vector_angle_integration() {
@@ -507,15 +507,15 @@ fn test_vector_from_angle_integration() {
 fn test_vector_from_line_integration() {
     let test_line = line_from(point_at(0.0, 0.0), point_at(10.0, 10.0));
     let test_vector = vector_from_line(test_line);
-    assert_eq!(test_vector.x, 10.0);
-    assert_eq!(test_vector.y, 10.0);
+    assert_eq!(10.0, test_vector.x);
+    assert_eq!(10.0, test_vector.y);
 }
 #[test]
 fn test_vector_from_point_to_rect_integration() {
     let test_rect = rectangle_from(0.0, 0.0, 100.0, 100.0);
     let test_point = point_at(50.0, 50.0);
     let test_vector = vector_from_point_to_rect(test_point, test_rect);
-    assert_eq!(vector_magnitude(test_vector), 0.0);
+    assert_eq!(0.0, vector_magnitude(test_vector));
 }
 #[test]
 fn test_vector_in_rect_integration() {
@@ -529,7 +529,7 @@ fn test_vector_in_rect_integration() {
 fn test_vector_invert_integration() {
     let test_vector = vector_to(3.0, 4.0);
     let inverted_vector = vector_invert(test_vector);
-    assert_eq!(vector_to(-3.0, -4.0), inverted_vector);
+    assert_eq!(inverted_vector, vector_to(-3.0, -4.0));
 }
 #[test]
 fn test_vector_limit_integration() {
@@ -542,27 +542,27 @@ fn test_vector_limit_integration() {
 fn test_vector_magnitude_integration() {
     let test_vector = vector_to(3.0, 4.0);
     let test_magnitude = vector_magnitude(test_vector);
-    assert_eq!(test_magnitude, 5.0);
+    assert_eq!(5.0, test_magnitude);
 }
 #[test]
 fn test_vector_magnitude_squared_integration() {
     let test_vector = vector_to(3.0, 4.0);
     let result = vector_magnitude_squared(test_vector);
-    assert_eq!(result, 25.0);
+    assert_eq!(25.0, result);
 }
 #[test]
 fn test_vector_multiply_integration() {
     let test_vector = vector_to(3.0, 4.0);
     let result_vector = vector_multiply(test_vector, 2.0);
-    assert_eq!(vector_magnitude(result_vector), 10.0);
-    assert_eq!(vector_angle(result_vector), vector_angle(test_vector));
+    assert_eq!(10.0, vector_magnitude(result_vector));
+    assert_eq!(vector_angle(test_vector), vector_angle(result_vector));
 }
 #[test]
 fn test_vector_normal_integration() {
     let test_vector = vector_to(3.0, 4.0);
     let normal_vector = vector_normal(test_vector);
-    assert_eq!(vector_magnitude(normal_vector), 5.0);
-    assert_eq!(vector_angle(normal_vector), 53.1301);
+    assert_eq!(5.0, vector_magnitude(normal_vector));
+    assert_eq!(53.1301, vector_angle(normal_vector));
 }
 #[test]
 fn test_vector_out_of_circle_from_circle_integration() {
@@ -588,7 +588,7 @@ fn test_vector_out_of_rect_from_circle_integration() {
     let test_rectangle = rectangle_from(50.0, 50.0, 200.0, 200.0);
     let test_velocity = vector_to(10.0, 0.0);
     let test_result_vector = vector_out_of_rect_from_circle(test_circle, test_rectangle, test_velocity);
-    assert_ne!(vector_magnitude(test_result_vector), 0.0);
+    assert_ne!(0.0, vector_magnitude(test_result_vector));
     close_window(test_window);
 }
 #[test]
@@ -605,41 +605,41 @@ fn test_vector_out_of_rect_from_rect_integration() {
     let test_bounds_rect = rectangle_from(0.0, 0.0, 200.0, 200.0);
     let test_velocity = vector_to(10.0, 10.0);
     let test_result_vector = vector_out_of_rect_from_rect(test_src_rect, test_bounds_rect, test_velocity);
-    assert_ne!(vector_magnitude(test_result_vector), 0.0);
+    assert_ne!(0.0, vector_magnitude(test_result_vector));
 }
 #[test]
 fn test_vector_point_to_point_integration() {
     let test_start_point = point_at(0.0, 0.0);
     let test_end_point = point_at(3.0, 4.0);
     let test_vector = vector_point_to_point(test_start_point, test_end_point);
-    assert_eq!(vector_to(3.0, 4.0), test_vector);
+    assert_eq!(test_vector, vector_to(3.0, 4.0));
 }
 #[test]
 fn test_vector_subtract_integration() {
     let test_vector1 = vector_to(3.0, 4.0);
     let test_vector2 = vector_to(1.0, 1.0);
     let result_vector = vector_subtract(test_vector1, test_vector2);
-    assert_eq!(vector_magnitude(result_vector), 3.0);
-    assert_eq!(vector_angle(result_vector), 45.0);
+    assert_eq!(3.0, vector_magnitude(result_vector));
+    assert_eq!(45.0, vector_angle(result_vector));
 }
 #[test]
 fn test_vector_to_point_integration() {
     let test_point = point_at(3.0, 4.0);
     let test_vector = vector_to_point(test_point);
-    assert_eq!(test_vector.x, 3.0);
-    assert_eq!(test_vector.y, 4.0);
+    assert_eq!(3.0, test_vector.x);
+    assert_eq!(4.0, test_vector.y);
 }
 #[test]
 fn test_vector_to_integration() {
     let test_vector = vector_to(3.0, 4.0);
-    assert_eq!(vector_magnitude(test_vector), 5.0);
-    assert_eq!(vector_angle(test_vector), 53.1301);
+    assert_eq!(5.0, vector_magnitude(test_vector));
+    assert_eq!(53.1301, vector_angle(test_vector));
 }
 #[test]
 fn test_vector_to_string_integration() {
     let test_vector = vector_to(3.0, 4.0);
     let test_string = vector_to_string(test_vector);
-    assert_eq!(test_string, "Vector(3.0, 4.0)");
+    assert_eq!("Vector(3.0, 4.0)", test_string);
 }
 #[test]
 fn test_vectors_equal_integration() {

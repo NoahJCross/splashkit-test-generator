@@ -474,7 +474,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "MouseButton",
+              "enum_type": "mouse_button",
               "value": "Left"
             }
           ]
@@ -494,7 +494,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
+                  "enum_type": "mouse_button",
                   "value": "Left"
                 }
               ]
@@ -5210,7 +5210,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "MouseButton",
+              "enum_type": "mouse_button",
               "value": "Left"
             }
           ]

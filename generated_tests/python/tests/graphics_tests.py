@@ -852,16 +852,12 @@ def test_ClearScreen_integration():
 
 def test_DisplayDetails_integration():
     test_number_of_displays = number_of_displays()
-if assert test_number_of_displays > 0
-:
-        test_display = display_details(0)
-        assert test_display is not None
-        assert display_width(test_display) > 0
-        assert display_height(test_display) > 0
-
-    else:
-        assert test_number_of_displays == 0
-
+    assert test_number_of_displays > 0
+    test_display = display_details(0)
+    assert test_display is not None
+    assert display_width(test_display) > 0
+    assert display_height(test_display) > 0
+    assert test_number_of_displays == 0
 
 
 def test_DisplayHeight_integration():

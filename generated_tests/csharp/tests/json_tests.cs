@@ -94,10 +94,11 @@ namespace SplashKitTests
         public void TestJsonReadArrayOfDoubleIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArray(testJson, "numbers", [1.1, 2.2, 3.3]);
-            JsonReadArray(testJson, "numbers", {:value_type=>"list", :value=>[]});
-            Assert.Equal(3, {:value_type=>"array_access", :array_name=>"out_result", :index=>0});
-            Assert.Equal(2.2, {:value_type=>"array_access", :array_name=>"out_result", :index=>1});
+            JsonSetArray(testJson, "numbers", new List<double> { 1.1, 2.2, 3.3 };);
+            var outResult = new List<double> {  };
+            JsonReadArray(testJson, "numbers", outResult);
+            Assert.Equal(1.1, outResult[0]);
+            Assert.Equal(2.2, outResult[1]);
             FreeJson(testJson);
             FreeAllJson();
         }
@@ -105,13 +106,15 @@ namespace SplashKitTests
         public void TestJsonReadArrayOfJsonIntegration()
         {
             var testJson = CreateJson();
-            var testJsonNested1 = CreateJson();
-            var testJsonNested2 = CreateJson();
+            var testJson1 = CreateJson();
+            var testJson2 = CreateJson();
             JsonSetString(testJsonNested1, "key1", "value1");
             JsonSetString(testJsonNested2, "key2", "value2");
-            JsonSetArray(testJson, "array_key", {:value_type=>"vector", :value=>[{:value_type=>"variable", :variable_name=>"test_json_nested1"}, {:value_type=>"variable", :variable_name=>"test_json_nested2"}]});
-            JsonReadArray(testJson, "array_key", {:value_type=>"vector", :variable_name=>[]});
-            Assert.Equal(2, outResult);
+            var testJsonArray = new List<Json> { testJson1, testJson2 };
+            JsonSetArray(testJson, "array_key", testJsonArray);
+            var outResult = new List<Json> {  };
+            JsonReadArray(testJson, "array_key", outResult);
+            Assert.Equal(Size(outResult), 2);
             FreeJson(testJson);
             FreeJson(testJsonNested1);
             FreeJson(testJsonNested2);
@@ -122,21 +125,22 @@ namespace SplashKitTests
         {
             var testJson = CreateJson();
             JsonSetArray(testJson, "test_array", ["item1", "item2", "item3"]);
+            var outResult = new List<string> {  };
             JsonReadArray(testJson, "test_array", outResult);
-            Assert.Equal(3, size);
-            Assert.Equal("item1", indexOfJson0);
+            Assert.Equal(3, Size(outResult));
+            Assert.Equal("item1", outResult[0]);
             FreeJson(testJson);
         }
         [Fact]
         public void TestJsonReadArrayOfBoolIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArray(testJson, "test_key", "[true, false, true]");
+            JsonSetArray(testJson, "test_key", new List<bool> { true, false, true };);
+            var outResult = new List<bool> {  };
             JsonReadArray(testJson, "test_key", outResult);
-            Assert.Equal(3, size);
-            Assert.Equal(0, indexOfJson0);
-            Assert.NotEqual(1, indexOfJson1);
-            Assert.Equal(2, indexOfJson2);
+            Assert.Equal(Size(outResult), 3);
+            Assert.True(outResult[0]);
+            Assert.False(outResult[1]);
             FreeJson(testJson);
         }
         [Fact]
@@ -199,27 +203,30 @@ namespace SplashKitTests
         public void TestJsonSetArrayOfStringIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArray(testJson, "test_key", ["value1", "value2", "value3"]);
-            JsonReadArray(testJson, "test_key", {:value_type=>"list", :value=>[]});
-            Assert.Equal(3, testResult);
+            JsonSetArray(testJson, "test_key", new List<string> { "value1", "value2", "value3" };);
+            var outResult = new List<string> {  };
+            JsonReadArray(testJson, "test_key", outResult);
+            Assert.Equal(["value1", "value2", "value3"], outResult);
             FreeJson(testJson);
         }
         [Fact]
         public void TestJsonSetArrayOfDoubleIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArray(testJson, "numbers", [1.1, 2.2, 3.3]);
-            JsonReadArray(testJson, "numbers", {:value_type=>"list", :value=>[]});
-            Assert.Equal([1.1, 2.2, 3.3], readNumbers);
+            JsonSetArray(testJson, "numbers", new List<double> { 1.1, 2.2, 3.3 };);
+            var outResult = new List<double> {  };
+            JsonReadArray(testJson, "numbers", outResult);
+            Assert.Equal([1.1, 2.2, 3.3], outResult);
             FreeJson(testJson);
         }
         [Fact]
         public void TestJsonSetArrayOfBoolIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArray(testJson, "test_key", "[true, false, true]");
-            JsonReadArray(testJson, "test_key", {:value_type=>"list", :value=>[]});
-            Assert.Equal("[true, false, true]", readArray);
+            JsonSetArray(testJson, "test_key", [true, false, true]);
+            var outResult = new List<bool> {  };
+            JsonReadArray(testJson, "test_key", outResult);
+            Assert.Equal([true, false, true], outResult);
             FreeJson(testJson);
         }
         [Fact]
@@ -230,12 +237,12 @@ namespace SplashKitTests
             var testJson2 = CreateJson();
             JsonSetString(testJson1, "key1", "value1");
             JsonSetString(testJson2, "key2", "value2");
-            JsonSetArray(testJson, "array_key", [{:value_type=>"variable", :variable_name=>"test_json1"}, {:value_type=>"variable", :variable_name=>"test_json2"}]);
-            Assert.Equal("value1", JsonReadString(JsonReadObject(testJson, 0), "key1"));
-            Assert.Equal("value2", JsonReadString(JsonReadObject(readArray, 1), "key2"));
-            FreeJson(testJson);
-            FreeJson(testJson1);
-            FreeJson(testJson2);
+            var testJsonArray = new List<Json> { testJson1, testJson2 };
+            JsonSetArray(testJson, "array_key", testJsonArray);
+            var outResult = new List<Json> {  };
+            JsonReadArray(testJson, "array_key", outResult);
+            Assert.Equal("value1", JsonReadString(outResult[0], "key1"));
+            Assert.Equal("value2", JsonReadString(outResult[1], "key2"));
             FreeAllJson();
         }
         [Fact]

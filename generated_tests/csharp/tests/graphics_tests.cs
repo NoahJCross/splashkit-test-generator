@@ -158,8 +158,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testClip = CurrentClip();
-            Assert.Equal(800, testClip.Width);
-            Assert.Equal(600, testClip.Height);
+            Assert.Equal(testClip.Width, 800);
+            Assert.Equal(testClip.Height, 600);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -169,10 +169,10 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(10, 10, 50, 50);
             PushClip(testBitmap, testRectangle);
             var testClip = CurrentClip(testBitmap);
-            Assert.Equal(10, RectangleLeft(testClip));
-            Assert.Equal(10, RectangleTop(testClip));
-            Assert.Equal(50, testClip.Width);
-            Assert.Equal(50, testClip.Height);
+            Assert.Equal(RectangleLeft(testClip), 10);
+            Assert.Equal(RectangleTop(testClip), 10);
+            Assert.Equal(testClip.Width, 50);
+            Assert.Equal(testClip.Height, 50);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -180,7 +180,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testClip = CurrentClip(testWindow);
-            Assert.Equal(testClip, RectangleFrom(0, 0, 800, 600));
+            Assert.Equal(RectangleFrom(0, 0, 800, 600), testClip);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -190,10 +190,10 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100, 100, 200, 200);
             PushClip(testWindow, testRectangle);
             var testCurrentClip = CurrentClip(testWindow);
-            Assert.Equal(testRectangle, testCurrentClip);
+            Assert.Equal(testCurrentClip, testRectangle);
             PopClip(testWindow);
             var testCurrentClipAfterPop = CurrentClip(testWindow);
-            Assert.Equal(testCurrentClipAfterPop, RectangleFrom(0, 0, 800, 600));
+            Assert.Equal(RectangleFrom(0, 0, 800, 600), testCurrentClipAfterPop);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -216,7 +216,7 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             PushClip(testBitmap, RectangleFrom(0, 0, 50, 50));
             PopClip(testBitmap);
-            Assert.Equal(RectangleFrom(0, 0, 100, 100), CurrentClip(testBitmap));
+            Assert.Equal(CurrentClip(testBitmap), RectangleFrom(0, 0, 100, 100));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -226,7 +226,7 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             PushClip(testWindow, testRectangle);
             var testCurrentClip = CurrentClip(testWindow);
-            Assert.Equal(testRectangle, testCurrentClip);
+            Assert.Equal(testCurrentClip, testRectangle);
             RefreshScreen();
             CloseWindow(testWindow);
         }
@@ -237,10 +237,10 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(50, 50, 100, 100);
             PushClip(testBitmap, testRectangle);
             var testCurrentClip = CurrentClip(testBitmap);
-            Assert.Equal(50, RectangleLeft(testCurrentClip));
-            Assert.Equal(50, RectangleTop(testCurrentClip));
-            Assert.Equal(100, testCurrentClip.Width);
-            Assert.Equal(100, testCurrentClip.Height);
+            Assert.Equal(RectangleLeft(testCurrentClip), 50);
+            Assert.Equal(RectangleTop(testCurrentClip), 50);
+            Assert.Equal(testCurrentClip.Width, 100);
+            Assert.Equal(testCurrentClip.Height, 100);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -250,7 +250,7 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             PushClip(testRectangle);
             var testCurrentClip = CurrentClip();
-            Assert.Equal(testRectangle, testCurrentClip);
+            Assert.Equal(testCurrentClip, testRectangle);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -259,7 +259,7 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             PushClip(testBitmap, RectangleFrom(10, 10, 50, 50));
             ResetClip(testBitmap);
-            Assert.Equal(RectangleFrom(0, 0, 100, 100), CurrentClip(testBitmap));
+            Assert.Equal(CurrentClip(testBitmap), RectangleFrom(0, 0, 100, 100));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -269,7 +269,7 @@ namespace SplashKitTests
             PushClip(RectangleFrom(100, 100, 200, 200));
             ResetClip();
             var testClipRect = CurrentClip();
-            Assert.Equal(testClipRect, RectangleFrom(0, 0, 800, 600));
+            Assert.Equal(RectangleFrom(0, 0, 800, 600), testClipRect);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -279,7 +279,7 @@ namespace SplashKitTests
             PushClip(testWindow, RectangleFrom(100, 100, 200, 200));
             ResetClip(testWindow);
             var testClipRect = CurrentClip(testWindow);
-            Assert.Equal(testClipRect, RectangleFrom(0, 0, 800, 600));
+            Assert.Equal(RectangleFrom(0, 0, 800, 600), testClipRect);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -289,7 +289,7 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             SetClip(testRectangle);
             var testCurrentClip = CurrentClip();
-            Assert.Equal(testRectangle, testCurrentClip);
+            Assert.Equal(testCurrentClip, testRectangle);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -299,7 +299,7 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(50, 50, 100, 100);
             SetClip(testBitmap, testRectangle);
             var testCurrentClip = CurrentClip(testBitmap);
-            Assert.Equal(testRectangle, testCurrentClip);
+            Assert.Equal(testCurrentClip, testRectangle);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -309,7 +309,7 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100, 100, 200, 200);
             SetClip(testWindow, testRectangle);
             var testCurrentClip = CurrentClip(testWindow);
-            Assert.Equal(testRectangle, testCurrentClip);
+            Assert.Equal(testCurrentClip, testRectangle);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -440,10 +440,10 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionLineWidth(1));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
             DrawLine(ColorBlack(), 300.0, 300.0, 400.0, 400.0, OptionLineWidth(5));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(300.0, 300.0)));
+            Assert.Equal(GetPixel(PointAt(300.0, 300.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -923,10 +923,10 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
             ClearScreen();
             RefreshScreen();
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+            Assert.NotEqual(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -935,27 +935,22 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(400.0, 300.0)));
+            Assert.Equal(GetPixel(PointAt(400.0, 300.0)), ColorBlack());
             ClearScreen(ColorWhite());
             RefreshScreen();
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(400.0, 300.0)));
+            Assert.NotEqual(GetPixel(PointAt(400.0, 300.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestDisplayDetailsIntegration()
         {
             var testNumberOfDisplays = NumberOfDisplays();
-if (Assert.True(testNumberOfDisplays > 0);
-) {
-                var testDisplay = DisplayDetails(0);
-                Assert.NotNull(testDisplay);
-                Assert.True(DisplayWidth(testDisplay) > 0);
-                Assert.True(DisplayHeight(testDisplay) > 0);
-}
-            else
-            {
-                Assert.Equal(0, testNumberOfDisplays);
-}
+            Assert.True(testNumberOfDisplays > 0);
+            var testDisplay = DisplayDetails(0);
+            Assert.NotNull(testDisplay);
+            Assert.True(DisplayWidth(testDisplay) > 0);
+            Assert.True(DisplayHeight(testDisplay) > 0);
+            Assert.Equal(testNumberOfDisplays, 0);
         }
         [Fact]
         public void TestDisplayHeightIntegration()
@@ -990,7 +985,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testDisplay = DisplayDetails(0);
             var testY = DisplayY(testDisplay);
-            Assert.NotEqual(-1, testY);
+            Assert.NotEqual(testY, -1);
         }
         [Fact]
         public void TestNumberOfDisplaysIntegration()
@@ -1028,7 +1023,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testHeight = ScreenHeight();
-            Assert.Equal(600, testHeight);
+            Assert.Equal(testHeight, 600);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1036,7 +1031,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testWidth = ScreenWidth();
-            Assert.Equal(800, testWidth);
+            Assert.Equal(testWidth, 800);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1063,8 +1058,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testPoint = PointAt(50.0, 50.0);
             var testCircle = BitmapBoundingCircle(testBitmap, testPoint);
-            Assert.Equal(50.0, CircleRadius(testCircle));
-            Assert.Equal(testPoint, CenterPoint(testCircle));
+            Assert.Equal(CircleRadius(testCircle), 50.0);
+            Assert.Equal(CenterPoint(testCircle), testPoint);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1072,8 +1067,8 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testRectangle = BitmapBoundingRectangle(testBitmap);
-            Assert.Equal(BitmapWidth(testBitmap), testRectangle.Width);
-            Assert.Equal(BitmapHeight(testBitmap), testRectangle.Height);
+            Assert.Equal(testRectangle.Width, BitmapWidth(testBitmap));
+            Assert.Equal(testRectangle.Height, BitmapHeight(testBitmap));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1081,10 +1076,10 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testRectangle = BitmapBoundingRectangle(testBitmap, 50.0, 50.0);
-            Assert.Equal(50.0, RectangleLeft(testRectangle));
-            Assert.Equal(50.0, RectangleTop(testRectangle));
-            Assert.Equal(150.0, RectangleRight(testRectangle));
-            Assert.Equal(150.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 50.0);
+            Assert.Equal(RectangleTop(testRectangle), 50.0);
+            Assert.Equal(RectangleRight(testRectangle), 150.0);
+            Assert.Equal(RectangleBottom(testRectangle), 150.0);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1092,8 +1087,8 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testCenter = BitmapCellCenter(testBitmap);
-            Assert.Equal(50.0, testCenter.X);
-            Assert.Equal(50.0, testCenter.Y);
+            Assert.Equal(testCenter.X, 50.0);
+            Assert.Equal(testCenter.Y, 50.0);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1101,9 +1096,9 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testCircle = BitmapCellCircle(testBitmap, 50.0, 50.0);
-            Assert.Equal(50.0, CircleRadius(testCircle));
-            Assert.Equal(50.0, CircleX(testCircle));
-            Assert.Equal(50.0, CircleY(testCircle));
+            Assert.Equal(CircleRadius(testCircle), 50.0);
+            Assert.Equal(CircleX(testCircle), 50.0);
+            Assert.Equal(CircleY(testCircle), 50.0);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1112,9 +1107,9 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
             var testCircle = BitmapCellCircle(testBitmap, PointAt(100, 100));
-            Assert.Equal(125, CircleX(testCircle));
-            Assert.Equal(125, CircleY(testCircle));
-            Assert.Equal(25, CircleRadius(testCircle));
+            Assert.Equal(CircleX(testCircle), 125);
+            Assert.Equal(CircleY(testCircle), 125);
+            Assert.Equal(CircleRadius(testCircle), 25);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1123,7 +1118,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
             var testCircle = BitmapCellCircle(testBitmap, PointAt(100.0, 100.0), 2.0);
-            Assert.Equal(50.0, CircleRadius(testCircle));
+            Assert.Equal(CircleRadius(testCircle), 50.0);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1131,7 +1126,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-            Assert.Equal(5, BitmapCellColumns(testBitmap));
+            Assert.Equal(BitmapCellColumns(testBitmap), 5);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1139,7 +1134,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-            Assert.Equal(25, BitmapCellCount(testBitmap));
+            Assert.Equal(BitmapCellCount(testBitmap), 25);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1147,7 +1142,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-            Assert.Equal(20, BitmapCellHeight(testBitmap));
+            Assert.Equal(BitmapCellHeight(testBitmap), 20);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1156,8 +1151,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
             var testOffset = BitmapCellOffset(testBitmap, 5);
-            Assert.Equal(75, testOffset.X);
-            Assert.Equal(0, testOffset.Y);
+            Assert.Equal(testOffset.X, 75);
+            Assert.Equal(testOffset.Y, 0);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1166,8 +1161,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
             var testRectangle = BitmapCellRectangle(testBitmap);
-            Assert.Equal(25, testRectangle.Width);
-            Assert.Equal(25, testRectangle.Height);
+            Assert.Equal(testRectangle.Width, 25);
+            Assert.Equal(testRectangle.Height, 25);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1176,10 +1171,10 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
             var testRectangle = BitmapCellRectangle(testBitmap, PointAt(50.0, 50.0));
-            Assert.Equal(50.0, RectangleLeft(testRectangle));
-            Assert.Equal(50.0, RectangleTop(testRectangle));
-            Assert.Equal(75.0, RectangleRight(testRectangle));
-            Assert.Equal(75.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 50.0);
+            Assert.Equal(RectangleTop(testRectangle), 50.0);
+            Assert.Equal(RectangleRight(testRectangle), 75.0);
+            Assert.Equal(RectangleBottom(testRectangle), 75.0);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1187,7 +1182,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-            Assert.Equal(5, BitmapCellRows(testBitmap));
+            Assert.Equal(BitmapCellRows(testBitmap), 5);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1195,7 +1190,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
-            Assert.Equal(25, BitmapCellWidth(testBitmap));
+            Assert.Equal(BitmapCellWidth(testBitmap), 25);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1203,8 +1198,8 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testCenter = BitmapCenter(testBitmap);
-            Assert.Equal(50.0, testCenter.X);
-            Assert.Equal(50.0, testCenter.Y);
+            Assert.Equal(testCenter.X, 50.0);
+            Assert.Equal(testCenter.Y, 50.0);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1212,7 +1207,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testFilename = BitmapFilename(testBitmap);
-            Assert.Equal("", testFilename);
+            Assert.Equal(testFilename, "");
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1220,14 +1215,14 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testHeight = BitmapHeight(testBitmap);
-            Assert.Equal(100, testHeight);
+            Assert.Equal(testHeight, 100);
             FreeBitmap(testBitmap);
         }
         [Fact]
         public void TestBitmapHeightOfBitmapNamedIntegration()
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            Assert.Equal(100, BitmapHeight("test_bitmap"));
+            Assert.Equal(BitmapHeight("test_bitmap"), 100);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1235,7 +1230,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testBitmapName = BitmapName(testBitmap);
-            Assert.Equal("test_bitmap", testBitmapName);
+            Assert.Equal(testBitmapName, "test_bitmap");
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1254,10 +1249,10 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
             var testRectangle = BitmapRectangleOfCell(testBitmap, 5);
-            Assert.Equal(0, RectangleLeft(testRectangle));
-            Assert.Equal(75, RectangleTop(testRectangle));
-            Assert.Equal(25, RectangleRight(testRectangle));
-            Assert.Equal(100, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 0);
+            Assert.Equal(RectangleTop(testRectangle), 75);
+            Assert.Equal(RectangleRight(testRectangle), 25);
+            Assert.Equal(RectangleBottom(testRectangle), 100);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1265,11 +1260,11 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
-            Assert.Equal(20, BitmapCellWidth(testBitmap));
-            Assert.Equal(20, BitmapCellHeight(testBitmap));
-            Assert.Equal(5, BitmapCellColumns(testBitmap));
-            Assert.Equal(5, BitmapCellRows(testBitmap));
-            Assert.Equal(25, BitmapCellCount(testBitmap));
+            Assert.Equal(BitmapCellWidth(testBitmap), 20);
+            Assert.Equal(BitmapCellHeight(testBitmap), 20);
+            Assert.Equal(BitmapCellColumns(testBitmap), 5);
+            Assert.Equal(BitmapCellRows(testBitmap), 5);
+            Assert.Equal(BitmapCellCount(testBitmap), 25);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1285,7 +1280,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testWidth = BitmapWidth(testBitmap);
-            Assert.Equal(100, testWidth);
+            Assert.Equal(testWidth, 100);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1295,7 +1290,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawBitmap(BitmapNamed("test_bitmap"), 100, 100);
             RefreshScreen();
-            Assert.Equal(100, BitmapWidth("test_bitmap"));
+            Assert.Equal(BitmapWidth("test_bitmap"), 100);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -1327,8 +1322,8 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             Assert.NotNull(testBitmap);
-            Assert.Equal(100, BitmapWidth(testBitmap));
-            Assert.Equal(100, BitmapHeight(testBitmap));
+            Assert.Equal(BitmapWidth(testBitmap), 100);
+            Assert.Equal(BitmapHeight(testBitmap), 100);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1519,8 +1514,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testLine = LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0));
             DrawLine(ColorBlack(), testLine);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1530,8 +1525,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testLine = LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0));
             DrawLine(ColorBlack(), testLine, OptionLineWidth(3, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1540,8 +1535,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLine(ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1550,8 +1545,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLine(ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1560,8 +1555,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1570,8 +1565,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1641,8 +1636,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testLine = LineFrom(PointAt(100.0, 100.0), PointAt(700.0, 500.0));
             DrawLineOnWindow(testWindow, ColorBlack(), testLine);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(testWindow, PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(testWindow, PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(testWindow, PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1652,8 +1647,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testLine = LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0));
             DrawLineOnWindow(testWindow, ColorBlack(), testLine, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(testWindow, PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(testWindow, PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(testWindow, PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1662,8 +1657,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLineOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
-            Assert.NotEqual(ColorBlack(), GetPixel(testWindow, 99.0, 99.0));
+            Assert.Equal(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
+            Assert.NotEqual(GetPixel(testWindow, 99.0, 99.0), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1672,8 +1667,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLineOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
-            Assert.NotEqual(ColorBlack(), GetPixel(testWindow, 99.0, 99.0));
+            Assert.Equal(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
+            Assert.NotEqual(GetPixel(testWindow, 99.0, 99.0), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1682,8 +1677,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLineOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
-            Assert.NotEqual(ColorBlack(), GetPixel(testWindow, 99.0, 99.0));
+            Assert.Equal(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
+            Assert.NotEqual(GetPixel(testWindow, 99.0, 99.0), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1692,8 +1687,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawLineOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
-            Assert.NotEqual(ColorBlack(), GetPixel(testWindow, 99.0, 99.0));
+            Assert.Equal(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
+            Assert.NotEqual(GetPixel(testWindow, 99.0, 99.0), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1702,8 +1697,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1712,9 +1707,9 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1723,8 +1718,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1733,8 +1728,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1787,8 +1782,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testPoint = PointAt(100.0, 100.0);
             DrawPixelOnWindow(testWindow, testColor, testPoint);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1798,8 +1793,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testPoint = PointAt(100.0, 100.0);
             DrawPixelOnWindow(testWindow, ColorBlack(), testPoint, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1808,8 +1803,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixelOnWindow(testWindow, ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1818,8 +1813,8 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixelOnWindow(testWindow, ColorBlack(), 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
-            Assert.NotEqual(ColorBlack(), GetPixel(PointAt(99.0, 99.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
+            Assert.NotEqual(GetPixel(PointAt(99.0, 99.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1828,7 +1823,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
             var testColor = GetPixel(testBitmap, PointAt(50.0, 50.0));
-            Assert.Equal(testColor, ColorBlack());
+            Assert.Equal(ColorBlack(), testColor);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1837,7 +1832,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
             var testPixelColor = GetPixel(testBitmap, 50.0, 50.0);
-            Assert.Equal(ColorBlack(), testPixelColor);
+            Assert.Equal(testPixelColor, ColorBlack());
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1846,7 +1841,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(100.0, 100.0)));
+            Assert.Equal(GetPixel(PointAt(100.0, 100.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1855,7 +1850,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(100.0, 100.0));
+            Assert.Equal(GetPixel(100.0, 100.0), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1864,7 +1859,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, PointAt(100.0, 100.0)));
+            Assert.Equal(GetPixel(testWindow, PointAt(100.0, 100.0)), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1873,7 +1868,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(GetPixel(testWindow, 100.0, 100.0), ColorBlack());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1883,7 +1878,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
             var testPixel = GetPixelFromWindow(testWindow, PointAt(100.0, 100.0));
-            Assert.Equal(testPixel, ColorBlack());
+            Assert.Equal(ColorBlack(), testPixel);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1893,7 +1888,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
             var testPixelColor = GetPixel(testWindow, 100.0, 100.0);
-            Assert.Equal(testPixelColor, ColorBlack());
+            Assert.Equal(ColorBlack(), testPixelColor);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2517,7 +2512,7 @@ if (Assert.True(testNumberOfDisplays > 0);
         {
             var testFont = LoadFont("test_font", "hara.ttf");
             var testStyle = GetFontStyle(testFont);
-            Assert.NotEqual(FontStyle.BoldFont, testStyle);
+            Assert.NotEqual(testStyle, FontStyle.BoldFont);
             FreeFont(testFont);
         }
         [Fact]
@@ -2564,7 +2559,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             SetFontStyle("test_font", FontStyle.BoldFont);
             DrawText("Bold Text", ColorBlack(), "test_font", 24, 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(FontStyle.BoldFont, GetFontStyle("test_font"));
+            Assert.Equal(GetFontStyle("test_font"), FontStyle.BoldFont);
             CloseWindow(testWindow);
             FreeFont(testFont);
         }
@@ -2574,7 +2569,7 @@ if (Assert.True(testNumberOfDisplays > 0);
             var testFont = FontNamed("hara");
             SetFontStyle(testFont, FontStyle.BoldFont);
             var testStyle = GetFontStyle(testFont);
-            Assert.Equal(FontStyle.BoldFont, testStyle);
+            Assert.Equal(testStyle, FontStyle.BoldFont);
             FreeFont(testFont);
         }
         [Fact]

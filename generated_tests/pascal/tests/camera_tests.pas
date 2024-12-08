@@ -7,8 +7,8 @@ procedure TIntegrationTests.TestCameraPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testCameraPosition := CameraPosition();
-    AssertEquals(0.0, testCameraPosition);
-    AssertEquals(0.0, testCameraPosition);
+    AssertEquals(0.0, testCameraPosition.x);
+    AssertEquals(0.0, testCameraPosition.y);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestCameraXIntegration;

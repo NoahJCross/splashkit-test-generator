@@ -47,7 +47,7 @@ namespace SplashKitTests
             var initialTicks = TimerTicks(testTimer);
             PauseTimer("test_timer");
             var pausedTicks = TimerTicks(testTimer);
-            Assert.Equal(pausedTicks, initialTicks);
+            Assert.Equal(initialTicks, pausedTicks);
             FreeAllTimers();
         }
         [Fact]
@@ -59,7 +59,7 @@ namespace SplashKitTests
             var initialTicks = TimerTicks(testTimer);
             Delay(1000);
             var finalTicks = TimerTicks(testTimer);
-            Assert.Equal(finalTicks, initialTicks);
+            Assert.Equal(initialTicks, finalTicks);
             FreeAllTimers();
         }
         [Fact]
@@ -71,7 +71,7 @@ namespace SplashKitTests
             Assert.True(TimerTicks(testTimer) > 0);
             ResetTimer("test_timer");
             ProcessEvents();
-            Assert.Equal(0, TimerTicks(testTimer));
+            Assert.Equal(TimerTicks(testTimer), 0);
             FreeAllTimers();
         }
         [Fact]
@@ -81,7 +81,7 @@ namespace SplashKitTests
             StartTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
             ResetTimer(testTimer);
-            Assert.Equal(0, TimerTicks(testTimer));
+            Assert.Equal(TimerTicks(testTimer), 0);
             FreeAllTimers();
         }
         [Fact]
@@ -139,7 +139,7 @@ namespace SplashKitTests
             Assert.True(TimerTicks(testTimer) > 0);
             StopTimer("test_timer");
             ProcessEvents();
-            Assert.Equal(0, TimerTicks(testTimer));
+            Assert.Equal(TimerTicks(testTimer), 0);
             FreeAllTimers();
         }
         [Fact]

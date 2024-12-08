@@ -18,7 +18,7 @@ namespace SplashKitTests
         {
             Write("Please enter your name: ");
             var testInput = ReadLine();
-            Assert.NotEqual("", testInput);
+            Assert.NotEqual(testInput, "");
             WriteLine("You entered: ", testInput);
         }
         [Fact]
@@ -37,7 +37,7 @@ namespace SplashKitTests
             Write("A");
             Assert.True(TerminalHasInput());
             var testChar = ReadChar();
-            Assert.Equal("A", testChar);
+            Assert.Equal(testChar, "A");
         }
         [Fact]
         public void TestWriteDoubleIntegration()
@@ -57,7 +57,7 @@ namespace SplashKitTests
             Write("Test String");
             Assert.True(TerminalHasInput());
             var testOutput = ReadLine();
-            Assert.Equal("Test String", testOutput);
+            Assert.Equal(testOutput, "Test String");
         }
         [Fact]
         public void TestWriteLineCharIntegration()
@@ -65,7 +65,7 @@ namespace SplashKitTests
             WriteLine("A");
             Assert.True(TerminalHasInput());
             var testChar = ReadChar();
-            Assert.Equal("A", testChar);
+            Assert.Equal(testChar, "A");
         }
         [Fact]
         public void TestWriteLineEmptyIntegration()

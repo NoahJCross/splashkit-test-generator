@@ -1,5 +1,5 @@
 {
-  "group": "networking",
+  "group": "interface",
   "tests": [
     {
       "name": "accept_all_new_connections",
@@ -56,7 +56,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "connections_accepted"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -141,7 +142,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "connection_accepted"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -190,7 +192,7 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": "client1"
+              "value": "test_connection1"
             },
             {
               "value_type": "primitive",
@@ -209,7 +211,7 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": "client2"
+              "value": "test_connection2"
             },
             {
               "value_type": "primitive",
@@ -221,6 +223,11 @@
             }
           ],
           "store_result": "test_connection2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "function",
@@ -254,7 +261,8 @@
                   "variable_name": "test_connection1"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -270,28 +278,14 @@
                   "variable_name": "test_connection2"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection1"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection2"
-            }
-          ]
+          "function_name": "close_all_connections",
+          "args": []
         },
         {
           "step_type": "function",
@@ -340,11 +334,35 @@
               "value": 5000
             }
           ],
-          "store_result": "test_connection"
+          "store_result": "test_connection1"
         },
         {
           "step_type": "function",
-          "function_name": "broadcast_message_to_all",
+          "function_name": "open_connection",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_connection2"
+            },
+            {
+              "value_type": "primitive",
+              "value": "127.0.0.1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_connection2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "broadcast_message",
           "args": [
             {
               "value_type": "primitive",
@@ -367,21 +385,34 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_connection"
+                  "variable_name": "test_connection1"
                 }
               ]
-            }
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_messages",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection2"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
+          "function_name": "close_all_connections",
+          "args": []
         },
         {
           "step_type": "function",
@@ -434,7 +465,12 @@
         },
         {
           "step_type": "function",
-          "function_name": "broadcast_message_to_server_named",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "broadcast_message",
           "args": [
             {
               "value_type": "primitive",
@@ -464,7 +500,8 @@
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -539,7 +576,8 @@
               "value_type": "function",
               "function_name": "has_new_connections",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -603,6 +641,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -633,7 +676,8 @@
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -664,7 +708,8 @@
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -728,6 +773,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -758,7 +808,8 @@
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -784,7 +835,8 @@
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -848,6 +900,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -871,19 +928,20 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages_on_server",
+              "function_name": "has_messages",
               "args": [
                 {
                   "value_type": "variable",
                   "variable_name": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "clear_messages_from_server",
+          "function_name": "clear_messages_from_connection",
           "args": [
             {
               "value_type": "variable",
@@ -902,14 +960,15 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages_on_server",
+              "function_name": "has_messages",
               "args": [
                 {
                   "value_type": "variable",
                   "variable_name": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -979,7 +1038,8 @@
                   "value": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1005,7 +1065,8 @@
                   "value": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1036,7 +1097,7 @@
               "value": 5000
             }
           ],
-          "store_result": "test_server_1"
+          "store_result": "test_server1"
         },
         {
           "step_type": "function",
@@ -1051,38 +1112,23 @@
               "value": 5001
             }
           ],
-          "store_result": "test_server_2"
-        },
-        {
-          "step_type": "function",
-          "function_name": "has_server",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_server_1"
-            }
-          ],
-          "store_result": "server_1_exists"
-        },
-        {
-          "step_type": "function",
-          "function_name": "has_server",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_server_2"
-            }
-          ],
-          "store_result": "server_2_exists"
+          "store_result": "test_server2"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "server_1_exists"
-            }
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server_1"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -1090,9 +1136,16 @@
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "server_2_exists"
-            }
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server_2"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -1101,35 +1154,20 @@
           "args": []
         },
         {
-          "step_type": "function",
-          "function_name": "has_server",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_server_1"
-            }
-          ],
-          "store_result": "server_1_closed"
-        },
-        {
-          "step_type": "function",
-          "function_name": "has_server",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_server_2"
-            }
-          ],
-          "store_result": "server_2_closed"
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "server_1_closed"
-            }
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server_1"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -1137,9 +1175,16 @@
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "server_2_closed"
-            }
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server_2"
+                }
+              ]
+            },
+            "value2": null
           }
         }
       ]
@@ -1147,6 +1192,21 @@
     {
       "name": "close_connection",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
         {
           "step_type": "function",
           "function_name": "open_connection",
@@ -1165,6 +1225,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "function",
@@ -1184,40 +1249,57 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "close_result"
-            }
+            },
+            "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "is_connection_open",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ],
-          "store_result": "is_open"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "is_open"
-            }
+              "value_type": "function",
+              "function_name": "is_connection_open",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_all_connections",
-          "args": []
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
     {
       "name": "close_connection_named",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
         {
           "step_type": "function",
           "function_name": "open_connection",
@@ -1239,35 +1321,36 @@
         },
         {
           "step_type": "function",
-          "function_name": "is_connection_open",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ],
-          "store_result": "test_is_open"
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_is_open"
-            }
+              "value_type": "function",
+              "function_name": "is_connection_open",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_connection_named",
+          "function_name": "close_connection",
           "args": [
             {
               "value_type": "primitive",
               "value": "test_connection"
             }
           ],
-          "store_result": "test_result"
+          "store_result": "close_result"
         },
         {
           "step_type": "assertion",
@@ -1275,30 +1358,37 @@
             "compare_type": "true",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_result"
-            }
+              "variable_name": "close_result"
+            },
+            "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "is_connection_open",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ],
-          "store_result": "test_is_open"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_is_open"
-            }
+              "value_type": "function",
+              "function_name": "is_connection_open",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection"
+                }
+              ]
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
@@ -1307,9 +1397,90 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
+          "function_name": "open_connection",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_connection"
+            },
+            {
+              "value_type": "primitive",
+              "value": "127.0.0.1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_connection"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "send_message_to_connection",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Message"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_messages",
+              "args": []
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "read_message",
           "args": [],
           "store_result": "test_message"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_message"
+            },
+            "value2": null
+          }
         },
         {
           "step_type": "function",
@@ -1324,13 +1495,34 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "false",
             "value1": {
               "value_type": "function",
               "function_name": "has_messages",
               "args": []
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_connection",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
@@ -1354,7 +1546,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "close_server_named",
+          "function_name": "close_server",
           "args": [
             {
               "value_type": "primitive",
@@ -1370,28 +1562,25 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "close_result"
-            }
+            },
+            "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "has_server",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_server"
-            }
-          ],
-          "store_result": "server_exists"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "server_exists"
-            }
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server"
+                }
+              ]
+            },
+            "value2": null
           }
         }
       ]
@@ -1432,28 +1621,25 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "close_result"
-            }
+            },
+            "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "has_server",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_server"
-            }
-          ],
-          "store_result": "server_exists"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "server_exists"
-            }
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server"
+                }
+              ]
+            },
+            "value2": null
           }
         }
       ]
@@ -1504,18 +1690,18 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1
+            },
+            "value2": {
               "value_type": "function",
-              "function_name": "connection_count_named",
+              "function_name": "connection_count",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "test_server"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1
             }
           }
         },
@@ -1583,6 +1769,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "connection_count",
               "args": [
@@ -1591,10 +1781,6 @@
                   "variable_name": "test_server"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1
             }
           }
         },
@@ -1625,6 +1811,21 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "open_connection",
           "args": [
             {
@@ -1644,6 +1845,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "connection_ip",
           "args": [
             {
@@ -1658,12 +1864,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_ip"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 2130706433
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_ip"
             }
           }
         },
@@ -1676,12 +1882,37 @@
               "variable_name": "test_connection"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
     {
       "name": "connection_ip_from_name",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
         {
           "step_type": "function",
           "function_name": "open_connection",
@@ -1703,7 +1934,12 @@
         },
         {
           "step_type": "function",
-          "function_name": "connection_ip_from_name",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "connection_ip",
           "args": [
             {
               "value_type": "primitive",
@@ -1715,14 +1951,14 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_ip"
+              "value_type": "primitive",
+              "value": 2130706433
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "variable",
+              "variable_name": "test_ip"
             }
           }
         },
@@ -1733,6 +1969,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -1777,6 +2023,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "connection_named",
           "args": [
             {
@@ -1793,7 +2044,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "retrieved_connection"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1857,6 +2109,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "connection_port",
           "args": [
             {
@@ -1871,12 +2128,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_port"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 5000
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_port"
             }
           }
         },
@@ -1907,6 +2164,21 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "open_connection",
           "args": [
             {
@@ -1926,7 +2198,12 @@
         },
         {
           "step_type": "function",
-          "function_name": "connection_port_from_name",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "connection_port",
           "args": [
             {
               "value_type": "primitive",
@@ -1940,12 +2217,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_port"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 5000
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_port"
             }
           }
         },
@@ -1956,6 +2233,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -1986,7 +2273,25 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_server"
-            }
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -2006,7 +2311,7 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "create_server_with_port_and_protocol",
+          "function_name": "create_server_with_port",
           "args": [
             {
               "value_type": "primitive",
@@ -2019,7 +2324,7 @@
             {
               "value_type": "enum",
               "enum_type": "connection_type",
-              "value": "TCP"
+              "value": "tcp"
             }
           ],
           "store_result": "test_server"
@@ -2031,28 +2336,25 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_server"
-            }
+            },
+            "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "has_server",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_server"
-            }
-          ],
-          "store_result": "server_exists"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "server_exists"
-            }
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -2086,12 +2388,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_hex_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "0x7F000001"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_hex_result"
             }
           }
         }
@@ -2156,7 +2458,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "new_connection"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2186,6 +2489,21 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "open_connection",
           "args": [
             {
@@ -2204,6 +2522,11 @@
           "store_result": "test_connection"
         },
         {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
@@ -2216,7 +2539,8 @@
                   "value": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2242,8 +2566,19 @@
                   "value": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
@@ -2252,18 +2587,53 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "has_messages",
-          "args": [],
-          "store_result": "test_result"
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
+          "function_name": "open_connection",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_connection"
+            },
+            {
+              "value_type": "primitive",
+              "value": "127.0.0.1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_connection"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            }
+              "value_type": "function",
+              "function_name": "has_messages",
+              "args": []
+            },
+            "value2": null
           }
         },
         {
@@ -2275,45 +2645,47 @@
               "value": "test_message"
             },
             {
-              "value_type": "function",
-              "function_name": "open_connection",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": "test_connection"
-                },
-                {
-                  "value_type": "primitive",
-                  "value": "127.0.0.1"
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 5000
-                }
-              ]
+              "value_type": "variable",
+              "variable_name": "test_connection"
             }
           ]
         },
         {
           "step_type": "function",
-          "function_name": "has_messages",
-          "args": [],
-          "store_result": "test_result"
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            }
+              "value_type": "function",
+              "function_name": "has_messages",
+              "args": []
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_all_connections",
-          "args": []
+          "function_name": "close_connection",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
@@ -2356,6 +2728,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -2379,14 +2756,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages_on_connection",
+              "function_name": "has_messages",
               "args": [
                 {
                   "value_type": "variable",
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2450,6 +2828,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -2480,7 +2863,8 @@
                   "value": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2567,14 +2951,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages_on_server",
+              "function_name": "has_messages",
               "args": [
                 {
                   "value_type": "variable",
                   "variable_name": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2649,7 +3034,8 @@
               "value_type": "function",
               "function_name": "has_new_connections",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2705,7 +3091,8 @@
                   "value": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2731,7 +3118,8 @@
                   "value": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         }
       ]
@@ -2755,12 +3143,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_ipv4"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "127.0.0.1"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_ipv4"
             }
           }
         },
@@ -2780,12 +3168,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_ipv4_no_prefix"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "127.0.0.1"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_ipv4_no_prefix"
             }
           }
         }
@@ -2810,12 +3198,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "127"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_result"
             }
           }
         },
@@ -2835,12 +3223,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result_with_prefix"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "127"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_result_with_prefix"
             }
           }
         }
@@ -2858,19 +3246,19 @@
               "value": "127.0.0.1"
             }
           ],
-          "store_result": "test_result"
+          "store_result": "test_result1"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 2130706433
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_result1"
             }
           }
         },
@@ -2883,19 +3271,19 @@
               "value": "192.168.1.1"
             }
           ],
-          "store_result": "test_result"
+          "store_result": "test_result2"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 3232235777
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_result2"
             }
           }
         }
@@ -2920,12 +3308,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_ipv4_hex"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "0x7F000001"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_ipv4_hex"
             }
           }
         }
@@ -2950,12 +3338,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_ip_str"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "127.0.0.1"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_ip_str"
             }
           }
         }
@@ -2999,6 +3387,11 @@
           "store_result": "test_connection"
         },
         {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
@@ -3011,7 +3404,8 @@
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3037,7 +3431,8 @@
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3100,14 +3495,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "is_connection_open_from_name",
+              "function_name": "is_connection_open",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3121,24 +3517,20 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "check_network_activity",
-          "args": []
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "is_connection_open_from_name",
+              "function_name": "is_connection_open",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3197,22 +3589,26 @@
         },
         {
           "step_type": "function",
-          "function_name": "last_connection_named",
+          "function_name": "last_connection",
           "args": [
             {
               "value_type": "primitive",
               "value": "test_server"
             }
           ],
-          "store_result": "last_conn"
+          "store_result": "last_connection"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "last_conn"
+              "variable_name": "test_connection"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "last_connection"
             }
           }
         },
@@ -3289,25 +3685,19 @@
               "variable_name": "test_server"
             }
           ],
-          "store_result": "last_conn"
+          "store_result": "last_connection"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "connection_port",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "last_conn"
-                }
-              ]
+              "value_type": "variable",
+              "variable_name": "test_connection"
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 5000
+              "value_type": "variable",
+              "variable_name": "last_connection"
             }
           }
         },
@@ -3372,6 +3762,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -3405,6 +3800,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_connection",
               "args": [
@@ -3413,12 +3812,18 @@
                   "variable_name": "test_message"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "test_connection"
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_message",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_message"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -3462,6 +3867,30 @@
         },
         {
           "step_type": "function",
+          "function_name": "open_connection",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_connection"
+            },
+            {
+              "value_type": "primitive",
+              "value": "127.0.0.1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_connection"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -3469,28 +3898,14 @@
               "value": "Test Message"
             },
             {
-              "value_type": "function",
-              "function_name": "open_connection",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": "test_connection"
-                },
-                {
-                  "value_type": "primitive",
-                  "value": "127.0.0.1"
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 5000
-                }
-              ]
+              "value_type": "variable",
+              "variable_name": "test_connection"
             }
           ]
         },
         {
           "step_type": "function",
-          "function_name": "process_events",
+          "function_name": "check_network_activity",
           "args": []
         },
         {
@@ -3498,6 +3913,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_count_on_server",
               "args": [
@@ -3506,12 +3925,18 @@
                   "variable_name": "test_server"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_connection",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -3528,6 +3953,21 @@
     {
       "name": "message_count_on_connection",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
         {
           "step_type": "function",
           "function_name": "open_connection",
@@ -3549,6 +3989,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -3563,13 +4008,13 @@
         },
         {
           "step_type": "function",
-          "function_name": "process_events",
+          "function_name": "check_network_activity",
           "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "true",
             "value1": {
               "value_type": "function",
               "function_name": "message_count_on_connection",
@@ -3580,10 +4025,7 @@
                 }
               ]
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0
-            }
+            "value2": null
           }
         },
         {
@@ -3593,6 +4035,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -3637,6 +4089,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -3659,18 +4116,18 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1
+            },
+            "value2": {
               "value_type": "function",
-              "function_name": "message_count_from_name",
+              "function_name": "message_count_on_server",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "test_server"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1
             }
           }
         },
@@ -3735,6 +4192,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -3768,6 +4230,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "Test Message"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_data",
               "args": [
@@ -3776,10 +4242,6 @@
                   "variable_name": "test_message"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "Test Message"
             }
           }
         },
@@ -3854,11 +4316,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
               "value_type": "primitive",
-              "value": "Hello, World!"
+              "value": "Test Message"
             },
             {
               "value_type": "variable",
@@ -3896,21 +4363,12 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "not_null",
             "value1": {
-              "value_type": "function",
-              "function_name": "message_data",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_message"
-                }
-              ]
+              "value_type": "variable",
+              "variable_name": "test_message_bytes"
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": "Hello, World!"
-            }
+            "value2": null
           }
         },
         {
@@ -3984,6 +4442,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -4017,6 +4480,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "127.0.0.1"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_host",
               "args": [
@@ -4025,10 +4492,6 @@
                   "variable_name": "test_message"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "127.0.0.1"
             }
           }
         },
@@ -4103,6 +4566,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -4136,6 +4604,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 5000
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_port",
               "args": [
@@ -4144,12 +4616,18 @@
                   "variable_name": "test_message"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 5000
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_message",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_message"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -4191,7 +4669,7 @@
             {
               "value_type": "enum",
               "enum_type": "connection_type",
-              "value": "UDP"
+              "value": "udp"
             }
           ],
           "store_result": "test_server"
@@ -4215,10 +4693,15 @@
             {
               "value_type": "enum",
               "enum_type": "connection_type",
-              "value": "UDP"
+              "value": "udp"
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "function",
@@ -4255,6 +4738,11 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "enum",
+              "enum_type": "connection_type",
+              "value": "udp"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_protocol",
               "args": [
@@ -4263,11 +4751,6 @@
                   "variable_name": "test_message"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "enum",
-              "enum_type": "connection_type",
-              "value": "UDP"
             }
           }
         },
@@ -4317,12 +4800,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_ip"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "127.0.0.1"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_ip"
             }
           }
         }
@@ -4351,12 +4834,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_connection_name"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "localhost:8080"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_connection_name"
             }
           }
         }
@@ -4407,8 +4890,12 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "new_connection_count",
               "args": [
@@ -4417,10 +4904,6 @@
                   "variable_name": "test_server"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0
             }
           }
         },
@@ -4451,6 +4934,21 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "open_connection",
           "args": [
             {
@@ -4469,34 +4967,36 @@
           "store_result": "test_connection"
         },
         {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
               "variable_name": "test_connection"
-            }
+            },
+            "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "is_connection_open",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ],
-          "store_result": "connection_status"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "connection_status"
-            }
+              "value_type": "function",
+              "function_name": "is_connection_open",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -4510,25 +5010,31 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "is_connection_open",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ],
-          "store_result": "connection_status"
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "connection_status"
-            }
+              "value_type": "function",
+              "function_name": "is_connection_open",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection"
+                }
+              ]
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
@@ -4537,7 +5043,27 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "open_connection_with_protocol",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            },
+            {
+              "value_type": "enum",
+              "enum_type": "connection_type",
+              "value": "tcp"
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
+          "function_name": "open_connection",
           "args": [
             {
               "value_type": "primitive",
@@ -4554,10 +5080,15 @@
             {
               "value_type": "enum",
               "enum_type": "connection_type",
-              "value": "TCP"
+              "value": "tcp"
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -4566,7 +5097,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_connection"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -4578,12 +5110,80 @@
               "variable_name": "test_connection"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
     {
       "name": "read_message",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
+          "function_name": "open_connection",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_connection"
+            },
+            {
+              "value_type": "primitive",
+              "value": "127.0.0.1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_connection"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "send_message_to_connection",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Message"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
         {
           "step_type": "function",
           "function_name": "read_message",
@@ -4593,10 +5193,20 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_message"
+              "value_type": "primitive",
+              "value": "Test Message"
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "message_data",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_message"
+                }
+              ]
             }
           }
         },
@@ -4607,6 +5217,26 @@
             {
               "value_type": "variable",
               "variable_name": "test_message"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_connection",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -4651,6 +5281,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -4684,6 +5319,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "Test Message"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_data",
               "args": [
@@ -4692,12 +5331,18 @@
                   "variable_name": "test_message"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "Test Message"
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_message",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_message"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -4760,15 +5405,20 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_message_to_name",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "send_message_to_connection",
           "args": [
             {
               "value_type": "primitive",
               "value": "Test Message"
             },
             {
-              "value_type": "primitive",
-              "value": "test_server"
+              "value_type": "variable",
+              "variable_name": "test_connection"
             }
           ]
         },
@@ -4779,7 +5429,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message_from_name",
+          "function_name": "read_message",
           "args": [
             {
               "value_type": "primitive",
@@ -4793,6 +5443,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "Test Message"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_data",
               "args": [
@@ -4801,10 +5455,6 @@
                   "variable_name": "test_message"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "Test Message"
             }
           }
         },
@@ -4879,6 +5529,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -4912,6 +5567,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "Test Message"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "message_data",
               "args": [
@@ -4920,10 +5579,6 @@
                   "variable_name": "test_message"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "Test Message"
             }
           }
         },
@@ -4998,6 +5653,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -5016,27 +5676,22 @@
           "args": []
         },
         {
-          "step_type": "function",
-          "function_name": "read_message_data_from_name",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_server"
-            }
-          ],
-          "store_result": "test_message_data"
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_message_data"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "Test Message"
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "read_message_data_from_name",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server"
+                }
+              ]
             }
           }
         },
@@ -5067,6 +5722,21 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 5000
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "open_connection",
           "args": [
             {
@@ -5086,6 +5756,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -5100,31 +5775,26 @@
         },
         {
           "step_type": "function",
-          "function_name": "process_events",
+          "function_name": "check_network_activity",
           "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "read_message_data_from_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ],
-          "store_result": "test_message_data"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_message_data"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "Test Message"
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "read_message_data_from_connection",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection"
+                }
+              ]
             }
           }
         },
@@ -5135,6 +5805,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_connection"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -5179,22 +5859,8 @@
         },
         {
           "step_type": "function",
-          "function_name": "open_connection",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_connection"
-            },
-            {
-              "value_type": "primitive",
-              "value": "127.0.0.1"
-            },
-            {
-              "value_type": "primitive",
-              "value": 5000
-            }
-          ],
-          "store_result": "test_connection"
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "function",
@@ -5216,27 +5882,22 @@
           "args": []
         },
         {
-          "step_type": "function",
-          "function_name": "read_message_data_from_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ],
-          "store_result": "test_message_data"
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_message_data"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "Test Message"
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "read_message_data_from_server",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
             }
           }
         },
@@ -5301,6 +5962,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "close_connection",
           "args": [
             {
@@ -5311,6 +5977,28 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "is_connection_open",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "reconnect",
           "args": [
             {
@@ -5318,6 +6006,11 @@
               "variable_name": "test_connection"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -5332,7 +6025,8 @@
                   "variable_name": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -5396,6 +6090,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "close_connection",
           "args": [
             {
@@ -5406,7 +6105,29 @@
         },
         {
           "step_type": "function",
-          "function_name": "reconnect_from_name",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "is_connection_open",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_connection"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "reconnect",
           "args": [
             {
               "value_type": "primitive",
@@ -5415,20 +6136,36 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "is_connection_open_from_name",
+              "function_name": "is_connection_open",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "test_connection"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_connection",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -5439,16 +6176,6 @@
               "variable_name": "test_server"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
         }
       ]
     },
@@ -5457,11 +6184,26 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "open_connection",
           "args": [
             {
               "value_type": "primitive",
-              "value": "test_connection"
+              "value": "test_connection1"
             },
             {
               "value_type": "primitive",
@@ -5472,27 +6214,64 @@
               "value": 8080
             }
           ],
-          "store_result": "test_connection"
+          "store_result": "test_connection1"
         },
         {
           "step_type": "function",
-          "function_name": "has_connection",
+          "function_name": "open_connection",
           "args": [
             {
               "value_type": "primitive",
-              "value": "test_connection"
+              "value": "test_connection2"
+            },
+            {
+              "value_type": "primitive",
+              "value": "127.0.0.1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
             }
           ],
-          "store_result": "connection_exists"
+          "store_result": "test_connection2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "connection_exists"
-            }
+              "value_type": "function",
+              "function_name": "has_connection",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_connection1"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_connection",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_connection2"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -5501,24 +6280,54 @@
           "args": []
         },
         {
-          "step_type": "function",
-          "function_name": "has_connection",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_connection"
-            }
-          ],
-          "store_result": "connection_exists_after_release"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_connection",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_connection1"
+                }
+              ]
+            },
+            "value2": null
+          }
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "connection_exists_after_release"
-            }
+              "value_type": "function",
+              "function_name": "has_connection",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_connection2"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_server",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_server"
+                }
+              ]
+            },
+            "value2": null
           }
         }
       ]
@@ -5557,7 +6366,8 @@
               "value_type": "primitive",
               "value": 5000
             }
-          ]
+          ],
+          "store_result": "test_connection"
         },
         {
           "step_type": "function",
@@ -5567,7 +6377,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "equal",
             "value1": {
               "value_type": "function",
               "function_name": "new_connection_count",
@@ -5580,7 +6390,7 @@
             },
             "value2": {
               "value_type": "primitive",
-              "value": 0
+              "value": 1
             }
           }
         },
@@ -5599,6 +6409,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "new_connection_count",
               "args": [
@@ -5607,12 +6421,18 @@
                   "variable_name": "test_server"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_connection",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -5670,11 +6490,11 @@
         },
         {
           "step_type": "function",
-          "function_name": "retrieve_connection_named",
+          "function_name": "retrieve_connection",
           "args": [
             {
               "value_type": "primitive",
-              "value": "test_server"
+              "value": "test_connection"
             },
             {
               "value_type": "primitive",
@@ -5686,8 +6506,12 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            },
+            "value2": {
               "value_type": "variable",
               "variable_name": "retrieved_connection"
             }
@@ -5775,8 +6599,12 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "test_connection"
+            },
+            "value2": {
               "value_type": "variable",
               "variable_name": "retrieved_connection"
             }
@@ -5843,6 +6671,11 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_connection",
           "args": [
             {
@@ -5857,13 +6690,19 @@
           "store_result": "send_result"
         },
         {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
               "value_type": "variable",
               "variable_name": "send_result"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -5927,11 +6766,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "send_message_to_name",
           "args": [
             {
               "value_type": "primitive",
-              "value": "Hello, Server!"
+              "value": "Test Message"
             },
             {
               "value_type": "primitive",
@@ -5941,13 +6785,19 @@
           "store_result": "send_result"
         },
         {
+          "step_type": "function",
+          "function_name": "check_network_activity",
+          "args": []
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
               "value_type": "variable",
               "variable_name": "send_result"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -6019,14 +6869,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "server_has_new_connection_named",
+              "function_name": "server_has_new_connection",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -6100,7 +6951,8 @@
                   "variable_name": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -6152,8 +7004,12 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            },
+            "value2": {
               "value_type": "variable",
               "variable_name": "retrieved_server"
             }
@@ -6189,13 +7045,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1024
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "udp_packet_size",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1024
             }
           }
         }
@@ -6231,6 +7087,21 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
@@ -6258,7 +7129,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "http://example.com/test_image.png"
+              "value": "http://localhost:8080/test/resources/images/frog.png"
             },
             {
               "value_type": "primitive",
@@ -6268,50 +7139,14 @@
           "store_result": "test_bitmap"
         },
         {
-          "step_type": "function",
-          "function_name": "draw_bitmap",
-          "args": [
-            {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
               "value_type": "variable",
               "variable_name": "test_bitmap"
             },
-            {
-              "value_type": "primitive",
-              "value": 0
-            },
-            {
-              "value_type": "primitive",
-              "value": 0
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "refresh_screen",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "pixel_drawn_at_point",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_bitmap"
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 50
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 50
-                }
-              ]
-            }
+            "value2": null
           }
         },
         {
@@ -6333,12 +7168,37 @@
               "variable_name": "test_window"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
     {
       "name": "download_font",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
         {
           "step_type": "function",
           "function_name": "download_font",
@@ -6349,7 +7209,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "http://example.com/font.ttf"
+              "value": "http://localhost:8080/test/resources/fonts/hara.ttf"
             },
             {
               "value_type": "primitive",
@@ -6365,7 +7225,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_font"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -6377,12 +7238,37 @@
               "variable_name": "test_font"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
     {
       "name": "download_music",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
         {
           "step_type": "function",
           "function_name": "download_music",
@@ -6393,7 +7279,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "http://example.com/music.mp3"
+              "value": "http://localhost:8080/test/resources/music/280.mp3"
             },
             {
               "value_type": "primitive",
@@ -6409,7 +7295,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_music"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -6421,12 +7308,37 @@
               "variable_name": "test_music"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
     {
       "name": "download_sound_effect",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
         {
           "step_type": "function",
           "function_name": "download_sound_effect",
@@ -6437,7 +7349,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "http://example.com/test_sound.wav"
+              "value": "http://localhost:8080/test/resources/sounds/breakdance.wav"
             },
             {
               "value_type": "primitive",
@@ -6453,7 +7365,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_sound_effect"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -6465,6 +7378,16 @@
               "variable_name": "test_sound_effect"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
         }
       ]
     },
@@ -6473,57 +7396,26 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "http_get",
+          "function_name": "create_server_with_port",
           "args": [
             {
               "value_type": "primitive",
-              "value": "http://example.com"
+              "value": "test_server"
             },
             {
               "value_type": "primitive",
-              "value": 80
+              "value": 8080
             }
           ],
-          "store_result": "test_response"
+          "store_result": "test_server"
         },
-        {
-          "step_type": "function",
-          "function_name": "free_response",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_response"
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "null",
-            "value1": {
-              "value_type": "function",
-              "function_name": "http_response_to_string",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_response"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "http_get",
-      "steps": [
         {
           "step_type": "function",
           "function_name": "http_get",
           "args": [
             {
               "value_type": "primitive",
-              "value": "http://example.com"
+              "value": "http://localhost:8080/test"
             },
             {
               "value_type": "primitive",
@@ -6539,7 +7431,88 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_response"
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
             }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": "IntPtr.Zero"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "http_get",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            },
+            "value2": null
           }
         },
         {
@@ -6551,20 +7524,17 @@
               "variable_name": "test_response"
             }
           ],
-          "store_result": "test_response_text"
+          "store_result": "response_text"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "notempty",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_response_text"
+              "variable_name": "response_text"
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": ""
-            }
+            "value2": null
           }
         },
         {
@@ -6574,6 +7544,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_response"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -6584,11 +7564,42 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "variable",
+          "variable_name": "headers",
+          "value_type": "list",
+          "target_type": "string",
+          "value": [
+            {
+              "value_type": "primitive",
+              "value": "Content-Type: application/json"
+            },
+            {
+              "value_type": "primitive",
+              "value": "Accept: application/json"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "http_post",
           "args": [
             {
               "value_type": "primitive",
-              "value": "http://httpbin.org/post"
+              "value": "http://localhost:8080/test"
             },
             {
               "value_type": "primitive",
@@ -6599,8 +7610,8 @@
               "value": "Test Body"
             },
             {
-              "value_type": "primitive",
-              "value": ["Content-Type: application/json", "Accept: application/json"]
+              "value_type": "variable",
+              "variable_name": "headers"
             }
           ],
           "store_result": "test_response"
@@ -6612,7 +7623,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_response"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -6624,23 +7636,19 @@
               "variable_name": "test_response"
             }
           ],
-          "store_result": "test_response_string"
+          "store_result": "response_text"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "contains",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "string_contains"
+              "value_type": "primitive",
+              "value": "Test Body"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "test_response_string"
-            },
-            "value3": {
-              "value_type": "primitive",
-              "value": "Test Body"
+              "variable_name": "response_text"
             }
           }
         },
@@ -6651,6 +7659,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_response"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -6661,11 +7679,26 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "http_post",
           "args": [
             {
               "value_type": "primitive",
-              "value": "http://example.com"
+              "value": "http://localhost:8080/test"
             },
             {
               "value_type": "primitive",
@@ -6673,7 +7706,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test=123"
+              "value": "Test Body"
             }
           ],
           "store_result": "test_response"
@@ -6685,7 +7718,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_response"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -6697,19 +7731,19 @@
               "variable_name": "test_response"
             }
           ],
-          "store_result": "test_response_string"
+          "store_result": "response_text"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "contains",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_response_string"
+              "value_type": "primitive",
+              "value": "Test Body"
             },
             "value2": {
-              "value_type": "primitive",
-              "value": ""
+              "value_type": "variable",
+              "variable_name": "response_text"
             }
           }
         },
@@ -6720,6 +7754,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_response"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -6730,11 +7774,26 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "http_get",
           "args": [
             {
               "value_type": "primitive",
-              "value": "http://example.com"
+              "value": "http://localhost:8080/test"
             },
             {
               "value_type": "primitive",
@@ -6752,20 +7811,17 @@
               "variable_name": "test_response"
             }
           ],
-          "store_result": "test_string"
+          "store_result": "response_text"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "notempty",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_string"
+              "variable_name": "response_text"
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": ""
-            }
+            "value2": null
           }
         },
         {
@@ -6775,6 +7831,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_response"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -6785,11 +7851,26 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "create_server_with_port",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_server"
+            },
+            {
+              "value_type": "primitive",
+              "value": 8080
+            }
+          ],
+          "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
           "function_name": "http_get",
           "args": [
             {
               "value_type": "primitive",
-              "value": "http://example.com"
+              "value": "http://localhost:8080/test"
             },
             {
               "value_type": "primitive",
@@ -6797,6 +7878,12 @@
             }
           ],
           "store_result": "test_response"
+        },
+        {
+          "step_type": "variable",
+          "value_type": "primitive",
+          "variable_name": "test_file",
+          "value": "test_output.txt"
         },
         {
           "step_type": "function",
@@ -6807,8 +7894,8 @@
               "variable_name": "test_response"
             },
             {
-              "value_type": "primitive",
-              "value": "test_output.txt"
+              "value_type": "variable",
+              "variable_name": "test_file"
             }
           ]
         },
@@ -6825,15 +7912,18 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "file_exists"
+              "value_type": "function",
+              "function_name": "file_exists",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_file"
+                }
+              ]
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": "test_output.txt"
-            }
+            "value2": null
           }
         },
         {
@@ -6841,8 +7931,18 @@
           "function_name": "delete_file",
           "args": [
             {
-              "value_type": "primitive",
-              "value": "test_output.txt"
+              "value_type": "variable",
+              "variable_name": "test_file"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_server",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           ]
         }
@@ -6863,25 +7963,63 @@
           "store_result": "test_server"
         },
         {
-          "step_type": "function",
-          "function_name": "has_incoming_requests",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ],
-          "store_result": "has_requests"
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "has_requests"
-            }
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -6911,6 +8049,38 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -6934,11 +8104,22 @@
                 },
                 {
                   "value_type": "primitive",
-                  "value": "/test_path"
+                  "value": "/test"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -6968,6 +8149,38 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -6994,8 +8207,19 @@
                   "value": "/test"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7025,6 +8249,38 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7035,40 +8291,35 @@
           "store_result": "test_request"
         },
         {
-          "step_type": "function",
-          "function_name": "request_uri",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_request"
-            }
-          ],
-          "store_result": "test_uri"
-        },
-        {
-          "step_type": "function",
-          "function_name": "is_options_request_for",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_request"
-            },
-            {
-              "value_type": "variable",
-              "variable_name": "test_uri"
-            }
-          ],
-          "store_result": "test_result"
-        },
-        {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            }
+              "value_type": "function",
+              "function_name": "is_options_request_for",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_request"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "/test"
+                }
+              ]
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7098,6 +8349,42 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_post",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test_path"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            },
+            {
+              "value_type": "primitive",
+              "value": "test=123"
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7108,29 +8395,35 @@
           "store_result": "test_request"
         },
         {
-          "step_type": "function",
-          "function_name": "is_post_request_for",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_request"
-            },
-            {
-              "value_type": "primitive",
-              "value": "/test_path"
-            }
-          ],
-          "store_result": "is_post"
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "is_post"
-            }
+              "value_type": "function",
+              "function_name": "is_post_request_for",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_request"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "/test_path"
+                }
+              ]
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7160,6 +8453,38 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7170,40 +8495,35 @@
           "store_result": "test_request"
         },
         {
-          "step_type": "function",
-          "function_name": "request_uri",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_request"
-            }
-          ],
-          "store_result": "test_uri"
-        },
-        {
-          "step_type": "function",
-          "function_name": "is_put_request_for",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_request"
-            },
-            {
-              "value_type": "variable",
-              "variable_name": "test_uri"
-            }
-          ],
-          "store_result": "test_result"
-        },
-        {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            }
+              "value_type": "function",
+              "function_name": "is_put_request_for",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_request"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "/test"
+                }
+              ]
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7233,6 +8553,38 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7257,15 +8609,26 @@
                 {
                   "value_type": "enum",
                   "enum_type": "http_method",
-                  "value": "GET"
+                  "value": "http_get_method"
                 },
                 {
                   "value_type": "primitive",
                   "value": "/test"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7295,6 +8658,38 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7307,7 +8702,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "false",
             "value1": {
               "value_type": "function",
               "function_name": "is_trace_request_for",
@@ -7318,11 +8713,22 @@
                 },
                 {
                   "value_type": "primitive",
-                  "value": "/trace"
+                  "value": "/test"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7351,24 +8757,20 @@
           "store_result": "test_server"
         },
         {
-          "step_type": "function",
-          "function_name": "has_incoming_requests",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ],
-          "store_result": "has_requests"
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "has_requests"
-            }
+              "value_type": "function",
+              "function_name": "has_incoming_requests",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_server"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -7389,7 +8791,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_request"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -7420,6 +8823,25 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_post",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            },
+            {
+              "value_type": "primitive",
+              "value": "test body"
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7430,25 +8852,34 @@
           "store_result": "test_request"
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": "test body"
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "request_body",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_request"
+                }
+              ]
+            }
+          }
+        },
+        {
           "step_type": "function",
-          "function_name": "request_body",
+          "function_name": "free_response",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_request"
+              "variable_name": "test_response"
             }
-          ],
-          "store_result": "test_body"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "not_null",
-            "value1": {
-              "value_type": "variable",
-              "variable_name": "test_body"
-            }
-          }
+          ]
         },
         {
           "step_type": "function",
@@ -7478,6 +8909,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test?param1=value1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7486,17 +8932,6 @@
             }
           ],
           "store_result": "test_request"
-        },
-        {
-          "step_type": "function",
-          "function_name": "request_query_string",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_request"
-            }
-          ],
-          "store_result": "test_query_string"
         },
         {
           "step_type": "assertion",
@@ -7515,7 +8950,8 @@
                   "value": "param1"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -7535,8 +8971,19 @@
                   "value": "nonexistent_param"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7566,6 +9013,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7576,25 +9038,31 @@
           "store_result": "test_request"
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "notempty",
+            "value1": {
+              "value_type": "function",
+              "function_name": "request_headers",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_request"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
           "step_type": "function",
-          "function_name": "request_headers",
+          "function_name": "free_response",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_request"
+              "variable_name": "test_response"
             }
-          ],
-          "store_result": "test_headers"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "not_null",
-            "value1": {
-              "value_type": "variable",
-              "variable_name": "test_headers"
-            }
-          }
+          ]
         },
         {
           "step_type": "function",
@@ -7624,6 +9092,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7636,38 +9119,33 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_request"
+              "value_type": "enum",
+              "enum_type": "http_method",
+              "value": "http_get_method"
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "request_method",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_request"
+                }
+              ]
             }
           }
         },
         {
           "step_type": "function",
-          "function_name": "request_method",
+          "function_name": "free_response",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_request"
+              "variable_name": "test_response"
             }
-          ],
-          "store_result": "test_method"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "variable",
-              "variable_name": "test_method"
-            },
-            "value2": {
-              "value_type": "enum",
-              "enum_type": "http_method",
-              "value": "GET"
-            }
-          }
+          ]
         },
         {
           "step_type": "function",
@@ -7697,6 +9175,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test?param1=value1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7716,7 +9209,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test_param"
+              "value": "param1"
             },
             {
               "value_type": "primitive",
@@ -7730,14 +9223,24 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
+              "value_type": "primitive",
+              "value": "value1"
             },
             "value2": {
-              "value_type": "primitive",
-              "value": "default_value"
+              "value_type": "variable",
+              "variable_name": "test_result"
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7767,6 +9270,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test?param1=value1"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7790,12 +9308,26 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "param1=value1"
+            },
+            "value2": {
               "value_type": "variable",
               "variable_name": "test_query_string"
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7825,6 +9357,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7833,16 +9380,6 @@
             }
           ],
           "store_result": "test_request"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "not_null",
-            "value1": {
-              "value_type": "variable",
-              "variable_name": "test_request"
-            }
-          }
         },
         {
           "step_type": "function",
@@ -7858,16 +9395,26 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_uri"
+              "value_type": "primitive",
+              "value": "/test"
             },
             "value2": {
-              "value_type": "primitive",
-              "value": ""
+              "value_type": "variable",
+              "variable_name": "test_uri"
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7897,6 +9444,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test/path"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -7905,17 +9467,6 @@
             }
           ],
           "store_result": "test_request"
-        },
-        {
-          "step_type": "function",
-          "function_name": "request_uri",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_request"
-            }
-          ],
-          "store_result": "test_uri"
         },
         {
           "step_type": "function",
@@ -7933,12 +9484,16 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "split_uri_stubs",
-              "args": [
+              "value_type": "list",
+              "target_type": "string",
+              "value": [
                 {
-                  "value_type": "variable",
-                  "variable_name": "test_uri"
+                  "value_type": "primitive",
+                  "value": "test"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "path"
                 }
               ]
             },
@@ -7947,6 +9502,16 @@
               "variable_name": "test_stubs"
             }
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -7973,6 +9538,21 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test.css"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
         },
         {
           "step_type": "function",
@@ -8005,15 +9585,35 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_incoming_requests",
+              "function_name": "is_request_for",
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_server"
+                  "variable_name": "test_request"
+                },
+                {
+                  "value_type": "enum",
+                  "enum_type": "http_method",
+                  "value": "http_get_method"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "/test.css"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -8043,6 +9643,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test.txt"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -8062,7 +9677,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "testfile.txt"
+              "value": "test.txt"
             },
             {
               "value_type": "primitive",
@@ -8076,15 +9691,35 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_incoming_requests",
+              "function_name": "is_request_for",
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_server"
+                  "variable_name": "test_request"
+                },
+                {
+                  "value_type": "enum",
+                  "enum_type": "http_method",
+                  "value": "http_get_method"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "/test.txt"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -8111,6 +9746,21 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test.html"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
         },
         {
           "step_type": "function",
@@ -8152,15 +9802,26 @@
                 {
                   "value_type": "enum",
                   "enum_type": "http_method",
-                  "value": "GET"
+                  "value": "http_get_method"
                 },
                 {
                   "value_type": "primitive",
                   "value": "/test.html"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -8190,6 +9851,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test.js"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -8209,7 +9885,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test_script.js"
+              "value": "test.js"
             }
           ]
         },
@@ -8219,15 +9895,35 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_incoming_requests",
+              "function_name": "is_request_for",
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_server"
+                  "variable_name": "test_request"
+                },
+                {
+                  "value_type": "enum",
+                  "enum_type": "http_method",
+                  "value": "http_get_method"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "/test.js"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -8257,6 +9953,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -8273,6 +9984,16 @@
             {
               "value_type": "variable",
               "variable_name": "test_request"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
             }
           ]
         },
@@ -8304,6 +10025,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -8324,6 +10060,16 @@
             {
               "value_type": "primitive",
               "value": "Test Message"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
             }
           ]
         },
@@ -8355,6 +10101,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -8375,25 +10136,19 @@
             {
               "value_type": "enum",
               "enum_type": "http_status_code",
-              "value": "OK"
+              "value": "http_status_ok"
             }
           ]
         },
         {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "has_incoming_requests",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_server"
-                }
-              ]
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
             }
-          }
+          ]
         },
         {
           "step_type": "function",
@@ -8423,6 +10178,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -8434,7 +10204,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_response_with_status",
+          "function_name": "send_response",
           "args": [
             {
               "value_type": "variable",
@@ -8443,7 +10213,7 @@
             {
               "value_type": "enum",
               "enum_type": "http_status_code",
-              "value": "OK"
+              "value": "http_status_ok"
             },
             {
               "value_type": "primitive",
@@ -8452,20 +10222,14 @@
           ]
         },
         {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "has_incoming_requests",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_server"
-                }
-              ]
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
             }
-          }
+          ]
         },
         {
           "step_type": "function",
@@ -8495,6 +10259,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -8515,7 +10294,7 @@
             {
               "value_type": "enum",
               "enum_type": "http_status_code",
-              "value": "OK"
+              "value": "http_status_ok"
             },
             {
               "value_type": "primitive",
@@ -8524,6 +10303,16 @@
             {
               "value_type": "primitive",
               "value": "text/plain"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
             }
           ]
         },
@@ -8555,6 +10344,21 @@
         },
         {
           "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
+          "step_type": "function",
           "function_name": "next_web_request",
           "args": [
             {
@@ -8566,7 +10370,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_response_with_status_and_content_type_and_headers",
+          "function_name": "send_response",
           "args": [
             {
               "value_type": "variable",
@@ -8575,7 +10379,7 @@
             {
               "value_type": "enum",
               "enum_type": "http_status_code",
-              "value": "OK"
+              "value": "http_status_ok"
             },
             {
               "value_type": "primitive",
@@ -8586,8 +10390,28 @@
               "value": "text/plain"
             },
             {
-              "value_type": "primitive",
-              "value": ["Header1: Value1", "Header2: Value2"]
+              "value_type": "list",
+              "target_type": "string",
+              "value": [
+                {
+                  "value_type": "primitive",
+                  "value": "Header1: Value1"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "Header2: Value2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
             }
           ]
         },
@@ -8616,6 +10440,21 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
         },
         {
           "step_type": "function",
@@ -8648,18 +10487,38 @@
             },
             {
               "value_type": "primitive",
-              "value": "Hello, World!"
+              "value": "Test Message"
             }
           ]
         },
         {
           "step_type": "function",
-          "function_name": "send_response_json",
+          "function_name": "send_response",
           "args": [
             {
               "value_type": "variable",
               "variable_name": "test_request"
             },
+            {
+              "value_type": "variable",
+              "variable_name": "test_json"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_json",
+          "args": [
             {
               "value_type": "variable",
               "variable_name": "test_json"
@@ -8697,12 +10556,21 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_stubs"
+              "value_type": "list",
+              "value": [
+                {
+                  "value_type": "primitive",
+                  "value": "names"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "0"
+                }
+              ]
             },
             "value2": {
-              "value_type": "primitive",
-              "value": ["names", "0"]
+              "value_type": "variable",
+              "variable_name": "test_stubs"
             }
           }
         },
@@ -8720,15 +10588,12 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "empty",
             "value1": {
               "value_type": "variable",
               "variable_name": "test_stubs_empty"
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": []
-            }
+            "value2": null
           }
         }
       ]
@@ -8738,7 +10603,7 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "start_web_server_with_default_port",
+          "function_name": "start_web_server",
           "args": [],
           "store_result": "test_server"
         },
@@ -8749,7 +10614,8 @@
             "value1": {
               "value_type": "variable",
               "variable_name": "test_server"
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -8781,10 +10647,13 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "not_equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_server"
+              "value_type": "primitive",
+              "value": "testServer"
+            },
+            "value2": {
+              "value_type": "pointer_zero"
             }
           }
         },
@@ -8815,6 +10684,21 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "function",
+          "function_name": "http_get",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "http://localhost:8080/test"
+            },
+            {
+              "value_type": "primitive",
+              "value": 80
+            }
+          ],
+          "store_result": "test_response"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
@@ -8827,8 +10711,19 @@
                   "variable_name": "test_server"
                 }
               ]
-            }
+            },
+            "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_response",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_response"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -8839,22 +10734,6 @@
               "variable_name": "test_server"
             }
           ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "has_incoming_requests",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_server"
-                }
-              ]
-            }
-          }
         }
       ]
     }

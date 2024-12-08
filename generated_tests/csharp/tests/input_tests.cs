@@ -8,12 +8,12 @@ namespace SplashKitTests
         [Fact]
         public void TestProcessEventsIntegration()
         {
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyTyped(Keycode.A));
-            SimulateMouseClick(Mousebutton.Left);
+            Assert.True(KeyTyped(KeyCode.A));
+            SimulateMouseClick(MouseButton.Left);
             ProcessEvents();
-            Assert.True(MouseClicked(Mousebutton.Left));
+            Assert.True(MouseClicked(MouseButton.Left));
         }
         [Fact]
         public void TestQuitRequestedIntegration()
@@ -21,7 +21,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ProcessEvents();
             Assert.False(QuitRequested());
-            SimulateKeyPress(Keycode.Escape);
+            SimulateKeyPress(KeyCode.Escape);
             ProcessEvents();
             Assert.True(QuitRequested());
             CloseWindow(testWindow);
@@ -42,7 +42,7 @@ namespace SplashKitTests
         {
             ProcessEvents();
             Assert.False(AnyKeyPressed());
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
             Assert.True(AnyKeyPressed());
         }
@@ -51,101 +51,101 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             RegisterCallbackOnKeyDown(OnKeyDown());
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyDown(Keycode.A));
+            Assert.True(KeyDown(KeyCode.A));
             DeregisterCallbackOnKeyDown(OnKeyDown());
-            SimulateKeyPress(Keycode.B);
+            SimulateKeyPress(KeyCode.B);
             ProcessEvents();
-            Assert.False(KeyDown(Keycode.B));
+            Assert.False(KeyDown(KeyCode.B));
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestDeregisterCallbackOnKeyTypedIntegration()
         {
             RegisterCallbackOnKeyTyped(OnKeyTyped());
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyTyped(Keycode.A));
+            Assert.True(KeyTyped(KeyCode.A));
             DeregisterCallbackOnKeyTyped(OnKeyTyped());
-            SimulateKeyPress(Keycode.B);
+            SimulateKeyPress(KeyCode.B);
             ProcessEvents();
-            Assert.False(KeyTyped(Keycode.B));
+            Assert.False(KeyTyped(KeyCode.B));
         }
         [Fact]
         public void TestDeregisterCallbackOnKeyUpIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             RegisterCallbackOnKeyUp(OnKeyUp());
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyUp(Keycode.A));
+            Assert.True(KeyUp(KeyCode.A));
             DeregisterCallbackOnKeyUp(OnKeyUp());
-            SimulateKeyPress(Keycode.B);
+            SimulateKeyPress(KeyCode.B);
             ProcessEvents();
-            Assert.False(KeyUp(Keycode.B));
+            Assert.False(KeyUp(KeyCode.B));
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestKeyDownIntegration()
         {
             ProcessEvents();
-            Assert.False(KeyDown(Keycode.A));
-            SimulateKeyPress(Keycode.A);
+            Assert.False(KeyDown(KeyCode.A));
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyDown(Keycode.A));
-            SimulateKeyRelease(Keycode.A);
+            Assert.True(KeyDown(KeyCode.A));
+            SimulateKeyRelease(KeyCode.A);
             ProcessEvents();
-            Assert.False(KeyDown(Keycode.A));
+            Assert.False(KeyDown(KeyCode.A));
         }
         [Fact]
         public void TestKeyNameIntegration()
         {
-            var testKeyName1 = KeyName(Keycode.A);
-            Assert.Equal("A", testKeyName1);
-            var testKeyName2 = KeyName(Keycode.Enter);
-            Assert.Equal("Enter", testKeyName2);
+            var testKeyName1 = KeyName(KeyCode.A);
+            Assert.Equal(testKeyName1, "A");
+            var testKeyName2 = KeyName(KeyCode.Enter);
+            Assert.Equal(testKeyName2, "Enter");
         }
         [Fact]
         public void TestKeyReleasedIntegration()
         {
             ProcessEvents();
-            Assert.False(KeyReleased(Keycode.A));
-            SimulateKeyPress(Keycode.A);
+            Assert.False(KeyReleased(KeyCode.A));
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            SimulateKeyRelease(Keycode.A);
+            SimulateKeyRelease(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyReleased(Keycode.A));
+            Assert.True(KeyReleased(KeyCode.A));
         }
         [Fact]
         public void TestKeyTypedIntegration()
         {
             ProcessEvents();
-            Assert.False(KeyTyped(Keycode.A));
-            SimulateKeyPress(Keycode.A);
+            Assert.False(KeyTyped(KeyCode.A));
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyTyped(Keycode.A));
+            Assert.True(KeyTyped(KeyCode.A));
         }
         [Fact]
         public void TestKeyUpIntegration()
         {
             ProcessEvents();
-            Assert.True(KeyUp(Keycode.A));
-            SimulateKeyPress(Keycode.A);
+            Assert.True(KeyUp(KeyCode.A));
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.False(KeyUp(Keycode.A));
-            SimulateKeyRelease(Keycode.A);
+            Assert.False(KeyUp(KeyCode.A));
+            SimulateKeyRelease(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyUp(Keycode.A));
+            Assert.True(KeyUp(KeyCode.A));
         }
         [Fact]
         public void TestRegisterCallbackOnKeyDownIntegration()
         {
             RegisterCallbackOnKeyDown(OnKeyDown());
             ProcessEvents();
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyDown(Keycode.A));
+            Assert.True(KeyDown(KeyCode.A));
             DeregisterCallbackOnKeyDown(OnKeyDown());
         }
         [Fact]
@@ -153,9 +153,9 @@ namespace SplashKitTests
         {
             RegisterCallbackOnKeyTyped(OnKeyTyped());
             ProcessEvents();
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.True(KeyTyped(Keycode.A));
+            Assert.True(KeyTyped(KeyCode.A));
             DeregisterCallbackOnKeyTyped(OnKeyTyped());
         }
         [Fact]
@@ -163,10 +163,10 @@ namespace SplashKitTests
         {
             RegisterCallbackOnKeyUp(OnKeyUp());
             ProcessEvents();
-            SimulateKeyPress(Keycode.A);
-            SimulateKeyRelease(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
+            SimulateKeyRelease(KeyCode.A);
             ProcessEvents();
-            Assert.Equal("A", KeyUp);
+            Assert.Equal(KeyUp, "A");
             DeregisterCallbackOnKeyUp(OnKeyUp());
         }
         [Fact]
@@ -184,22 +184,22 @@ namespace SplashKitTests
         public void TestMouseClickedIntegration()
         {
             ProcessEvents();
-            Assert.False(MouseClicked(Mousebutton.Left));
-            SimulateMouseClick(Mousebutton.Left);
+            Assert.False(MouseClicked(MouseButton.Left));
+            SimulateMouseClick(MouseButton.Left);
             ProcessEvents();
-            Assert.True(MouseClicked(Mousebutton.Left));
+            Assert.True(MouseClicked(MouseButton.Left));
         }
         [Fact]
         public void TestMouseDownIntegration()
         {
             ProcessEvents();
-            Assert.False(MouseDown(Mousebutton.Left));
-            SimulateMousePress(Mousebutton.Left);
+            Assert.False(MouseDown(MouseButton.Left));
+            SimulateMousePress(MouseButton.Left);
             ProcessEvents();
-            Assert.True(MouseDown(Mousebutton.Left));
-            SimulateMouseRelease(Mousebutton.Left);
+            Assert.True(MouseDown(MouseButton.Left));
+            SimulateMouseRelease(MouseButton.Left);
             ProcessEvents();
-            Assert.False(MouseDown(Mousebutton.Left));
+            Assert.False(MouseDown(MouseButton.Left));
         }
         [Fact]
         public void TestMouseMovementIntegration()
@@ -208,8 +208,8 @@ namespace SplashKitTests
             MoveMouse(100.0, 100.0);
             ProcessEvents();
             var testMovement = MouseMovement();
-            Assert.Equal(100.0, testMovement.X);
-            Assert.Equal(100.0, testMovement.Y);
+            Assert.Equal(testMovement.X, 100.0);
+            Assert.Equal(testMovement.Y, 100.0);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -219,8 +219,8 @@ namespace SplashKitTests
             MoveMouse(400.0, 300.0);
             ProcessEvents();
             var testPosition = MousePosition();
-            Assert.Equal(400.0, testPosition.X);
-            Assert.Equal(300.0, testPosition.Y);
+            Assert.Equal(testPosition.X, 400.0);
+            Assert.Equal(testPosition.Y, 300.0);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -230,8 +230,8 @@ namespace SplashKitTests
             MoveMouse(400.0, 300.0);
             ProcessEvents();
             var testMousePosition = MousePositionVector();
-            Assert.Equal(400.0, testMousePosition.X);
-            Assert.Equal(300.0, testMousePosition.Y);
+            Assert.Equal(testMousePosition.X, 400.0);
+            Assert.Equal(testMousePosition.Y, 300.0);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -250,17 +250,17 @@ namespace SplashKitTests
         public void TestMouseUpIntegration()
         {
             ProcessEvents();
-            Assert.True(MouseUp(Mousebutton.Left));
-            SimulateMouseClick(Mousebutton.Left);
+            Assert.True(MouseUp(MouseButton.Left));
+            SimulateMouseClick(MouseButton.Left);
             ProcessEvents();
-            Assert.False(MouseUp(Mousebutton.Left));
+            Assert.False(MouseUp(MouseButton.Left));
         }
         [Fact]
         public void TestMouseWheelScrollIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             ProcessEvents();
-            Assert.Equal(VectorFromAngle(0.0, 0.0), MouseWheelScroll());
+            Assert.Equal(MouseWheelScroll(), VectorFromAngle(0.0, 0.0));
             SimulateMouseWheelScroll(10.0, 5.0);
             ProcessEvents();
             Assert.True(MouseWheelScroll());
@@ -281,7 +281,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveMouse(400.0, 300.0);
             ProcessEvents();
-            Assert.Equal(300.0, MouseY());
+            Assert.Equal(MouseY(), 300.0);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -301,7 +301,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             MoveMouse(PointAt(400.0, 300.0));
             ProcessEvents();
-            Assert.Equal(PointAt(400.0, 300.0), MousePosition());
+            Assert.Equal(MousePosition(), PointAt(400.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -335,11 +335,11 @@ namespace SplashKitTests
             var testFont = LoadFont("test_font", "path/to/font.ttf");
             StartReadingText(RectangleFrom(100, 100, 200, 30));
             ProcessEvents();
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
             DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105, 115));
+            Assert.Equal(GetPixel(testWindow, 105, 115), ColorBlack());
             EndReadingText();
             FreeFont(testFont);
             CloseWindow(testWindow);
@@ -447,7 +447,7 @@ namespace SplashKitTests
             StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
             ProcessEvents();
             Assert.False(TextEntryCancelled());
-            SimulateKeyPress(Keycode.Escape);
+            SimulateKeyPress(KeyCode.Escape);
             ProcessEvents();
             Assert.True(TextEntryCancelled());
             EndReadingText();
@@ -461,7 +461,7 @@ namespace SplashKitTests
             StartReadingText(testWindow, testRect);
             ProcessEvents();
             Assert.False(TextEntryCancelled(testWindow));
-            SimulateKeyPress(Keycode.Escape);
+            SimulateKeyPress(KeyCode.Escape);
             ProcessEvents();
             Assert.True(TextEntryCancelled(testWindow));
             CloseWindow(testWindow);
@@ -472,9 +472,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
             ProcessEvents();
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.Equal("A", TextInput());
+            Assert.Equal(TextInput(), "A");
             EndReadingText();
             CloseWindow(testWindow);
         }
@@ -485,9 +485,9 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testWindow, testRectangle);
             ProcessEvents();
-            SimulateKeyPress(Keycode.A);
+            SimulateKeyPress(KeyCode.A);
             ProcessEvents();
-            Assert.Equal("A", TextInput(testWindow));
+            Assert.Equal(TextInput(testWindow), "A");
             EndReadingText(testWindow);
             CloseWindow(testWindow);
         }

@@ -116,7 +116,7 @@ begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testPoint1 := PointAt(150.0, 100.0);
     testHeading := VectorFromAngle(180.0, 1.0);
-    testPoint2todo
+    testPoint2 := PointAt(0.0);
     testResult := DistantPointOnCircleHeading(testPoint1, testCircle, testHeading, testPoint2);
     AssertTrue(testResult);
     AssertEquals(testPoint1.x, 50.0);
@@ -144,8 +144,8 @@ procedure TIntegrationTests.TestWidestPointsIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testVector := VectorFromAngle(45.0);
-    testPoint1todo
-    testPoint2todo
+    testPoint1 := PointAt(0.0, 0.0);
+    testPoint2 := PointAt(0.0, 0.0);
     testPoints := WidestPoints(testCircle, testVector, testPoint1, testPoint2);
     AssertTrue(PointInCircle(PointAt(CircleX(testCircle), CircleY(testCircle)), testCircle));
     AssertTrue(PointInCircle(PointAt(CircleX(testCircle), CircleY(testCircle)), testCircle));
@@ -186,7 +186,9 @@ begin
     testFromPt := PointAt(0.0, 0.0);
     testLine1 := LineFrom(PointAt(-10.0, 0.0), PointAt(10.0, 0.0));
     testLine2 := LineFrom(PointAt(0.0, -10.0), PointAt(0.0, 10.0));
-    testClosestPoint := ClosestPointOnLines(testFromPt, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]}, 0);
+    testIndex := {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
+    testLines := {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
+    testClosestPoint := ClosestPointOnLines(testFromPt, testLines, testIndex);
     AssertEquals(PointPointDistance(testFromPt, testClosestPoint), 0.0);
 end;
 procedure TIntegrationTests.TestLineFromPointToPointIntegration;
@@ -220,7 +222,7 @@ procedure TIntegrationTests.TestLineIntersectionPointIntegration;
 begin
     testLine1 := LineFrom(0.0, 0.0, 10.0, 10.0);
     testLine2 := LineFrom(10.0, 0.0, 0.0, 10.0);
-    testPointtodo
+    testPoint := PointAt(0.0, 0.0);
     testIntersectionResult := LineIntersectionPoint(testLine1, testLine2, testPoint);
     AssertTrue(testIntersectionResult);
 end;
@@ -236,7 +238,8 @@ begin
     testLine := LineFrom(0.0, 0.0, 10.0, 10.0);
     testLine1 := LineFrom(5.0, 5.0, 15.0, 15.0);
     testLine2 := LineFrom(20.0, 20.0, 30.0, 30.0);
-    testResult := LineIntersectsLines(testLine, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]});
+    testLines := TArray<line>.Create(testLine1, testLine2);
+    testResult := LineIntersectsLines(testLine, testLines);
     AssertTrue(testResult);
 end;
 procedure TIntegrationTests.TestLineIntersectsRectIntegration;

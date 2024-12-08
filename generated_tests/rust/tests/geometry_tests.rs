@@ -121,7 +121,7 @@ fn test_distant_point_on_circle_heading_integration() {
     let test_circle = circle_at(100.0, 100.0, 50.0);
     let test_point1 = point_at(150.0, 100.0);
     let test_heading = vector_from_angle(180.0, 1.0);
-    test_point2todo
+    let test_point2 = point_at(0.0);
     let test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, test_point2);
     assert!(test_result);
     assert_eq!(test_point1.x, 50.0);
@@ -149,8 +149,8 @@ fn test_tangent_points_integration() {
 fn test_widest_points_integration() {
     let test_circle = circle_at(100.0, 100.0, 50.0);
     let test_vector = vector_from_angle(45.0);
-    test_point1todo
-    test_point2todo
+    let test_point1 = point_at(0.0, 0.0);
+    let test_point2 = point_at(0.0, 0.0);
     let test_points = widest_points(test_circle, test_vector, test_point1, test_point2);
     assert!(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
     assert!(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
@@ -191,7 +191,9 @@ fn test_closest_point_on_lines_integration() {
     let test_from_pt = point_at(0.0, 0.0);
     let test_line1 = line_from(point_at(-10.0, 0.0), point_at(10.0, 0.0));
     let test_line2 = line_from(point_at(0.0, -10.0), point_at(0.0, 10.0));
-    let test_closest_point = closest_point_on_lines(test_from_pt, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]}, 0);
+    let test_index = {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
+    let test_lines = {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
+    let test_closest_point = closest_point_on_lines(test_from_pt, test_lines, test_index);
     assert_eq!(point_point_distance(test_from_pt, test_closest_point), 0.0);
 }
 #[test]
@@ -225,7 +227,7 @@ fn test_line_from_integration() {
 fn test_line_intersection_point_integration() {
     let test_line1 = line_from(0.0, 0.0, 10.0, 10.0);
     let test_line2 = line_from(10.0, 0.0, 0.0, 10.0);
-    test_pointtodo
+    let test_point = point_at(0.0, 0.0);
     let test_intersection_result = line_intersection_point(test_line1, test_line2, test_point);
     assert!(test_intersection_result);
 }
@@ -241,7 +243,8 @@ fn test_line_intersects_lines_integration() {
     let test_line = line_from(0.0, 0.0, 10.0, 10.0);
     let test_line1 = line_from(5.0, 5.0, 15.0, 15.0);
     let test_line2 = line_from(20.0, 20.0, 30.0, 30.0);
-    let test_result = line_intersects_lines(test_line, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]});
+    let test_lines = vec![test_line1, test_line2];
+    let test_result = line_intersects_lines(test_line, test_lines);
     assert!(test_result);
 }
 #[test]

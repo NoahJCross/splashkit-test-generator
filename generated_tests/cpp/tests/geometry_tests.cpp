@@ -98,7 +98,7 @@ TEST_CASE("distant_point_on_circle_heading_integration") {
     auto test_circle = circle_at(100.0, 100.0, 50.0);
     auto test_point1 = point_at(150.0, 100.0);
     auto test_heading = vector_from_angle(180.0, 1.0);
-    test_point2todo
+    auto test_point2 = point_at(0.0);
     auto test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, test_point2);
     REQUIRE(test_result);
     REQUIRE(test_point1->x == 50.0);
@@ -123,8 +123,8 @@ TEST_CASE("tangent_points_integration") {
 TEST_CASE("widest_points_integration") {
     auto test_circle = circle_at(100.0, 100.0, 50.0);
     auto test_vector = vector_from_angle(45.0);
-    test_point1todo
-    test_point2todo
+    auto test_point1 = point_at(0.0, 0.0);
+    auto test_point2 = point_at(0.0, 0.0);
     auto test_points = widest_points(test_circle, test_vector, test_point1, test_point2);
     REQUIRE(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
     REQUIRE(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
@@ -160,7 +160,9 @@ TEST_CASE("closest_point_on_lines_integration") {
     auto test_from_pt = point_at(0.0, 0.0);
     auto test_line1 = line_from(point_at(-10.0, 0.0), point_at(10.0, 0.0));
     auto test_line2 = line_from(point_at(0.0, -10.0), point_at(0.0, 10.0));
-    auto test_closest_point = closest_point_on_lines(test_from_pt, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]}, 0);
+    auto test_index = {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
+    auto test_lines = {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
+    auto test_closest_point = closest_point_on_lines(test_from_pt, test_lines, test_index);
     REQUIRE(point_point_distance(test_from_pt, test_closest_point) == 0.0);
 }
 TEST_CASE("line_from_point_to_point_integration") {
@@ -189,7 +191,7 @@ TEST_CASE("line_from_integration") {
 TEST_CASE("line_intersection_point_integration") {
     auto test_line1 = line_from(0.0, 0.0, 10.0, 10.0);
     auto test_line2 = line_from(10.0, 0.0, 0.0, 10.0);
-    test_pointtodo
+    auto test_point = point_at(0.0, 0.0);
     auto test_intersection_result = line_intersection_point(test_line1, test_line2, test_point);
     REQUIRE(test_intersection_result);
 }
@@ -203,7 +205,8 @@ TEST_CASE("line_intersects_lines_integration") {
     auto test_line = line_from(0.0, 0.0, 10.0, 10.0);
     auto test_line1 = line_from(5.0, 5.0, 15.0, 15.0);
     auto test_line2 = line_from(20.0, 20.0, 30.0, 30.0);
-    auto test_result = line_intersects_lines(test_line, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]});
+    auto test_lines = std::vector<line> { test_line1, test_line2 };
+    auto test_result = line_intersects_lines(test_line, test_lines);
     REQUIRE(test_result);
 }
 TEST_CASE("line_intersects_rect_integration") {

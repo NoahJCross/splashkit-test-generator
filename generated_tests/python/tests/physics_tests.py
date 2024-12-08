@@ -315,7 +315,7 @@ def test_ApplyMatrixToQuad_integration():
     test_matrix = identity_matrix()
     test_quad = quad_from(point_at(100, 100), point_at(200, 100), point_at(200, 200), point_at(100, 200))
     apply_matrix_to_quad(test_matrix, test_quad)
-    assert point_at(100, 100) == quad_point
+    assert quad_point == point_at(100, 100)
     close_window(test_window)
 
 
@@ -323,15 +323,15 @@ def test_ApplyMatrixToTriangle_integration():
     test_triangle = triangle_from(point_at(0.0, 0.0), point_at(1.0, 0.0), point_at(0.0, 1.0))
     test_matrix = translation_matrix(1.0, 1.0)
     apply_matrix_to_triangle(test_matrix, test_triangle)
-    assert triangle_to_string(test_triangle) == "Triangle(x1: 1.0, y1: 1.0, x2: 2.0, y2: 1.0, x3: 1.0, y3: 2.0)"
+    assert "Triangle(x1: 1.0, y1: 1.0, x2: 2.0, y2: 1.0, x3: 1.0, y3: 2.0)" == triangle_to_string(test_triangle)
 
 
 def test_IdentityMatrix_integration():
     test_matrix = identity_matrix()
-    assert test_matrix[0, 0] == 1.0
-    assert test_matrix[1, 1] == 1.0
-    assert test_matrix[0, 1] == 0.0
-    assert test_matrix[1, 0] == 0.0
+    assert 1.0 == [test_matrix, 0]
+    assert 1.0 == [test_matrix, 1]
+    assert 0.0 == [test_matrix, 1]
+    assert 0.0 == [test_matrix, 0]
 
 
 def test_MatrixInverse_integration():
@@ -345,30 +345,30 @@ def test_MatrixMultiplyPoint_integration():
     test_matrix = identity_matrix()
     test_point = point_at(10.0, 20.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert result_point.x == 10.0
-    assert result_point.y == 20.0
+    assert 10.0 == result_point.x
+    assert 20.0 == result_point.y
 
 
 def test_MatrixMultiplyMatrix_integration():
     test_matrix1 = identity_matrix()
     test_matrix2 = rotation_matrix(45)
     result_matrix = matrix_multiply_matrix(test_matrix1, test_matrix2)
-    assert result_matrix[0, 0] == cosine(45)
-    assert result_matrix[0, 1] == sine(45)
+    assert cosine(45) == [result_matrix, 0]
+    assert sine(45) == [result_matrix, 1]
 
 
 def test_MatrixMultiplyVector_integration():
     test_vector = vector_to(1.0, 1.0)
     test_matrix = scale_matrix(2.0)
     result_vector = matrix_multiply_vector(test_matrix, test_vector)
-    assert result_vector.x == 2.0
-    assert result_vector.y == 2.0
+    assert 2.0 == result_vector.x
+    assert 2.0 == result_vector.y
 
 
 def test_MatrixToString_integration():
     test_matrix = identity_matrix()
     test_matrix_string = matrix_to_string(test_matrix)
-    assert test_matrix_string == "[1, 0, 0, 1, 0, 0]"
+    assert "[1, 0, 0, 1, 0, 0]" == test_matrix_string
 
 
 def test_RotationMatrix_integration():
@@ -384,8 +384,8 @@ def test_ScaleMatrixFromPoint_integration():
     test_matrix = scale_matrix_from_point(test_scale)
     test_vector = vector_to(1.0, 1.0)
     result_vector = matrix_multiply_vector(test_matrix, test_vector)
-    assert result_vector.x == 2.0
-    assert result_vector.y == 3.0
+    assert 2.0 == result_vector.x
+    assert 3.0 == result_vector.y
 
 
 def test_ScaleMatrixFromVector_integration():
@@ -393,16 +393,16 @@ def test_ScaleMatrixFromVector_integration():
     test_matrix = scale_matrix_from_vector(test_scale_vector)
     test_vector = vector_to(1.0, 1.0)
     result_vector = matrix_multiply_vector(test_matrix, test_vector)
-    assert result_vector.x == 2.0
-    assert result_vector.y == 3.0
+    assert 2.0 == result_vector.x
+    assert 3.0 == result_vector.y
 
 
 def test_ScaleMatrix_integration():
     test_matrix = scale_matrix(2.0)
     test_vector = vector_to(1.0, 1.0)
     result_vector = matrix_multiply_vector(test_matrix, test_vector)
-    assert result_vector.x == 2.0
-    assert result_vector.y == 2.0
+    assert 2.0 == result_vector.x
+    assert 2.0 == result_vector.y
 
 
 def test_ScaleRotateTranslateMatrix_integration():
@@ -420,8 +420,8 @@ def test_TranslationMatrixToPoint_integration():
     test_matrix = translation_matrix_to_point(test_point)
     test_vector = point_at(5.0, 5.0)
     result_point = matrix_multiply_vector(test_matrix, test_vector)
-    assert result_point.x == 15.0
-    assert result_point.y == 25.0
+    assert 15.0 == result_point.x
+    assert 25.0 == result_point.y
 
 
 def test_TranslationMatrixFromVector_integration():
@@ -429,16 +429,16 @@ def test_TranslationMatrixFromVector_integration():
     test_matrix = translation_matrix_from_vector(test_vector)
     test_point = point_at(0.0, 0.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert result_point.x == 10.0
-    assert result_point.y == 20.0
+    assert 10.0 == result_point.x
+    assert 20.0 == result_point.y
 
 
 def test_TranslationMatrix_integration():
     test_matrix = translation_matrix(10.0, 20.0)
     test_point = point_at(0.0, 0.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert result_point.x == 10.0
-    assert result_point.y == 20.0
+    assert 10.0 == result_point.x
+    assert 20.0 == result_point.y
 
 
 def test_AngleBetween_integration():
@@ -452,7 +452,7 @@ def test_DotProduct_integration():
     test_vector1 = vector_to(3.0, 4.0)
     test_vector2 = vector_to(1.0, 2.0)
     test_result = dot_product(test_vector1, test_vector2)
-    assert test_result == 11.0
+    assert 11.0 == test_result
 
 
 def test_IsZeroVector_integration():
@@ -473,16 +473,16 @@ def test_RayIntersectionPoint_integration():
 def test_UnitVector_integration():
     test_vector = vector_to(3.0, 4.0)
     test_unit_vector = unit_vector(test_vector)
-    assert vector_magnitude(test_unit_vector) == 1.0
-    assert vector_angle(test_unit_vector) == vector_angle(test_vector)
+    assert 1.0 == vector_magnitude(test_unit_vector)
+    assert vector_angle(test_vector) == vector_angle(test_unit_vector)
 
 
 def test_VectorAdd_integration():
     test_vector1 = vector_to(1.0, 2.0)
     test_vector2 = vector_to(3.0, 4.0)
     result_vector = vector_add(test_vector1, test_vector2)
-    assert result_vector.x == 4.0
-    assert result_vector.y == 6.0
+    assert 4.0 == result_vector.x
+    assert 6.0 == result_vector.y
 
 
 def test_VectorAngle_integration():
@@ -500,15 +500,15 @@ def test_VectorFromAngle_integration():
 def test_VectorFromLine_integration():
     test_line = line_from(point_at(0.0, 0.0), point_at(10.0, 10.0))
     test_vector = vector_from_line(test_line)
-    assert test_vector.x == 10.0
-    assert test_vector.y == 10.0
+    assert 10.0 == test_vector.x
+    assert 10.0 == test_vector.y
 
 
 def test_VectorFromPointToRect_integration():
     test_rect = rectangle_from(0.0, 0.0, 100.0, 100.0)
     test_point = point_at(50.0, 50.0)
     test_vector = vector_from_point_to_rect(test_point, test_rect)
-    assert vector_magnitude(test_vector) == 0.0
+    assert 0.0 == vector_magnitude(test_vector)
 
 
 def test_VectorInRect_integration():
@@ -522,7 +522,7 @@ def test_VectorInRect_integration():
 def test_VectorInvert_integration():
     test_vector = vector_to(3.0, 4.0)
     inverted_vector = vector_invert(test_vector)
-    assert vector_to(-3.0, -4.0) == inverted_vector
+    assert inverted_vector == vector_to(-3.0, -4.0)
 
 
 def test_VectorLimit_integration():
@@ -535,27 +535,27 @@ def test_VectorLimit_integration():
 def test_VectorMagnitude_integration():
     test_vector = vector_to(3.0, 4.0)
     test_magnitude = vector_magnitude(test_vector)
-    assert test_magnitude == 5.0
+    assert 5.0 == test_magnitude
 
 
 def test_VectorMagnitudeSquared_integration():
     test_vector = vector_to(3.0, 4.0)
     result = vector_magnitude_squared(test_vector)
-    assert result == 25.0
+    assert 25.0 == result
 
 
 def test_VectorMultiply_integration():
     test_vector = vector_to(3.0, 4.0)
     result_vector = vector_multiply(test_vector, 2.0)
-    assert vector_magnitude(result_vector) == 10.0
-    assert vector_angle(result_vector) == vector_angle(test_vector)
+    assert 10.0 == vector_magnitude(result_vector)
+    assert vector_angle(test_vector) == vector_angle(result_vector)
 
 
 def test_VectorNormal_integration():
     test_vector = vector_to(3.0, 4.0)
     normal_vector = vector_normal(test_vector)
-    assert vector_magnitude(normal_vector) == 5.0
-    assert vector_angle(normal_vector) == 53.1301
+    assert 5.0 == vector_magnitude(normal_vector)
+    assert 53.1301 == vector_angle(normal_vector)
 
 
 def test_VectorOutOfCircleFromCircle_integration():
@@ -581,7 +581,7 @@ def test_VectorOutOfRectFromCircle_integration():
     test_rectangle = rectangle_from(50.0, 50.0, 200.0, 200.0)
     test_velocity = vector_to(10.0, 0.0)
     test_result_vector = vector_out_of_rect_from_circle(test_circle, test_rectangle, test_velocity)
-    assert vector_magnitude(test_result_vector) != 0.0
+    assert 0.0 != vector_magnitude(test_result_vector)
     close_window(test_window)
 
 
@@ -598,41 +598,41 @@ def test_VectorOutOfRectFromRect_integration():
     test_bounds_rect = rectangle_from(0.0, 0.0, 200.0, 200.0)
     test_velocity = vector_to(10.0, 10.0)
     test_result_vector = vector_out_of_rect_from_rect(test_src_rect, test_bounds_rect, test_velocity)
-    assert vector_magnitude(test_result_vector) != 0.0
+    assert 0.0 != vector_magnitude(test_result_vector)
 
 
 def test_VectorPointToPoint_integration():
     test_start_point = point_at(0.0, 0.0)
     test_end_point = point_at(3.0, 4.0)
     test_vector = vector_point_to_point(test_start_point, test_end_point)
-    assert vector_to(3.0, 4.0) == test_vector
+    assert test_vector == vector_to(3.0, 4.0)
 
 
 def test_VectorSubtract_integration():
     test_vector1 = vector_to(3.0, 4.0)
     test_vector2 = vector_to(1.0, 1.0)
     result_vector = vector_subtract(test_vector1, test_vector2)
-    assert vector_magnitude(result_vector) == 3.0
-    assert vector_angle(result_vector) == 45.0
+    assert 3.0 == vector_magnitude(result_vector)
+    assert 45.0 == vector_angle(result_vector)
 
 
 def test_VectorToPoint_integration():
     test_point = point_at(3.0, 4.0)
     test_vector = vector_to_point(test_point)
-    assert test_vector.x == 3.0
-    assert test_vector.y == 4.0
+    assert 3.0 == test_vector.x
+    assert 4.0 == test_vector.y
 
 
 def test_VectorTo_integration():
     test_vector = vector_to(3.0, 4.0)
-    assert vector_magnitude(test_vector) == 5.0
-    assert vector_angle(test_vector) == 53.1301
+    assert 5.0 == vector_magnitude(test_vector)
+    assert 53.1301 == vector_angle(test_vector)
 
 
 def test_VectorToString_integration():
     test_vector = vector_to(3.0, 4.0)
     test_string = vector_to_string(test_vector)
-    assert test_string == "Vector(3.0, 4.0)"
+    assert "Vector(3.0, 4.0)" == test_string
 
 
 def test_VectorsEqual_integration():

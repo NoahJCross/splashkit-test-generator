@@ -10,19 +10,19 @@ mod test_runner {
 #![test_runner(test_runner::run_tests_sequential)]
 #[test]
 fn test_process_events_integration() {
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(key_typed(Keycode::A));
-    simulate_mouse_click(Mousebutton::Left);
+    assert!(key_typed(KeyCode::A));
+    simulate_mouse_click(MouseButton::Left);
     process_events();
-    assert!(mouse_clicked(Mousebutton::Left));
+    assert!(mouse_clicked(MouseButton::Left));
 }
 #[test]
 fn test_quit_requested_integration() {
     let test_window = open_window("Test Window", 800, 600);
     process_events();
     assert!(!quit_requested());
-    simulate_key_press(Keycode::Escape);
+    simulate_key_press(KeyCode::Escape);
     process_events();
     assert!(quit_requested());
     close_window(test_window);
@@ -41,7 +41,7 @@ fn test_reset_quit_integration() {
 fn test_any_key_pressed_integration() {
     process_events();
     assert!(!any_key_pressed());
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
     assert!(any_key_pressed());
 }
@@ -49,110 +49,110 @@ fn test_any_key_pressed_integration() {
 fn test_deregister_callback_on_key_down_integration() {
     let test_window = open_window("Test Window", 800, 600);
     register_callback_on_key_down(_on_key_down());
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(key_down(Keycode::A));
+    assert!(key_down(KeyCode::A));
     deregister_callback_on_key_down(_on_key_down());
-    simulate_key_press(Keycode::B);
+    simulate_key_press(KeyCode::B);
     process_events();
-    assert!(!key_down(Keycode::B));
+    assert!(!key_down(KeyCode::B));
     close_window(test_window);
 }
 #[test]
 fn test_deregister_callback_on_key_typed_integration() {
     register_callback_on_key_typed(_on_key_typed());
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(key_typed(Keycode::A));
+    assert!(key_typed(KeyCode::A));
     deregister_callback_on_key_typed(_on_key_typed());
-    simulate_key_press(Keycode::B);
+    simulate_key_press(KeyCode::B);
     process_events();
-    assert!(!key_typed(Keycode::B));
+    assert!(!key_typed(KeyCode::B));
 }
 #[test]
 fn test_deregister_callback_on_key_up_integration() {
     let test_window = open_window("Test Window", 800, 600);
     register_callback_on_key_up(_on_key_up());
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(key_up(Keycode::A));
+    assert!(key_up(KeyCode::A));
     deregister_callback_on_key_up(_on_key_up());
-    simulate_key_press(Keycode::B);
+    simulate_key_press(KeyCode::B);
     process_events();
-    assert!(!key_up(Keycode::B));
+    assert!(!key_up(KeyCode::B));
     close_window(test_window);
 }
 #[test]
 fn test_key_down_integration() {
     process_events();
-    assert!(!key_down(Keycode::A));
-    simulate_key_press(Keycode::A);
+    assert!(!key_down(KeyCode::A));
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(key_down(Keycode::A));
-    simulate_key_release(Keycode::A);
+    assert!(key_down(KeyCode::A));
+    simulate_key_release(KeyCode::A);
     process_events();
-    assert!(!key_down(Keycode::A));
+    assert!(!key_down(KeyCode::A));
 }
 #[test]
 fn test_key_name_integration() {
-    let test_key_name1 = key_name(Keycode::A);
+    let test_key_name1 = key_name(KeyCode::A);
     assert_eq!(test_key_name1, "A");
-    let test_key_name2 = key_name(Keycode::Enter);
+    let test_key_name2 = key_name(KeyCode::Enter);
     assert_eq!(test_key_name2, "Enter");
 }
 #[test]
 fn test_key_released_integration() {
     process_events();
-    assert!(!key_released(Keycode::A));
-    simulate_key_press(Keycode::A);
+    assert!(!key_released(KeyCode::A));
+    simulate_key_press(KeyCode::A);
     process_events();
-    simulate_key_release(Keycode::A);
+    simulate_key_release(KeyCode::A);
     process_events();
-    assert!(key_released(Keycode::A));
+    assert!(key_released(KeyCode::A));
 }
 #[test]
 fn test_key_typed_integration() {
     process_events();
-    assert!(!key_typed(Keycode::A));
-    simulate_key_press(Keycode::A);
+    assert!(!key_typed(KeyCode::A));
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(key_typed(Keycode::A));
+    assert!(key_typed(KeyCode::A));
 }
 #[test]
 fn test_key_up_integration() {
     process_events();
-    assert!(key_up(Keycode::A));
-    simulate_key_press(Keycode::A);
+    assert!(key_up(KeyCode::A));
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(!key_up(Keycode::A));
-    simulate_key_release(Keycode::A);
+    assert!(!key_up(KeyCode::A));
+    simulate_key_release(KeyCode::A);
     process_events();
-    assert!(key_up(Keycode::A));
+    assert!(key_up(KeyCode::A));
 }
 #[test]
 fn test_register_callback_on_key_down_integration() {
     register_callback_on_key_down(_on_key_down());
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(key_down(Keycode::A));
+    assert!(key_down(KeyCode::A));
     deregister_callback_on_key_down(_on_key_down());
 }
 #[test]
 fn test_register_callback_on_key_typed_integration() {
     register_callback_on_key_typed(_on_key_typed());
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    assert!(key_typed(Keycode::A));
+    assert!(key_typed(KeyCode::A));
     deregister_callback_on_key_typed(_on_key_typed());
 }
 #[test]
 fn test_register_callback_on_key_up_integration() {
     register_callback_on_key_up(_on_key_up());
     process_events();
-    simulate_key_press(Keycode::A);
-    simulate_key_release(Keycode::A);
+    simulate_key_press(KeyCode::A);
+    simulate_key_release(KeyCode::A);
     process_events();
     assert_eq!(_key_up, "A");
     deregister_callback_on_key_up(_on_key_up());
@@ -170,21 +170,21 @@ fn test_hide_mouse_integration() {
 #[test]
 fn test_mouse_clicked_integration() {
     process_events();
-    assert!(!mouse_clicked(Mousebutton::Left));
-    simulate_mouse_click(Mousebutton::Left);
+    assert!(!mouse_clicked(MouseButton::Left));
+    simulate_mouse_click(MouseButton::Left);
     process_events();
-    assert!(mouse_clicked(Mousebutton::Left));
+    assert!(mouse_clicked(MouseButton::Left));
 }
 #[test]
 fn test_mouse_down_integration() {
     process_events();
-    assert!(!mouse_down(Mousebutton::Left));
-    simulate_mouse_press(Mousebutton::Left);
+    assert!(!mouse_down(MouseButton::Left));
+    simulate_mouse_press(MouseButton::Left);
     process_events();
-    assert!(mouse_down(Mousebutton::Left));
-    simulate_mouse_release(Mousebutton::Left);
+    assert!(mouse_down(MouseButton::Left));
+    simulate_mouse_release(MouseButton::Left);
     process_events();
-    assert!(!mouse_down(Mousebutton::Left));
+    assert!(!mouse_down(MouseButton::Left));
 }
 #[test]
 fn test_mouse_movement_integration() {
@@ -230,10 +230,10 @@ fn test_mouse_shown_integration() {
 #[test]
 fn test_mouse_up_integration() {
     process_events();
-    assert!(mouse_up(Mousebutton::Left));
-    simulate_mouse_click(Mousebutton::Left);
+    assert!(mouse_up(MouseButton::Left));
+    simulate_mouse_click(MouseButton::Left);
     process_events();
-    assert!(!mouse_up(Mousebutton::Left));
+    assert!(!mouse_up(MouseButton::Left));
 }
 #[test]
 fn test_mouse_wheel_scroll_integration() {
@@ -307,7 +307,7 @@ fn test_draw_collected_text_integration() {
     let test_font = load_font("test_font", "path/to/font.ttf");
     start_reading_text(rectangle_from(100, 100, 200, 30));
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
     draw_collected_text(color_black(), test_font, 18, option_defaults());
     refresh_screen();
@@ -410,7 +410,7 @@ fn test_text_entry_cancelled_integration() {
     start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
     process_events();
     assert!(!text_entry_cancelled());
-    simulate_key_press(Keycode::Escape);
+    simulate_key_press(KeyCode::Escape);
     process_events();
     assert!(text_entry_cancelled());
     end_reading_text();
@@ -423,7 +423,7 @@ fn test_text_entry_cancelled_in_window_integration() {
     start_reading_text_in_window(test_window, test_rect);
     process_events();
     assert!(!text_entry_cancelled_in_window(test_window));
-    simulate_key_press(Keycode::Escape);
+    simulate_key_press(KeyCode::Escape);
     process_events();
     assert!(text_entry_cancelled_in_window(test_window));
     close_window(test_window);
@@ -433,7 +433,7 @@ fn test_text_input_integration() {
     let test_window = open_window("Test Window", 800, 600);
     start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
     assert_eq!(text_input(), "A");
     end_reading_text();
@@ -445,7 +445,7 @@ fn test_text_input_in_window_integration() {
     let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0);
     start_reading_text_in_window(test_window, test_rectangle);
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
     assert_eq!(text_input_in_window(test_window), "A");
     end_reading_text_in_window(test_window);

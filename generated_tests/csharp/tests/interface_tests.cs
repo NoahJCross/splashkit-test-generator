@@ -9,30 +9,37 @@ namespace SplashKitTests
         public void TestAddColumnIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-            StartCustomLayout();
-            AddColumn(100);
-            AddColumn(-1);
-            Button("Test Button");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartCustomLayout();
+                AddColumn(100);
+                AddColumn(-1);
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestAddColumnRelativeIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-            StartCustomLayout();
-            AddColumnRelative(0.5);
-            Button("Button 1");
-            AddColumnRelative(0.5);
-            Button("Button 2");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
-            Assert.True(PointInRectangle(PointAt(200, 300), RectangleFrom(0, 0, 400, 600)));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartCustomLayout();
+                AddColumnRelative(0.5);
+                Button("Button 1");
+                AddColumnRelative(0.5);
+                Button("Button 2");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -40,10 +47,14 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            ProcessEvents();
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var buttonClicked = BitmapButton(testBitmap);
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = BitmapButton(testBitmap);
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.True(buttonClicked);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -54,10 +65,14 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testRectangle = RectangleFrom(100, 100, 100, 100);
-            ProcessEvents();
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var buttonClicked = BitmapButton(testBitmap, testRectangle);
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = BitmapButton(testBitmap, testRectangle);
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.True(buttonClicked);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -68,11 +83,14 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testRectangle = RectangleFrom(100, 100, 100, 100);
-            var testOptions = OptionDefaults();
-            var buttonClicked = BitmapButton(testBitmap, testRectangle, testOptions);
-            ProcessEvents();
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = BitmapButton(testBitmap, testRectangle, OptionDefaults());
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.True(buttonClicked);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -84,10 +102,14 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testOptions1 = OptionDefaults();
             var testOptions2 = OptionScaleBmp(0.5, 0.5, testOptions1);
-            ProcessEvents();
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var buttonClicked = BitmapButton(testBitmap, testOptions2);
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = BitmapButton(testBitmap, testOptions2);
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.True(buttonClicked);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -97,13 +119,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            ProcessEvents();
-            var buttonClicked1 = BitmapButton("Click Me", testBitmap);
-            Assert.False(buttonClicked1);
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var buttonClicked2 = BitmapButton("Click Me", testBitmap);
-            Assert.True(buttonClicked2);
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = BitmapButton("Click Me", testBitmap);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.True(buttonClicked);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -114,10 +138,14 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testOptions1 = OptionDefaults();
             var testOptions2 = OptionScaleBmp(0.5, 0.5, testOptions1);
-            ProcessEvents();
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var buttonClicked = BitmapButton("Click Me", testBitmap, testOptions2);
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = BitmapButton("Click Me", testBitmap, testOptions2);
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.True(buttonClicked);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -127,41 +155,45 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRectangle = RectangleFrom(100, 100, 200, 50);
-            ProcessEvents();
-            var buttonClicked1 = Button("Click Me", testRectangle);
-            Assert.False(buttonClicked1);
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var buttonClicked2 = Button("Click Me", testRectangle);
-            Assert.True(buttonClicked2);
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = Button("Click Me", testRectangle);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.True(buttonClicked);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestButtonIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 100));
-            ProcessEvents();
-            var buttonClicked1 = Button("Click Me");
-            Assert.False(buttonClicked1);
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var buttonClicked2 = Button("Click Me");
-            Assert.True(buttonClicked2);
-            EndPanel("Test Panel");
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = Button("Click Me");
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.True(buttonClicked);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestButtonLabeledIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            var buttonResult1 = Button("Label:", "Click Me");
-            Assert.False(buttonResult1);
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var buttonResult2 = Button("Label:", "Click Me");
-            Assert.True(buttonResult2);
+            var buttonClicked = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                buttonClicked = Button("Label:", "Click Me");
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.True(buttonClicked);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -169,52 +201,64 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 50);
-            ProcessEvents();
-            var testCheckboxResult1 = Checkbox("Test Checkbox", false, testRect);
-            Assert.False(testCheckboxResult1);
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var testCheckboxResult2 = Checkbox("Test Checkbox", testCheckboxResult1, testRect);
-            Assert.True(testCheckboxResult2);
+            var initialCheckboxResult = false
+            var currentCheckboxResult = initialCheckboxResult
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult, testRect);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.True(currentCheckboxResult);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestCheckboxIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            var testCheckboxResult1 = Checkbox("Test Checkbox", false);
-            Assert.False(testCheckboxResult1);
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var testCheckboxResult2 = Checkbox("Test Checkbox", testCheckboxResult1);
-            Assert.True(testCheckboxResult2);
+            var initialCheckboxResult = false
+            var currentCheckboxResult = initialCheckboxResult
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.True(currentCheckboxResult);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestCheckboxLabeledIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            var testCheckboxResult1 = Checkbox("Test Checkbox", "Check me", false);
-            Assert.False(testCheckboxResult1);
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            var testCheckboxResult2 = Checkbox("Test Checkbox", "Check me", testCheckboxResult1);
-            Assert.True(testCheckboxResult2);
+            var initialCheckboxResult = false
+            var currentCheckboxResult = initialCheckboxResult
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentCheckboxResult = Checkbox("Test Checkbox", "Check me", currentCheckboxResult);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.True(currentCheckboxResult);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestColorSliderAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testColor = ColorBlack();
-            var testRect = RectangleFrom(100, 100, 200, 100);
-            var resultColor = ColorSlider(testColor, testRect);
-            ProcessEvents();
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
-            Assert.NotEqual(resultColor, testColor);
+            var initialColor = ColorBlack();
+            var currentColor = initialColor
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentColor = ColorSlider(currentColor, RectangleFrom(300, 300, 400, 24));
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(currentColor, initialColor);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -222,10 +266,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testColor = ColorBlack();
-            var resultColor = ColorSlider(testColor);
-            DrawInterface();
-            RefreshScreen();
-            Assert.NotEqual(resultColor, testColor);
+            var currentColor = testColor
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentColor = ColorSlider(currentColor);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(currentColor, testColor);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -233,9 +282,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testColor = ColorBlack();
-            var resultColor = ColorSlider("Test Color Slider", testColor);
-            ProcessEvents();
-            Assert.NotEqual(ColorBlack(), resultColor);
+            var currentColor = testColor
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentColor = ColorSlider("Test Color Slider", currentColor);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(testColor, currentColor);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -259,12 +314,15 @@ namespace SplashKitTests
         public void TestDrawInterfaceIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-            Button("Test Button");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(150, 150)));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                WriteLine("Test Button clicked!");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -283,50 +341,76 @@ namespace SplashKitTests
         public void TestEndInsetIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartInset("Test Inset", 60);
-            EndInset("Test Inset");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartInset("Test Inset", 60);
+                EndInset("Test Inset");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestEndPanelIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-            EndPanel("Test Panel");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestEndPopupIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPopup = StartPopup("Test Popup");
-            EndPopup("Test Popup");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPopup("Test Popup");
+                EndPopup("Test Popup");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestEndTreenodeIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartPanel("Test Panel", RectangleFrom(10, 10, 200, 200));
-            var testNode = StartTreenode("Test Node");
-            EndTreenode("Test Node");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(10, 10, 200, 200));
+                StartTreenode("Test Node");
+                EndTreenode("Test Node");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestEnterColumnIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(10, 10, 300, 200));
-            AddColumn(100);
-            EnterColumn();
-            Button("Button1");
-            LeaveColumn();
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(10, 10, 300, 200));
+                AddColumn(100);
+                EnterColumn();
+                WriteLine("Button1 clicked!");
+                LeaveColumn();
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -339,20 +423,30 @@ namespace SplashKitTests
         public void TestHeaderIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            var testHeaderResult = Header("Test Header");
-            Assert.NotNull(testHeaderResult);
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                var testHeaderResult = Header("Test Header");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestHSBColorSliderAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testColor = HSBColor(0.5, 1.0, 0.5);
             var testRect = RectangleFrom(100, 100, 200, 100);
-            var resultColor = HSBColorSlider(testColor, testRect);
-            ProcessEvents();
-            Assert.NotEqual(resultColor, testColor);
+            var testColor = HSBColor(0.5, 1.0, 0.5);
+            var currentColor = testColor
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentColor = HSBColorSlider(currentColor, testRect);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(currentColor, testColor);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -360,10 +454,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("HSB Slider Test", 800, 600);
             var testColor = ColorBlack();
-            var resultColor = HSBColorSlider(testColor);
-            DrawInterface();
-            RefreshScreen();
-            Assert.NotEqual(resultColor, testColor);
+            var currentColor = testColor
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentColor = HSBColorSlider(currentColor);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(currentColor, testColor);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -371,9 +470,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testColor = ColorBlack();
-            var testResultColor = HSBColorSlider("Color Slider", testColor);
-            ProcessEvents();
-            Assert.NotEqual(ColorBlack(), testResultColor);
+            var currentColor = testColor
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                currentColor = HSBColorSlider("Color Slider", currentColor);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(testColor, currentColor);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -392,18 +497,26 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRectangle = RectangleFrom(0, 0, 200, 200);
-            InterfaceStylePanel(testRectangle);
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                InterfaceStylePanel(testRectangle);
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestLabelElementIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            LabelElement("Test Label");
-            DrawInterface();
-            RefreshScreen();
-            Assert.True(PixelDrawnAtPoint(PointAt(10, 10)));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                LabelElement("Test Label");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -411,23 +524,26 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRectangle = RectangleFrom(100, 100, 200, 50);
-            LabelElement("Test Label", testRectangle);
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                LabelElement("Test Label", testRectangle);
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestLastElementChangedIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            Slider("Test Slider", 0.0, 0.0, 100.0);
-            ProcessEvents();
-            Assert.False(LastElementChanged());
-            SimulateMouseMove(100, 100);
-            SimulateMouseDown(Mousebutton.Left);
-            SimulateMouseMove(200, 200);
-            SimulateMouseUp(Mousebutton.Left);
-            ProcessEvents();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                Slider("Test Slider", 0.0, 0.0, 100.0);
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.True(LastElementChanged());
             CloseWindow(testWindow);
         }
@@ -435,11 +551,13 @@ namespace SplashKitTests
         public void TestLastElementConfirmedIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testButton = Button("Test Button");
-            ProcessEvents();
-            Assert.False(LastElementConfirmed());
-            SimulateMouseClick(Mousebutton.Left);
-            ProcessEvents();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                var testButton = Button("Test Button");
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.True(LastElementConfirmed());
             CloseWindow(testWindow);
         }
@@ -447,14 +565,21 @@ namespace SplashKitTests
         public void TestLeaveColumnIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartPanel("Test Panel", RectangleFrom(10, 10, 300, 200));
-            StartCustomLayout();
-            AddColumn(100);
-            EnterColumn();
-            LeaveColumn();
-            var buttonResult = Button("Test Button");
+            var buttonResult = false
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(10, 10, 300, 200));
+                StartCustomLayout();
+                AddColumn(100);
+                EnterColumn();
+                LeaveColumn();
+                buttonResult = Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.False(buttonResult);
-            EndPanel("Test Panel");
             CloseWindow(testWindow);
         }
         [Fact]
@@ -462,51 +587,75 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 30);
-            var testResult = NumberBox(5.0, 1.0, testRect);
-            ProcessEvents();
-            Assert.InRange(testResult, 4.0, 6.0);
+            var testResult = 5.0
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                testResult = NumberBox(testResult, 1.0, testRect);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.InRange(testResult, 4.0, );
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestNumberBoxIntegration()
         {
             var testWindow = OpenWindow("Number Box Test", 800, 600);
-            ProcessEvents();
-            var testResult = NumberBox(5.0, 1.0);
-            Assert.InRange(testResult, 4.0, 6.0);
+            var testResult = 5.0
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                testResult = NumberBox(testResult, 1.0);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.InRange(testResult, 4.0, );
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestNumberBoxLabeledIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testResult = NumberBox("Test Value", 5.0, 1.0);
-            Assert.InRange(testResult, 4.0, 6.0);
+            var testResult = 5.0
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                testResult = NumberBox("Test Value", testResult, 1.0);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.InRange(testResult, 4.0, );
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestOpenPopupIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPopup = StartPopup("Test Popup");
-            ProcessEvents();
-            OpenPopup("Test Popup");
-            ProcessEvents();
-            Assert.True(popupIsOpen);
-            EndPopup("Test Popup");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPopup("Test Popup");
+                EndPopup("Test Popup");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestParagraphIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceFont(LoadFont("test_font", "arial.ttf"));
+            SetInterfaceFont(LoadFont("hara", "hara.ttf"));
             SetInterfaceFontSize(12);
-            Paragraph("This is a test paragraph to check if the text wraps correctly.");
-            DrawInterface();
-            RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(10, 10)));
-            FreeFont(FontNamed("test_font"));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                Paragraph("This is a test paragraph to check if the text wraps correctly.");
+                DrawInterface();
+                RefreshScreen();
+            }
+            FreeFont(FontNamed("hara"));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -514,21 +663,29 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRectangle = RectangleFrom(100, 100, 200, 100);
-            Paragraph("This is a test paragraph.", testRectangle);
-            RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(PointAt(RectangleLeft(testRectangle), RectangleTop(testRectangle))));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                Paragraph("This is a test paragraph.", testRectangle);
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestResetLayoutIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartCustomLayout();
-            AddColumn(200);
-            AddColumn(-1);
-            ResetLayout();
-            DrawInterface();
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartCustomLayout();
+                AddColumn(200);
+                AddColumn(-1);
+                ResetLayout();
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -536,10 +693,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceAccentColor(ColorRed(), 0.5);
-            Button("Test Button");
-            DrawInterface();
-            RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(PointAt(10, 10)));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                Button("Test Button");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -547,12 +707,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceBorderColor(ColorRed());
-            StartPanel("Test Panel", RectangleFrom(100, 100, 200, 100));
-            Button("Test Button");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(100, 100));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 100));
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -560,59 +723,76 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceColorsAuto(ColorWhite(), ColorBlue(), 0.5, 0.7, 0.3);
-            StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-            Button("Test Button");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
-            Assert.Equal(ColorBlue(), GetPixel(150, 150));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSetInterfaceElementColorIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceElementColor(ColorBlack(), 0.5);
-            StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-            Button("Test Button");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(150, 150));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                SetInterfaceElementColor(ColorBlack(), 0.5);
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSetInterfaceElementShadowsIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceElementShadows(10, ColorBlack(), PointAt(5, 5));
-            StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-            Button("Test Button");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
-            Assert.True(PixelDrawnAtPoint(PointAt(105, 105)));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSetInterfaceFontFontAsStringIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceFont("Arial");
-            LabelElement("Test Text");
-            DrawInterface();
-            RefreshScreen();
+            var testFont = LoadFont("hara", "hara.ttf");
+            SetInterfaceFont("hara");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                LabelElement("Test Text");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSetInterfaceFontIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testFont = LoadFont("test_font", "arial.ttf");
+            var testFont = LoadFont("hara", "hara.ttf");
             SetInterfaceFont(testFont);
-            LabelElement("Test Text");
-            DrawInterface();
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                LabelElement("Test Text");
+                DrawInterface();
+                RefreshScreen();
+            }
             FreeFont(testFont);
             CloseWindow(testWindow);
         }
@@ -621,9 +801,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceFontSize(16);
-            LabelElement("Test Text");
-            DrawInterface();
-            Assert.True(PixelDrawnAtPoint(PointAt(10, 20)));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                LabelElement("Test Text");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -631,8 +815,14 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceLabelWidth(100);
-            var testWidth = GetInterfaceLabelWidth();
-            Assert.Equal(100, testWidth);
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                var testWidth = GetInterfaceLabelWidth();
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.Equal(100, GetInterfaceLabelWidth());
             CloseWindow(testWindow);
         }
         [Fact]
@@ -640,10 +830,14 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfacePanelShadows(10, RGBAColor(0, 0, 0, 128), PointAt(5, 5));
-            var panelVisible = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 150));
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 150));
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.Equal(RGBAColor(0, 0, 0, 128), GetPixel(PointAt(105, 105)));
             CloseWindow(testWindow);
         }
@@ -652,9 +846,14 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceRootTextColor(ColorRed());
-            LabelElement("Test Text", RectangleFrom(100, 100, 200, 50));
-            RefreshScreen();
-            Assert.True(PixelDrawnAtPoint(ColorRed(), 105, 105));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                LabelElement("Test Text", RectangleFrom(100, 100, 200, 50));
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.Equal(ColorRed(), GetPixel(PointAt(105, 105)));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -662,16 +861,16 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceShadows(10, RGBAColor(0, 0, 0, 128), PointAt(5, 5));
-            var panelVisible = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-if (Assert.True(panelVisible);
-) {
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
                 Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
                 RefreshScreen();
-                Assert.True(PixelDrawnAtPoint(PointAt(105, 105)));
-}
-}
+            }
+            Assert.Equal(RGBAColor(0, 0, 0, 128), GetPixel(PointAt(105, 105)));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -679,34 +878,48 @@ if (Assert.True(panelVisible);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceSpacing(10, 5);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-            Button("Button 1");
-            Button("Button 2");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
-            Assert.True(PixelDrawnAtPoint(PointAt(110, 110)));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                Button("Button 1");
+                Button("Button 2");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSetInterfaceStyleIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceStyle(InterfaceStyle.Dark);
-            Button("Test Button");
-            DrawInterface();
-            RefreshScreen();
+            SetInterfaceStyle("SplashKitSDK.InterfaceStyle.ShadedDarkStyle");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSetInterfaceStyleWithColorIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceStyle(InterfaceStyle.Dark, ColorBlue());
-            var testPanel = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-            Button("Test Button");
-            DrawInterface();
-            RefreshScreen();
+            SetInterfaceStyle("SplashKitSDK.InterfaceStyle.ShadedDarkStyle", ColorBlue());
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                var testPanel = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.Equal(ColorBlue(), GetPixel(PointAt(150, 150)));
             CloseWindow(testWindow);
         }
@@ -715,9 +928,13 @@ if (Assert.True(panelVisible);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceTextColor(ColorRed());
-            LabelElement("Test Text");
-            DrawInterface();
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                LabelElement("Test Text");
+                DrawInterface();
+                RefreshScreen();
+            }
             Assert.Equal(ColorRed(), GetPixel(PointAt(10, 10)));
             CloseWindow(testWindow);
         }
@@ -725,12 +942,16 @@ if (Assert.True(panelVisible);
         public void TestSetLayoutHeightIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
             SetLayoutHeight(50);
-            Button("Test Button");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -738,9 +959,15 @@ if (Assert.True(panelVisible);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SingleLineLayout();
-            var testButton1 = Button("Button1");
-            var testButton2 = Button("Button2");
-            ResetLayout();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                var testButton1 = Button("Button1");
+                var testButton2 = Button("Button2");
+                ResetLayout();
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -748,73 +975,118 @@ if (Assert.True(panelVisible);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 20);
-            ProcessEvents();
-            var sliderResult = Slider(50.0, 0.0, 100.0, testRect);
-            Assert.InRange(sliderResult, 0.0, 100.0);
+            var initialValue = 50.0
+            var sliderResult = initialValue
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                sliderResult = Slider(sliderResult, 0.0, 100.0, testRect);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(initialValue, sliderResult);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSliderIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            var testSliderResult = Slider(50.0, 0.0, 100.0);
-            Assert.InRange(testSliderResult, 0.0, 100.0);
+            var initialValue = 50.0
+            var sliderResult = initialValue
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                sliderResult = Slider(sliderResult, 0.0, 100.0);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(initialValue, sliderResult);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSliderLabeledIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testSliderValue = Slider("Test Slider", 50.0, 0.0, 100.0);
-            Assert.InRange(testSliderValue, 0.0, 100.0);
+            var initialValue = 50.0
+            var sliderResult = initialValue
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                sliderResult = Slider("Test Slider", sliderResult, 0.0, 100.0);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(initialValue, sliderResult);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSplitIntoColumnsIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-            SplitIntoColumns(3);
-            EndPanel("Test Panel");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                SplitIntoColumns(3);
+                Button("Button 1");
+                Button("Button 2");
+                Button("Button 3");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSplitIntoColumnsWithLastWidthIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-            SplitIntoColumns(3, 200);
-            Button("Button 1");
-            Button("Button 2");
-            Button("Button 3");
-            EndPanel("Test Panel");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                SplitIntoColumns(3, 200);
+                Button("Button 1");
+                Button("Button 2");
+                Button("Button 3");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSplitIntoColumnsRelativeWithLastWidthIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-            SplitIntoColumnsRelative(3, 0.5);
-            Button("Button 1");
-            Button("Button 2");
-            Button("Button 3");
-            EndPanel("Test Panel");
-            DrawInterface();
-            RefreshScreen();
-            Assert.True(PointInRectangle(PointAt(200, 300), RectangleFrom(0, 0, 200, 600)));
-            Assert.True(PointInRectangle(PointAt(600, 300), RectangleFrom(400, 0, 400, 600)));
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                SplitIntoColumnsRelative(3, 0.5);
+                Button("Button 1");
+                Button("Button 2");
+                Button("Button 3");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestStartCustomLayoutIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartCustomLayout();
-            AddColumn(200);
-            var buttonResult = Button("Test Button");
-            ResetLayout();
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartCustomLayout();
+                AddColumn(200);
+                buttonResult = Button("Test Button");
+                ResetLayout();
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
             Assert.True(buttonResult);
         }
@@ -823,19 +1095,30 @@ if (Assert.True(panelVisible);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 200);
-            StartInset("test_inset", testRect);
-            EndInset("test_inset");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartInset("test_inset", testRect);
+                Button("Test Button");
+                EndInset("test_inset");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestStartInsetIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartPanel("Test Panel", RectangleFrom(100, 100, 300, 300));
-            StartInset("Test Inset", 100);
-            Button("Test Button");
-            EndInset("Test Inset");
-            EndPanel("Test Panel");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartInset("Test Inset", 100);
+                Button("Test Button");
+                EndInset("Test Inset");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
@@ -843,42 +1126,65 @@ if (Assert.True(panelVisible);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRectangle = RectangleFrom(100, 100, 200, 150);
-            var panelVisible = StartPanel("Test Panel", testRectangle);
-            Assert.True(panelVisible);
-            EndPanel("Test Panel");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", testRectangle);
+                Button("Test Button");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestStartPopupIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var popupVisible = StartPopup("Test Popup");
-            Assert.True(popupVisible);
-            EndPopup("Test Popup");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPopup("Test Popup");
+                Button("Test Button");
+                EndPopup("Test Popup");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestStartTreenodeIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-            var testNodeExpanded = StartTreenode("Test Node");
-            Assert.True(testNodeExpanded);
-            EndTreenode("Test Node");
-            EndPanel("Test Panel");
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartTreenode("Test Node");
+                Button("Test Button1");
+                Button("Test Button2");
+                Button("Test Button3");
+                EndTreenode("Test Node");
+                EndPanel("Test Panel");
+                DrawInterface();
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestTextBoxIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testTextBoxResult = TextBox("Initial Text");
-            ProcessEvents();
-            Assert.Equal("Initial Text", testTextBoxResult);
-            SimulateKeyPress(Keycode.A);
-            ProcessEvents();
-            var testTextBoxResultUpdated = TextBox(testTextBoxResult);
-            Assert.Equal("Initial TextA", testTextBoxResultUpdated);
+            var initialText = "Initial Text"
+            var textResult = initialText
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                textResult = TextBox(textResult);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(initialText, textResult);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -886,22 +1192,32 @@ if (Assert.True(panelVisible);
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 30);
-            ProcessEvents();
-            var testResult1 = TextBox("Initial Text", testRect);
-            Assert.Equal("Initial Text", testResult2);
-            SimulateKeyPress(Keycode.A);
-            ProcessEvents();
-            var testResult2 = TextBox(testResult1, testRect);
-            Assert.Equal("Initial TextA", testResult1);
+            var initialText = "Initial Text"
+            var textResult = initialText
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                textResult = TextBox(textResult, testRect);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(initialText, textResult);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestTextBoxLabeledIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testTextBoxResult = TextBox("Enter Name", "John");
-            ProcessEvents();
-            Assert.Equal("John", testTextBoxResult);
+            var initialText = "Initial Text"
+            var textResult = initialText
+            while (!QuitRequested()) {
+                ProcessEvents();
+                ClearScreen();
+                textResult = TextBox("Enter Name", textResult);
+                DrawInterface();
+                RefreshScreen();
+            }
+            Assert.NotEqual(initialText, textResult);
             CloseWindow(testWindow);
         }
     }

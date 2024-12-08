@@ -2152,7 +2152,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "Escape"
             }
           ]
@@ -2239,7 +2239,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "Escape"
             }
           ]

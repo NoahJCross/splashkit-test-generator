@@ -17,9 +17,9 @@ namespace SplashKitTests
         public void TestConvertToDoubleIntegration()
         {
             var testResult = ConvertToDouble("123.456");
-            Assert.Equal(123.456, testResult);
+            Assert.Equal(testResult, 123.456);
             var testResult = ConvertToDouble("-123.456");
-            Assert.Equal(-123.456, testResult);
+            Assert.Equal(testResult, -123.456);
             var testResult = ConvertToDouble("invalid");
             Assert.Null(testResult);
         }
@@ -27,11 +27,11 @@ namespace SplashKitTests
         public void TestConvertToIntegerIntegration()
         {
             var testResult = ConvertToInteger("123");
-            Assert.Equal(123, testResult);
+            Assert.Equal(testResult, 123);
             var testResult = ConvertToInteger("-456");
-            Assert.Equal(-456, testResult);
+            Assert.Equal(testResult, -456);
             var testResult = ConvertToInteger("123.456");
-            Assert.Equal(123, testResult);
+            Assert.Equal(testResult, 123);
             var testResult = ConvertToInteger("abc");
             Assert.Throws<Exception>(() => { ConvertToInteger("abc") });
         }
@@ -39,9 +39,9 @@ namespace SplashKitTests
         public void TestIndexOfIntegration()
         {
             var testResult = IndexOf("splashkit library", "library");
-            Assert.Equal(10, testResult);
+            Assert.Equal(testResult, 10);
             var testResult = IndexOf("splashkit library", "unreal");
-            Assert.Equal(-1, testResult);
+            Assert.Equal(testResult, -1);
         }
         [Fact]
         public void TestIsDoubleIntegration()
@@ -83,49 +83,49 @@ namespace SplashKitTests
         public void TestLengthOfIntegration()
         {
             var testLength = LengthOf("SplashKit");
-            Assert.Equal(9, testLength);
+            Assert.Equal(testLength, 9);
             var testLengthEmpty = LengthOf("");
-            Assert.Equal(0, testLengthEmpty);
+            Assert.Equal(testLengthEmpty, 0);
         }
         [Fact]
         public void TestReplaceAllIntegration()
         {
             var testResult = ReplaceAll("hello world", "world", "SplashKit");
-            Assert.Equal("hello SplashKit", testResult);
+            Assert.Equal(testResult, "hello SplashKit");
             var testResult = ReplaceAll("aaaa", "a", "b");
-            Assert.Equal("bbbb", testResult);
+            Assert.Equal(testResult, "bbbb");
             var testResult = ReplaceAll("test", "t", "");
-            Assert.Equal("es", testResult);
+            Assert.Equal(testResult, "es");
         }
         [Fact]
         public void TestSplitIntegration()
         {
             var testResult = Split("splashkit library", " ");
-            Assert.Equal(2, LengthOf(testResult));
-            Assert.Equal(0, IndexOf(testResult, "splashkit"));
-            Assert.Equal(0, IndexOf(testResult, "library"));
+            Assert.Equal(LengthOf(testResult), 2);
+            Assert.Equal(IndexOf(testResult, "splashkit"), 0);
+            Assert.Equal(IndexOf(testResult, "library"), 0);
         }
         [Fact]
         public void TestToLowercaseIntegration()
         {
             var testLowercase = ToLowercase("SPLASHKIT");
-            Assert.Equal("splashkit", testLowercase);
+            Assert.Equal(testLowercase, "splashkit");
             var testEmpty = ToLowercase("");
-            Assert.Equal("", testEmpty);
+            Assert.Equal(testEmpty, "");
         }
         [Fact]
         public void TestToUppercaseIntegration()
         {
             var testUppercase = ToUppercase("hello");
-            Assert.Equal("HELLO", testUppercase);
+            Assert.Equal(testUppercase, "HELLO");
         }
         [Fact]
         public void TestTrimIntegration()
         {
             var testTrimmed = Trim("  Hello, World!  ");
-            Assert.Equal("Hello, World!", testTrimmed);
+            Assert.Equal(testTrimmed, "Hello, World!");
             var testEmptyTrimmed = Trim(" \t\n  ");
-            Assert.Equal("", testEmptyTrimmed);
+            Assert.Equal(testEmptyTrimmed, "");
         }
         [Fact]
         public void TestRndRangeIntegration()
@@ -174,7 +174,7 @@ namespace SplashKitTests
         public void TestFileAsStringIntegration()
         {
             var testFileContent = FileAsString("test_file.txt", ResourceKind.BundleResource);
-            Assert.NotEqual("", testFileContent);
+            Assert.NotEqual(testFileContent, "");
         }
     }
 }

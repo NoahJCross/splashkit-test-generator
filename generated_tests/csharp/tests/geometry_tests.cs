@@ -10,7 +10,7 @@ namespace SplashKitTests
         {
             var testCircle = CircleAt(100.0, 100.0, 50.0);
             var testCenterPoint = CenterPoint(testCircle);
-            Assert.Equal(testCenterPoint, PointAt(100.0, 100.0));
+            Assert.Equal(PointAt(100.0, 100.0), testCenterPoint);
         }
         [Fact]
         public void TestCircleAtIntegration()
@@ -37,7 +37,7 @@ namespace SplashKitTests
         {
             var testCircle = CircleAt(100.0, 100.0, 50.0);
             var testRadius = CircleRadius(testCircle);
-            Assert.Equal(50.0, testRadius);
+            Assert.Equal(testRadius, 50.0);
         }
         [Fact]
         public void TestCircleTriangleIntersectIntegration()
@@ -54,19 +54,19 @@ namespace SplashKitTests
             var testTriangle = TriangleFrom(PointAt(50.0, 50.0), PointAt(150.0, 50.0), PointAt(100.0, 150.0));
             var testResult = CircleTriangleIntersect(testCircle, testTriangle, PointAt(0.0, 0.0));
             Assert.True(testResult);
-            Assert.Equal(CircleRadius(testCircle), PointPointDistance(CenterPoint(testCircle), ClosestPointOnTriangleFromCircle(testCircle, testTriangle)));
+            Assert.Equal(PointPointDistance(CenterPoint(testCircle), ClosestPointOnTriangleFromCircle(testCircle, testTriangle)), CircleRadius(testCircle));
         }
         [Fact]
         public void TestCircleXIntegration()
         {
             var testCircle = CircleAt(100.0, 100.0, 50.0);
-            Assert.Equal(100.0, CircleX(testCircle));
+            Assert.Equal(CircleX(testCircle), 100.0);
         }
         [Fact]
         public void TestCircleYIntegration()
         {
             var testCircle = CircleAt(100.0, 150.0, 50.0);
-            Assert.Equal(150.0, CircleY(testCircle));
+            Assert.Equal(CircleY(testCircle), 150.0);
         }
         [Fact]
         public void TestCirclesIntersectIntegration()
@@ -93,7 +93,7 @@ namespace SplashKitTests
             var testCircle = CircleAt(100.0, 100.0, 50.0);
             var testPoint = PointAt(150.0, 100.0);
             var testClosestPoint = ClosestPointOnCircle(testPoint, testCircle);
-            Assert.Equal(CircleRadius(testCircle), PointPointDistance(testClosestPoint, testPoint));
+            Assert.Equal(PointPointDistance(testClosestPoint, testPoint), CircleRadius(testCircle));
         }
         [Fact]
         public void TestClosestPointOnLineFromCircleIntegration()
@@ -110,7 +110,7 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(150.0, 50.0, 100.0, 100.0);
             var testClosestPoint = ClosestPointOnRectFromCircle(testCircle, testRectangle);
             Assert.True(PointInRectangle(testClosestPoint, testRectangle));
-            Assert.Equal(CircleRadius(testCircle), PointPointDistance(CenterPoint(testCircle), testClosestPoint));
+            Assert.Equal(PointPointDistance(CenterPoint(testCircle), testClosestPoint), CircleRadius(testCircle));
         }
         [Fact]
         public void TestClosestPointOnTriangleFromCircleIntegration()
@@ -126,7 +126,7 @@ namespace SplashKitTests
             var testCircle = CircleAt(100.0, 100.0, 50.0);
             var testPoint = PointAt(100.0, 150.0);
             var testDistantPoint = DistantPointOnCircle(testPoint, testCircle);
-            Assert.Equal(CircleRadius(testCircle), PointPointDistance(testPoint, testDistantPoint));
+            Assert.Equal(PointPointDistance(testPoint, testDistantPoint), CircleRadius(testCircle));
         }
         [Fact]
         public void TestDistantPointOnCircleHeadingIntegration()
@@ -134,11 +134,11 @@ namespace SplashKitTests
             var testCircle = CircleAt(100.0, 100.0, 50.0);
             var testPoint1 = PointAt(150.0, 100.0);
             var testHeading = VectorFromAngle(180.0, 1.0);
-            testPoint2todo
+            var testPoint2 = PointAt(0.0);
             var testResult = DistantPointOnCircleHeading(testPoint1, testCircle, testHeading, testPoint2);
             Assert.True(testResult);
-            Assert.Equal(50.0, testPoint1.X);
-            Assert.Equal(100.0, testPoint1.Y);
+            Assert.Equal(testPoint1.X, 50.0);
+            Assert.Equal(testPoint1.Y, 100.0);
         }
         [Fact]
         public void TestRayCircleIntersectDistanceIntegration()
@@ -165,8 +165,8 @@ namespace SplashKitTests
         {
             var testCircle = CircleAt(100.0, 100.0, 50.0);
             var testVector = VectorFromAngle(45.0);
-            testPoint1todo
-            testPoint2todo
+            var testPoint1 = PointAt(0.0, 0.0);
+            var testPoint2 = PointAt(0.0, 0.0);
             var testPoints = WidestPoints(testCircle, testVector, testPoint1, testPoint2);
             Assert.True(PointInCircle(PointAt(CircleX(testCircle), CircleY(testCircle)), testCircle));
             Assert.True(PointInCircle(PointAt(CircleX(testCircle), CircleY(testCircle)), testCircle));
@@ -175,23 +175,23 @@ namespace SplashKitTests
         public void TestCosineIntegration()
         {
             var testCosine0 = Cosine(0.0);
-            Assert.Equal(1.0, testCosine0);
+            Assert.Equal(testCosine0, 1.0);
             var testCosine90 = Cosine(90.0);
-            Assert.Equal(0.0, testCosine90);
+            Assert.Equal(testCosine90, 0.0);
             var testCosine180 = Cosine(180.0);
-            Assert.Equal(-1.0, testCosine180);
+            Assert.Equal(testCosine180, -1.0);
         }
         [Fact]
         public void TestSineIntegration()
         {
             var testSine0 = Sine(0.0);
-            Assert.Equal(0.0, testSine0);
+            Assert.Equal(testSine0, 0.0);
             var testSine90 = Sine(90.0);
-            Assert.Equal(1.0, testSine90);
+            Assert.Equal(testSine90, 1.0);
             var testSine180 = Sine(180.0);
-            Assert.Equal(0.0, testSine180);
+            Assert.Equal(testSine180, 0.0);
             var testSine270 = Sine(270.0);
-            Assert.Equal(-1.0, testSine270);
+            Assert.Equal(testSine270, -1.0);
         }
         [Fact]
         public void TestTangentIntegration()
@@ -204,7 +204,7 @@ namespace SplashKitTests
         {
             var testLine = LineFrom(PointAt(0.0, 0.0), PointAt(10.0, 10.0));
             var testClosestPoint = ClosestPointOnLine(PointAt(5.0, 5.0), testLine);
-            Assert.Equal(0.0, PointPointDistance(PointAt(5.0, 5.0), testClosestPoint));
+            Assert.Equal(PointPointDistance(PointAt(5.0, 5.0), testClosestPoint), 0.0);
         }
         [Fact]
         public void TestClosestPointOnLinesIntegration()
@@ -212,8 +212,10 @@ namespace SplashKitTests
             var testFromPt = PointAt(0.0, 0.0);
             var testLine1 = LineFrom(PointAt(-10.0, 0.0), PointAt(10.0, 0.0));
             var testLine2 = LineFrom(PointAt(0.0, -10.0), PointAt(0.0, 10.0));
-            var testClosestPoint = ClosestPointOnLines(testFromPt, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]}, 0);
-            Assert.Equal(0.0, PointPointDistance(testFromPt, testClosestPoint));
+            var testIndex = {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
+            var testLines = {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
+            var testClosestPoint = ClosestPointOnLines(testFromPt, testLines, testIndex);
+            Assert.Equal(PointPointDistance(testFromPt, testClosestPoint), 0.0);
         }
         [Fact]
         public void TestLineFromPointToPointIntegration()
@@ -221,7 +223,7 @@ namespace SplashKitTests
             var testStartPoint = PointAt(0.0, 0.0);
             var testEndPoint = PointAt(100.0, 100.0);
             var testLine = LineFrom(testStartPoint, testEndPoint);
-            Assert.Equal(141.421356, LineLength(testLine));
+            Assert.Equal(LineLength(testLine), 141.421356);
         }
         [Fact]
         public void TestLineFromStartWithOffsetIntegration()
@@ -237,21 +239,21 @@ namespace SplashKitTests
         {
             var testVector = VectorFromAngle(100.0, 50.0);
             var testLine = LineFrom(testVector);
-            Assert.Equal(PointAtOrigin(), testLine.Start_point);
-            Assert.Equal(PointAt(100.0, 50.0), testLine.End_point);
+            Assert.Equal(testLine.Start_point, PointAtOrigin());
+            Assert.Equal(testLine.End_point, PointAt(100.0, 50.0));
         }
         [Fact]
         public void TestLineFromIntegration()
         {
             var testLine = LineFrom(0.0, 0.0, 10.0, 10.0);
-            Assert.Equal(14.1421356, LineLength(testLine));
+            Assert.Equal(LineLength(testLine), 14.1421356);
         }
         [Fact]
         public void TestLineIntersectionPointIntegration()
         {
             var testLine1 = LineFrom(0.0, 0.0, 10.0, 10.0);
             var testLine2 = LineFrom(10.0, 0.0, 0.0, 10.0);
-            testPointtodo
+            var testPoint = PointAt(0.0, 0.0);
             var testIntersectionResult = LineIntersectionPoint(testLine1, testLine2, testPoint);
             Assert.True(testIntersectionResult);
         }
@@ -269,7 +271,8 @@ namespace SplashKitTests
             var testLine = LineFrom(0.0, 0.0, 10.0, 10.0);
             var testLine1 = LineFrom(5.0, 5.0, 15.0, 15.0);
             var testLine2 = LineFrom(20.0, 20.0, 30.0, 30.0);
-            var testResult = LineIntersectsLines(testLine, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]});
+            var testLines = new List<line> { testLine1, testLine2 };
+            var testResult = LineIntersectsLines(testLine, testLines);
             Assert.True(testResult);
         }
         [Fact]
@@ -286,50 +289,50 @@ namespace SplashKitTests
         {
             var testLine = LineFrom(PointAt(0.0, 0.0), PointAt(3.0, 4.0));
             var testLength = LineLength(testLine);
-            Assert.Equal(5.0, testLength);
+            Assert.Equal(testLength, 5.0);
         }
         [Fact]
         public void TestLineLengthSquaredIntegration()
         {
             var testLine = LineFrom(PointAt(0.0, 0.0), PointAt(3.0, 4.0));
             var testResult = LineLengthSquared(testLine);
-            Assert.Equal(25.0, testResult);
+            Assert.Equal(testResult, 25.0);
         }
         [Fact]
         public void TestLineMidPointIntegration()
         {
             var testLine = LineFrom(PointAt(0.0, 0.0), PointAt(100.0, 100.0));
             var testMidPoint = LineMidPoint(testLine);
-            Assert.Equal(0.0, PointPointDistance(testMidPoint, PointAt(50.0, 50.0)));
+            Assert.Equal(PointPointDistance(testMidPoint, PointAt(50.0, 50.0)), 0.0);
         }
         [Fact]
         public void TestLineNormalIntegration()
         {
             var testLine = LineFrom(0.0, 0.0, 1.0, 1.0);
             var testNormal = LineNormal(testLine);
-            Assert.Equal(-1.0, testNormal.X);
-            Assert.Equal(1.0, testNormal.Y);
+            Assert.Equal(testNormal.X, -1.0);
+            Assert.Equal(testNormal.Y, 1.0);
         }
         [Fact]
         public void TestLineToStringIntegration()
         {
             var testLine = LineFrom(PointAt(0.0, 0.0), PointAt(100.0, 100.0));
             var testLineString = LineToString(testLine);
-            Assert.NotEqual("", testLineString);
+            Assert.NotEqual(testLineString, "");
         }
         [Fact]
         public void TestLinesFromRectangleIntegration()
         {
             var testRectangle = RectangleFrom(0.0, 0.0, 100.0, 100.0);
             var testLines = LinesFrom(testRectangle);
-            Assert.Equal(4, Size(testLines));
+            Assert.Equal(Size(testLines), 4);
         }
         [Fact]
         public void TestLinesFromTriangleIntegration()
         {
             var testTriangle = TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 86.6));
             var testLines = LinesFrom(testTriangle);
-            Assert.Equal(3, Size(testLines));
+            Assert.Equal(Size(testLines), 3);
         }
         [Fact]
         public void TestLinesIntersectIntegration()
@@ -343,15 +346,15 @@ namespace SplashKitTests
         public void TestPointAtIntegration()
         {
             var testPoint = PointAt(10.0, 20.0);
-            Assert.Equal(10.0, testPoint.X);
-            Assert.Equal(20.0, testPoint.Y);
+            Assert.Equal(testPoint.X, 10.0);
+            Assert.Equal(testPoint.Y, 20.0);
         }
         [Fact]
         public void TestPointAtOriginIntegration()
         {
             var testPoint = PointAtOrigin();
-            Assert.Equal(0.0, testPoint.X);
-            Assert.Equal(0.0, testPoint.Y);
+            Assert.Equal(testPoint.X, 0.0);
+            Assert.Equal(testPoint.Y, 0.0);
         }
         [Fact]
         public void TestPointInCircleIntegration()
@@ -406,7 +409,7 @@ namespace SplashKitTests
             var testPoint = PointAt(0.0, 0.0);
             var testLine = LineFrom(0.0, 0.0, 10.0, 10.0);
             var testDistance = PointLineDistance(testPoint, testLine);
-            Assert.Equal(0.0, testDistance);
+            Assert.Equal(testDistance, 0.0);
         }
         [Fact]
         public void TestPointOffsetByIntegration()
@@ -414,16 +417,16 @@ namespace SplashKitTests
             var testStartPoint = PointAt(10.0, 20.0);
             var testOffset = VectorFromAngle(5.0, 10.0);
             var testResultPoint = PointOffsetBy(testStartPoint, testOffset);
-            Assert.Equal(15.0, testStartPoint.X);
-            Assert.Equal(30.0, testResultPoint.X);
+            Assert.Equal(testStartPoint.X, 15.0);
+            Assert.Equal(testResultPoint.X, 30.0);
         }
         [Fact]
         public void TestPointOffsetFromOriginIntegration()
         {
             var testVector = VectorFromAngle(10.0, 20.0);
             var testPoint = PointOffsetFromOrigin(testVector);
-            Assert.Equal(10.0, testPoint.X);
-            Assert.Equal(20.0, testPoint.Y);
+            Assert.Equal(testPoint.X, 10.0);
+            Assert.Equal(testPoint.Y, 20.0);
         }
         [Fact]
         public void TestPointOnLineIntegration()
@@ -451,7 +454,7 @@ namespace SplashKitTests
             var testPoint1 = PointAt(0.0, 0.0);
             var testPoint2 = PointAt(1.0, 0.0);
             var testAngle = PointPointAngle(testPoint1, testPoint2);
-            Assert.Equal(0.0, testAngle);
+            Assert.Equal(testAngle, 0.0);
         }
         [Fact]
         public void TestPointPointDistanceIntegration()
@@ -459,14 +462,14 @@ namespace SplashKitTests
             var testPoint1 = PointAt(0.0, 0.0);
             var testPoint2 = PointAt(3.0, 4.0);
             var testDistance = PointPointDistance(testPoint1, testPoint2);
-            Assert.Equal(5.0, testDistance);
+            Assert.Equal(testDistance, 5.0);
         }
         [Fact]
         public void TestPointToStringIntegration()
         {
             var testPoint = PointAt(10.0, 20.0);
             var testString = PointToString(testPoint);
-            Assert.Equal("Point(10, 20)", testString);
+            Assert.Equal(testString, "Point(10, 20)");
         }
         [Fact]
         public void TestRandomBitmapPointIntegration()
@@ -559,17 +562,17 @@ namespace SplashKitTests
         {
             var testQuad = QuadFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(0.0, 100.0), PointAt(100.0, 100.0));
             var testTriangles = TrianglesFrom(testQuad);
-            Assert.Equal(2, Size(testTriangles));
+            Assert.Equal(Size(testTriangles), 2);
         }
         [Fact]
         public void TestInsetRectangleIntegration()
         {
             var testRectangle = RectangleFrom(0.0, 0.0, 100.0, 100.0);
             var testInsetRectangle = InsetRectangle(testRectangle, 10.0);
-            Assert.Equal(10.0, RectangleLeft(testInsetRectangle));
-            Assert.Equal(10.0, RectangleTop(testInsetRectangle));
-            Assert.Equal(90.0, RectangleRight(testInsetRectangle));
-            Assert.Equal(90.0, RectangleBottom(testInsetRectangle));
+            Assert.Equal(RectangleLeft(testInsetRectangle), 10.0);
+            Assert.Equal(RectangleTop(testInsetRectangle), 10.0);
+            Assert.Equal(RectangleRight(testInsetRectangle), 90.0);
+            Assert.Equal(RectangleBottom(testInsetRectangle), 90.0);
         }
         [Fact]
         public void TestIntersectionIntegration()
@@ -577,20 +580,20 @@ namespace SplashKitTests
             var testRect1 = RectangleFrom(0.0, 0.0, 10.0, 10.0);
             var testRect2 = RectangleFrom(5.0, 5.0, 10.0, 10.0);
             var testIntersection = Intersection(testRect1, testRect2);
-            Assert.Equal(5.0, RectangleLeft(testIntersection));
-            Assert.Equal(5.0, RectangleTop(testIntersection));
-            Assert.Equal(10.0, RectangleRight(testIntersection));
-            Assert.Equal(10.0, RectangleBottom(testIntersection));
+            Assert.Equal(RectangleLeft(testIntersection), 5.0);
+            Assert.Equal(RectangleTop(testIntersection), 5.0);
+            Assert.Equal(RectangleRight(testIntersection), 10.0);
+            Assert.Equal(RectangleBottom(testIntersection), 10.0);
         }
         [Fact]
         public void TestRectangleAroundCircleIntegration()
         {
             var testCircle = CircleAt(100.0, 100.0, 50.0);
             var testRectangle = RectangleAround(testCircle);
-            Assert.Equal(50.0, RectangleLeft(testRectangle));
-            Assert.Equal(50.0, RectangleTop(testRectangle));
-            Assert.Equal(150.0, RectangleRight(testRectangle));
-            Assert.Equal(150.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 50.0);
+            Assert.Equal(RectangleTop(testRectangle), 50.0);
+            Assert.Equal(RectangleRight(testRectangle), 150.0);
+            Assert.Equal(RectangleBottom(testRectangle), 150.0);
         }
         [Fact]
         public void TestRectangleAroundLineIntegration()
@@ -605,43 +608,43 @@ namespace SplashKitTests
         {
             var testQuad = QuadFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(0.0, 100.0), PointAt(100.0, 100.0));
             var testRectangle = RectangleAround(testQuad);
-            Assert.Equal(0.0, RectangleLeft(testRectangle));
-            Assert.Equal(0.0, RectangleTop(testRectangle));
-            Assert.Equal(100.0, RectangleRight(testRectangle));
-            Assert.Equal(100.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 0.0);
+            Assert.Equal(RectangleTop(testRectangle), 0.0);
+            Assert.Equal(RectangleRight(testRectangle), 100.0);
+            Assert.Equal(RectangleBottom(testRectangle), 100.0);
         }
         [Fact]
         public void TestRectangleAroundTriangleIntegration()
         {
             var testTriangle = TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 100.0));
             var testRectangle = RectangleAround(testTriangle);
-            Assert.Equal(0.0, RectangleLeft(testRectangle));
-            Assert.Equal(0.0, RectangleTop(testRectangle));
-            Assert.Equal(100.0, RectangleRight(testRectangle));
-            Assert.Equal(100.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 0.0);
+            Assert.Equal(RectangleTop(testRectangle), 0.0);
+            Assert.Equal(RectangleRight(testRectangle), 100.0);
+            Assert.Equal(RectangleBottom(testRectangle), 100.0);
         }
         [Fact]
         public void TestRectangleBottomIntegration()
         {
             var testRectangle = RectangleFrom(10.0, 20.0, 50.0, 60.0);
-            Assert.Equal(80.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleBottom(testRectangle), 80.0);
         }
         [Fact]
         public void TestRectangleCenterIntegration()
         {
             var testRectangle = RectangleFrom(PointAt(0.0, 0.0), 100.0, 100.0);
             var testCenterPoint = RectangleCenter(testRectangle);
-            Assert.Equal(0.0, PointPointDistance(PointAt(50.0, 50.0), testCenterPoint));
+            Assert.Equal(PointPointDistance(PointAt(50.0, 50.0), testCenterPoint), 0.0);
         }
         [Fact]
         public void TestRectangleFromPointAndSizeIntegration()
         {
             var testPoint = PointAt(10.0, 20.0);
             var testRectangle = RectangleFrom(testPoint, 50.0, 30.0);
-            Assert.Equal(10.0, RectangleLeft(testRectangle));
-            Assert.Equal(20.0, RectangleTop(testRectangle));
-            Assert.Equal(60.0, RectangleRight(testRectangle));
-            Assert.Equal(50.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 10.0);
+            Assert.Equal(RectangleTop(testRectangle), 20.0);
+            Assert.Equal(RectangleRight(testRectangle), 60.0);
+            Assert.Equal(RectangleBottom(testRectangle), 50.0);
         }
         [Fact]
         public void TestRectangleFromPointsIntegration()
@@ -649,54 +652,54 @@ namespace SplashKitTests
             var testPoint1 = PointAt(0.0, 0.0);
             var testPoint2 = PointAt(100.0, 100.0);
             var testRectangle = RectangleFrom(testPoint1, testPoint2);
-            Assert.Equal(0.0, RectangleLeft(testRectangle));
-            Assert.Equal(0.0, RectangleTop(testRectangle));
-            Assert.Equal(100.0, RectangleRight(testRectangle));
-            Assert.Equal(100.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 0.0);
+            Assert.Equal(RectangleTop(testRectangle), 0.0);
+            Assert.Equal(RectangleRight(testRectangle), 100.0);
+            Assert.Equal(RectangleBottom(testRectangle), 100.0);
         }
         [Fact]
         public void TestRectangleFromIntegration()
         {
             var testRectangle = RectangleFrom(10.0, 20.0, 50.0, 30.0);
-            Assert.Equal(10.0, RectangleLeft(testRectangle));
-            Assert.Equal(20.0, RectangleTop(testRectangle));
-            Assert.Equal(60.0, RectangleRight(testRectangle));
-            Assert.Equal(50.0, RectangleBottom(testRectangle));
+            Assert.Equal(RectangleLeft(testRectangle), 10.0);
+            Assert.Equal(RectangleTop(testRectangle), 20.0);
+            Assert.Equal(RectangleRight(testRectangle), 60.0);
+            Assert.Equal(RectangleBottom(testRectangle), 50.0);
         }
         [Fact]
         public void TestRectangleLeftIntegration()
         {
             var testRectangle = RectangleFrom(10.0, 20.0, 50.0, 60.0);
             var testLeft = RectangleLeft(testRectangle);
-            Assert.Equal(10.0, testLeft);
+            Assert.Equal(testLeft, 10.0);
         }
         [Fact]
         public void TestRectangleOffsetByIntegration()
         {
             var testRectangle = RectangleFrom(10.0, 10.0, 50.0, 50.0);
             var testOffsetRectangle = RectangleOffsetBy(testRectangle, VectorFromAngle(20.0, 30.0));
-            Assert.Equal(30.0, RectangleLeft(testOffsetRectangle));
-            Assert.Equal(40.0, RectangleTop(testOffsetRectangle));
+            Assert.Equal(RectangleLeft(testOffsetRectangle), 30.0);
+            Assert.Equal(RectangleTop(testOffsetRectangle), 40.0);
         }
         [Fact]
         public void TestRectangleRightIntegration()
         {
             var testRectangle = RectangleFrom(10.0, 20.0, 50.0, 60.0);
-            Assert.Equal(60.0, RectangleRight(testRectangle));
+            Assert.Equal(RectangleRight(testRectangle), 60.0);
         }
         [Fact]
         public void TestRectangleToStringIntegration()
         {
             var testRectangle = RectangleFrom(10.0, 20.0, 30.0, 40.0);
             var testString = RectangleToString(testRectangle);
-            Assert.Equal("Rectangle(x: 10, y: 20, width: 30, height: 40)", testString);
+            Assert.Equal(testString, "Rectangle(x: 10, y: 20, width: 30, height: 40)");
         }
         [Fact]
         public void TestRectangleTopIntegration()
         {
             var testRectangle = RectangleFrom(10.0, 20.0, 50.0, 60.0);
             var testTop = RectangleTop(testRectangle);
-            Assert.Equal(20.0, testTop);
+            Assert.Equal(testTop, 20.0);
         }
         [Fact]
         public void TestRectanglesIntersectIntegration()
@@ -711,8 +714,8 @@ namespace SplashKitTests
         {
             var testTriangle = TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 86.6));
             var testBarycenter = TriangleBarycenter(testTriangle);
-            Assert.Equal(50.0, testBarycenter.X);
-            Assert.Equal(28.866666666666667, testBarycenter.Y);
+            Assert.Equal(testBarycenter.X, 50.0);
+            Assert.Equal(testBarycenter.Y, 28.866666666666667);
         }
         [Fact]
         public void TestTriangleFromIntegration()
@@ -743,7 +746,7 @@ namespace SplashKitTests
         {
             var testTriangle = TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 100.0));
             var testTriangleString = TriangleToString(testTriangle);
-            Assert.NotEqual("", testTriangleString);
+            Assert.NotEqual(testTriangleString, "");
         }
         [Fact]
         public void TestTrianglesIntersectIntegration()

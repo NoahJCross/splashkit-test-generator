@@ -859,16 +859,12 @@ fn test_clear_screen_integration() {
 #[test]
 fn test_display_details_integration() {
     let test_number_of_displays = number_of_displays();
-if assert!(test_number_of_displays > 0);
- {
-        let test_display = display_details(0);
-        assert!(test_display.is_some());
-        assert!(display_width(test_display) > 0);
-        assert!(display_height(test_display) > 0);
-}
-    else {
-        assert_eq!(test_number_of_displays, 0);
-}
+    assert!(test_number_of_displays > 0);
+    let test_display = display_details(0);
+    assert!(test_display.is_some());
+    assert!(display_width(test_display) > 0);
+    assert!(display_height(test_display) > 0);
+    assert_eq!(test_number_of_displays, 0);
 }
 #[test]
 fn test_display_height_integration() {

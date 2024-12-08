@@ -763,16 +763,12 @@ TEST_CASE("clear_screen_integration") {
 }
 TEST_CASE("display_details_integration") {
     auto test_number_of_displays = number_of_displays();
-if (REQUIRE(test_number_of_displays > 0);
-) {
-        auto test_display = display_details(0);
-        REQUIRE(test_display != nullptr);
-        REQUIRE(display_width(test_display) > 0);
-        REQUIRE(display_height(test_display) > 0);
-}
-    else {
-        REQUIRE(test_number_of_displays == 0);
-}
+    REQUIRE(test_number_of_displays > 0);
+    auto test_display = display_details(0);
+    REQUIRE(test_display != nullptr);
+    REQUIRE(display_width(test_display) > 0);
+    REQUIRE(display_height(test_display) > 0);
+    REQUIRE(test_number_of_displays == 0);
 }
 TEST_CASE("display_height_integration") {
     auto test_display = display_details(0);

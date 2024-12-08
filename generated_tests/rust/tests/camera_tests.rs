@@ -12,8 +12,8 @@ mod test_runner {
 fn test_camera_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_camera_position = camera_position();
-    assert_eq!(0.0, test_camera_position);
-    assert_eq!(0.0, test_camera_position);
+    assert_eq!(0.0, test_camera_position.x);
+    assert_eq!(0.0, test_camera_position.y);
     close_window(test_window);
 }
 #[test]

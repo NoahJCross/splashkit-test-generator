@@ -28,8 +28,7 @@ def test_RaspiGetMode_integration():
 
 def test_RaspiInit_integration():
     has_gpio_capability = has_gpio()
-if assert has_gpio_capability is True
-:
+if has_gpio_capability is True:
         raspi_init()
         assert has_gpio() is True
         raspi_cleanup()

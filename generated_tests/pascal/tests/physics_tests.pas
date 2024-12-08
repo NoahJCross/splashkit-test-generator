@@ -317,7 +317,7 @@ begin
     testMatrix := IdentityMatrix();
     testQuad := QuadFrom(PointAt(100, 100), PointAt(200, 100), PointAt(200, 200), PointAt(100, 200));
     ApplyMatrix(testMatrix, testQuad);
-    AssertEquals(PointAt(100, 100), quadPoint);
+    AssertEquals(quadPoint, PointAt(100, 100));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestApplyMatrixToTriangleIntegration;
@@ -325,15 +325,15 @@ begin
     testTriangle := TriangleFrom(PointAt(0.0, 0.0), PointAt(1.0, 0.0), PointAt(0.0, 1.0));
     testMatrix := TranslationMatrix(1.0, 1.0);
     ApplyMatrix(testMatrix, testTriangle);
-    AssertEquals(TriangleToString(testTriangle), "Triangle(x1: 1.0, y1: 1.0, x2: 2.0, y2: 1.0, x3: 1.0, y3: 2.0)");
+    AssertEquals("Triangle(x1: 1.0, y1: 1.0, x2: 2.0, y2: 1.0, x3: 1.0, y3: 2.0)", TriangleToString(testTriangle));
 end;
 procedure TIntegrationTests.TestIdentityMatrixIntegration;
 begin
     testMatrix := IdentityMatrix();
-    AssertEquals(testMatrix[0, 0], 1.0);
-    AssertEquals(testMatrix[1, 1], 1.0);
-    AssertEquals(testMatrix[0, 1], 0.0);
-    AssertEquals(testMatrix[1, 0], 0.0);
+    AssertEquals(1.0, [testMatrix, 0]);
+    AssertEquals(1.0, [testMatrix, 1]);
+    AssertEquals(0.0, [testMatrix, 1]);
+    AssertEquals(0.0, [testMatrix, 0]);
 end;
 procedure TIntegrationTests.TestMatrixInverseIntegration;
 begin
@@ -347,30 +347,30 @@ begin
     testMatrix := IdentityMatrix();
     testPoint := PointAt(10.0, 20.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(resultPoint.x, 10.0);
-    AssertEquals(resultPoint.y, 20.0);
+    AssertEquals(10.0, resultPoint.x);
+    AssertEquals(20.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestMatrixMultiplyMatrixIntegration;
 begin
     testMatrix1 := IdentityMatrix();
     testMatrix2 := RotationMatrix(45);
     resultMatrix := MatrixMultiply(testMatrix1, testMatrix2);
-    AssertEquals(resultMatrix[0, 0], Cosine(45));
-    AssertEquals(resultMatrix[0, 1], Sine(45));
+    AssertEquals(Cosine(45), [resultMatrix, 0]);
+    AssertEquals(Sine(45), [resultMatrix, 1]);
 end;
 procedure TIntegrationTests.TestMatrixMultiplyVectorIntegration;
 begin
     testVector := VectorTo(1.0, 1.0);
     testMatrix := ScaleMatrix(2.0);
     resultVector := MatrixMultiply(testMatrix, testVector);
-    AssertEquals(resultVector.x, 2.0);
-    AssertEquals(resultVector.y, 2.0);
+    AssertEquals(2.0, resultVector.x);
+    AssertEquals(2.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestMatrixToStringIntegration;
 begin
     testMatrix := IdentityMatrix();
     testMatrixString := MatrixToString(testMatrix);
-    AssertEquals(testMatrixString, "[1, 0, 0, 1, 0, 0]");
+    AssertEquals("[1, 0, 0, 1, 0, 0]", testMatrixString);
 end;
 procedure TIntegrationTests.TestRotationMatrixIntegration;
 begin
@@ -386,8 +386,8 @@ begin
     testMatrix := ScaleMatrix(testScale);
     testVector := VectorTo(1.0, 1.0);
     resultVector := MatrixMultiply(testMatrix, testVector);
-    AssertEquals(resultVector.x, 2.0);
-    AssertEquals(resultVector.y, 3.0);
+    AssertEquals(2.0, resultVector.x);
+    AssertEquals(3.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestScaleMatrixFromVectorIntegration;
 begin
@@ -395,16 +395,16 @@ begin
     testMatrix := ScaleMatrix(testScaleVector);
     testVector := VectorTo(1.0, 1.0);
     resultVector := MatrixMultiply(testMatrix, testVector);
-    AssertEquals(resultVector.x, 2.0);
-    AssertEquals(resultVector.y, 3.0);
+    AssertEquals(2.0, resultVector.x);
+    AssertEquals(3.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestScaleMatrixIntegration;
 begin
     testMatrix := ScaleMatrix(2.0);
     testVector := VectorTo(1.0, 1.0);
     resultVector := MatrixMultiply(testMatrix, testVector);
-    AssertEquals(resultVector.x, 2.0);
-    AssertEquals(resultVector.y, 2.0);
+    AssertEquals(2.0, resultVector.x);
+    AssertEquals(2.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestScaleRotateTranslateMatrixIntegration;
 begin
@@ -422,8 +422,8 @@ begin
     testMatrix := TranslationMatrix(testPoint);
     testVector := PointAt(5.0, 5.0);
     resultPoint := MatrixMultiply(testMatrix, testVector);
-    AssertEquals(resultPoint.x, 15.0);
-    AssertEquals(resultPoint.y, 25.0);
+    AssertEquals(15.0, resultPoint.x);
+    AssertEquals(25.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestTranslationMatrixFromVectorIntegration;
 begin
@@ -431,16 +431,16 @@ begin
     testMatrix := TranslationMatrix(testVector);
     testPoint := PointAt(0.0, 0.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(resultPoint.x, 10.0);
-    AssertEquals(resultPoint.y, 20.0);
+    AssertEquals(10.0, resultPoint.x);
+    AssertEquals(20.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestTranslationMatrixIntegration;
 begin
     testMatrix := TranslationMatrix(10.0, 20.0);
     testPoint := PointAt(0.0, 0.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(resultPoint.x, 10.0);
-    AssertEquals(resultPoint.y, 20.0);
+    AssertEquals(10.0, resultPoint.x);
+    AssertEquals(20.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestAngleBetweenIntegration;
 begin
@@ -454,7 +454,7 @@ begin
     testVector1 := VectorTo(3.0, 4.0);
     testVector2 := VectorTo(1.0, 2.0);
     testResult := DotProduct(testVector1, testVector2);
-    AssertEquals(testResult, 11.0);
+    AssertEquals(11.0, testResult);
 end;
 procedure TIntegrationTests.TestIsZeroVectorIntegration;
 begin
@@ -475,16 +475,16 @@ procedure TIntegrationTests.TestUnitVectorIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     testUnitVector := UnitVector(testVector);
-    AssertEquals(VectorMagnitude(testUnitVector), 1.0);
-    AssertEquals(VectorAngle(testUnitVector), VectorAngle(testVector));
+    AssertEquals(1.0, VectorMagnitude(testUnitVector));
+    AssertEquals(VectorAngle(testVector), VectorAngle(testUnitVector));
 end;
 procedure TIntegrationTests.TestVectorAddIntegration;
 begin
     testVector1 := VectorTo(1.0, 2.0);
     testVector2 := VectorTo(3.0, 4.0);
     resultVector := VectorAdd(testVector1, testVector2);
-    AssertEquals(resultVector.x, 4.0);
-    AssertEquals(resultVector.y, 6.0);
+    AssertEquals(4.0, resultVector.x);
+    AssertEquals(6.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorAngleIntegration;
 begin
@@ -502,15 +502,15 @@ procedure TIntegrationTests.TestVectorFromLineIntegration;
 begin
     testLine := LineFrom(PointAt(0.0, 0.0), PointAt(10.0, 10.0));
     testVector := VectorFromLine(testLine);
-    AssertEquals(testVector.x, 10.0);
-    AssertEquals(testVector.y, 10.0);
+    AssertEquals(10.0, testVector.x);
+    AssertEquals(10.0, testVector.y);
 end;
 procedure TIntegrationTests.TestVectorFromPointToRectIntegration;
 begin
     testRect := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     testPoint := PointAt(50.0, 50.0);
     testVector := VectorFromPointToRect(testPoint, testRect);
-    AssertEquals(VectorMagnitude(testVector), 0.0);
+    AssertEquals(0.0, VectorMagnitude(testVector));
 end;
 procedure TIntegrationTests.TestVectorInRectIntegration;
 begin
@@ -524,7 +524,7 @@ procedure TIntegrationTests.TestVectorInvertIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     invertedVector := VectorInvert(testVector);
-    AssertEquals(VectorTo(-3.0, -4.0), invertedVector);
+    AssertEquals(invertedVector, VectorTo(-3.0, -4.0));
 end;
 procedure TIntegrationTests.TestVectorLimitIntegration;
 begin
@@ -537,27 +537,27 @@ procedure TIntegrationTests.TestVectorMagnitudeIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     testMagnitude := VectorMagnitude(testVector);
-    AssertEquals(testMagnitude, 5.0);
+    AssertEquals(5.0, testMagnitude);
 end;
 procedure TIntegrationTests.TestVectorMagnitudeSquaredIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     result := VectorMagnitudeSquared(testVector);
-    AssertEquals(result, 25.0);
+    AssertEquals(25.0, result);
 end;
 procedure TIntegrationTests.TestVectorMultiplyIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     resultVector := VectorMultiply(testVector, 2.0);
-    AssertEquals(VectorMagnitude(resultVector), 10.0);
-    AssertEquals(VectorAngle(resultVector), VectorAngle(testVector));
+    AssertEquals(10.0, VectorMagnitude(resultVector));
+    AssertEquals(VectorAngle(testVector), VectorAngle(resultVector));
 end;
 procedure TIntegrationTests.TestVectorNormalIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     normalVector := VectorNormal(testVector);
-    AssertEquals(VectorMagnitude(normalVector), 5.0);
-    AssertEquals(VectorAngle(normalVector), 53.1301);
+    AssertEquals(5.0, VectorMagnitude(normalVector));
+    AssertEquals(53.1301, VectorAngle(normalVector));
 end;
 procedure TIntegrationTests.TestVectorOutOfCircleFromCircleIntegration;
 begin
@@ -583,7 +583,7 @@ begin
     testRectangle := RectangleFrom(50.0, 50.0, 200.0, 200.0);
     testVelocity := VectorTo(10.0, 0.0);
     testResultVector := VectorOutOfRectFromCircle(testCircle, testRectangle, testVelocity);
-    AssertNotEquals(VectorMagnitude(testResultVector), 0.0);
+    AssertNotEquals(0.0, VectorMagnitude(testResultVector));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestVectorOutOfRectFromPointIntegration;
@@ -600,41 +600,41 @@ begin
     testBoundsRect := RectangleFrom(0.0, 0.0, 200.0, 200.0);
     testVelocity := VectorTo(10.0, 10.0);
     testResultVector := VectorOutOfRectFromRect(testSrcRect, testBoundsRect, testVelocity);
-    AssertNotEquals(VectorMagnitude(testResultVector), 0.0);
+    AssertNotEquals(0.0, VectorMagnitude(testResultVector));
 end;
 procedure TIntegrationTests.TestVectorPointToPointIntegration;
 begin
     testStartPoint := PointAt(0.0, 0.0);
     testEndPoint := PointAt(3.0, 4.0);
     testVector := VectorPointToPoint(testStartPoint, testEndPoint);
-    AssertEquals(VectorTo(3.0, 4.0), testVector);
+    AssertEquals(testVector, VectorTo(3.0, 4.0));
 end;
 procedure TIntegrationTests.TestVectorSubtractIntegration;
 begin
     testVector1 := VectorTo(3.0, 4.0);
     testVector2 := VectorTo(1.0, 1.0);
     resultVector := VectorSubtract(testVector1, testVector2);
-    AssertEquals(VectorMagnitude(resultVector), 3.0);
-    AssertEquals(VectorAngle(resultVector), 45.0);
+    AssertEquals(3.0, VectorMagnitude(resultVector));
+    AssertEquals(45.0, VectorAngle(resultVector));
 end;
 procedure TIntegrationTests.TestVectorToPointIntegration;
 begin
     testPoint := PointAt(3.0, 4.0);
     testVector := VectorTo(testPoint);
-    AssertEquals(testVector.x, 3.0);
-    AssertEquals(testVector.y, 4.0);
+    AssertEquals(3.0, testVector.x);
+    AssertEquals(4.0, testVector.y);
 end;
 procedure TIntegrationTests.TestVectorToIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
-    AssertEquals(VectorMagnitude(testVector), 5.0);
-    AssertEquals(VectorAngle(testVector), 53.1301);
+    AssertEquals(5.0, VectorMagnitude(testVector));
+    AssertEquals(53.1301, VectorAngle(testVector));
 end;
 procedure TIntegrationTests.TestVectorToStringIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     testString := VectorToString(testVector);
-    AssertEquals(testString, "Vector(3.0, 4.0)");
+    AssertEquals("Vector(3.0, 4.0)", testString);
 end;
 procedure TIntegrationTests.TestVectorsEqualIntegration;
 begin

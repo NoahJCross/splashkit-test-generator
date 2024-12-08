@@ -238,7 +238,7 @@ fn test_window_close_requested_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
     process_events();
     assert!(!window_close_requested_named("Test Window"));
-    simulate_key_press(Keycode::Escape);
+    simulate_key_press(KeyCode::Escape);
     process_events();
     assert!(window_close_requested_named("Test Window"));
     close_window(test_window);
@@ -248,7 +248,7 @@ fn test_window_close_requested_integration() {
     let test_window = open_window("Test Window", 800, 600);
     process_events();
     assert!(!window_close_requested(test_window));
-    simulate_key_press(Keycode::Escape);
+    simulate_key_press(KeyCode::Escape);
     process_events();
     assert!(window_close_requested(test_window));
     close_window(test_window);

@@ -3,19 +3,19 @@ from splashkit import *
 
 
 def test_ProcessEvents_integration():
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_typed(Keycode.A) is True
-    simulate_mouse_click(Mousebutton.Left)
+    assert key_typed(KeyCode.A) is True
+    simulate_mouse_click(MouseButton.Left)
     process_events()
-    assert mouse_clicked(Mousebutton.Left) is True
+    assert mouse_clicked(MouseButton.Left) is True
 
 
 def test_QuitRequested_integration():
     test_window = open_window("Test Window", 800, 600)
     process_events()
     assert quit_requested() is False
-    simulate_key_press(Keycode.Escape)
+    simulate_key_press(KeyCode.Escape)
     process_events()
     assert quit_requested() is True
     close_window(test_window)
@@ -34,7 +34,7 @@ def test_ResetQuit_integration():
 def test_AnyKeyPressed_integration():
     process_events()
     assert any_key_pressed() is False
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
     assert any_key_pressed() is True
 
@@ -42,110 +42,110 @@ def test_AnyKeyPressed_integration():
 def test_DeregisterCallbackOnKeyDown_integration():
     test_window = open_window("Test Window", 800, 600)
     register_callback_on_key_down(_on_key_down())
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_down(Keycode.A) is True
+    assert key_down(KeyCode.A) is True
     deregister_callback_on_key_down(_on_key_down())
-    simulate_key_press(Keycode.B)
+    simulate_key_press(KeyCode.B)
     process_events()
-    assert key_down(Keycode.B) is False
+    assert key_down(KeyCode.B) is False
     close_window(test_window)
 
 
 def test_DeregisterCallbackOnKeyTyped_integration():
     register_callback_on_key_typed(_on_key_typed())
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_typed(Keycode.A) is True
+    assert key_typed(KeyCode.A) is True
     deregister_callback_on_key_typed(_on_key_typed())
-    simulate_key_press(Keycode.B)
+    simulate_key_press(KeyCode.B)
     process_events()
-    assert key_typed(Keycode.B) is False
+    assert key_typed(KeyCode.B) is False
 
 
 def test_DeregisterCallbackOnKeyUp_integration():
     test_window = open_window("Test Window", 800, 600)
     register_callback_on_key_up(_on_key_up())
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_up(Keycode.A) is True
+    assert key_up(KeyCode.A) is True
     deregister_callback_on_key_up(_on_key_up())
-    simulate_key_press(Keycode.B)
+    simulate_key_press(KeyCode.B)
     process_events()
-    assert key_up(Keycode.B) is False
+    assert key_up(KeyCode.B) is False
     close_window(test_window)
 
 
 def test_KeyDown_integration():
     process_events()
-    assert key_down(Keycode.A) is False
-    simulate_key_press(Keycode.A)
+    assert key_down(KeyCode.A) is False
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_down(Keycode.A) is True
-    simulate_key_release(Keycode.A)
+    assert key_down(KeyCode.A) is True
+    simulate_key_release(KeyCode.A)
     process_events()
-    assert key_down(Keycode.A) is False
+    assert key_down(KeyCode.A) is False
 
 
 def test_KeyName_integration():
-    test_key_name1 = key_name(Keycode.A)
+    test_key_name1 = key_name(KeyCode.A)
     assert test_key_name1 == "A"
-    test_key_name2 = key_name(Keycode.Enter)
+    test_key_name2 = key_name(KeyCode.Enter)
     assert test_key_name2 == "Enter"
 
 
 def test_KeyReleased_integration():
     process_events()
-    assert key_released(Keycode.A) is False
-    simulate_key_press(Keycode.A)
+    assert key_released(KeyCode.A) is False
+    simulate_key_press(KeyCode.A)
     process_events()
-    simulate_key_release(Keycode.A)
+    simulate_key_release(KeyCode.A)
     process_events()
-    assert key_released(Keycode.A) is True
+    assert key_released(KeyCode.A) is True
 
 
 def test_KeyTyped_integration():
     process_events()
-    assert key_typed(Keycode.A) is False
-    simulate_key_press(Keycode.A)
+    assert key_typed(KeyCode.A) is False
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_typed(Keycode.A) is True
+    assert key_typed(KeyCode.A) is True
 
 
 def test_KeyUp_integration():
     process_events()
-    assert key_up(Keycode.A) is True
-    simulate_key_press(Keycode.A)
+    assert key_up(KeyCode.A) is True
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_up(Keycode.A) is False
-    simulate_key_release(Keycode.A)
+    assert key_up(KeyCode.A) is False
+    simulate_key_release(KeyCode.A)
     process_events()
-    assert key_up(Keycode.A) is True
+    assert key_up(KeyCode.A) is True
 
 
 def test_RegisterCallbackOnKeyDown_integration():
     register_callback_on_key_down(_on_key_down())
     process_events()
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_down(Keycode.A) is True
+    assert key_down(KeyCode.A) is True
     deregister_callback_on_key_down(_on_key_down())
 
 
 def test_RegisterCallbackOnKeyTyped_integration():
     register_callback_on_key_typed(_on_key_typed())
     process_events()
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
-    assert key_typed(Keycode.A) is True
+    assert key_typed(KeyCode.A) is True
     deregister_callback_on_key_typed(_on_key_typed())
 
 
 def test_RegisterCallbackOnKeyUp_integration():
     register_callback_on_key_up(_on_key_up())
     process_events()
-    simulate_key_press(Keycode.A)
-    simulate_key_release(Keycode.A)
+    simulate_key_press(KeyCode.A)
+    simulate_key_release(KeyCode.A)
     process_events()
     assert _key_up == "A"
     deregister_callback_on_key_up(_on_key_up())
@@ -163,21 +163,21 @@ def test_HideMouse_integration():
 
 def test_MouseClicked_integration():
     process_events()
-    assert mouse_clicked(Mousebutton.Left) is False
-    simulate_mouse_click(Mousebutton.Left)
+    assert mouse_clicked(MouseButton.Left) is False
+    simulate_mouse_click(MouseButton.Left)
     process_events()
-    assert mouse_clicked(Mousebutton.Left) is True
+    assert mouse_clicked(MouseButton.Left) is True
 
 
 def test_MouseDown_integration():
     process_events()
-    assert mouse_down(Mousebutton.Left) is False
-    simulate_mouse_press(Mousebutton.Left)
+    assert mouse_down(MouseButton.Left) is False
+    simulate_mouse_press(MouseButton.Left)
     process_events()
-    assert mouse_down(Mousebutton.Left) is True
-    simulate_mouse_release(Mousebutton.Left)
+    assert mouse_down(MouseButton.Left) is True
+    simulate_mouse_release(MouseButton.Left)
     process_events()
-    assert mouse_down(Mousebutton.Left) is False
+    assert mouse_down(MouseButton.Left) is False
 
 
 def test_MouseMovement_integration():
@@ -223,10 +223,10 @@ def test_MouseShown_integration():
 
 def test_MouseUp_integration():
     process_events()
-    assert mouse_up(Mousebutton.Left) is True
-    simulate_mouse_click(Mousebutton.Left)
+    assert mouse_up(MouseButton.Left) is True
+    simulate_mouse_click(MouseButton.Left)
     process_events()
-    assert mouse_up(Mousebutton.Left) is False
+    assert mouse_up(MouseButton.Left) is False
 
 
 def test_MouseWheelScroll_integration():
@@ -300,7 +300,7 @@ def test_DrawCollectedText_integration():
     test_font = load_font("test_font", "path/to/font.ttf")
     start_reading_text(rectangle_from(100, 100, 200, 30))
     process_events()
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
     draw_collected_text(color_black(), test_font, 18, option_defaults())
     refresh_screen()
@@ -403,7 +403,7 @@ def test_TextEntryCancelled_integration():
     start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0))
     process_events()
     assert text_entry_cancelled() is False
-    simulate_key_press(Keycode.Escape)
+    simulate_key_press(KeyCode.Escape)
     process_events()
     assert text_entry_cancelled() is True
     end_reading_text()
@@ -416,7 +416,7 @@ def test_TextEntryCancelledInWindow_integration():
     start_reading_text_in_window(test_window, test_rect)
     process_events()
     assert text_entry_cancelled_in_window(test_window) is False
-    simulate_key_press(Keycode.Escape)
+    simulate_key_press(KeyCode.Escape)
     process_events()
     assert text_entry_cancelled_in_window(test_window) is True
     close_window(test_window)
@@ -426,7 +426,7 @@ def test_TextInput_integration():
     test_window = open_window("Test Window", 800, 600)
     start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0))
     process_events()
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
     assert text_input() == "A"
     end_reading_text()
@@ -438,7 +438,7 @@ def test_TextInputInWindow_integration():
     test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0)
     start_reading_text_in_window(test_window, test_rectangle)
     process_events()
-    simulate_key_press(Keycode.A)
+    simulate_key_press(KeyCode.A)
     process_events()
     assert text_input_in_window(test_window) == "A"
     end_reading_text_in_window(test_window)

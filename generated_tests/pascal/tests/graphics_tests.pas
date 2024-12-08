@@ -854,16 +854,12 @@ end;
 procedure TIntegrationTests.TestDisplayDetailsIntegration;
 begin
     testNumberOfDisplays := NumberOfDisplays();
-if AssertTrue(testNumberOfDisplays > 0);
- then
-        testDisplay := DisplayDetails(0);
-        AssertNotNull(testDisplay);
-        AssertTrue(DisplayWidth(testDisplay) > 0);
-        AssertTrue(DisplayHeight(testDisplay) > 0);
-end;
-    else
-        AssertEquals(testNumberOfDisplays, 0);
-end;
+    AssertTrue(testNumberOfDisplays > 0);
+    testDisplay := DisplayDetails(0);
+    AssertNotNull(testDisplay);
+    AssertTrue(DisplayWidth(testDisplay) > 0);
+    AssertTrue(DisplayHeight(testDisplay) > 0);
+    AssertEquals(testNumberOfDisplays, 0);
 end;
 procedure TIntegrationTests.TestDisplayHeightIntegration;
 begin

@@ -10,7 +10,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -30,7 +30,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -43,8 +43,8 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "MouseButton",
-              "value": "Left"
+              "enum_type": "mouse_button",
+              "value": "left"
             }
           ]
         },
@@ -63,8 +63,8 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
-                  "value": "Left"
+                  "enum_type": "mouse_button",
+                  "value": "left"
                 }
               ]
             }
@@ -116,7 +116,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "Escape"
             }
           ]
@@ -245,7 +245,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -307,7 +307,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -327,7 +327,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -351,7 +351,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "B"
             }
           ]
@@ -371,7 +371,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "B"
                 }
               ]
@@ -410,7 +410,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -430,7 +430,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -454,7 +454,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "B"
             }
           ]
@@ -474,7 +474,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "B"
                 }
               ]
@@ -522,7 +522,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -542,7 +542,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -566,7 +566,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "B"
             }
           ]
@@ -586,7 +586,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "B"
                 }
               ]
@@ -623,7 +623,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -636,7 +636,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -656,7 +656,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -669,7 +669,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -689,7 +689,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -707,7 +707,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ],
@@ -733,7 +733,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "Enter"
             }
           ],
@@ -773,7 +773,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -786,7 +786,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -802,7 +802,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -822,7 +822,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -849,7 +849,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -862,7 +862,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -882,7 +882,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -909,7 +909,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -922,7 +922,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -942,7 +942,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -955,7 +955,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -975,7 +975,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -1009,7 +1009,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -1029,7 +1029,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -1074,7 +1074,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -1094,7 +1094,7 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "KeyCode",
+                  "enum_type": "key_code",
                   "value": "A"
                 }
               ]
@@ -1139,7 +1139,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -1150,7 +1150,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -1276,8 +1276,8 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
-                  "value": "Left"
+                  "enum_type": "mouse_button",
+                  "value": "left"
                 }
               ]
             }
@@ -1289,8 +1289,8 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "MouseButton",
-              "value": "Left"
+              "enum_type": "mouse_button",
+              "value": "left"
             }
           ]
         },
@@ -1309,8 +1309,8 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
-                  "value": "Left"
+                  "enum_type": "mouse_button",
+                  "value": "left"
                 }
               ]
             }
@@ -1336,8 +1336,8 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
-                  "value": "Left"
+                  "enum_type": "mouse_button",
+                  "value": "left"
                 }
               ]
             }
@@ -1349,8 +1349,8 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "MouseButton",
-              "value": "Left"
+              "enum_type": "mouse_button",
+              "value": "left"
             }
           ]
         },
@@ -1369,8 +1369,8 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
-                  "value": "Left"
+                  "enum_type": "mouse_button",
+                  "value": "left"
                 }
               ]
             }
@@ -1382,8 +1382,8 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "MouseButton",
-              "value": "Left"
+              "enum_type": "mouse_button",
+              "value": "left"
             }
           ]
         },
@@ -1402,8 +1402,8 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
-                  "value": "Left"
+                  "enum_type": "mouse_button",
+                  "value": "left"
                 }
               ]
             }
@@ -1772,8 +1772,8 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
-                  "value": "Left"
+                  "enum_type": "mouse_button",
+                  "value": "left"
                 }
               ]
             }
@@ -1785,8 +1785,8 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "MouseButton",
-              "value": "Left"
+              "enum_type": "mouse_button",
+              "value": "left"
             }
           ]
         },
@@ -1805,8 +1805,8 @@
               "args": [
                 {
                   "value_type": "enum",
-                  "enum_type": "MouseButton",
-                  "value": "Left"
+                  "enum_type": "mouse_button",
+                  "value": "left"
                 }
               ]
             }
@@ -2480,7 +2480,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -3492,7 +3492,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "Escape"
             }
           ]
@@ -3616,7 +3616,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "Escape"
             }
           ]
@@ -3715,7 +3715,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]
@@ -3827,7 +3827,7 @@
           "args": [
             {
               "value_type": "enum",
-              "enum_type": "KeyCode",
+              "enum_type": "key_code",
               "value": "A"
             }
           ]

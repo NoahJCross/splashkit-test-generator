@@ -24,8 +24,7 @@ TEST_CASE("raspi_get_mode_integration") {
 }
 TEST_CASE("raspi_init_integration") {
     auto has_gpio_capability = has_gpio();
-if (REQUIRE(has_gpio_capability);
-) {
+if (has_gpio_capability == true) {
         raspi_init();
         REQUIRE(has_gpio());
         raspi_cleanup();

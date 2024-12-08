@@ -202,7 +202,7 @@ TEST_CASE("window_close_requested_named_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     process_events();
     REQUIRE_FALSE(window_close_requested("Test Window"));
-    simulate_key_press(Keycode::ESCAPE);
+    simulate_key_press(KeyCode::ESCAPE);
     process_events();
     REQUIRE(window_close_requested("Test Window"));
     close_window(test_window);
@@ -211,7 +211,7 @@ TEST_CASE("window_close_requested_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     process_events();
     REQUIRE_FALSE(window_close_requested(test_window));
-    simulate_key_press(Keycode::ESCAPE);
+    simulate_key_press(KeyCode::ESCAPE);
     process_events();
     REQUIRE(window_close_requested(test_window));
     close_window(test_window);

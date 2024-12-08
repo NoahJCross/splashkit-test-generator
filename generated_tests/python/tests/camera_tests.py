@@ -5,8 +5,8 @@ from splashkit import *
 def test_CameraPosition_integration():
     test_window = open_window("Test Window", 800, 600)
     test_camera_position = camera_position()
-    assert 0.0 == test_camera_position
-    assert 0.0 == test_camera_position
+    assert 0.0 == test_camera_position.x
+    assert 0.0 == test_camera_position.y
     close_window(test_window)
 
 

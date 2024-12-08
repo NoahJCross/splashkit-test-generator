@@ -71,6 +71,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "John"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_string",
               "args": [
@@ -83,10 +87,6 @@
                   "value": "name"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "John"
             }
           }
         },
@@ -199,12 +199,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "count1_after_free"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "count1_after_free"
             }
           }
         },
@@ -212,13 +212,14 @@
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
+
             "value1": {
-              "value_type": "variable",
-              "variable_name": "count2_after_free"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 0
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "count2_after_free"
             }
           }
         }
@@ -344,12 +345,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "key_count"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 2
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "key_count"
             }
           }
         },
@@ -410,6 +411,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "#00ff00ff"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_string",
               "args": [
@@ -422,10 +427,6 @@
                   "value": "color"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "#00ff00ff"
             }
           }
         },
@@ -490,12 +491,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_value"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "expected_value"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_value"
             }
           }
         },
@@ -530,6 +531,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "John"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_string",
               "args": [
@@ -542,10 +547,6 @@
                   "value": "name"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "John"
             }
           }
         },
@@ -554,6 +555,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 30
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_number_as_int",
               "args": [
@@ -566,10 +571,6 @@
                   "value": "age"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 30
             }
           }
         },
@@ -578,6 +579,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "New York"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_string",
               "args": [
@@ -590,10 +595,6 @@
                   "value": "city"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "New York"
             }
           }
         },
@@ -710,10 +711,22 @@
               "value": "numbers"
             },
             {
-              "value_type": "primitive",
-              "value": [1.1, 2.2, 3.3]
+              "value_type": "list",
+              "target_type": "double",
+              "value": [
+                { "value_type": "primitive", "value": 1.1 },
+                { "value_type": "primitive", "value": 2.2 },
+                { "value_type": "primitive", "value": 3.3 }
+              ]
             }
           ]
+        },
+        {
+          "step_type": "variable",
+          "variable_name": "out_result",
+          "target_type": "double",
+          "value_type": "list",
+          "value": []
         },
         {
           "step_type": "function",
@@ -728,8 +741,8 @@
               "value": "numbers"
             },
             {
-              "value_type": "list",
-              "value": []
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           ]
         },
@@ -738,13 +751,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1.1
+            },
+            "value2": {
               "value_type": "array_access",
               "array_name": "out_result",
               "index": 0
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 3
             }
           }
         },
@@ -753,13 +766,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 2.2
+            },
+            "value2": {
               "value_type": "array_access",
               "array_name": "out_result",
               "index": 1
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 2.2
             }
           }
         },
@@ -793,13 +806,13 @@
           "step_type": "function",
           "function_name": "create_json",
           "args": [],
-          "store_result": "test_json_nested1"
+          "store_result": "test_json1"
         },
         {
           "step_type": "function",
           "function_name": "create_json",
           "args": [],
-          "store_result": "test_json_nested2"
+          "store_result": "test_json2"
         },
         {
           "step_type": "function",
@@ -838,6 +851,22 @@
           ]
         },
         {
+          "step_type": "variable",
+          "variable_name": "test_json_array",
+          "target_type": "json",
+          "value_type": "list",
+          "value": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_json1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_json2"
+            }
+          ]
+        },
+        {
           "step_type": "function",
           "function_name": "json_set_array_of_json",
           "args": [
@@ -850,19 +879,17 @@
               "value": "array_key"
             },
             {
-              "value_type": "vector",
-              "value": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_json_nested1"
-                },
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_json_nested2"
-                }
-              ]
+              "value_type": "variable",
+              "variable_name": "test_json_array"
             }
           ]
+        },
+        {
+          "step_type": "variable",
+          "variable_name": "out_result",
+          "target_type": "json",
+          "value_type": "list",
+          "value": []
         },
         {
           "step_type": "function",
@@ -877,8 +904,8 @@
               "value": "array_key"
             },
             {
-              "value_type": "vector",
-              "variable_name": []
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           ]
         },
@@ -887,8 +914,14 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "out_result"
+              "value_type": "function",
+              "function_name": "size",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "out_result"
+                }
+              ]
             },
             "value2": {
               "value_type": "primitive",
@@ -961,6 +994,13 @@
           ]
         },
         {
+          "step_type": "variable",
+          "variable_name": "out_result",
+          "target_type": "string",
+          "value_type": "list",
+          "value": []
+        },
+        {
           "step_type": "function",
           "function_name": "json_read_array_of_string",
           "args": [
@@ -983,12 +1023,18 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "size"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 3
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "size",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "out_result"
+                }
+              ]
             }
           }
         },
@@ -997,12 +1043,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "index_of_json0"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "item1"
+            },
+            "value2": {
+              "value_type": "array_access",
+              "array_name": "out_result",
+              "index": 0
             }
           }
         },
@@ -1027,6 +1074,7 @@
           "args": [],
           "store_result": "test_json"
         },
+
         {
           "step_type": "function",
           "function_name": "json_set_array_of_bool",
@@ -1040,10 +1088,22 @@
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
-              "value": "[true, false, true]"
+              "value_type": "list",
+              "target_type": "bool",
+              "value": [
+                { "value_type": "primitive", "value": true },
+                { "value_type": "primitive", "value": false },
+                { "value_type": "primitive", "value": true }
+              ]
             }
           ]
+        },
+        {
+          "step_type": "variable",
+          "variable_name": "out_result",
+          "target_type": "bool",
+          "value_type": "list",
+          "value": []
         },
         {
           "step_type": "function",
@@ -1068,8 +1128,14 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "size"
+              "value_type": "function",
+              "function_name": "size",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "out_result"
+                }
+              ]
             },
             "value2": {
               "value_type": "primitive",
@@ -1080,42 +1146,22 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "index_of_json0"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "array_access",
+              "array_name": "out_result",
+              "index": 0
             }
           }
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "index_of_json1"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1
-            }
-          }
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "variable",
-              "variable_name": "index_of_json2"
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 2
+              "value_type": "array_access",
+              "array_name": "out_result",
+              "index": 1
             }
           }
         },
@@ -1275,12 +1321,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 42.5
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_result"
             }
           }
         },
@@ -1343,12 +1389,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 3.14
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_result"
             }
           }
         },
@@ -1411,12 +1457,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 42
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_result"
             }
           }
         },
@@ -1554,12 +1600,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "read_value"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "test_value"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "read_value"
             }
           }
         },
@@ -1597,10 +1643,22 @@
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
-              "value": ["value1", "value2", "value3"]
+              "value_type": "list",
+              "target_type": "string",
+              "value": [
+                { "value_type": "primitive", "value": "value1" },
+                { "value_type": "primitive", "value": "value2" },
+                { "value_type": "primitive", "value": "value3" }
+              ]
             }
           ]
+        },
+        {
+          "step_type": "variable",
+          "variable_name": "out_result",
+          "target_type": "string",
+          "value_type": "list",
+          "value": []
         },
         {
           "step_type": "function",
@@ -1615,8 +1673,8 @@
               "value": "test_key"
             },
             {
-              "value_type": "list",
-              "value": []
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           ]
         },
@@ -1625,12 +1683,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_result"
+              "value_type": "primitive",
+              "value": ["value1", "value2", "value3"]
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 3
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           }
         },
@@ -1668,10 +1726,22 @@
               "value": "numbers"
             },
             {
-              "value_type": "primitive",
-              "value": [1.1, 2.2, 3.3]
+              "value_type": "list",
+              "target_type": "double",
+              "value": [
+                { "value_type": "primitive", "value": 1.1 },
+                { "value_type": "primitive", "value": 2.2 },
+                { "value_type": "primitive", "value": 3.3 }
+              ]
             }
           ]
+        },
+        {
+          "step_type": "variable",
+          "variable_name": "out_result",
+          "target_type": "double",
+          "value_type": "list",
+          "value": []
         },
         {
           "step_type": "function",
@@ -1686,8 +1756,8 @@
               "value": "numbers"
             },
             {
-              "value_type": "list",
-              "value": []
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           ]
         },
@@ -1696,12 +1766,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "read_numbers"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": [1.1, 2.2, 3.3]
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           }
         },
@@ -1740,9 +1810,16 @@
             },
             {
               "value_type": "primitive",
-              "value": "[true, false, true]"
+              "value": [true, false, true]
             }
           ]
+        },
+        {
+          "step_type": "variable",
+          "variable_name": "out_result",
+          "target_type": "bool",
+          "value_type": "list",
+          "value": []
         },
         {
           "step_type": "function",
@@ -1757,8 +1834,8 @@
               "value": "test_key"
             },
             {
-              "value_type": "list",
-              "value": []
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           ]
         },
@@ -1767,12 +1844,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "read_array"
+              "value_type": "primitive",
+              "value": [true, false, true]
             },
             "value2": {
-              "value_type": "primitive",
-              "value": "[true, false, true]"
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           }
         },
@@ -1846,6 +1923,16 @@
           ]
         },
         {
+          "step_type": "variable",
+          "variable_name": "test_json_array",
+          "value_type": "list",
+          "target_type": "json",
+          "value": [
+            { "value_type": "variable", "variable_name": "test_json1" },
+            { "value_type": "variable", "variable_name": "test_json2" }
+          ]
+        },
+        {
           "step_type": "function",
           "function_name": "json_set_array_of_json",
           "args": [
@@ -1858,17 +1945,33 @@
               "value": "array_key"
             },
             {
-              "value_type": "list",
-              "value": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_json1"
-                },
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_json2"
-                }
-              ]
+              "value_type": "variable",
+              "variable_name": "test_json_array"
+            }
+          ]
+        },
+        {
+          "step_type": "variable",
+          "variable_name": "out_result",
+          "value_type": "list",
+          "target_type": "json",
+          "value": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "json_read_array_of_json",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_json"
+            },
+            {
+              "value_type": "primitive",
+              "value": "array_key"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "out_result"
             }
           ]
         },
@@ -1877,32 +1980,23 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "value1"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "function",
-                  "function_name": "json_read_object",
-                  "args": [
-                    {
-                      "value_type": "variable",
-                      "variable_name": "test_json"
-                    },
-                    {
-                      "value_type": "primitive",
-                      "value": 0
-                    }
-                  ]
+                  "value_type": "array_access",
+                  "array_name": "out_result",
+                  "index": 0
                 },
                 {
                   "value_type": "primitive",
                   "value": "key1"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "value1"
             }
           }
         },
@@ -1911,64 +2005,25 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "value2"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "function",
-                  "function_name": "json_read_object",
-                  "args": [
-                    {
-                      "value_type": "variable",
-                      "variable_name": "read_array"
-                    },
-                    {
-                      "value_type": "primitive",
-                      "value": 1
-                    }
-                  ]
+                  "value_type": "array_access",
+                  "array_name": "out_result",
+                  "index": 1
                 },
                 {
                   "value_type": "primitive",
                   "value": "key2"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "value2"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_json",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_json"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_json",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_json1"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_json",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_json2"
-            }
-          ]
         },
         {
           "step_type": "function",
@@ -2088,6 +2143,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 30
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_number_as_int",
               "args": [
@@ -2100,10 +2159,6 @@
                   "value": "age"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 30
             }
           }
         },
@@ -2151,6 +2206,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 3.14
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_number_as_double",
               "args": [
@@ -2163,10 +2222,6 @@
                   "value": "test_key"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 3.14
             }
           }
         },
@@ -2214,6 +2269,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 3.14
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_number",
               "args": [
@@ -2226,10 +2285,6 @@
                   "value": "test_key"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 3.14
             }
           }
         },
@@ -2357,6 +2412,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "test_value"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_string",
               "args": [
@@ -2369,10 +2428,6 @@
                   "value": "test_key"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "test_value"
             }
           }
         },
@@ -2431,6 +2486,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "#FF0000FF"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "color_to_string",
               "args": [
@@ -2439,10 +2498,6 @@
                   "variable_name": "test_color"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "#FF0000FF"
             }
           }
         },
@@ -2515,6 +2570,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "testValue"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "json_read_string",
               "args": [
@@ -2527,10 +2586,6 @@
                   "value": "testKey"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "testValue"
             }
           }
         },
@@ -2599,12 +2654,12 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_json_string"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": ""
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_json_string"
             }
           }
         },

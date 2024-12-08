@@ -2,18 +2,18 @@
 #include <catch2/catch.hpp>
 
 TEST_CASE("process_events_integration") {
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(key_typed(Keycode::A));
-    simulate_mouse_click(Mousebutton::LEFT);
+    REQUIRE(key_typed(KeyCode::A));
+    simulate_mouse_click(MouseButton::LEFT);
     process_events();
-    REQUIRE(mouse_clicked(Mousebutton::LEFT));
+    REQUIRE(mouse_clicked(MouseButton::LEFT));
 }
 TEST_CASE("quit_requested_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     process_events();
     REQUIRE_FALSE(quit_requested());
-    simulate_key_press(Keycode::ESCAPE);
+    simulate_key_press(KeyCode::ESCAPE);
     process_events();
     REQUIRE(quit_requested());
     close_window(test_window);
@@ -30,107 +30,107 @@ TEST_CASE("reset_quit_integration") {
 TEST_CASE("any_key_pressed_integration") {
     process_events();
     REQUIRE_FALSE(any_key_pressed());
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
     REQUIRE(any_key_pressed());
 }
 TEST_CASE("deregister_callback_on_key_down_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     register_callback_on_key_down(_on_key_down());
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(key_down(Keycode::A));
+    REQUIRE(key_down(KeyCode::A));
     deregister_callback_on_key_down(_on_key_down());
-    simulate_key_press(Keycode::B);
+    simulate_key_press(KeyCode::B);
     process_events();
-    REQUIRE_FALSE(key_down(Keycode::B));
+    REQUIRE_FALSE(key_down(KeyCode::B));
     close_window(test_window);
 }
 TEST_CASE("deregister_callback_on_key_typed_integration") {
     register_callback_on_key_typed(_on_key_typed());
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(key_typed(Keycode::A));
+    REQUIRE(key_typed(KeyCode::A));
     deregister_callback_on_key_typed(_on_key_typed());
-    simulate_key_press(Keycode::B);
+    simulate_key_press(KeyCode::B);
     process_events();
-    REQUIRE_FALSE(key_typed(Keycode::B));
+    REQUIRE_FALSE(key_typed(KeyCode::B));
 }
 TEST_CASE("deregister_callback_on_key_up_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     register_callback_on_key_up(_on_key_up());
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(key_up(Keycode::A));
+    REQUIRE(key_up(KeyCode::A));
     deregister_callback_on_key_up(_on_key_up());
-    simulate_key_press(Keycode::B);
+    simulate_key_press(KeyCode::B);
     process_events();
-    REQUIRE_FALSE(key_up(Keycode::B));
+    REQUIRE_FALSE(key_up(KeyCode::B));
     close_window(test_window);
 }
 TEST_CASE("key_down_integration") {
     process_events();
-    REQUIRE_FALSE(key_down(Keycode::A));
-    simulate_key_press(Keycode::A);
+    REQUIRE_FALSE(key_down(KeyCode::A));
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(key_down(Keycode::A));
-    simulate_key_release(Keycode::A);
+    REQUIRE(key_down(KeyCode::A));
+    simulate_key_release(KeyCode::A);
     process_events();
-    REQUIRE_FALSE(key_down(Keycode::A));
+    REQUIRE_FALSE(key_down(KeyCode::A));
 }
 TEST_CASE("key_name_integration") {
-    auto test_key_name1 = key_name(Keycode::A);
+    auto test_key_name1 = key_name(KeyCode::A);
     REQUIRE(test_key_name1 == "A");
-    auto test_key_name2 = key_name(Keycode::ENTER);
+    auto test_key_name2 = key_name(KeyCode::ENTER);
     REQUIRE(test_key_name2 == "Enter");
 }
 TEST_CASE("key_released_integration") {
     process_events();
-    REQUIRE_FALSE(key_released(Keycode::A));
-    simulate_key_press(Keycode::A);
+    REQUIRE_FALSE(key_released(KeyCode::A));
+    simulate_key_press(KeyCode::A);
     process_events();
-    simulate_key_release(Keycode::A);
+    simulate_key_release(KeyCode::A);
     process_events();
-    REQUIRE(key_released(Keycode::A));
+    REQUIRE(key_released(KeyCode::A));
 }
 TEST_CASE("key_typed_integration") {
     process_events();
-    REQUIRE_FALSE(key_typed(Keycode::A));
-    simulate_key_press(Keycode::A);
+    REQUIRE_FALSE(key_typed(KeyCode::A));
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(key_typed(Keycode::A));
+    REQUIRE(key_typed(KeyCode::A));
 }
 TEST_CASE("key_up_integration") {
     process_events();
-    REQUIRE(key_up(Keycode::A));
-    simulate_key_press(Keycode::A);
+    REQUIRE(key_up(KeyCode::A));
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE_FALSE(key_up(Keycode::A));
-    simulate_key_release(Keycode::A);
+    REQUIRE_FALSE(key_up(KeyCode::A));
+    simulate_key_release(KeyCode::A);
     process_events();
-    REQUIRE(key_up(Keycode::A));
+    REQUIRE(key_up(KeyCode::A));
 }
 TEST_CASE("register_callback_on_key_down_integration") {
     register_callback_on_key_down(_on_key_down());
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(key_down(Keycode::A));
+    REQUIRE(key_down(KeyCode::A));
     deregister_callback_on_key_down(_on_key_down());
 }
 TEST_CASE("register_callback_on_key_typed_integration") {
     register_callback_on_key_typed(_on_key_typed());
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
-    REQUIRE(key_typed(Keycode::A));
+    REQUIRE(key_typed(KeyCode::A));
     deregister_callback_on_key_typed(_on_key_typed());
 }
 TEST_CASE("register_callback_on_key_up_integration") {
     register_callback_on_key_up(_on_key_up());
     process_events();
-    simulate_key_press(Keycode::A);
-    simulate_key_release(Keycode::A);
+    simulate_key_press(KeyCode::A);
+    simulate_key_release(KeyCode::A);
     process_events();
     REQUIRE(_key_up == "A");
     deregister_callback_on_key_up(_on_key_up());
@@ -146,20 +146,20 @@ TEST_CASE("hide_mouse_integration") {
 }
 TEST_CASE("mouse_clicked_integration") {
     process_events();
-    REQUIRE_FALSE(mouse_clicked(Mousebutton::LEFT));
-    simulate_mouse_click(Mousebutton::LEFT);
+    REQUIRE_FALSE(mouse_clicked(MouseButton::LEFT));
+    simulate_mouse_click(MouseButton::LEFT);
     process_events();
-    REQUIRE(mouse_clicked(Mousebutton::LEFT));
+    REQUIRE(mouse_clicked(MouseButton::LEFT));
 }
 TEST_CASE("mouse_down_integration") {
     process_events();
-    REQUIRE_FALSE(mouse_down(Mousebutton::LEFT));
-    simulate_mouse_press(Mousebutton::LEFT);
+    REQUIRE_FALSE(mouse_down(MouseButton::LEFT));
+    simulate_mouse_press(MouseButton::LEFT);
     process_events();
-    REQUIRE(mouse_down(Mousebutton::LEFT));
-    simulate_mouse_release(Mousebutton::LEFT);
+    REQUIRE(mouse_down(MouseButton::LEFT));
+    simulate_mouse_release(MouseButton::LEFT);
     process_events();
-    REQUIRE_FALSE(mouse_down(Mousebutton::LEFT));
+    REQUIRE_FALSE(mouse_down(MouseButton::LEFT));
 }
 TEST_CASE("mouse_movement_integration") {
     auto test_window = open_window("Test Window", 800, 600);
@@ -200,10 +200,10 @@ TEST_CASE("mouse_shown_integration") {
 }
 TEST_CASE("mouse_up_integration") {
     process_events();
-    REQUIRE(mouse_up(Mousebutton::LEFT));
-    simulate_mouse_click(Mousebutton::LEFT);
+    REQUIRE(mouse_up(MouseButton::LEFT));
+    simulate_mouse_click(MouseButton::LEFT);
     process_events();
-    REQUIRE_FALSE(mouse_up(Mousebutton::LEFT));
+    REQUIRE_FALSE(mouse_up(MouseButton::LEFT));
 }
 TEST_CASE("mouse_wheel_scroll_integration") {
     auto test_window = open_window("Test Window", 800, 600);
@@ -269,7 +269,7 @@ TEST_CASE("draw_collected_text_integration") {
     auto test_font = load_font("test_font", "path/to/font.ttf");
     start_reading_text(rectangle_from(100, 100, 200, 30));
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
     draw_collected_text(color_black(), test_font, 18, option_defaults());
     refresh_screen();
@@ -363,7 +363,7 @@ TEST_CASE("text_entry_cancelled_integration") {
     start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
     process_events();
     REQUIRE_FALSE(text_entry_cancelled());
-    simulate_key_press(Keycode::ESCAPE);
+    simulate_key_press(KeyCode::ESCAPE);
     process_events();
     REQUIRE(text_entry_cancelled());
     end_reading_text();
@@ -375,7 +375,7 @@ TEST_CASE("text_entry_cancelled_in_window_integration") {
     start_reading_text(test_window, test_rect);
     process_events();
     REQUIRE_FALSE(text_entry_cancelled(test_window));
-    simulate_key_press(Keycode::ESCAPE);
+    simulate_key_press(KeyCode::ESCAPE);
     process_events();
     REQUIRE(text_entry_cancelled(test_window));
     close_window(test_window);
@@ -384,7 +384,7 @@ TEST_CASE("text_input_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
     REQUIRE(text_input() == "A");
     end_reading_text();
@@ -395,7 +395,7 @@ TEST_CASE("text_input_in_window_integration") {
     auto test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0);
     start_reading_text(test_window, test_rectangle);
     process_events();
-    simulate_key_press(Keycode::A);
+    simulate_key_press(KeyCode::A);
     process_events();
     REQUIRE(text_input(test_window) == "A");
     end_reading_text(test_window);

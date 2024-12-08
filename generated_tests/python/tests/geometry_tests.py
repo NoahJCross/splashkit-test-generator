@@ -114,7 +114,7 @@ def test_DistantPointOnCircleHeading_integration():
     test_circle = circle_at(100.0, 100.0, 50.0)
     test_point1 = point_at(150.0, 100.0)
     test_heading = vector_from_angle(180.0, 1.0)
-    test_point2todo
+    test_point2 = point_at(0.0)
     test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, test_point2)
     assert test_result is True
     assert test_point1.x == 50.0
@@ -142,8 +142,8 @@ def test_TangentPoints_integration():
 def test_WidestPoints_integration():
     test_circle = circle_at(100.0, 100.0, 50.0)
     test_vector = vector_from_angle(45.0)
-    test_point1todo
-    test_point2todo
+    test_point1 = point_at(0.0, 0.0)
+    test_point2 = point_at(0.0, 0.0)
     test_points = widest_points(test_circle, test_vector, test_point1, test_point2)
     assert point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle) is True
     assert point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle) is True
@@ -184,7 +184,9 @@ def test_ClosestPointOnLines_integration():
     test_from_pt = point_at(0.0, 0.0)
     test_line1 = line_from(point_at(-10.0, 0.0), point_at(10.0, 0.0))
     test_line2 = line_from(point_at(0.0, -10.0), point_at(0.0, 10.0))
-    test_closest_point = closest_point_on_lines(test_from_pt, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]}, 0)
+    test_index = {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
+    test_lines = {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
+    test_closest_point = closest_point_on_lines(test_from_pt, test_lines, test_index)
     assert point_point_distance(test_from_pt, test_closest_point) == 0.0
 
 
@@ -218,7 +220,7 @@ def test_LineFrom_integration():
 def test_LineIntersectionPoint_integration():
     test_line1 = line_from(0.0, 0.0, 10.0, 10.0)
     test_line2 = line_from(10.0, 0.0, 0.0, 10.0)
-    test_pointtodo
+    test_point = point_at(0.0, 0.0)
     test_intersection_result = line_intersection_point(test_line1, test_line2, test_point)
     assert test_intersection_result is True
 
@@ -234,7 +236,8 @@ def test_LineIntersectsLines_integration():
     test_line = line_from(0.0, 0.0, 10.0, 10.0)
     test_line1 = line_from(5.0, 5.0, 15.0, 15.0)
     test_line2 = line_from(20.0, 20.0, 30.0, 30.0)
-    test_result = line_intersects_lines(test_line, {:value_type=>"list", :list_name=>"test_lines", :list_values=>["test_line1", "test_line2"]})
+    test_lines = [test_line1, test_line2];
+    test_result = line_intersects_lines(test_line, test_lines)
     assert test_result is True
 
 
