@@ -334,7 +334,7 @@ fn test_update_animation_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "moonwalkback");
     update_animation(anim);
-    assert_ne!(0, animation_current_cell(anim));
+    assert_ne!(animation_current_cell(anim), 0);
     free_animation(anim);
     free_animation_script(kermit_script);
 }

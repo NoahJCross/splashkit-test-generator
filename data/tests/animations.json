@@ -3085,10 +3085,6 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 0
-            },
-            "value2": {
               "value_type": "function",
               "function_name": "animation_current_cell",
               "args": [
@@ -3097,6 +3093,10 @@
                   "variable_name": "anim"
                 }
               ]
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": 0
             }
           }
         },

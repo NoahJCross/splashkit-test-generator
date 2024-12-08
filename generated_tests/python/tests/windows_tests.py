@@ -7,7 +7,7 @@ def test_ClearWindow_integration():
     test_color = color_black()
     clear_window(test_window, test_color)
     refresh_window(test_window)
-    assert get_pixel(point_at(window_width(test_window), window_height(test_window))) == color_black()
+    assert color_black() == get_pixel(point_at(window_width(test_window), window_height(test_window)))
     close_window(test_window)
 
 
@@ -44,7 +44,7 @@ def test_CloseWindow_integration():
 def test_CurrentWindow_integration():
     test_window = open_window("Test Window", 800, 600)
     set_current_window(test_window)
-    assert current_window() == test_window
+    assert test_window == current_window()
     close_window(test_window)
 
 
@@ -59,7 +59,7 @@ def test_CurrentWindowHasBorder_integration():
 def test_CurrentWindowHeight_integration():
     test_window = open_window("Test Window", 800, 600)
     set_current_window(test_window)
-    assert current_window_height() == 600
+    assert 600 == current_window_height()
     close_window(test_window)
 
 
@@ -101,7 +101,7 @@ def test_CurrentWindowToggleFullscreen_integration():
 def test_CurrentWindowWidth_integration():
     test_window = open_window("Test Window", 800, 600)
     set_current_window(test_window)
-    assert current_window_width() == 800
+    assert 800 == current_window_width()
     close_window(test_window)
 
 
@@ -109,7 +109,7 @@ def test_CurrentWindowX_integration():
     test_window = open_window("Test Window", 800, 600)
     move_window_to(test_window, 100, 200)
     set_current_window(test_window)
-    assert current_window_x() == 100
+    assert 100 == current_window_x()
     close_window(test_window)
 
 
@@ -143,8 +143,8 @@ def test_IsCurrentWindow_integration():
 def test_MoveCurrentWindowTo_integration():
     test_window = open_window("Test Window", 800, 600)
     move_current_window_to(100, 100)
-    assert current_window_x() == 100
-    assert current_window_y() == 100
+    assert 100 == current_window_x()
+    assert 100 == current_window_y()
     close_window(test_window)
 
 
@@ -152,16 +152,16 @@ def test_MoveWindowToNamed_integration():
     test_window = open_window("Test Window", 800, 600)
     move_window_to_named("Test Window", 100, 100)
     process_events()
-    assert window_x_named("Test Window") == 100
-    assert window_y_named("Test Window") == 100
+    assert 100 == window_x_named("Test Window")
+    assert 100 == window_y_named("Test Window")
     close_window_named("Test Window")
 
 
 def test_MoveWindowTo_integration():
     test_window = open_window("Test Window", 800, 600)
     move_window_to(test_window, 100, 100)
-    assert window_x(test_window) == 100
-    assert window_y(test_window) == 100
+    assert 100 == window_x(test_window)
+    assert 100 == window_y(test_window)
     close_window(test_window)
 
 
@@ -190,16 +190,16 @@ def test_ResizeCurrentWindow_integration():
     set_current_window(test_window)
     resize_current_window(1024, 768)
     process_events()
-    assert current_window_width() == 1024
-    assert current_window_height() == 768
+    assert 1024 == current_window_width()
+    assert 768 == current_window_height()
     close_window(test_window)
 
 
 def test_ResizeWindow_integration():
     test_window = open_window("Test Window", 800, 600)
     resize_window(test_window, 1024, 768)
-    assert window_width(test_window) == 1024
-    assert window_height(test_window) == 768
+    assert 1024 == window_width(test_window)
+    assert 768 == window_height(test_window)
     close_window(test_window)
 
 
@@ -223,7 +223,7 @@ def test_SetCurrentWindow_integration():
 
 def test_WindowCaption_integration():
     test_window = open_window("Test Window", 800, 600)
-    assert window_caption(test_window) == "Test Window"
+    assert "Test Window" == window_caption(test_window)
     close_window(test_window)
 
 
@@ -272,13 +272,13 @@ def test_WindowHasFocus_integration():
 
 def test_WindowHeightNamed_integration():
     test_window = open_window("Test Window", 800, 600)
-    assert window_height_named("Test Window") == 600
+    assert 600 == window_height_named("Test Window")
     close_window(test_window)
 
 
 def test_WindowHeight_integration():
     test_window = open_window("Test Window", 800, 600)
-    assert window_height(test_window) == 600
+    assert 600 == window_height(test_window)
     close_window(test_window)
 
 
@@ -302,7 +302,7 @@ def test_WindowIsFullscreen_integration():
 def test_WindowNamed_integration():
     test_window = open_window("Test Window", 800, 600)
     retrieved_window = window_named("Test Window")
-    assert test_window == retrieved_window
+    assert retrieved_window == test_window
     close_window(test_window)
 
 
@@ -363,19 +363,19 @@ def test_WindowToggleFullscreen_integration():
     initial_fullscreen_state = window_is_fullscreen(test_window)
     window_toggle_fullscreen(test_window)
     new_fullscreen_state = window_is_fullscreen(test_window)
-    assert initial_fullscreen_state != new_fullscreen_state
+    assert new_fullscreen_state != initial_fullscreen_state
     close_window(test_window)
 
 
 def test_WindowWidthNamed_integration():
     test_window = open_window("Test Window", 800, 600)
-    assert window_width_named("Test Window") == 800
+    assert 800 == window_width_named("Test Window")
     close_window(test_window)
 
 
 def test_WindowWidth_integration():
     test_window = open_window("Test Window", 800, 600)
-    assert window_width(test_window) == 800
+    assert 800 == window_width(test_window)
     close_window(test_window)
 
 
@@ -384,10 +384,10 @@ def test_WindowWithFocus_integration():
     test_window_2 = open_window("Test Window 2", 800, 600)
     set_current_window(test_window_1)
     focused_window = window_with_focus()
-    assert focused_window == test_window_1
+    assert test_window_1 == focused_window
     set_current_window(test_window_2)
     focused_window = window_with_focus()
-    assert focused_window == test_window_2
+    assert test_window_2 == focused_window
     close_window(test_window_1)
     close_window(test_window_2)
 
@@ -395,7 +395,7 @@ def test_WindowWithFocus_integration():
 def test_WindowXNamed_integration():
     test_window = open_window("Test Window", 800, 600)
     move_window_to_named("Test Window", 100, 200)
-    assert window_x_named("Test Window") == 100
+    assert 100 == window_x_named("Test Window")
     close_window_named("Test Window")
 
 
@@ -409,13 +409,13 @@ def test_WindowYNamed_integration():
     test_window = open_window("Test Window", 800, 600)
     move_window_to_named("Test Window", 100, 200)
     test_window_y = window_y_named("Test Window")
-    assert test_window_y == 200
+    assert 200 == test_window_y
     close_window_named("Test Window")
 
 
 def test_WindowY_integration():
     test_window = open_window("Test Window", 800, 600)
     move_window_to(test_window, 100, 200)
-    assert window_y(test_window) == 200
+    assert 200 == window_y(test_window)
     close_window(test_window)
 

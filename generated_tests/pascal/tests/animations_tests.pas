@@ -329,7 +329,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     UpdateAnimation(anim);
-    AssertNotEquals(0, AnimationCurrentCell(anim));
+    AssertNotEquals(AnimationCurrentCell(anim), 0);
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;

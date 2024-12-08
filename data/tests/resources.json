@@ -70,12 +70,12 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "image_path"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": ""
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "image_path"
             }
           }
         },
@@ -100,12 +100,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "text_path"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": ""
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "text_path"
             }
           }
         }
@@ -151,12 +151,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "new_resource_path"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "/new/resources"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "new_resource_path"
             }
           }
         }
@@ -192,12 +192,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "image_path"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "resources/images"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "image_path"
             }
           }
         },
@@ -218,12 +218,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "sound_path"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": "resources/sounds"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "sound_path"
             }
           }
         }
@@ -294,13 +294,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "/resources"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "path_to_resources",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "/resources"
             }
           }
         },
@@ -319,13 +319,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "/new/resources"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "path_to_resources",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "/new/resources"
             }
           }
         }

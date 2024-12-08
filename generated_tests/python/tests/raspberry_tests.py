@@ -14,15 +14,15 @@ def test_RaspiCleanup_integration():
     raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
     raspi_write(Pins.Pin11, PinValues.GpioHigh)
     raspi_cleanup()
-    assert raspi_get_mode(Pins.Pin11) == PinModes.GpioInput
-    assert raspi_read(Pins.Pin11) == PinValues.GpioLow
+    assert PinModes.GpioInput == raspi_get_mode(Pins.Pin11)
+    assert PinValues.GpioLow == raspi_read(Pins.Pin11)
 
 
 def test_RaspiGetMode_integration():
     raspi_init()
     raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
     test_mode = raspi_get_mode(Pins.Pin11)
-    assert test_mode == PinModes.GpioOutput
+    assert PinModes.GpioOutput == test_mode
     raspi_cleanup()
 
 
@@ -43,14 +43,14 @@ def test_RaspiRead_integration():
     raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
     raspi_write(Pins.Pin11, PinValues.GpioHigh)
     test_read_value = raspi_read(Pins.Pin11)
-    assert test_read_value == PinValues.GpioHigh
+    assert PinValues.GpioHigh == test_read_value
     raspi_cleanup()
 
 
 def test_RaspiSetMode_integration():
     raspi_init()
     raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
-    assert raspi_get_mode(Pins.Pin11) == PinModes.GpioOutput
+    assert PinModes.GpioOutput == raspi_get_mode(Pins.Pin11)
     raspi_cleanup()
 
 
@@ -59,10 +59,10 @@ def test_RaspiSetPullUpDown_integration():
     raspi_set_mode(Pins.Pin11, PinModes.GpioInput)
     raspi_set_pull_up_down(Pins.Pin11, PullUpDown.PudUp)
     test_pin_value = raspi_read(Pins.Pin11)
-    assert test_pin_value == PinValues.GpioHigh
+    assert PinValues.GpioHigh == test_pin_value
     raspi_set_pull_up_down(Pins.Pin11, PullUpDown.PudDown)
     test_pin_value = raspi_read(Pins.Pin11)
-    assert test_pin_value == PinValues.GpioLow
+    assert PinValues.GpioLow == test_pin_value
     raspi_cleanup()
 
 
@@ -93,6 +93,6 @@ def test_RaspiWrite_integration():
     raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
     raspi_write(Pins.Pin11, PinValues.GpioHigh)
     test_pin_value = raspi_read(Pins.Pin11)
-    assert test_pin_value == PinValues.GpioHigh
+    assert PinValues.GpioHigh == test_pin_value
     raspi_cleanup()
 

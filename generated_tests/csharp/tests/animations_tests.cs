@@ -367,7 +367,7 @@ namespace SplashKitTests
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
             UpdateAnimation(anim);
-            Assert.NotEqual(0, AnimationCurrentCell(anim));
+            Assert.NotEqual(AnimationCurrentCell(anim), 0);
             FreeAnimation(anim);
             FreeAnimationScript(kermitScript);
         }

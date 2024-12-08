@@ -12,8 +12,8 @@ begin
     SpriteSetX(testSprite1, 100);
     SpriteSetX(testSprite2, 200);
     CallForAllSprites(SpriteSetX(testSprite1, 300), 300);
-    AssertEquals(SpriteX(testSprite1), 300);
-    AssertEquals(SpriteX(testSprite2), 300);
+    AssertEquals(300, SpriteX(testSprite1));
+    AssertEquals(300, SpriteX(testSprite2));
     FreeAllSprites();
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -56,8 +56,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetPosition(testSprite, PointAt(100, 100));
     testCenterPoint := CenterPoint(testSprite);
-    AssertEquals(testCenterPoint.x, 150);
-    AssertEquals(testCenterPoint.y, 150);
+    AssertEquals(150, testCenterPoint.x);
+    AssertEquals(150, testCenterPoint.y);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -139,7 +139,7 @@ begin
     CreateSpritePack("test_pack");
     SelectSpritePack("test_pack");
     currentPack := CurrentSpritePack();
-    AssertEquals(currentPack, "test_pack");
+    AssertEquals("test_pack", currentPack);
     FreeSpritePack("test_pack");
 end;
 procedure TIntegrationTests.TestDrawAllSpritesIntegration;
@@ -154,8 +154,8 @@ begin
     SpriteSetY(testSprite2, 200);
     DrawAllSprites();
     RefreshScreen();
-    AssertNotEquals(GetPixel(100, 100), ColorWhite());
-    AssertNotEquals(GetPixel(200, 200), ColorWhite());
+    AssertNotEquals(ColorWhite(), GetPixel(100, 100));
+    AssertNotEquals(ColorWhite(), GetPixel(200, 200));
     FreeAllSprites();
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -168,7 +168,7 @@ begin
     SpriteSetPosition(testSprite, PointAt(400, 300));
     DrawSprite(testSprite, VectorTo(50, 50));
     RefreshScreen();
-    AssertNotEquals(GetPixel(PointAt(450, 350)), ColorWhite());
+    AssertNotEquals(ColorWhite(), GetPixel(PointAt(450, 350)));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -253,7 +253,7 @@ begin
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     MoveSprite(testSprite);
     ProcessEvents();
-    AssertNotEquals(SpritePosition(testSprite), PointAt(100.0, 100.0));
+    AssertNotEquals(PointAt(100.0, 100.0), SpritePosition(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -266,8 +266,8 @@ begin
     SpriteSetPosition(testSprite, PointAt(100, 100));
     MoveSprite(testSprite, VectorTo(50, 50));
     ProcessEvents();
-    AssertEquals(SpriteX(testSprite), 150);
-    AssertEquals(SpriteY(testSprite), 150);
+    AssertEquals(150, SpriteX(testSprite));
+    AssertEquals(150, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -279,8 +279,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     MoveSprite(testSprite, VectorTo(50.0, 50.0), 0.5);
-    AssertEquals(SpriteX(testSprite), 125.0);
-    AssertEquals(SpriteY(testSprite), 125.0);
+    AssertEquals(125.0, SpriteX(testSprite));
+    AssertEquals(125.0, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -305,8 +305,8 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     MoveSpriteTo(testSprite, 400.0, 300.0);
-    AssertEquals(SpriteX(testSprite), 400.0);
-    AssertEquals(SpriteY(testSprite), 300.0);
+    AssertEquals(400.0, SpriteX(testSprite));
+    AssertEquals(300.0, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -344,8 +344,8 @@ begin
     SpriteSetPosition(testSprite, PointAt(400, 300));
     SpriteAddToVelocity(testSprite, VectorTo(10, 10));
     UpdateSprite(testSprite);
-    AssertEquals(SpriteX(testSprite), 410);
-    AssertEquals(SpriteY(testSprite), 310);
+    AssertEquals(410, SpriteX(testSprite));
+    AssertEquals(310, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -368,7 +368,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteAddValue(testSprite, "health", 100.0);
     AssertTrue(SpriteHasValue(testSprite, "health"));
-    AssertEquals(SpriteValue(testSprite, "health"), 100.0);
+    AssertEquals(100.0, SpriteValue(testSprite, "health"));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -379,8 +379,8 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     testAnchorPoint := SpriteAnchorPoint(testSprite);
-    AssertEquals(testAnchorPoint.x, 50);
-    AssertEquals(testAnchorPoint.y, 50);
+    AssertEquals(50, testAnchorPoint.x);
+    AssertEquals(50, testAnchorPoint.y);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -392,8 +392,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetPosition(testSprite, PointAt(100, 100));
     testAnchorPosition := SpriteAnchorPosition(testSprite);
-    AssertEquals(testAnchorPosition.x, 100);
-    AssertEquals(testAnchorPosition.y, 100);
+    AssertEquals(100, testAnchorPosition.x);
+    AssertEquals(100, testAnchorPosition.y);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -419,7 +419,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteStartAnimation(testSprite, "default");
     testAnimationName := SpriteAnimationName(testSprite);
-    AssertEquals(testAnimationName, "default");
+    AssertEquals("default", testAnimationName);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -458,7 +458,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     layerIndex := SpriteAddLayer(testSprite, testBitmap, "layer2");
     SpriteBringLayerToFront(testSprite, layerIndex);
-    AssertEquals(SpriteVisibleIndexOfLayer(testSprite, layerIndex), SpriteVisibleLayerCount(testSprite));
+    AssertEquals(SpriteVisibleLayerCount(testSprite), SpriteVisibleIndexOfLayer(testSprite, layerIndex));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -494,8 +494,8 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     collisionBitmap := SpriteCollisionBitmap(testSprite);
-    AssertEquals(BitmapWidth(collisionBitmap), 100);
-    AssertEquals(BitmapHeight(collisionBitmap), 100);
+    AssertEquals(100, BitmapWidth(collisionBitmap));
+    AssertEquals(100, BitmapHeight(collisionBitmap));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -517,7 +517,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetCollisionKind(testSprite, CollisionTestKind.PIXEL_COLLISIONS);
-    AssertEquals(SpriteCollisionKind(testSprite), CollisionTestKind.PIXEL_COLLISIONS);
+    AssertEquals(CollisionTestKind.PIXEL_COLLISIONS, SpriteCollisionKind(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -528,8 +528,8 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     testRectangle := SpriteCollisionRectangle(testSprite);
-    AssertEquals(testRectangle.width, 100);
-    AssertEquals(testRectangle.height, 100);
+    AssertEquals(100, testRectangle.width);
+    AssertEquals(100, testRectangle.height);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -541,7 +541,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteStartAnimation(testSprite, 0);
     UpdateSprite(testSprite);
-    AssertEquals(SpriteCurrentCell(testSprite), 0);
+    AssertEquals(0, SpriteCurrentCell(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -552,10 +552,10 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     testRectangle := SpriteCurrentCellRectangle(testSprite);
-    AssertEquals(RectangleLeft(testRectangle), 0);
-    AssertEquals(RectangleTop(testRectangle), 0);
-    AssertEquals(RectangleRight(testRectangle), BitmapWidth(testBitmap));
-    AssertEquals(RectangleBottom(testRectangle), BitmapHeight(testBitmap));
+    AssertEquals(0, RectangleLeft(testRectangle));
+    AssertEquals(0, RectangleTop(testRectangle));
+    AssertEquals(BitmapWidth(testBitmap), RectangleRight(testRectangle));
+    AssertEquals(BitmapHeight(testBitmap), RectangleBottom(testRectangle));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -566,7 +566,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetDx(testSprite, 5.0);
-    AssertEquals(SpriteDx(testSprite), 5.0);
+    AssertEquals(5.0, SpriteDx(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -577,7 +577,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetDy(testSprite, 5.0);
-    AssertEquals(SpriteDy(testSprite), 5.0);
+    AssertEquals(5.0, SpriteDy(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -611,7 +611,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
-    AssertEquals(SpriteHeight(testSprite), 100);
+    AssertEquals(100, SpriteHeight(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -692,9 +692,9 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
-    AssertEquals(SpriteLayerCount(testSprite), 1);
+    AssertEquals(1, SpriteLayerCount(testSprite));
     SpriteAddLayer(testSprite, testBitmap, "layer2");
-    AssertEquals(SpriteLayerCount(testSprite), 2);
+    AssertEquals(2, SpriteLayerCount(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -705,7 +705,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteAddLayer(testSprite, testBitmap, "layer2");
-    AssertEquals(SpriteLayerHeight(testSprite, "layer2"), 100);
+    AssertEquals(100, SpriteLayerHeight(testSprite, "layer2"));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -716,7 +716,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     layerHeight := SpriteLayerHeight(testSprite, 0);
-    AssertEquals(layerHeight, 100);
+    AssertEquals(100, layerHeight);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -727,7 +727,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     layerIndex := SpriteAddLayer(testSprite, testBitmap, "layer2");
-    AssertEquals(SpriteLayerIndex(testSprite, "layer2"), layerIndex);
+    AssertEquals(layerIndex, SpriteLayerIndex(testSprite, "layer2"));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -738,7 +738,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     layerIndex := SpriteAddLayer(testSprite, testBitmap, "layer2");
-    AssertEquals(SpriteLayerName(testSprite, layerIndex), "layer2");
+    AssertEquals("layer2", SpriteLayerName(testSprite, layerIndex));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -750,8 +750,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetLayerOffset(testSprite, "layer1", VectorTo(10, 10));
     layerOffset := SpriteLayerOffset(testSprite, "layer1");
-    AssertEquals(layerOffset.x, 10);
-    AssertEquals(layerOffset.y, 10);
+    AssertEquals(10, layerOffset.x);
+    AssertEquals(10, layerOffset.y);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -763,7 +763,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     layerIndex := SpriteAddLayer(testSprite, testBitmap, "layer2");
     SpriteSetLayerOffset(testSprite, layerIndex, VectorTo(10, 10));
-    AssertEquals(SpriteLayerOffset(testSprite, layerIndex), VectorTo(10, 10));
+    AssertEquals(VectorTo(10, 10), SpriteLayerOffset(testSprite, layerIndex));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -774,10 +774,10 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     testRectangle := SpriteLayerRectangle(testSprite, "layer1");
-    AssertEquals(RectangleLeft(testRectangle), 0);
-    AssertEquals(RectangleTop(testRectangle), 0);
-    AssertEquals(RectangleRight(testRectangle), 100);
-    AssertEquals(RectangleBottom(testRectangle), 100);
+    AssertEquals(0, RectangleLeft(testRectangle));
+    AssertEquals(0, RectangleTop(testRectangle));
+    AssertEquals(100, RectangleRight(testRectangle));
+    AssertEquals(100, RectangleBottom(testRectangle));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -788,7 +788,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     testRectangle := SpriteLayerRectangle(testSprite, 0);
-    AssertEquals(testRectangle.width, BitmapWidth(testBitmap));
+    AssertEquals(BitmapWidth(testBitmap), testRectangle.width);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -799,7 +799,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteAddLayer(testSprite, testBitmap, "layer2");
-    AssertEquals(SpriteLayerWidth(testSprite, "layer2"), 100);
+    AssertEquals(100, SpriteLayerWidth(testSprite, "layer2"));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -809,7 +809,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
-    AssertEquals(SpriteLayerWidth(testSprite, 0), 100);
+    AssertEquals(100, SpriteLayerWidth(testSprite, 0));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -836,7 +836,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetMass(testSprite, 10.0);
-    AssertEquals(SpriteMass(testSprite), 10.0);
+    AssertEquals(10.0, SpriteMass(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -872,7 +872,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
-    AssertEquals(SpriteName(testSprite), "test_sprite");
+    AssertEquals("test_sprite", SpriteName(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -934,8 +934,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     testPosition := SpritePosition(testSprite);
-    AssertEquals(testPosition.x, 100.0);
-    AssertEquals(testPosition.y, 100.0);
+    AssertEquals(100.0, testPosition.x);
+    AssertEquals(100.0, testPosition.y);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -968,7 +968,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetRotation(testSprite, 45.0);
-    AssertEquals(SpriteRotation(testSprite), 45.0);
+    AssertEquals(45.0, SpriteRotation(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -979,7 +979,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetScale(testSprite, 2.0);
-    AssertEquals(SpriteScale(testSprite), 2.0);
+    AssertEquals(2.0, SpriteScale(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -991,8 +991,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetPosition(testSprite, PointAt(100, 100));
     testRectangle := SpriteScreenRectangle(testSprite);
-    AssertEquals(RectangleLeft(testRectangle), 100);
-    AssertEquals(RectangleTop(testRectangle), 100);
+    AssertEquals(100, RectangleLeft(testRectangle));
+    AssertEquals(100, RectangleTop(testRectangle));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1016,7 +1016,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     layerIndex := SpriteAddLayer(testSprite, testBitmap, "layer2");
     SpriteSendLayerToBack(testSprite, layerIndex);
-    AssertEquals(SpriteVisibleIndexOfLayer(testSprite, layerIndex), 0);
+    AssertEquals(0, SpriteVisibleIndexOfLayer(testSprite, layerIndex));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1028,8 +1028,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetAnchorPoint(testSprite, PointAt(50, 50));
     testAnchorPoint := SpriteAnchorPoint(testSprite);
-    AssertEquals(testAnchorPoint.x, 50);
-    AssertEquals(testAnchorPoint.y, 50);
+    AssertEquals(50, testAnchorPoint.x);
+    AssertEquals(50, testAnchorPoint.y);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1040,7 +1040,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetCollisionBitmap(testSprite, testBitmap);
-    AssertEquals(SpriteCollisionBitmap(testSprite), testBitmap);
+    AssertEquals(testBitmap, SpriteCollisionBitmap(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1051,7 +1051,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetCollisionKind(testSprite, CollisionTestKind.PIXEL_COLLISIONS);
-    AssertEquals(SpriteCollisionKind(testSprite), CollisionTestKind.PIXEL_COLLISIONS);
+    AssertEquals(CollisionTestKind.PIXEL_COLLISIONS, SpriteCollisionKind(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1062,7 +1062,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetDx(testSprite, 5.0);
-    AssertEquals(SpriteDx(testSprite), 5.0);
+    AssertEquals(5.0, SpriteDx(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1073,7 +1073,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetDy(testSprite, 5.0);
-    AssertEquals(SpriteDy(testSprite), 5.0);
+    AssertEquals(5.0, SpriteDy(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1084,7 +1084,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetHeading(testSprite, 45.0);
-    AssertEquals(SpriteHeading(testSprite), 45.0);
+    AssertEquals(45.0, SpriteHeading(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1096,8 +1096,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetLayerOffset(testSprite, "layer1", VectorTo(10.0, 10.0));
     testOffset := SpriteLayerOffset(testSprite, "layer1");
-    AssertEquals(testOffset.x, 10.0);
-    AssertEquals(testOffset.y, 10.0);
+    AssertEquals(10.0, testOffset.x);
+    AssertEquals(10.0, testOffset.y);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1108,7 +1108,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetLayerOffset(testSprite, 0, VectorTo(10.0, 10.0));
-    AssertEquals(SpriteLayerOffset(testSprite, 0), VectorTo(10.0, 10.0));
+    AssertEquals(VectorTo(10.0, 10.0), SpriteLayerOffset(testSprite, 0));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1119,7 +1119,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetMass(testSprite, 10.0);
-    AssertEquals(SpriteMass(testSprite), 10.0);
+    AssertEquals(10.0, SpriteMass(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1143,8 +1143,8 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetPosition(testSprite, PointAt(100, 100));
-    AssertEquals(SpriteX(testSprite), 100);
-    AssertEquals(SpriteY(testSprite), 100);
+    AssertEquals(100, SpriteX(testSprite));
+    AssertEquals(100, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1155,7 +1155,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetRotation(testSprite, 45.0);
-    AssertEquals(SpriteRotation(testSprite), 45.0);
+    AssertEquals(45.0, SpriteRotation(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1166,7 +1166,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetScale(testSprite, 2.0);
-    AssertEquals(SpriteScale(testSprite), 2.0);
+    AssertEquals(2.0, SpriteScale(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1177,7 +1177,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetSpeed(testSprite, 5.0);
-    AssertEquals(SpriteSpeed(testSprite), 5.0);
+    AssertEquals(5.0, SpriteSpeed(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1189,7 +1189,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteAddValue(testSprite, "test_value");
     SpriteSetValue(testSprite, "test_value", 10.5);
-    AssertEquals(SpriteValue(testSprite, "test_value"), 10.5);
+    AssertEquals(10.5, SpriteValue(testSprite, "test_value"));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1212,7 +1212,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetX(testSprite, 150.0);
-    AssertEquals(SpriteX(testSprite), 150.0);
+    AssertEquals(150.0, SpriteX(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1223,7 +1223,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetY(testSprite, 300.0);
-    AssertEquals(SpriteY(testSprite), 300.0);
+    AssertEquals(300.0, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1235,7 +1235,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     layerIndex := SpriteAddLayer(testSprite, testBitmap, "layer2");
     result := SpriteShowLayer(testSprite, "layer2");
-    AssertEquals(result, 1);
+    AssertEquals(1, result);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1248,7 +1248,7 @@ begin
     layerIndex := SpriteAddLayer(testSprite, testBitmap, "layer2");
     SpriteHideLayer(testSprite, 1);
     result := SpriteShowLayer(testSprite, 1);
-    AssertEquals(result, 1);
+    AssertEquals(1, result);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1260,7 +1260,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
     testSpeed := SpriteSpeed(testSprite);
-    AssertEquals(testSpeed, 7.0710678118654755);
+    AssertEquals(7.0710678118654755, testSpeed);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1340,7 +1340,7 @@ begin
     SpriteToggleLayerVisible(testSprite, "layer2");
     AssertFalse(SpriteVisibleLayerCount(testSprite));
     SpriteToggleLayerVisible(testSprite, "layer2");
-    AssertEquals(SpriteVisibleLayerCount(testSprite), 2);
+    AssertEquals(2, SpriteVisibleLayerCount(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1365,7 +1365,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteAddValue(testSprite, "test_value", 10.0);
     spriteValueResult := SpriteValue(testSprite, "test_value");
-    AssertEquals(spriteValueResult, 10.0);
+    AssertEquals(10.0, spriteValueResult);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1377,7 +1377,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteAddValue(testSprite, "health");
     SpriteAddValue(testSprite, "speed");
-    AssertEquals(SpriteValueCount(testSprite), 2);
+    AssertEquals(2, SpriteValueCount(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1389,8 +1389,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
     testVelocity := SpriteVelocity(testSprite);
-    AssertEquals(testVelocity.x, 5.0);
-    AssertEquals(testVelocity.y, 5.0);
+    AssertEquals(5.0, testVelocity.x);
+    AssertEquals(5.0, testVelocity.y);
     FreeAllSprites();
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1402,7 +1402,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteAddLayer(testSprite, testBitmap, "layer2");
     layerIndex := SpriteVisibleIndexOfLayer(testSprite, "layer2");
-    AssertEquals(layerIndex, 1);
+    AssertEquals(1, layerIndex);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1414,7 +1414,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     layerIndex := SpriteAddLayer(testSprite, testBitmap, "layer2");
     SpriteShowLayer(testSprite, layerIndex);
-    AssertEquals(SpriteVisibleIndexOfLayer(testSprite, layerIndex), 1);
+    AssertEquals(1, SpriteVisibleIndexOfLayer(testSprite, layerIndex));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1426,7 +1426,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteAddLayer(testSprite, testBitmap, "layer2");
     SpriteShowLayer(testSprite, "layer2");
-    AssertEquals(SpriteVisibleLayer(testSprite, 1), 1);
+    AssertEquals(1, SpriteVisibleLayer(testSprite, 1));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1436,10 +1436,10 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
-    AssertEquals(SpriteVisibleLayerCount(testSprite), 1);
+    AssertEquals(1, SpriteVisibleLayerCount(testSprite));
     SpriteAddLayer(testSprite, testBitmap, "layer2");
     SpriteShowLayer(testSprite, "layer2");
-    AssertEquals(SpriteVisibleLayerCount(testSprite), 2);
+    AssertEquals(2, SpriteVisibleLayerCount(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1451,7 +1451,7 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteAddLayer(testSprite, testBitmap, "layer2");
     SpriteShowLayer(testSprite, "layer2");
-    AssertEquals(SpriteVisibleLayerId(testSprite, 1), 1);
+    AssertEquals(1, SpriteVisibleLayerId(testSprite, 1));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1461,7 +1461,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
-    AssertEquals(SpriteWidth(testSprite), 100);
+    AssertEquals(100, SpriteWidth(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1472,7 +1472,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetX(testSprite, 150.0);
-    AssertEquals(SpriteX(testSprite), 150.0);
+    AssertEquals(150.0, SpriteX(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1483,7 +1483,7 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testSprite := CreateSprite(testBitmap);
     SpriteSetY(testSprite, 200.0);
-    AssertEquals(SpriteY(testSprite), 200.0);
+    AssertEquals(200.0, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1518,8 +1518,8 @@ begin
     SpriteSetVelocity(testSprite1, VectorTo(1, 1));
     SpriteSetVelocity(testSprite2, VectorTo(-1, -1));
     UpdateAllSprites();
-    AssertNotEquals(SpritePosition(testSprite1), PointAt(100, 100));
-    AssertNotEquals(SpritePosition(testSprite2), PointAt(200, 200));
+    AssertNotEquals(PointAt(100, 100), SpritePosition(testSprite1));
+    AssertNotEquals(PointAt(200, 200), SpritePosition(testSprite2));
     FreeAllSprites();
     CloseWindow(testWindow);
 end;
@@ -1545,8 +1545,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetVelocity(testSprite, VectorTo(1.0, 1.0));
     UpdateSprite(testSprite);
-    AssertNotEquals(SpriteX(testSprite), 0.0);
-    AssertNotEquals(SpriteY(testSprite), 0.0);
+    AssertNotEquals(0.0, SpriteX(testSprite));
+    AssertNotEquals(0.0, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1559,8 +1559,8 @@ begin
     SpriteSetVelocity(testSprite, VectorTo(1.0, 1.0));
     SpriteStartAnimation(testSprite, 0, true);
     UpdateSprite(testSprite, true);
-    AssertNotEquals(SpriteX(testSprite), 0.0);
-    AssertNotEquals(SpriteY(testSprite), 0.0);
+    AssertNotEquals(0.0, SpriteX(testSprite));
+    AssertNotEquals(0.0, SpriteY(testSprite));
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1639,8 +1639,8 @@ begin
     testSprite := CreateSprite(testBitmap);
     SpriteSetPosition(testSprite, PointAt(400, 300));
     testVector := VectorFromCenterSpriteToPoint(testSprite, PointAt(500, 400));
-    AssertEquals(testVector.x, 100);
-    AssertEquals(testVector.y, 100);
+    AssertEquals(100, testVector.x);
+    AssertEquals(100, testVector.y);
     FreeSprite(testSprite);
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
@@ -1654,8 +1654,8 @@ begin
     SpriteSetPosition(testSprite1, PointAt(100, 100));
     SpriteSetPosition(testSprite2, PointAt(200, 200));
     testVector := VectorFromTo(testSprite1, testSprite2);
-    AssertEquals(testVector.x, 100);
-    AssertEquals(testVector.y, 100);
+    AssertEquals(100, testVector.x);
+    AssertEquals(100, testVector.y);
     FreeAllSprites();
     CloseWindow(testWindow);
 end;

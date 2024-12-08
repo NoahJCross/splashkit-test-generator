@@ -13,20 +13,20 @@ end;
 procedure TIntegrationTests.TestConvertToDoubleIntegration;
 begin
     testResult := ConvertToDouble("123.456");
-    AssertEquals(testResult, 123.456);
+    AssertEquals(123.456, testResult);
     testResult := ConvertToDouble("-123.456");
-    AssertEquals(testResult, -123.456);
+    AssertEquals(-123.456, testResult);
     testResult := ConvertToDouble("invalid");
     AssertNull(testResult);
 end;
 procedure TIntegrationTests.TestConvertToIntegerIntegration;
 begin
     testResult := ConvertToInteger("123");
-    AssertEquals(testResult, 123);
+    AssertEquals(123, testResult);
     testResult := ConvertToInteger("-456");
-    AssertEquals(testResult, -456);
+    AssertEquals(-456, testResult);
     testResult := ConvertToInteger("123.456");
-    AssertEquals(testResult, 123);
+    AssertEquals(123, testResult);
     testResult := ConvertToInteger("abc");
     try
     ConvertToInteger("abc")
@@ -36,9 +36,9 @@ end;
 procedure TIntegrationTests.TestIndexOfIntegration;
 begin
     testResult := IndexOf("splashkit library", "library");
-    AssertEquals(testResult, 10);
+    AssertEquals(10, testResult);
     testResult := IndexOf("splashkit library", "unreal");
-    AssertEquals(testResult, -1);
+    AssertEquals(-1, testResult);
 end;
 procedure TIntegrationTests.TestIsDoubleIntegration;
 begin
@@ -76,44 +76,44 @@ end;
 procedure TIntegrationTests.TestLengthOfIntegration;
 begin
     testLength := LengthOf("SplashKit");
-    AssertEquals(testLength, 9);
+    AssertEquals(9, testLength);
     testLengthEmpty := LengthOf("");
-    AssertEquals(testLengthEmpty, 0);
+    AssertEquals(0, testLengthEmpty);
 end;
 procedure TIntegrationTests.TestReplaceAllIntegration;
 begin
     testResult := ReplaceAll("hello world", "world", "SplashKit");
-    AssertEquals(testResult, "hello SplashKit");
+    AssertEquals("hello SplashKit", testResult);
     testResult := ReplaceAll("aaaa", "a", "b");
-    AssertEquals(testResult, "bbbb");
+    AssertEquals("bbbb", testResult);
     testResult := ReplaceAll("test", "t", "");
-    AssertEquals(testResult, "es");
+    AssertEquals("es", testResult);
 end;
 procedure TIntegrationTests.TestSplitIntegration;
 begin
     testResult := Split("splashkit library", " ");
-    AssertEquals(LengthOf(testResult), 2);
-    AssertEquals(IndexOf(testResult, "splashkit"), 0);
-    AssertEquals(IndexOf(testResult, "library"), 0);
+    AssertEquals(2, LengthOf(testResult));
+    AssertEquals(0, IndexOf(testResult, "splashkit"));
+    AssertEquals(0, IndexOf(testResult, "library"));
 end;
 procedure TIntegrationTests.TestToLowercaseIntegration;
 begin
     testLowercase := ToLowercase("SPLASHKIT");
-    AssertEquals(testLowercase, "splashkit");
+    AssertEquals("splashkit", testLowercase);
     testEmpty := ToLowercase("");
-    AssertEquals(testEmpty, "");
+    AssertEquals("", testEmpty);
 end;
 procedure TIntegrationTests.TestToUppercaseIntegration;
 begin
     testUppercase := ToUppercase("hello");
-    AssertEquals(testUppercase, "HELLO");
+    AssertEquals("HELLO", testUppercase);
 end;
 procedure TIntegrationTests.TestTrimIntegration;
 begin
     testTrimmed := Trim("  Hello, World!  ");
-    AssertEquals(testTrimmed, "Hello, World!");
+    AssertEquals("Hello, World!", testTrimmed);
     testEmptyTrimmed := Trim(" \t\n  ");
-    AssertEquals(testEmptyTrimmed, "");
+    AssertEquals("", testEmptyTrimmed);
 end;
 procedure TIntegrationTests.TestRndRangeIntegration;
 begin
@@ -155,7 +155,7 @@ end;
 procedure TIntegrationTests.TestFileAsStringIntegration;
 begin
     testFileContent := FileAsString("test_file.txt", ResourceKind.BUNDLE_RESOURCE);
-    AssertNotEquals(testFileContent, "");
+    AssertNotEquals("", testFileContent);
 end;
 end;
 

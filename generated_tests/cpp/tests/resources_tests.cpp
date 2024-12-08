@@ -9,23 +9,23 @@ TEST_CASE("deregister_free_notifier_integration") {
 TEST_CASE("path_to_resource_integration") {
     set_resources_path("resources");
     auto image_path = path_to_resource("test_image.png", ResourceKind::IMAGE_RESOURCE);
-    REQUIRE(image_path != "");
+    REQUIRE("" != image_path);
     auto text_path = path_to_resource("nonexistent_file.txt", ResourceKind::ANIMATION_RESOURCE);
-    REQUIRE(text_path == "");
+    REQUIRE("" == text_path);
 }
 TEST_CASE("path_to_resources_integration") {
     auto resource_path = path_to_resources();
     REQUIRE(resource_path != nullptr);
     set_resources_path("/new/resources");
     auto new_resource_path = path_to_resources();
-    REQUIRE(new_resource_path == "/new/resources");
+    REQUIRE("/new/resources" == new_resource_path);
 }
 TEST_CASE("path_to_resources_for_kind_integration") {
     set_resources_path("resources");
     auto image_path = path_to_resources(ResourceKind::IMAGE_RESOURCE);
-    REQUIRE(image_path == "resources/images");
+    REQUIRE("resources/images" == image_path);
     auto sound_path = path_to_resources(ResourceKind::SOUND_RESOURCE);
-    REQUIRE(sound_path == "resources/sounds");
+    REQUIRE("resources/sounds" == sound_path);
 }
 TEST_CASE("register_free_notifier_integration") {
     register_free_notifier(free_notifier());
@@ -35,7 +35,7 @@ TEST_CASE("register_free_notifier_integration") {
 }
 TEST_CASE("set_resources_path_integration") {
     set_resources_path("/resources");
-    REQUIRE(path_to_resources() == "/resources");
+    REQUIRE("/resources" == path_to_resources());
     set_resources_path("/new/resources");
-    REQUIRE(path_to_resources() == "/new/resources");
+    REQUIRE("/new/resources" == path_to_resources());
 }

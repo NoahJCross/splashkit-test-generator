@@ -12,14 +12,14 @@ TEST_CASE("raspi_cleanup_integration") {
     raspi_set_mode(Pins::PIN_11, PinModes::GPIO_OUTPUT);
     raspi_write(Pins::PIN_11, PinValues::GPIO_HIGH);
     raspi_cleanup();
-    REQUIRE(raspi_get_mode(Pins::PIN_11) == PinModes::GPIO_INPUT);
-    REQUIRE(raspi_read(Pins::PIN_11) == PinValues::GPIO_LOW);
+    REQUIRE(PinModes::GPIO_INPUT == raspi_get_mode(Pins::PIN_11));
+    REQUIRE(PinValues::GPIO_LOW == raspi_read(Pins::PIN_11));
 }
 TEST_CASE("raspi_get_mode_integration") {
     raspi_init();
     raspi_set_mode(Pins::PIN_11, PinModes::GPIO_OUTPUT);
     auto test_mode = raspi_get_mode(Pins::PIN_11);
-    REQUIRE(test_mode == PinModes::GPIO_OUTPUT);
+    REQUIRE(PinModes::GPIO_OUTPUT == test_mode);
     raspi_cleanup();
 }
 TEST_CASE("raspi_init_integration") {
@@ -38,13 +38,13 @@ TEST_CASE("raspi_read_integration") {
     raspi_set_mode(Pins::PIN_11, PinModes::GPIO_OUTPUT);
     raspi_write(Pins::PIN_11, PinValues::GPIO_HIGH);
     auto test_read_value = raspi_read(Pins::PIN_11);
-    REQUIRE(test_read_value == PinValues::GPIO_HIGH);
+    REQUIRE(PinValues::GPIO_HIGH == test_read_value);
     raspi_cleanup();
 }
 TEST_CASE("raspi_set_mode_integration") {
     raspi_init();
     raspi_set_mode(Pins::PIN_11, PinModes::GPIO_OUTPUT);
-    REQUIRE(raspi_get_mode(Pins::PIN_11) == PinModes::GPIO_OUTPUT);
+    REQUIRE(PinModes::GPIO_OUTPUT == raspi_get_mode(Pins::PIN_11));
     raspi_cleanup();
 }
 TEST_CASE("raspi_set_pull_up_down_integration") {
@@ -52,10 +52,10 @@ TEST_CASE("raspi_set_pull_up_down_integration") {
     raspi_set_mode(Pins::PIN_11, PinModes::GPIO_INPUT);
     raspi_set_pull_up_down(Pins::PIN_11, PullUpDown::PUD_UP);
     auto test_pin_value = raspi_read(Pins::PIN_11);
-    REQUIRE(test_pin_value == PinValues::GPIO_HIGH);
+    REQUIRE(PinValues::GPIO_HIGH == test_pin_value);
     raspi_set_pull_up_down(Pins::PIN_11, PullUpDown::PUD_DOWN);
     auto test_pin_value = raspi_read(Pins::PIN_11);
-    REQUIRE(test_pin_value == PinValues::GPIO_LOW);
+    REQUIRE(PinValues::GPIO_LOW == test_pin_value);
     raspi_cleanup();
 }
 TEST_CASE("raspi_set_pwm_dutycycle_integration") {
@@ -82,6 +82,6 @@ TEST_CASE("raspi_write_integration") {
     raspi_set_mode(Pins::PIN_11, PinModes::GPIO_OUTPUT);
     raspi_write(Pins::PIN_11, PinValues::GPIO_HIGH);
     auto test_pin_value = raspi_read(Pins::PIN_11);
-    REQUIRE(test_pin_value == PinValues::GPIO_HIGH);
+    REQUIRE(PinValues::GPIO_HIGH == test_pin_value);
     raspi_cleanup();
 }

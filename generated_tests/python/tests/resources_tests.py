@@ -11,9 +11,9 @@ def test_DeregisterFreeNotifier_integration():
 def test_PathToResource_integration():
     set_resources_path("resources")
     image_path = path_to_resource("test_image.png", ResourceKind.ImageResource)
-    assert image_path != ""
+    assert "" != image_path
     text_path = path_to_resource("nonexistent_file.txt", ResourceKind.AnimationResource)
-    assert text_path == ""
+    assert "" == text_path
 
 
 def test_PathToResources_integration():
@@ -21,15 +21,15 @@ def test_PathToResources_integration():
     assert resource_path is not None
     set_resources_path("/new/resources")
     new_resource_path = path_to_resources()
-    assert new_resource_path == "/new/resources"
+    assert "/new/resources" == new_resource_path
 
 
 def test_PathToResourcesForKind_integration():
     set_resources_path("resources")
     image_path = path_to_resources_for_kind(ResourceKind.ImageResource)
-    assert image_path == "resources/images"
+    assert "resources/images" == image_path
     sound_path = path_to_resources_for_kind(ResourceKind.SoundResource)
-    assert sound_path == "resources/sounds"
+    assert "resources/sounds" == sound_path
 
 
 def test_RegisterFreeNotifier_integration():
@@ -41,7 +41,7 @@ def test_RegisterFreeNotifier_integration():
 
 def test_SetResourcesPath_integration():
     set_resources_path("/resources")
-    assert path_to_resources() == "/resources"
+    assert "/resources" == path_to_resources()
     set_resources_path("/new/resources")
-    assert path_to_resources() == "/new/resources"
+    assert "/new/resources" == path_to_resources()
 

@@ -6,7 +6,7 @@ TEST_CASE("clear_window_integration") {
     auto test_color = color_black();
     clear_window(test_window, test_color);
     refresh_window(test_window);
-    REQUIRE(get_pixel(point_at(window_width(test_window), window_height(test_window))) == color_black());
+    REQUIRE(color_black() == get_pixel(point_at(window_width(test_window), window_height(test_window))));
     close_window(test_window);
 }
 TEST_CASE("close_all_windows_integration") {
@@ -38,7 +38,7 @@ TEST_CASE("close_window_integration") {
 TEST_CASE("current_window_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     set_current_window(test_window);
-    REQUIRE(current_window() == test_window);
+    REQUIRE(test_window == current_window());
     close_window(test_window);
 }
 TEST_CASE("current_window_has_border_integration") {
@@ -51,7 +51,7 @@ TEST_CASE("current_window_has_border_integration") {
 TEST_CASE("current_window_height_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     set_current_window(test_window);
-    REQUIRE(current_window_height() == 600);
+    REQUIRE(600 == current_window_height());
     close_window(test_window);
 }
 TEST_CASE("current_window_is_fullscreen_integration") {
@@ -88,14 +88,14 @@ TEST_CASE("current_window_toggle_fullscreen_integration") {
 TEST_CASE("current_window_width_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     set_current_window(test_window);
-    REQUIRE(current_window_width() == 800);
+    REQUIRE(800 == current_window_width());
     close_window(test_window);
 }
 TEST_CASE("current_window_x_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_window_to(test_window, 100, 200);
     set_current_window(test_window);
-    REQUIRE(current_window_x() == 100);
+    REQUIRE(100 == current_window_x());
     close_window(test_window);
 }
 TEST_CASE("current_window_y_integration") {
@@ -125,23 +125,23 @@ TEST_CASE("is_current_window_integration") {
 TEST_CASE("move_current_window_to_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_current_window_to(100, 100);
-    REQUIRE(current_window_x() == 100);
-    REQUIRE(current_window_y() == 100);
+    REQUIRE(100 == current_window_x());
+    REQUIRE(100 == current_window_y());
     close_window(test_window);
 }
 TEST_CASE("move_window_to_named_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_window_to("Test Window", 100, 100);
     process_events();
-    REQUIRE(window_x("Test Window") == 100);
-    REQUIRE(window_y("Test Window") == 100);
+    REQUIRE(100 == window_x("Test Window"));
+    REQUIRE(100 == window_y("Test Window"));
     close_window("Test Window");
 }
 TEST_CASE("move_window_to_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_window_to(test_window, 100, 100);
-    REQUIRE(window_x(test_window) == 100);
-    REQUIRE(window_y(test_window) == 100);
+    REQUIRE(100 == window_x(test_window));
+    REQUIRE(100 == window_y(test_window));
     close_window(test_window);
 }
 TEST_CASE("open_window_integration") {
@@ -166,15 +166,15 @@ TEST_CASE("resize_current_window_integration") {
     set_current_window(test_window);
     resize_current_window(1024, 768);
     process_events();
-    REQUIRE(current_window_width() == 1024);
-    REQUIRE(current_window_height() == 768);
+    REQUIRE(1024 == current_window_width());
+    REQUIRE(768 == current_window_height());
     close_window(test_window);
 }
 TEST_CASE("resize_window_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     resize_window(test_window, 1024, 768);
-    REQUIRE(window_width(test_window) == 1024);
-    REQUIRE(window_height(test_window) == 768);
+    REQUIRE(1024 == window_width(test_window));
+    REQUIRE(768 == window_height(test_window));
     close_window(test_window);
 }
 TEST_CASE("set_current_window_named_integration") {
@@ -195,7 +195,7 @@ TEST_CASE("set_current_window_integration") {
 }
 TEST_CASE("window_caption_integration") {
     auto test_window = open_window("Test Window", 800, 600);
-    REQUIRE(window_caption(test_window) == "Test Window");
+    REQUIRE("Test Window" == window_caption(test_window));
     close_window(test_window);
 }
 TEST_CASE("window_close_requested_named_integration") {
@@ -238,12 +238,12 @@ TEST_CASE("window_has_focus_integration") {
 }
 TEST_CASE("window_height_named_integration") {
     auto test_window = open_window("Test Window", 800, 600);
-    REQUIRE(window_height("Test Window") == 600);
+    REQUIRE(600 == window_height("Test Window"));
     close_window(test_window);
 }
 TEST_CASE("window_height_integration") {
     auto test_window = open_window("Test Window", 800, 600);
-    REQUIRE(window_height(test_window) == 600);
+    REQUIRE(600 == window_height(test_window));
     close_window(test_window);
 }
 TEST_CASE("window_is_fullscreen_named_integration") {
@@ -264,7 +264,7 @@ TEST_CASE("window_is_fullscreen_integration") {
 TEST_CASE("window_named_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     auto retrieved_window = window_named("Test Window");
-    REQUIRE(test_window == retrieved_window);
+    REQUIRE(retrieved_window == test_window);
     close_window(test_window);
 }
 TEST_CASE("window_position_named_integration") {
@@ -318,17 +318,17 @@ TEST_CASE("window_toggle_fullscreen_integration") {
     auto initial_fullscreen_state = window_is_fullscreen(test_window);
     window_toggle_fullscreen(test_window);
     auto new_fullscreen_state = window_is_fullscreen(test_window);
-    REQUIRE(initial_fullscreen_state != new_fullscreen_state);
+    REQUIRE(new_fullscreen_state != initial_fullscreen_state);
     close_window(test_window);
 }
 TEST_CASE("window_width_named_integration") {
     auto test_window = open_window("Test Window", 800, 600);
-    REQUIRE(window_width("Test Window") == 800);
+    REQUIRE(800 == window_width("Test Window"));
     close_window(test_window);
 }
 TEST_CASE("window_width_integration") {
     auto test_window = open_window("Test Window", 800, 600);
-    REQUIRE(window_width(test_window) == 800);
+    REQUIRE(800 == window_width(test_window));
     close_window(test_window);
 }
 TEST_CASE("window_with_focus_integration") {
@@ -336,17 +336,17 @@ TEST_CASE("window_with_focus_integration") {
     auto test_window_2 = open_window("Test Window 2", 800, 600);
     set_current_window(test_window_1);
     auto focused_window = window_with_focus();
-    REQUIRE(focused_window == test_window_1);
+    REQUIRE(test_window_1 == focused_window);
     set_current_window(test_window_2);
     auto focused_window = window_with_focus();
-    REQUIRE(focused_window == test_window_2);
+    REQUIRE(test_window_2 == focused_window);
     close_window(test_window_1);
     close_window(test_window_2);
 }
 TEST_CASE("window_x_named_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_window_to("Test Window", 100, 200);
-    REQUIRE(window_x("Test Window") == 100);
+    REQUIRE(100 == window_x("Test Window"));
     close_window("Test Window");
 }
 TEST_CASE("window_x_integration") {
@@ -358,12 +358,12 @@ TEST_CASE("window_y_named_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_window_to("Test Window", 100, 200);
     auto test_window_y = window_y("Test Window");
-    REQUIRE(test_window_y == 200);
+    REQUIRE(200 == test_window_y);
     close_window("Test Window");
 }
 TEST_CASE("window_y_integration") {
     auto test_window = open_window("Test Window", 800, 600);
     move_window_to(test_window, 100, 200);
-    REQUIRE(window_y(test_window) == 200);
+    REQUIRE(200 == window_y(test_window));
     close_window(test_window);
 }

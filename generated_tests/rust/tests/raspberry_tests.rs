@@ -21,15 +21,15 @@ fn test_raspi_cleanup_integration() {
     raspi_set_mode(Pins::Pin11, PinModes::GpioOutput);
     raspi_write(Pins::Pin11, PinValues::GpioHigh);
     raspi_cleanup();
-    assert_eq!(raspi_get_mode(Pins::Pin11), PinModes::GpioInput);
-    assert_eq!(raspi_read(Pins::Pin11), PinValues::GpioLow);
+    assert_eq!(PinModes::GpioInput, raspi_get_mode(Pins::Pin11));
+    assert_eq!(PinValues::GpioLow, raspi_read(Pins::Pin11));
 }
 #[test]
 fn test_raspi_get_mode_integration() {
     raspi_init();
     raspi_set_mode(Pins::Pin11, PinModes::GpioOutput);
     let test_mode = raspi_get_mode(Pins::Pin11);
-    assert_eq!(test_mode, PinModes::GpioOutput);
+    assert_eq!(PinModes::GpioOutput, test_mode);
     raspi_cleanup();
 }
 #[test]
@@ -50,14 +50,14 @@ fn test_raspi_read_integration() {
     raspi_set_mode(Pins::Pin11, PinModes::GpioOutput);
     raspi_write(Pins::Pin11, PinValues::GpioHigh);
     let test_read_value = raspi_read(Pins::Pin11);
-    assert_eq!(test_read_value, PinValues::GpioHigh);
+    assert_eq!(PinValues::GpioHigh, test_read_value);
     raspi_cleanup();
 }
 #[test]
 fn test_raspi_set_mode_integration() {
     raspi_init();
     raspi_set_mode(Pins::Pin11, PinModes::GpioOutput);
-    assert_eq!(raspi_get_mode(Pins::Pin11), PinModes::GpioOutput);
+    assert_eq!(PinModes::GpioOutput, raspi_get_mode(Pins::Pin11));
     raspi_cleanup();
 }
 #[test]
@@ -66,10 +66,10 @@ fn test_raspi_set_pull_up_down_integration() {
     raspi_set_mode(Pins::Pin11, PinModes::GpioInput);
     raspi_set_pull_up_down(Pins::Pin11, PullUpDown::PudUp);
     let test_pin_value = raspi_read(Pins::Pin11);
-    assert_eq!(test_pin_value, PinValues::GpioHigh);
+    assert_eq!(PinValues::GpioHigh, test_pin_value);
     raspi_set_pull_up_down(Pins::Pin11, PullUpDown::PudDown);
     let test_pin_value = raspi_read(Pins::Pin11);
-    assert_eq!(test_pin_value, PinValues::GpioLow);
+    assert_eq!(PinValues::GpioLow, test_pin_value);
     raspi_cleanup();
 }
 #[test]
@@ -100,6 +100,6 @@ fn test_raspi_write_integration() {
     raspi_set_mode(Pins::Pin11, PinModes::GpioOutput);
     raspi_write(Pins::Pin11, PinValues::GpioHigh);
     let test_pin_value = raspi_read(Pins::Pin11);
-    assert_eq!(test_pin_value, PinValues::GpioHigh);
+    assert_eq!(PinValues::GpioHigh, test_pin_value);
     raspi_cleanup();
 }

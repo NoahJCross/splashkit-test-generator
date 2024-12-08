@@ -16,15 +16,15 @@ begin
     RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
     RaspiWrite(Pins.PIN_11, PinValues.GPIO_HIGH);
     RaspiCleanup();
-    AssertEquals(RaspiGetMode(Pins.PIN_11), PinModes.GPIO_INPUT);
-    AssertEquals(RaspiRead(Pins.PIN_11), PinValues.GPIO_LOW);
+    AssertEquals(PinModes.GPIO_INPUT, RaspiGetMode(Pins.PIN_11));
+    AssertEquals(PinValues.GPIO_LOW, RaspiRead(Pins.PIN_11));
 end;
 procedure TIntegrationTests.TestRaspiGetModeIntegration;
 begin
     RaspiInit();
     RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
     testMode := RaspiGetMode(Pins.PIN_11);
-    AssertEquals(testMode, PinModes.GPIO_OUTPUT);
+    AssertEquals(PinModes.GPIO_OUTPUT, testMode);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiInitIntegration;
@@ -45,14 +45,14 @@ begin
     RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
     RaspiWrite(Pins.PIN_11, PinValues.GPIO_HIGH);
     testReadValue := RaspiRead(Pins.PIN_11);
-    AssertEquals(testReadValue, PinValues.GPIO_HIGH);
+    AssertEquals(PinValues.GPIO_HIGH, testReadValue);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiSetModeIntegration;
 begin
     RaspiInit();
     RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
-    AssertEquals(RaspiGetMode(Pins.PIN_11), PinModes.GPIO_OUTPUT);
+    AssertEquals(PinModes.GPIO_OUTPUT, RaspiGetMode(Pins.PIN_11));
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiSetPullUpDownIntegration;
@@ -61,10 +61,10 @@ begin
     RaspiSetMode(Pins.PIN_11, PinModes.GPIO_INPUT);
     RaspiSetPullUpDown(Pins.PIN_11, PullUpDown.PUD_UP);
     testPinValue := RaspiRead(Pins.PIN_11);
-    AssertEquals(testPinValue, PinValues.GPIO_HIGH);
+    AssertEquals(PinValues.GPIO_HIGH, testPinValue);
     RaspiSetPullUpDown(Pins.PIN_11, PullUpDown.PUD_DOWN);
     testPinValue := RaspiRead(Pins.PIN_11);
-    AssertEquals(testPinValue, PinValues.GPIO_LOW);
+    AssertEquals(PinValues.GPIO_LOW, testPinValue);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiSetPwmDutycycleIntegration;
@@ -95,7 +95,7 @@ begin
     RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
     RaspiWrite(Pins.PIN_11, PinValues.GPIO_HIGH);
     testPinValue := RaspiRead(Pins.PIN_11);
-    AssertEquals(testPinValue, PinValues.GPIO_HIGH);
+    AssertEquals(PinValues.GPIO_HIGH, testPinValue);
     RaspiCleanup();
 end;
 end;

@@ -327,7 +327,7 @@ def test_UpdateAnimation_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
     anim = create_animation(kermit_script, "moonwalkback")
     update_animation(anim)
-    assert 0 != animation_current_cell(anim)
+    assert animation_current_cell(anim) != 0
     free_animation(anim)
     free_animation_script(kermit_script)
 

@@ -88,6 +88,11 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "enum",
+              "enum_type": "pin_modes",
+              "value": "GPIO_INPUT"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "raspi_get_mode",
               "args": [
@@ -97,11 +102,6 @@
                   "value": "PIN_11"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "enum",
-              "enum_type": "pin_modes",
-              "value": "GPIO_INPUT"
             }
           }
         },
@@ -110,6 +110,11 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "enum",
+              "enum_type": "pin_values",
+              "value": "GPIO_LOW"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "raspi_read",
               "args": [
@@ -119,11 +124,6 @@
                   "value": "PIN_11"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "enum",
-              "enum_type": "pin_values",
-              "value": "GPIO_LOW"
             }
           }
         }
@@ -170,13 +170,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_mode"
-            },
-            "value2": {
               "value_type": "enum",
               "enum_type": "pin_modes",
               "value": "GPIO_OUTPUT"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_mode"
             }
           }
         },
@@ -301,13 +301,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_read_value"
-            },
-            "value2": {
               "value_type": "enum",
               "enum_type": "pin_values",
               "value": "GPIO_HIGH"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_read_value"
             }
           }
         },
@@ -347,6 +347,11 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "enum",
+              "enum_type": "pin_modes",
+              "value": "GPIO_OUTPUT"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "raspi_get_mode",
               "args": [
@@ -356,11 +361,6 @@
                   "value": "PIN_11"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "enum",
-              "enum_type": "pin_modes",
-              "value": "GPIO_OUTPUT"
             }
           }
         },
@@ -428,13 +428,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_pin_value"
-            },
-            "value2": {
               "value_type": "enum",
               "enum_type": "pin_values",
               "value": "GPIO_HIGH"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_pin_value"
             }
           }
         },
@@ -471,13 +471,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_pin_value"
-            },
-            "value2": {
               "value_type": "enum",
               "enum_type": "pin_values",
               "value": "GPIO_LOW"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_pin_value"
             }
           }
         },
@@ -702,13 +702,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_pin_value"
-            },
-            "value2": {
               "value_type": "enum",
               "enum_type": "pin_values",
               "value": "GPIO_HIGH"
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_pin_value"
             }
           }
         },

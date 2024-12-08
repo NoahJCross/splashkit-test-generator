@@ -10,8 +10,8 @@ def test_CallForAllSpritesWithValue_integration():
     sprite_set_x(test_sprite1, 100)
     sprite_set_x(test_sprite2, 200)
     call_for_all_sprites_with_value(sprite_set_x(test_sprite1, 300), 300)
-    assert sprite_x(test_sprite1) == 300
-    assert sprite_x(test_sprite2) == 300
+    assert 300 == sprite_x(test_sprite1)
+    assert 300 == sprite_x(test_sprite2)
     free_all_sprites()
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -54,8 +54,8 @@ def test_CenterPoint_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_position(test_sprite, point_at(100, 100))
     test_center_point = center_point(test_sprite)
-    assert test_center_point.x == 150
-    assert test_center_point.y == 150
+    assert 150 == test_center_point.x
+    assert 150 == test_center_point.y
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -137,7 +137,7 @@ def test_CurrentSpritePack_integration():
     create_sprite_pack("test_pack")
     select_sprite_pack("test_pack")
     current_pack = current_sprite_pack()
-    assert current_pack == "test_pack"
+    assert "test_pack" == current_pack
     free_sprite_pack("test_pack")
 
 
@@ -152,8 +152,8 @@ def test_DrawAllSprites_integration():
     sprite_set_y(test_sprite2, 200)
     draw_all_sprites()
     refresh_screen()
-    assert get_pixel(100, 100) != color_white()
-    assert get_pixel(200, 200) != color_white()
+    assert color_white() != get_pixel(100, 100)
+    assert color_white() != get_pixel(200, 200)
     free_all_sprites()
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -166,7 +166,7 @@ def test_DrawSpriteOffsetBy_integration():
     sprite_set_position(test_sprite, point_at(400, 300))
     draw_sprite_offset_by(test_sprite, vector_to(50, 50))
     refresh_screen()
-    assert get_pixel(point_at(450, 350)) != color_white()
+    assert color_white() != get_pixel(point_at(450, 350))
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -251,7 +251,7 @@ def test_MoveSprite_integration():
     sprite_set_position(test_sprite, point_at(100.0, 100.0))
     move_sprite(test_sprite)
     process_events()
-    assert sprite_position(test_sprite) != point_at(100.0, 100.0)
+    assert point_at(100.0, 100.0) != sprite_position(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -264,8 +264,8 @@ def test_MoveSpriteByVector_integration():
     sprite_set_position(test_sprite, point_at(100, 100))
     move_sprite_by_vector(test_sprite, vector_to(50, 50))
     process_events()
-    assert sprite_x(test_sprite) == 150
-    assert sprite_y(test_sprite) == 150
+    assert 150 == sprite_x(test_sprite)
+    assert 150 == sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -277,8 +277,8 @@ def test_MoveSpriteByVectorPercent_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_position(test_sprite, point_at(100.0, 100.0))
     move_sprite_by_vector_percent(test_sprite, vector_to(50.0, 50.0), 0.5)
-    assert sprite_x(test_sprite) == 125.0
-    assert sprite_y(test_sprite) == 125.0
+    assert 125.0 == sprite_x(test_sprite)
+    assert 125.0 == sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -303,8 +303,8 @@ def test_MoveSpriteTo_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     move_sprite_to(test_sprite, 400.0, 300.0)
-    assert sprite_x(test_sprite) == 400.0
-    assert sprite_y(test_sprite) == 300.0
+    assert 400.0 == sprite_x(test_sprite)
+    assert 300.0 == sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -342,8 +342,8 @@ def test_SpriteAddToVelocity_integration():
     sprite_set_position(test_sprite, point_at(400, 300))
     sprite_add_to_velocity(test_sprite, vector_to(10, 10))
     update_sprite(test_sprite)
-    assert sprite_x(test_sprite) == 410
-    assert sprite_y(test_sprite) == 310
+    assert 410 == sprite_x(test_sprite)
+    assert 310 == sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -366,7 +366,7 @@ def test_SpriteAddValueWithDefault_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_add_value_with_default(test_sprite, "health", 100.0)
     assert sprite_has_value(test_sprite, "health") is True
-    assert sprite_value(test_sprite, "health") == 100.0
+    assert 100.0 == sprite_value(test_sprite, "health")
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -377,8 +377,8 @@ def test_SpriteAnchorPoint_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     test_anchor_point = sprite_anchor_point(test_sprite)
-    assert test_anchor_point.x == 50
-    assert test_anchor_point.y == 50
+    assert 50 == test_anchor_point.x
+    assert 50 == test_anchor_point.y
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -390,8 +390,8 @@ def test_SpriteAnchorPosition_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_position(test_sprite, point_at(100, 100))
     test_anchor_position = sprite_anchor_position(test_sprite)
-    assert test_anchor_position.x == 100
-    assert test_anchor_position.y == 100
+    assert 100 == test_anchor_position.x
+    assert 100 == test_anchor_position.y
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -417,7 +417,7 @@ def test_SpriteAnimationName_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_start_animation(test_sprite, "default")
     test_animation_name = sprite_animation_name(test_sprite)
-    assert test_animation_name == "default"
+    assert "default" == test_animation_name
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -456,7 +456,7 @@ def test_SpriteBringLayerToFront_integration():
     test_sprite = create_sprite(test_bitmap)
     layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
     sprite_bring_layer_to_front(test_sprite, layer_index)
-    assert sprite_visible_index_of_layer(test_sprite, layer_index) == sprite_visible_layer_count(test_sprite)
+    assert sprite_visible_layer_count(test_sprite) == sprite_visible_index_of_layer(test_sprite, layer_index)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -492,8 +492,8 @@ def test_SpriteCollisionBitmap_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     collision_bitmap = sprite_collision_bitmap(test_sprite)
-    assert bitmap_width(collision_bitmap) == 100
-    assert bitmap_height(collision_bitmap) == 100
+    assert 100 == bitmap_width(collision_bitmap)
+    assert 100 == bitmap_height(collision_bitmap)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -515,7 +515,7 @@ def test_SpriteCollisionKind_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_collision_kind(test_sprite, CollisionTestKind.PixelCollisions)
-    assert sprite_collision_kind(test_sprite) == CollisionTestKind.PixelCollisions
+    assert CollisionTestKind.PixelCollisions == sprite_collision_kind(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -526,8 +526,8 @@ def test_SpriteCollisionRectangle_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     test_rectangle = sprite_collision_rectangle(test_sprite)
-    assert test_rectangle.width == 100
-    assert test_rectangle.height == 100
+    assert 100 == test_rectangle.width
+    assert 100 == test_rectangle.height
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -539,7 +539,7 @@ def test_SpriteCurrentCell_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_start_animation(test_sprite, 0)
     update_sprite(test_sprite)
-    assert sprite_current_cell(test_sprite) == 0
+    assert 0 == sprite_current_cell(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -550,10 +550,10 @@ def test_SpriteCurrentCellRectangle_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     test_rectangle = sprite_current_cell_rectangle(test_sprite)
-    assert rectangle_left(test_rectangle) == 0
-    assert rectangle_top(test_rectangle) == 0
-    assert rectangle_right(test_rectangle) == bitmap_width(test_bitmap)
-    assert rectangle_bottom(test_rectangle) == bitmap_height(test_bitmap)
+    assert 0 == rectangle_left(test_rectangle)
+    assert 0 == rectangle_top(test_rectangle)
+    assert bitmap_width(test_bitmap) == rectangle_right(test_rectangle)
+    assert bitmap_height(test_bitmap) == rectangle_bottom(test_rectangle)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -564,7 +564,7 @@ def test_SpriteDx_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_dx(test_sprite, 5.0)
-    assert sprite_dx(test_sprite) == 5.0
+    assert 5.0 == sprite_dx(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -575,7 +575,7 @@ def test_SpriteDy_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_dy(test_sprite, 5.0)
-    assert sprite_dy(test_sprite) == 5.0
+    assert 5.0 == sprite_dy(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -609,7 +609,7 @@ def test_SpriteHeight_integration():
     test_window = open_window("Test Window", 800, 600)
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
-    assert sprite_height(test_sprite) == 100
+    assert 100 == sprite_height(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -690,9 +690,9 @@ def test_SpriteLayerCount_integration():
     test_window = open_window("Test Window", 800, 600)
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
-    assert sprite_layer_count(test_sprite) == 1
+    assert 1 == sprite_layer_count(test_sprite)
     sprite_add_layer(test_sprite, test_bitmap, "layer2")
-    assert sprite_layer_count(test_sprite) == 2
+    assert 2 == sprite_layer_count(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -703,7 +703,7 @@ def test_SpriteLayerHeightNamed_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_add_layer(test_sprite, test_bitmap, "layer2")
-    assert sprite_layer_height_named(test_sprite, "layer2") == 100
+    assert 100 == sprite_layer_height_named(test_sprite, "layer2")
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -714,7 +714,7 @@ def test_SpriteLayerHeight_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     layer_height = sprite_layer_height(test_sprite, 0)
-    assert layer_height == 100
+    assert 100 == layer_height
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -725,7 +725,7 @@ def test_SpriteLayerIndex_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
-    assert sprite_layer_index(test_sprite, "layer2") == layer_index
+    assert layer_index == sprite_layer_index(test_sprite, "layer2")
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -736,7 +736,7 @@ def test_SpriteLayerName_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
-    assert sprite_layer_name(test_sprite, layer_index) == "layer2"
+    assert "layer2" == sprite_layer_name(test_sprite, layer_index)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -748,8 +748,8 @@ def test_SpriteLayerOffsetNamed_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_layer_offset_named(test_sprite, "layer1", vector_to(10, 10))
     layer_offset = sprite_layer_offset_named(test_sprite, "layer1")
-    assert layer_offset.x == 10
-    assert layer_offset.y == 10
+    assert 10 == layer_offset.x
+    assert 10 == layer_offset.y
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -761,7 +761,7 @@ def test_SpriteLayerOffset_integration():
     test_sprite = create_sprite(test_bitmap)
     layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
     sprite_set_layer_offset_at_index(test_sprite, layer_index, vector_to(10, 10))
-    assert sprite_layer_offset(test_sprite, layer_index) == vector_to(10, 10)
+    assert vector_to(10, 10) == sprite_layer_offset(test_sprite, layer_index)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -772,10 +772,10 @@ def test_SpriteLayerRectangleNamed_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     test_rectangle = sprite_layer_rectangle_named(test_sprite, "layer1")
-    assert rectangle_left(test_rectangle) == 0
-    assert rectangle_top(test_rectangle) == 0
-    assert rectangle_right(test_rectangle) == 100
-    assert rectangle_bottom(test_rectangle) == 100
+    assert 0 == rectangle_left(test_rectangle)
+    assert 0 == rectangle_top(test_rectangle)
+    assert 100 == rectangle_right(test_rectangle)
+    assert 100 == rectangle_bottom(test_rectangle)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -786,7 +786,7 @@ def test_SpriteLayerRectangleAtIndex_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     test_rectangle = sprite_layer_rectangle_at_index(test_sprite, 0)
-    assert test_rectangle.width == bitmap_width(test_bitmap)
+    assert bitmap_width(test_bitmap) == test_rectangle.width
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -797,7 +797,7 @@ def test_SpriteLayerWidthNamed_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_add_layer(test_sprite, test_bitmap, "layer2")
-    assert sprite_layer_width_named(test_sprite, "layer2") == 100
+    assert 100 == sprite_layer_width_named(test_sprite, "layer2")
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -807,7 +807,7 @@ def test_SpriteLayerWidth_integration():
     test_window = open_window("Test Window", 800, 600)
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
-    assert sprite_layer_width(test_sprite, 0) == 100
+    assert 100 == sprite_layer_width(test_sprite, 0)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -834,7 +834,7 @@ def test_SpriteMass_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_mass(test_sprite, 10.0)
-    assert sprite_mass(test_sprite) == 10.0
+    assert 10.0 == sprite_mass(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -870,7 +870,7 @@ def test_SpriteName_integration():
     test_window = open_window("Test Window", 800, 600)
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
-    assert sprite_name(test_sprite) == "test_sprite"
+    assert "test_sprite" == sprite_name(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -932,8 +932,8 @@ def test_SpritePosition_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_position(test_sprite, point_at(100.0, 100.0))
     test_position = sprite_position(test_sprite)
-    assert test_position.x == 100.0
-    assert test_position.y == 100.0
+    assert 100.0 == test_position.x
+    assert 100.0 == test_position.y
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -966,7 +966,7 @@ def test_SpriteRotation_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_rotation(test_sprite, 45.0)
-    assert sprite_rotation(test_sprite) == 45.0
+    assert 45.0 == sprite_rotation(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -977,7 +977,7 @@ def test_SpriteScale_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_scale(test_sprite, 2.0)
-    assert sprite_scale(test_sprite) == 2.0
+    assert 2.0 == sprite_scale(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -989,8 +989,8 @@ def test_SpriteScreenRectangle_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_position(test_sprite, point_at(100, 100))
     test_rectangle = sprite_screen_rectangle(test_sprite)
-    assert rectangle_left(test_rectangle) == 100
-    assert rectangle_top(test_rectangle) == 100
+    assert 100 == rectangle_left(test_rectangle)
+    assert 100 == rectangle_top(test_rectangle)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1014,7 +1014,7 @@ def test_SpriteSendLayerToBack_integration():
     test_sprite = create_sprite(test_bitmap)
     layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
     sprite_send_layer_to_back(test_sprite, layer_index)
-    assert sprite_visible_index_of_layer(test_sprite, layer_index) == 0
+    assert 0 == sprite_visible_index_of_layer(test_sprite, layer_index)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1026,8 +1026,8 @@ def test_SpriteSetAnchorPoint_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_anchor_point(test_sprite, point_at(50, 50))
     test_anchor_point = sprite_anchor_point(test_sprite)
-    assert test_anchor_point.x == 50
-    assert test_anchor_point.y == 50
+    assert 50 == test_anchor_point.x
+    assert 50 == test_anchor_point.y
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1038,7 +1038,7 @@ def test_SpriteSetCollisionBitmap_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_collision_bitmap(test_sprite, test_bitmap)
-    assert sprite_collision_bitmap(test_sprite) == test_bitmap
+    assert test_bitmap == sprite_collision_bitmap(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1049,7 +1049,7 @@ def test_SpriteSetCollisionKind_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_collision_kind(test_sprite, CollisionTestKind.PixelCollisions)
-    assert sprite_collision_kind(test_sprite) == CollisionTestKind.PixelCollisions
+    assert CollisionTestKind.PixelCollisions == sprite_collision_kind(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1060,7 +1060,7 @@ def test_SpriteSetDx_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_dx(test_sprite, 5.0)
-    assert sprite_dx(test_sprite) == 5.0
+    assert 5.0 == sprite_dx(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1071,7 +1071,7 @@ def test_SpriteSetDy_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_dy(test_sprite, 5.0)
-    assert sprite_dy(test_sprite) == 5.0
+    assert 5.0 == sprite_dy(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1082,7 +1082,7 @@ def test_SpriteSetHeading_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_heading(test_sprite, 45.0)
-    assert sprite_heading(test_sprite) == 45.0
+    assert 45.0 == sprite_heading(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1094,8 +1094,8 @@ def test_SpriteSetLayerOffsetNamed_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_layer_offset_named(test_sprite, "layer1", vector_to(10.0, 10.0))
     test_offset = sprite_layer_offset_named(test_sprite, "layer1")
-    assert test_offset.x == 10.0
-    assert test_offset.y == 10.0
+    assert 10.0 == test_offset.x
+    assert 10.0 == test_offset.y
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1106,7 +1106,7 @@ def test_SpriteSetLayerOffsetAtIndex_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_layer_offset_at_index(test_sprite, 0, vector_to(10.0, 10.0))
-    assert sprite_layer_offset(test_sprite, 0) == vector_to(10.0, 10.0)
+    assert vector_to(10.0, 10.0) == sprite_layer_offset(test_sprite, 0)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1117,7 +1117,7 @@ def test_SpriteSetMass_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_mass(test_sprite, 10.0)
-    assert sprite_mass(test_sprite) == 10.0
+    assert 10.0 == sprite_mass(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1141,8 +1141,8 @@ def test_SpriteSetPosition_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_position(test_sprite, point_at(100, 100))
-    assert sprite_x(test_sprite) == 100
-    assert sprite_y(test_sprite) == 100
+    assert 100 == sprite_x(test_sprite)
+    assert 100 == sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1153,7 +1153,7 @@ def test_SpriteSetRotation_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_rotation(test_sprite, 45.0)
-    assert sprite_rotation(test_sprite) == 45.0
+    assert 45.0 == sprite_rotation(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1164,7 +1164,7 @@ def test_SpriteSetScale_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_scale(test_sprite, 2.0)
-    assert sprite_scale(test_sprite) == 2.0
+    assert 2.0 == sprite_scale(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1175,7 +1175,7 @@ def test_SpriteSetSpeed_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_speed(test_sprite, 5.0)
-    assert sprite_speed(test_sprite) == 5.0
+    assert 5.0 == sprite_speed(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1187,7 +1187,7 @@ def test_SpriteSetValueNamed_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_add_value(test_sprite, "test_value")
     sprite_set_value_named(test_sprite, "test_value", 10.5)
-    assert sprite_value(test_sprite, "test_value") == 10.5
+    assert 10.5 == sprite_value(test_sprite, "test_value")
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1210,7 +1210,7 @@ def test_SpriteSetX_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_x(test_sprite, 150.0)
-    assert sprite_x(test_sprite) == 150.0
+    assert 150.0 == sprite_x(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1221,7 +1221,7 @@ def test_SpriteSetY_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_y(test_sprite, 300.0)
-    assert sprite_y(test_sprite) == 300.0
+    assert 300.0 == sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1233,7 +1233,7 @@ def test_SpriteShowLayerNamed_integration():
     test_sprite = create_sprite(test_bitmap)
     layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
     result = sprite_show_layer_named(test_sprite, "layer2")
-    assert result == 1
+    assert 1 == result
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1246,7 +1246,7 @@ def test_SpriteShowLayer_integration():
     layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
     sprite_hide_layer(test_sprite, 1)
     result = sprite_show_layer(test_sprite, 1)
-    assert result == 1
+    assert 1 == result
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1258,7 +1258,7 @@ def test_SpriteSpeed_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_velocity(test_sprite, vector_to(5.0, 5.0))
     test_speed = sprite_speed(test_sprite)
-    assert test_speed == 7.0710678118654755
+    assert 7.0710678118654755 == test_speed
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1338,7 +1338,7 @@ def test_SpriteToggleLayerVisibleNamed_integration():
     sprite_toggle_layer_visible_named(test_sprite, "layer2")
     assert sprite_visible_layer_count(test_sprite) is False
     sprite_toggle_layer_visible_named(test_sprite, "layer2")
-    assert sprite_visible_layer_count(test_sprite) == 2
+    assert 2 == sprite_visible_layer_count(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1363,7 +1363,7 @@ def test_SpriteValue_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_add_value(test_sprite, "test_value", 10.0)
     sprite_value_result = sprite_value(test_sprite, "test_value")
-    assert sprite_value_result == 10.0
+    assert 10.0 == sprite_value_result
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1375,7 +1375,7 @@ def test_SpriteValueCount_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_add_value(test_sprite, "health")
     sprite_add_value(test_sprite, "speed")
-    assert sprite_value_count(test_sprite) == 2
+    assert 2 == sprite_value_count(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1387,8 +1387,8 @@ def test_SpriteVelocity_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_velocity(test_sprite, vector_to(5.0, 5.0))
     test_velocity = sprite_velocity(test_sprite)
-    assert test_velocity.x == 5.0
-    assert test_velocity.y == 5.0
+    assert 5.0 == test_velocity.x
+    assert 5.0 == test_velocity.y
     free_all_sprites()
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1400,7 +1400,7 @@ def test_SpriteVisibleIndexOfLayerNamed_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_add_layer(test_sprite, test_bitmap, "layer2")
     layer_index = sprite_visible_index_of_layer_named(test_sprite, "layer2")
-    assert layer_index == 1
+    assert 1 == layer_index
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1412,7 +1412,7 @@ def test_SpriteVisibleIndexOfLayer_integration():
     test_sprite = create_sprite(test_bitmap)
     layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2")
     sprite_show_layer(test_sprite, layer_index)
-    assert sprite_visible_index_of_layer(test_sprite, layer_index) == 1
+    assert 1 == sprite_visible_index_of_layer(test_sprite, layer_index)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1424,7 +1424,7 @@ def test_SpriteVisibleLayer_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_add_layer(test_sprite, test_bitmap, "layer2")
     sprite_show_layer(test_sprite, "layer2")
-    assert sprite_visible_layer(test_sprite, 1) == 1
+    assert 1 == sprite_visible_layer(test_sprite, 1)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1434,10 +1434,10 @@ def test_SpriteVisibleLayerCount_integration():
     test_window = open_window("Test Window", 800, 600)
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
-    assert sprite_visible_layer_count(test_sprite) == 1
+    assert 1 == sprite_visible_layer_count(test_sprite)
     sprite_add_layer(test_sprite, test_bitmap, "layer2")
     sprite_show_layer(test_sprite, "layer2")
-    assert sprite_visible_layer_count(test_sprite) == 2
+    assert 2 == sprite_visible_layer_count(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1449,7 +1449,7 @@ def test_SpriteVisibleLayerId_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_add_layer(test_sprite, test_bitmap, "layer2")
     sprite_show_layer(test_sprite, "layer2")
-    assert sprite_visible_layer_id(test_sprite, 1) == 1
+    assert 1 == sprite_visible_layer_id(test_sprite, 1)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1459,7 +1459,7 @@ def test_SpriteWidth_integration():
     test_window = open_window("Test Window", 800, 600)
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
-    assert sprite_width(test_sprite) == 100
+    assert 100 == sprite_width(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1470,7 +1470,7 @@ def test_SpriteX_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_x(test_sprite, 150.0)
-    assert sprite_x(test_sprite) == 150.0
+    assert 150.0 == sprite_x(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1481,7 +1481,7 @@ def test_SpriteY_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     test_sprite = create_sprite(test_bitmap)
     sprite_set_y(test_sprite, 200.0)
-    assert sprite_y(test_sprite) == 200.0
+    assert 200.0 == sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1516,8 +1516,8 @@ def test_UpdateAllSprites_integration():
     sprite_set_velocity(test_sprite1, vector_to(1, 1))
     sprite_set_velocity(test_sprite2, vector_to(-1, -1))
     update_all_sprites()
-    assert sprite_position(test_sprite1) != point_at(100, 100)
-    assert sprite_position(test_sprite2) != point_at(200, 200)
+    assert point_at(100, 100) != sprite_position(test_sprite1)
+    assert point_at(200, 200) != sprite_position(test_sprite2)
     free_all_sprites()
     close_window(test_window)
 
@@ -1543,8 +1543,8 @@ def test_UpdateSprite_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_velocity(test_sprite, vector_to(1.0, 1.0))
     update_sprite(test_sprite)
-    assert sprite_x(test_sprite) != 0.0
-    assert sprite_y(test_sprite) != 0.0
+    assert 0.0 != sprite_x(test_sprite)
+    assert 0.0 != sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1557,8 +1557,8 @@ def test_UpdateSpriteWithSound_integration():
     sprite_set_velocity(test_sprite, vector_to(1.0, 1.0))
     sprite_start_animation(test_sprite, 0, true)
     update_sprite_with_sound(test_sprite, true)
-    assert sprite_x(test_sprite) != 0.0
-    assert sprite_y(test_sprite) != 0.0
+    assert 0.0 != sprite_x(test_sprite)
+    assert 0.0 != sprite_y(test_sprite)
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1637,8 +1637,8 @@ def test_VectorFromCenterSpriteToPointPoint_integration():
     test_sprite = create_sprite(test_bitmap)
     sprite_set_position(test_sprite, point_at(400, 300))
     test_vector = vector_from_center_sprite_to_point_point(test_sprite, point_at(500, 400))
-    assert test_vector.x == 100
-    assert test_vector.y == 100
+    assert 100 == test_vector.x
+    assert 100 == test_vector.y
     free_sprite(test_sprite)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -1652,8 +1652,8 @@ def test_VectorFromTo_integration():
     sprite_set_position(test_sprite1, point_at(100, 100))
     sprite_set_position(test_sprite2, point_at(200, 200))
     test_vector = vector_from_to(test_sprite1, test_sprite2)
-    assert test_vector.x == 100
-    assert test_vector.y == 100
+    assert 100 == test_vector.x
+    assert 100 == test_vector.y
     free_all_sprites()
     close_window(test_window)
 

@@ -13,9 +13,9 @@ procedure TIntegrationTests.TestPathToResourceIntegration;
 begin
     SetResourcesPath("resources");
     imagePath := PathToResource("test_image.png", ResourceKind.IMAGE_RESOURCE);
-    AssertNotEquals(imagePath, "");
+    AssertNotEquals("", imagePath);
     textPath := PathToResource("nonexistent_file.txt", ResourceKind.ANIMATION_RESOURCE);
-    AssertEquals(textPath, "");
+    AssertEquals("", textPath);
 end;
 procedure TIntegrationTests.TestPathToResourcesIntegration;
 begin
@@ -23,15 +23,15 @@ begin
     AssertNotNull(resourcePath);
     SetResourcesPath("/new/resources");
     newResourcePath := PathToResources();
-    AssertEquals(newResourcePath, "/new/resources");
+    AssertEquals("/new/resources", newResourcePath);
 end;
 procedure TIntegrationTests.TestPathToResourcesForKindIntegration;
 begin
     SetResourcesPath("resources");
     imagePath := PathToResources(ResourceKind.IMAGE_RESOURCE);
-    AssertEquals(imagePath, "resources/images");
+    AssertEquals("resources/images", imagePath);
     soundPath := PathToResources(ResourceKind.SOUND_RESOURCE);
-    AssertEquals(soundPath, "resources/sounds");
+    AssertEquals("resources/sounds", soundPath);
 end;
 procedure TIntegrationTests.TestRegisterFreeNotifierIntegration;
 begin
@@ -43,9 +43,9 @@ end;
 procedure TIntegrationTests.TestSetResourcesPathIntegration;
 begin
     SetResourcesPath("/resources");
-    AssertEquals(PathToResources(), "/resources");
+    AssertEquals("/resources", PathToResources());
     SetResourcesPath("/new/resources");
-    AssertEquals(PathToResources(), "/new/resources");
+    AssertEquals("/new/resources", PathToResources());
 end;
 end;
 

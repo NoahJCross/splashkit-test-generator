@@ -9,27 +9,27 @@ TEST_CASE("contains_integration") {
 }
 TEST_CASE("convert_to_double_integration") {
     auto test_result = convert_to_double("123.456");
-    REQUIRE(test_result == 123.456);
+    REQUIRE(123.456 == test_result);
     auto test_result = convert_to_double("-123.456");
-    REQUIRE(test_result == -123.456);
+    REQUIRE(-123.456 == test_result);
     auto test_result = convert_to_double("invalid");
     REQUIRE(test_result == nullptr);
 }
 TEST_CASE("convert_to_integer_integration") {
     auto test_result = convert_to_integer("123");
-    REQUIRE(test_result == 123);
+    REQUIRE(123 == test_result);
     auto test_result = convert_to_integer("-456");
-    REQUIRE(test_result == -456);
+    REQUIRE(-456 == test_result);
     auto test_result = convert_to_integer("123.456");
-    REQUIRE(test_result == 123);
+    REQUIRE(123 == test_result);
     auto test_result = convert_to_integer("abc");
     REQUIRE_THROWS_AS(convert_to_integer("abc"), std::exception);
 }
 TEST_CASE("index_of_integration") {
     auto test_result = index_of("splashkit library", "library");
-    REQUIRE(test_result == 10);
+    REQUIRE(10 == test_result);
     auto test_result = index_of("splashkit library", "unreal");
-    REQUIRE(test_result == -1);
+    REQUIRE(-1 == test_result);
 }
 TEST_CASE("is_double_integration") {
     auto test_result = is_double("123.456");
@@ -63,39 +63,39 @@ TEST_CASE("is_number_integration") {
 }
 TEST_CASE("length_of_integration") {
     auto test_length = length_of("SplashKit");
-    REQUIRE(test_length == 9);
+    REQUIRE(9 == test_length);
     auto test_length_empty = length_of("");
-    REQUIRE(test_length_empty == 0);
+    REQUIRE(0 == test_length_empty);
 }
 TEST_CASE("replace_all_integration") {
     auto test_result = replace_all("hello world", "world", "SplashKit");
-    REQUIRE(test_result == "hello SplashKit");
+    REQUIRE("hello SplashKit" == test_result);
     auto test_result = replace_all("aaaa", "a", "b");
-    REQUIRE(test_result == "bbbb");
+    REQUIRE("bbbb" == test_result);
     auto test_result = replace_all("test", "t", "");
-    REQUIRE(test_result == "es");
+    REQUIRE("es" == test_result);
 }
 TEST_CASE("split_integration") {
     auto test_result = split("splashkit library", " ");
-    REQUIRE(length_of(test_result) == 2);
-    REQUIRE(index_of(test_result, "splashkit") == 0);
-    REQUIRE(index_of(test_result, "library") == 0);
+    REQUIRE(2 == length_of(test_result));
+    REQUIRE(0 == index_of(test_result, "splashkit"));
+    REQUIRE(0 == index_of(test_result, "library"));
 }
 TEST_CASE("to_lowercase_integration") {
     auto test_lowercase = to_lowercase("SPLASHKIT");
-    REQUIRE(test_lowercase == "splashkit");
+    REQUIRE("splashkit" == test_lowercase);
     auto test_empty = to_lowercase("");
-    REQUIRE(test_empty == "");
+    REQUIRE("" == test_empty);
 }
 TEST_CASE("to_uppercase_integration") {
     auto test_uppercase = to_uppercase("hello");
-    REQUIRE(test_uppercase == "HELLO");
+    REQUIRE("HELLO" == test_uppercase);
 }
 TEST_CASE("trim_integration") {
     auto test_trimmed = trim("  Hello, World!  ");
-    REQUIRE(test_trimmed == "Hello, World!");
+    REQUIRE("Hello, World!" == test_trimmed);
     auto test_empty_trimmed = trim(" \t\n  ");
-    REQUIRE(test_empty_trimmed == "");
+    REQUIRE("" == test_empty_trimmed);
 }
 TEST_CASE("rnd_range_integration") {
     auto test_result = rnd(1, 10);
@@ -130,5 +130,5 @@ TEST_CASE("display_dialog_integration") {
 }
 TEST_CASE("file_as_string_integration") {
     auto test_file_content = file_as_string("test_file.txt", ResourceKind::BUNDLE_RESOURCE);
-    REQUIRE(test_file_content != "");
+    REQUIRE("" != test_file_content);
 }

@@ -17,8 +17,8 @@ fn test_call_for_all_sprites_with_value_integration() {
     sprite_set_x(test_sprite1, 100);
     sprite_set_x(test_sprite2, 200);
     call_for_all_sprites_with_value(sprite_set_x(test_sprite1, 300), 300);
-    assert_eq!(sprite_x(test_sprite1), 300);
-    assert_eq!(sprite_x(test_sprite2), 300);
+    assert_eq!(300, sprite_x(test_sprite1));
+    assert_eq!(300, sprite_x(test_sprite2));
     free_all_sprites();
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -61,8 +61,8 @@ fn test_center_point_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_position(test_sprite, point_at(100, 100));
     let test_center_point = center_point(test_sprite);
-    assert_eq!(test_center_point.x, 150);
-    assert_eq!(test_center_point.y, 150);
+    assert_eq!(150, test_center_point.x);
+    assert_eq!(150, test_center_point.y);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -144,7 +144,7 @@ fn test_current_sprite_pack_integration() {
     create_sprite_pack("test_pack");
     select_sprite_pack("test_pack");
     let current_pack = current_sprite_pack();
-    assert_eq!(current_pack, "test_pack");
+    assert_eq!("test_pack", current_pack);
     free_sprite_pack("test_pack");
 }
 #[test]
@@ -159,8 +159,8 @@ fn test_draw_all_sprites_integration() {
     sprite_set_y(test_sprite2, 200);
     draw_all_sprites();
     refresh_screen();
-    assert_ne!(get_pixel(100, 100), color_white());
-    assert_ne!(get_pixel(200, 200), color_white());
+    assert_ne!(color_white(), get_pixel(100, 100));
+    assert_ne!(color_white(), get_pixel(200, 200));
     free_all_sprites();
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -173,7 +173,7 @@ fn test_draw_sprite_offset_by_integration() {
     sprite_set_position(test_sprite, point_at(400, 300));
     draw_sprite_offset_by(test_sprite, vector_to(50, 50));
     refresh_screen();
-    assert_ne!(get_pixel(point_at(450, 350)), color_white());
+    assert_ne!(color_white(), get_pixel(point_at(450, 350)));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -258,7 +258,7 @@ fn test_move_sprite_integration() {
     sprite_set_position(test_sprite, point_at(100.0, 100.0));
     move_sprite(test_sprite);
     process_events();
-    assert_ne!(sprite_position(test_sprite), point_at(100.0, 100.0));
+    assert_ne!(point_at(100.0, 100.0), sprite_position(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -271,8 +271,8 @@ fn test_move_sprite_by_vector_integration() {
     sprite_set_position(test_sprite, point_at(100, 100));
     move_sprite_by_vector(test_sprite, vector_to(50, 50));
     process_events();
-    assert_eq!(sprite_x(test_sprite), 150);
-    assert_eq!(sprite_y(test_sprite), 150);
+    assert_eq!(150, sprite_x(test_sprite));
+    assert_eq!(150, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -284,8 +284,8 @@ fn test_move_sprite_by_vector_percent_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_position(test_sprite, point_at(100.0, 100.0));
     move_sprite_by_vector_percent(test_sprite, vector_to(50.0, 50.0), 0.5);
-    assert_eq!(sprite_x(test_sprite), 125.0);
-    assert_eq!(sprite_y(test_sprite), 125.0);
+    assert_eq!(125.0, sprite_x(test_sprite));
+    assert_eq!(125.0, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -310,8 +310,8 @@ fn test_move_sprite_to_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     move_sprite_to(test_sprite, 400.0, 300.0);
-    assert_eq!(sprite_x(test_sprite), 400.0);
-    assert_eq!(sprite_y(test_sprite), 300.0);
+    assert_eq!(400.0, sprite_x(test_sprite));
+    assert_eq!(300.0, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -349,8 +349,8 @@ fn test_sprite_add_to_velocity_integration() {
     sprite_set_position(test_sprite, point_at(400, 300));
     sprite_add_to_velocity(test_sprite, vector_to(10, 10));
     update_sprite(test_sprite);
-    assert_eq!(sprite_x(test_sprite), 410);
-    assert_eq!(sprite_y(test_sprite), 310);
+    assert_eq!(410, sprite_x(test_sprite));
+    assert_eq!(310, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -373,7 +373,7 @@ fn test_sprite_add_value_with_default_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_value_with_default(test_sprite, "health", 100.0);
     assert!(sprite_has_value(test_sprite, "health"));
-    assert_eq!(sprite_value(test_sprite, "health"), 100.0);
+    assert_eq!(100.0, sprite_value(test_sprite, "health"));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -384,8 +384,8 @@ fn test_sprite_anchor_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let test_anchor_point = sprite_anchor_point(test_sprite);
-    assert_eq!(test_anchor_point.x, 50);
-    assert_eq!(test_anchor_point.y, 50);
+    assert_eq!(50, test_anchor_point.x);
+    assert_eq!(50, test_anchor_point.y);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -397,8 +397,8 @@ fn test_sprite_anchor_position_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_position(test_sprite, point_at(100, 100));
     let test_anchor_position = sprite_anchor_position(test_sprite);
-    assert_eq!(test_anchor_position.x, 100);
-    assert_eq!(test_anchor_position.y, 100);
+    assert_eq!(100, test_anchor_position.x);
+    assert_eq!(100, test_anchor_position.y);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -424,7 +424,7 @@ fn test_sprite_animation_name_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_start_animation(test_sprite, "default");
     let test_animation_name = sprite_animation_name(test_sprite);
-    assert_eq!(test_animation_name, "default");
+    assert_eq!("default", test_animation_name);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -463,7 +463,7 @@ fn test_sprite_bring_layer_to_front_integration() {
     let test_sprite = create_sprite(test_bitmap);
     let layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2");
     sprite_bring_layer_to_front(test_sprite, layer_index);
-    assert_eq!(sprite_visible_index_of_layer(test_sprite, layer_index), sprite_visible_layer_count(test_sprite));
+    assert_eq!(sprite_visible_layer_count(test_sprite), sprite_visible_index_of_layer(test_sprite, layer_index));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -499,8 +499,8 @@ fn test_sprite_collision_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let collision_bitmap = sprite_collision_bitmap(test_sprite);
-    assert_eq!(bitmap_width(collision_bitmap), 100);
-    assert_eq!(bitmap_height(collision_bitmap), 100);
+    assert_eq!(100, bitmap_width(collision_bitmap));
+    assert_eq!(100, bitmap_height(collision_bitmap));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -522,7 +522,7 @@ fn test_sprite_collision_kind_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_collision_kind(test_sprite, CollisionTestKind::PixelCollisions);
-    assert_eq!(sprite_collision_kind(test_sprite), CollisionTestKind::PixelCollisions);
+    assert_eq!(CollisionTestKind::PixelCollisions, sprite_collision_kind(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -533,8 +533,8 @@ fn test_sprite_collision_rectangle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let test_rectangle = sprite_collision_rectangle(test_sprite);
-    assert_eq!(test_rectangle.width, 100);
-    assert_eq!(test_rectangle.height, 100);
+    assert_eq!(100, test_rectangle.width);
+    assert_eq!(100, test_rectangle.height);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -546,7 +546,7 @@ fn test_sprite_current_cell_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_start_animation(test_sprite, 0);
     update_sprite(test_sprite);
-    assert_eq!(sprite_current_cell(test_sprite), 0);
+    assert_eq!(0, sprite_current_cell(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -557,10 +557,10 @@ fn test_sprite_current_cell_rectangle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let test_rectangle = sprite_current_cell_rectangle(test_sprite);
-    assert_eq!(rectangle_left(test_rectangle), 0);
-    assert_eq!(rectangle_top(test_rectangle), 0);
-    assert_eq!(rectangle_right(test_rectangle), bitmap_width(test_bitmap));
-    assert_eq!(rectangle_bottom(test_rectangle), bitmap_height(test_bitmap));
+    assert_eq!(0, rectangle_left(test_rectangle));
+    assert_eq!(0, rectangle_top(test_rectangle));
+    assert_eq!(bitmap_width(test_bitmap), rectangle_right(test_rectangle));
+    assert_eq!(bitmap_height(test_bitmap), rectangle_bottom(test_rectangle));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -571,7 +571,7 @@ fn test_sprite_dx_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_dx(test_sprite, 5.0);
-    assert_eq!(sprite_dx(test_sprite), 5.0);
+    assert_eq!(5.0, sprite_dx(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -582,7 +582,7 @@ fn test_sprite_dy_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_dy(test_sprite, 5.0);
-    assert_eq!(sprite_dy(test_sprite), 5.0);
+    assert_eq!(5.0, sprite_dy(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -616,7 +616,7 @@ fn test_sprite_height_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
-    assert_eq!(sprite_height(test_sprite), 100);
+    assert_eq!(100, sprite_height(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -697,9 +697,9 @@ fn test_sprite_layer_count_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
-    assert_eq!(sprite_layer_count(test_sprite), 1);
+    assert_eq!(1, sprite_layer_count(test_sprite));
     sprite_add_layer(test_sprite, test_bitmap, "layer2");
-    assert_eq!(sprite_layer_count(test_sprite), 2);
+    assert_eq!(2, sprite_layer_count(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -710,7 +710,7 @@ fn test_sprite_layer_height_named_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_layer(test_sprite, test_bitmap, "layer2");
-    assert_eq!(sprite_layer_height_named(test_sprite, "layer2"), 100);
+    assert_eq!(100, sprite_layer_height_named(test_sprite, "layer2"));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -721,7 +721,7 @@ fn test_sprite_layer_height_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let layer_height = sprite_layer_height(test_sprite, 0);
-    assert_eq!(layer_height, 100);
+    assert_eq!(100, layer_height);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -732,7 +732,7 @@ fn test_sprite_layer_index_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2");
-    assert_eq!(sprite_layer_index(test_sprite, "layer2"), layer_index);
+    assert_eq!(layer_index, sprite_layer_index(test_sprite, "layer2"));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -743,7 +743,7 @@ fn test_sprite_layer_name_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2");
-    assert_eq!(sprite_layer_name(test_sprite, layer_index), "layer2");
+    assert_eq!("layer2", sprite_layer_name(test_sprite, layer_index));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -755,8 +755,8 @@ fn test_sprite_layer_offset_named_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_layer_offset_named(test_sprite, "layer1", vector_to(10, 10));
     let layer_offset = sprite_layer_offset_named(test_sprite, "layer1");
-    assert_eq!(layer_offset.x, 10);
-    assert_eq!(layer_offset.y, 10);
+    assert_eq!(10, layer_offset.x);
+    assert_eq!(10, layer_offset.y);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -768,7 +768,7 @@ fn test_sprite_layer_offset_integration() {
     let test_sprite = create_sprite(test_bitmap);
     let layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2");
     sprite_set_layer_offset_at_index(test_sprite, layer_index, vector_to(10, 10));
-    assert_eq!(sprite_layer_offset(test_sprite, layer_index), vector_to(10, 10));
+    assert_eq!(vector_to(10, 10), sprite_layer_offset(test_sprite, layer_index));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -779,10 +779,10 @@ fn test_sprite_layer_rectangle_named_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let test_rectangle = sprite_layer_rectangle_named(test_sprite, "layer1");
-    assert_eq!(rectangle_left(test_rectangle), 0);
-    assert_eq!(rectangle_top(test_rectangle), 0);
-    assert_eq!(rectangle_right(test_rectangle), 100);
-    assert_eq!(rectangle_bottom(test_rectangle), 100);
+    assert_eq!(0, rectangle_left(test_rectangle));
+    assert_eq!(0, rectangle_top(test_rectangle));
+    assert_eq!(100, rectangle_right(test_rectangle));
+    assert_eq!(100, rectangle_bottom(test_rectangle));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -793,7 +793,7 @@ fn test_sprite_layer_rectangle_at_index_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     let test_rectangle = sprite_layer_rectangle_at_index(test_sprite, 0);
-    assert_eq!(test_rectangle.width, bitmap_width(test_bitmap));
+    assert_eq!(bitmap_width(test_bitmap), test_rectangle.width);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -804,7 +804,7 @@ fn test_sprite_layer_width_named_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_layer(test_sprite, test_bitmap, "layer2");
-    assert_eq!(sprite_layer_width_named(test_sprite, "layer2"), 100);
+    assert_eq!(100, sprite_layer_width_named(test_sprite, "layer2"));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -814,7 +814,7 @@ fn test_sprite_layer_width_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
-    assert_eq!(sprite_layer_width(test_sprite, 0), 100);
+    assert_eq!(100, sprite_layer_width(test_sprite, 0));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -841,7 +841,7 @@ fn test_sprite_mass_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_mass(test_sprite, 10.0);
-    assert_eq!(sprite_mass(test_sprite), 10.0);
+    assert_eq!(10.0, sprite_mass(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -877,7 +877,7 @@ fn test_sprite_name_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
-    assert_eq!(sprite_name(test_sprite), "test_sprite");
+    assert_eq!("test_sprite", sprite_name(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -939,8 +939,8 @@ fn test_sprite_position_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_position(test_sprite, point_at(100.0, 100.0));
     let test_position = sprite_position(test_sprite);
-    assert_eq!(test_position.x, 100.0);
-    assert_eq!(test_position.y, 100.0);
+    assert_eq!(100.0, test_position.x);
+    assert_eq!(100.0, test_position.y);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -973,7 +973,7 @@ fn test_sprite_rotation_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_rotation(test_sprite, 45.0);
-    assert_eq!(sprite_rotation(test_sprite), 45.0);
+    assert_eq!(45.0, sprite_rotation(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -984,7 +984,7 @@ fn test_sprite_scale_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_scale(test_sprite, 2.0);
-    assert_eq!(sprite_scale(test_sprite), 2.0);
+    assert_eq!(2.0, sprite_scale(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -996,8 +996,8 @@ fn test_sprite_screen_rectangle_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_position(test_sprite, point_at(100, 100));
     let test_rectangle = sprite_screen_rectangle(test_sprite);
-    assert_eq!(rectangle_left(test_rectangle), 100);
-    assert_eq!(rectangle_top(test_rectangle), 100);
+    assert_eq!(100, rectangle_left(test_rectangle));
+    assert_eq!(100, rectangle_top(test_rectangle));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1021,7 +1021,7 @@ fn test_sprite_send_layer_to_back_integration() {
     let test_sprite = create_sprite(test_bitmap);
     let layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2");
     sprite_send_layer_to_back(test_sprite, layer_index);
-    assert_eq!(sprite_visible_index_of_layer(test_sprite, layer_index), 0);
+    assert_eq!(0, sprite_visible_index_of_layer(test_sprite, layer_index));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1033,8 +1033,8 @@ fn test_sprite_set_anchor_point_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_anchor_point(test_sprite, point_at(50, 50));
     let test_anchor_point = sprite_anchor_point(test_sprite);
-    assert_eq!(test_anchor_point.x, 50);
-    assert_eq!(test_anchor_point.y, 50);
+    assert_eq!(50, test_anchor_point.x);
+    assert_eq!(50, test_anchor_point.y);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1045,7 +1045,7 @@ fn test_sprite_set_collision_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_collision_bitmap(test_sprite, test_bitmap);
-    assert_eq!(sprite_collision_bitmap(test_sprite), test_bitmap);
+    assert_eq!(test_bitmap, sprite_collision_bitmap(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1056,7 +1056,7 @@ fn test_sprite_set_collision_kind_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_collision_kind(test_sprite, CollisionTestKind::PixelCollisions);
-    assert_eq!(sprite_collision_kind(test_sprite), CollisionTestKind::PixelCollisions);
+    assert_eq!(CollisionTestKind::PixelCollisions, sprite_collision_kind(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1067,7 +1067,7 @@ fn test_sprite_set_dx_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_dx(test_sprite, 5.0);
-    assert_eq!(sprite_dx(test_sprite), 5.0);
+    assert_eq!(5.0, sprite_dx(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1078,7 +1078,7 @@ fn test_sprite_set_dy_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_dy(test_sprite, 5.0);
-    assert_eq!(sprite_dy(test_sprite), 5.0);
+    assert_eq!(5.0, sprite_dy(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1089,7 +1089,7 @@ fn test_sprite_set_heading_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_heading(test_sprite, 45.0);
-    assert_eq!(sprite_heading(test_sprite), 45.0);
+    assert_eq!(45.0, sprite_heading(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1101,8 +1101,8 @@ fn test_sprite_set_layer_offset_named_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_layer_offset_named(test_sprite, "layer1", vector_to(10.0, 10.0));
     let test_offset = sprite_layer_offset_named(test_sprite, "layer1");
-    assert_eq!(test_offset.x, 10.0);
-    assert_eq!(test_offset.y, 10.0);
+    assert_eq!(10.0, test_offset.x);
+    assert_eq!(10.0, test_offset.y);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1113,7 +1113,7 @@ fn test_sprite_set_layer_offset_at_index_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_layer_offset_at_index(test_sprite, 0, vector_to(10.0, 10.0));
-    assert_eq!(sprite_layer_offset(test_sprite, 0), vector_to(10.0, 10.0));
+    assert_eq!(vector_to(10.0, 10.0), sprite_layer_offset(test_sprite, 0));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1124,7 +1124,7 @@ fn test_sprite_set_mass_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_mass(test_sprite, 10.0);
-    assert_eq!(sprite_mass(test_sprite), 10.0);
+    assert_eq!(10.0, sprite_mass(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1148,8 +1148,8 @@ fn test_sprite_set_position_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_position(test_sprite, point_at(100, 100));
-    assert_eq!(sprite_x(test_sprite), 100);
-    assert_eq!(sprite_y(test_sprite), 100);
+    assert_eq!(100, sprite_x(test_sprite));
+    assert_eq!(100, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1160,7 +1160,7 @@ fn test_sprite_set_rotation_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_rotation(test_sprite, 45.0);
-    assert_eq!(sprite_rotation(test_sprite), 45.0);
+    assert_eq!(45.0, sprite_rotation(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1171,7 +1171,7 @@ fn test_sprite_set_scale_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_scale(test_sprite, 2.0);
-    assert_eq!(sprite_scale(test_sprite), 2.0);
+    assert_eq!(2.0, sprite_scale(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1182,7 +1182,7 @@ fn test_sprite_set_speed_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_speed(test_sprite, 5.0);
-    assert_eq!(sprite_speed(test_sprite), 5.0);
+    assert_eq!(5.0, sprite_speed(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1194,7 +1194,7 @@ fn test_sprite_set_value_named_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_value(test_sprite, "test_value");
     sprite_set_value_named(test_sprite, "test_value", 10.5);
-    assert_eq!(sprite_value(test_sprite, "test_value"), 10.5);
+    assert_eq!(10.5, sprite_value(test_sprite, "test_value"));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1217,7 +1217,7 @@ fn test_sprite_set_x_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_x(test_sprite, 150.0);
-    assert_eq!(sprite_x(test_sprite), 150.0);
+    assert_eq!(150.0, sprite_x(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1228,7 +1228,7 @@ fn test_sprite_set_y_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_y(test_sprite, 300.0);
-    assert_eq!(sprite_y(test_sprite), 300.0);
+    assert_eq!(300.0, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1240,7 +1240,7 @@ fn test_sprite_show_layer_named_integration() {
     let test_sprite = create_sprite(test_bitmap);
     let layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2");
     let result = sprite_show_layer_named(test_sprite, "layer2");
-    assert_eq!(result, 1);
+    assert_eq!(1, result);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1253,7 +1253,7 @@ fn test_sprite_show_layer_integration() {
     let layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2");
     sprite_hide_layer(test_sprite, 1);
     let result = sprite_show_layer(test_sprite, 1);
-    assert_eq!(result, 1);
+    assert_eq!(1, result);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1265,7 +1265,7 @@ fn test_sprite_speed_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_velocity(test_sprite, vector_to(5.0, 5.0));
     let test_speed = sprite_speed(test_sprite);
-    assert_eq!(test_speed, 7.0710678118654755);
+    assert_eq!(7.0710678118654755, test_speed);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1345,7 +1345,7 @@ fn test_sprite_toggle_layer_visible_named_integration() {
     sprite_toggle_layer_visible_named(test_sprite, "layer2");
     assert!(!sprite_visible_layer_count(test_sprite));
     sprite_toggle_layer_visible_named(test_sprite, "layer2");
-    assert_eq!(sprite_visible_layer_count(test_sprite), 2);
+    assert_eq!(2, sprite_visible_layer_count(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1370,7 +1370,7 @@ fn test_sprite_value_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_value(test_sprite, "test_value", 10.0);
     let sprite_value_result = sprite_value(test_sprite, "test_value");
-    assert_eq!(sprite_value_result, 10.0);
+    assert_eq!(10.0, sprite_value_result);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1382,7 +1382,7 @@ fn test_sprite_value_count_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_value(test_sprite, "health");
     sprite_add_value(test_sprite, "speed");
-    assert_eq!(sprite_value_count(test_sprite), 2);
+    assert_eq!(2, sprite_value_count(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1394,8 +1394,8 @@ fn test_sprite_velocity_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_velocity(test_sprite, vector_to(5.0, 5.0));
     let test_velocity = sprite_velocity(test_sprite);
-    assert_eq!(test_velocity.x, 5.0);
-    assert_eq!(test_velocity.y, 5.0);
+    assert_eq!(5.0, test_velocity.x);
+    assert_eq!(5.0, test_velocity.y);
     free_all_sprites();
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1407,7 +1407,7 @@ fn test_sprite_visible_index_of_layer_named_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_layer(test_sprite, test_bitmap, "layer2");
     let layer_index = sprite_visible_index_of_layer_named(test_sprite, "layer2");
-    assert_eq!(layer_index, 1);
+    assert_eq!(1, layer_index);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1419,7 +1419,7 @@ fn test_sprite_visible_index_of_layer_integration() {
     let test_sprite = create_sprite(test_bitmap);
     let layer_index = sprite_add_layer(test_sprite, test_bitmap, "layer2");
     sprite_show_layer(test_sprite, layer_index);
-    assert_eq!(sprite_visible_index_of_layer(test_sprite, layer_index), 1);
+    assert_eq!(1, sprite_visible_index_of_layer(test_sprite, layer_index));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1431,7 +1431,7 @@ fn test_sprite_visible_layer_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_layer(test_sprite, test_bitmap, "layer2");
     sprite_show_layer(test_sprite, "layer2");
-    assert_eq!(sprite_visible_layer(test_sprite, 1), 1);
+    assert_eq!(1, sprite_visible_layer(test_sprite, 1));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1441,10 +1441,10 @@ fn test_sprite_visible_layer_count_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
-    assert_eq!(sprite_visible_layer_count(test_sprite), 1);
+    assert_eq!(1, sprite_visible_layer_count(test_sprite));
     sprite_add_layer(test_sprite, test_bitmap, "layer2");
     sprite_show_layer(test_sprite, "layer2");
-    assert_eq!(sprite_visible_layer_count(test_sprite), 2);
+    assert_eq!(2, sprite_visible_layer_count(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1456,7 +1456,7 @@ fn test_sprite_visible_layer_id_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_add_layer(test_sprite, test_bitmap, "layer2");
     sprite_show_layer(test_sprite, "layer2");
-    assert_eq!(sprite_visible_layer_id(test_sprite, 1), 1);
+    assert_eq!(1, sprite_visible_layer_id(test_sprite, 1));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1466,7 +1466,7 @@ fn test_sprite_width_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
-    assert_eq!(sprite_width(test_sprite), 100);
+    assert_eq!(100, sprite_width(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1477,7 +1477,7 @@ fn test_sprite_x_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_x(test_sprite, 150.0);
-    assert_eq!(sprite_x(test_sprite), 150.0);
+    assert_eq!(150.0, sprite_x(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1488,7 +1488,7 @@ fn test_sprite_y_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_y(test_sprite, 200.0);
-    assert_eq!(sprite_y(test_sprite), 200.0);
+    assert_eq!(200.0, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1523,8 +1523,8 @@ fn test_update_all_sprites_integration() {
     sprite_set_velocity(test_sprite1, vector_to(1, 1));
     sprite_set_velocity(test_sprite2, vector_to(-1, -1));
     update_all_sprites();
-    assert_ne!(sprite_position(test_sprite1), point_at(100, 100));
-    assert_ne!(sprite_position(test_sprite2), point_at(200, 200));
+    assert_ne!(point_at(100, 100), sprite_position(test_sprite1));
+    assert_ne!(point_at(200, 200), sprite_position(test_sprite2));
     free_all_sprites();
     close_window(test_window);
 }
@@ -1550,8 +1550,8 @@ fn test_update_sprite_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_velocity(test_sprite, vector_to(1.0, 1.0));
     update_sprite(test_sprite);
-    assert_ne!(sprite_x(test_sprite), 0.0);
-    assert_ne!(sprite_y(test_sprite), 0.0);
+    assert_ne!(0.0, sprite_x(test_sprite));
+    assert_ne!(0.0, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1564,8 +1564,8 @@ fn test_update_sprite_with_sound_integration() {
     sprite_set_velocity(test_sprite, vector_to(1.0, 1.0));
     sprite_start_animation(test_sprite, 0, true);
     update_sprite_with_sound(test_sprite, true);
-    assert_ne!(sprite_x(test_sprite), 0.0);
-    assert_ne!(sprite_y(test_sprite), 0.0);
+    assert_ne!(0.0, sprite_x(test_sprite));
+    assert_ne!(0.0, sprite_y(test_sprite));
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1644,8 +1644,8 @@ fn test_vector_from_center_sprite_to_point_point_integration() {
     let test_sprite = create_sprite(test_bitmap);
     sprite_set_position(test_sprite, point_at(400, 300));
     let test_vector = vector_from_center_sprite_to_point_point(test_sprite, point_at(500, 400));
-    assert_eq!(test_vector.x, 100);
-    assert_eq!(test_vector.y, 100);
+    assert_eq!(100, test_vector.x);
+    assert_eq!(100, test_vector.y);
     free_sprite(test_sprite);
     free_bitmap(test_bitmap);
     close_window(test_window);
@@ -1659,8 +1659,8 @@ fn test_vector_from_to_integration() {
     sprite_set_position(test_sprite1, point_at(100, 100));
     sprite_set_position(test_sprite2, point_at(200, 200));
     let test_vector = vector_from_to(test_sprite1, test_sprite2);
-    assert_eq!(test_vector.x, 100);
-    assert_eq!(test_vector.y, 100);
+    assert_eq!(100, test_vector.x);
+    assert_eq!(100, test_vector.y);
     free_all_sprites();
     close_window(test_window);
 }

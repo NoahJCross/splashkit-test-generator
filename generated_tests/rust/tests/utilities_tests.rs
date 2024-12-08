@@ -18,29 +18,29 @@ fn test_contains_integration() {
 #[test]
 fn test_convert_to_double_integration() {
     let test_result = convert_to_double("123.456");
-    assert_eq!(test_result, 123.456);
+    assert_eq!(123.456, test_result);
     let test_result = convert_to_double("-123.456");
-    assert_eq!(test_result, -123.456);
+    assert_eq!(-123.456, test_result);
     let test_result = convert_to_double("invalid");
     assert!(test_result.is_none());
 }
 #[test]
 fn test_convert_to_integer_integration() {
     let test_result = convert_to_integer("123");
-    assert_eq!(test_result, 123);
+    assert_eq!(123, test_result);
     let test_result = convert_to_integer("-456");
-    assert_eq!(test_result, -456);
+    assert_eq!(-456, test_result);
     let test_result = convert_to_integer("123.456");
-    assert_eq!(test_result, 123);
+    assert_eq!(123, test_result);
     let test_result = convert_to_integer("abc");
     assert!(std::panic::catch_unwind(|| { convert_to_integer("abc") }).is_err());
 }
 #[test]
 fn test_index_of_integration() {
     let test_result = index_of("splashkit library", "library");
-    assert_eq!(test_result, 10);
+    assert_eq!(10, test_result);
     let test_result = index_of("splashkit library", "unreal");
-    assert_eq!(test_result, -1);
+    assert_eq!(-1, test_result);
 }
 #[test]
 fn test_is_double_integration() {
@@ -78,44 +78,44 @@ fn test_is_number_integration() {
 #[test]
 fn test_length_of_integration() {
     let test_length = length_of("SplashKit");
-    assert_eq!(test_length, 9);
+    assert_eq!(9, test_length);
     let test_length_empty = length_of("");
-    assert_eq!(test_length_empty, 0);
+    assert_eq!(0, test_length_empty);
 }
 #[test]
 fn test_replace_all_integration() {
     let test_result = replace_all("hello world", "world", "SplashKit");
-    assert_eq!(test_result, "hello SplashKit");
+    assert_eq!("hello SplashKit", test_result);
     let test_result = replace_all("aaaa", "a", "b");
-    assert_eq!(test_result, "bbbb");
+    assert_eq!("bbbb", test_result);
     let test_result = replace_all("test", "t", "");
-    assert_eq!(test_result, "es");
+    assert_eq!("es", test_result);
 }
 #[test]
 fn test_split_integration() {
     let test_result = split("splashkit library", " ");
-    assert_eq!(length_of(test_result), 2);
-    assert_eq!(index_of(test_result, "splashkit"), 0);
-    assert_eq!(index_of(test_result, "library"), 0);
+    assert_eq!(2, length_of(test_result));
+    assert_eq!(0, index_of(test_result, "splashkit"));
+    assert_eq!(0, index_of(test_result, "library"));
 }
 #[test]
 fn test_to_lowercase_integration() {
     let test_lowercase = to_lowercase("SPLASHKIT");
-    assert_eq!(test_lowercase, "splashkit");
+    assert_eq!("splashkit", test_lowercase);
     let test_empty = to_lowercase("");
-    assert_eq!(test_empty, "");
+    assert_eq!("", test_empty);
 }
 #[test]
 fn test_to_uppercase_integration() {
     let test_uppercase = to_uppercase("hello");
-    assert_eq!(test_uppercase, "HELLO");
+    assert_eq!("HELLO", test_uppercase);
 }
 #[test]
 fn test_trim_integration() {
     let test_trimmed = trim("  Hello, World!  ");
-    assert_eq!(test_trimmed, "Hello, World!");
+    assert_eq!("Hello, World!", test_trimmed);
     let test_empty_trimmed = trim(" \t\n  ");
-    assert_eq!(test_empty_trimmed, "");
+    assert_eq!("", test_empty_trimmed);
 }
 #[test]
 fn test_rnd_range_integration() {
@@ -157,5 +157,5 @@ fn test_display_dialog_integration() {
 #[test]
 fn test_file_as_string_integration() {
     let test_file_content = file_as_string("test_file.txt", ResourceKind::BundleResource);
-    assert_ne!(test_file_content, "");
+    assert_ne!("", test_file_content);
 }

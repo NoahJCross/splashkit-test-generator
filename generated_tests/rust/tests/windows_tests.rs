@@ -14,7 +14,7 @@ fn test_clear_window_integration() {
     let test_color = color_black();
     clear_window(test_window, test_color);
     refresh_window(test_window);
-    assert_eq!(get_pixel(point_at(window_width(test_window), window_height(test_window))), color_black());
+    assert_eq!(color_black(), get_pixel(point_at(window_width(test_window), window_height(test_window))));
     close_window(test_window);
 }
 #[test]
@@ -51,7 +51,7 @@ fn test_close_window_integration() {
 fn test_current_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     set_current_window(test_window);
-    assert_eq!(current_window(), test_window);
+    assert_eq!(test_window, current_window());
     close_window(test_window);
 }
 #[test]
@@ -66,7 +66,7 @@ fn test_current_window_has_border_integration() {
 fn test_current_window_height_integration() {
     let test_window = open_window("Test Window", 800, 600);
     set_current_window(test_window);
-    assert_eq!(current_window_height(), 600);
+    assert_eq!(600, current_window_height());
     close_window(test_window);
 }
 #[test]
@@ -108,7 +108,7 @@ fn test_current_window_toggle_fullscreen_integration() {
 fn test_current_window_width_integration() {
     let test_window = open_window("Test Window", 800, 600);
     set_current_window(test_window);
-    assert_eq!(current_window_width(), 800);
+    assert_eq!(800, current_window_width());
     close_window(test_window);
 }
 #[test]
@@ -116,7 +116,7 @@ fn test_current_window_x_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_window_to(test_window, 100, 200);
     set_current_window(test_window);
-    assert_eq!(current_window_x(), 100);
+    assert_eq!(100, current_window_x());
     close_window(test_window);
 }
 #[test]
@@ -150,8 +150,8 @@ fn test_is_current_window_integration() {
 fn test_move_current_window_to_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_current_window_to(100, 100);
-    assert_eq!(current_window_x(), 100);
-    assert_eq!(current_window_y(), 100);
+    assert_eq!(100, current_window_x());
+    assert_eq!(100, current_window_y());
     close_window(test_window);
 }
 #[test]
@@ -159,16 +159,16 @@ fn test_move_window_to_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_window_to_named("Test Window", 100, 100);
     process_events();
-    assert_eq!(window_x_named("Test Window"), 100);
-    assert_eq!(window_y_named("Test Window"), 100);
+    assert_eq!(100, window_x_named("Test Window"));
+    assert_eq!(100, window_y_named("Test Window"));
     close_window_named("Test Window");
 }
 #[test]
 fn test_move_window_to_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_window_to(test_window, 100, 100);
-    assert_eq!(window_x(test_window), 100);
-    assert_eq!(window_y(test_window), 100);
+    assert_eq!(100, window_x(test_window));
+    assert_eq!(100, window_y(test_window));
     close_window(test_window);
 }
 #[test]
@@ -197,16 +197,16 @@ fn test_resize_current_window_integration() {
     set_current_window(test_window);
     resize_current_window(1024, 768);
     process_events();
-    assert_eq!(current_window_width(), 1024);
-    assert_eq!(current_window_height(), 768);
+    assert_eq!(1024, current_window_width());
+    assert_eq!(768, current_window_height());
     close_window(test_window);
 }
 #[test]
 fn test_resize_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     resize_window(test_window, 1024, 768);
-    assert_eq!(window_width(test_window), 1024);
-    assert_eq!(window_height(test_window), 768);
+    assert_eq!(1024, window_width(test_window));
+    assert_eq!(768, window_height(test_window));
     close_window(test_window);
 }
 #[test]
@@ -230,7 +230,7 @@ fn test_set_current_window_integration() {
 #[test]
 fn test_window_caption_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    assert_eq!(window_caption(test_window), "Test Window");
+    assert_eq!("Test Window", window_caption(test_window));
     close_window(test_window);
 }
 #[test]
@@ -279,13 +279,13 @@ fn test_window_has_focus_integration() {
 #[test]
 fn test_window_height_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    assert_eq!(window_height_named("Test Window"), 600);
+    assert_eq!(600, window_height_named("Test Window"));
     close_window(test_window);
 }
 #[test]
 fn test_window_height_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    assert_eq!(window_height(test_window), 600);
+    assert_eq!(600, window_height(test_window));
     close_window(test_window);
 }
 #[test]
@@ -309,7 +309,7 @@ fn test_window_is_fullscreen_integration() {
 fn test_window_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let retrieved_window = window_named("Test Window");
-    assert_eq!(test_window, retrieved_window);
+    assert_eq!(retrieved_window, test_window);
     close_window(test_window);
 }
 #[test]
@@ -370,19 +370,19 @@ fn test_window_toggle_fullscreen_integration() {
     let initial_fullscreen_state = window_is_fullscreen(test_window);
     window_toggle_fullscreen(test_window);
     let new_fullscreen_state = window_is_fullscreen(test_window);
-    assert_ne!(initial_fullscreen_state, new_fullscreen_state);
+    assert_ne!(new_fullscreen_state, initial_fullscreen_state);
     close_window(test_window);
 }
 #[test]
 fn test_window_width_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    assert_eq!(window_width_named("Test Window"), 800);
+    assert_eq!(800, window_width_named("Test Window"));
     close_window(test_window);
 }
 #[test]
 fn test_window_width_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    assert_eq!(window_width(test_window), 800);
+    assert_eq!(800, window_width(test_window));
     close_window(test_window);
 }
 #[test]
@@ -391,10 +391,10 @@ fn test_window_with_focus_integration() {
     let test_window_2 = open_window("Test Window 2", 800, 600);
     set_current_window(test_window_1);
     let focused_window = window_with_focus();
-    assert_eq!(focused_window, test_window_1);
+    assert_eq!(test_window_1, focused_window);
     set_current_window(test_window_2);
     let focused_window = window_with_focus();
-    assert_eq!(focused_window, test_window_2);
+    assert_eq!(test_window_2, focused_window);
     close_window(test_window_1);
     close_window(test_window_2);
 }
@@ -402,7 +402,7 @@ fn test_window_with_focus_integration() {
 fn test_window_x_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_window_to_named("Test Window", 100, 200);
-    assert_eq!(window_x_named("Test Window"), 100);
+    assert_eq!(100, window_x_named("Test Window"));
     close_window_named("Test Window");
 }
 #[test]
@@ -416,13 +416,13 @@ fn test_window_y_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_window_to_named("Test Window", 100, 200);
     let test_window_y = window_y_named("Test Window");
-    assert_eq!(test_window_y, 200);
+    assert_eq!(200, test_window_y);
     close_window_named("Test Window");
 }
 #[test]
 fn test_window_y_integration() {
     let test_window = open_window("Test Window", 800, 600);
     move_window_to(test_window, 100, 200);
-    assert_eq!(window_y(test_window), 200);
+    assert_eq!(200, window_y(test_window));
     close_window(test_window);
 }

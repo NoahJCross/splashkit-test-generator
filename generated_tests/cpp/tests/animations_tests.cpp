@@ -291,7 +291,7 @@ TEST_CASE("update_animation_integration") {
     auto kermit_script = load_animation_script("kermit", "kermit.txt");
     auto anim = create_animation(kermit_script, "moonwalkback");
     update_animation(anim);
-    REQUIRE(0 != animation_current_cell(anim));
+    REQUIRE(animation_current_cell(anim) != 0);
     free_animation(anim);
     free_animation_script(kermit_script);
 }

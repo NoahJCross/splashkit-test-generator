@@ -59,6 +59,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
+              "function_name": "color_black",
+              "args": []
+            },
+            "value2": {
+              "value_type": "function",
               "function_name": "get_pixel",
               "args": [
                 {
@@ -88,11 +93,6 @@
                   ]
                 }
               ]
-            },
-            "value2": {
-              "value_type": "function",
-              "function_name": "color_black",
-              "args": []
             }
           }
         },
@@ -406,13 +406,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "test_window"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window",
               "args": []
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           }
         },
@@ -526,13 +526,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 600
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_height",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 600
             }
           }
         },
@@ -844,13 +844,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 800
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_width",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 800
             }
           }
         },
@@ -921,13 +921,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_x",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100
             }
           }
         },
@@ -1251,13 +1251,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_x",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100
             }
           }
         },
@@ -1266,13 +1266,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_y",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100
             }
           }
         },
@@ -1338,6 +1338,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_x_named",
               "args": [
@@ -1346,10 +1350,6 @@
                   "value": "Test Window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100
             }
           }
         },
@@ -1358,6 +1358,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_y_named",
               "args": [
@@ -1366,10 +1370,6 @@
                   "value": "Test Window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100
             }
           }
         },
@@ -1430,6 +1430,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_x",
               "args": [
@@ -1438,10 +1442,6 @@
                   "variable_name": "test_window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100
             }
           }
         },
@@ -1450,6 +1450,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_y",
               "args": [
@@ -1458,10 +1462,6 @@
                   "variable_name": "test_window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100
             }
           }
         },
@@ -1742,13 +1742,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1024
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_width",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1024
             }
           }
         },
@@ -1757,13 +1757,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 768
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_height",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 768
             }
           }
         },
@@ -1824,6 +1824,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 1024
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_width",
               "args": [
@@ -1832,10 +1836,6 @@
                   "variable_name": "test_window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 1024
             }
           }
         },
@@ -1844,6 +1844,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 768
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_height",
               "args": [
@@ -1852,10 +1856,6 @@
                   "variable_name": "test_window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 768
             }
           }
         },
@@ -2076,6 +2076,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_caption",
               "args": [
@@ -2084,10 +2088,6 @@
                   "variable_name": "test_window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": "Test Window"
             }
           }
         },
@@ -2511,6 +2511,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 600
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_height_named",
               "args": [
@@ -2519,10 +2523,6 @@
                   "value": "Test Window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 600
             }
           }
         },
@@ -2565,6 +2565,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 600
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_height",
               "args": [
@@ -2573,10 +2577,6 @@
                   "variable_name": "test_window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 600
             }
           }
         },
@@ -2793,11 +2793,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "retrieved_window"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "retrieved_window"
+              "variable_name": "test_window"
             }
           }
         },
@@ -3334,11 +3334,11 @@
             "compare_type": "not_equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "initial_fullscreen_state"
+              "variable_name": "new_fullscreen_state"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "new_fullscreen_state"
+              "variable_name": "initial_fullscreen_state"
             }
           }
         },
@@ -3381,6 +3381,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 800
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_width_named",
               "args": [
@@ -3389,10 +3393,6 @@
                   "value": "Test Window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 800
             }
           }
         },
@@ -3435,6 +3435,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 800
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_width",
               "args": [
@@ -3443,10 +3447,6 @@
                   "variable_name": "test_window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 800
             }
           }
         },
@@ -3525,11 +3525,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "focused_window"
+              "variable_name": "test_window_1"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "test_window_1"
+              "variable_name": "focused_window"
             }
           }
         },
@@ -3555,11 +3555,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "focused_window"
+              "variable_name": "test_window_2"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "test_window_2"
+              "variable_name": "focused_window"
             }
           }
         },
@@ -3630,6 +3630,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_x_named",
               "args": [
@@ -3638,10 +3642,6 @@
                   "value": "Test Window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 100
             }
           }
         },
@@ -3767,12 +3767,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_window_y"
-            },
-            "value2": {
               "value_type": "primitive",
               "value": 200
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_window_y"
             }
           }
         },
@@ -3833,6 +3833,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 200
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_y",
               "args": [
@@ -3841,10 +3845,6 @@
                   "variable_name": "test_window"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 200
             }
           }
         },
