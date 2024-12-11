@@ -1,8 +1,8 @@
 uses SplashKit, TestFramework
 
 type
-TIntegrationTests = class(TTestCase)
-published
+TTestInterface = class(TTestCase)
+protected
 procedure TIntegrationTests.TestAddColumnIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
@@ -42,11 +42,11 @@ procedure TIntegrationTests.TestBitmapButtonIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = BitmapButton(testBitmap);
+        buttonClicked = BitmapButton(testBitmap);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -59,11 +59,11 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testRectangle := RectangleFrom(100, 100, 100, 100);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = BitmapButton(testBitmap, testRectangle);
+        buttonClicked = BitmapButton(testBitmap, testRectangle);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -76,11 +76,11 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testRectangle := RectangleFrom(100, 100, 100, 100);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = BitmapButton(testBitmap, testRectangle, OptionDefaults());
+        buttonClicked = BitmapButton(testBitmap, testRectangle, OptionDefaults());;
         DrawInterface();
         RefreshScreen();
     end;
@@ -94,11 +94,11 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testOptions1 := OptionDefaults();
     testOptions2 := OptionScaleBmp(0.5, 0.5, testOptions1);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = BitmapButton(testBitmap, testOptions2);
+        buttonClicked = BitmapButton(testBitmap, testOptions2);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -110,11 +110,11 @@ procedure TIntegrationTests.TestBitmapButtonLabeledIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = BitmapButton("Click Me", testBitmap);
+        buttonClicked = BitmapButton("Click Me", testBitmap);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -128,11 +128,11 @@ begin
     testBitmap := CreateBitmap("test_bitmap", 100, 100);
     testOptions1 := OptionDefaults();
     testOptions2 := OptionScaleBmp(0.5, 0.5, testOptions1);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = BitmapButton("Click Me", testBitmap, testOptions2);
+        buttonClicked = BitmapButton("Click Me", testBitmap, testOptions2);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -144,11 +144,11 @@ procedure TIntegrationTests.TestButtonAtPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRectangle := RectangleFrom(100, 100, 200, 50);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = Button("Click Me", testRectangle);
+        buttonClicked = Button("Click Me", testRectangle);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -158,11 +158,11 @@ end;
 procedure TIntegrationTests.TestButtonIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = Button("Click Me");
+        buttonClicked = Button("Click Me");;
         DrawInterface();
         RefreshScreen();
     end;
@@ -172,11 +172,11 @@ end;
 procedure TIntegrationTests.TestButtonLabeledIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    buttonClicked := false
+    buttonClicked := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        buttonClicked = Button("Label:", "Click Me");
+        buttonClicked = Button("Label:", "Click Me");;
         DrawInterface();
         RefreshScreen();
     end;
@@ -187,12 +187,12 @@ procedure TIntegrationTests.TestCheckboxAtPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 50);
-    initialCheckboxResult := false
-    currentCheckboxResult := initialCheckboxResult
+    initialCheckboxResult := false;
+    currentCheckboxResult := initialCheckboxResult;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult, testRect);
+        currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult, testRect);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -202,12 +202,12 @@ end;
 procedure TIntegrationTests.TestCheckboxIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    initialCheckboxResult := false
-    currentCheckboxResult := initialCheckboxResult
+    initialCheckboxResult := false;
+    currentCheckboxResult := initialCheckboxResult;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult);
+        currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -217,12 +217,12 @@ end;
 procedure TIntegrationTests.TestCheckboxLabeledIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    initialCheckboxResult := false
-    currentCheckboxResult := initialCheckboxResult
+    initialCheckboxResult := false;
+    currentCheckboxResult := initialCheckboxResult;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentCheckboxResult = Checkbox("Test Checkbox", "Check me", currentCheckboxResult);
+        currentCheckboxResult = Checkbox("Test Checkbox", "Check me", currentCheckboxResult);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -233,11 +233,11 @@ procedure TIntegrationTests.TestColorSliderAtPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     initialColor := ColorBlack();
-    currentColor := initialColor
+    currentColor := initialColor;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentColor = ColorSlider(currentColor, RectangleFrom(300, 300, 400, 24));
+        currentColor = ColorSlider(currentColor, RectangleFrom(300, 300, 400, 24));;
         DrawInterface();
         RefreshScreen();
     end;
@@ -248,11 +248,11 @@ procedure TIntegrationTests.TestColorSliderIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testColor := ColorBlack();
-    currentColor := testColor
+    currentColor := testColor;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentColor = ColorSlider(currentColor);
+        currentColor = ColorSlider(currentColor);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -263,11 +263,11 @@ procedure TIntegrationTests.TestColorSliderLabeledIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testColor := ColorBlack();
-    currentColor := testColor
+    currentColor := testColor;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentColor = ColorSlider("Test Color Slider", currentColor);
+        currentColor = ColorSlider("Test Color Slider", currentColor);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -407,12 +407,12 @@ procedure TIntegrationTests.TestHSBColorSliderAtPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 100);
-    testColor := HSBColor(0.5, 1.0, 0.5);
-    currentColor := testColor
+    testColor := HSBColorSliderAtPosition(0.5, 1.0, 0.5);
+    currentColor := testColor;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentColor = HSBColorSlider(currentColor, testRect);
+        currentColor = HSBColorSlider(currentColor, testRect);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -423,11 +423,11 @@ procedure TIntegrationTests.TestHSBColorSliderIntegration;
 begin
     testWindow := OpenWindow("HSB Slider Test", 800, 600);
     testColor := ColorBlack();
-    currentColor := testColor
+    currentColor := testColor;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentColor = HSBColorSlider(currentColor);
+        currentColor = HSBColorSlider(currentColor);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -438,11 +438,11 @@ procedure TIntegrationTests.TestHSBColorSliderLabeledIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testColor := ColorBlack();
-    currentColor := testColor
+    currentColor := testColor;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        currentColor = HSBColorSlider("Color Slider", currentColor);
+        currentColor = HSBColorSlider("Color Slider", currentColor);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -491,7 +491,7 @@ begin
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        LabelElement("Test Label", testRectangle);
+        LabelElementAtPosition("Test Label", testRectangle);
         DrawInterface();
         RefreshScreen();
     end;
@@ -526,7 +526,7 @@ end;
 procedure TIntegrationTests.TestLeaveColumnIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    buttonResult := false
+    buttonResult := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
@@ -535,23 +535,23 @@ begin
         AddColumn(100);
         EnterColumn();
         LeaveColumn();
-        buttonResult = Button("Test Button");
+        buttonResult = Button("Test Button");;
         EndPanel("Test Panel");
         DrawInterface();
         RefreshScreen();
     end;
-    AssertFalse(buttonResult);
+    AssertTrue(buttonResult);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestNumberBoxAtPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 30);
-    testResult := 5.0
+    testResult := 5.0;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        testResult = NumberBox(testResult, 1.0, testRect);
+        testResult = NumberBox(testResult, 1.0, testRect);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -561,11 +561,11 @@ end;
 procedure TIntegrationTests.TestNumberBoxIntegration;
 begin
     testWindow := OpenWindow("Number Box Test", 800, 600);
-    testResult := 5.0
+    testResult := 5.0;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        testResult = NumberBox(testResult, 1.0);
+        testResult = NumberBox(testResult, 1.0);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -575,11 +575,11 @@ end;
 procedure TIntegrationTests.TestNumberBoxLabeledIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    testResult := 5.0
+    testResult := 5.0;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        testResult = NumberBox("Test Value", testResult, 1.0);
+        testResult = NumberBox("Test Value", testResult, 1.0);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -621,7 +621,7 @@ begin
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        Paragraph("This is a test paragraph.", testRectangle);
+        ParagraphAtPosition("This is a test paragraph.", testRectangle);
         DrawInterface();
         RefreshScreen();
     end;
@@ -718,7 +718,7 @@ procedure TIntegrationTests.TestSetInterfaceFontFontAsStringIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testFont := LoadFont("hara", "hara.ttf");
-    SetInterfaceFont("hara");
+    SetInterfaceFontFontAsString("hara");
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
@@ -834,7 +834,7 @@ end;
 procedure TIntegrationTests.TestSetInterfaceStyleIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    SetInterfaceStyle("SplashKitSDK.InterfaceStyle.ShadedDarkStyle");
+    SetInterfaceStyle(InterfaceStyle.SHADED_DARK_STYLE);
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
@@ -849,7 +849,7 @@ end;
 procedure TIntegrationTests.TestSetInterfaceStyleWithColorIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    SetInterfaceStyle("SplashKitSDK.InterfaceStyle.ShadedDarkStyle", ColorBlue());
+    SetInterfaceStyleWithColor(InterfaceStyle.SHADED_DARK_STYLE, ColorBlue());
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
@@ -910,12 +910,12 @@ procedure TIntegrationTests.TestSliderAtPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 20);
-    initialValue := 50.0
-    sliderResult := initialValue
+    initialValue := 50.0;
+    sliderResult := initialValue;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        sliderResult = Slider(sliderResult, 0.0, 100.0, testRect);
+        sliderResult = Slider(sliderResult, 0.0, 100.0, testRect);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -925,12 +925,12 @@ end;
 procedure TIntegrationTests.TestSliderIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    initialValue := 50.0
-    sliderResult := initialValue
+    initialValue := 50.0;
+    sliderResult := initialValue;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        sliderResult = Slider(sliderResult, 0.0, 100.0);
+        sliderResult = Slider(sliderResult, 0.0, 100.0);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -940,12 +940,12 @@ end;
 procedure TIntegrationTests.TestSliderLabeledIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    initialValue := 50.0
-    sliderResult := initialValue
+    initialValue := 50.0;
+    sliderResult := initialValue;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        sliderResult = Slider("Test Slider", sliderResult, 0.0, 100.0);
+        sliderResult = Slider("Test Slider", sliderResult, 0.0, 100.0);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -976,7 +976,7 @@ begin
         ProcessEvents();
         ClearScreen();
         StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-        SplitIntoColumns(3, 200);
+        SplitIntoColumnsWithLastWidth(3, 200);
         Button("Button 1");
         Button("Button 2");
         Button("Button 3");
@@ -993,7 +993,7 @@ begin
         ProcessEvents();
         ClearScreen();
         StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-        SplitIntoColumnsRelative(3, 0.5);
+        SplitIntoColumnsRelativeWithLastWidth(3, 0.5);
         Button("Button 1");
         Button("Button 2");
         Button("Button 3");
@@ -1006,12 +1006,13 @@ end;
 procedure TIntegrationTests.TestStartCustomLayoutIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
+    buttonResult := false;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
         StartCustomLayout();
         AddColumn(200);
-        buttonResult = Button("Test Button");
+        buttonResult = Button("Test Button");;
         ResetLayout();
         DrawInterface();
         RefreshScreen();
@@ -1026,7 +1027,7 @@ begin
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        StartInset("test_inset", testRect);
+        StartInsetAtPosition("test_inset", testRect);
         Button("Test Button");
         EndInset("test_inset");
         DrawInterface();
@@ -1098,12 +1099,12 @@ end;
 procedure TIntegrationTests.TestTextBoxIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    initialText := "Initial Text"
-    textResult := initialText
+    initialText := "Initial Text";
+    textResult := initialText;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        textResult = TextBox(textResult);
+        textResult = TextBox(textResult);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -1114,12 +1115,12 @@ procedure TIntegrationTests.TestTextBoxAtPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 30);
-    initialText := "Initial Text"
-    textResult := initialText
+    initialText := "Initial Text";
+    textResult := initialText;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        textResult = TextBox(textResult, testRect);
+        textResult = TextBox(textResult, testRect);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -1129,12 +1130,12 @@ end;
 procedure TIntegrationTests.TestTextBoxLabeledIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    initialText := "Initial Text"
-    textResult := initialText
+    initialText := "Initial Text";
+    textResult := initialText;
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        textResult = TextBox("Enter Name", textResult);
+        textResult = TextBox("Enter Name", textResult);;
         DrawInterface();
         RefreshScreen();
     end;
@@ -1145,5 +1146,5 @@ end;
 
 procedure RegisterTests;
 begin
-TestFramework.RegisterTest(TIntegrationTests.Suite);
+#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
 end;

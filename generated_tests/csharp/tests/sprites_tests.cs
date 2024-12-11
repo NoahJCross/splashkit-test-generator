@@ -3,18 +3,19 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestSprites
     {
         [Fact]
         public void TestCallForAllSpritesWithValueIntegration()
         {
+            var helper = new Helper();
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testSprite1 = CreateSprite(testBitmap);
             var testSprite2 = CreateSprite(testBitmap);
             SpriteSetX(testSprite1, 100);
             SpriteSetX(testSprite2, 200);
-            CallForAllSprites(SpriteSetX(testSprite1, 300), 300);
+            CallForAllSpritesWithValue(helper.Spritefloatfunction, 300);
             Assert.Equal(300, SpriteX(testSprite1));
             Assert.Equal(300, SpriteX(testSprite2));
             FreeAllSprites();
@@ -24,17 +25,16 @@ namespace SplashKitTests
         [Fact]
         public void TestCallForAllSpritesIntegration()
         {
+            var helper = new Helper();
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testSprite1 = CreateSprite(testBitmap);
             var testSprite2 = CreateSprite(testBitmap);
-            SpriteSetX(testSprite1, 100);
-            SpriteSetY(testSprite1, 100);
-            SpriteSetX(testSprite2, 200);
-            SpriteSetY(testSprite2, 200);
-            CallForAllSprites(TestSpriteFunction());
-            Assert.True(SpriteAt(testSprite1, PointAt(100, 100)));
-            Assert.True(SpriteAt(testSprite2, PointAt(200, 200)));
+            SpriteSetPosition(testSprite1, PointAt(100, 100));
+            SpriteSetPosition(testSprite2, PointAt(200, 200));
+            CallForAllSprites(helper.Spritefunction);
+            Assert.Equal(300, SpriteX(testSprite1));
+            Assert.Equal(300, SpriteX(testSprite2));
             FreeAllSprites();
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -42,14 +42,14 @@ namespace SplashKitTests
         [Fact]
         public void TestCallOnSpriteEventIntegration()
         {
+            var helper = new Helper();
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            CallOnSpriteEvent(OnSpriteEvent());
-            ProcessEvents();
-            SimulateMouseClick(MouseButton.Left);
-            ProcessEvents();
-            Assert.True(MouseClicked(MouseButton.Left));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            CallOnSpriteEvent(helper.Sprite_event_handler);
+            SpriteStartAnimation(testSprite, "test");
+            UpdateSprite(testSprite);
+            Assert.True(helper.Event_called);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -61,9 +61,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testSprite = CreateSprite(testBitmap);
             SpriteSetPosition(testSprite, PointAt(100, 100));
-            var testCenterPoint = CenterPoint(testSprite);
-            Assert.Equal(150, testCenterPoint.X);
-            Assert.Equal(150, testCenterPoint.Y);
+            var centerPoint = CenterPoint(testSprite);
+            Assert.Equal(150, centerpoint.X);
+            Assert.Equal(150, centerpoint.Y);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -75,6 +75,7 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testSprite = CreateSprite(testBitmap);
             Assert.NotNull(testSprite);
+            Assert.True(HasSprite(SpriteName(testSprite)));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -85,8 +86,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
-            var testSprite = CreateSprite(testBitmap, testAnimation);
+            var testSprite = CreateSpriteWithAnimation(testBitmap, testAnimation);
             Assert.NotNull(testSprite);
+            Assert.True(HasSprite(SpriteName(testSprite)));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             FreeAnimationScript(testAnimation);
@@ -97,8 +99,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite("test_bitmap");
+            var testSprite = CreateSpriteWithBitmapNamed("test_bitmap");
             Assert.NotNull(testSprite);
+            Assert.True(HasSprite(SpriteName(testSprite)));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -108,8 +111,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSpriteNamed("test_sprite", testBitmap);
             Assert.NotNull(testSprite);
+            Assert.Equal("test_sprite", SpriteName(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -120,8 +124,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
-            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            var testSprite = CreateSpriteNamedWithAnimation("test_sprite", testBitmap, testAnimation);
             Assert.NotNull(testSprite);
+            Assert.Equal("test_sprite", SpriteName(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             FreeAnimationScript(testAnimation);
@@ -132,16 +137,20 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite("test_bitmap", "test_animation");
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSpriteWithBitmapAndAnimationNamed("test_bitmap", "test_animation");
             Assert.NotNull(testSprite);
+            Assert.True(HasSprite(SpriteName(testSprite)));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
+            FreeAnimationScript(testAnimation);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestCreateSpritePackIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            Assert.False(HasSpritePack("test_pack"));
             CreateSpritePack("test_pack");
             Assert.True(HasSpritePack("test_pack"));
             FreeSpritePack("test_pack");
@@ -150,10 +159,12 @@ namespace SplashKitTests
         [Fact]
         public void TestCurrentSpritePackIntegration()
         {
+            Assert.Equal("default", CurrentSpritePack());
             CreateSpritePack("test_pack");
             SelectSpritePack("test_pack");
-            var currentPack = CurrentSpritePack();
-            Assert.Equal("test_pack", currentPack);
+            Assert.Equal("test_pack", CurrentSpritePack());
+            SelectSpritePack("default");
+            Assert.Equal("default", CurrentSpritePack());
             FreeSpritePack("test_pack");
         }
         [Fact]
@@ -161,16 +172,16 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            ClearBitmap(testBitmap, ColorBlack());
             var testSprite1 = CreateSprite(testBitmap);
             var testSprite2 = CreateSprite(testBitmap);
-            SpriteSetX(testSprite1, 100);
-            SpriteSetY(testSprite1, 100);
-            SpriteSetX(testSprite2, 200);
-            SpriteSetY(testSprite2, 200);
+            SpriteSetPosition(testSprite1, PointAt(100, 100));
+            SpriteSetPosition(testSprite2, PointAt(200, 200));
+            ClearScreen(ColorWhite());
             DrawAllSprites();
             RefreshScreen();
-            Assert.NotEqual(ColorWhite(), GetPixel(100, 100));
-            Assert.NotEqual(ColorWhite(), GetPixel(200, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 200));
             FreeAllSprites();
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -180,11 +191,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            ClearBitmap(testBitmap, ColorBlack());
             var testSprite = CreateSprite(testBitmap);
             SpriteSetPosition(testSprite, PointAt(400, 300));
-            DrawSprite(testSprite, VectorTo(50, 50));
+            ClearScreen(ColorWhite());
+            DrawSpriteOffsetBy(testSprite, VectorFromAngle(50, 50));
             RefreshScreen();
-            Assert.NotEqual(ColorWhite(), GetPixel(PointAt(450, 350)));
+            Assert.NotEqual(ColorWhite(), GetPixel(testWindow, 450, 350));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -194,11 +207,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            ClearBitmap(testBitmap, ColorBlack());
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             SpriteSetPosition(testSprite, PointAt(400, 300));
+            ClearScreen(ColorWhite());
             DrawSprite(testSprite);
             RefreshScreen();
-            Assert.True(SpriteOnScreenAt(testSprite, PointAt(400, 300)));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -208,11 +223,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            ClearBitmap(testBitmap, ColorBlack());
             var testSprite = CreateSprite(testBitmap);
             SpriteSetPosition(testSprite, PointAt(400, 300));
-            DrawSprite(testSprite, 50, 50);
+            ClearScreen(ColorWhite());
+            DrawSpriteOffsetXY(testSprite, 50.0, 50.0);
             RefreshScreen();
-            Assert.True(PointInCircle(PointAt(450, 350), SpriteCollisionCircle(testSprite)));
+            Assert.NotEqual(ColorWhite(), GetPixel(testWindow, 450, 350));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -222,9 +239,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite1 = CreateSprite("test_sprite1", testBitmap);
+            var testSprite2 = CreateSprite("test_sprite2", testBitmap);
+            Assert.True(HasSprite("test_sprite1"));
+            Assert.True(HasSprite("test_sprite2"));
             FreeAllSprites();
-            Assert.False(HasSprite("test_sprite"));
+            Assert.False(HasSprite("test_sprite1"));
+            Assert.False(HasSprite("test_sprite2"));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -233,51 +254,57 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.True(HasSprite("test_sprite"));
             FreeSprite(testSprite);
+            Assert.False(HasSprite("test_sprite"));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestFreeSpritePackIntegration()
         {
+            Assert.True(HasSpritePack("default"));
             CreateSpritePack("test_pack");
-            var testHasPack = HasSpritePack("test_pack");
-            Assert.True(testHasPack);
+            Assert.True(HasSpritePack("test_pack"));
             FreeSpritePack("test_pack");
-            var testHasPack = HasSpritePack("test_pack");
-            Assert.False(testHasPack);
+            Assert.False(HasSpritePack("test_pack"));
+            Assert.True(HasSpritePack("default"));
         }
         [Fact]
         public void TestHasSpriteIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            Assert.False(HasSprite("test_sprite"));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             Assert.True(HasSprite("test_sprite"));
             FreeSprite(testSprite);
+            Assert.False(HasSprite("test_sprite"));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestHasSpritePackIntegration()
         {
+            Assert.False(HasSpritePack("test_pack"));
             CreateSpritePack("test_pack");
             Assert.True(HasSpritePack("test_pack"));
-            Assert.False(HasSpritePack("non_existent_pack"));
             FreeSpritePack("test_pack");
+            Assert.False(HasSpritePack("test_pack"));
         }
         [Fact]
         public void TestMoveSpriteIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var startPosition = PointAt(100.0, 100.0);
+            SpriteSetPosition(testSprite, startPosition);
             SpriteSetVelocity(testSprite, VectorTo(10.0, 10.0));
-            SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-            MoveSprite(testSprite);
-            ProcessEvents();
-            Assert.NotEqual(PointAt(100.0, 100.0), SpritePosition(testSprite));
+            MoveSprite(testSprite, 1.0);
+            Assert.Equal(110.0, SpriteX(testSprite));
+            Assert.Equal(110.0, SpriteY(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -287,10 +314,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             SpriteSetPosition(testSprite, PointAt(100, 100));
-            MoveSprite(testSprite, VectorTo(50, 50));
-            ProcessEvents();
+            MoveSpriteByVector(testSprite, VectorTo(50, 50), 1.0);
             Assert.Equal(150, SpriteX(testSprite));
             Assert.Equal(150, SpriteY(testSprite));
             FreeSprite(testSprite);
@@ -302,9 +328,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-            MoveSprite(testSprite, VectorTo(50.0, 50.0), 0.5);
+            MoveSpriteByVectorPercent(testSprite, VectorTo(50.0, 50.0), 0.5);
             Assert.Equal(125.0, SpriteX(testSprite));
             Assert.Equal(125.0, SpriteY(testSprite));
             FreeSprite(testSprite);
@@ -316,12 +342,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
             SpriteSetVelocity(testSprite, VectorTo(10.0, 10.0));
-            MoveSprite(testSprite, 0.5);
-            ProcessEvents();
-            Assert.True(PointInCircle(PointAt(105.0, 105.0), SpriteCircle(testSprite)));
+            MoveSpritePercent(testSprite, 0.5);
+            Assert.Equal(105.0, SpriteX(testSprite));
+            Assert.Equal(105.0, SpriteY(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -331,7 +357,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             MoveSpriteTo(testSprite, 400.0, 300.0);
             Assert.Equal(400.0, SpriteX(testSprite));
             Assert.Equal(300.0, SpriteY(testSprite));
@@ -344,11 +370,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             CreateSpritePack("test_pack");
-            var testSprite = CreateSprite("rocket_sprt.png");
+            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal("default", CurrentSpritePack());
             SelectSpritePack("test_pack");
-            DrawAllSprites();
-            Assert.True(SpriteOnScreenAt(testSprite, PointAt(400, 300)));
-            FreeAllSprites();
+            Assert.Equal("test_pack", CurrentSpritePack());
+            FreeSprite(testSprite);
+            FreeBitmap(testBitmap);
             FreeSpritePack("test_pack");
             CloseWindow(testWindow);
         }
@@ -357,10 +385,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var newLayerBitmap = CreateBitmap("new_layer_bitmap", 50, 50);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var newLayerBitmap = CreateBitmap("new_layer", 50, 50);
             var layerIndex = SpriteAddLayer(testSprite, newLayerBitmap, "new_layer");
-            Assert.True(layerIndex > -1);
+            Assert.Equal(1, layerIndex);
+            Assert.Equal(2, SpriteLayerCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             FreeBitmap(newLayerBitmap);
@@ -371,12 +400,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(400, 300));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetVelocity(testSprite, VectorTo(0, 0));
             SpriteAddToVelocity(testSprite, VectorTo(10, 10));
-            UpdateSprite(testSprite);
-            Assert.Equal(410, SpriteX(testSprite));
-            Assert.Equal(310, SpriteY(testSprite));
+            var velocity = SpriteVelocity(testSprite);
+            Assert.Equal(10.0, velocity.X);
+            Assert.Equal(10.0, velocity.Y);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -386,9 +415,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteAddValue(testSprite, "health");
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteAddValue(testSprite, "health", 100);
             Assert.True(SpriteHasValue(testSprite, "health"));
+            Assert.Equal(100, SpriteValue(testSprite, "health"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -398,8 +428,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteAddValue(testSprite, "health", 100.0);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteAddValueWithDefault(testSprite, "health", 100.0);
             Assert.True(SpriteHasValue(testSprite, "health"));
             Assert.Equal(100.0, SpriteValue(testSprite, "health"));
             FreeSprite(testSprite);
@@ -411,10 +441,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testAnchorPoint = SpriteAnchorPoint(testSprite);
-            Assert.Equal(50, testAnchorPoint.X);
-            Assert.Equal(50, testAnchorPoint.Y);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var anchorPoint = SpriteAnchorPoint(testSprite);
+            Assert.Equal(50, anchorpoint.X);
+            Assert.Equal(50, anchorpoint.Y);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -424,11 +454,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             SpriteSetPosition(testSprite, PointAt(100, 100));
-            var testAnchorPosition = SpriteAnchorPosition(testSprite);
-            Assert.Equal(100, testAnchorPosition.X);
-            Assert.Equal(100, testAnchorPosition.Y);
+            var anchorPosition = SpriteAnchorPosition(testSprite);
+            Assert.Equal(150, anchorposition.X);
+            Assert.Equal(150, anchorposition.Y);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -438,14 +468,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteStartAnimation(testSprite, "default");
-            UpdateSpriteAnimation(testSprite);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "walkfront");
             Assert.False(SpriteAnimationHasEnded(testSprite));
-            UpdateSpriteAnimation(testSprite);
+            UpdateSpriteAnimation(testSprite, 100);
             Assert.True(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
+            FreeAnimationScript(testAnimation);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -453,12 +484,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteStartAnimation(testSprite, "default");
-            var testAnimationName = SpriteAnimationName(testSprite);
-            Assert.Equal("default", testAnimationName);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "walkfront");
+            Assert.Equal("walkfront", SpriteAnimationName(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
+            FreeAnimationScript(testAnimation);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -466,11 +498,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(400, 300));
-            ProcessEvents();
+            ClearBitmap(testBitmap, ColorRed());
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetX(testSprite, 400);
+            SpriteSetY(testSprite, 300);
+            DrawSprite(testSprite);
             Assert.True(SpriteAt(testSprite, PointAt(400, 300)));
-            Assert.False(SpriteAt(testSprite, PointAt(500, 400)));
+            Assert.False(SpriteAt(testSprite, PointAt(600, 500)));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -480,12 +514,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            var initialLayerPosition = SpriteVisibleIndexOfLayer(testSprite, layerIndex);
-            SpriteBringLayerForward(testSprite, layerIndex);
-            var newLayerPosition = SpriteVisibleIndexOfLayer(testSprite, layerIndex);
-            Assert.True(newLayerPosition > initialLayerPosition);
+            SpriteShowLayer(testSprite, layerIndex);
+            var visibleIndex = SpriteVisibleIndexOfLayer(testSprite, layerIndex);
+            SpriteBringLayerForward(testSprite, visibleIndex);
+            Assert.Equal(0, SpriteVisibleIndexOfLayer(testSprite, layerIndex));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -495,10 +529,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteBringLayerToFront(testSprite, layerIndex);
-            Assert.Equal(SpriteVisibleLayerCount(testSprite), SpriteVisibleIndexOfLayer(testSprite, layerIndex));
+            SpriteShowLayer(testSprite, layerIndex);
+            var visibleIndex = SpriteVisibleIndexOfLayer(testSprite, layerIndex);
+            SpriteBringLayerToFront(testSprite, visibleIndex);
+            Assert.Equal(0, SpriteVisibleIndexOfLayer(testSprite, "layer2"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -506,14 +542,14 @@ namespace SplashKitTests
         [Fact]
         public void TestSpriteCallOnEventIntegration()
         {
+            var helper = new Helper();
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteCallOnEvent(testSprite, OnSpriteEvent());
-            ProcessEvents();
-            SimulateMouseClick(MouseButton.Left);
-            ProcessEvents();
-            Assert.True(SpriteEventOccurred(testSprite));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteCallOnEvent(testSprite, helper.Sprite_event_handler);
+            SpriteStartAnimation(testSprite, "test");
+            UpdateSprite(testSprite);
+            Assert.True(helper.Event_called);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -523,9 +559,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testCircle = SpriteCircle(testSprite);
-            Assert.True(PointInCircle(PointAt(50, 50), testCircle));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var circle = SpriteCircle(testSprite);
+            Assert.Equal(50, circle.Center.x);
+            Assert.Equal(50, circle.Center.y);
+            Assert.Equal(50, circle.Radius);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -535,10 +573,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             var collisionBitmap = SpriteCollisionBitmap(testSprite);
-            Assert.Equal(100, BitmapWidth(collisionBitmap));
-            Assert.Equal(100, BitmapHeight(collisionBitmap));
+            Assert.Equal(testBitmap, collisionBitmap);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -548,9 +585,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testCircle = SpriteCollisionCircle(testSprite);
-            Assert.True(PointInCircle(PointAt(50, 50), testCircle));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var circle = SpriteCollisionCircle(testSprite);
+            Assert.Equal(50, circle.Center.x);
+            Assert.Equal(50, circle.Center.y);
+            Assert.Equal(50, circle.Radius);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -560,9 +599,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetCollisionKind(testSprite, CollisionTestKind.PixelCollisions);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             Assert.Equal(CollisionTestKind.PixelCollisions, SpriteCollisionKind(testSprite));
+            SpriteSetCollisionKind(testSprite, CollisionTestKind.AabbCollisions);
+            Assert.Equal(CollisionTestKind.AabbCollisions, SpriteCollisionKind(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -572,10 +612,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testRectangle = SpriteCollisionRectangle(testSprite);
-            Assert.Equal(100, testRectangle.Width);
-            Assert.Equal(100, testRectangle.Height);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var rect = SpriteCollisionRectangle(testSprite);
+            Assert.Equal(0, rect.X);
+            Assert.Equal(0, rect.Y);
+            Assert.Equal(100, rect.Width);
+            Assert.Equal(100, rect.Height);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -585,12 +627,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteStartAnimation(testSprite, 0);
-            UpdateSprite(testSprite);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "test_animation");
             Assert.Equal(0, SpriteCurrentCell(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
+            FreeAnimationScript(testAnimation);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -598,12 +641,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testRectangle = SpriteCurrentCellRectangle(testSprite);
-            Assert.Equal(0, RectangleLeft(testRectangle));
-            Assert.Equal(0, RectangleTop(testRectangle));
-            Assert.Equal(BitmapWidth(testBitmap), RectangleRight(testRectangle));
-            Assert.Equal(BitmapHeight(testBitmap), RectangleBottom(testRectangle));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var rect = SpriteCurrentCellRectangle(testSprite);
+            Assert.Equal(0, rect.X);
+            Assert.Equal(0, rect.Y);
+            Assert.Equal(100, rect.Width);
+            Assert.Equal(100, rect.Height);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -613,7 +656,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteDx(testSprite));
             SpriteSetDx(testSprite, 5.0);
             Assert.Equal(5.0, SpriteDx(testSprite));
             FreeSprite(testSprite);
@@ -625,7 +669,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteDy(testSprite));
             SpriteSetDy(testSprite, 5.0);
             Assert.Equal(5.0, SpriteDy(testSprite));
             FreeSprite(testSprite);
@@ -637,8 +682,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteAddValue(testSprite, "health");
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.False(SpriteHasValue(testSprite, "health"));
+            SpriteAddValue(testSprite, "health", 100);
             Assert.True(SpriteHasValue(testSprite, "health"));
             Assert.False(SpriteHasValue(testSprite, "mana"));
             FreeSprite(testSprite);
@@ -650,10 +696,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(90.0, SpriteHeading(testSprite));
             SpriteSetVelocity(testSprite, VectorTo(1.0, 1.0));
-            var testHeading = SpriteHeading(testSprite);
-            Assert.InRange(testHeading, 45.0, 45.01);
+            Assert.Equal(45.0, SpriteHeading(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -663,7 +709,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(100, SpriteHeight(testSprite));
+            SpriteSetScale(testSprite, 2.0);
             Assert.Equal(100, SpriteHeight(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -674,10 +722,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteHideLayer(testSprite, "layer2");
-            Assert.False(SpriteLayerVisible(testSprite, layerIndex));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteShowLayer(testSprite, "layer2");
+            Assert.Equal(2, SpriteVisibleLayerCount(testSprite));
+            SpriteHideLayerNamed(testSprite, "layer2");
+            Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -687,11 +737,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteShowLayer(testSprite, layerIndex);
-            SpriteHideLayer(testSprite, layerIndex);
-            Assert.False(SpriteLayerVisible(testSprite, layerIndex));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteShowLayer(testSprite, layerIdx);
+            Assert.Equal(2, SpriteVisibleLayerCount(testSprite));
+            SpriteHideLayer(testSprite, layerIdx);
+            Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -701,10 +752,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             SpriteAddLayer(testSprite, testBitmap, "layer2");
-            var testLayerBitmap = SpriteLayer(testSprite, "layer2");
-            Assert.NotNull(testLayerBitmap);
+            Assert.Equal(testBitmap, SpriteLayerNamed(testSprite, "layer2"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -714,10 +764,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            var testLayerBitmap = SpriteLayer(testSprite, layerIndex);
-            Assert.NotNull(testLayerBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            Assert.Equal(testBitmap, SpriteLayerAtIndex(testSprite, layerIdx));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -727,9 +776,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testCircle = SpriteLayerCircle(testSprite, "layer1");
-            Assert.True(PointInCircle(PointAt(50, 50), testCircle));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var circle = SpriteLayerCircleNamed(testSprite, "base_layer");
+            Assert.Equal(50, circle.Center.x);
+            Assert.Equal(50, circle.Center.y);
+            Assert.Equal(50, circle.Radius);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -739,9 +790,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testCircle = SpriteLayerCircle(testSprite, 0);
-            Assert.True(PointInCircle(PointAt(50, 50), testCircle));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var circle = SpriteLayerCircleAtIndex(testSprite, 0);
+            Assert.Equal(50, circle.Center.x);
+            Assert.Equal(50, circle.Center.y);
+            Assert.Equal(50, circle.Radius);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -751,10 +804,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             Assert.Equal(1, SpriteLayerCount(testSprite));
-            SpriteAddLayer(testSprite, testBitmap, "layer2");
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
             Assert.Equal(2, SpriteLayerCount(testSprite));
+            Assert.Equal(1, layerIdx);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -764,9 +818,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteAddLayer(testSprite, testBitmap, "layer2");
-            Assert.Equal(100, SpriteLayerHeight(testSprite, "layer2"));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(100, SpriteLayerHeightNamed(testSprite, "base_layer"));
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            Assert.Equal(100, SpriteLayerHeightNamed(testSprite, "layer2"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -776,9 +831,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerHeight = SpriteLayerHeight(testSprite, 0);
-            Assert.Equal(100, layerHeight);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(100, SpriteLayerHeight(testSprite, 0));
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            Assert.Equal(100, SpriteLayerHeight(testSprite, layerIdx));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -788,9 +844,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            Assert.Equal(layerIndex, SpriteLayerIndex(testSprite, "layer2"));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0, SpriteLayerIndex(testSprite, "base_layer"));
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            Assert.Equal(layerIdx, SpriteLayerIndex(testSprite, "layer2"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -800,9 +857,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            Assert.Equal("layer2", SpriteLayerName(testSprite, layerIndex));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            Assert.Equal("layer2", SpriteLayerName(testSprite, layerIdx));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -812,11 +869,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetLayerOffset(testSprite, "layer1", VectorTo(10, 10));
-            var layerOffset = SpriteLayerOffset(testSprite, "layer1");
-            Assert.Equal(10, layerOffset.X);
-            Assert.Equal(10, layerOffset.Y);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(VectorTo(0, 0), SpriteLayerOffsetNamed(testSprite, "base_layer"));
+            SpriteSetLayerOffsetNamed(testSprite, "base_layer", VectorTo(10, 10));
+            Assert.Equal(VectorTo(10, 10), SpriteLayerOffsetNamed(testSprite, "base_layer"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -826,10 +882,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteSetLayerOffset(testSprite, layerIndex, VectorTo(10, 10));
-            Assert.Equal(VectorTo(10, 10), SpriteLayerOffset(testSprite, layerIndex));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(VectorTo(0, 0), SpriteLayerOffset(testSprite, 0));
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteSetLayerOffsetAtIndex(testSprite, layerIdx, VectorTo(10, 10));
+            Assert.Equal(VectorTo(10, 10), SpriteLayerOffset(testSprite, layerIdx));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -839,12 +896,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testRectangle = SpriteLayerRectangle(testSprite, "layer1");
-            Assert.Equal(0, RectangleLeft(testRectangle));
-            Assert.Equal(0, RectangleTop(testRectangle));
-            Assert.Equal(100, RectangleRight(testRectangle));
-            Assert.Equal(100, RectangleBottom(testRectangle));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var rect = SpriteLayerRectangleNamed(testSprite, "base_layer");
+            Assert.Equal(0, rect.X);
+            Assert.Equal(0, rect.Y);
+            Assert.Equal(100, rect.Width);
+            Assert.Equal(100, rect.Height);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -854,9 +911,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var testRectangle = SpriteLayerRectangle(testSprite, 0);
-            Assert.Equal(BitmapWidth(testBitmap), testRectangle.Width);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var rect = SpriteLayerRectangleAtIndex(testSprite, 0);
+            Assert.Equal(0, rect.X);
+            Assert.Equal(0, rect.Y);
+            Assert.Equal(100, rect.Width);
+            Assert.Equal(100, rect.Height);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -866,9 +926,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteAddLayer(testSprite, testBitmap, "layer2");
-            Assert.Equal(100, SpriteLayerWidth(testSprite, "layer2"));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(100, SpriteLayerWidthNamed(testSprite, "base_layer"));
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            Assert.Equal(100, SpriteLayerWidthNamed(testSprite, "layer2"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -878,8 +939,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             Assert.Equal(100, SpriteLayerWidth(testSprite, 0));
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            Assert.Equal(100, SpriteLayerWidth(testSprite, layerIdx));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -889,14 +952,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-            SpriteSetRotation(testSprite, 45.0);
-            var testMatrix = SpriteLocationMatrix(testSprite);
-            var testPoint = PointAt(50.0, 50.0);
-            var resultPoint = MatrixMultiply(testMatrix, testPoint);
-            Assert.InRange(resultPoint.X, 149.0, 150.0);
-            Assert.InRange(resultPoint.Y, 149.0, 150.0);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetPosition(testSprite, PointAt(100, 100));
+            SpriteSetRotation(testSprite, 45);
+            var matrix = SpriteLocationMatrix(testSprite);
+            Assert.Equal(150.0, {:value_type=>"matrix_access", :variable_name=>"matrix", :field=>"elements", :row=>0, :col=>2});
+            Assert.Equal(1, {:value_type=>"matrix_access", :variable_name=>"matrix", :field=>"elements", :row=>2, :col=>2});
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -906,7 +967,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(1.0, SpriteMass(testSprite));
             SpriteSetMass(testSprite, 10.0);
             Assert.Equal(10.0, SpriteMass(testSprite));
             FreeSprite(testSprite);
@@ -918,11 +980,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.False(SpriteMoveFromAnchorPoint(testSprite));
             SpriteSetMoveFromAnchorPoint(testSprite, true);
             Assert.True(SpriteMoveFromAnchorPoint(testSprite));
-            SpriteSetMoveFromAnchorPoint(testSprite, false);
-            Assert.False(SpriteMoveFromAnchorPoint(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -932,11 +993,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             SpriteSetPosition(testSprite, PointAt(100, 100));
-            SpriteMoveTo(testSprite, PointAt(400, 300), 2.0);
-            ProcessEvents();
-            Assert.True(PointInCircle(PointAt(400, 300), SpriteCollisionCircle(testSprite)));
+            SpriteMoveToTakingSeconds(testSprite, PointAt(200, 200), 1.0);
+            UpdateSprite(testSprite);
+            var position = SpritePosition(testSprite);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -946,7 +1007,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             Assert.Equal("test_sprite", SpriteName(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -957,9 +1018,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var namedSprite = SpriteNamed("test_sprite");
-            Assert.NotNull(namedSprite);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(testSprite, SpriteNamed("test_sprite"));
+            Assert.Null(SpriteNamed("non_existent_sprite"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -969,10 +1030,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(0, 0));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetPosition(testSprite, PointAt(400, 300));
             Assert.False(SpriteOffscreen(testSprite));
-            SpriteSetPosition(testSprite, PointAt(-100, -100));
+            SpriteSetPosition(testSprite, PointAt(-200, -200));
             Assert.True(SpriteOffscreen(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -983,12 +1044,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(100, 100));
-            DrawSprite(testSprite);
-            RefreshScreen();
-            Assert.True(SpriteOnScreenAt(testSprite, PointAt(100, 100)));
-            Assert.False(SpriteOnScreenAt(testSprite, PointAt(1000, 1000)));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetPosition(testSprite, PointAt(400, 300));
+            Assert.True(SpriteOnScreenAtPoint(testSprite, PointAt(400, 300)));
+            Assert.False(SpriteOnScreenAtPoint(testSprite, PointAt(0, 0)));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -998,10 +1057,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(100, 100));
-            Assert.True(SpriteOnScreenAt(testSprite, 100, 100));
-            Assert.False(SpriteOnScreenAt(testSprite, 1000, 1000));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetPosition(testSprite, PointAt(400, 300));
+            Assert.True(SpriteOnScreenAt(testSprite, 400, 300));
+            Assert.False(SpriteOnScreenAt(testSprite, 0, 0));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1011,11 +1070,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-            var testPosition = SpritePosition(testSprite);
-            Assert.Equal(100.0, testPosition.X);
-            Assert.Equal(100.0, testPosition.Y);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(PointAt(0, 0), SpritePosition(testSprite));
+            SpriteSetPosition(testSprite, PointAt(400, 300));
+            Assert.Equal(PointAt(400, 300), SpritePosition(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1025,10 +1083,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteStartAnimation(testSprite, 0);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite(testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "walkfront");
+            Assert.False(SpriteAnimationHasEnded(testSprite));
+            UpdateSprite(testSprite, 100);
             SpriteReplayAnimation(testSprite);
-            Assert.True(SpriteAnimationHasEnded(testSprite));
+            Assert.False(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1038,8 +1099,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteReplayAnimation(testSprite, true);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite(testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "walkfront");
+            Assert.False(SpriteAnimationHasEnded(testSprite));
+            UpdateSprite(testSprite, 100);
+            SpriteReplayAnimationWithSound(testSprite, true);
+            Assert.False(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1049,7 +1115,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteRotation(testSprite));
             SpriteSetRotation(testSprite, 45.0);
             Assert.Equal(45.0, SpriteRotation(testSprite));
             FreeSprite(testSprite);
@@ -1061,7 +1128,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(1.0, SpriteScale(testSprite));
             SpriteSetScale(testSprite, 2.0);
             Assert.Equal(2.0, SpriteScale(testSprite));
             FreeSprite(testSprite);
@@ -1073,11 +1141,16 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(100, 100));
-            var testRectangle = SpriteScreenRectangle(testSprite);
-            Assert.Equal(100, RectangleLeft(testRectangle));
-            Assert.Equal(100, RectangleTop(testRectangle));
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            ClearBitmap(testBitmap, ColorWhite());
+            var testSprite = CreateSprite(testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "walkfront");
+            SpriteSetPosition(testSprite, PointAt(0, 0));
+            var rect = SpriteScreenRectangle(testSprite);
+            Assert.Equal(0, rect.X);
+            Assert.Equal(0, rect.Y);
+            Assert.Equal(100, rect.Width);
+            Assert.Equal(100, rect.Height);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1087,10 +1160,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteSendLayerBackward(testSprite, layerIndex);
-            Assert.True(SpriteVisibleIndexOfLayer(testSprite, layerIndex) < 1);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var layer1 = SpriteAddLayer(testSprite, testBitmap, "layer1");
+            SpriteShowLayer(testSprite, layer1);
+            var layer2 = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteShowLayer(testSprite, layer2);
+            SpriteSendLayerBackward(testSprite, visibleIndex);
+            Assert.Equal(2, SpriteVisibleIndexOfLayer(testSprite, layer2));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1100,10 +1176,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteSendLayerToBack(testSprite, layerIndex);
-            Assert.Equal(0, SpriteVisibleIndexOfLayer(testSprite, layerIndex));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var layer1 = SpriteAddLayer(testSprite, testBitmap, "layer1");
+            SpriteShowLayer(testSprite, layer1);
+            var layer2 = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteShowLayer(testSprite, layer2);
+            SpriteSendLayerToBack(testSprite, visibleIndex);
+            Assert.Equal(2, SpriteVisibleIndexOfLayer(testSprite, layer2));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1113,11 +1192,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetAnchorPoint(testSprite, PointAt(50, 50));
-            var testAnchorPoint = SpriteAnchorPoint(testSprite);
-            Assert.Equal(50, testAnchorPoint.X);
-            Assert.Equal(50, testAnchorPoint.Y);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(PointAt(50, 50), SpriteAnchorPoint(testSprite));
+            SpriteSetAnchorPoint(testSprite, PointAt(25, 25));
+            Assert.Equal(PointAt(25, 25), SpriteAnchorPoint(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1127,11 +1205,14 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetCollisionBitmap(testSprite, testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             Assert.Equal(testBitmap, SpriteCollisionBitmap(testSprite));
+            var newBitmap = CreateBitmap("new_bitmap", 200, 200);
+            SpriteSetCollisionBitmap(testSprite, newBitmap);
+            Assert.Equal(newBitmap, SpriteCollisionBitmap(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
+            FreeBitmap(newBitmap);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1139,9 +1220,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetCollisionKind(testSprite, CollisionTestKind.PixelCollisions);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             Assert.Equal(CollisionTestKind.PixelCollisions, SpriteCollisionKind(testSprite));
+            SpriteSetCollisionKind(testSprite, CollisionTestKind.AabbCollisions);
+            Assert.Equal(CollisionTestKind.AabbCollisions, SpriteCollisionKind(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1151,7 +1233,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteDx(testSprite));
             SpriteSetDx(testSprite, 5.0);
             Assert.Equal(5.0, SpriteDx(testSprite));
             FreeSprite(testSprite);
@@ -1163,7 +1246,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteDy(testSprite));
             SpriteSetDy(testSprite, 5.0);
             Assert.Equal(5.0, SpriteDy(testSprite));
             FreeSprite(testSprite);
@@ -1175,7 +1259,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetVelocity(testSprite, VectorFromAngle(90, 1));
+            Assert.Equal(90.0, SpriteHeading(testSprite));
             SpriteSetHeading(testSprite, 45.0);
             Assert.Equal(45.0, SpriteHeading(testSprite));
             FreeSprite(testSprite);
@@ -1187,11 +1273,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetLayerOffset(testSprite, "layer1", VectorTo(10.0, 10.0));
-            var testOffset = SpriteLayerOffset(testSprite, "layer1");
-            Assert.Equal(10.0, testOffset.X);
-            Assert.Equal(10.0, testOffset.Y);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(VectorTo(0, 0), SpriteLayerOffset(testSprite, "base_layer"));
+            SpriteSetLayerOffsetNamed(testSprite, "base_layer", VectorTo(10.0, 10.0));
+            Assert.Equal(VectorTo(10.0, 10.0), SpriteLayerOffset(testSprite, "base_layer"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1201,8 +1286,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetLayerOffset(testSprite, 0, VectorTo(10.0, 10.0));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(VectorTo(0, 0), SpriteLayerOffset(testSprite, 0));
+            SpriteSetLayerOffsetAtIndex(testSprite, 0, VectorTo(10.0, 10.0));
             Assert.Equal(VectorTo(10.0, 10.0), SpriteLayerOffset(testSprite, 0));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -1213,7 +1299,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(1.0, SpriteMass(testSprite));
             SpriteSetMass(testSprite, 10.0);
             Assert.Equal(10.0, SpriteMass(testSprite));
             FreeSprite(testSprite);
@@ -1225,11 +1312,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.False(SpriteMoveFromAnchorPoint(testSprite));
             SpriteSetMoveFromAnchorPoint(testSprite, true);
             Assert.True(SpriteMoveFromAnchorPoint(testSprite));
-            SpriteSetMoveFromAnchorPoint(testSprite, false);
-            Assert.False(SpriteMoveFromAnchorPoint(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1239,10 +1325,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(PointAt(0, 0), SpritePosition(testSprite));
             SpriteSetPosition(testSprite, PointAt(100, 100));
-            Assert.Equal(100, SpriteX(testSprite));
-            Assert.Equal(100, SpriteY(testSprite));
+            Assert.Equal(PointAt(100, 100), SpritePosition(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1252,7 +1338,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteRotation(testSprite));
             SpriteSetRotation(testSprite, 45.0);
             Assert.Equal(45.0, SpriteRotation(testSprite));
             FreeSprite(testSprite);
@@ -1264,7 +1351,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(1.0, SpriteScale(testSprite));
             SpriteSetScale(testSprite, 2.0);
             Assert.Equal(2.0, SpriteScale(testSprite));
             FreeSprite(testSprite);
@@ -1276,7 +1364,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetVelocity(testSprite, VectorFromAngle(0, 1));
             SpriteSetSpeed(testSprite, 5.0);
             Assert.Equal(5.0, SpriteSpeed(testSprite));
             FreeSprite(testSprite);
@@ -1288,9 +1377,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteAddValue(testSprite, "test_value");
-            SpriteSetValue(testSprite, "test_value", 10.5);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.False(SpriteHasValue(testSprite, "test_value"));
+            SpriteAddValue(testSprite, "test_value", 0.0);
+            SpriteSetValueNamed(testSprite, "test_value", 10.5);
             Assert.Equal(10.5, SpriteValue(testSprite, "test_value"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -1301,10 +1391,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(VectorTo(0, 0), SpriteVelocity(testSprite));
             SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
-            UpdateSprite(testSprite);
-            Assert.True(SpriteAt(testSprite, PointAt(5.0, 5.0)));
+            Assert.Equal(VectorTo(5.0, 5.0), SpriteVelocity(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1314,7 +1404,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteX(testSprite));
             SpriteSetX(testSprite, 150.0);
             Assert.Equal(150.0, SpriteX(testSprite));
             FreeSprite(testSprite);
@@ -1326,7 +1417,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteY(testSprite));
             SpriteSetY(testSprite, 300.0);
             Assert.Equal(300.0, SpriteY(testSprite));
             FreeSprite(testSprite);
@@ -1338,10 +1430,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            var result = SpriteShowLayer(testSprite, "layer2");
-            Assert.Equal(1, result);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteHideLayer(testSprite, "layer2");
+            Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
+            Assert.Equal(layerIdx, SpriteShowLayerNamed(testSprite, "layer2"));
+            Assert.Equal(2, SpriteVisibleLayerCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1351,11 +1445,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteHideLayer(testSprite, 1);
-            var result = SpriteShowLayer(testSprite, 1);
-            Assert.Equal(1, result);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteHideLayer(testSprite, layerIdx);
+            Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
+            Assert.Equal(layerIdx, SpriteShowLayer(testSprite, layerIdx));
+            Assert.Equal(2, SpriteVisibleLayerCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1365,10 +1460,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
-            var testSpeed = SpriteSpeed(testSprite);
-            Assert.Equal(7.0710678118654755, testSpeed);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteSpeed(testSprite));
+            SpriteSetVelocity(testSprite, VectorTo(3.0, 4.0));
+            Assert.Equal(5.0, SpriteSpeed(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1378,9 +1473,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteStartAnimation(testSprite, "test_animation");
-            Assert.True(SpriteAnimationName(testSprite));
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite(testBitmap, testAnimation);
+            SpriteStartAnimationNamed(testSprite, "walkfront");
+            Assert.False(SpriteAnimationHasEnded(testSprite));
+            UpdateSpriteAnimation(testSprite, 100);
+            Assert.True(SpriteAnimationHasEnded(testSprite));
+            Assert.Equal("walkfront", SpriteAnimationName(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1390,10 +1489,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteStartAnimation(testSprite, "test_animation", true);
-            UpdateSprite(testSprite);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite(testBitmap, testAnimation);
+            SpriteStartAnimationNamedWithSound(testSprite, "walkfront", true);
+            Assert.False(SpriteAnimationHasEnded(testSprite));
+            UpdateSpriteAnimation(testSprite, 100);
             Assert.True(SpriteAnimationHasEnded(testSprite));
+            Assert.Equal("walkfront", SpriteAnimationName(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1403,9 +1505,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite(testBitmap, testAnimation);
             SpriteStartAnimation(testSprite, 0);
-            UpdateSprite(testSprite);
+            Assert.False(SpriteAnimationHasEnded(testSprite));
+            UpdateSpriteAnimation(testSprite, 100);
             Assert.True(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -1416,9 +1520,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteStartAnimation(testSprite, 0, true);
-            UpdateSprite(testSprite);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite(testBitmap, testAnimation);
+            SpriteStartAnimationWithSound(testSprite, 0, true);
+            Assert.False(SpriteAnimationHasEnded(testSprite));
+            UpdateSpriteAnimation(testSprite, 100);
+            UpdateSpriteAnimation(testSprite, true);
             Assert.True(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -1427,19 +1534,18 @@ namespace SplashKitTests
         [Fact]
         public void TestSpriteStopCallingOnEventIntegration()
         {
+            var helper = new Helper();
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteCallOnEvent(testSprite, OnSpriteEvent());
-            ProcessEvents();
-            SimulateSpriteEvent(testSprite);
-            ProcessEvents();
-            Assert.True(OnSpriteEventCalled());
-            SpriteStopCallingOnEvent(testSprite, OnSpriteEvent());
-            ProcessEvents();
-            SimulateSpriteEvent(testSprite);
-            ProcessEvents();
-            Assert.False(OnSpriteEventCalled());
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetX(testSprite, 100);
+            SpriteCallOnEvent(testSprite, helper.Sprite_event_handler);
+            UpdateSprite(testSprite);
+            Assert.Equal(200, SpriteX(testSprite));
+            SpriteSetX(testSprite, 100);
+            SpriteStopCallingOnEvent(testSprite, helper.Sprite_event_handler);
+            UpdateSprite(testSprite);
+            Assert.Equal(100, SpriteX(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1449,11 +1555,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteToggleLayerVisible(testSprite, "layer2");
-            Assert.False(SpriteVisibleLayerCount(testSprite));
-            SpriteToggleLayerVisible(testSprite, "layer2");
+            SpriteShowLayer(testSprite, "layer2");
+            Assert.Equal(2, SpriteVisibleLayerCount(testSprite));
+            SpriteToggleLayerVisibleNamed(testSprite, "layer2");
+            Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
+            SpriteToggleLayerVisibleNamed(testSprite, "layer2");
             Assert.Equal(2, SpriteVisibleLayerCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -1464,11 +1572,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteHideLayer(testSprite, layerIndex);
-            SpriteToggleLayerVisible(testSprite, layerIndex);
-            Assert.True(SpriteVisibleLayerCount(testSprite));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteShowLayer(testSprite, layerIdx);
+            Assert.Equal(2, SpriteVisibleLayerCount(testSprite));
+            SpriteToggleLayerVisible(testSprite, layerIdx);
+            Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1478,10 +1587,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(3, SpriteValueCount(testSprite));
             SpriteAddValue(testSprite, "test_value", 10.0);
-            var spriteValueResult = SpriteValue(testSprite, "test_value");
-            Assert.Equal(10.0, spriteValueResult);
+            Assert.Equal(10.0, SpriteValue(testSprite, "test_value"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1491,10 +1600,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteAddValue(testSprite, "health");
-            SpriteAddValue(testSprite, "speed");
-            Assert.Equal(2, SpriteValueCount(testSprite));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(3, SpriteValueCount(testSprite));
+            SpriteAddValue(testSprite, "health", 0.0);
+            SpriteAddValue(testSprite, "speed", 0.0);
+            Assert.Equal(5, SpriteValueCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1504,12 +1614,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(VectorTo(0, 0), SpriteVelocity(testSprite));
             SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
-            var testVelocity = SpriteVelocity(testSprite);
-            Assert.Equal(5.0, testVelocity.X);
-            Assert.Equal(5.0, testVelocity.Y);
-            FreeAllSprites();
+            Assert.Equal(VectorTo(5.0, 5.0), SpriteVelocity(testSprite));
+            FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -1518,10 +1627,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0, SpriteVisibleIndexOfLayerNamed(testSprite, "base_layer"));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
-            var layerIndex = SpriteVisibleIndexOfLayer(testSprite, "layer2");
-            Assert.Equal(1, layerIndex);
+            SpriteShowLayer(testSprite, "layer2");
+            Assert.Equal(1, SpriteVisibleIndexOfLayerNamed(testSprite, "layer2"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1531,10 +1641,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
-            SpriteShowLayer(testSprite, layerIndex);
-            Assert.Equal(1, SpriteVisibleIndexOfLayer(testSprite, layerIndex));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0, SpriteVisibleIndexOfLayer(testSprite, 0));
+            var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
+            SpriteShowLayer(testSprite, layerIdx);
+            Assert.Equal(1, SpriteVisibleIndexOfLayer(testSprite, layerIdx));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1544,7 +1655,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0, SpriteVisibleLayer(testSprite, 0));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, "layer2");
             Assert.Equal(1, SpriteVisibleLayer(testSprite, 1));
@@ -1557,11 +1669,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
             Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, "layer2");
             Assert.Equal(2, SpriteVisibleLayerCount(testSprite));
+            SpriteHideLayer(testSprite, "layer2");
+            Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1571,7 +1685,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0, SpriteVisibleLayerId(testSprite, 0));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, "layer2");
             Assert.Equal(1, SpriteVisibleLayerId(testSprite, 1));
@@ -1584,8 +1699,10 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            Assert.Equal(100, SpriteWidth(testSprite));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(1, SpriteScale(testSprite));
+            SpriteSetScale(testSprite, 2.0);
+            Assert.Equal(2, SpriteScale(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1595,7 +1712,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteX(testSprite));
             SpriteSetX(testSprite, 150.0);
             Assert.Equal(150.0, SpriteX(testSprite));
             FreeSprite(testSprite);
@@ -1607,7 +1725,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.Equal(0.0, SpriteY(testSprite));
             SpriteSetY(testSprite, 200.0);
             Assert.Equal(200.0, SpriteY(testSprite));
             FreeSprite(testSprite);
@@ -1617,19 +1736,18 @@ namespace SplashKitTests
         [Fact]
         public void TestStopCallingOnSpriteEventIntegration()
         {
+            var helper = new Helper();
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            CallOnSpriteEvent(OnSpriteEvent());
-            ProcessEvents();
-            SimulateSpriteEvent(testSprite);
-            ProcessEvents();
-            Assert.True(SpriteEventOccurred(testSprite));
-            StopCallingOnSpriteEvent(OnSpriteEvent());
-            ProcessEvents();
-            SimulateSpriteEvent(testSprite);
-            ProcessEvents();
-            Assert.False(SpriteEventOccurred(testSprite));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            CallOnSpriteEvent(helper.Sprite_event_handler);
+            SpriteStartAnimation(testSprite, "test");
+            UpdateSprite(testSprite);
+            Assert.True(helper.Eventcalled);
+            StopCallingOnSpriteEvent(helper.Sprite_event_handler);
+            var helper = new Helper();
+            UpdateSprite(testSprite);
+            Assert.False(helper.Eventcalled);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1639,16 +1757,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite1 = CreateSprite(testBitmap);
-            var testSprite2 = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite1, PointAt(100, 100));
-            SpriteSetPosition(testSprite2, PointAt(200, 200));
-            SpriteSetVelocity(testSprite1, VectorTo(1, 1));
-            SpriteSetVelocity(testSprite2, VectorTo(-1, -1));
+            var testSprite1 = CreateSprite("test_sprite1", testBitmap);
+            var testSprite2 = CreateSprite("test_sprite2", testBitmap);
+            SpriteSetVelocity(testSprite1, VectorTo(10, 10));
+            SpriteSetVelocity(testSprite2, VectorTo(-10, -10));
             UpdateAllSprites();
-            Assert.NotEqual(PointAt(100, 100), SpritePosition(testSprite1));
-            Assert.NotEqual(PointAt(200, 200), SpritePosition(testSprite2));
+            Assert.Equal(VectorTo(10, 10), SpriteVelocity(testSprite1));
+            Assert.Equal(VectorTo(-10, -10), SpriteVelocity(testSprite2));
             FreeAllSprites();
+            FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1656,13 +1773,15 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite1 = CreateSprite(testBitmap);
-            var testSprite2 = CreateSprite(testBitmap);
-            SpriteSetVelocity(testSprite1, VectorTo(1.0, 1.0));
-            SpriteSetVelocity(testSprite2, VectorTo(-1.0, -1.0));
-            UpdateAllSprites(0.5);
-            Assert.True(SpriteAt(testSprite1, PointAt(50.0, 50.0)));
-            Assert.True(SpriteAt(testSprite2, PointAt(50.0, 50.0)));
+            var testSprite1 = CreateSprite("test_sprite1", testBitmap);
+            var testSprite2 = CreateSprite("test_sprite2", testBitmap);
+            SpriteSetVelocity(testSprite1, VectorTo(100.0, 100.0));
+            SpriteSetVelocity(testSprite2, VectorTo(-100.0, -100.0));
+            UpdateAllSpritesPercent(0.5);
+            Assert.Equal(50.0, SpriteX(testSprite1));
+            Assert.Equal(50.0, SpriteY(testSprite1));
+            Assert.Equal(-50.0, SpriteX(testSprite2));
+            Assert.Equal(-50.0, SpriteY(testSprite2));
             FreeAllSprites();
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1672,11 +1791,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetVelocity(testSprite, VectorTo(1.0, 1.0));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetVelocity(testSprite, VectorTo(10.0, 10.0));
+            var initialPos = SpritePosition(testSprite);
             UpdateSprite(testSprite);
-            Assert.NotEqual(0.0, SpriteX(testSprite));
-            Assert.NotEqual(0.0, SpriteY(testSprite));
+            Assert.NotEqual(initialPos, SpritePosition(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1686,12 +1805,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetVelocity(testSprite, VectorTo(1.0, 1.0));
-            SpriteStartAnimation(testSprite, 0, true);
-            UpdateSprite(testSprite, true);
-            Assert.NotEqual(0.0, SpriteX(testSprite));
-            Assert.NotEqual(0.0, SpriteY(testSprite));
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite(testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "default", true);
+            UpdateSpriteWithSound(testSprite, true);
+            Assert.True(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1701,11 +1819,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-            SpriteSetVelocity(testSprite, VectorTo(1.0, 1.0));
-            UpdateSprite(testSprite, 0.5);
-            Assert.True(PointInCircle(PointAt(100.5, 100.5), SpriteCollisionCircle(testSprite)));
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetVelocity(testSprite, VectorTo(100.0, 100.0));
+            UpdateSpritePercent(testSprite, 0.5);
+            Assert.Equal(50.0, SpriteX(testSprite));
+            Assert.Equal(50.0, SpriteY(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1713,11 +1831,18 @@ namespace SplashKitTests
         [Fact]
         public void TestUpdateSpritePercentWithSoundIntegration()
         {
+            var helper = new Helper();
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(400, 300));
-            UpdateSprite(testSprite, 0.5, true);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetVelocity(testSprite, VectorTo(100.0, 100.0));
+            SpriteAddToAnimationScript(testSprite, "test_sound.wav");
+            UpdateSpritePercentWithSound(testSprite, 0.5, true);
+            Assert.Equal(50.0, SpriteX(testSprite));
+            Assert.Equal(50.0, SpriteY(testSprite));
+            Assert.True(SoundPlaying("test_sound.wav"));
+            UpdateSpritePercentWithSound(testSprite, 0.5, false);
+            Assert.False(SoundPlaying("test_sound.wav"));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1727,10 +1852,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteStartAnimation(testSprite, 0);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "walkfront");
+            Assert.False(SpriteAnimationHasEnded(testSprite));
             UpdateSpriteAnimation(testSprite);
-            Assert.True(SpriteCurrentCell(testSprite) > 0);
+            Assert.True(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1740,8 +1867,9 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            UpdateSpriteAnimation(testSprite, true);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteStartAnimation(testSprite, "default");
+            UpdateSpriteAnimationWithSound(testSprite, true);
             Assert.True(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
@@ -1752,8 +1880,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            UpdateSpriteAnimation(testSprite, 0.5);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "walkfront");
+            Assert.False(SpriteAnimationHasEnded(testSprite));
+            UpdateSpriteAnimationPercent(testSprite, 100);
+            Assert.True(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1763,8 +1895,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            UpdateSpriteAnimation(testSprite, 0.5, true);
+            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            SpriteStartAnimation(testSprite, "walkfront");
+            Assert.False(SpriteAnimationHasEnded(testSprite));
+            UpdateSpriteAnimationPercentWithSound(testSprite, 100, true);
+            Assert.True(SpriteAnimationHasEnded(testSprite));
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1774,11 +1910,13 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite, PointAt(400, 300));
-            var testVector = VectorFromCenterSpriteToPoint(testSprite, PointAt(500, 400));
-            Assert.Equal(100, testVector.X);
-            Assert.Equal(100, testVector.Y);
+            var testSprite = CreateSprite("test_sprite", testBitmap);
+            SpriteSetPosition(testSprite, PointAt(0, 0));
+            var centerPoint = PointAt(50, 50);
+            var targetPoint = PointAt(150, 150);
+            var vector = VectorFromCenterSpriteToPointPoint(testSprite, targetPoint);
+            Assert.Equal(100, vector.X);
+            Assert.Equal(100, vector.Y);
             FreeSprite(testSprite);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -1788,14 +1926,16 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testSprite1 = CreateSprite(testBitmap);
-            var testSprite2 = CreateSprite(testBitmap);
-            SpriteSetPosition(testSprite1, PointAt(100, 100));
-            SpriteSetPosition(testSprite2, PointAt(200, 200));
-            var testVector = VectorFromTo(testSprite1, testSprite2);
-            Assert.Equal(100, testVector.X);
-            Assert.Equal(100, testVector.Y);
-            FreeAllSprites();
+            var sprite1 = CreateSprite("sprite1", testBitmap);
+            var sprite2 = CreateSprite("sprite2", testBitmap);
+            SpriteSetPosition(sprite1, PointAt(0, 0));
+            SpriteSetPosition(sprite2, PointAt(100, 100));
+            var vector = VectorFromTo(sprite1, sprite2);
+            Assert.Equal(100, vector.X);
+            Assert.Equal(100, vector.Y);
+            FreeSprite(sprite1);
+            FreeSprite(sprite2);
+            FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
     }

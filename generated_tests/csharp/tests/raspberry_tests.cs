@@ -3,15 +3,13 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestRaspberry
     {
         [Fact]
         public void TestHasGpioIntegration()
         {
             var testGpioCapability = HasGpio();
             Assert.True(testGpioCapability);
-            var testGpioCapability = HasGpio();
-            Assert.False(testGpioCapability);
         }
         [Fact]
         public void TestRaspiCleanupIntegration()
@@ -36,15 +34,10 @@ namespace SplashKitTests
         public void TestRaspiInitIntegration()
         {
             var hasGpioCapability = HasGpio();
-if (hasGpioCapability == true) {
-                RaspiInit();
-                Assert.True(HasGpio());
-                RaspiCleanup();
-}
-            else
-            {
-                Assert.False(HasGpio());
-}
+            RaspiInit();
+            Assert.True(HasGpio());
+            RaspiCleanup();
+            Assert.False(HasGpio());
         }
         [Fact]
         public void TestRaspiReadIntegration()
@@ -70,36 +63,42 @@ if (hasGpioCapability == true) {
             RaspiInit();
             RaspiSetMode(Pins.Pin11, PinModes.GpioInput);
             RaspiSetPullUpDown(Pins.Pin11, PullUpDown.PudUp);
-            var testPinValue = RaspiRead(Pins.Pin11);
-            Assert.Equal(PinValues.GpioHigh, testPinValue);
+            var testPinValueUp = RaspiRead(Pins.Pin11);
+            Assert.Equal(PinValues.GpioHigh, testPinValueUp);
             RaspiSetPullUpDown(Pins.Pin11, PullUpDown.PudDown);
-            var testPinValue = RaspiRead(Pins.Pin11);
-            Assert.Equal(PinValues.GpioLow, testPinValue);
+            var testPinValueDown = RaspiRead(Pins.Pin11);
+            Assert.Equal(PinValues.GpioLow, testPinValueDown);
             RaspiCleanup();
         }
         [Fact]
         public void TestRaspiSetPwmDutycycleIntegration()
         {
             RaspiInit();
-            RaspiSetMode(Pins.Pin18, PinModes.PwmOutput);
+            RaspiSetMode(Pins.Pin18, PinModes.GpioOutput);
             RaspiSetPwmDutycycle(Pins.Pin18, 50);
+            var mode = RaspiGetMode(Pins.Pin18);
+            Assert.Equal(PinModes.GpioOutput, mode);
             RaspiCleanup();
         }
         [Fact]
         public void TestRaspiSetPwmFrequencyIntegration()
         {
             RaspiInit();
-            RaspiSetMode(Pins.Pin18, PinModes.PwmOutput);
+            RaspiSetMode(Pins.Pin18, PinModes.GpioOutput);
             RaspiSetPwmFrequency(Pins.Pin18, 1000);
+            var mode = RaspiGetMode(Pins.Pin18);
+            Assert.Equal(PinModes.GpioOutput, mode);
             RaspiCleanup();
         }
         [Fact]
         public void TestRaspiSetPwmRangeIntegration()
         {
             RaspiInit();
-            RaspiSetMode(Pins.Pin11, PinModes.GpioPwm);
+            RaspiSetMode(Pins.Pin11, PinModes.GpioOutput);
             RaspiSetPwmRange(Pins.Pin11, 1024);
             RaspiSetPwmDutycycle(Pins.Pin11, 512);
+            var mode = RaspiGetMode(Pins.Pin11);
+            Assert.Equal(PinModes.GpioOutput, mode);
             RaspiCleanup();
         }
         [Fact]

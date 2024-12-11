@@ -8,6 +8,8 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_interface {
+use super::*;
 #[test]
 fn test_add_column_integration() {
     let test_window = open_window("Test Window", 800, 600);
@@ -47,11 +49,11 @@ fn test_add_column_relative_integration() {
 fn test_bitmap_button_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = bitmap_button(test_bitmap);
+        button_clicked = bitmap_button(test_bitmap);;
         draw_interface();
         refresh_screen();
     }
@@ -64,11 +66,11 @@ fn test_bitmap_button_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_rectangle = rectangle_from(100, 100, 100, 100);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = bitmap_button(test_bitmap, test_rectangle);
+        button_clicked = bitmap_button(test_bitmap, test_rectangle);;
         draw_interface();
         refresh_screen();
     }
@@ -81,11 +83,11 @@ fn test_bitmap_button_at_position_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_rectangle = rectangle_from(100, 100, 100, 100);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = bitmap_button(test_bitmap, test_rectangle, option_defaults());
+        button_clicked = bitmap_button(test_bitmap, test_rectangle, option_defaults());;
         draw_interface();
         refresh_screen();
     }
@@ -99,11 +101,11 @@ fn test_bitmap_button_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_options1 = option_defaults();
     let test_options2 = option_scale_bmp(0.5, 0.5, test_options1);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = bitmap_button(test_bitmap, test_options2);
+        button_clicked = bitmap_button(test_bitmap, test_options2);;
         draw_interface();
         refresh_screen();
     }
@@ -115,11 +117,11 @@ fn test_bitmap_button_with_options_integration() {
 fn test_bitmap_button_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = bitmap_button("Click Me", test_bitmap);
+        button_clicked = bitmap_button("Click Me", test_bitmap);;
         draw_interface();
         refresh_screen();
     }
@@ -133,11 +135,11 @@ fn test_bitmap_button_labeled_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_options1 = option_defaults();
     let test_options2 = option_scale_bmp(0.5, 0.5, test_options1);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = bitmap_button("Click Me", test_bitmap, test_options2);
+        button_clicked = bitmap_button("Click Me", test_bitmap, test_options2);;
         draw_interface();
         refresh_screen();
     }
@@ -149,11 +151,11 @@ fn test_bitmap_button_labeled_with_options_integration() {
 fn test_button_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rectangle = rectangle_from(100, 100, 200, 50);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = button("Click Me", test_rectangle);
+        button_clicked = button("Click Me", test_rectangle);;
         draw_interface();
         refresh_screen();
     }
@@ -163,11 +165,11 @@ fn test_button_at_position_integration() {
 #[test]
 fn test_button_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = button("Click Me");
+        button_clicked = button("Click Me");;
         draw_interface();
         refresh_screen();
     }
@@ -177,11 +179,11 @@ fn test_button_integration() {
 #[test]
 fn test_button_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let button_clicked = false
+    let button_clicked = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        button_clicked = button("Label:", "Click Me");
+        button_clicked = button("Label:", "Click Me");;
         draw_interface();
         refresh_screen();
     }
@@ -192,12 +194,12 @@ fn test_button_labeled_integration() {
 fn test_checkbox_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rect = rectangle_from(100, 100, 200, 50);
-    let initial_checkbox_result = false
-    let current_checkbox_result = initial_checkbox_result
+    let initial_checkbox_result = false;
+    let current_checkbox_result = initial_checkbox_result;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_checkbox_result = checkbox("Test Checkbox", current_checkbox_result, test_rect);
+        current_checkbox_result = checkbox("Test Checkbox", current_checkbox_result, test_rect);;
         draw_interface();
         refresh_screen();
     }
@@ -207,12 +209,12 @@ fn test_checkbox_at_position_integration() {
 #[test]
 fn test_checkbox_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let initial_checkbox_result = false
-    let current_checkbox_result = initial_checkbox_result
+    let initial_checkbox_result = false;
+    let current_checkbox_result = initial_checkbox_result;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_checkbox_result = checkbox("Test Checkbox", current_checkbox_result);
+        current_checkbox_result = checkbox("Test Checkbox", current_checkbox_result);;
         draw_interface();
         refresh_screen();
     }
@@ -222,12 +224,12 @@ fn test_checkbox_integration() {
 #[test]
 fn test_checkbox_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let initial_checkbox_result = false
-    let current_checkbox_result = initial_checkbox_result
+    let initial_checkbox_result = false;
+    let current_checkbox_result = initial_checkbox_result;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_checkbox_result = checkbox("Test Checkbox", "Check me", current_checkbox_result);
+        current_checkbox_result = checkbox("Test Checkbox", "Check me", current_checkbox_result);;
         draw_interface();
         refresh_screen();
     }
@@ -238,11 +240,11 @@ fn test_checkbox_labeled_integration() {
 fn test_color_slider_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let initial_color = color_black();
-    let current_color = initial_color
+    let current_color = initial_color;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_color = color_slider(current_color, rectangle_from(300, 300, 400, 24));
+        current_color = color_slider(current_color, rectangle_from(300, 300, 400, 24));;
         draw_interface();
         refresh_screen();
     }
@@ -253,11 +255,11 @@ fn test_color_slider_at_position_integration() {
 fn test_color_slider_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_color = color_black();
-    let current_color = test_color
+    let current_color = test_color;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_color = color_slider(current_color);
+        current_color = color_slider(current_color);;
         draw_interface();
         refresh_screen();
     }
@@ -268,11 +270,11 @@ fn test_color_slider_integration() {
 fn test_color_slider_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_color = color_black();
-    let current_color = test_color
+    let current_color = test_color;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_color = color_slider("Test Color Slider", current_color);
+        current_color = color_slider("Test Color Slider", current_color);;
         draw_interface();
         refresh_screen();
     }
@@ -412,12 +414,12 @@ fn test_header_integration() {
 fn test_hsb_color_slider_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rect = rectangle_from(100, 100, 200, 100);
-    let test_color = hsb_color(0.5, 1.0, 0.5);
-    let current_color = test_color
+    let test_color = hsb_color_slider_at_position(0.5, 1.0, 0.5);
+    let current_color = test_color;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_color = hsb_color_slider(current_color, test_rect);
+        current_color = hsb_color_slider(current_color, test_rect);;
         draw_interface();
         refresh_screen();
     }
@@ -428,11 +430,11 @@ fn test_hsb_color_slider_at_position_integration() {
 fn test_hsb_color_slider_integration() {
     let test_window = open_window("HSB Slider Test", 800, 600);
     let test_color = color_black();
-    let current_color = test_color
+    let current_color = test_color;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_color = hsb_color_slider(current_color);
+        current_color = hsb_color_slider(current_color);;
         draw_interface();
         refresh_screen();
     }
@@ -443,11 +445,11 @@ fn test_hsb_color_slider_integration() {
 fn test_hsb_color_slider_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_color = color_black();
-    let current_color = test_color
+    let current_color = test_color;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        current_color = hsb_color_slider("Color Slider", current_color);
+        current_color = hsb_color_slider("Color Slider", current_color);;
         draw_interface();
         refresh_screen();
     }
@@ -496,7 +498,7 @@ fn test_label_element_at_position_integration() {
     while quit_requested() == false {
         process_events();
         clear_screen();
-        label_element("Test Label", test_rectangle);
+        label_element_at_position("Test Label", test_rectangle);
         draw_interface();
         refresh_screen();
     }
@@ -531,7 +533,7 @@ fn test_last_element_confirmed_integration() {
 #[test]
 fn test_leave_column_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let button_result = false
+    let button_result = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
@@ -540,23 +542,23 @@ fn test_leave_column_integration() {
         add_column(100);
         enter_column();
         leave_column();
-        button_result = button("Test Button");
+        button_result = button("Test Button");;
         end_panel("Test Panel");
         draw_interface();
         refresh_screen();
     }
-    assert!(!button_result);
+    assert!(button_result);
     close_window(test_window);
 }
 #[test]
 fn test_number_box_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rect = rectangle_from(100, 100, 200, 30);
-    let test_result = 5.0
+    let test_result = 5.0;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        test_result = number_box(test_result, 1.0, test_rect);
+        test_result = number_box(test_result, 1.0, test_rect);;
         draw_interface();
         refresh_screen();
     }
@@ -566,11 +568,11 @@ fn test_number_box_at_position_integration() {
 #[test]
 fn test_number_box_integration() {
     let test_window = open_window("Number Box Test", 800, 600);
-    let test_result = 5.0
+    let test_result = 5.0;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        test_result = number_box(test_result, 1.0);
+        test_result = number_box(test_result, 1.0);;
         draw_interface();
         refresh_screen();
     }
@@ -580,11 +582,11 @@ fn test_number_box_integration() {
 #[test]
 fn test_number_box_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_result = 5.0
+    let test_result = 5.0;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        test_result = number_box("Test Value", test_result, 1.0);
+        test_result = number_box("Test Value", test_result, 1.0);;
         draw_interface();
         refresh_screen();
     }
@@ -626,7 +628,7 @@ fn test_paragraph_at_position_integration() {
     while quit_requested() == false {
         process_events();
         clear_screen();
-        paragraph("This is a test paragraph.", test_rectangle);
+        paragraph_at_position("This is a test paragraph.", test_rectangle);
         draw_interface();
         refresh_screen();
     }
@@ -723,7 +725,7 @@ fn test_set_interface_element_shadows_integration() {
 fn test_set_interface_font_font_as_string_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_font = load_font("hara", "hara.ttf");
-    set_interface_font("hara");
+    set_interface_font_font_as_string("hara");
     while quit_requested() == false {
         process_events();
         clear_screen();
@@ -839,7 +841,7 @@ fn test_set_interface_spacing_integration() {
 #[test]
 fn test_set_interface_style_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    set_interface_style("SplashKitSDK.InterfaceStyle.ShadedDarkStyle");
+    set_interface_style(InterfaceStyle::ShadedDarkStyle);
     while quit_requested() == false {
         process_events();
         clear_screen();
@@ -854,7 +856,7 @@ fn test_set_interface_style_integration() {
 #[test]
 fn test_set_interface_style_with_color_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    set_interface_style("SplashKitSDK.InterfaceStyle.ShadedDarkStyle", color_blue());
+    set_interface_style_with_color(InterfaceStyle::ShadedDarkStyle, color_blue());
     while quit_requested() == false {
         process_events();
         clear_screen();
@@ -915,12 +917,12 @@ fn test_single_line_layout_integration() {
 fn test_slider_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rect = rectangle_from(100, 100, 200, 20);
-    let initial_value = 50.0
-    let slider_result = initial_value
+    let initial_value = 50.0;
+    let slider_result = initial_value;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        slider_result = slider(slider_result, 0.0, 100.0, test_rect);
+        slider_result = slider(slider_result, 0.0, 100.0, test_rect);;
         draw_interface();
         refresh_screen();
     }
@@ -930,12 +932,12 @@ fn test_slider_at_position_integration() {
 #[test]
 fn test_slider_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let initial_value = 50.0
-    let slider_result = initial_value
+    let initial_value = 50.0;
+    let slider_result = initial_value;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        slider_result = slider(slider_result, 0.0, 100.0);
+        slider_result = slider(slider_result, 0.0, 100.0);;
         draw_interface();
         refresh_screen();
     }
@@ -945,12 +947,12 @@ fn test_slider_integration() {
 #[test]
 fn test_slider_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let initial_value = 50.0
-    let slider_result = initial_value
+    let initial_value = 50.0;
+    let slider_result = initial_value;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        slider_result = slider("Test Slider", slider_result, 0.0, 100.0);
+        slider_result = slider("Test Slider", slider_result, 0.0, 100.0);;
         draw_interface();
         refresh_screen();
     }
@@ -981,7 +983,7 @@ fn test_split_into_columns_with_last_width_integration() {
         process_events();
         clear_screen();
         start_panel("Test Panel", rectangle_from(0, 0, 800, 600));
-        split_into_columns(3, 200);
+        split_into_columns_with_last_width(3, 200);
         button("Button 1");
         button("Button 2");
         button("Button 3");
@@ -1011,12 +1013,13 @@ fn test_split_into_columns_relative_with_last_width_integration() {
 #[test]
 fn test_start_custom_layout_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    let button_result = false;
     while quit_requested() == false {
         process_events();
         clear_screen();
         start_custom_layout();
         add_column(200);
-        button_result = button("Test Button");
+        button_result = button("Test Button");;
         reset_layout();
         draw_interface();
         refresh_screen();
@@ -1031,7 +1034,7 @@ fn test_start_inset_at_position_integration() {
     while quit_requested() == false {
         process_events();
         clear_screen();
-        start_inset("test_inset", test_rect);
+        start_inset_at_position("test_inset", test_rect);
         button("Test Button");
         end_inset("test_inset");
         draw_interface();
@@ -1103,12 +1106,12 @@ fn test_start_treenode_integration() {
 #[test]
 fn test_text_box_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let initial_text = "Initial Text"
-    let text_result = initial_text
+    let initial_text = "Initial Text";
+    let text_result = initial_text;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        text_result = text_box(text_result);
+        text_result = text_box(text_result);;
         draw_interface();
         refresh_screen();
     }
@@ -1119,12 +1122,12 @@ fn test_text_box_integration() {
 fn test_text_box_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rect = rectangle_from(100, 100, 200, 30);
-    let initial_text = "Initial Text"
-    let text_result = initial_text
+    let initial_text = "Initial Text";
+    let text_result = initial_text;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        text_result = text_box(text_result, test_rect);
+        text_result = text_box(text_result, test_rect);;
         draw_interface();
         refresh_screen();
     }
@@ -1134,15 +1137,16 @@ fn test_text_box_at_position_integration() {
 #[test]
 fn test_text_box_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let initial_text = "Initial Text"
-    let text_result = initial_text
+    let initial_text = "Initial Text";
+    let text_result = initial_text;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        text_result = text_box("Enter Name", text_result);
+        text_result = text_box("Enter Name", text_result);;
         draw_interface();
         refresh_screen();
     }
     assert_ne!(initial_text, text_result);
     close_window(test_window);
+}
 }

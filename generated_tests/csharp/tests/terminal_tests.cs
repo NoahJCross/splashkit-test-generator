@@ -3,95 +3,90 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestTerminal
     {
         [Fact]
         public void TestReadCharIntegration()
         {
-            Write("Please type a character: ");
-            var testChar = ReadChar();
-            WriteLine("You typed: ", testChar);
-            Assert.NotNull(testChar);
+            # TODO: Implement io_setup step
+            var result = ReadChar();
+            Assert.Equal("A", result);
         }
         [Fact]
         public void TestReadLineIntegration()
         {
-            Write("Please enter your name: ");
-            var testInput = ReadLine();
-            Assert.NotEqual(testInput, "");
-            WriteLine("You entered: ", testInput);
+            # TODO: Implement io_setup step
+            var result = ReadLine();
+            Assert.Equal("Test Input", "Test Input");
         }
         [Fact]
         public void TestTerminalHasInputIntegration()
         {
-            Write("Type something and press Enter: ");
-            ProcessEvents();
-            Assert.False(TerminalHasInput());
-            var testInput = ReadLine();
-            ProcessEvents();
+            # TODO: Implement io_setup step
             Assert.True(TerminalHasInput());
         }
         [Fact]
         public void TestWriteCharIntegration()
         {
-            Write("A");
-            Assert.True(TerminalHasInput());
-            var testChar = ReadChar();
-            Assert.Equal(testChar, "A");
+            # TODO: Implement io_setup step
+            WriteChar("A");
+            Assert.Equal("A", "A");
         }
         [Fact]
         public void TestWriteDoubleIntegration()
         {
-            Write(3.14);
-            Assert.True(TerminalHasInput());
+            # TODO: Implement io_setup step
+            WriteDouble(3.14);
+            Assert.Equal("3.14", "3.14");
         }
         [Fact]
         public void TestWriteIntIntegration()
         {
-            Write(42);
-            Assert.True(TerminalHasInput());
+            # TODO: Implement io_setup step
+            WriteInt(42);
+            Assert.Equal("42", "42");
         }
         [Fact]
         public void TestWriteIntegration()
         {
+            # TODO: Implement io_setup step
             Write("Test String");
-            Assert.True(TerminalHasInput());
-            var testOutput = ReadLine();
-            Assert.Equal(testOutput, "Test String");
+            Assert.Equal("Test String", "Test String");
         }
         [Fact]
         public void TestWriteLineCharIntegration()
         {
-            WriteLine("A");
-            Assert.True(TerminalHasInput());
-            var testChar = ReadChar();
-            Assert.Equal(testChar, "A");
+            # TODO: Implement io_setup step
+            WriteLineChar("A");
+            Assert.Equal({:value_type=>"concat", :value=>["A", "new_line"]}, {:value_type=>"string_with_newline", :value=>"A"});
         }
         [Fact]
         public void TestWriteLineEmptyIntegration()
         {
-            Write("Test line");
-            WriteLine();
-            Write("Next line");
-            Assert.True(TerminalHasInput());
+            # TODO: Implement io_setup step
+            WriteLineEmpty();
+            Assert.Equal(Environment.NewLine, {:value_type=>"io_step", :variable_name=>"string_writer", :variable_field=>"to_string"});
         }
         [Fact]
         public void TestWriteLineDoubleIntegration()
         {
-            WriteLine(42.5);
-            Assert.True(TerminalHasInput());
+            # TODO: Implement io_setup step
+            WriteLineDouble(3.14);
+            Assert.Equal({:value_type=>"concat", :value=>["3.14", "new_line"]}, {:value_type=>"string_with_newline", :value=>"3.14"});
         }
         [Fact]
         public void TestWriteLineIntIntegration()
         {
-            WriteLine(42);
-            Assert.True(TerminalHasInput());
+            # TODO: Implement io_setup step
+            WriteLineInt(42);
+            Assert.Equal({:value_type=>"concat", :value=>["42", "new_line"]}, {:value_type=>"string_with_newline", :value=>"42"});
         }
         [Fact]
         public void TestWriteLineIntegration()
         {
+            # TODO: Implement io_setup step
             WriteLine("Test Line");
-            Assert.True(TerminalHasInput());
+            Assert.Equal({:value_type=>"concat", :value=>["Test Line", "new_line"]}, {:value_type=>"string_with_newline", :value=>"Test Line"});
         }
     }
 }

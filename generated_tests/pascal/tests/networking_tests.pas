@@ -1,11 +1,11 @@
 uses SplashKit, TestFramework
 
 type
-TIntegrationTests = class(TTestCase)
-published
+TTestNetworking = class(TTestCase)
+protected
 procedure TIntegrationTests.TestAcceptAllNewConnectionsIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     connectionsAccepted := AcceptAllNewConnections();
@@ -15,7 +15,7 @@ begin
 end;
 procedure TIntegrationTests.TestAcceptNewConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     connectionAccepted := AcceptNewConnection(testServer);
@@ -25,7 +25,7 @@ begin
 end;
 procedure TIntegrationTests.TestBroadcastMessageIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection1 := OpenConnection("test_connection1", "127.0.0.1", 5000);
     testConnection2 := OpenConnection("test_connection2", "127.0.0.1", 5000);
     CheckNetworkActivity();
@@ -38,11 +38,11 @@ begin
 end;
 procedure TIntegrationTests.TestBroadcastMessageToAllIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection1 := OpenConnection("test_connection", "127.0.0.1", 5000);
     testConnection2 := OpenConnection("test_connection2", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    BroadcastMessage("Test Message");
+    BroadcastMessageToAll("Test Message");
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection1));
     AssertTrue(HasMessages(testConnection2));
@@ -51,10 +51,10 @@ begin
 end;
 procedure TIntegrationTests.TestBroadcastMessageToServerNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    BroadcastMessage("Test Message", "test_server");
+    BroadcastMessageToServerNamed("Test Message", "test_server");
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection));
     CloseConnection(testConnection);
@@ -62,7 +62,7 @@ begin
 end;
 procedure TIntegrationTests.TestCheckNetworkActivityIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertTrue(HasNewConnections());
@@ -71,13 +71,13 @@ begin
 end;
 procedure TIntegrationTests.TestClearMessagesFromNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection));
-    ClearMessages("test_connection");
+    ClearMessagesFromName("test_connection");
     CheckNetworkActivity();
     AssertFalse(HasMessages(testConnection));
     CloseConnection(testConnection);
@@ -85,33 +85,33 @@ begin
 end;
 procedure TIntegrationTests.TestClearMessagesFromConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection));
-    ClearMessages(testConnection);
+    ClearMessagesFromConnection(testConnection);
     AssertFalse(HasMessages(testConnection));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestClearMessagesFromServerIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 8080);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages(testServer));
-    ClearMessages(testServer);
+    ClearMessagesFromConnection(testServer);
     CheckNetworkActivity();
     AssertFalse(HasMessages(testServer));
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestCloseAllConnectionsIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertTrue(HasConnection("test_connection"));
@@ -122,8 +122,8 @@ begin
 end;
 procedure TIntegrationTests.TestCloseAllServersIntegration;
 begin
-    testServer1 := CreateServer("test_server_1", 5000);
-    testServer2 := CreateServer("test_server_2", 5001);
+    testServer1 := CreateServerWithPort("test_server_1", 5000);
+    testServer2 := CreateServerWithPort("test_server_2", 5001);
     AssertTrue(HasServer("test_server_1"));
     AssertTrue(HasServer("test_server_2"));
     CloseAllServers();
@@ -132,7 +132,7 @@ begin
 end;
 procedure TIntegrationTests.TestCloseConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 8080);
     CheckNetworkActivity();
     closeResult := CloseConnection(testConnection);
@@ -142,21 +142,21 @@ begin
 end;
 procedure TIntegrationTests.TestCloseConnectionNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 8080);
     CheckNetworkActivity();
     AssertTrue(IsConnectionOpen(testConnection));
-    closeResult := CloseConnection("test_connection");
+    closeResult := CloseConnectionNamed("test_connection");
     AssertTrue(closeResult);
     AssertFalse(IsConnectionOpen(testConnection));
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestCloseMessageIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages());
     testMessage := ReadMessage();
@@ -168,30 +168,30 @@ begin
 end;
 procedure TIntegrationTests.TestCloseServerNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
-    closeResult := CloseServer("test_server");
+    testServer := CreateServerWithPort("test_server", 5000);
+    closeResult := CloseServerNamed("test_server");
     AssertTrue(closeResult);
     AssertFalse(HasServer("test_server"));
 end;
 procedure TIntegrationTests.TestCloseServerIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     closeResult := CloseServer(testServer);
     AssertTrue(closeResult);
     AssertFalse(HasServer("test_server"));
 end;
 procedure TIntegrationTests.TestConnectionCountNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    AssertEquals(1, ConnectionCount("test_server"));
+    AssertEquals(1, ConnectionCountNamed("test_server"));
     CloseAllConnections();
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestConnectionCountIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertEquals(1, ConnectionCount(testServer));
@@ -200,7 +200,7 @@ begin
 end;
 procedure TIntegrationTests.TestConnectionIPIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     testIP := ConnectionIP(testConnection);
@@ -210,17 +210,17 @@ begin
 end;
 procedure TIntegrationTests.TestConnectionIPFromNameIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 8080);
     CheckNetworkActivity();
-    testIP := ConnectionIP("test_connection");
+    testIP := ConnectionIPFromName("test_connection");
     AssertEquals(2130706433, testIP);
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestConnectionNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     retrievedConnection := ConnectionNamed("test_connection");
@@ -230,7 +230,7 @@ begin
 end;
 procedure TIntegrationTests.TestConnectionPortIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     testPort := ConnectionPort(testConnection);
@@ -240,24 +240,24 @@ begin
 end;
 procedure TIntegrationTests.TestConnectionPortFromNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    testPort := ConnectionPort("test_connection");
+    testPort := ConnectionPortFromName("test_connection");
     AssertEquals(5000, testPort);
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestCreateServerWithPortIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     AssertNotNull(testServer);
     AssertTrue(HasServer("test_server"));
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestCreateServerWithPortAndProtocolIntegration;
 begin
-    testServer := CreateServer("test_server", 5000, ConnectionType.TCP);
+    testServer := CreateServerWithPortAndProtocol("test_server", 5000, ConnectionType.TCP);
     AssertNotNull(testServer);
     AssertTrue(HasServer("test_server"));
     CloseServer(testServer);
@@ -269,7 +269,7 @@ begin
 end;
 procedure TIntegrationTests.TestFetchNewConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     newConnection := FetchNewConnection(testServer);
@@ -279,7 +279,7 @@ begin
 end;
 procedure TIntegrationTests.TestHasConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 8080);
     CheckNetworkActivity();
     AssertTrue(HasConnection("test_connection"));
@@ -289,11 +289,11 @@ begin
 end;
 procedure TIntegrationTests.TestHasMessagesIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertFalse(HasMessages());
-    SendMessageTo("test_message", testConnection);
+    SendMessageToConnection("test_message", testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages());
     CloseConnection(testConnection);
@@ -301,39 +301,39 @@ begin
 end;
 procedure TIntegrationTests.TestHasMessagesOnConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertTrue(HasMessages(testConnection));
+    AssertTrue(HasMessagesOnConnection(testConnection));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestHasMessagesOnNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertTrue(HasMessages("test_server"));
+    AssertTrue(HasMessagesOnName("test_server"));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestHasMessagesOnServerIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertTrue(HasMessages(testServer));
+    AssertTrue(HasMessagesOnServer(testServer));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestHasNewConnectionsIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertTrue(HasNewConnections());
@@ -342,7 +342,7 @@ begin
 end;
 procedure TIntegrationTests.TestHasServerIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     AssertTrue(HasServer("test_server"));
     CloseServer(testServer);
     AssertFalse(HasServer("test_server"));
@@ -380,7 +380,7 @@ begin
 end;
 procedure TIntegrationTests.TestIsConnectionOpenIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertTrue(IsConnectionOpen(testConnection));
@@ -390,27 +390,27 @@ begin
 end;
 procedure TIntegrationTests.TestIsConnectionOpenFromNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    AssertTrue(IsConnectionOpen("test_connection"));
+    AssertTrue(IsConnectionOpenFromName("test_connection"));
     CloseConnection(testConnection);
-    AssertFalse(IsConnectionOpen("test_connection"));
+    AssertFalse(IsConnectionOpenFromName("test_connection"));
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestLastConnectionNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    lastConnection := LastConnection("test_server");
+    lastConnection := LastConnectionNamed("test_server");
     AssertEquals(testConnection, lastConnection);
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestLastConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     lastConnection := LastConnection(testServer);
@@ -420,10 +420,10 @@ begin
 end;
 procedure TIntegrationTests.TestMessageConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals(testConnection, MessageConnection(testMessage));
@@ -433,43 +433,43 @@ begin
 end;
 procedure TIntegrationTests.TestMessageCountOnServerIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertEquals(1, MessageCount(testServer));
+    AssertEquals(1, MessageCountOnServer(testServer));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestMessageCountOnConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertTrue(MessageCount(testConnection));
+    AssertTrue(MessageCountOnConnection(testConnection));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestMessageCountFromNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertEquals(1, MessageCount("test_server"));
+    AssertEquals(1, MessageCountOnServer("test_server"));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestMessageDataIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals("Test Message", MessageData(testMessage));
@@ -479,10 +479,10 @@ begin
 end;
 procedure TIntegrationTests.TestMessageDataBytesIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     testMessageBytes := MessageDataBytes(testMessage);
@@ -493,10 +493,10 @@ begin
 end;
 procedure TIntegrationTests.TestMessageHostIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals("127.0.0.1", MessageHost(testMessage));
@@ -506,10 +506,10 @@ begin
 end;
 procedure TIntegrationTests.TestMessagePortIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals(5000, MessagePort(testMessage));
@@ -519,10 +519,10 @@ begin
 end;
 procedure TIntegrationTests.TestMessageProtocolIntegration;
 begin
-    testServer := CreateServer("test_server", 5000, ConnectionType.UDP);
+    testServer := CreateServerWithPort("test_server", 5000, ConnectionType.UDP);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000, ConnectionType.UDP);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals(ConnectionType.UDP, MessageProtocol(testMessage));
@@ -542,7 +542,7 @@ begin
 end;
 procedure TIntegrationTests.TestNewConnectionCountIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertEquals(1, NewConnectionCount(testServer));
@@ -551,7 +551,7 @@ begin
 end;
 procedure TIntegrationTests.TestOpenConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 8080);
     CheckNetworkActivity();
     AssertNotNull(testConnection);
@@ -562,8 +562,8 @@ begin
 end;
 procedure TIntegrationTests.TestOpenConnectionWithProtocolIntegration;
 begin
-    testServer := CreateServer("test_server", 5000, ConnectionType.TCP);
-    testConnection := OpenConnection("test_connection", "127.0.0.1", 5000, ConnectionType.TCP);
+    testServer := CreateServerWithPort("test_server", 5000, ConnectionType.TCP);
+    testConnection := OpenConnectionWithProtocol("test_connection", "127.0.0.1", 5000, ConnectionType.TCP);
     CheckNetworkActivity();
     AssertNotNull(testConnection);
     CloseConnection(testConnection);
@@ -571,10 +571,10 @@ begin
 end;
 procedure TIntegrationTests.TestReadMessageIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage();
     AssertEquals("Test Message", MessageData(testMessage));
@@ -584,12 +584,12 @@ begin
 end;
 procedure TIntegrationTests.TestReadMessageFromConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    testMessage := ReadMessage(testConnection);
+    testMessage := ReadMessageFromConnection(testConnection);
     AssertEquals("Test Message", MessageData(testMessage));
     CloseMessage(testMessage);
     CloseConnection(testConnection);
@@ -597,12 +597,12 @@ begin
 end;
 procedure TIntegrationTests.TestReadMessageFromNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    testMessage := ReadMessage("test_server");
+    testMessage := ReadMessageFromName("test_server");
     AssertEquals("Test Message", MessageData(testMessage));
     CloseMessage(testMessage);
     CloseConnection(testConnection);
@@ -610,12 +610,12 @@ begin
 end;
 procedure TIntegrationTests.TestReadMessageFromServerIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    testMessage := ReadMessage(testServer);
+    testMessage := ReadMessageFromServer(testServer);
     AssertEquals("Test Message", MessageData(testMessage));
     CloseConnection(testConnection);
     CloseServer(testServer);
@@ -623,40 +623,40 @@ begin
 end;
 procedure TIntegrationTests.TestReadMessageDataFromNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertEquals("Test Message", ReadMessageData("test_server"));
+    AssertEquals("Test Message", ReadMessageDataFromName("test_server"));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestReadMessageDataFromConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertEquals("Test Message", ReadMessageData(testConnection));
+    AssertEquals("Test Message", ReadMessageDataFromConnection(testConnection));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestReadMessageDataFromServerIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    SendMessageTo("Test Message", testConnection);
+    SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
-    AssertEquals("Test Message", ReadMessageData(testServer));
+    AssertEquals("Test Message", ReadMessageDataFromServer(testServer));
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestReconnectIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     CloseConnection(testConnection);
@@ -670,13 +670,13 @@ begin
 end;
 procedure TIntegrationTests.TestReconnectFromNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     CloseConnection(testConnection);
     CheckNetworkActivity();
     AssertFalse(IsConnectionOpen(testConnection));
-    Reconnect("test_connection");
+    ReconnectFromName("test_connection");
     CheckNetworkActivity();
     AssertTrue(IsConnectionOpen("test_connection"));
     CloseConnection(testConnection);
@@ -684,7 +684,7 @@ begin
 end;
 procedure TIntegrationTests.TestReleaseAllConnectionsIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testConnection1 := OpenConnection("test_connection1", "127.0.0.1", 8080);
     testConnection2 := OpenConnection("test_connection2", "127.0.0.1", 8080);
     CheckNetworkActivity();
@@ -697,7 +697,7 @@ begin
 end;
 procedure TIntegrationTests.TestResetNewConnectionCountIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertEquals(NewConnectionCount(testServer), 1);
@@ -708,17 +708,17 @@ begin
 end;
 procedure TIntegrationTests.TestRetrieveConnectionNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    retrievedConnection := RetrieveConnection("test_connection", 0);
+    retrievedConnection := RetrieveConnectionNamed("test_connection", 0);
     AssertEquals(testConnection, retrievedConnection);
     CloseConnection(testConnection);
     CloseServer(testServer);
 end;
 procedure TIntegrationTests.TestRetrieveConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     retrievedConnection := RetrieveConnection(testServer, 0);
@@ -728,10 +728,10 @@ begin
 end;
 procedure TIntegrationTests.TestSendMessageToConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    sendResult := SendMessageTo("Test Message", testConnection);
+    sendResult := SendMessageToConnection("Test Message", testConnection);
     CheckNetworkActivity();
     AssertTrue(sendResult);
     CloseConnection(testConnection);
@@ -739,10 +739,10 @@ begin
 end;
 procedure TIntegrationTests.TestSendMessageToNameIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     testConnection := OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    sendResult := SendMessageTo("Test Message", "test_connection");
+    sendResult := SendMessageToName("Test Message", "test_connection");
     CheckNetworkActivity();
     AssertTrue(sendResult);
     CloseConnection(testConnection);
@@ -750,16 +750,16 @@ begin
 end;
 procedure TIntegrationTests.TestServerHasNewConnectionNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
-    AssertTrue(ServerHasNewConnection("test_server"));
+    AssertTrue(ServerHasNewConnectionNamed("test_server"));
     CloseServer(testServer);
     CloseAllConnections();
 end;
 procedure TIntegrationTests.TestServerHasNewConnectionIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     OpenConnection("test_connection", "127.0.0.1", 5000);
     CheckNetworkActivity();
     AssertTrue(ServerHasNewConnection(testServer));
@@ -768,7 +768,7 @@ begin
 end;
 procedure TIntegrationTests.TestServerNamedIntegration;
 begin
-    testServer := CreateServer("test_server", 5000);
+    testServer := CreateServerWithPort("test_server", 5000);
     retrievedServer := ServerNamed("test_server");
     AssertEquals(testServer, retrievedServer);
     CloseServer(testServer);
@@ -785,7 +785,7 @@ begin
 end;
 procedure TIntegrationTests.TestDownloadBitmapIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testWindow := OpenWindow("Test Window", 800, 600);
     testBitmap := DownloadBitmap("test_image", "http://localhost:8080/test/resources/images/frog.png", 80);
     AssertNotNull(testBitmap);
@@ -795,7 +795,7 @@ begin
 end;
 procedure TIntegrationTests.TestDownloadFontIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testFont := DownloadFont("test_font", "http://localhost:8080/test/resources/fonts/hara.ttf", 80);
     AssertNotNull(testFont);
     FreeFont(testFont);
@@ -803,7 +803,7 @@ begin
 end;
 procedure TIntegrationTests.TestDownloadMusicIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testMusic := DownloadMusic("test_music", "http://localhost:8080/test/resources/music/280.mp3", 80);
     AssertNotNull(testMusic);
     FreeMusic(testMusic);
@@ -811,7 +811,7 @@ begin
 end;
 procedure TIntegrationTests.TestDownloadSoundEffectIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testSoundEffect := DownloadSoundEffect("test_sound", "http://localhost:8080/test/resources/sounds/breakdance.wav", 80);
     AssertNotNull(testSoundEffect);
     FreeSoundEffect(testSoundEffect);
@@ -819,7 +819,7 @@ begin
 end;
 procedure TIntegrationTests.TestFreeResponseIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
     AssertNotNull(testResponse);
     FreeResponse(testResponse);
@@ -828,7 +828,7 @@ begin
 end;
 procedure TIntegrationTests.TestHttpGetIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
     AssertNotNull(testResponse);
     responseText := HttpResponseToString(testResponse);
@@ -838,9 +838,9 @@ begin
 end;
 procedure TIntegrationTests.TestHttpPostWithHeadersIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     headers := TArray<String>.Create("Content-Type: application/json", "Accept: application/json");
-    testResponse := HttpPost("http://localhost:8080/test", 80, "Test Body", headers);
+    testResponse := HttpPostWithHeaders("http://localhost:8080/test", 80, "Test Body", headers);
     AssertNotNull(testResponse);
     responseText := HttpResponseToString(testResponse);
     AssertTrue(Pos("Test Body", responseText) > 0);
@@ -849,7 +849,7 @@ begin
 end;
 procedure TIntegrationTests.TestHttpPostIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testResponse := HttpPost("http://localhost:8080/test", 80, "Test Body");
     AssertNotNull(testResponse);
     responseText := HttpResponseToString(testResponse);
@@ -859,7 +859,7 @@ begin
 end;
 procedure TIntegrationTests.TestHttpResponseToStringIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
     responseText := HttpResponseToString(testResponse);
     AssertTrue(Length(responseText) > 0);
@@ -868,9 +868,9 @@ begin
 end;
 procedure TIntegrationTests.TestSaveResponseToFileIntegration;
 begin
-    testServer := CreateServer("test_server", 8080);
+    testServer := CreateServerWithPort("test_server", 8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
-    testFile := "test_output.txt"
+    testFile := "test_output.txt";
     SaveResponseToFile(testResponse, testFile);
     FreeResponse(testResponse);
     AssertTrue(FileExists(testFile));
@@ -1037,7 +1037,7 @@ begin
     testResponse := HttpGet("http://localhost:8080/test/path", 80);
     testRequest := NextWebRequest(testServer);
     testStubs := RequestURIStubs(testRequest);
-    AssertEquals(TArray<String>.Create("test", "path");, testStubs);
+    AssertEquals(TArray<String>.Create("test", "path"), testStubs);
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
@@ -1086,7 +1086,7 @@ begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
     testRequest := NextWebRequest(testServer);
-    SendResponse(testRequest);
+    SendResponseEmpty(testRequest);
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
@@ -1104,7 +1104,7 @@ begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
     testRequest := NextWebRequest(testServer);
-    SendResponse(testRequest, HttpStatusCode.HTTP_STATUS_OK);
+    SendResponseJsonWithStatus(testRequest, HttpStatusCode.HTTP_STATUS_OK);
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
@@ -1113,7 +1113,7 @@ begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
     testRequest := NextWebRequest(testServer);
-    SendResponse(testRequest, HttpStatusCode.HTTP_STATUS_OK, "Test Message");
+    SendResponseWithStatus(testRequest, HttpStatusCode.HTTP_STATUS_OK, "Test Message");
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
@@ -1122,7 +1122,7 @@ begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
     testRequest := NextWebRequest(testServer);
-    SendResponse(testRequest, HttpStatusCode.HTTP_STATUS_OK, "Test Message", "text/plain");
+    SendResponseWithStatusAndContentType(testRequest, HttpStatusCode.HTTP_STATUS_OK, "Test Message", "text/plain");
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
@@ -1131,7 +1131,7 @@ begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet("http://localhost:8080/test", 80);
     testRequest := NextWebRequest(testServer);
-    SendResponse(testRequest, HttpStatusCode.HTTP_STATUS_OK, "Test Message", "text/plain", TArray<String>.Create("Header1: Value1", "Header2: Value2"););
+    SendResponseWithStatusAndContentTypeAndHeaders(testRequest, HttpStatusCode.HTTP_STATUS_OK, "Test Message", "text/plain", TArray<String>.Create("Header1: Value1", "Header2: Value2"));
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
@@ -1142,7 +1142,7 @@ begin
     testRequest := NextWebRequest(testServer);
     testJson := CreateJson();
     JsonSetString(testJson, "message", "Test Message");
-    SendResponse(testRequest, testJson);
+    SendResponseJson(testRequest, testJson);
     FreeResponse(testResponse);
     FreeJson(testJson);
     StopWebServer(testServer);
@@ -1150,13 +1150,13 @@ end;
 procedure TIntegrationTests.TestSplitURIStubsIntegration;
 begin
     testStubs := SplitURIStubs("/names/0");
-    AssertEquals(TArray<Integer>.Create("names", "0");, testStubs);
+    AssertEquals(TArray<Integer>.Create("names", "0"), testStubs);
     testStubsEmpty := SplitURIStubs("/");
     AssertTrue(Length(testStubsEmpty) = 0);
 end;
 procedure TIntegrationTests.TestStartWebServerWithDefaultPortIntegration;
 begin
-    testServer := StartWebServer();
+    testServer := StartWebServerWithDefaultPort();
     AssertNotNull(testServer);
     StopWebServer(testServer);
 end;
@@ -1178,5 +1178,5 @@ end;
 
 procedure RegisterTests;
 begin
-TestFramework.RegisterTest(TIntegrationTests.Suite);
+#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
 end;

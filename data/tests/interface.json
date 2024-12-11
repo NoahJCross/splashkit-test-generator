@@ -3219,7 +3219,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "hsb_color",
+          "function_name": "hsb_color_slider_at_position",
           "args": [
             {
               "value_type": "primitive",
@@ -3828,7 +3828,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "label_element",
+              "function_name": "label_element_at_position",
               "args": [
                 {
                   "value_type": "primitive",
@@ -4197,7 +4197,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "false",
+            "compare_type": "true",
             "value1": {
               "value_type": "variable",
               "variable_name": "button_result"
@@ -4832,7 +4832,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "paragraph",
+              "function_name": "paragraph_at_position",
               "args": [
                 {
                   "value_type": "primitive",
@@ -5626,7 +5626,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "set_interface_font",
+          "function_name": "set_interface_font_font_as_string",
           "args": [
             {
               "value_type": "primitive",
@@ -6713,8 +6713,9 @@
           "function_name": "set_interface_style",
           "args": [
             {
-              "value_type": "primitive",
-              "value": "SplashKitSDK.InterfaceStyle.ShadedDarkStyle"
+              "value_type": "enum",
+              "enum_type": "interface_style",
+              "value": "shaded_dark_style"
             }
           ]
         },
@@ -6839,11 +6840,12 @@
         },
         {
           "step_type": "function",
-          "function_name": "set_interface_style",
+          "function_name": "set_interface_style_with_color",
           "args": [
             {
-              "value_type": "primitive",
-              "value": "SplashKitSDK.InterfaceStyle.ShadedDarkStyle"
+              "value_type": "enum",
+              "enum_type": "interface_style",
+              "value": "shaded_dark_style"
             },
             {
               "value_type": "function",
@@ -7921,7 +7923,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "split_into_columns",
+              "function_name": "split_into_columns_with_last_width",
               "args": [
                 {
                   "value_type": "primitive",
@@ -8173,6 +8175,12 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "variable",
+          "value_type": "reference",
+          "variable_name": "button_result",
+          "value": "false"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
@@ -8327,7 +8335,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "start_inset",
+              "function_name": "start_inset_at_position",
               "args": [
                 {
                   "value_type": "primitive",

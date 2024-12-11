@@ -3,7 +3,7 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestColor
     {
         [Fact]
         public void TestAlphaOfIntegration()

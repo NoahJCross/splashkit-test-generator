@@ -8,6 +8,8 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_geometry {
+use super::*;
 #[test]
 fn test_center_point_integration() {
     let test_circle = circle_at(100.0, 100.0, 50.0);
@@ -121,7 +123,7 @@ fn test_distant_point_on_circle_heading_integration() {
     let test_circle = circle_at(100.0, 100.0, 50.0);
     let test_point1 = point_at(150.0, 100.0);
     let test_heading = vector_from_angle(180.0, 1.0);
-    let test_point2 = point_at(0.0);
+    let test_point2 = point_at(0.0, 0.0);
     let test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, test_point2);
     assert!(test_result);
     assert_eq!(50.0, test_point1.x);
@@ -148,10 +150,10 @@ fn test_tangent_points_integration() {
 #[test]
 fn test_widest_points_integration() {
     let test_circle = circle_at(100.0, 100.0, 50.0);
-    let test_vector = vector_from_angle(45.0);
+    let test_vector = vector_from_angle(45.0, 45.0);
     let test_point1 = point_at(0.0, 0.0);
     let test_point2 = point_at(0.0, 0.0);
-    let test_points = widest_points(test_circle, test_vector, test_point1, test_point2);
+    widest_points(test_circle, test_vector, test_point1, test_point2);
     assert!(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
     assert!(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
 }
@@ -191,8 +193,8 @@ fn test_closest_point_on_lines_integration() {
     let test_from_pt = point_at(0.0, 0.0);
     let test_line1 = line_from(point_at(-10.0, 0.0), point_at(10.0, 0.0));
     let test_line2 = line_from(point_at(0.0, -10.0), point_at(0.0, 10.0));
-    let test_index = {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
-    let test_lines = {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
+    let test_index = 0;
+    let test_lines = vec![test_line1, test_line2];
     let test_closest_point = closest_point_on_lines(test_from_pt, test_lines, test_index);
     assert_eq!(0.0, point_point_distance(test_from_pt, test_closest_point));
 }
@@ -463,7 +465,7 @@ fn test_quad_from_points_integration() {
 #[test]
 fn test_quad_from_rectangle_integration() {
     let test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
-    let test_quad = quad_from(test_rectangle);
+    let test_quad = quad_from_rectangle(test_rectangle);
     assert!(point_in_quad(point_at(50.0, 50.0), test_quad));
     assert!(!point_in_quad(point_at(150.0, 150.0), test_quad));
 }
@@ -577,7 +579,7 @@ fn test_rectangle_from_point_and_size_integration() {
 fn test_rectangle_from_points_integration() {
     let test_point1 = point_at(0.0, 0.0);
     let test_point2 = point_at(100.0, 100.0);
-    let test_rectangle = rectangle_from(test_point1, test_point2);
+    let test_rectangle = rectangle_from_points(test_point1, test_point2);
     assert_eq!(0.0, rectangle_left(test_rectangle));
     assert_eq!(0.0, rectangle_top(test_rectangle));
     assert_eq!(100.0, rectangle_right(test_rectangle));
@@ -668,4 +670,5 @@ fn test_triangles_intersect_integration() {
     let test_triangle2 = triangle_from(point_at(1.0, 0.0), point_at(3.0, 0.0), point_at(2.0, 2.0));
     let test_result = triangles_intersect(test_triangle1, test_triangle2);
     assert!(test_result);
+}
 }

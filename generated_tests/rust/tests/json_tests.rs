@@ -8,6 +8,8 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_json {
+use super::*;
 #[test]
 fn test_create_json_integration() {
     let test_json = create_json();
@@ -26,6 +28,8 @@ fn test_free_all_json_integration() {
     let test_json1 = create_json();
     let test_json2 = create_json();
     let count1 = json_count_keys(test_json1);
+    json_set_string(test_json1, "key", "value");
+    json_set_string(test_json2, "key", "value");
     let count2 = json_count_keys(test_json2);
     assert!(count1 > 0);
     assert!(count2 > 0);
@@ -62,10 +66,10 @@ fn test_json_from_color_integration() {
 }
 #[test]
 fn test_json_from_file_integration() {
-    let test_json = json_from_file("test.json");
+    let test_json = json_from_file("person.json");
     assert!(test_json.is_some());
-    let test_value = json_read_string(test_json, "key");
-    assert_eq!("expected_value", test_value);
+    let test_value = json_read_string(test_json, "firstName");
+    assert_eq!("John", test_value);
     free_json(test_json);
 }
 #[test]
@@ -87,7 +91,7 @@ fn test_json_has_key_integration() {
 #[test]
 fn test_json_read_array_of_double_integration() {
     let test_json = create_json();
-    json_set_array_of_double(test_json, "numbers", vec![1.1, 2.2, 3.3];);
+    json_set_array_of_double(test_json, "numbers", vec![1.1, 2.2, 3.3]);
     let out_result = vec![];
     json_read_array_of_double(test_json, "numbers", out_result);
     assert_eq!(1.1, out_result[0]);
@@ -100,16 +104,16 @@ fn test_json_read_array_of_json_integration() {
     let test_json = create_json();
     let test_json1 = create_json();
     let test_json2 = create_json();
-    json_set_string(test_json_nested1, "key1", "value1");
-    json_set_string(test_json_nested2, "key2", "value2");
+    json_set_string(test_json1, "key1", "value1");
+    json_set_string(test_json2, "key2", "value2");
     let test_json_array = vec![test_json1, test_json2];
     json_set_array_of_json(test_json, "array_key", test_json_array);
     let out_result = vec![];
     json_read_array_of_json(test_json, "array_key", out_result);
-    assert_eq!(size(out_result), 2);
+    assert_eq!(2, size(out_result));
     free_json(test_json);
-    free_json(test_json_nested1);
-    free_json(test_json_nested2);
+    free_json(test_json1);
+    free_json(test_json2);
     free_all_json();
 }
 #[test]
@@ -125,10 +129,10 @@ fn test_json_read_array_of_string_integration() {
 #[test]
 fn test_json_read_array_of_bool_integration() {
     let test_json = create_json();
-    json_set_array_of_bool(test_json, "test_key", vec![true, false, true];);
+    json_set_array_of_bool(test_json, "test_key", vec![true, false, true]);
     let out_result = vec![];
     json_read_array_of_bool(test_json, "test_key", out_result);
-    assert_eq!(size(out_result), 3);
+    assert_eq!(3, size(out_result));
     assert!(out_result[0]);
     assert!(!out_result[1]);
     free_json(test_json);
@@ -186,7 +190,7 @@ fn test_json_read_string_integration() {
 #[test]
 fn test_json_set_array_of_string_integration() {
     let test_json = create_json();
-    json_set_array_of_string(test_json, "test_key", vec!["value1", "value2", "value3"];);
+    json_set_array_of_string(test_json, "test_key", vec!["value1", "value2", "value3"]);
     let out_result = vec![];
     json_read_array_of_string(test_json, "test_key", out_result);
     assert_eq!(["value1", "value2", "value3"], out_result);
@@ -195,7 +199,7 @@ fn test_json_set_array_of_string_integration() {
 #[test]
 fn test_json_set_array_of_double_integration() {
     let test_json = create_json();
-    json_set_array_of_double(test_json, "numbers", vec![1.1, 2.2, 3.3];);
+    json_set_array_of_double(test_json, "numbers", vec![1.1, 2.2, 3.3]);
     let out_result = vec![];
     json_read_array_of_double(test_json, "numbers", out_result);
     assert_eq!([1.1, 2.2, 3.3], out_result);
@@ -251,7 +255,7 @@ fn test_json_set_number_double_integration() {
 fn test_json_set_number_float_integration() {
     let test_json = create_json();
     json_set_number_float(test_json, "test_key", 3.14);
-    assert_eq!(3.14, json_read_number(test_json, "test_key"));
+    assert_eq!(3.140000104904175, json_read_number(test_json, "test_key"));
     free_json(test_json);
 }
 #[test]
@@ -274,9 +278,9 @@ fn test_json_set_string_integration() {
 #[test]
 fn test_json_to_color_integration() {
     let test_json = create_json();
-    json_set_string(test_json, "color", "#FF0000FF");
+    json_set_string(test_json, "color", "#ff0000ff");
     let test_color = json_to_color(test_json);
-    assert_eq!("#FF0000FF", color_to_string(test_color));
+    assert_eq!("#ff0000ff", color_to_string(test_color));
     free_json(test_json);
 }
 #[test]
@@ -296,4 +300,5 @@ fn test_json_to_string_integration() {
     let test_json_string = json_to_string(test_json);
     assert_ne!("", test_json_string);
     free_json(test_json);
+}
 }

@@ -3,148 +3,166 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestUtilities
     {
         [Fact]
         public void TestContainsIntegration()
         {
-            var testResult = Contains("SplashKit is awesome", "awesome");
-            Assert.True(testResult);
-            var testResult = Contains("SplashKit is awesome", "unreal");
-            Assert.False(testResult);
+            Assert.True(Contains("splashkit library", "splashkit"));
+            Assert.True(Contains("splashkit library", "library"));
+            Assert.True(Contains("splashkit library", "it lib"));
+            Assert.True(Contains("splashkit library", ""));
+            Assert.False(Contains("splashkit library", "unreal"));
+            Assert.False(Contains("", "splashkit"));
         }
         [Fact]
         public void TestConvertToDoubleIntegration()
         {
-            var testResult = ConvertToDouble("123.456");
-            Assert.Equal(123.456, testResult);
-            var testResult = ConvertToDouble("-123.456");
-            Assert.Equal(-123.456, testResult);
-            var testResult = ConvertToDouble("invalid");
-            Assert.Null(testResult);
+            Assert.Equal(123.0, ConvertToDouble("123"));
+            Assert.Equal(123.456, ConvertToDouble("123.456"));
+            Assert.Equal(-123.0, ConvertToDouble("-123"));
+            Assert.Equal(-123.456, ConvertToDouble("-123.456"));
+            Assert.Equal(0.456, ConvertToDouble(".456"));
+            Assert.Equal(123.0, ConvertToDouble("123."));
+            Assert.Equal(123.456, ConvertToDouble("000123.456"));
+            Assert.Equal(123.456, ConvertToDouble("123.456000"));
+            Assert.Equal(, ConvertToDouble("inf"));
+            Assert.Equal(, ConvertToDouble("-inf"));
+            Assert.Equal(123.0, ConvertToDouble("1.23e2"));
         }
         [Fact]
         public void TestConvertToIntegerIntegration()
         {
-            var testResult = ConvertToInteger("123");
-            Assert.Equal(123, testResult);
-            var testResult = ConvertToInteger("-456");
-            Assert.Equal(-456, testResult);
-            var testResult = ConvertToInteger("123.456");
-            Assert.Equal(123, testResult);
-            var testResult = ConvertToInteger("abc");
-            Assert.Throws<Exception>(() => { ConvertToInteger("abc") });
+            Assert.Equal(123, ConvertToInteger("123"));
+            Assert.Equal(123, ConvertToInteger("123.456"));
+            Assert.Equal(-123, ConvertToInteger("-123"));
+            Assert.Equal(-123, ConvertToInteger("-123.456"));
+            Assert.Equal(123, ConvertToInteger("123."));
+            Assert.Equal(123, ConvertToInteger("000123.456"));
+            Assert.Equal(123, ConvertToInteger("123.456000"));
         }
         [Fact]
         public void TestIndexOfIntegration()
         {
-            var testResult = IndexOf("splashkit library", "library");
-            Assert.Equal(10, testResult);
-            var testResult = IndexOf("splashkit library", "unreal");
-            Assert.Equal(-1, testResult);
+            Assert.Equal(0, IndexOf("splashkit library", "splashkit"));
+            Assert.Equal(10, IndexOf("splashkit library", "library"));
+            Assert.Equal(7, IndexOf("splashkit library", "it lib"));
+            Assert.Equal(-1, IndexOf("splashkit library", "unreal"));
+            Assert.Equal(0, IndexOf("splashkit library", "splashkit library"));
+            Assert.Equal(-1, IndexOf("splashkit library", "splashkit library is the best"));
+            Assert.Equal(0, IndexOf("splashkit library", ""));
+            Assert.Equal(-1, IndexOf("", "splashkit"));
+            Assert.Equal(0, IndexOf("", ""));
         }
         [Fact]
         public void TestIsDoubleIntegration()
         {
-            var testResult = IsDouble("123.456");
-            Assert.True(testResult);
-            var testResult = IsDouble("123");
-            Assert.True(testResult);
-            var testResult = IsDouble("-123.456");
-            Assert.True(testResult);
-            var testResult = IsDouble("SplashKit");
-            Assert.False(testResult);
-            var testResult = IsDouble("");
-            Assert.False(testResult);
+            Assert.True(IsDouble("123.456"));
+            Assert.True(IsDouble("123"));
+            Assert.True(IsDouble("-123.456"));
+            Assert.True(IsDouble("-123"));
+            Assert.True(IsDouble("123."));
+            Assert.True(IsDouble("000123.456"));
+            Assert.True(IsDouble("123.456000"));
+            Assert.False(IsDouble(".456"));
+            Assert.False(IsDouble("SplashKit"));
+            Assert.False(IsDouble(""));
         }
         [Fact]
         public void TestIsIntegerIntegration()
         {
-            var testResult = IsInteger("123");
-            Assert.True(testResult);
-            var testResult = IsInteger("123.456");
-            Assert.False(testResult);
-            var testResult = IsInteger("-123");
-            Assert.True(testResult);
-            var testResult = IsInteger("SplashKit");
-            Assert.False(testResult);
-            var testResult = IsInteger("");
-            Assert.False(testResult);
+            Assert.True(IsInteger("123"));
+            Assert.True(IsInteger("-123"));
+            Assert.False(IsInteger("123.456"));
+            Assert.False(IsInteger("-123.456"));
+            Assert.False(IsInteger(".456"));
+            Assert.False(IsInteger("SplashKit"));
+            Assert.False(IsInteger(""));
         }
         [Fact]
         public void TestIsNumberIntegration()
         {
-            var testResult = IsNumber("123.456");
-            Assert.True(testResult);
-            var testResult = IsNumber("abc");
-            Assert.False(testResult);
+            Assert.True(IsNumber("123"));
+            Assert.True(IsNumber("123.456"));
+            Assert.True(IsNumber("-123"));
+            Assert.True(IsNumber("-123.456"));
+            Assert.False(IsNumber("SplashKit"));
+            Assert.False(IsNumber(""));
         }
         [Fact]
         public void TestLengthOfIntegration()
         {
-            var testLength = LengthOf("SplashKit");
-            Assert.Equal(9, testLength);
-            var testLengthEmpty = LengthOf("");
-            Assert.Equal(0, testLengthEmpty);
+            Assert.Equal(9, LengthOf("splashkit"));
+            Assert.Equal(0, LengthOf(""));
         }
         [Fact]
         public void TestReplaceAllIntegration()
         {
-            var testResult = ReplaceAll("hello world", "world", "SplashKit");
-            Assert.Equal("hello SplashKit", testResult);
-            var testResult = ReplaceAll("aaaa", "a", "b");
-            Assert.Equal("bbbb", testResult);
-            var testResult = ReplaceAll("test", "t", "");
-            Assert.Equal("es", testResult);
+            Assert.Equal("SK library", ReplaceAll("splashkit library", "splashkit", "SK"));
+            Assert.Equal("splashkit lib", ReplaceAll("splashkit library", "library", "lib"));
+            Assert.Equal("splashkitlibrary", ReplaceAll("splashkit library", "it lib", "itlib"));
+            Assert.Equal("splashkit library", ReplaceAll("splashkit library", "unreal", "tournament"));
+            Assert.Equal("SK", ReplaceAll("splashkit library", "splashkit library", "SK"));
+            Assert.Equal(" library", ReplaceAll("splashkit library", "splashkit", ""));
+            Assert.Equal("splashkit library", ReplaceAll("splashkit library", "", "SK"));
+            Assert.Equal("", ReplaceAll("", "", "SK"));
         }
         [Fact]
         public void TestSplitIntegration()
         {
-            var testResult = Split("splashkit library", " ");
-            Assert.Equal(2, LengthOf(testResult));
-            Assert.Equal(0, IndexOf(testResult, "splashkit"));
-            Assert.Equal(0, IndexOf(testResult, "library"));
+            var result = Split("splashkit library", ' ');
+            Assert.Equal(new List<string> { "splashkit", "library" }, result);
+            Assert.Equal(new List<string> { "" }, Split("", ' '));
+            Assert.Equal(new List<string> { "splashkit library" }, Split("splashkit library", ','));
+            Assert.Equal(new List<string> { "", "splashkit library" }, Split(",splashkit library", ','));
+            Assert.Equal(new List<string> { "splashkit library", "" }, Split("splashkit library,", ','));
+            Assert.Equal(new List<string> { "", "splashkit library", "" }, Split(",splashkit library,", ','));
+            Assert.Equal(new List<string> { "splashkit", "", "library" }, Split("splashkit,,library", ','));
         }
         [Fact]
         public void TestToLowercaseIntegration()
         {
-            var testLowercase = ToLowercase("SPLASHKIT");
-            Assert.Equal("splashkit", testLowercase);
-            var testEmpty = ToLowercase("");
-            Assert.Equal("", testEmpty);
+            Assert.Equal("splashkit", ToLowercase("SPLASHKIT"));
+            Assert.Equal("", ToLowercase(""));
+            Assert.Equal("splashkit", ToLowercase("splashkit"));
+            Assert.Equal("splashkit", ToLowercase("SpLaShKiT"));
         }
         [Fact]
         public void TestToUppercaseIntegration()
         {
-            var testUppercase = ToUppercase("hello");
-            Assert.Equal("HELLO", testUppercase);
+            Assert.Equal("SPLASHKIT", ToUppercase("splashkit"));
+            Assert.Equal("", ToUppercase(""));
+            Assert.Equal("SPLASHKIT", ToUppercase("SPLASHKIT"));
+            Assert.Equal("SPLASHKIT", ToUppercase("SpLaShKiT"));
         }
         [Fact]
         public void TestTrimIntegration()
         {
-            var testTrimmed = Trim("  Hello, World!  ");
-            Assert.Equal("Hello, World!", testTrimmed);
-            var testEmptyTrimmed = Trim(" \t\n  ");
-            Assert.Equal("", testEmptyTrimmed);
+            Assert.Equal("splashkit", Trim("  splashkit"));
+            Assert.Equal("splashkit", Trim("splashkit  "));
+            Assert.Equal("splashkit", Trim("  splashkit  "));
+            Assert.Equal("splashkit", Trim("splashkit"));
+            Assert.Equal("", Trim(""));
         }
         [Fact]
         public void TestRndRangeIntegration()
         {
-            var testResult = Rnd(1, 10);
-            Assert.InRange(testResult, 1, 10);
+            Assert.InRange(RndRange(-1, 5), -1, 5);
+            Assert.Equal(1, RndRange(1, 1));
+            Assert.InRange(RndRange(5, 1), 1, 5);
         }
         [Fact]
         public void TestRndIntegration()
         {
-            var testRandom = Rnd();
-            Assert.True(testRandom > 0.0);
-            Assert.True(testRandom < 1.0);
+            Assert.InRange(Rnd(), 0.0, );
         }
         [Fact]
         public void TestRndIntIntegration()
         {
-            var testResult = Rnd(10);
-            Assert.InRange(testResult, 0, 10);
+            Assert.InRange(RndInt(1), 0, 1);
+            Assert.InRange(RndInt(10), 0, 10);
+            Assert.Equal(0, RndInt(-1));
+            Assert.Equal(0, RndInt(0));
         }
         [Fact]
         public void TestCurrentTicksIntegration()
@@ -155,26 +173,27 @@ namespace SplashKitTests
         [Fact]
         public void TestDelayIntegration()
         {
-            var testStartTime = CurrentTicks();
-            Delay(1000);
-            var testEndTime = CurrentTicks();
-            Assert.True(CurrentTicks() > testStartTime);
-            Assert.InRange(CurrentTicks(), testStartTime, 1100);
+            var testTimer = CreateTimer("test_timer");
+            StartTimer(testTimer);
+            var initialTicks = TimerTicks(testTimer);
+            Delay(200);
+            Assert.True(initialTicks + 200 < TimerTicks(testTimer));
         }
         [Fact]
         public void TestDisplayDialogIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testFont = LoadFont("test_font", "path/to/font.ttf");
-            DisplayDialog("Test Title", "This is a test message.", testFont, 12);
+            var testFont = LoadFont("test_font", "hara.ttf");
+            DisplayDialog("Test Dialog", "This is a test message", testFont, 20);
             FreeFont(testFont);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestFileAsStringIntegration()
         {
-            var testFileContent = FileAsString("test_file.txt", ResourceKind.BundleResource);
-            Assert.NotEqual("", testFileContent);
+            Assert.Equal("BITMAP,ufo,ufo.png\n", FileAsString("blah.txt", ResourceKind.BundleResource));
+            Assert.Equal("", FileAsString("", ResourceKind.BundleResource));
+            Assert.Equal("", FileAsString("invalid.txt", ResourceKind.BundleResource));
         }
     }
 }

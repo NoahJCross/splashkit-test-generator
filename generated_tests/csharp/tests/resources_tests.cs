@@ -3,14 +3,15 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestResources
     {
         [Fact]
         public void TestDeregisterFreeNotifierIntegration()
         {
-            RegisterFreeNotifier(testNotifier);
-            DeregisterFreeNotifier(testNotifier);
-            Assert.Null(testNotifier);
+            var freeNotifier = new NotifierTracker();
+            RegisterFreeNotifier(freeNotifier.On_free);
+            DeregisterFreeNotifier(freeNotifier.On_free);
+            Assert.True(freeNotifier.Wasnotified);
         }
         [Fact]
         public void TestPathToResourceIntegration()
@@ -34,18 +35,19 @@ namespace SplashKitTests
         public void TestPathToResourcesForKindIntegration()
         {
             SetResourcesPath("resources");
-            var imagePath = PathToResources(ResourceKind.ImageResource);
+            var imagePath = PathToResourcesForKind(ResourceKind.ImageResource);
             Assert.Equal("resources/images", imagePath);
-            var soundPath = PathToResources(ResourceKind.SoundResource);
+            var soundPath = PathToResourcesForKind(ResourceKind.SoundResource);
             Assert.Equal("resources/sounds", soundPath);
         }
         [Fact]
         public void TestRegisterFreeNotifierIntegration()
         {
-            RegisterFreeNotifier(FreeNotifier());
-            Assert.True(notifierCalled);
-            DeregisterFreeNotifier(FreeNotifier());
-            Assert.False(notifierCalled);
+            var freeNotifier = new NotifierTracker();
+            RegisterFreeNotifier(freeNotifier.On_free);
+            Assert.True(freeNotifier.Wasnotified);
+            DeregisterFreeNotifier(freeNotifier.On_free);
+            Assert.False(freeNotifier.Wasnotified);
         }
         [Fact]
         public void TestSetResourcesPathIntegration()

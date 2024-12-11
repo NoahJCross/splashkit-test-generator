@@ -3,343 +3,559 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestInput
     {
         [Fact]
         public void TestProcessEventsIntegration()
         {
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyTyped(KeyCode.A));
-            SimulateMouseClick(MouseButton.Left);
-            ProcessEvents();
-            Assert.True(MouseClicked(MouseButton.Left));
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (KeyTyped(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press A to test events", ColorBlack(), 10, 10);
+                DrawText($"Key Typed: {KeyTyped(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            while (MouseClicked(MouseButton.LeftButton) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Click left mouse button to test events", ColorBlack(), 10, 10);
+                DrawText($"Mouse Clicked: {MouseClicked(MouseButton.LeftButton)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestQuitRequestedIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            Assert.False(QuitRequested());
-            SimulateKeyPress(KeyCode.Escape);
-            ProcessEvents();
-            Assert.True(QuitRequested());
+            while (QuitRequested() == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press Escape to test quit", ColorBlack(), 10, 10);
+                DrawText($"Quit Requested: {QuitRequested()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestResetQuitIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            Assert.True(QuitRequested());
-            ResetQuit();
-            ProcessEvents();
-            Assert.False(QuitRequested());
+            while (QuitRequested() == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press Escape to test quit", ColorBlack(), 10, 10);
+                DrawText($"Quit Requested: {QuitRequested()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                ResetQuit();
+            }
+            while (KeyDown(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press A to continue after reset", ColorBlack(), 10, 10);
+                DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestAnyKeyPressedIntegration()
         {
-            ProcessEvents();
-            Assert.False(AnyKeyPressed());
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(AnyKeyPressed());
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (AnyKeyPressed() == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press any key to test", ColorBlack(), 10, 10);
+                DrawText($"Any Key Pressed: {AnyKeyPressed()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestDeregisterCallbackOnKeyDownIntegration()
         {
+            var callbacks = new KeyCallbacks();
             var testWindow = OpenWindow("Test Window", 800, 600);
-            RegisterCallbackOnKeyDown(OnKeyDown());
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyDown(KeyCode.A));
-            DeregisterCallbackOnKeyDown(OnKeyDown());
-            SimulateKeyPress(KeyCode.B);
-            ProcessEvents();
-            Assert.False(KeyDown(KeyCode.B));
+            RegisterCallbackOnKeyDown(callbacks.On_key_down);
+            while (KeyDown(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press A to test callback", ColorBlack(), 10, 10);
+                DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_down}", ColorBlack(), 10, 50);
+                RefreshScreen();
+                DeregisterCallbackOnKeyDown(callbacks.On_key_down);
+            }
+            while (KeyDown(KeyCode.BKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press B to test deregistered callback", ColorBlack(), 10, 10);
+                DrawText($"Key Down: {KeyDown(KeyCode.BKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_down}", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestDeregisterCallbackOnKeyTypedIntegration()
         {
-            RegisterCallbackOnKeyTyped(OnKeyTyped());
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyTyped(KeyCode.A));
-            DeregisterCallbackOnKeyTyped(OnKeyTyped());
-            SimulateKeyPress(KeyCode.B);
-            ProcessEvents();
-            Assert.False(KeyTyped(KeyCode.B));
+            var callbacks = new KeyCallbacks();
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            RegisterCallbackOnKeyTyped(callbacks.On_key_typed);
+            while (KeyTyped(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press A to test callback", ColorBlack(), 10, 10);
+                DrawText($"Key Typed: {KeyTyped(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_typed}", ColorBlack(), 10, 50);
+                RefreshScreen();
+                DeregisterCallbackOnKeyTyped(callbacks.On_key_typed);
+            }
+            while (KeyTyped(KeyCode.BKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press B to test deregistered callback", ColorBlack(), 10, 10);
+                DrawText($"Key Typed: {KeyTyped(KeyCode.BKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_typed}", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestDeregisterCallbackOnKeyUpIntegration()
         {
+            var callbacks = new KeyCallbacks();
             var testWindow = OpenWindow("Test Window", 800, 600);
-            RegisterCallbackOnKeyUp(OnKeyUp());
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyUp(KeyCode.A));
-            DeregisterCallbackOnKeyUp(OnKeyUp());
-            SimulateKeyPress(KeyCode.B);
-            ProcessEvents();
-            Assert.False(KeyUp(KeyCode.B));
+            RegisterCallbackOnKeyUp(callbacks.On_key_up);
+            while (KeyUp(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press and release A to test callback", ColorBlack(), 10, 10);
+                DrawText($"Key Up: {KeyUp(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_up}", ColorBlack(), 10, 50);
+                RefreshScreen();
+                DeregisterCallbackOnKeyUp(callbacks.On_key_up);
+            }
+            while (KeyUp(KeyCode.BKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press and release B to test deregistered callback", ColorBlack(), 10, 10);
+                DrawText($"Key Up: {KeyUp(KeyCode.BKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_up}", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestKeyDownIntegration()
         {
-            ProcessEvents();
-            Assert.False(KeyDown(KeyCode.A));
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyDown(KeyCode.A));
-            SimulateKeyRelease(KeyCode.A);
-            ProcessEvents();
-            Assert.False(KeyDown(KeyCode.A));
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (KeyDown(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press and hold A", ColorBlack(), 10, 10);
+                DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            while (KeyDown(KeyCode.AKey) != false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Release A", ColorBlack(), 10, 10);
+                DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestKeyNameIntegration()
         {
-            var testKeyName1 = KeyName(KeyCode.A);
-            Assert.Equal("A", testKeyName1);
-            var testKeyName2 = KeyName(KeyCode.Enter);
-            Assert.Equal("Enter", testKeyName2);
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (KeyDown(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press A to test key name", ColorBlack(), 10, 10);
+                DrawText($"Key Name: {KeyName(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press Enter to test key name", ColorBlack(), 10, 10);
+                DrawText($"Key Name: {KeyName(KeyCode.KeypadEnter)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestKeyReleasedIntegration()
         {
-            ProcessEvents();
-            Assert.False(KeyReleased(KeyCode.A));
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            SimulateKeyRelease(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyReleased(KeyCode.A));
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (KeyReleased(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press and release A", ColorBlack(), 10, 10);
+                DrawText($"Key Released: {KeyReleased(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestKeyTypedIntegration()
         {
-            ProcessEvents();
-            Assert.False(KeyTyped(KeyCode.A));
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyTyped(KeyCode.A));
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (KeyTyped(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press A to test key typed", ColorBlack(), 10, 10);
+                DrawText($"Key Typed: {KeyTyped(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestKeyUpIntegration()
         {
-            ProcessEvents();
-            Assert.True(KeyUp(KeyCode.A));
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.False(KeyUp(KeyCode.A));
-            SimulateKeyRelease(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyUp(KeyCode.A));
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (KeyUp(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press and release A", ColorBlack(), 10, 10);
+                DrawText($"Key Up: {KeyUp(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestRegisterCallbackOnKeyDownIntegration()
         {
-            RegisterCallbackOnKeyDown(OnKeyDown());
-            ProcessEvents();
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyDown(KeyCode.A));
-            DeregisterCallbackOnKeyDown(OnKeyDown());
+            var callbacks = new KeyCallbacks();
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            RegisterCallbackOnKeyDown(callbacks.On_key_down);
+            while (KeyDown(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press A to test callback", ColorBlack(), 10, 10);
+                DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_down}", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
+            DeregisterCallbackOnKeyDown(callbacks.On_key_down);
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestRegisterCallbackOnKeyTypedIntegration()
         {
-            RegisterCallbackOnKeyTyped(OnKeyTyped());
-            ProcessEvents();
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.True(KeyTyped(KeyCode.A));
-            DeregisterCallbackOnKeyTyped(OnKeyTyped());
+            var callbacks = new KeyCallbacks();
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            RegisterCallbackOnKeyTyped(callbacks.On_key_typed);
+            while (KeyTyped(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press A to test callback", ColorBlack(), 10, 10);
+                DrawText($"Key Typed: {KeyTyped(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_typed}", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
+            DeregisterCallbackOnKeyTyped(callbacks.On_key_typed);
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestRegisterCallbackOnKeyUpIntegration()
         {
-            RegisterCallbackOnKeyUp(OnKeyUp());
-            ProcessEvents();
-            SimulateKeyPress(KeyCode.A);
-            SimulateKeyRelease(KeyCode.A);
-            ProcessEvents();
-            Assert.Equal("A", KeyUp);
-            DeregisterCallbackOnKeyUp(OnKeyUp());
+            var callbacks = new KeyCallbacks();
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            RegisterCallbackOnKeyUp(callbacks.On_key_up);
+            while (KeyUp(KeyCode.AKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press and release A to test callback", ColorBlack(), 10, 10);
+                DrawText($"Key Up: {KeyUp(KeyCode.AKey)}", ColorBlack(), 10, 30);
+                DrawText($"Callback received: {callbacks.Get_key_up}", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
+            DeregisterCallbackOnKeyUp(callbacks.On_key_up);
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestHideMouseIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            Assert.True(MouseShown());
-            HideMouse();
-            ProcessEvents();
-            Assert.False(MouseShown());
+            while (KeyDown(KeyCode.HKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press H to hide mouse", ColorBlack(), 10, 10);
+                DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                HideMouse();
+            }
+            while (KeyDown(KeyCode.SKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press S to show mouse", ColorBlack(), 10, 10);
+                DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            ShowMouse();
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMouseClickedIntegration()
         {
-            ProcessEvents();
-            Assert.False(MouseClicked(MouseButton.Left));
-            SimulateMouseClick(MouseButton.Left);
-            ProcessEvents();
-            Assert.True(MouseClicked(MouseButton.Left));
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (MouseClicked(MouseButton.LeftButton) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Click left mouse button", ColorBlack(), 10, 10);
+                DrawText($"Mouse Clicked: {MouseClicked(MouseButton.LeftButton)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestMouseDownIntegration()
         {
-            ProcessEvents();
-            Assert.False(MouseDown(MouseButton.Left));
-            SimulateMousePress(MouseButton.Left);
-            ProcessEvents();
-            Assert.True(MouseDown(MouseButton.Left));
-            SimulateMouseRelease(MouseButton.Left);
-            ProcessEvents();
-            Assert.False(MouseDown(MouseButton.Left));
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (MouseDown(MouseButton.LeftButton) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press and hold left mouse button", ColorBlack(), 10, 10);
+                DrawText($"Mouse Down: {MouseDown(MouseButton.LeftButton)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            while (MouseDown(MouseButton.LeftButton) != false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Release left mouse button", ColorBlack(), 10, 10);
+                DrawText($"Mouse Down: {MouseDown(MouseButton.LeftButton)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestMouseMovementIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            MoveMouse(100.0, 100.0);
-            ProcessEvents();
-            var testMovement = MouseMovement();
-            Assert.Equal(100.0, testMovement.X);
-            Assert.Equal(100.0, testMovement.Y);
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                var movement = MouseMovement();
+                DrawText("Move mouse to test movement", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMousePositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            MoveMouse(400.0, 300.0);
-            ProcessEvents();
-            var testPosition = MousePosition();
-            Assert.Equal(400.0, testPosition.X);
-            Assert.Equal(300.0, testPosition.Y);
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                var position = MousePosition();
+                DrawText("Move mouse to test position", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMousePositionVectorIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            MoveMouse(400.0, 300.0);
-            ProcessEvents();
-            var testMousePosition = MousePositionVector();
-            Assert.Equal(400.0, testMousePosition.X);
-            Assert.Equal(300.0, testMousePosition.Y);
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                var position = MousePositionVector();
+                DrawText("Move mouse to test position", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMouseShownIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            while (KeyDown(KeyCode.HKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press H to hide mouse", ColorBlack(), 10, 10);
+                DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                HideMouse();
+            }
+            while (KeyDown(KeyCode.SKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press S to show mouse", ColorBlack(), 10, 10);
+                DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             ShowMouse();
-            ProcessEvents();
-            Assert.True(MouseShown());
-            HideMouse();
-            ProcessEvents();
-            Assert.False(MouseShown());
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMouseUpIntegration()
         {
-            ProcessEvents();
-            Assert.True(MouseUp(MouseButton.Left));
-            SimulateMouseClick(MouseButton.Left);
-            ProcessEvents();
-            Assert.False(MouseUp(MouseButton.Left));
+            var testWindow = OpenWindow("Test Window", 800, 600);
+            while (MouseUp(MouseButton.LeftButton) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Click and release left mouse button", ColorBlack(), 10, 10);
+                DrawText($"Mouse Up: {MouseUp(MouseButton.LeftButton)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            CloseWindow(testWindow);
         }
         [Fact]
         public void TestMouseWheelScrollIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            Assert.Equal(VectorFromAngle(0.0, 0.0), MouseWheelScroll());
-            SimulateMouseWheelScroll(10.0, 5.0);
-            ProcessEvents();
-            Assert.True(MouseWheelScroll());
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                var scroll = MouseWheelScroll();
+                DrawText("Scroll mouse wheel to test", ColorBlack(), 10, 10);
+                DrawText("$Mouse Position: X={scroll.X}", "Y={scroll.Y}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMouseXIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            MoveMouse(400.0, 300.0);
-            ProcessEvents();
-            Assert.InRange(MouseX(), 399.0, 401.0);
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Move mouse to test X position", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMouseYIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            MoveMouse(400.0, 300.0);
-            ProcessEvents();
-            Assert.Equal(300.0, MouseY());
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Move mouse to test Y position", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMoveMouseIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
-            MoveMouse(400.0, 300.0);
-            ProcessEvents();
-            Assert.InRange(MouseX(), 399.0, 401.0);
-            Assert.InRange(MouseY(), 299.0, 301.0);
+            while (KeyDown(KeyCode.MKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press M to move mouse to center", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                MoveMouse(400, 300);
+            }
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Mouse moved to center", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestMoveMouseToPointIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            MoveMouse(PointAt(400.0, 300.0));
-            ProcessEvents();
-            Assert.Equal(PointAt(400.0, 300.0), MousePosition());
+            while (KeyDown(KeyCode.MKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press M to move mouse to center", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                MoveMouseToPoint(PointAt(400, 300));
+            }
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Mouse moved to center", ColorBlack(), 10, 10);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestShowMouseIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            HideMouse();
-            ProcessEvents();
-            Assert.False(MouseShown());
+            while (KeyDown(KeyCode.HKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press H to hide mouse", ColorBlack(), 10, 10);
+                DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                HideMouse();
+            }
+            while (KeyDown(KeyCode.SKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press S to show mouse", ColorBlack(), 10, 10);
+                DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             ShowMouse();
-            ProcessEvents();
-            Assert.True(MouseShown());
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestShowMouseWithBooleanIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ShowMouse(true);
-            ProcessEvents();
-            Assert.True(MouseShown());
-            ShowMouse(false);
-            ProcessEvents();
-            Assert.False(MouseShown());
+            while (KeyDown(KeyCode.HKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press H to hide mouse", ColorBlack(), 10, 10);
+                DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                ShowMouseWithBoolean(false);
+            }
+            while (KeyDown(KeyCode.SKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press S to show mouse", ColorBlack(), 10, 10);
+                DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            ShowMouseWithBoolean(true);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestDrawCollectedTextIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testFont = LoadFont("test_font", "path/to/font.ttf");
+            var testFont = LoadFont("test_font", "hara.ttf");
             StartReadingText(RectangleFrom(100, 100, 200, 30));
-            ProcessEvents();
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
-            RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105, 115));
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
+                RefreshScreen();
+            }
             EndReadingText();
             FreeFont(testFont);
             CloseWindow(testWindow);
@@ -348,73 +564,109 @@ namespace SplashKitTests
         public void TestEndReadingTextIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
-            ProcessEvents();
-            Assert.True(ReadingText());
-            EndReadingText();
-            ProcessEvents();
-            Assert.False(ReadingText());
+            StartReadingText(RectangleFrom(100, 100, 200, 30));
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Reading Text: {ReadingText()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                EndReadingText();
+            }
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Text input ended", ColorBlack(), 10, 10);
+                DrawText($"Reading Text: {ReadingText()}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestEndReadingTextInWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 30.0);
+            var testRectangle = RectangleFrom(100, 100, 200, 30);
             StartReadingText(testWindow, testRectangle);
-            ProcessEvents();
-            Assert.True(ReadingText(testWindow));
-            EndReadingText(testWindow);
-            ProcessEvents();
-            Assert.False(ReadingText(testWindow));
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Reading Text: {ReadingText(testWindow)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+                EndReadingTextInWindow(testWindow);
+            }
+            while (KeyDown(KeyCode.SpaceKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Text input ended", ColorBlack(), 10, 10);
+                DrawText($"Reading Text: {ReadingText(testWindow)}", ColorBlack(), 10, 30);
+                DrawText("Press Space to end test", ColorBlack(), 10, 50);
+                RefreshScreen();
+            }
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestReadingTextIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
-            ProcessEvents();
-            Assert.True(ReadingText());
+            StartReadingText(RectangleFrom(100, 100, 200, 30));
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Reading Text: {ReadingText()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText();
-            ProcessEvents();
-            Assert.False(ReadingText());
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestReadingTextInWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 30.0);
+            var testRectangle = RectangleFrom(100, 100, 200, 30);
             StartReadingText(testWindow, testRectangle);
-            ProcessEvents();
-            Assert.True(ReadingText(testWindow));
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Reading Text: {ReadingTextInWindow(testWindow)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText(testWindow);
-            ProcessEvents();
-            Assert.False(ReadingText(testWindow));
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestStartReadingTextIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
+            var testRect = RectangleFrom(100, 100, 200, 30);
             StartReadingText(testRect);
-            ProcessEvents();
-            Assert.True(ReadingText());
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Current Text: {TextInput()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText();
-            ProcessEvents();
-            Assert.False(ReadingText());
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestStartReadingTextWithInitialTextIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
-            StartReadingText(testRect, "Initial Text");
-            ProcessEvents();
-            Assert.True(ReadingText());
+            var testRect = RectangleFrom(100, 100, 200, 30);
+            StartReadingTextWithInitialText(testRect, "Initial Text");
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Current Text: {TextInput()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText();
             CloseWindow(testWindow);
         }
@@ -422,10 +674,15 @@ namespace SplashKitTests
         public void TestStartReadingTextInWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
-            StartReadingText(testWindow, testRect);
-            ProcessEvents();
-            Assert.True(ReadingText(testWindow));
+            var testRect = RectangleFrom(100, 100, 200, 30);
+            StartReadingTextInWindow(testWindow, testRect);
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Current Text: {TextInput(testWindow)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText(testWindow);
             CloseWindow(testWindow);
         }
@@ -433,10 +690,15 @@ namespace SplashKitTests
         public void TestStartReadingTextInWindowWithInitialTextIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
-            StartReadingText(testWindow, testRect, "Initial Text");
-            ProcessEvents();
-            Assert.True(ReadingText(testWindow));
+            var testRect = RectangleFrom(100, 100, 200, 30);
+            StartReadingTextInWindowWithInitialText(testWindow, testRect, "Initial Text");
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Current Text: {TextInput(testWindow)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText(testWindow);
             CloseWindow(testWindow);
         }
@@ -444,12 +706,14 @@ namespace SplashKitTests
         public void TestTextEntryCancelledIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
-            ProcessEvents();
-            Assert.False(TextEntryCancelled());
-            SimulateKeyPress(KeyCode.Escape);
-            ProcessEvents();
-            Assert.True(TextEntryCancelled());
+            StartReadingText(RectangleFrom(100, 100, 200, 30));
+            while (KeyDown(KeyCode.EscapeKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press Escape to cancel text entry", ColorBlack(), 10, 10);
+                DrawText($"Text Entry Cancelled: {TextEntryCancelled()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText();
             CloseWindow(testWindow);
         }
@@ -457,24 +721,30 @@ namespace SplashKitTests
         public void TestTextEntryCancelledInWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
+            var testRect = RectangleFrom(100, 100, 200, 30);
             StartReadingText(testWindow, testRect);
-            ProcessEvents();
-            Assert.False(TextEntryCancelled(testWindow));
-            SimulateKeyPress(KeyCode.Escape);
-            ProcessEvents();
-            Assert.True(TextEntryCancelled(testWindow));
+            while (KeyDown(KeyCode.EscapeKey) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Press Escape to cancel text entry", ColorBlack(), 10, 10);
+                DrawText($"Text Entry Cancelled: {TextEntryCancelledInWindow(testWindow)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
+            EndReadingText(testWindow);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestTextInputIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
-            ProcessEvents();
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.Equal("A", TextInput());
+            StartReadingText(RectangleFrom(100, 100, 200, 30));
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Current Text: {TextInput()}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText();
             CloseWindow(testWindow);
         }
@@ -482,12 +752,15 @@ namespace SplashKitTests
         public void TestTextInputInWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 30.0);
-            StartReadingText(testWindow, testRectangle);
-            ProcessEvents();
-            SimulateKeyPress(KeyCode.A);
-            ProcessEvents();
-            Assert.Equal("A", TextInput(testWindow));
+            var testRect = RectangleFrom(100, 100, 200, 30);
+            StartReadingText(testWindow, testRect);
+            while (KeyDown(KeyCode.KeypadEnter) == false) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Current Text: {TextInputInWindow(testWindow)}", ColorBlack(), 10, 30);
+                RefreshScreen();
+            }
             EndReadingText(testWindow);
             CloseWindow(testWindow);
         }

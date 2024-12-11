@@ -1,14 +1,21 @@
-# Test for pascal
+# SplashKit Test Suite - Pascal
 
-## Prerequisites
+This directory contains integration tests for the SplashKit SDK.
+
+## Requirements
+
 - Free Pascal Compiler
-- SplashKit SDK
 
 ## Installation
+
 1. Install SplashKit SDK following instructions at https://splashkit.io/installation/
 2. Install FPTest unit testing framework:
    fppkg install fptest
 3. Compile: fpc integration_tests.pas
 
-## Running the test
+## Running Tests
+
+To run the tests:\n\n
+```bash
 ./integration_tests
+```

@@ -1404,6 +1404,10 @@
             {
               "value_type": "primitive",
               "value": 0.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 0.0
             }
           ],
           "store_result": "test_point2"
@@ -1759,6 +1763,10 @@
             {
               "value_type": "primitive",
               "value": 45.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 45.0
             }
           ],
           "store_result": "test_vector"
@@ -1813,8 +1821,7 @@
               "value_type": "variable",
               "variable_name": "test_point2"
             }
-          ],
-          "store_result": "test_points"
+          ]
         },
         {
           "step_type": "assertion",
@@ -2310,13 +2317,13 @@
         },
         {
           "step_type": "variable",
-          "variable_type": "primitive",
+          "value_type": "primitive",
           "variable_name": "test_index",
           "value": 0
         },
         {
           "step_type": "variable",
-          "variable_type": "list",
+          "value_type": "list",
           "target_type": "line",
           "variable_name": "test_lines",
           "value": [
@@ -5561,7 +5568,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "quad_from",
+          "function_name": "quad_from_rectangle",
           "args": [
             {
               "value_type": "variable",
@@ -7311,7 +7318,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "rectangle_from",
+          "function_name": "rectangle_from_points",
           "args": [
             {
               "value_type": "variable",

@@ -1,5 +1,17 @@
 {
   "group": "resource_bundles",
+  "constructor": [
+    {
+      "step_type": "function",
+      "function_name": "set_resources_path",
+      "args": [
+        {
+          "value_type": "primitive",
+          "value": "set this value before running tests, use an absolute path"
+        }
+      ]
+    }
+  ],
   "tests": [
     {
       "name": "free_resource_bundle",
@@ -31,7 +43,42 @@
                   "value": "test"
                 }
               ]
-            }
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_bitmap",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "FrogBmp"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_font",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "hara"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -57,7 +104,8 @@
                   "value": "test"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         }
       ]
@@ -92,7 +140,8 @@
                   "value": "test"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -118,7 +167,8 @@
                   "value": "test"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -134,7 +184,8 @@
                   "value": "nonexistent"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         }
       ]
@@ -148,11 +199,11 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": "test_bundle"
+              "value": "test"
             },
             {
               "value_type": "primitive",
-              "value": "test_bundle.txt"
+              "value": "test.txt"
             }
           ]
         },
@@ -166,10 +217,113 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "test_bundle"
+                  "value": "test"
                 }
               ]
-            }
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_animation_script",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "WalkingScript"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_bitmap",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "FrogBmp"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_font",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "hara"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_sound_effect",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "error"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_timer_named",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "my timer"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_resource_bundle",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "blah"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -178,7 +332,7 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": "test_bundle"
+              "value": "test"
             }
           ]
         },
@@ -195,7 +349,8 @@
                   "value": "test_bundle"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         }
       ]

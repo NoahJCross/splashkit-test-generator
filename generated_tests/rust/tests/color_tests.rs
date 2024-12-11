@@ -8,6 +8,8 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_color {
+use super::*;
 #[test]
 fn test_alpha_of_integration() {
     let red_color = color_red();
@@ -1297,4 +1299,5 @@ fn test_string_to_color_integration() {
     assert_eq!(255, green_of(green_color));
     assert_eq!(0, blue_of(green_color));
     assert_eq!(255, alpha_of(green_color));
+}
 }

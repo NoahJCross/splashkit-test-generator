@@ -3,12 +3,12 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestNetworking
     {
         [Fact]
         public void TestAcceptAllNewConnectionsIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             var connectionsAccepted = AcceptAllNewConnections();
@@ -19,7 +19,7 @@ namespace SplashKitTests
         [Fact]
         public void TestAcceptNewConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             var connectionAccepted = AcceptNewConnection(testServer);
@@ -30,7 +30,7 @@ namespace SplashKitTests
         [Fact]
         public void TestBroadcastMessageIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection1 = OpenConnection("test_connection1", "127.0.0.1", 5000);
             var testConnection2 = OpenConnection("test_connection2", "127.0.0.1", 5000);
             CheckNetworkActivity();
@@ -44,11 +44,11 @@ namespace SplashKitTests
         [Fact]
         public void TestBroadcastMessageToAllIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection1 = OpenConnection("test_connection", "127.0.0.1", 5000);
             var testConnection2 = OpenConnection("test_connection2", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            BroadcastMessage("Test Message");
+            BroadcastMessageToAll("Test Message");
             CheckNetworkActivity();
             Assert.True(HasMessages(testConnection1));
             Assert.True(HasMessages(testConnection2));
@@ -58,10 +58,10 @@ namespace SplashKitTests
         [Fact]
         public void TestBroadcastMessageToServerNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            BroadcastMessage("Test Message", "test_server");
+            BroadcastMessageToServerNamed("Test Message", "test_server");
             CheckNetworkActivity();
             Assert.True(HasMessages(testConnection));
             CloseConnection(testConnection);
@@ -70,7 +70,7 @@ namespace SplashKitTests
         [Fact]
         public void TestCheckNetworkActivityIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.True(HasNewConnections());
@@ -80,13 +80,13 @@ namespace SplashKitTests
         [Fact]
         public void TestClearMessagesFromNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             Assert.True(HasMessages(testConnection));
-            ClearMessages("test_connection");
+            ClearMessagesFromName("test_connection");
             CheckNetworkActivity();
             Assert.False(HasMessages(testConnection));
             CloseConnection(testConnection);
@@ -95,13 +95,13 @@ namespace SplashKitTests
         [Fact]
         public void TestClearMessagesFromConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             Assert.True(HasMessages(testConnection));
-            ClearMessages(testConnection);
+            ClearMessagesFromConnection(testConnection);
             Assert.False(HasMessages(testConnection));
             CloseConnection(testConnection);
             CloseServer(testServer);
@@ -109,13 +109,13 @@ namespace SplashKitTests
         [Fact]
         public void TestClearMessagesFromServerIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 8080);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             Assert.True(HasMessages(testServer));
-            ClearMessages(testServer);
+            ClearMessagesFromConnection(testServer);
             CheckNetworkActivity();
             Assert.False(HasMessages(testServer));
             CloseServer(testServer);
@@ -123,7 +123,7 @@ namespace SplashKitTests
         [Fact]
         public void TestCloseAllConnectionsIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.True(HasConnection("test_connection"));
@@ -135,8 +135,8 @@ namespace SplashKitTests
         [Fact]
         public void TestCloseAllServersIntegration()
         {
-            var testServer1 = CreateServer("test_server_1", 5000);
-            var testServer2 = CreateServer("test_server_2", 5001);
+            var testServer1 = CreateServerWithPort("test_server_1", 5000);
+            var testServer2 = CreateServerWithPort("test_server_2", 5001);
             Assert.True(HasServer("test_server_1"));
             Assert.True(HasServer("test_server_2"));
             CloseAllServers();
@@ -146,7 +146,7 @@ namespace SplashKitTests
         [Fact]
         public void TestCloseConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 8080);
             CheckNetworkActivity();
             var closeResult = CloseConnection(testConnection);
@@ -157,11 +157,11 @@ namespace SplashKitTests
         [Fact]
         public void TestCloseConnectionNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 8080);
             CheckNetworkActivity();
             Assert.True(IsConnectionOpen(testConnection));
-            var closeResult = CloseConnection("test_connection");
+            var closeResult = CloseConnectionNamed("test_connection");
             Assert.True(closeResult);
             Assert.False(IsConnectionOpen(testConnection));
             CloseServer(testServer);
@@ -169,10 +169,10 @@ namespace SplashKitTests
         [Fact]
         public void TestCloseMessageIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             Assert.True(HasMessages());
             var testMessage = ReadMessage();
@@ -185,15 +185,15 @@ namespace SplashKitTests
         [Fact]
         public void TestCloseServerNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
-            var closeResult = CloseServer("test_server");
+            var testServer = CreateServerWithPort("test_server", 5000);
+            var closeResult = CloseServerNamed("test_server");
             Assert.True(closeResult);
             Assert.False(HasServer("test_server"));
         }
         [Fact]
         public void TestCloseServerIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var closeResult = CloseServer(testServer);
             Assert.True(closeResult);
             Assert.False(HasServer("test_server"));
@@ -201,17 +201,17 @@ namespace SplashKitTests
         [Fact]
         public void TestConnectionCountNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            Assert.Equal(1, ConnectionCount("test_server"));
+            Assert.Equal(1, ConnectionCountNamed("test_server"));
             CloseAllConnections();
             CloseServer(testServer);
         }
         [Fact]
         public void TestConnectionCountIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.Equal(1, ConnectionCount(testServer));
@@ -221,7 +221,7 @@ namespace SplashKitTests
         [Fact]
         public void TestConnectionIPIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             var testIP = ConnectionIP(testConnection);
@@ -232,10 +232,10 @@ namespace SplashKitTests
         [Fact]
         public void TestConnectionIPFromNameIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 8080);
             CheckNetworkActivity();
-            var testIP = ConnectionIP("test_connection");
+            var testIP = ConnectionIPFromName("test_connection");
             Assert.Equal(2130706433, testIP);
             CloseConnection(testConnection);
             CloseServer(testServer);
@@ -243,7 +243,7 @@ namespace SplashKitTests
         [Fact]
         public void TestConnectionNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             var retrievedConnection = ConnectionNamed("test_connection");
@@ -254,7 +254,7 @@ namespace SplashKitTests
         [Fact]
         public void TestConnectionPortIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             var testPort = ConnectionPort(testConnection);
@@ -265,10 +265,10 @@ namespace SplashKitTests
         [Fact]
         public void TestConnectionPortFromNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            var testPort = ConnectionPort("test_connection");
+            var testPort = ConnectionPortFromName("test_connection");
             Assert.Equal(5000, testPort);
             CloseConnection(testConnection);
             CloseServer(testServer);
@@ -276,7 +276,7 @@ namespace SplashKitTests
         [Fact]
         public void TestCreateServerWithPortIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             Assert.NotNull(testServer);
             Assert.True(HasServer("test_server"));
             CloseServer(testServer);
@@ -284,7 +284,7 @@ namespace SplashKitTests
         [Fact]
         public void TestCreateServerWithPortAndProtocolIntegration()
         {
-            var testServer = CreateServer("test_server", 5000, ConnectionType.TCP);
+            var testServer = CreateServerWithPortAndProtocol("test_server", 5000, ConnectionType.TCP);
             Assert.NotNull(testServer);
             Assert.True(HasServer("test_server"));
             CloseServer(testServer);
@@ -298,7 +298,7 @@ namespace SplashKitTests
         [Fact]
         public void TestFetchNewConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             var newConnection = FetchNewConnection(testServer);
@@ -309,7 +309,7 @@ namespace SplashKitTests
         [Fact]
         public void TestHasConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 8080);
             CheckNetworkActivity();
             Assert.True(HasConnection("test_connection"));
@@ -320,11 +320,11 @@ namespace SplashKitTests
         [Fact]
         public void TestHasMessagesIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.False(HasMessages());
-            SendMessageTo("test_message", testConnection);
+            SendMessageToConnection("test_message", testConnection);
             CheckNetworkActivity();
             Assert.True(HasMessages());
             CloseConnection(testConnection);
@@ -333,42 +333,42 @@ namespace SplashKitTests
         [Fact]
         public void TestHasMessagesOnConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.True(HasMessages(testConnection));
+            Assert.True(HasMessagesOnConnection(testConnection));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestHasMessagesOnNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.True(HasMessages("test_server"));
+            Assert.True(HasMessagesOnName("test_server"));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestHasMessagesOnServerIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.True(HasMessages(testServer));
+            Assert.True(HasMessagesOnServer(testServer));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestHasNewConnectionsIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.True(HasNewConnections());
@@ -378,7 +378,7 @@ namespace SplashKitTests
         [Fact]
         public void TestHasServerIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             Assert.True(HasServer("test_server"));
             CloseServer(testServer);
             Assert.False(HasServer("test_server"));
@@ -422,7 +422,7 @@ namespace SplashKitTests
         [Fact]
         public void TestIsConnectionOpenIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.True(IsConnectionOpen(testConnection));
@@ -433,21 +433,21 @@ namespace SplashKitTests
         [Fact]
         public void TestIsConnectionOpenFromNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            Assert.True(IsConnectionOpen("test_connection"));
+            Assert.True(IsConnectionOpenFromName("test_connection"));
             CloseConnection(testConnection);
-            Assert.False(IsConnectionOpen("test_connection"));
+            Assert.False(IsConnectionOpenFromName("test_connection"));
             CloseServer(testServer);
         }
         [Fact]
         public void TestLastConnectionNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            var lastConnection = LastConnection("test_server");
+            var lastConnection = LastConnectionNamed("test_server");
             Assert.Equal(testConnection, lastConnection);
             CloseConnection(testConnection);
             CloseServer(testServer);
@@ -455,7 +455,7 @@ namespace SplashKitTests
         [Fact]
         public void TestLastConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             var lastConnection = LastConnection(testServer);
@@ -466,10 +466,10 @@ namespace SplashKitTests
         [Fact]
         public void TestMessageConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             var testMessage = ReadMessage(testServer);
             Assert.Equal(testConnection, MessageConnection(testMessage));
@@ -480,46 +480,46 @@ namespace SplashKitTests
         [Fact]
         public void TestMessageCountOnServerIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.Equal(1, MessageCount(testServer));
+            Assert.Equal(1, MessageCountOnServer(testServer));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestMessageCountOnConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.True(MessageCount(testConnection));
+            Assert.True(MessageCountOnConnection(testConnection));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestMessageCountFromNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.Equal(1, MessageCount("test_server"));
+            Assert.Equal(1, MessageCountOnServer("test_server"));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestMessageDataIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             var testMessage = ReadMessage(testServer);
             Assert.Equal("Test Message", MessageData(testMessage));
@@ -530,10 +530,10 @@ namespace SplashKitTests
         [Fact]
         public void TestMessageDataBytesIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             var testMessage = ReadMessage(testServer);
             var testMessageBytes = MessageDataBytes(testMessage);
@@ -545,10 +545,10 @@ namespace SplashKitTests
         [Fact]
         public void TestMessageHostIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             var testMessage = ReadMessage(testServer);
             Assert.Equal("127.0.0.1", MessageHost(testMessage));
@@ -559,10 +559,10 @@ namespace SplashKitTests
         [Fact]
         public void TestMessagePortIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             var testMessage = ReadMessage(testServer);
             Assert.Equal(5000, MessagePort(testMessage));
@@ -573,10 +573,10 @@ namespace SplashKitTests
         [Fact]
         public void TestMessageProtocolIntegration()
         {
-            var testServer = CreateServer("test_server", 5000, ConnectionType.UDP);
+            var testServer = CreateServerWithPort("test_server", 5000, ConnectionType.UDP);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000, ConnectionType.UDP);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             var testMessage = ReadMessage(testServer);
             Assert.Equal(ConnectionType.UDP, MessageProtocol(testMessage));
@@ -599,7 +599,7 @@ namespace SplashKitTests
         [Fact]
         public void TestNewConnectionCountIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.Equal(1, NewConnectionCount(testServer));
@@ -609,7 +609,7 @@ namespace SplashKitTests
         [Fact]
         public void TestOpenConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 8080);
             CheckNetworkActivity();
             Assert.NotNull(testConnection);
@@ -621,8 +621,8 @@ namespace SplashKitTests
         [Fact]
         public void TestOpenConnectionWithProtocolIntegration()
         {
-            var testServer = CreateServer("test_server", 5000, ConnectionType.TCP);
-            var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000, ConnectionType.TCP);
+            var testServer = CreateServerWithPort("test_server", 5000, ConnectionType.TCP);
+            var testConnection = OpenConnectionWithProtocol("test_connection", "127.0.0.1", 5000, ConnectionType.TCP);
             CheckNetworkActivity();
             Assert.NotNull(testConnection);
             CloseConnection(testConnection);
@@ -631,10 +631,10 @@ namespace SplashKitTests
         [Fact]
         public void TestReadMessageIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             var testMessage = ReadMessage();
             Assert.Equal("Test Message", MessageData(testMessage));
@@ -645,12 +645,12 @@ namespace SplashKitTests
         [Fact]
         public void TestReadMessageFromConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            var testMessage = ReadMessage(testConnection);
+            var testMessage = ReadMessageFromConnection(testConnection);
             Assert.Equal("Test Message", MessageData(testMessage));
             CloseMessage(testMessage);
             CloseConnection(testConnection);
@@ -659,12 +659,12 @@ namespace SplashKitTests
         [Fact]
         public void TestReadMessageFromNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            var testMessage = ReadMessage("test_server");
+            var testMessage = ReadMessageFromName("test_server");
             Assert.Equal("Test Message", MessageData(testMessage));
             CloseMessage(testMessage);
             CloseConnection(testConnection);
@@ -673,12 +673,12 @@ namespace SplashKitTests
         [Fact]
         public void TestReadMessageFromServerIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            var testMessage = ReadMessage(testServer);
+            var testMessage = ReadMessageFromServer(testServer);
             Assert.Equal("Test Message", MessageData(testMessage));
             CloseConnection(testConnection);
             CloseServer(testServer);
@@ -687,43 +687,43 @@ namespace SplashKitTests
         [Fact]
         public void TestReadMessageDataFromNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.Equal("Test Message", ReadMessageData("test_server"));
+            Assert.Equal("Test Message", ReadMessageDataFromName("test_server"));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestReadMessageDataFromConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.Equal("Test Message", ReadMessageData(testConnection));
+            Assert.Equal("Test Message", ReadMessageDataFromConnection(testConnection));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestReadMessageDataFromServerIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            SendMessageTo("Test Message", testConnection);
+            SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.Equal("Test Message", ReadMessageData(testServer));
+            Assert.Equal("Test Message", ReadMessageDataFromServer(testServer));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
         [Fact]
         public void TestReconnectIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             CloseConnection(testConnection);
@@ -738,13 +738,13 @@ namespace SplashKitTests
         [Fact]
         public void TestReconnectFromNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             CloseConnection(testConnection);
             CheckNetworkActivity();
             Assert.False(IsConnectionOpen(testConnection));
-            Reconnect("test_connection");
+            ReconnectFromName("test_connection");
             CheckNetworkActivity();
             Assert.True(IsConnectionOpen("test_connection"));
             CloseConnection(testConnection);
@@ -753,7 +753,7 @@ namespace SplashKitTests
         [Fact]
         public void TestReleaseAllConnectionsIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testConnection1 = OpenConnection("test_connection1", "127.0.0.1", 8080);
             var testConnection2 = OpenConnection("test_connection2", "127.0.0.1", 8080);
             CheckNetworkActivity();
@@ -767,7 +767,7 @@ namespace SplashKitTests
         [Fact]
         public void TestResetNewConnectionCountIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.Equal(NewConnectionCount(testServer), 1);
@@ -779,10 +779,10 @@ namespace SplashKitTests
         [Fact]
         public void TestRetrieveConnectionNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            var retrievedConnection = RetrieveConnection("test_connection", 0);
+            var retrievedConnection = RetrieveConnectionNamed("test_connection", 0);
             Assert.Equal(testConnection, retrievedConnection);
             CloseConnection(testConnection);
             CloseServer(testServer);
@@ -790,7 +790,7 @@ namespace SplashKitTests
         [Fact]
         public void TestRetrieveConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             var retrievedConnection = RetrieveConnection(testServer, 0);
@@ -801,10 +801,10 @@ namespace SplashKitTests
         [Fact]
         public void TestSendMessageToConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            var sendResult = SendMessageTo("Test Message", testConnection);
+            var sendResult = SendMessageToConnection("Test Message", testConnection);
             CheckNetworkActivity();
             Assert.True(sendResult);
             CloseConnection(testConnection);
@@ -813,10 +813,10 @@ namespace SplashKitTests
         [Fact]
         public void TestSendMessageToNameIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            var sendResult = SendMessageTo("Test Message", "test_connection");
+            var sendResult = SendMessageToName("Test Message", "test_connection");
             CheckNetworkActivity();
             Assert.True(sendResult);
             CloseConnection(testConnection);
@@ -825,17 +825,17 @@ namespace SplashKitTests
         [Fact]
         public void TestServerHasNewConnectionNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
-            Assert.True(ServerHasNewConnection("test_server"));
+            Assert.True(ServerHasNewConnectionNamed("test_server"));
             CloseServer(testServer);
             CloseAllConnections();
         }
         [Fact]
         public void TestServerHasNewConnectionIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.True(ServerHasNewConnection(testServer));
@@ -845,7 +845,7 @@ namespace SplashKitTests
         [Fact]
         public void TestServerNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            var testServer = CreateServerWithPort("test_server", 5000);
             var retrievedServer = ServerNamed("test_server");
             Assert.Equal(testServer, retrievedServer);
             CloseServer(testServer);
@@ -865,7 +865,7 @@ namespace SplashKitTests
         [Fact]
         public void TestDownloadBitmapIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = DownloadBitmap("test_image", "http://localhost:8080/test/resources/images/frog.png", 80);
             Assert.NotNull(testBitmap);
@@ -876,7 +876,7 @@ namespace SplashKitTests
         [Fact]
         public void TestDownloadFontIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testFont = DownloadFont("test_font", "http://localhost:8080/test/resources/fonts/hara.ttf", 80);
             Assert.NotNull(testFont);
             FreeFont(testFont);
@@ -885,7 +885,7 @@ namespace SplashKitTests
         [Fact]
         public void TestDownloadMusicIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testMusic = DownloadMusic("test_music", "http://localhost:8080/test/resources/music/280.mp3", 80);
             Assert.NotNull(testMusic);
             FreeMusic(testMusic);
@@ -894,7 +894,7 @@ namespace SplashKitTests
         [Fact]
         public void TestDownloadSoundEffectIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testSoundEffect = DownloadSoundEffect("test_sound", "http://localhost:8080/test/resources/sounds/breakdance.wav", 80);
             Assert.NotNull(testSoundEffect);
             FreeSoundEffect(testSoundEffect);
@@ -903,7 +903,7 @@ namespace SplashKitTests
         [Fact]
         public void TestFreeResponseIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             Assert.NotNull(testResponse);
             FreeResponse(testResponse);
@@ -913,7 +913,7 @@ namespace SplashKitTests
         [Fact]
         public void TestHttpGetIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             Assert.NotNull(testResponse);
             var responseText = HttpResponseToString(testResponse);
@@ -924,9 +924,9 @@ namespace SplashKitTests
         [Fact]
         public void TestHttpPostWithHeadersIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var headers = new List<string> { "Content-Type: application/json", "Accept: application/json" };
-            var testResponse = HttpPost("http://localhost:8080/test", 80, "Test Body", headers);
+            var testResponse = HttpPostWithHeaders("http://localhost:8080/test", 80, "Test Body", headers);
             Assert.NotNull(testResponse);
             var responseText = HttpResponseToString(testResponse);
             Assert.Contains("Test Body", responseText);
@@ -936,7 +936,7 @@ namespace SplashKitTests
         [Fact]
         public void TestHttpPostIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testResponse = HttpPost("http://localhost:8080/test", 80, "Test Body");
             Assert.NotNull(testResponse);
             var responseText = HttpResponseToString(testResponse);
@@ -947,7 +947,7 @@ namespace SplashKitTests
         [Fact]
         public void TestHttpResponseToStringIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             var responseText = HttpResponseToString(testResponse);
             Assert.NotEmpty(responseText);
@@ -957,9 +957,9 @@ namespace SplashKitTests
         [Fact]
         public void TestSaveResponseToFileIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
+            var testServer = CreateServerWithPort("test_server", 8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
-            var testFile = "test_output.txt"
+            var testFile = "test_output.txt";
             SaveResponseToFile(testResponse, testFile);
             FreeResponse(testResponse);
             Assert.True(FileExists(testFile));
@@ -1143,7 +1143,7 @@ namespace SplashKitTests
             var testResponse = HttpGet("http://localhost:8080/test/path", 80);
             var testRequest = NextWebRequest(testServer);
             var testStubs = RequestURIStubs(testRequest);
-            Assert.Equal(new List<string> { "test", "path" };, testStubs);
+            Assert.Equal(new List<string> { "test", "path" }, testStubs);
             FreeResponse(testResponse);
             StopWebServer(testServer);
         }
@@ -1197,7 +1197,7 @@ namespace SplashKitTests
             var testServer = StartWebServer(8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             var testRequest = NextWebRequest(testServer);
-            SendResponse(testRequest);
+            SendResponseEmpty(testRequest);
             FreeResponse(testResponse);
             StopWebServer(testServer);
         }
@@ -1217,7 +1217,7 @@ namespace SplashKitTests
             var testServer = StartWebServer(8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             var testRequest = NextWebRequest(testServer);
-            SendResponse(testRequest, HttpStatusCode.HttpStatusOk);
+            SendResponseJsonWithStatus(testRequest, HttpStatusCode.HttpStatusOk);
             FreeResponse(testResponse);
             StopWebServer(testServer);
         }
@@ -1227,7 +1227,7 @@ namespace SplashKitTests
             var testServer = StartWebServer(8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             var testRequest = NextWebRequest(testServer);
-            SendResponse(testRequest, HttpStatusCode.HttpStatusOk, "Test Message");
+            SendResponseWithStatus(testRequest, HttpStatusCode.HttpStatusOk, "Test Message");
             FreeResponse(testResponse);
             StopWebServer(testServer);
         }
@@ -1237,7 +1237,7 @@ namespace SplashKitTests
             var testServer = StartWebServer(8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             var testRequest = NextWebRequest(testServer);
-            SendResponse(testRequest, HttpStatusCode.HttpStatusOk, "Test Message", "text/plain");
+            SendResponseWithStatusAndContentType(testRequest, HttpStatusCode.HttpStatusOk, "Test Message", "text/plain");
             FreeResponse(testResponse);
             StopWebServer(testServer);
         }
@@ -1247,7 +1247,7 @@ namespace SplashKitTests
             var testServer = StartWebServer(8080);
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             var testRequest = NextWebRequest(testServer);
-            SendResponse(testRequest, HttpStatusCode.HttpStatusOk, "Test Message", "text/plain", new List<string> { "Header1: Value1", "Header2: Value2" };);
+            SendResponseWithStatusAndContentTypeAndHeaders(testRequest, HttpStatusCode.HttpStatusOk, "Test Message", "text/plain", new List<string> { "Header1: Value1", "Header2: Value2" });
             FreeResponse(testResponse);
             StopWebServer(testServer);
         }
@@ -1259,7 +1259,7 @@ namespace SplashKitTests
             var testRequest = NextWebRequest(testServer);
             var testJson = CreateJson();
             JsonSetString(testJson, "message", "Test Message");
-            SendResponse(testRequest, testJson);
+            SendResponseJson(testRequest, testJson);
             FreeResponse(testResponse);
             FreeJson(testJson);
             StopWebServer(testServer);
@@ -1268,14 +1268,14 @@ namespace SplashKitTests
         public void TestSplitURIStubsIntegration()
         {
             var testStubs = SplitURIStubs("/names/0");
-            Assert.Equal(new List<dynamic> { "names", "0" };, testStubs);
+            Assert.Equal(new List<dynamic> { "names", "0" }, testStubs);
             var testStubsEmpty = SplitURIStubs("/");
             Assert.Empty(testStubsEmpty);
         }
         [Fact]
         public void TestStartWebServerWithDefaultPortIntegration()
         {
-            var testServer = StartWebServer();
+            var testServer = StartWebServerWithDefaultPort();
             Assert.NotNull(testServer);
             StopWebServer(testServer);
         }

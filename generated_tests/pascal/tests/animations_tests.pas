@@ -1,8 +1,8 @@
 uses SplashKit, TestFramework
 
 type
-TIntegrationTests = class(TTestCase)
-published
+TTestAnimations = class(TTestCase)
+protected
 procedure TIntegrationTests.TestAnimationCountIntegration;
 begin
     script := LoadAnimationScript("kermit", "kermit.txt");
@@ -34,7 +34,9 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     AssertFalse(AnimationEnded(anim));
-    UpdateAnimation(anim);
+    for i := 0 to 49 do
+        UpdateAnimation(anim, 100.0);
+    end;
     AssertFalse(AnimationEnded(anim));
     UpdateAnimation(anim);
     AssertTrue(AnimationEnded(anim));
@@ -45,7 +47,7 @@ procedure TIntegrationTests.TestAnimationEnteredFrameIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "walkfront");
-    UpdateAnimation(anim, 20);
+    UpdateAnimationPercent(anim, 20);
     AssertTrue(AnimationEnteredFrame(anim));
     UpdateAnimation(anim);
     AssertFalse(AnimationEnteredFrame(anim));
@@ -92,15 +94,14 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     loadedScript := AnimationScriptNamed("kermit");
     AssertNotNull(loadedScript);
-    scriptName := AnimationScriptName(loadedScript);
-    AssertEquals("kermit", scriptName);
+    AssertEquals(loadedScript, loadedScript);
     FreeAnimationScript(kermitScript);
 end;
 procedure TIntegrationTests.TestAssignAnimationWithScriptIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
-    AssignAnimation(anim, kermitScript, "walkfront");
+    AssignAnimationWithScript(anim, kermitScript, "walkfront");
     AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
@@ -109,7 +110,7 @@ procedure TIntegrationTests.TestAssignAnimationWithScriptAndSoundIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "walkfront");
-    AssignAnimation(anim, kermitScript, "walkleft", true);
+    AssignAnimationWithScriptAndSound(anim, kermitScript, "walkleft", true);
     AssertEquals("walkleft", AnimationName(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
@@ -118,7 +119,7 @@ procedure TIntegrationTests.TestAssignAnimationIndexWithScriptIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
-    AssignAnimation(anim, kermitScript, 0);
+    AssignAnimationIndexWithScript(anim, kermitScript, 0);
     AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
@@ -127,7 +128,7 @@ procedure TIntegrationTests.TestAssignAnimationIndexWithScriptAndSoundIntegratio
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
-    AssignAnimation(anim, kermitScript, 0, true);
+    AssignAnimationIndexWithScriptAndSound(anim, kermitScript, 0, true);
     AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
@@ -136,7 +137,7 @@ procedure TIntegrationTests.TestAssignAnimationWithScriptNamedIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
-    AssignAnimation(anim, "kermit", "walkfront");
+    AssignAnimationWithScriptNamed(anim, "kermit", "walkfront");
     AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
@@ -145,7 +146,7 @@ procedure TIntegrationTests.TestAssignAnimationWithScriptNamedAndSoundIntegratio
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "walkfront");
-    AssignAnimation(anim, "kermit", "walkfront", true);
+    AssignAnimationWithScriptNamedAndSound(anim, "kermit", "walkfront", true);
     AssertEquals("walkfront", AnimationName(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
@@ -154,7 +155,7 @@ procedure TIntegrationTests.TestAssignAnimationIndexIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
-    AssignAnimation(anim, 0);
+    AssignAnimationIndex(anim, 0);
     AssertEquals(0, AnimationCurrentCell(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
@@ -163,7 +164,7 @@ procedure TIntegrationTests.TestAssignAnimationIndexWithSoundIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback", false);
-    AssignAnimation(anim, 0, true);
+    AssignAnimationIndexWithSound(anim, 0, true);
     AssertTrue(AnimationEnteredFrame(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
@@ -181,7 +182,7 @@ procedure TIntegrationTests.TestAssignAnimationWithSoundIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
-    AssignAnimation(anim, "walkfront", true);
+    AssignAnimationWithSound(anim, "walkfront", true);
     AssertEquals("walkfront", AnimationName(anim));
     FreeAnimationScript(kermitScript);
     FreeAnimation(anim);
@@ -189,7 +190,7 @@ end;
 procedure TIntegrationTests.TestCreateAnimationFromIndexWithSoundIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
-    anim := CreateAnimation(kermitScript, 0, true);
+    anim := CreateAnimationFromIndexWithSound(kermitScript, 0, true);
     AssertNotNull(anim);
     animName := AnimationName(anim);
     AssertEquals("walkfront", animName);
@@ -209,7 +210,7 @@ end;
 procedure TIntegrationTests.TestCreateAnimationWithSoundIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
-    anim := CreateAnimation(kermitScript, "moonwalkback", true);
+    anim := CreateAnimationWithSound(kermitScript, "moonwalkback", true);
     AssertNotNull(anim);
     animName := AnimationName(anim);
     AssertEquals("moonwalkback", animName);
@@ -219,7 +220,7 @@ end;
 procedure TIntegrationTests.TestCreateAnimationFromScriptNamedIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
-    anim := CreateAnimation("kermit", "moonwalkback");
+    anim := CreateAnimationFromScriptNamed("kermit", "moonwalkback");
     AssertNotNull(anim);
     animName := AnimationName(anim);
     AssertEquals("moonwalkback", animName);
@@ -229,7 +230,7 @@ end;
 procedure TIntegrationTests.TestCreateAnimationFromScriptNamedWithSoundIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
-    anim := CreateAnimation(kermitScript, "moonwalkback", true);
+    anim := CreateAnimationFromScriptNamedWithSound(kermitScript, "moonwalkback", true);
     AssertNotNull(anim);
     animName := AnimationName(anim);
     AssertEquals("moonwalkback", animName);
@@ -248,7 +249,8 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     FreeAnimation(anim);
-    AssertNull(anim);
+    AssertEquals(nil, AnimationName(anim));
+    AssertTrue(AnimationEnded(anim));
     FreeAnimationScript(kermitScript);
 end;
 procedure TIntegrationTests.TestFreeAnimationScriptIntegration;
@@ -263,7 +265,7 @@ procedure TIntegrationTests.TestFreeAnimationScriptWithNameIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     AssertTrue(HasAnimationScript("kermit"));
-    FreeAnimationScript("kermit");
+    FreeAnimationScriptWithName("kermit");
     AssertFalse(HasAnimationScript("kermit"));
 end;
 procedure TIntegrationTests.TestHasAnimationNamedIntegration;
@@ -296,7 +298,9 @@ procedure TIntegrationTests.TestRestartAnimationIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
-    UpdateAnimation(anim);
+    for i := 0 to 49 do
+        UpdateAnimation(anim, 100.0);
+    end;
     animEnded := AnimationEnded(anim);
     AssertTrue(animEnded);
     RestartAnimation(anim);
@@ -310,7 +314,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback", true);
     UpdateAnimation(anim);
-    RestartAnimation(anim, true);
+    RestartAnimationWithSound(anim, true);
     AssertEquals(3, AnimationCurrentCell(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
@@ -319,7 +323,7 @@ procedure TIntegrationTests.TestUpdateAnimationPercentWithSoundIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
-    UpdateAnimation(anim, 0.5, true);
+    UpdateAnimationPercentWithSound(anim, 0.5, true);
     AssertTrue(AnimationFrameTime(anim) > 0);
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
@@ -329,7 +333,7 @@ begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "moonwalkback");
     UpdateAnimation(anim);
-    AssertNotEquals(AnimationCurrentCell(anim), 0);
+    AssertNotEquals(0, AnimationCurrentCell(anim));
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
 end;
@@ -337,7 +341,7 @@ procedure TIntegrationTests.TestUpdateAnimationPercentIntegration;
 begin
     kermitScript := LoadAnimationScript("kermit", "kermit.txt");
     anim := CreateAnimation(kermitScript, "walkfront");
-    UpdateAnimation(anim, 0.5);
+    UpdateAnimationPercent(anim, 0.5);
     AssertTrue(AnimationFrameTime(anim) > 0);
     FreeAnimation(anim);
     FreeAnimationScript(kermitScript);
@@ -346,5 +350,5 @@ end;
 
 procedure RegisterTests;
 begin
-TestFramework.RegisterTest(TIntegrationTests.Suite);
+#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
 end;

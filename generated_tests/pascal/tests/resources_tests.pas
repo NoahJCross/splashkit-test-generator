@@ -1,13 +1,14 @@
 uses SplashKit, TestFramework
 
 type
-TIntegrationTests = class(TTestCase)
-published
+TTestResources = class(TTestCase)
+protected
 procedure TIntegrationTests.TestDeregisterFreeNotifierIntegration;
 begin
-    RegisterFreeNotifier(testNotifier);
-    DeregisterFreeNotifier(testNotifier);
-    AssertNull(testNotifier);
+    freeNotifier := NotifierTracker.Create();
+    RegisterFreeNotifier(freeNotifier.on_free);
+    DeregisterFreeNotifier(freeNotifier.on_free);
+    AssertTrue(freeNotifier.WasNotified);
 end;
 procedure TIntegrationTests.TestPathToResourceIntegration;
 begin
@@ -28,17 +29,18 @@ end;
 procedure TIntegrationTests.TestPathToResourcesForKindIntegration;
 begin
     SetResourcesPath("resources");
-    imagePath := PathToResources(ResourceKind.IMAGE_RESOURCE);
+    imagePath := PathToResourcesForKind(ResourceKind.IMAGE_RESOURCE);
     AssertEquals("resources/images", imagePath);
-    soundPath := PathToResources(ResourceKind.SOUND_RESOURCE);
+    soundPath := PathToResourcesForKind(ResourceKind.SOUND_RESOURCE);
     AssertEquals("resources/sounds", soundPath);
 end;
 procedure TIntegrationTests.TestRegisterFreeNotifierIntegration;
 begin
-    RegisterFreeNotifier(FreeNotifier());
-    AssertTrue(notifierCalled);
-    DeregisterFreeNotifier(FreeNotifier());
-    AssertFalse(notifierCalled);
+    freeNotifier := NotifierTracker.Create();
+    RegisterFreeNotifier(freeNotifier.on_free);
+    AssertTrue(freeNotifier.WasNotified);
+    DeregisterFreeNotifier(freeNotifier.on_free);
+    AssertFalse(freeNotifier.WasNotified);
 end;
 procedure TIntegrationTests.TestSetResourcesPathIntegration;
 begin
@@ -51,5 +53,5 @@ end;
 
 procedure RegisterTests;
 begin
-TestFramework.RegisterTest(TIntegrationTests.Suite);
+#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
 end;

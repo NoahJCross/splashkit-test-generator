@@ -1,8 +1,8 @@
 uses SplashKit, TestFramework
 
 type
-TIntegrationTests = class(TTestCase)
-published
+TTestGeometry = class(TTestCase)
+protected
 procedure TIntegrationTests.TestCenterPointIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
@@ -21,7 +21,7 @@ end;
 procedure TIntegrationTests.TestCircleAtFromPointsIntegration;
 begin
     testWindow := OpenWindow("Circle Test", 800, 600);
-    testCircle := CircleAt(400.0, 300.0, 50.0);
+    testCircle := CircleAtFromPoints(400.0, 300.0, 50.0);
     DrawCircle(ColorBlack(), testCircle, OptionDefaults());
     RefreshScreen();
     AssertTrue(PointInCircle(PointAt(400.0, 300.0), testCircle));
@@ -44,7 +44,7 @@ procedure TIntegrationTests.TestCircleTriangleIntersectGetClosestPointIntegratio
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testTriangle := TriangleFrom(PointAt(50.0, 50.0), PointAt(150.0, 50.0), PointAt(100.0, 150.0));
-    testResult := CircleTriangleIntersect(testCircle, testTriangle, PointAt(0.0, 0.0));
+    testResult := CircleTriangleIntersectGetClosestPoint(testCircle, testTriangle, PointAt(0.0, 0.0));
     AssertTrue(testResult);
     AssertEquals(CircleRadius(testCircle), PointPointDistance(CenterPoint(testCircle), ClosestPointOnTriangleFromCircle(testCircle, testTriangle)));
 end;
@@ -70,9 +70,9 @@ begin
 end;
 procedure TIntegrationTests.TestCirclesIntersectUsingValuesIntegration;
 begin
-    testIntersectResult := CirclesIntersect(0.0, 0.0, 5.0, 10.0, 0.0, 5.0);
+    testIntersectResult := CirclesIntersectUsingValues(0.0, 0.0, 5.0, 10.0, 0.0, 5.0);
     AssertTrue(testIntersectResult);
-    testNotIntersectResult := CirclesIntersect(0.0, 0.0, 5.0, 11.0, 0.0, 5.0);
+    testNotIntersectResult := CirclesIntersectUsingValues(0.0, 0.0, 5.0, 11.0, 0.0, 5.0);
     AssertFalse(testNotIntersectResult);
 end;
 procedure TIntegrationTests.TestClosestPointOnCircleIntegration;
@@ -116,7 +116,7 @@ begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testPoint1 := PointAt(150.0, 100.0);
     testHeading := VectorFromAngle(180.0, 1.0);
-    testPoint2 := PointAt(0.0);
+    testPoint2 := PointAt(0.0, 0.0);
     testResult := DistantPointOnCircleHeading(testPoint1, testCircle, testHeading, testPoint2);
     AssertTrue(testResult);
     AssertEquals(50.0, testPoint1.x);
@@ -143,10 +143,10 @@ end;
 procedure TIntegrationTests.TestWidestPointsIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
-    testVector := VectorFromAngle(45.0);
+    testVector := VectorFromAngle(45.0, 45.0);
     testPoint1 := PointAt(0.0, 0.0);
     testPoint2 := PointAt(0.0, 0.0);
-    testPoints := WidestPoints(testCircle, testVector, testPoint1, testPoint2);
+    WidestPoints(testCircle, testVector, testPoint1, testPoint2);
     AssertTrue(PointInCircle(PointAt(CircleX(testCircle), CircleY(testCircle)), testCircle));
     AssertTrue(PointInCircle(PointAt(CircleX(testCircle), CircleY(testCircle)), testCircle));
 end;
@@ -186,8 +186,8 @@ begin
     testFromPt := PointAt(0.0, 0.0);
     testLine1 := LineFrom(PointAt(-10.0, 0.0), PointAt(10.0, 0.0));
     testLine2 := LineFrom(PointAt(0.0, -10.0), PointAt(0.0, 10.0));
-    testIndex := {:step_type=>"variable", :variable_type=>"primitive", :variable_name=>"test_index", :value=>0}
-    testLines := {:step_type=>"variable", :variable_type=>"list", :target_type=>"line", :variable_name=>"test_lines", :value=>[{:value_type=>"variable", :variable_name=>"test_line1"}, {:value_type=>"variable", :variable_name=>"test_line2"}]}
+    testIndex := 0;
+    testLines := TArray<Line>.Create(testLine1, testLine2);
     testClosestPoint := ClosestPointOnLines(testFromPt, testLines, testIndex);
     AssertEquals(0.0, PointPointDistance(testFromPt, testClosestPoint));
 end;
@@ -195,21 +195,21 @@ procedure TIntegrationTests.TestLineFromPointToPointIntegration;
 begin
     testStartPoint := PointAt(0.0, 0.0);
     testEndPoint := PointAt(100.0, 100.0);
-    testLine := LineFrom(testStartPoint, testEndPoint);
+    testLine := LineFromPointToPoint(testStartPoint, testEndPoint);
     AssertEquals(141.421356, LineLength(testLine));
 end;
 procedure TIntegrationTests.TestLineFromStartWithOffsetIntegration;
 begin
     testStartPoint := PointAt(0.0, 0.0);
     testOffsetVector := VectorFromAngle(45.0, 10.0);
-    testLine := LineFrom(testStartPoint, testOffsetVector);
+    testLine := LineFromStartWithOffset(testStartPoint, testOffsetVector);
     AssertTrue(PointOnLine(PointAt(0.0, 0.0), testLine));
     AssertTrue(PointOnLine(PointOffsetBy(testStartPoint, testOffsetVector), testLine));
 end;
 procedure TIntegrationTests.TestLineFromVectorIntegration;
 begin
     testVector := VectorFromAngle(100.0, 50.0);
-    testLine := LineFrom(testVector);
+    testLine := LineFromVector(testVector);
     AssertEquals(PointAtOrigin(), testLine.start_point);
     AssertEquals(PointAt(100.0, 50.0), testLine.end_point);
 end;
@@ -238,7 +238,7 @@ begin
     testLine := LineFrom(0.0, 0.0, 10.0, 10.0);
     testLine1 := LineFrom(5.0, 5.0, 15.0, 15.0);
     testLine2 := LineFrom(20.0, 20.0, 30.0, 30.0);
-    testLines := TArray<line>.Create(testLine1, testLine2);
+    testLines := TArray<Line>.Create(testLine1, testLine2);
     testResult := LineIntersectsLines(testLine, testLines);
     AssertTrue(testResult);
 end;
@@ -284,13 +284,13 @@ end;
 procedure TIntegrationTests.TestLinesFromRectangleIntegration;
 begin
     testRectangle := RectangleFrom(0.0, 0.0, 100.0, 100.0);
-    testLines := LinesFrom(testRectangle);
+    testLines := LinesFromRectangle(testRectangle);
     AssertEquals(4, Size(testLines));
 end;
 procedure TIntegrationTests.TestLinesFromTriangleIntegration;
 begin
     testTriangle := TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 86.6));
-    testLines := LinesFrom(testTriangle);
+    testLines := LinesFromTriangle(testTriangle);
     AssertEquals(3, Size(testLines));
 end;
 procedure TIntegrationTests.TestLinesIntersectIntegration;
@@ -321,9 +321,9 @@ begin
 end;
 procedure TIntegrationTests.TestPointInCircleWithValuesIntegration;
 begin
-    testResult1 := PointInCircle(100.0, 100.0, 100.0, 100.0, 50.0);
+    testResult1 := PointInCircleWithValues(100.0, 100.0, 100.0, 100.0, 50.0);
     AssertTrue(testResult1);
-    testResult2 := PointInCircle(200.0, 100.0, 100.0, 100.0, 50.0);
+    testResult2 := PointInCircleWithValues(200.0, 100.0, 100.0, 100.0, 50.0);
     AssertFalse(testResult2);
 end;
 procedure TIntegrationTests.TestPointInQuadIntegration;
@@ -342,9 +342,9 @@ begin
 end;
 procedure TIntegrationTests.TestPointInRectangleWithValuesIntegration;
 begin
-    testResultInside := PointInRectangle(10.0, 10.0, 0.0, 0.0, 20.0, 20.0);
+    testResultInside := PointInRectangleWithValues(10.0, 10.0, 0.0, 0.0, 20.0, 20.0);
     AssertTrue(testResultInside);
-    testResultOutside := PointInRectangle(25.0, 25.0, 0.0, 0.0, 20.0, 20.0);
+    testResultOutside := PointInRectangleWithValues(25.0, 25.0, 0.0, 0.0, 20.0, 20.0);
     AssertFalse(testResultOutside);
 end;
 procedure TIntegrationTests.TestPointInTriangleIntegration;
@@ -389,9 +389,9 @@ begin
     testPointOnLine := PointAt(5.0, 5.0);
     testPointNearLine := PointAt(5.1, 5.1);
     testPointFarFromLine := PointAt(15.0, 15.0);
-    AssertTrue(PointOnLine(testPointOnLine, testLine, 0.1));
-    AssertTrue(PointOnLine(testPointNearLine, testLine, 0.2));
-    AssertFalse(PointOnLine(testPointFarFromLine, testLine, 0.1));
+    AssertTrue(PointOnLineWithProximity(testPointOnLine, testLine, 0.1));
+    AssertTrue(PointOnLineWithProximity(testPointNearLine, testLine, 0.2));
+    AssertFalse(PointOnLineWithProximity(testPointFarFromLine, testLine, 0.1));
 end;
 procedure TIntegrationTests.TestPointPointAngleIntegration;
 begin
@@ -452,13 +452,13 @@ begin
     testP2 := PointAt(100.0, 0.0);
     testP3 := PointAt(0.0, 100.0);
     testP4 := PointAt(100.0, 100.0);
-    testQuad := QuadFrom(testP1, testP2, testP3, testP4);
+    testQuad := QuadFromPoints(testP1, testP2, testP3, testP4);
     AssertTrue(PointInQuad(PointAt(50.0, 50.0), testQuad));
 end;
 procedure TIntegrationTests.TestQuadFromRectangleIntegration;
 begin
     testRectangle := RectangleFrom(0.0, 0.0, 100.0, 100.0);
-    testQuad := QuadFrom(testRectangle);
+    testQuad := QuadFromRectangle(testRectangle);
     AssertTrue(PointInQuad(PointAt(50.0, 50.0), testQuad));
     AssertFalse(PointInQuad(PointAt(150.0, 150.0), testQuad));
 end;
@@ -466,7 +466,7 @@ procedure TIntegrationTests.TestQuadFromRectangleWithTransformationIntegration;
 begin
     testRectangle := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     testTransform := RotationMatrix(45.0);
-    testQuad := QuadFrom(testRectangle, testTransform);
+    testQuad := QuadFromRectangleWithTransformation(testRectangle, testTransform);
     AssertTrue(PointInQuad(PointAt(50.0, 50.0), testQuad));
     AssertFalse(PointInQuad(PointAt(150.0, 150.0), testQuad));
 end;
@@ -517,7 +517,7 @@ end;
 procedure TIntegrationTests.TestRectangleAroundCircleIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
-    testRectangle := RectangleAround(testCircle);
+    testRectangle := RectangleAroundCircle(testCircle);
     AssertEquals(50.0, RectangleLeft(testRectangle));
     AssertEquals(50.0, RectangleTop(testRectangle));
     AssertEquals(150.0, RectangleRight(testRectangle));
@@ -526,14 +526,14 @@ end;
 procedure TIntegrationTests.TestRectangleAroundLineIntegration;
 begin
     testLine := LineFrom(PointAt(10.0, 10.0), PointAt(50.0, 50.0));
-    testRectangle := RectangleAround(testLine);
+    testRectangle := RectangleAroundLine(testLine);
     AssertTrue(PointInRectangle(PointAt(10.0, 10.0), testRectangle));
     AssertTrue(PointInRectangle(PointAt(50.0, 50.0), testRectangle));
 end;
 procedure TIntegrationTests.TestRectangleAroundQuadIntegration;
 begin
     testQuad := QuadFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(0.0, 100.0), PointAt(100.0, 100.0));
-    testRectangle := RectangleAround(testQuad);
+    testRectangle := RectangleAroundQuad(testQuad);
     AssertEquals(0.0, RectangleLeft(testRectangle));
     AssertEquals(0.0, RectangleTop(testRectangle));
     AssertEquals(100.0, RectangleRight(testRectangle));
@@ -542,7 +542,7 @@ end;
 procedure TIntegrationTests.TestRectangleAroundTriangleIntegration;
 begin
     testTriangle := TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 100.0));
-    testRectangle := RectangleAround(testTriangle);
+    testRectangle := RectangleAroundTriangle(testTriangle);
     AssertEquals(0.0, RectangleLeft(testRectangle));
     AssertEquals(0.0, RectangleTop(testRectangle));
     AssertEquals(100.0, RectangleRight(testRectangle));
@@ -562,7 +562,7 @@ end;
 procedure TIntegrationTests.TestRectangleFromPointAndSizeIntegration;
 begin
     testPoint := PointAt(10.0, 20.0);
-    testRectangle := RectangleFrom(testPoint, 50.0, 30.0);
+    testRectangle := RectangleFromPointAndSize(testPoint, 50.0, 30.0);
     AssertEquals(10.0, RectangleLeft(testRectangle));
     AssertEquals(20.0, RectangleTop(testRectangle));
     AssertEquals(60.0, RectangleRight(testRectangle));
@@ -572,7 +572,7 @@ procedure TIntegrationTests.TestRectangleFromPointsIntegration;
 begin
     testPoint1 := PointAt(0.0, 0.0);
     testPoint2 := PointAt(100.0, 100.0);
-    testRectangle := RectangleFrom(testPoint1, testPoint2);
+    testRectangle := RectangleFromPoints(testPoint1, testPoint2);
     AssertEquals(0.0, RectangleLeft(testRectangle));
     AssertEquals(0.0, RectangleTop(testRectangle));
     AssertEquals(100.0, RectangleRight(testRectangle));
@@ -640,7 +640,7 @@ begin
 end;
 procedure TIntegrationTests.TestTriangleFromFromCoordinatesIntegration;
 begin
-    testTriangle := TriangleFrom(0.0, 0.0, 100.0, 0.0, 50.0, 100.0);
+    testTriangle := TriangleFromFromCoordinates(0.0, 0.0, 100.0, 0.0, 50.0, 100.0);
     AssertTrue(PointInTriangle(PointAt(50.0, 50.0), testTriangle));
     AssertFalse(PointInTriangle(PointAt(150.0, 150.0), testTriangle));
 end;
@@ -668,5 +668,5 @@ end;
 
 procedure RegisterTests;
 begin
-TestFramework.RegisterTest(TIntegrationTests.Suite);
+#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
 end;

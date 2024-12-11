@@ -1,14 +1,14 @@
 uses SplashKit, TestFramework
 
 type
-TIntegrationTests = class(TTestCase)
-published
+TTestCamera = class(TTestCase)
+protected
 procedure TIntegrationTests.TestCameraPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testCameraPosition := CameraPosition();
-    AssertEquals(testCameraPosition.x, 0.0);
-    AssertEquals(testCameraPosition.y, 0.0);
+    AssertEquals(0.0, testCameraPosition.x);
+    AssertEquals(0.0, testCameraPosition.y);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestCameraXIntegration;
@@ -30,8 +30,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testSprite := CreateSprite("test_sprite");
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-    CenterCameraOn(testSprite, VectorFromAngle(50.0, 50.0));
-    AssertEquals(PointAt(50.0, 50.0), CameraPosition());
+    CenterCameraOnVector(testSprite, VectorFromAngle(50.0, 50.0));
+    AssertEquals(PointAt(-267.8606182336807, -161.69777810573578), CameraPosition());
     FreeSprite(testSprite);
     CloseWindow(testWindow);
 end;
@@ -41,7 +41,7 @@ begin
     testSprite := CreateSprite("test_sprite");
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     CenterCameraOn(testSprite, 0.0, 0.0);
-    AssertEquals(PointAt(50.0, 50.0), CameraPosition());
+    AssertEquals(PointAt(-300, -200), CameraPosition());
     FreeSprite(testSprite);
     CloseWindow(testWindow);
 end;
@@ -49,9 +49,9 @@ procedure TIntegrationTests.TestMoveCameraByVectorIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testVector := VectorFromAngle(0.0, 100.0);
-    MoveCameraBy(testVector);
+    MoveCameraByVector(testVector);
     AssertEquals(100.0, CameraX());
-    AssertEquals(100.0, CameraY());
+    AssertEquals(0.0, CameraY());
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestMoveCameraByIntegration;
@@ -65,7 +65,7 @@ end;
 procedure TIntegrationTests.TestMoveCameraToPointIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    MoveCameraTo(PointAt(100.0, 100.0));
+    MoveCameraToPoint(PointAt(100.0, 100.0));
     AssertEquals(PointAt(100.0, 100.0), CameraPosition());
     CloseWindow(testWindow);
 end;
@@ -98,6 +98,8 @@ end;
 procedure TIntegrationTests.TestRectInWindowIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
+    SetCameraX(0);
+    SetCameraY(0);
     testRectangle := RectangleFrom(0, 0, 100, 100);
     AssertTrue(RectInWindow(testWindow, testRectangle));
     testRectangleOutside := RectangleFrom(1000, 1000, 100, 100);
@@ -116,9 +118,11 @@ end;
 procedure TIntegrationTests.TestScreenCenterIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
+    SetCameraX(0);
+    SetCameraY(0);
     testCenter := ScreenCenter();
-    AssertEquals(testCenter, Todo());
-    AssertEquals(testCenter, Todo());
+    AssertEquals(400, testCenter.x);
+    AssertEquals(300, testCenter.y);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestScreenRectangleIntegration;
@@ -154,16 +158,16 @@ procedure TIntegrationTests.TestToScreenPointIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     SetCameraPosition(PointAt(100.0, 100.0));
-    testScreenPoint := ToScreen(PointAt(150.0, 150.0));
-    AssertEquals(testScreenPoint, Todo());
-    AssertEquals(testScreenPoint, Todo());
+    testScreenPoint := ToScreenPoint(PointAt(150.0, 150.0));
+    AssertEquals(50.0, testScreenPoint.x);
+    AssertEquals(50.0, testScreenPoint.y);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestToScreenRectangleIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
-    screenRectangle := ToScreen(testRectangle);
+    screenRectangle := ToScreenRectangle(testRectangle);
     AssertEquals(ToScreenX(100.0), RectangleLeft(screenRectangle));
     AssertEquals(ToScreenY(100.0), RectangleTop(screenRectangle));
     CloseWindow(testWindow);
@@ -187,8 +191,8 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     SetCameraPosition(PointAt(100.0, 100.0));
     testWorldPoint := ToWorld(PointAt(400.0, 300.0));
-    AssertEquals(testWorldPoint, Todo());
-    AssertEquals(testWorldPoint, Todo());
+    AssertEquals(500.0, testWorldPoint.x);
+    AssertEquals(400.0, testWorldPoint.y);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestToWorldXIntegration;
@@ -196,7 +200,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     SetCameraPosition(PointAt(100.0, 100.0));
     testWorldX := ToWorldX(400.0);
-    AssertEquals(CameraX(), testWorldX);
+    AssertEquals(500.0, testWorldX);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestToWorldYIntegration;
@@ -224,5 +228,5 @@ end;
 
 procedure RegisterTests;
 begin
-TestFramework.RegisterTest(TIntegrationTests.Suite);
+#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
 end;

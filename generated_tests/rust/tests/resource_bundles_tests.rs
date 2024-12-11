@@ -8,10 +8,14 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_resource_bundles {
+use super::*;
 #[test]
 fn test_free_resource_bundle_integration() {
     load_resource_bundle("test", "test.txt");
     assert!(has_resource_bundle("test"));
+    assert!(has_bitmap("FrogBmp"));
+    assert!(has_font("hara"));
     free_resource_bundle("test");
     assert!(!has_resource_bundle("test"));
 }
@@ -25,8 +29,15 @@ fn test_has_resource_bundle_integration() {
 }
 #[test]
 fn test_load_resource_bundle_integration() {
-    load_resource_bundle("test_bundle", "test_bundle.txt");
-    assert!(has_resource_bundle("test_bundle"));
-    free_resource_bundle("test_bundle");
+    load_resource_bundle("test", "test.txt");
+    assert!(has_resource_bundle("test"));
+    assert!(has_animation_script("WalkingScript"));
+    assert!(has_bitmap("FrogBmp"));
+    assert!(has_font("hara"));
+    assert!(has_sound_effect("error"));
+    assert!(has_timer_named("my timer"));
+    assert!(has_resource_bundle("blah"));
+    free_resource_bundle("test");
     assert!(!has_resource_bundle("test_bundle"));
+}
 }

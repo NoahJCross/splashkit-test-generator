@@ -3,13 +3,15 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestResourceBundles
     {
         [Fact]
         public void TestFreeResourceBundleIntegration()
         {
             LoadResourceBundle("test", "test.txt");
             Assert.True(HasResourceBundle("test"));
+            Assert.True(HasBitmap("FrogBmp"));
+            Assert.True(HasFont("hara"));
             FreeResourceBundle("test");
             Assert.False(HasResourceBundle("test"));
         }
@@ -25,9 +27,15 @@ namespace SplashKitTests
         [Fact]
         public void TestLoadResourceBundleIntegration()
         {
-            LoadResourceBundle("test_bundle", "test_bundle.txt");
-            Assert.True(HasResourceBundle("test_bundle"));
-            FreeResourceBundle("test_bundle");
+            LoadResourceBundle("test", "test.txt");
+            Assert.True(HasResourceBundle("test"));
+            Assert.True(HasAnimationScript("WalkingScript"));
+            Assert.True(HasBitmap("FrogBmp"));
+            Assert.True(HasFont("hara"));
+            Assert.True(HasSoundEffect("error"));
+            Assert.True(HasTimerNamed("my timer"));
+            Assert.True(HasResourceBundle("blah"));
+            FreeResourceBundle("test");
             Assert.False(HasResourceBundle("test_bundle"));
         }
     }

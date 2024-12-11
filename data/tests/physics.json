@@ -1,5 +1,5 @@
 {
-  "group": "interface",
+  "group": "physics",
   "tests": [
     {
       "name": "bitmap_circle_collision_at_point",
@@ -59,6 +59,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "circle_at",
           "args": [
             {
@@ -97,7 +107,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_circle_collision",
+              "function_name": "bitmap_circle_collision_at_point",
               "args": [
                 {
                   "value_type": "variable",
@@ -191,6 +201,16 @@
               "value_type": "function",
               "function_name": "color_black",
               "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
             }
           ]
         },
@@ -322,6 +342,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "circle_at",
           "args": [
             {
@@ -360,7 +390,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_circle_collision",
+              "function_name": "bitmap_circle_collision_for_cell_with_translation",
               "args": [
                 {
                   "value_type": "variable",
@@ -463,6 +493,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "circle_at",
           "args": [
             {
@@ -501,7 +541,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_circle_collision",
+              "function_name": "bitmap_circle_collision_for_cell_at_point",
               "args": [
                 {
                   "value_type": "variable",
@@ -604,6 +644,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "circle_at",
           "args": [
             {
@@ -627,7 +677,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_circle_collision",
+              "function_name": "bitmap_circle_collision_for_cell",
               "args": [
                 {
                   "value_type": "variable",
@@ -753,6 +803,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "clear_bitmap",
           "args": [
             {
@@ -763,6 +823,16 @@
               "value_type": "function",
               "function_name": "color_black",
               "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
             }
           ]
         },
@@ -950,6 +1020,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "clear_bitmap",
           "args": [
             {
@@ -960,6 +1040,16 @@
               "value_type": "function",
               "function_name": "color_black",
               "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
             }
           ]
         },
@@ -999,7 +1089,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_collision",
+              "function_name": "bitmap_collision_at_points",
               "args": [
                 {
                   "value_type": "variable",
@@ -1116,6 +1206,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "clear_bitmap",
           "args": [
             {
@@ -1126,6 +1226,16 @@
               "value_type": "function",
               "function_name": "color_black",
               "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
             }
           ]
         },
@@ -1165,7 +1275,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_collision",
+              "function_name": "bitmap_collision_for_cells_with_translations",
               "args": [
                 {
                   "value_type": "variable",
@@ -1290,6 +1400,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "clear_bitmap",
           "args": [
             {
@@ -1300,6 +1420,16 @@
               "value_type": "function",
               "function_name": "color_black",
               "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
             }
           ]
         },
@@ -1339,7 +1469,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_collision",
+              "function_name": "bitmap_collision_for_cells_at_points",
               "args": [
                 {
                   "value_type": "variable",
@@ -1478,12 +1608,77 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_collision",
+              "function_name": "bitmap_collision_for_cells",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap1"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap2"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 200.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 100.0
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_collision_for_cells",
               "args": [
                 {
                   "value_type": "variable",
@@ -1512,51 +1707,6 @@
                 {
                   "value_type": "primitive",
                   "value": 150.0
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 100.0
-                }
-              ]
-            },
-            "value2": null
-          }
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "bitmap_collision",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_bitmap1"
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 0
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 100.0
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 100.0
-                },
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_bitmap2"
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 0
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 100.0
                 },
                 {
                   "value_type": "primitive",
@@ -1642,6 +1792,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "translation_matrix",
           "args": [
             {
@@ -1676,7 +1836,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_point_collision",
+              "function_name": "bitmap_point_collision_with_translation",
               "args": [
                 {
                   "value_type": "variable",
@@ -1775,18 +1935,13 @@
         },
         {
           "step_type": "function",
-          "function_name": "point_at",
+          "function_name": "setup_collision_mask",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 50.0
-            },
-            {
-              "value_type": "primitive",
-              "value": 50.0
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
             }
-          ],
-          "store_result": "test_bmp_pt"
+          ]
         },
         {
           "step_type": "function",
@@ -1801,7 +1956,22 @@
               "value": 50.0
             }
           ],
-          "store_result": "test_pt"
+          "store_result": "test_bmp_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 75.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 75.0
+            }
+          ],
+          "store_result": "test_point"
         },
         {
           "step_type": "assertion",
@@ -1809,7 +1979,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_point_collision",
+              "function_name": "bitmap_point_collision_at_point",
               "args": [
                 {
                   "value_type": "variable",
@@ -1817,11 +1987,11 @@
                 },
                 {
                   "value_type": "variable",
-                  "variable_name": "test_bmp_pt"
+                  "variable_name": "test_bmp_point"
                 },
                 {
                   "value_type": "variable",
-                  "variable_name": "test_pt"
+                  "variable_name": "test_point"
                 }
               ]
             },
@@ -1903,6 +2073,16 @@
               "value_type": "function",
               "function_name": "color_black",
               "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
             }
           ]
         },
@@ -2052,6 +2232,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "translation_matrix",
           "args": [
             {
@@ -2086,7 +2276,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_point_collision",
+              "function_name": "bitmap_point_collision_for_cell_with_translation",
               "args": [
                 {
                   "value_type": "variable",
@@ -2189,18 +2379,13 @@
         },
         {
           "step_type": "function",
-          "function_name": "point_at",
+          "function_name": "setup_collision_mask",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100.0
-            },
-            {
-              "value_type": "primitive",
-              "value": 100.0
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
             }
-          ],
-          "store_result": "test_point"
+          ]
         },
         {
           "step_type": "assertion",
@@ -2208,7 +2393,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_point_collision",
+              "function_name": "bitmap_point_collision_for_cell_at_point",
               "args": [
                 {
                   "value_type": "variable",
@@ -2219,12 +2404,20 @@
                   "value": 0
                 },
                 {
-                  "value_type": "variable",
-                  "variable_name": "test_point"
+                  "value_type": "primitive",
+                  "value": 50.0
                 },
                 {
-                  "value_type": "variable",
-                  "variable_name": "test_point"
+                  "value_type": "primitive",
+                  "value": 50.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 50.0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 50.0
                 }
               ]
             },
@@ -2310,12 +2503,51 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "draw_pixel",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "color_white",
+              "args": []
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
+            },
+            {
+              "value_type": "function",
+              "function_name": "option_draw_to_bitmap",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_point_collision",
+              "function_name": "bitmap_point_collision_for_cell",
               "args": [
                 {
                   "value_type": "variable",
@@ -2327,19 +2559,19 @@
                 },
                 {
                   "value_type": "primitive",
-                  "value": 100.0
+                  "value": 0.0
                 },
                 {
                   "value_type": "primitive",
-                  "value": 100.0
+                  "value": 0.0
                 },
                 {
                   "value_type": "primitive",
-                  "value": 100.0
+                  "value": 50.0
                 },
                 {
                   "value_type": "primitive",
-                  "value": 100.0
+                  "value": 50.0
                 }
               ]
             },
@@ -2426,6 +2658,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "rectangle_from",
           "args": [
             {
@@ -2468,7 +2710,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_rectangle_collision",
+              "function_name": "bitmap_rectangle_collision_at_point",
               "args": [
                 {
                   "value_type": "variable",
@@ -2562,6 +2804,16 @@
               "value_type": "function",
               "function_name": "color_black",
               "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
             }
           ]
         },
@@ -2697,6 +2949,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "rectangle_from",
           "args": [
             {
@@ -2739,7 +3001,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_rectangle_collision",
+              "function_name": "bitmap_rectangle_collision_for_cell_with_translation",
               "args": [
                 {
                   "value_type": "variable",
@@ -2842,6 +3104,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "rectangle_from",
           "args": [
             {
@@ -2884,7 +3156,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_rectangle_collision",
+              "function_name": "bitmap_rectangle_collision_for_cell_at_point",
               "args": [
                 {
                   "value_type": "variable",
@@ -2987,6 +3259,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "rectangle_from",
           "args": [
             {
@@ -3014,7 +3296,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_rectangle_collision",
+              "function_name": "bitmap_rectangle_collision_for_cell",
               "args": [
                 {
                   "value_type": "variable",
@@ -3121,6 +3403,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "create_sprite",
           "args": [
             {
@@ -3139,8 +3431,9 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "variable",
-              "variable_name": "pixel_collisions"
+              "value_type": "enum",
+              "enum_type": "collision_test_kind",
+              "value": "pixel_collisions"
             }
           ]
         },
@@ -3306,6 +3599,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "create_sprite",
           "args": [
             {
@@ -3324,8 +3627,9 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "variable",
-              "variable_name": "pixel_collisions"
+              "value_type": "enum",
+              "enum_type": "collision_test_kind",
+              "value": "pixel_collisions"
             }
           ]
         },
@@ -3359,7 +3663,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sprite_bitmap_collision",
+              "function_name": "sprite_bitmap_collision_with_cell_at_point",
               "args": [
                 {
                   "value_type": "variable",
@@ -3477,6 +3781,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "create_sprite",
           "args": [
             {
@@ -3495,8 +3809,9 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "variable",
-              "variable_name": "pixel_collisions"
+              "value_type": "enum",
+              "enum_type": "collision_test_kind",
+              "value": "pixel_collisions"
             }
           ]
         },
@@ -3530,7 +3845,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sprite_bitmap_collision",
+              "function_name": "sprite_bitmap_collision_with_cell",
               "args": [
                 {
                   "value_type": "variable",
@@ -3656,6 +3971,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "clear_bitmap",
           "args": [
             {
@@ -3666,6 +3991,16 @@
               "value_type": "function",
               "function_name": "color_black",
               "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
             }
           ]
         },
@@ -3700,8 +4035,9 @@
               "variable_name": "test_sprite1"
             },
             {
-              "value_type": "variable",
-              "variable_name": "pixel_collisions"
+              "value_type": "enum",
+              "enum_type": "collision_test_kind",
+              "value": "pixel_collisions"
             }
           ]
         },
@@ -3714,8 +4050,9 @@
               "variable_name": "test_sprite2"
             },
             {
-              "value_type": "variable",
-              "variable_name": "pixel_collisions"
+              "value_type": "enum",
+              "enum_type": "collision_test_kind",
+              "value": "pixel_collisions"
             }
           ]
         },
@@ -3913,6 +4250,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "create_sprite",
           "args": [
             {
@@ -3931,8 +4278,9 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "variable",
-              "variable_name": "pixel_collisions"
+              "value_type": "enum",
+              "enum_type": "collision_test_kind",
+              "value": "pixel_collisions"
             }
           ]
         },
@@ -3954,11 +4302,11 @@
                   "args": [
                     {
                       "value_type": "primitive",
-                      "value": 50.0
+                      "value": 75.0
                     },
                     {
                       "value_type": "primitive",
-                      "value": 50.0
+                      "value": 75.0
                     }
                   ]
                 }
@@ -4083,6 +4431,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "setup_collision_mask",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "create_sprite",
           "args": [
             {
@@ -4101,8 +4459,9 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "variable",
-              "variable_name": "pixel_collisions"
+              "value_type": "enum",
+              "enum_type": "collision_test_kind",
+              "value": "pixel_collisions"
             }
           ]
         },
@@ -4463,7 +4822,7 @@
               "value": 1.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "test_matrix",
               "field": "elements",
               "row": 0,
@@ -4480,7 +4839,7 @@
               "value": 1.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "test_matrix",
               "field": "elements",
               "row": 1,
@@ -4497,7 +4856,7 @@
               "value": 0.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "test_matrix",
               "field": "elements",
               "row": 0,
@@ -4514,7 +4873,7 @@
               "value": 0.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "test_matrix",
               "field": "elements",
               "row": 1,
@@ -4601,12 +4960,13 @@
               "value": 1.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "result_matrix",
               "field": "elements",
               "row": 0,
               "col": 0
-            }
+            },
+            "precision": 3
           }
         },
         {
@@ -4618,12 +4978,13 @@
               "value": 1.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "result_matrix",
               "field": "elements",
               "row": 1,
               "col": 1
-            }
+            },
+            "precision": 3
           }
         }
       ]
@@ -4687,7 +5048,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -4702,7 +5063,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -4743,11 +5104,11 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_matrix1"
+              "variable_name": "test_matrix2"
             },
             {
               "value_type": "variable",
-              "variable_name": "test_matrix2"
+              "variable_name": "test_matrix1"
             }
           ],
           "store_result": "result_matrix"
@@ -4761,7 +5122,7 @@
               "value": 2.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "result_matrix",
               "field": "elements",
               "row": 0,
@@ -4778,7 +5139,7 @@
               "value": 20.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "result_matrix",
               "field": "elements",
               "row": 0,
@@ -4843,7 +5204,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -4858,7 +5219,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -4878,8 +5239,8 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "expected"
+              "value_type": "primitive",
+              "value": " ------------------------------\\n|        1         0         0 |\\n|        0         1         0 |\\n|        0         0         1 |\\n ------------------------------"
             },
             "value2": {
               "value_type": "function",
@@ -4942,31 +5303,34 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "range",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable_field",
-              "variable_name": "result_point",
-              "variable_field": "x"
+              "value_type": "primitive",
+              "value": 0
             },
             "value2": {
-              "value_type": "primitive",
-              "value": -0.1
-            }
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "X"
+            },
+            "precision": 2
           }
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "range",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable_field",
-              "variable_name": "result_point",
-              "variable_field": "y"
+              "value_type": "primitive",
+              "value": 1
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 0.9
-            }
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "Y"
+            },
+
+            "precision": 2
           }
         }
       ]
@@ -4991,7 +5355,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "scale_matrix",
+          "function_name": "scale_matrix_from_point",
           "args": [
             {
               "value_type": "variable",
@@ -5014,6 +5378,82 @@
             }
           ],
           "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "matrix_multiply_point",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_matrix"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_point"
+            }
+          ],
+          "store_result": "result_point"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 2.0
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "X"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 3.0
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "Y"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "scale_matrix",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 1.0
+            },
+            {
+              "value_type": "primitive",
+              "value": 1.5
+            }
+          ],
+          "store_result": "test_point"
+        },
+        {
+          "step_type": "function",
+          "function_name": "scale_matrix",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 2.0
+            }
+          ],
+          "store_result": "test_matrix"
         },
         {
           "step_type": "function",
@@ -5082,7 +5522,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "scale_matrix",
+          "function_name": "scale_matrix_from_vector",
           "args": [
             {
               "value_type": "variable",
@@ -5132,7 +5572,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -5147,7 +5587,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -5238,30 +5678,30 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "range",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable_field",
-              "variable_name": "result_point",
-              "variable_field": "x"
+              "value_type": "primitive",
+              "value": 10
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 9.9
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "X"
             }
           }
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "range",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable_field",
-              "variable_name": "result_point",
-              "variable_field": "y"
+              "value_type": "primitive",
+              "value": 11
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 11.9
+              "value_type": "variable_field",
+              "variable_name": "result_point",
+              "variable_field": "Y"
             }
           }
         }
@@ -5287,7 +5727,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "translation_matrix",
+          "function_name": "translation_matrix_to_point",
           "args": [
             {
               "value_type": "variable",
@@ -5337,7 +5777,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -5352,7 +5792,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -5378,7 +5818,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "translation_matrix",
+          "function_name": "translation_matrix_from_vector",
           "args": [
             {
               "value_type": "variable",
@@ -5428,7 +5868,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -5443,7 +5883,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -5508,7 +5948,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -5523,7 +5963,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -5839,7 +6279,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "intersection_point",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -5854,7 +6294,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "intersection_point",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -5900,8 +6340,10 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_unit_vector",
-              "variable_field": "x"
-            }
+              "variable_field": "X"
+            },
+
+            "precision": 2
           }
         },
         {
@@ -5915,7 +6357,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_unit_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -5980,7 +6422,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -5995,7 +6437,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6050,7 +6492,7 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": 45.0
+              "value": 0.0
             },
             {
               "value_type": "primitive",
@@ -6065,12 +6507,12 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 0.7071
+              "value": 1.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -6080,12 +6522,12 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 0.7071
+              "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6151,7 +6593,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -6166,7 +6608,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6239,7 +6681,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -6254,7 +6696,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6400,7 +6842,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "inverted_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -6415,7 +6857,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "inverted_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6465,8 +6907,9 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "limited_vector",
-              "variable_field": "x"
-            }
+              "variable_field": "X"
+            },
+            "precision": 4
           }
         },
         {
@@ -6480,7 +6923,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "limited_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6610,7 +7053,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -6625,7 +7068,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6666,13 +7109,14 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": -4.0
+              "value": -0.8
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "normal_vector",
-              "variable_field": "x"
-            }
+              "variable_field": "X"
+            },
+            "precision": 2
           }
         },
         {
@@ -6681,13 +7125,14 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 3.0
+              "value": 0.6
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "normal_vector",
-              "variable_field": "y"
-            }
+              "variable_field": "Y"
+            },
+            "precision": 2
           }
         }
       ]
@@ -6709,7 +7154,7 @@
             },
             {
               "value_type": "primitive",
-              "value": 10.0
+              "value": 5.0
             }
           ],
           "store_result": "test_circle_src"
@@ -6720,7 +7165,7 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": 15.0
+              "value": 8.0
             },
             {
               "value_type": "primitive",
@@ -6728,7 +7173,7 @@
             },
             {
               "value_type": "primitive",
-              "value": 10.0
+              "value": 5.0
             }
           ],
           "store_result": "test_circle_bounds"
@@ -6773,13 +7218,14 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": -5.0
+              "value": -3.42
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
-            }
+              "variable_field": "X"
+            },
+            "precision": 2
           }
         },
         {
@@ -6793,7 +7239,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6823,15 +7269,15 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": 150.0
+              "value": 100.0
             },
             {
               "value_type": "primitive",
-              "value": 150.0
+              "value": 100.0
             },
             {
               "value_type": "primitive",
-              "value": 50.0
+              "value": 10.0
             }
           ],
           "store_result": "test_circle"
@@ -6846,7 +7292,7 @@
             },
             {
               "value_type": "primitive",
-              "value": 1.0
+              "value": 0.0
             }
           ],
           "store_result": "test_velocity"
@@ -6876,13 +7322,14 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": -50.0
+              "value": -11.42
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
-            }
+              "variable_field": "X"
+            },
+            "precision": 2
           }
         },
         {
@@ -6891,12 +7338,12 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": -50.0
+              "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -6987,12 +7434,12 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": -25.0
+              "value": -101.42
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -7007,7 +7454,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -7094,13 +7541,14 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": -25.0
+              "value": -76.4
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
-            }
+              "variable_field": "X"
+            },
+            "precision": 2
           }
         },
         {
@@ -7114,7 +7562,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -7209,12 +7657,12 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": -25.0
+              "value": -126.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -7229,7 +7677,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -7294,7 +7742,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -7309,7 +7757,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -7374,7 +7822,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -7389,7 +7837,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -7415,7 +7863,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "vector_to",
+          "function_name": "vector_to_point",
           "args": [
             {
               "value_type": "variable",
@@ -7435,7 +7883,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -7450,7 +7898,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -7485,7 +7933,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "x"
+              "variable_field": "X"
             }
           }
         },
@@ -7500,7 +7948,7 @@
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "y"
+              "variable_field": "Y"
             }
           }
         }
@@ -7511,7 +7959,7 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "vector_to",
+          "function_name": "vector_from_angle",
           "args": [
             {
               "value_type": "primitive",
@@ -7530,7 +7978,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": "Vec -> 3:4"
+              "value": "Vec -> 3.000000:4.000000"
             },
             "value2": {
               "value_type": "function",

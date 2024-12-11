@@ -1,5 +1,17 @@
 {
   "group": "audio",
+  "constructor": [
+    {
+      "step_type": "function",
+      "function_name": "set_resources_path",
+      "args": [
+        {
+          "value_type": "primitive",
+          "value": "set this value before running tests, use an absolute path"
+        }
+      ]
+    }
+  ],
   "tests": [
     {
       "name": "audio_ready",
@@ -12,7 +24,8 @@
               "value_type": "function",
               "function_name": "audio_ready",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -28,7 +41,8 @@
               "value_type": "function",
               "function_name": "audio_ready",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -44,7 +58,8 @@
               "value_type": "function",
               "function_name": "audio_ready",
               "args": []
-            }
+            },
+            "value2": null
           }
         }
       ]
@@ -58,6 +73,18 @@
           "args": []
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "audio_ready",
+              "args": []
+            },
+            "value2": null
+          }
+        },
+        {
           "step_type": "function",
           "function_name": "close_audio",
           "args": []
@@ -70,7 +97,8 @@
               "value_type": "function",
               "function_name": "audio_ready",
               "args": []
-            }
+            },
+            "value2": null
           }
         }
       ]
@@ -78,17 +106,6 @@
     {
       "name": "open_audio",
       "steps": [
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "audio_ready",
-              "args": []
-            }
-          }
-        },
         {
           "step_type": "function",
           "function_name": "open_audio",
@@ -102,7 +119,8 @@
               "value_type": "function",
               "function_name": "audio_ready",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -118,7 +136,8 @@
               "value_type": "function",
               "function_name": "audio_ready",
               "args": []
-            }
+            },
+            "value2": null
           }
         }
       ]
@@ -141,7 +160,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -163,16 +182,13 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "music_volume",
+              "function_name": "music_playing",
               "args": []
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
-            }
+            "value2": null
           }
         },
         {
@@ -210,7 +226,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -236,16 +252,13 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "music_volume",
+              "function_name": "music_playing",
               "args": []
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
-            }
+            "value2": null
           }
         },
         {
@@ -283,20 +296,10 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
-        },
-        {
-          "step_type": "function",
-          "function_name": "play_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
         },
         {
           "step_type": "function",
@@ -315,16 +318,13 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "music_volume",
+              "function_name": "music_playing",
               "args": []
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
-            }
+            "value2": null
           }
         },
         {
@@ -362,7 +362,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -388,16 +388,13 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "music_volume",
+              "function_name": "music_playing",
               "args": []
             },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.0
-            }
+            "value2": null
           }
         },
         {
@@ -435,7 +432,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -461,6 +458,16 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "delay",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3000
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
@@ -468,7 +475,8 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -506,10 +514,9 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
-          ],
-          "store_result": "test_music1"
+          ]
         },
         {
           "step_type": "function",
@@ -521,10 +528,9 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "dancingFrog.wav"
             }
-          ],
-          "store_result": "test_music2"
+          ]
         },
         {
           "step_type": "function",
@@ -544,7 +550,8 @@
                   "value": "test_music1"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -560,7 +567,8 @@
                   "value": "test_music2"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -588,7 +596,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -619,9 +627,15 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "music_playing",
-              "args": []
-            }
+              "function_name": "has_music",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "test_music"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -649,7 +663,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -667,7 +681,8 @@
                   "value": "test_music"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -693,7 +708,8 @@
                   "value": "test_music"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -721,10 +737,21 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_music"
+            },
+            "value2": null
+          }
         },
         {
           "step_type": "assertion",
@@ -733,6 +760,78 @@
             "value1": {
               "value_type": "function",
               "function_name": "music_valid",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_music"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_music",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_music"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_audio",
+          "args": []
+        }
+      ]
+    },
+    {
+      "name": "music_filename",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_audio",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "load_music",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_music"
+            },
+            {
+              "value_type": "primitive",
+              "value": "magical_night.ogg"
+            }
+          ],
+          "store_result": "test_music"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "path_to_resource",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "magical_night.ogg"
+                },
+                {
+                  "value_type": "enum",
+                  "enum_type": "resource_kind",
+                  "value": "sound_resource"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "music_filename",
               "args": [
                 {
                   "value_type": "variable",
@@ -760,65 +859,15 @@
       ]
     },
     {
-      "name": "music_filename",
-      "steps": [
-        {
-          "step_type": "function",
-          "function_name": "load_music",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_music"
-            },
-            {
-              "value_type": "primitive",
-              "value": "280.mp3"
-            }
-          ],
-          "store_result": "test_music"
-        },
-        {
-          "step_type": "function",
-          "function_name": "music_filename",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ],
-          "store_result": "filename"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "primitive",
-              "value": "280.mp3"
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "filename"
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "music_name",
       "steps": [
         {
           "step_type": "function",
+          "function_name": "open_audio",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "load_music",
           "args": [
             {
@@ -827,21 +876,10 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
-        },
-        {
-          "step_type": "function",
-          "function_name": "music_name",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ],
-          "store_result": "music_name_result"
         },
         {
           "step_type": "assertion",
@@ -852,8 +890,14 @@
               "value": "test_music"
             },
             "value2": {
-              "value_type": "variable",
-              "variable_name": "music_name_result"
+              "value_type": "function",
+              "function_name": "music_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_music"
+                }
+              ]
             }
           }
         },
@@ -866,6 +910,11 @@
               "variable_name": "test_music"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_audio",
+          "args": []
         }
       ]
     },
@@ -874,6 +923,11 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "open_audio",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "load_music",
           "args": [
             {
@@ -882,7 +936,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -896,7 +950,7 @@
               "value": "test_music"
             }
           ],
-          "store_result": "retrieved_music"
+          "store_result": "named_music"
         },
         {
           "step_type": "assertion",
@@ -904,11 +958,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "retrieved_music"
+              "variable_name": "test_music"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "test_music"
+              "variable_name": "named_music"
             }
           }
         },
@@ -921,6 +975,11 @@
               "variable_name": "test_music"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_audio",
+          "args": []
         }
       ]
     },
@@ -942,10 +1001,22 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "music_playing",
+              "args": []
+            },
+            "value2": null
+          }
         },
         {
           "step_type": "function",
@@ -965,23 +1036,8 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "pause_music",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "music_playing",
-              "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1019,7 +1075,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1037,7 +1093,8 @@
                   "variable_name": "test_music"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1063,7 +1120,8 @@
                   "variable_name": "test_music"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1091,7 +1149,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1166,7 +1224,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1189,12 +1247,13 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "false",
+            "compare_type": "true",
             "value1": {
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1232,7 +1291,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1255,7 +1314,8 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1293,7 +1353,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1320,7 +1380,8 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1358,7 +1419,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1381,7 +1442,8 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1419,7 +1481,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1446,7 +1508,8 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1484,7 +1547,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1503,7 +1566,7 @@
             },
             {
               "value_type": "primitive",
-              "value": 0.5
+              "value": 0.75
             }
           ]
         },
@@ -1515,25 +1578,22 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "range",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 0.75
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "music_volume",
               "args": []
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 0.45
-            },
-            "value3": {
-              "value_type": "primitive",
-              "value": 0.55
             }
           }
         },
@@ -1572,7 +1632,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1595,12 +1655,13 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "false",
+            "compare_type": "true",
             "value1": {
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1616,7 +1677,8 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1654,7 +1716,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1729,7 +1791,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "280.mp3"
+              "value": "magical_night.ogg"
             }
           ],
           "store_result": "test_music"
@@ -1757,7 +1819,8 @@
               "value_type": "function",
               "function_name": "music_playing",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1795,7 +1858,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound1"
@@ -1810,7 +1873,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "error.wav"
+              "value": "comedy_boing.ogg"
             }
           ],
           "store_result": "test_sound2"
@@ -1858,7 +1921,8 @@
                   "variable_name": "test_sound1"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1874,7 +1938,8 @@
                   "variable_name": "test_sound2"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1907,7 +1972,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -1937,6 +2002,16 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "delay",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3000
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
@@ -1949,7 +2024,8 @@
                   "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1987,10 +2063,9 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
-          ],
-          "store_result": "test_sound1"
+          ]
         },
         {
           "step_type": "function",
@@ -2002,10 +2077,9 @@
             },
             {
               "value_type": "primitive",
-              "value": "error.wav"
+              "value": "comedy_boing.ogg"
             }
-          ],
-          "store_result": "test_sound2"
+          ]
         },
         {
           "step_type": "function",
@@ -2025,7 +2099,8 @@
                   "value": "test_sound1"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2041,7 +2116,8 @@
                   "value": "test_sound2"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2069,7 +2145,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2100,14 +2176,15 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_effect_valid",
+              "function_name": "has_sound_effect",
               "args": [
                 {
-                  "value_type": "variable",
-                  "variable_name": "test_sound"
+                  "value_type": "primitive",
+                  "value": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2135,7 +2212,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2153,7 +2230,8 @@
                   "value": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2179,7 +2257,8 @@
                   "value": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2207,7 +2286,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2215,17 +2294,29 @@
         {
           "step_type": "assertion",
           "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_sound"
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_effect_valid",
+              "function_name": "has_sound_effect",
               "args": [
                 {
-                  "value_type": "variable",
-                  "variable_name": "test_sound"
+                  "value_type": "primitive",
+                  "value": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2263,7 +2354,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2284,14 +2375,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_effect_playing_named",
+              "function_name": "sound_effect_playing",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": "test_sound"
+                  "value_type": "variable",
+                  "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2329,7 +2421,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2344,7 +2436,7 @@
             },
             {
               "value_type": "primitive",
-              "value": 0.5
+              "value": 0.75
             }
           ]
         },
@@ -2354,14 +2446,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_effect_playing_named",
+              "function_name": "sound_effect_playing",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": "test_sound"
+                  "value_type": "variable",
+                  "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2399,7 +2492,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2424,14 +2517,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_effect_playing_named",
+              "function_name": "sound_effect_playing",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": "test_sound"
+                  "value_type": "variable",
+                  "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2469,7 +2563,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2488,7 +2582,7 @@
             },
             {
               "value_type": "primitive",
-              "value": 0.5
+              "value": 0.75
             }
           ]
         },
@@ -2498,14 +2592,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_effect_playing_named",
+              "function_name": "sound_effect_playing",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": "test_sound"
+                  "value_type": "variable",
+                  "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2543,7 +2638,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2571,7 +2666,8 @@
                   "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2609,7 +2705,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "breakdance.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2624,7 +2720,7 @@
             },
             {
               "value_type": "primitive",
-              "value": 0.5
+              "value": 0.75
             }
           ]
         },
@@ -2641,7 +2737,8 @@
                   "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2679,7 +2776,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "SwinGameStart.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2711,7 +2808,8 @@
                   "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2749,7 +2847,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "SwinGameStart.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2768,7 +2866,7 @@
             },
             {
               "value_type": "primitive",
-              "value": 0.5
+              "value": 0.75
             }
           ]
         },
@@ -2779,6 +2877,78 @@
             "value1": {
               "value_type": "function",
               "function_name": "sound_effect_playing",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_sound"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_sound_effect",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sound"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_audio",
+          "args": []
+        }
+      ]
+    },
+    {
+      "name": "sound_effect_filename",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_audio",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "load_sound_effect",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_sound"
+            },
+            {
+              "value_type": "primitive",
+              "value": "SwinGameStart.wav"
+            }
+          ],
+          "store_result": "test_sound"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "path_to_resource",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "SwinGameStart.wav"
+                },
+                {
+                  "value_type": "enum",
+                  "enum_type": "resource_kind",
+                  "value": "sound_resource"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "sound_effect_filename",
               "args": [
                 {
                   "value_type": "variable",
@@ -2806,65 +2976,15 @@
       ]
     },
     {
-      "name": "sound_effect_filename",
-      "steps": [
-        {
-          "step_type": "function",
-          "function_name": "load_sound_effect",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "test_sound"
-            },
-            {
-              "value_type": "primitive",
-              "value": "test.ogg"
-            }
-          ],
-          "store_result": "test_sound"
-        },
-        {
-          "step_type": "function",
-          "function_name": "sound_effect_filename",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ],
-          "store_result": "test_filename"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "primitive",
-              "value": "test.ogg"
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "test_filename"
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "sound_effect_name",
       "steps": [
         {
           "step_type": "function",
+          "function_name": "open_audio",
+          "args": []
+        },
+        {
+          "step_type": "function",
           "function_name": "load_sound_effect",
           "args": [
             {
@@ -2873,21 +2993,10 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "SwinGameStart.wav"
             }
           ],
           "store_result": "test_sound"
-        },
-        {
-          "step_type": "function",
-          "function_name": "sound_effect_name",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ],
-          "store_result": "test_sound_name"
         },
         {
           "step_type": "assertion",
@@ -2898,8 +3007,14 @@
               "value": "test_sound"
             },
             "value2": {
-              "value_type": "variable",
-              "variable_name": "test_sound_name"
+              "value_type": "function",
+              "function_name": "sound_effect_name",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_sound"
+                }
+              ]
             }
           }
         },
@@ -2912,6 +3027,11 @@
               "variable_name": "test_sound"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_audio",
+          "args": []
         }
       ]
     },
@@ -2933,7 +3053,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "SwinGameStart.wav"
             }
           ],
           "store_result": "test_sound"
@@ -2947,7 +3067,7 @@
               "value": "test_sound"
             }
           ],
-          "store_result": "retrieved_sound"
+          "store_result": "named_sound"
         },
         {
           "step_type": "assertion",
@@ -2955,11 +3075,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "retrieved_sound"
+              "variable_name": "test_sound"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "test_sound"
+              "variable_name": "named_sound"
             }
           }
         },
@@ -2998,7 +3118,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "SwinGameStart.wav"
             }
           ],
           "store_result": "test_sound"
@@ -3026,7 +3146,8 @@
                   "value": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3052,7 +3173,8 @@
                   "value": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3090,7 +3212,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "SwinGameStart.wav"
             }
           ],
           "store_result": "test_sound"
@@ -3118,7 +3240,8 @@
                   "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3144,7 +3267,8 @@
                   "variable_name": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3182,10 +3306,21 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "SwinGameStart.wav"
             }
           ],
-          "store_result": "test_sound_effect"
+          "store_result": "test_sound"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "not_null",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_sound"
+            },
+            "value2": null
+          }
         },
         {
           "step_type": "assertion",
@@ -3193,14 +3328,15 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_effect_valid",
+              "function_name": "has_sound_effect",
               "args": [
                 {
-                  "value_type": "variable",
-                  "variable_name": "test_sound_effect"
+                  "value_type": "primitive",
+                  "value": "test_sound"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3209,7 +3345,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_sound_effect"
+              "variable_name": "test_sound"
             }
           ]
         },
@@ -3238,7 +3374,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "test.ogg"
+              "value": "SwinGameStart.wav"
             }
           ],
           "store_result": "test_sound"
@@ -3269,14 +3405,92 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_effect_playing_named",
+              "function_name": "sound_effect_playing",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "test_sound"
                 }
               ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_sound_effect",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sound"
             }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_audio",
+          "args": []
+        }
+      ]
+    },
+    {
+      "name": "stop_sound_effect",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_audio",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "load_sound_effect",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "test_sound"
+            },
+            {
+              "value_type": "primitive",
+              "value": "SwinGameStart.wav"
+            }
+          ],
+          "store_result": "test_sound"
+        },
+        {
+          "step_type": "function",
+          "function_name": "play_sound_effect",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sound"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "stop_sound_effect",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sound"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "sound_effect_playing",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_sound"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {

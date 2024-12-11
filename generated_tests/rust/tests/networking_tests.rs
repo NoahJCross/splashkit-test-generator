@@ -8,6 +8,8 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_networking {
+use super::*;
 #[test]
 fn test_accept_all_new_connections_integration() {
     let test_server = create_server_with_port("test_server", 5000);
@@ -47,7 +49,7 @@ fn test_broadcast_message_to_all_integration() {
     let test_connection1 = open_connection("test_connection", "127.0.0.1", 5000);
     let test_connection2 = open_connection("test_connection2", "127.0.0.1", 5000);
     check_network_activity();
-    broadcast_message("Test Message");
+    broadcast_message_to_all("Test Message");
     check_network_activity();
     assert!(has_messages(test_connection1));
     assert!(has_messages(test_connection2));
@@ -59,7 +61,7 @@ fn test_broadcast_message_to_server_named_integration() {
     let test_server = create_server_with_port("test_server", 5000);
     let test_connection = open_connection("test_connection", "127.0.0.1", 5000);
     check_network_activity();
-    broadcast_message("Test Message", "test_server");
+    broadcast_message_to_server_named("Test Message", "test_server");
     check_network_activity();
     assert!(has_messages(test_connection));
     close_connection(test_connection);
@@ -151,7 +153,7 @@ fn test_close_connection_named_integration() {
     let test_connection = open_connection("test_connection", "127.0.0.1", 8080);
     check_network_activity();
     assert!(is_connection_open(test_connection));
-    let close_result = close_connection("test_connection");
+    let close_result = close_connection_named("test_connection");
     assert!(close_result);
     assert!(!is_connection_open(test_connection));
     close_server(test_server);
@@ -174,7 +176,7 @@ fn test_close_message_integration() {
 #[test]
 fn test_close_server_named_integration() {
     let test_server = create_server_with_port("test_server", 5000);
-    let close_result = close_server("test_server");
+    let close_result = close_server_named("test_server");
     assert!(close_result);
     assert!(!has_server("test_server"));
 }
@@ -190,7 +192,7 @@ fn test_connection_count_named_integration() {
     let test_server = create_server_with_port("test_server", 5000);
     open_connection("test_connection", "127.0.0.1", 5000);
     check_network_activity();
-    assert_eq!(1, connection_count("test_server"));
+    assert_eq!(1, connection_count_named("test_server"));
     close_all_connections();
     close_server(test_server);
 }
@@ -218,7 +220,7 @@ fn test_connection_ip_from_name_integration() {
     let test_server = create_server_with_port("test_server", 8080);
     let test_connection = open_connection("test_connection", "127.0.0.1", 8080);
     check_network_activity();
-    let test_ip = connection_ip("test_connection");
+    let test_ip = connection_ip_from_name("test_connection");
     assert_eq!(2130706433, test_ip);
     close_connection(test_connection);
     close_server(test_server);
@@ -248,7 +250,7 @@ fn test_connection_port_from_name_integration() {
     let test_server = create_server_with_port("test_server", 5000);
     let test_connection = open_connection("test_connection", "127.0.0.1", 5000);
     check_network_activity();
-    let test_port = connection_port("test_connection");
+    let test_port = connection_port_from_name("test_connection");
     assert_eq!(5000, test_port);
     close_connection(test_connection);
     close_server(test_server);
@@ -262,7 +264,7 @@ fn test_create_server_with_port_integration() {
 }
 #[test]
 fn test_create_server_with_port_and_protocol_integration() {
-    let test_server = create_server_with_port("test_server", 5000, ConnectionType::TCP);
+    let test_server = create_server_with_port_and_protocol("test_server", 5000, ConnectionType::TCP);
     assert!(test_server.is_some());
     assert!(has_server("test_server"));
     close_server(test_server);
@@ -311,7 +313,7 @@ fn test_has_messages_on_connection_integration() {
     check_network_activity();
     send_message_to_connection("Test Message", test_connection);
     check_network_activity();
-    assert!(has_messages(test_connection));
+    assert!(has_messages_on_connection(test_connection));
     close_connection(test_connection);
     close_server(test_server);
 }
@@ -322,7 +324,7 @@ fn test_has_messages_on_name_integration() {
     check_network_activity();
     send_message_to_connection("Test Message", test_connection);
     check_network_activity();
-    assert!(has_messages("test_server"));
+    assert!(has_messages_on_name("test_server"));
     close_connection(test_connection);
     close_server(test_server);
 }
@@ -332,7 +334,7 @@ fn test_has_messages_on_server_integration() {
     let test_connection = open_connection("test_connection", "127.0.0.1", 5000);
     send_message_to_connection("Test Message", test_connection);
     check_network_activity();
-    assert!(has_messages(test_server));
+    assert!(has_messages_on_server(test_server));
     close_connection(test_connection);
     close_server(test_server);
 }
@@ -398,9 +400,9 @@ fn test_is_connection_open_from_name_integration() {
     let test_server = create_server_with_port("test_server", 5000);
     let test_connection = open_connection("test_connection", "127.0.0.1", 5000);
     check_network_activity();
-    assert!(is_connection_open("test_connection"));
+    assert!(is_connection_open_from_name("test_connection"));
     close_connection(test_connection);
-    assert!(!is_connection_open("test_connection"));
+    assert!(!is_connection_open_from_name("test_connection"));
     close_server(test_server);
 }
 #[test]
@@ -408,7 +410,7 @@ fn test_last_connection_named_integration() {
     let test_server = create_server_with_port("test_server", 5000);
     let test_connection = open_connection("test_connection", "127.0.0.1", 5000);
     check_network_activity();
-    let last_connection = last_connection("test_server");
+    let last_connection = last_connection_named("test_server");
     assert_eq!(test_connection, last_connection);
     close_connection(test_connection);
     close_server(test_server);
@@ -568,7 +570,7 @@ fn test_open_connection_integration() {
 #[test]
 fn test_open_connection_with_protocol_integration() {
     let test_server = create_server_with_port("test_server", 5000, ConnectionType::TCP);
-    let test_connection = open_connection("test_connection", "127.0.0.1", 5000, ConnectionType::TCP);
+    let test_connection = open_connection_with_protocol("test_connection", "127.0.0.1", 5000, ConnectionType::TCP);
     check_network_activity();
     assert!(test_connection.is_some());
     close_connection(test_connection);
@@ -594,7 +596,7 @@ fn test_read_message_from_connection_integration() {
     check_network_activity();
     send_message_to_connection("Test Message", test_connection);
     check_network_activity();
-    let test_message = read_message(test_connection);
+    let test_message = read_message_from_connection(test_connection);
     assert_eq!("Test Message", message_data(test_message));
     close_message(test_message);
     close_connection(test_connection);
@@ -607,7 +609,7 @@ fn test_read_message_from_name_integration() {
     check_network_activity();
     send_message_to_connection("Test Message", test_connection);
     check_network_activity();
-    let test_message = read_message("test_server");
+    let test_message = read_message_from_name("test_server");
     assert_eq!("Test Message", message_data(test_message));
     close_message(test_message);
     close_connection(test_connection);
@@ -620,7 +622,7 @@ fn test_read_message_from_server_integration() {
     check_network_activity();
     send_message_to_connection("Test Message", test_connection);
     check_network_activity();
-    let test_message = read_message(test_server);
+    let test_message = read_message_from_server(test_server);
     assert_eq!("Test Message", message_data(test_message));
     close_connection(test_connection);
     close_server(test_server);
@@ -681,7 +683,7 @@ fn test_reconnect_from_name_integration() {
     close_connection(test_connection);
     check_network_activity();
     assert!(!is_connection_open(test_connection));
-    reconnect("test_connection");
+    reconnect_from_name("test_connection");
     check_network_activity();
     assert!(is_connection_open("test_connection"));
     close_connection(test_connection);
@@ -716,7 +718,7 @@ fn test_retrieve_connection_named_integration() {
     let test_server = create_server_with_port("test_server", 5000);
     let test_connection = open_connection("test_connection", "127.0.0.1", 5000);
     check_network_activity();
-    let retrieved_connection = retrieve_connection("test_connection", 0);
+    let retrieved_connection = retrieve_connection_named("test_connection", 0);
     assert_eq!(test_connection, retrieved_connection);
     close_connection(test_connection);
     close_server(test_server);
@@ -758,7 +760,7 @@ fn test_server_has_new_connection_named_integration() {
     let test_server = create_server_with_port("test_server", 5000);
     open_connection("test_connection", "127.0.0.1", 5000);
     check_network_activity();
-    assert!(server_has_new_connection("test_server"));
+    assert!(server_has_new_connection_named("test_server"));
     close_server(test_server);
     close_all_connections();
 }
@@ -845,7 +847,7 @@ fn test_http_get_integration() {
 fn test_http_post_with_headers_integration() {
     let test_server = create_server_with_port("test_server", 8080);
     let headers = vec!["Content-Type: application/json", "Accept: application/json"];
-    let test_response = http_post("http://localhost:8080/test", 80, "Test Body", headers);
+    let test_response = http_post_with_headers("http://localhost:8080/test", 80, "Test Body", headers);
     assert!(test_response.is_some());
     let response_text = http_response_to_string(test_response);
     assert!(response_text.contains("Test Body"));
@@ -875,7 +877,7 @@ fn test_http_response_to_string_integration() {
 fn test_save_response_to_file_integration() {
     let test_server = create_server_with_port("test_server", 8080);
     let test_response = http_get("http://localhost:8080/test", 80);
-    let test_file = "test_output.txt"
+    let test_file = "test_output.txt";
     save_response_to_file(test_response, test_file);
     free_response(test_response);
     assert!(file_exists(test_file));
@@ -1042,7 +1044,7 @@ fn test_request_uri_stubs_integration() {
     let test_response = http_get("http://localhost:8080/test/path", 80);
     let test_request = next_web_request(test_server);
     let test_stubs = request_uri_stubs(test_request);
-    assert_eq!(vec!["test", "path"];, test_stubs);
+    assert_eq!(vec!["test", "path"], test_stubs);
     free_response(test_response);
     stop_web_server(test_server);
 }
@@ -1091,7 +1093,7 @@ fn test_send_response_empty_integration() {
     let test_server = start_web_server(8080);
     let test_response = http_get("http://localhost:8080/test", 80);
     let test_request = next_web_request(test_server);
-    send_response(test_request);
+    send_response_empty(test_request);
     free_response(test_response);
     stop_web_server(test_server);
 }
@@ -1109,7 +1111,7 @@ fn test_send_response_json_with_status_integration() {
     let test_server = start_web_server(8080);
     let test_response = http_get("http://localhost:8080/test", 80);
     let test_request = next_web_request(test_server);
-    send_response(test_request, HttpStatusCode::HttpStatusOk);
+    send_response_json_with_status(test_request, HttpStatusCode::HttpStatusOk);
     free_response(test_response);
     stop_web_server(test_server);
 }
@@ -1118,7 +1120,7 @@ fn test_send_response_with_status_integration() {
     let test_server = start_web_server(8080);
     let test_response = http_get("http://localhost:8080/test", 80);
     let test_request = next_web_request(test_server);
-    send_response(test_request, HttpStatusCode::HttpStatusOk, "Test Message");
+    send_response_with_status(test_request, HttpStatusCode::HttpStatusOk, "Test Message");
     free_response(test_response);
     stop_web_server(test_server);
 }
@@ -1127,7 +1129,7 @@ fn test_send_response_with_status_and_content_type_integration() {
     let test_server = start_web_server(8080);
     let test_response = http_get("http://localhost:8080/test", 80);
     let test_request = next_web_request(test_server);
-    send_response(test_request, HttpStatusCode::HttpStatusOk, "Test Message", "text/plain");
+    send_response_with_status_and_content_type(test_request, HttpStatusCode::HttpStatusOk, "Test Message", "text/plain");
     free_response(test_response);
     stop_web_server(test_server);
 }
@@ -1136,7 +1138,7 @@ fn test_send_response_with_status_and_content_type_and_headers_integration() {
     let test_server = start_web_server(8080);
     let test_response = http_get("http://localhost:8080/test", 80);
     let test_request = next_web_request(test_server);
-    send_response(test_request, HttpStatusCode::HttpStatusOk, "Test Message", "text/plain", vec!["Header1: Value1", "Header2: Value2"];);
+    send_response_with_status_and_content_type_and_headers(test_request, HttpStatusCode::HttpStatusOk, "Test Message", "text/plain", vec!["Header1: Value1", "Header2: Value2"]);
     free_response(test_response);
     stop_web_server(test_server);
 }
@@ -1147,7 +1149,7 @@ fn test_send_response_json_integration() {
     let test_request = next_web_request(test_server);
     let test_json = create_json();
     json_set_string(test_json, "message", "Test Message");
-    send_response(test_request, test_json);
+    send_response_json(test_request, test_json);
     free_response(test_response);
     free_json(test_json);
     stop_web_server(test_server);
@@ -1155,13 +1157,13 @@ fn test_send_response_json_integration() {
 #[test]
 fn test_split_uri_stubs_integration() {
     let test_stubs = split_uri_stubs("/names/0");
-    assert_eq!(vec!["names", "0"];, test_stubs);
+    assert_eq!(vec!["names", "0"], test_stubs);
     let test_stubs_empty = split_uri_stubs("/");
     assert!(test_stubs_empty.is_empty());
 }
 #[test]
 fn test_start_web_server_with_default_port_integration() {
-    let test_server = start_web_server();
+    let test_server = start_web_server_with_default_port();
     assert!(test_server.is_some());
     stop_web_server(test_server);
 }
@@ -1178,4 +1180,5 @@ fn test_stop_web_server_integration() {
     assert!(has_incoming_requests(test_server));
     free_response(test_response);
     stop_web_server(test_server);
+}
 }

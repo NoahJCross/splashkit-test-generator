@@ -5,42 +5,27 @@
       "name": "read_char",
       "steps": [
         {
-          "step_type": "function",
-          "function_name": "write",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Please type a character: "
-            }
-          ]
+          "step_type": "io_setup",
+          "io_type": "reader",
+          "variable_name": "string_reader"
         },
         {
           "step_type": "function",
           "function_name": "read_char",
           "args": [],
-          "store_result": "test_char"
-        },
-        {
-          "step_type": "function",
-          "function_name": "write_line",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "You typed: "
-            },
-            {
-              "value_type": "variable",
-              "variable_name": "test_char"
-            }
-          ]
+          "store_result": "result"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": "A"
+            },
+            "value2": {
               "value_type": "variable",
-              "variable_name": "test_char"
+              "variable_name": "result"
             }
           }
         }
@@ -50,48 +35,29 @@
       "name": "read_line",
       "steps": [
         {
-          "step_type": "function",
-          "function_name": "write",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Please enter your name: "
-            }
-          ]
+          "step_type": "io_setup",
+          "io_type": "reader",
+          "variable_name": "string_reader"
         },
         {
           "step_type": "function",
           "function_name": "read_line",
           "args": [],
-          "store_result": "test_input"
+          "store_result": "result"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_input"
+              "value_type": "primitive",
+              "value": "Test Input"
             },
             "value2": {
               "value_type": "primitive",
-              "value": ""
+              "value": "Test Input"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "write_line",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "You entered: "
-            },
-            {
-              "value_type": "variable",
-              "variable_name": "test_input"
-            }
-          ]
         }
       ]
     },
@@ -99,41 +65,9 @@
       "name": "terminal_has_input",
       "steps": [
         {
-          "step_type": "function",
-          "function_name": "write",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Type something and press Enter: "
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "read_line",
-          "args": [],
-          "store_result": "test_input"
-        },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
+          "step_type": "io_setup",
+          "io_type": "reader",
+          "variable_name": "string_reader"
         },
         {
           "step_type": "assertion",
@@ -143,78 +77,41 @@
               "value_type": "function",
               "function_name": "terminal_has_input",
               "args": []
-            }
+            },
+            "value2": null
           }
         }
       ]
     },
     {
-      "name": "write_char",
+      "name": "write",
       "steps": [
         {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
+        {
           "step_type": "function",
-          "function_name": "write_char",
+          "function_name": "write",
           "args": [
             {
               "value_type": "primitive",
-              "value": "A"
+              "value": "Test String"
             }
           ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "read_char",
-          "args": [],
-          "store_result": "test_char"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_char"
+              "value_type": "primitive",
+              "value": "Test String"
             },
             "value2": {
               "value_type": "primitive",
-              "value": "A"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "write_double",
-      "steps": [
-        {
-          "step_type": "function",
-          "function_name": "write_double",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": 3.14
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
+              "value": "Test String"
             }
           }
         }
@@ -223,6 +120,11 @@
     {
       "name": "write_int",
       "steps": [
+        {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
         {
           "step_type": "function",
           "function_name": "write_int",
@@ -236,68 +138,64 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
+              "value_type": "primitive",
+              "value": "42"
+            },
+            "value2": {
+              "value_type": "primitive",
+              "value": "42"
             }
           }
         }
       ]
     },
     {
-      "name": "write",
+      "name": "write_double",
       "steps": [
         {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
+        {
           "step_type": "function",
-          "function_name": "write",
+          "function_name": "write_double",
           "args": [
             {
               "value_type": "primitive",
-              "value": "Test String"
+              "value": 3.14
             }
           ]
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "read_line",
-          "args": [],
-          "store_result": "test_output"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_output"
+              "value_type": "primitive",
+              "value": "3.14"
             },
             "value2": {
               "value_type": "primitive",
-              "value": "Test String"
+              "value": "3.14"
             }
           }
         }
       ]
     },
     {
-      "name": "write_line_char",
+      "name": "write_char",
       "steps": [
         {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
+        {
           "step_type": "function",
-          "function_name": "write_line_char",
+          "function_name": "write_char",
           "args": [
             {
               "value_type": "primitive",
@@ -308,124 +206,14 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "read_char",
-          "args": [],
-          "store_result": "test_char"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_char"
+              "value_type": "primitive",
+              "value": "A"
             },
             "value2": {
               "value_type": "primitive",
               "value": "A"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "write_line_empty",
-      "steps": [
-        {
-          "step_type": "function",
-          "function_name": "write",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Test line"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "write_line",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "write",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Next line"
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "write_line_double",
-      "steps": [
-        {
-          "step_type": "function",
-          "function_name": "write_line_double",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": 42.5
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "write_line_int",
-      "steps": [
-        {
-          "step_type": "function",
-          "function_name": "write_line_int",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": 42
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
             }
           }
         }
@@ -434,6 +222,11 @@
     {
       "name": "write_line",
       "steps": [
+        {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
         {
           "step_type": "function",
           "function_name": "write_line",
@@ -447,11 +240,147 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "terminal_has_input",
-              "args": []
+              "value_type": "concat",
+              "value": ["Test Line", "new_line"]
+            },
+            "value2": {
+              "value_type": "string_with_newline",
+              "value": "Test Line"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line_empty",
+      "steps": [
+        {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "enum",
+              "enum_type": "environment",
+              "value": "new_line"
+            },
+            "value2": {
+              "value_type": "io_step",
+              "variable_name": "string_writer",
+              "variable_field": "to_string"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line_int",
+      "steps": [
+        {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line_int",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 42
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "concat",
+              "value": ["42", "new_line"]
+            },
+            "value2": {
+              "value_type": "string_with_newline",
+              "value": "42"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line_double",
+      "steps": [
+        {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line_double",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 3.14
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "concat",
+              "value": ["3.14", "new_line"]
+            },
+            "value2": {
+              "value_type": "string_with_newline",
+              "value": "3.14"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "write_line_char",
+      "steps": [
+        {
+          "step_type": "io_setup",
+          "io_type": "writer",
+          "variable_name": "string_writer"
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line_char",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "concat",
+              "value": ["A", "new_line"]
+            },
+            "value2": {
+              "value_type": "string_with_newline",
+              "value": "A"
             }
           }
         }

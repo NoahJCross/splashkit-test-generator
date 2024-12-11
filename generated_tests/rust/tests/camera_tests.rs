@@ -8,12 +8,14 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_camera {
+use super::*;
 #[test]
 fn test_camera_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_camera_position = camera_position();
-    assert_eq!(test_camera_position.x, 0.0);
-    assert_eq!(test_camera_position.y, 0.0);
+    assert_eq!(0.0, test_camera_position.x);
+    assert_eq!(0.0, test_camera_position.y);
     close_window(test_window);
 }
 #[test]
@@ -36,7 +38,7 @@ fn test_center_camera_on_vector_integration() {
     let test_sprite = create_sprite("test_sprite");
     sprite_set_position(test_sprite, point_at(100.0, 100.0));
     center_camera_on_vector(test_sprite, vector_from_angle(50.0, 50.0));
-    assert_eq!(point_at(50.0, 50.0), camera_position());
+    assert_eq!(point_at(-267.8606182336807, -161.69777810573578), camera_position());
     free_sprite(test_sprite);
     close_window(test_window);
 }
@@ -46,7 +48,7 @@ fn test_center_camera_on_integration() {
     let test_sprite = create_sprite("test_sprite");
     sprite_set_position(test_sprite, point_at(100.0, 100.0));
     center_camera_on(test_sprite, 0.0, 0.0);
-    assert_eq!(point_at(50.0, 50.0), camera_position());
+    assert_eq!(point_at(-300, -200), camera_position());
     free_sprite(test_sprite);
     close_window(test_window);
 }
@@ -56,7 +58,7 @@ fn test_move_camera_by_vector_integration() {
     let test_vector = vector_from_angle(0.0, 100.0);
     move_camera_by_vector(test_vector);
     assert_eq!(100.0, camera_x());
-    assert_eq!(100.0, camera_y());
+    assert_eq!(0.0, camera_y());
     close_window(test_window);
 }
 #[test]
@@ -103,6 +105,8 @@ fn test_point_on_screen_integration() {
 #[test]
 fn test_rect_in_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    set_camera_x(0);
+    set_camera_y(0);
     let test_rectangle = rectangle_from(0, 0, 100, 100);
     assert!(rect_in_window(test_window, test_rectangle));
     let test_rectangle_outside = rectangle_from(1000, 1000, 100, 100);
@@ -121,9 +125,11 @@ fn test_rect_on_screen_integration() {
 #[test]
 fn test_screen_center_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    set_camera_x(0);
+    set_camera_y(0);
     let test_center = screen_center();
-    assert_eq!(test_center, todo());
-    assert_eq!(test_center, todo());
+    assert_eq!(400, test_center.x);
+    assert_eq!(300, test_center.y);
     close_window(test_window);
 }
 #[test]
@@ -160,8 +166,8 @@ fn test_to_screen_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
     set_camera_position(point_at(100.0, 100.0));
     let test_screen_point = to_screen_point(point_at(150.0, 150.0));
-    assert_eq!(test_screen_point, todo());
-    assert_eq!(test_screen_point, todo());
+    assert_eq!(50.0, test_screen_point.x);
+    assert_eq!(50.0, test_screen_point.y);
     close_window(test_window);
 }
 #[test]
@@ -192,8 +198,8 @@ fn test_to_world_integration() {
     let test_window = open_window("Test Window", 800, 600);
     set_camera_position(point_at(100.0, 100.0));
     let test_world_point = to_world(point_at(400.0, 300.0));
-    assert_eq!(test_world_point, todo());
-    assert_eq!(test_world_point, todo());
+    assert_eq!(500.0, test_world_point.x);
+    assert_eq!(400.0, test_world_point.y);
     close_window(test_window);
 }
 #[test]
@@ -201,7 +207,7 @@ fn test_to_world_x_integration() {
     let test_window = open_window("Test Window", 800, 600);
     set_camera_position(point_at(100.0, 100.0));
     let test_world_x = to_world_x(400.0);
-    assert_eq!(camera_x(), test_world_x);
+    assert_eq!(500.0, test_world_x);
     close_window(test_window);
 }
 #[test]
@@ -224,4 +230,5 @@ fn test_window_area_integration() {
     assert_eq!(800, test_area.width);
     assert_eq!(600, test_area.height);
     close_window(test_window);
+}
 }

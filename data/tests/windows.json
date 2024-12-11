@@ -21,13 +21,13 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
           "function_name": "color_black",
           "args": [],
-          "store_result": "test_color"
+          "store_result": "color"
         },
         {
           "step_type": "function",
@@ -35,11 +35,11 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             },
             {
               "value_type": "variable",
-              "variable_name": "test_color"
+              "variable_name": "color"
             }
           ]
         },
@@ -49,50 +49,42 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "get_pixel",
+          "args": [
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": 0
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "store_result": "pixel"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "color_black",
-              "args": []
+              "value_type": "variable",
+              "variable_name": "color"
             },
             "value2": {
-              "value_type": "function",
-              "function_name": "get_pixel",
-              "args": [
-                {
-                  "value_type": "function",
-                  "function_name": "point_at",
-                  "args": [
-                    {
-                      "value_type": "function",
-                      "function_name": "window_width",
-                      "args": [
-                        {
-                          "value_type": "variable",
-                          "variable_name": "test_window"
-                        }
-                      ]
-                    },
-                    {
-                      "value_type": "function",
-                      "function_name": "window_height",
-                      "args": [
-                        {
-                          "value_type": "variable",
-                          "variable_name": "test_window"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+              "value_type": "variable",
+              "variable_name": "pixel"
             }
           }
         },
@@ -102,7 +94,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -128,7 +120,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_1"
+          "store_result": "window1"
         },
         {
           "step_type": "function",
@@ -147,7 +139,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_2"
+          "store_result": "window2"
         },
         {
           "step_type": "function",
@@ -167,7 +159,8 @@
                   "value": "Test Window 1"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -183,7 +176,8 @@
                   "value": "Test Window 2"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         }
       ]
@@ -208,7 +202,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -216,7 +210,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         },
@@ -238,7 +232,20 @@
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "null",
+            "value1": {
+              "value_type": "function",
+              "function_name": "current_window",
+              "args": []
+            },
+            "value2": null
           }
         }
       ]
@@ -263,27 +270,23 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
-        },
-        {
-          "step_type": "function",
-          "function_name": "has_window",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Test Window"
-            }
-          ],
-          "store_result": "window_exists"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "window_exists"
-            }
+              "value_type": "function",
+              "function_name": "has_window",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -297,24 +300,20 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "has_window",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Test Window"
-            }
-          ],
-          "store_result": "window_exists"
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "window_exists"
-            }
+              "value_type": "function",
+              "function_name": "has_window",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            },
+            "value2": null
           }
         }
       ]
@@ -339,7 +338,18 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "window_caption",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            }
+          ],
+          "store_result": "window_name"
         },
         {
           "step_type": "function",
@@ -347,7 +357,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         },
@@ -360,11 +370,29 @@
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": "Test Window"
+                  "value_type": "variable",
+                  "variable_name": "window_name"
                 }
               ]
-            }
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "window_has_focus",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
+            },
+            "value2": null
           }
         }
       ]
@@ -378,7 +406,7 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": "Test Window"
+              "value": "Test Window 1"
             },
             {
               "value_type": "primitive",
@@ -389,7 +417,26 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window 2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "window2"
         },
         {
           "step_type": "function",
@@ -397,7 +444,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window2"
             }
           ]
         },
@@ -407,7 +454,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window2"
             },
             "value2": {
               "value_type": "function",
@@ -417,14 +464,43 @@
           }
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "is_current_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window2"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "is_current_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window1"
+                }
+              ]
+            },
+            "value2": null
+          }
+        },
+        {
           "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
+          "function_name": "close_all_windows",
+          "args": []
         }
       ]
     },
@@ -448,7 +524,17 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_current_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -458,7 +544,8 @@
               "value_type": "function",
               "function_name": "current_window_has_border",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -474,7 +561,8 @@
               "value_type": "function",
               "function_name": "current_window_has_border",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -483,7 +571,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -509,7 +597,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -517,7 +605,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         },
@@ -538,11 +626,40 @@
         },
         {
           "step_type": "function",
+          "function_name": "resize_current_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 400
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 400
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "current_window_height",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "close_window",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -568,7 +685,17 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_current_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -578,7 +705,8 @@
               "value_type": "function",
               "function_name": "current_window_is_fullscreen",
               "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -594,23 +722,8 @@
               "value_type": "function",
               "function_name": "current_window_is_fullscreen",
               "args": []
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "current_window_toggle_fullscreen",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "current_window_is_fullscreen",
-              "args": []
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -619,7 +732,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -645,21 +758,65 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_current_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_current_window_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            }
+          ]
         },
         {
           "step_type": "function",
           "function_name": "current_window_position",
           "args": [],
-          "store_result": "test_position"
+          "store_result": "position"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_position"
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "position",
+              "variable_field": "X"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 200
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "position",
+              "variable_field": "Y"
             }
           }
         },
@@ -669,7 +826,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -695,23 +852,23 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
-          "function_name": "current_window_toggle_border",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "current_window_has_border",
-              "args": []
+          "function_name": "set_current_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
             }
-          }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "current_window_has_border",
+          "args": [],
+          "store_result": "initial_border"
         },
         {
           "step_type": "function",
@@ -721,8 +878,12 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "not_equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "initial_border"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_has_border",
               "args": []
@@ -735,7 +896,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -761,23 +922,23 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
-          "function_name": "current_window_toggle_fullscreen",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "current_window_is_fullscreen",
-              "args": []
+          "function_name": "set_current_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
             }
-          }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "current_window_is_fullscreen",
+          "args": [],
+          "store_result": "initial_fullscreen"
         },
         {
           "step_type": "function",
@@ -787,8 +948,12 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "false",
+            "compare_type": "not_equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "initial_fullscreen"
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "current_window_is_fullscreen",
               "args": []
@@ -801,7 +966,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -827,7 +992,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -835,7 +1000,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         },
@@ -856,11 +1021,40 @@
         },
         {
           "step_type": "function",
+          "function_name": "resize_current_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 400
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 400
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "current_window_width",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "close_window",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -886,25 +1080,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
-        },
-        {
-          "step_type": "function",
-          "function_name": "move_window_to",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            },
-            {
-              "value_type": "primitive",
-              "value": 100
-            },
-            {
-              "value_type": "primitive",
-              "value": 200
-            }
-          ]
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -912,7 +1088,21 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_current_window_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
             }
           ]
         },
@@ -933,11 +1123,40 @@
         },
         {
           "step_type": "function",
+          "function_name": "move_current_window_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 300
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 300
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "current_window_x",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "close_window",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -963,25 +1182,49 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
-          "function_name": "current_window_y",
-          "args": [],
-          "store_result": "test_y"
+          "function_name": "set_current_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_current_window_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": 0
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_y"
+              "value_type": "primitive",
+              "value": 100
             },
             "value2": {
-              "value_type": "primitive",
-              "value": -1
+              "value_type": "function",
+              "function_name": "current_window_y",
+              "args": []
             }
           }
         },
@@ -991,7 +1234,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -1017,7 +1260,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -1032,7 +1275,31 @@
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "has_window",
+              "args": [
+                {
+                  "value_type": "function",
+                  "function_name": "window_caption",
+                  "args": [
+                    {
+                      "value_type": "variable",
+                      "variable_name": "window"
+                    }
+                  ]
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -1041,7 +1308,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         },
@@ -1058,7 +1325,8 @@
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         }
       ]
@@ -1083,7 +1351,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_1"
+          "store_result": "window1"
         },
         {
           "step_type": "function",
@@ -1102,7 +1370,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_2"
+          "store_result": "window2"
         },
         {
           "step_type": "function",
@@ -1110,7 +1378,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window_1"
+              "variable_name": "window1"
             }
           ]
         },
@@ -1124,10 +1392,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window_1"
+                  "variable_name": "window1"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -1140,73 +1409,17 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window_2"
+                  "variable_name": "window2"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "set_current_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_2"
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "is_current_window",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_window_2"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "is_current_window",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_window_1"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_1"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_2"
-            }
-          ]
+          "function_name": "close_all_windows",
+          "args": []
         }
       ]
     },
@@ -1230,7 +1443,17 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_current_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1242,9 +1465,14 @@
             },
             {
               "value_type": "primitive",
-              "value": 100
+              "value": 200
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -1267,7 +1495,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 100
+              "value": 200
             },
             "value2": {
               "value_type": "function",
@@ -1282,7 +1510,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -1308,7 +1536,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -1320,11 +1548,11 @@
             },
             {
               "value_type": "primitive",
-              "value": 100
+              "value": 150
             },
             {
               "value_type": "primitive",
-              "value": 100
+              "value": 250
             }
           ]
         },
@@ -1339,11 +1567,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 100
+              "value": 150
             },
             "value2": {
               "value_type": "function",
-              "function_name": "window_x_named",
+              "function_name": "window_x",
               "args": [
                 {
                   "value_type": "primitive",
@@ -1359,11 +1587,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 100
+              "value": 250
             },
             "value2": {
               "value_type": "function",
-              "function_name": "window_y_named",
+              "function_name": "window_y",
               "args": [
                 {
                   "value_type": "primitive",
@@ -1375,11 +1603,11 @@
         },
         {
           "step_type": "function",
-          "function_name": "close_window_named",
+          "function_name": "close_window",
           "args": [
             {
-              "value_type": "primitive",
-              "value": "Test Window"
+              "value_type": "variable",
+              "variable_name": "window"
             }
           ]
         }
@@ -1405,7 +1633,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -1413,17 +1641,22 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             },
             {
               "value_type": "primitive",
-              "value": 100
+              "value": 200
             },
             {
               "value_type": "primitive",
-              "value": 100
+              "value": 300
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -1431,7 +1664,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 100
+              "value": 200
             },
             "value2": {
               "value_type": "function",
@@ -1439,7 +1672,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
             }
@@ -1451,7 +1684,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 100
+              "value": 300
             },
             "value2": {
               "value_type": "function",
@@ -1459,7 +1692,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
             }
@@ -1471,7 +1704,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -1497,7 +1730,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -1505,7 +1738,68 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_caption",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 800
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_width",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 600
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_height",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
             }
           }
         },
@@ -1515,7 +1809,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -1541,7 +1835,22 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "clear_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "function",
+              "function_name": "color_white",
+              "args": []
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1553,22 +1862,16 @@
               "args": []
             },
             {
-              "value_type": "function",
-              "function_name": "circle_at",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": 400.0
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 300.0
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 50.0
-                }
-              ]
+              "value_type": "primitive",
+              "value": 400
+            },
+            {
+              "value_type": "primitive",
+              "value": 300
+            },
+            {
+              "value_type": "primitive",
+              "value": 50
             }
           ]
         },
@@ -1578,51 +1881,43 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         },
         {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
+          "step_type": "function",
+          "function_name": "get_pixel",
+          "args": [
+            {
               "value_type": "function",
-              "function_name": "point_in_circle",
+              "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "function",
-                  "function_name": "point_at",
-                  "args": [
-                    {
-                      "value_type": "primitive",
-                      "value": 400.0
-                    },
-                    {
-                      "value_type": "primitive",
-                      "value": 300.0
-                    }
-                  ]
+                  "value_type": "primitive",
+                  "value": 400
                 },
                 {
-                  "value_type": "function",
-                  "function_name": "circle_at",
-                  "args": [
-                    {
-                      "value_type": "primitive",
-                      "value": 400.0
-                    },
-                    {
-                      "value_type": "primitive",
-                      "value": 300.0
-                    },
-                    {
-                      "value_type": "primitive",
-                      "value": 50.0
-                    }
-                  ]
+                  "value_type": "primitive",
+                  "value": 300
                 }
               ]
+            }
+          ],
+          "store_result": "pixel"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "color_black",
+              "args": []
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "pixel"
             }
           }
         },
@@ -1632,7 +1927,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -1658,7 +1953,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -1666,7 +1961,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             },
             {
               "value_type": "primitive",
@@ -1674,13 +1969,14 @@
             }
           ]
         },
+
         {
           "step_type": "function",
           "function_name": "close_window",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -1706,7 +2002,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -1714,7 +2010,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         },
@@ -1747,8 +2043,13 @@
             },
             "value2": {
               "value_type": "function",
-              "function_name": "current_window_width",
-              "args": []
+              "function_name": "window_width",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
             }
           }
         },
@@ -1762,8 +2063,13 @@
             },
             "value2": {
               "value_type": "function",
-              "function_name": "current_window_height",
-              "args": []
+              "function_name": "window_height",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
             }
           }
         },
@@ -1773,7 +2079,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -1799,7 +2105,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -1807,7 +2113,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             },
             {
               "value_type": "primitive",
@@ -1818,6 +2124,11 @@
               "value": 768
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -1833,7 +2144,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
             }
@@ -1853,7 +2164,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
             }
@@ -1865,7 +2176,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -1891,7 +2202,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_1"
+          "store_result": "window1"
         },
         {
           "step_type": "function",
@@ -1910,7 +2221,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_2"
+          "store_result": "window2"
         },
         {
           "step_type": "function",
@@ -1925,38 +2236,22 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "window2"
+            },
+            "value2": {
               "value_type": "function",
-              "function_name": "is_current_window",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_window_2"
-                }
-              ]
+              "function_name": "current_window",
+              "args": []
             }
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_1"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_2"
-            }
-          ]
+          "function_name": "close_all_windows",
+          "args": []
         }
       ]
     },
@@ -1980,7 +2275,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_1"
+          "store_result": "window1"
         },
         {
           "step_type": "function",
@@ -1999,7 +2294,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_2"
+          "store_result": "window2"
         },
         {
           "step_type": "function",
@@ -2007,45 +2302,29 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window_2"
+              "variable_name": "window2"
             }
           ]
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "variable",
+              "variable_name": "window2"
+            },
+            "value2": {
               "value_type": "function",
-              "function_name": "is_current_window",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_window_2"
-                }
-              ]
+              "function_name": "current_window",
+              "args": []
             }
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_1"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_2"
-            }
-          ]
+          "function_name": "close_all_windows",
+          "args": []
         }
       ]
     },
@@ -2069,7 +2348,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -2085,7 +2364,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
             }
@@ -2097,7 +2376,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2123,7 +2402,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -2143,24 +2422,32 @@
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
-          "step_type": "function",
-          "function_name": "simulate_key_press",
-          "args": [
+          "step_type": "while",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "window_close_requested_named",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            }
+          },
+          "while_steps": [
             {
-              "value_type": "enum",
-              "enum_type": "key_code",
-              "value": "Escape"
+              "step_type": "function",
+              "function_name": "process_events",
+              "args": []
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
         },
         {
           "step_type": "assertion",
@@ -2175,7 +2462,8 @@
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2184,7 +2472,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2210,7 +2498,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -2227,27 +2515,35 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
-          "step_type": "function",
-          "function_name": "simulate_key_press",
-          "args": [
+          "step_type": "while",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "window_close_requested",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
+            }
+          },
+          "while_steps": [
             {
-              "value_type": "enum",
-              "enum_type": "key_code",
-              "value": "Escape"
+              "step_type": "function",
+              "function_name": "process_events",
+              "args": []
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
         },
         {
           "step_type": "assertion",
@@ -2259,10 +2555,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2271,7 +2568,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2297,7 +2594,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -2312,18 +2609,24 @@
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "window_toggle_border_named",
+          "function_name": "window_toggle_border",
           "args": [
             {
               "value_type": "primitive",
               "value": "Test Window"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -2338,16 +2641,17 @@
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_window_named",
+          "function_name": "close_window",
           "args": [
             {
-              "value_type": "primitive",
-              "value": "Test Window"
+              "value_type": "variable",
+              "variable_name": "window"
             }
           ]
         }
@@ -2373,7 +2677,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -2385,10 +2689,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2397,9 +2702,14 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -2411,10 +2721,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2423,7 +2734,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2438,7 +2749,7 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": "Test Window"
+              "value": "Test Window 1"
             },
             {
               "value_type": "primitive",
@@ -2449,7 +2760,26 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window 2"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ],
+          "store_result": "window2"
         },
         {
           "step_type": "function",
@@ -2466,21 +2796,34 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window2"
                 }
               ]
-            }
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "window_has_focus",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window1"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
+          "function_name": "close_all_windows",
+          "args": []
         }
       ]
     },
@@ -2504,7 +2847,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -2528,11 +2871,54 @@
         },
         {
           "step_type": "function",
+          "function_name": "resize_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 400
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 400
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_height_named",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "close_window",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2558,7 +2944,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -2574,7 +2960,50 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "resize_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 800
+            },
+            {
+              "value_type": "primitive",
+              "value": 400
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 400
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_height",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
                 }
               ]
             }
@@ -2586,7 +3015,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2612,43 +3041,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
-        },
-        {
-          "step_type": "function",
-          "function_name": "window_toggle_fullscreen",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "window_is_fullscreen_named",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": "Test Window"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "window_toggle_fullscreen",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -2663,7 +3056,40 @@
                   "value": "Test Window"
                 }
               ]
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "window_toggle_fullscreen",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
             }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "window_is_fullscreen_named",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -2672,7 +3098,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2698,7 +3124,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -2710,10 +3136,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2722,9 +3149,14 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -2736,10 +3168,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -2748,7 +3181,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2774,7 +3207,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -2785,7 +3218,7 @@
               "value": "Test Window"
             }
           ],
-          "store_result": "retrieved_window"
+          "store_result": "named_window"
         },
         {
           "step_type": "assertion",
@@ -2793,11 +3226,37 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "retrieved_window"
+              "variable_name": "window"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "named_window"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "window_caption",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_caption",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "named_window"
+                }
+              ]
             }
           }
         },
@@ -2807,7 +3266,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2833,7 +3292,30 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_window_to",
+          "args": [
+            {
+              "value_type": "primitive",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -2844,15 +3326,35 @@
               "value": "Test Window"
             }
           ],
-          "store_result": "test_position"
+          "store_result": "position"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_position"
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "position",
+              "variable_field": "X"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 200
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "position",
+              "variable_field": "Y"
             }
           }
         },
@@ -2862,7 +3364,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2888,7 +3390,30 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_window_to",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -2896,18 +3421,38 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ],
-          "store_result": "test_position"
+          "store_result": "position"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_position"
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "position",
+              "variable_field": "X"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 200
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "position",
+              "variable_field": "Y"
             }
           }
         },
@@ -2917,7 +3462,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -2943,7 +3488,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -2962,7 +3507,22 @@
               "value": 32
             }
           ],
-          "store_result": "test_bitmap"
+          "store_result": "icon"
+        },
+        {
+          "step_type": "function",
+          "function_name": "clear_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "icon"
+            },
+            {
+              "value_type": "function",
+              "function_name": "color_white",
+              "args": []
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -2970,11 +3530,26 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             },
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "icon"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "icon"
             }
           ]
         },
@@ -2984,17 +3559,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "window"
             }
           ]
         }
@@ -3020,27 +3585,23 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
-        },
-        {
-          "step_type": "function",
-          "function_name": "window_has_border_named",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Test Window"
-            }
-          ],
-          "store_result": "test_has_border"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_has_border"
-            }
+              "value_type": "function",
+              "function_name": "window_has_border",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
@@ -3055,32 +3616,33 @@
         },
         {
           "step_type": "function",
-          "function_name": "window_has_border_named",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Test Window"
-            }
-          ],
-          "store_result": "test_has_border"
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_has_border"
-            }
+              "value_type": "function",
+              "function_name": "window_has_border",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_window_named",
+          "function_name": "close_window",
           "args": [
             {
-              "value_type": "primitive",
-              "value": "Test Window"
+              "value_type": "variable",
+              "variable_name": "window"
             }
           ]
         }
@@ -3106,7 +3668,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -3118,10 +3680,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3130,9 +3693,14 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -3144,36 +3712,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "window_toggle_border",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "window_has_border",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_window"
-                }
-              ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3182,7 +3725,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -3208,12 +3751,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
-        },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -3221,14 +3759,15 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "window_is_fullscreen_named",
+              "function_name": "window_is_fullscreen",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
@@ -3252,23 +3791,24 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "window_is_fullscreen_named",
+              "function_name": "window_is_fullscreen",
               "args": [
                 {
                   "value_type": "primitive",
                   "value": "Test Window"
                 }
               ]
-            }
+            },
+            "value2": null
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_window_named",
+          "function_name": "close_window",
           "args": [
             {
-              "value_type": "primitive",
-              "value": "Test Window"
+              "value_type": "variable",
+              "variable_name": "window"
             }
           ]
         }
@@ -3294,18 +3834,24 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
-          "step_type": "function",
-          "function_name": "window_is_fullscreen",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ],
-          "store_result": "initial_fullscreen_state"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "window_is_fullscreen",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
+            },
+            "value2": null
+          }
         },
         {
           "step_type": "function",
@@ -3313,33 +3859,30 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         },
         {
           "step_type": "function",
-          "function_name": "window_is_fullscreen",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ],
-          "store_result": "new_fullscreen_state"
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "true",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "new_fullscreen_state"
+              "value_type": "function",
+              "function_name": "window_is_fullscreen",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
             },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "initial_fullscreen_state"
-            }
+            "value2": null
           }
         },
         {
@@ -3348,7 +3891,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -3374,7 +3917,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -3398,11 +3941,54 @@
         },
         {
           "step_type": "function",
+          "function_name": "resize_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 1024
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 1024
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_width_named",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "close_window",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -3428,7 +4014,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "assertion",
@@ -3444,7 +4030,50 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "resize_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 1024
+            },
+            {
+              "value_type": "primitive",
+              "value": 600
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 1024
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_width",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
                 }
               ]
             }
@@ -3456,7 +4085,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -3482,7 +4111,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_1"
+          "store_result": "window1"
         },
         {
           "step_type": "function",
@@ -3501,23 +4130,12 @@
               "value": 600
             }
           ],
-          "store_result": "test_window_2"
+          "store_result": "window2"
         },
         {
           "step_type": "function",
-          "function_name": "set_current_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_1"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "window_with_focus",
-          "args": [],
-          "store_result": "focused_window"
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -3525,11 +4143,12 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_window_1"
+              "variable_name": "window2"
             },
             "value2": {
-              "value_type": "variable",
-              "variable_name": "focused_window"
+              "value_type": "function",
+              "function_name": "window_with_focus",
+              "args": []
             }
           }
         },
@@ -3539,15 +4158,14 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window_2"
+              "variable_name": "window1"
             }
           ]
         },
         {
           "step_type": "function",
-          "function_name": "window_with_focus",
-          "args": [],
-          "store_result": "focused_window"
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -3555,33 +4173,19 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "test_window_2"
+              "variable_name": "window1"
             },
             "value2": {
-              "value_type": "variable",
-              "variable_name": "focused_window"
+              "value_type": "function",
+              "function_name": "window_with_focus",
+              "args": []
             }
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_1"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window_2"
-            }
-          ]
+          "function_name": "close_all_windows",
+          "args": []
         }
       ]
     },
@@ -3605,11 +4209,11 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
-          "function_name": "move_window_to_named",
+          "function_name": "move_window_to",
           "args": [
             {
               "value_type": "primitive",
@@ -3624,6 +4228,11 @@
               "value": 200
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -3647,11 +4256,54 @@
         },
         {
           "step_type": "function",
-          "function_name": "close_window_named",
+          "function_name": "move_window_to",
           "args": [
             {
               "value_type": "primitive",
               "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 300
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 300
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_x_named",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
             }
           ]
         }
@@ -3677,25 +4329,91 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_window_to",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 100
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "window_x",
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
                 }
               ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_window_to",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 300
+            },
+            {
+              "value_type": "primitive",
+              "value": 200
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 300
             },
             "value2": {
-              "value_type": "primitive",
-              "value": -1
+              "value_type": "function",
+              "function_name": "window_x",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
+                }
+              ]
             }
           }
         },
@@ -3705,7 +4423,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }
@@ -3731,11 +4449,11 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
-          "function_name": "move_window_to_named",
+          "function_name": "move_window_to",
           "args": [
             {
               "value_type": "primitive",
@@ -3753,14 +4471,8 @@
         },
         {
           "step_type": "function",
-          "function_name": "window_y_named",
-          "args": [
-            {
-              "value_type": "primitive",
-              "value": "Test Window"
-            }
-          ],
-          "store_result": "test_window_y"
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -3771,18 +4483,67 @@
               "value": 200
             },
             "value2": {
-              "value_type": "variable",
-              "variable_name": "test_window_y"
+              "value_type": "function",
+              "function_name": "window_y_named",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
             }
           }
         },
         {
           "step_type": "function",
-          "function_name": "close_window_named",
+          "function_name": "move_window_to",
           "args": [
             {
               "value_type": "primitive",
               "value": "Test Window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 400
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 400
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_y_named",
+              "args": [
+                {
+                  "value_type": "primitive",
+                  "value": "Test Window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "close_window",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
             }
           ]
         }
@@ -3808,7 +4569,7 @@
               "value": 600
             }
           ],
-          "store_result": "test_window"
+          "store_result": "window"
         },
         {
           "step_type": "function",
@@ -3816,7 +4577,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             },
             {
               "value_type": "primitive",
@@ -3827,6 +4588,11 @@
               "value": 200
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "assertion",
@@ -3842,7 +4608,50 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "test_window"
+                  "variable_name": "window"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_window_to",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "window"
+            },
+            {
+              "value_type": "primitive",
+              "value": 100
+            },
+            {
+              "value_type": "primitive",
+              "value": 400
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "primitive",
+              "value": 400
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_y",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "window"
                 }
               ]
             }
@@ -3854,7 +4663,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_window"
+              "variable_name": "window"
             }
           ]
         }

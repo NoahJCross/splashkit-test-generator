@@ -8,144 +8,181 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_graphics {
+use super::*;
 #[test]
 fn test_draw_circle_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     let test_circle = circle_at(400.0, 300.0, 50.0);
-    draw_circle(color_black(), test_circle);
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), test_circle));
+    draw_circle_record(color_black(), test_circle);
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_circle_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     let test_circle = circle_at(400.0, 300.0, 50.0);
-    draw_circle(color_black(), test_circle, option_defaults());
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), test_circle));
+    draw_circle_record_with_options(color_black(), test_circle, option_defaults());
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_circle_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_circle(color_black(), 400.0, 300.0, 50.0);
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 425, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_circle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_circle(color_black(), 400.0, 300.0, 50.0, option_defaults());
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    clear_window(test_window, color_white());
+    draw_circle_with_options(color_black(), 400.0, 300.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_circle_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
     draw_circle_on_bitmap(test_bitmap, color_black(), 100.0, 100.0, 50.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 100.0, 100.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 150, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 100, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 160, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_circle_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    draw_circle_on_bitmap(test_bitmap, color_black(), 100.0, 100.0, 50.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 100.0, 100.0));
+    clear_bitmap(test_bitmap, color_white());
+    draw_circle_on_bitmap_with_options(test_bitmap, color_black(), 100.0, 100.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 150, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 100, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 160, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_circle_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_circle_on_window(test_window, color_black(), 400.0, 300.0, 50.0);
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_circle_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_circle_on_window(test_window, color_black(), 400.0, 300.0, 50.0, option_defaults());
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    clear_window(test_window, color_white());
+    draw_circle_on_window_with_options(test_window, color_black(), 400.0, 300.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 350, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 400));
     close_window(test_window);
 }
 #[test]
 fn test_fill_circle_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     let test_circle = circle_at(400.0, 300.0, 50.0);
-    fill_circle(color_black(), test_circle);
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), test_circle));
+    fill_circle_record(color_black(), test_circle);
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 425, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_circle_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     let test_circle = circle_at(400.0, 300.0, 50.0);
-    fill_circle(color_black(), test_circle, option_defaults());
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), test_circle));
+    fill_circle_record_with_options(color_black(), test_circle, option_defaults());
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 425, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_circle_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_circle(color_black(), 400.0, 300.0, 50.0);
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 425, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_circle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    fill_circle(color_black(), 400.0, 300.0, 50.0, option_defaults());
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    clear_window(test_window, color_white());
+    fill_circle_with_options(color_black(), 400.0, 300.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 425, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_circle_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
     fill_circle_on_bitmap(test_bitmap, color_red(), 100.0, 100.0, 50.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 100.0, 100.0));
-    assert!(pixel_drawn_at_point(test_bitmap, 150.0, 100.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 200.0, 100.0));
+    assert_eq!(color_red(), get_pixel(test_bitmap, 100, 100));
+    assert_eq!(color_red(), get_pixel(test_bitmap, 125, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 160, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_circle_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    fill_circle_on_bitmap(test_bitmap, color_black(), 100.0, 100.0, 50.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 100.0, 100.0));
-    assert!(pixel_drawn_at_point(test_bitmap, 150.0, 100.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 200.0, 100.0));
+    clear_bitmap(test_bitmap, color_white());
+    fill_circle_on_bitmap_with_options(test_bitmap, color_black(), 100.0, 100.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 100, 100));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 125, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 160, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_circle_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_circle_on_window(test_window, color_black(), 400.0, 300.0, 50.0);
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 425, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_circle_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    fill_circle_on_window(test_window, color_black(), 400.0, 300.0, 50.0, option_defaults());
-    refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    clear_window(test_window, color_white());
+    fill_circle_on_window_with_options(test_window, color_black(), 400.0, 300.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 425, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_current_clip_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_clip = current_clip();
-    assert_eq!(800, test_clip.width);
-    assert_eq!(600, test_clip.height);
+    assert_eq!(0, rectangle_left(test_clip));
+    assert_eq!(0, rectangle_top(test_clip));
+    assert_eq!(800, test_clip.Width);
+    assert_eq!(600, test_clip.Height);
     close_window(test_window);
 }
 #[test]
@@ -153,51 +190,71 @@ fn test_current_clip_for_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_rectangle = rectangle_from(10, 10, 50, 50);
     push_clip(test_bitmap, test_rectangle);
-    let test_clip = current_clip(test_bitmap);
-    assert_eq!(10, rectangle_left(test_clip));
-    assert_eq!(10, rectangle_top(test_clip));
-    assert_eq!(50, test_clip.width);
-    assert_eq!(50, test_clip.height);
+    let test_clip = current_clip_for_bitmap(test_bitmap);
+    assert_eq!(0, rectangle_left(test_clip));
+    assert_eq!(0, rectangle_top(test_clip));
+    assert_eq!(50, rectangle_right(test_clip));
+    assert_eq!(50, rectangle_bottom(test_clip));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_current_clip_for_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_clip = current_clip(test_window);
-    assert_eq!(test_clip, rectangle_from(0, 0, 800, 600));
+    let test_clip = current_clip_for_window(test_window);
+    assert_eq!(0, rectangle_left(test_clip));
+    assert_eq!(0, rectangle_top(test_clip));
+    assert_eq!(800, test_clip.Width);
+    assert_eq!(600, test_clip.Height);
     close_window(test_window);
 }
 #[test]
 fn test_pop_clip_for_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100, 100, 200, 200);
+    let test_rectangle = rectangle_from(0, 0, 250, 250);
     push_clip(test_window, test_rectangle);
     let test_current_clip = current_clip(test_window);
-    assert_eq!(test_rectangle, test_current_clip);
-    pop_clip(test_window);
+    assert_eq!(0, rectangle_left(test_current_clip));
+    assert_eq!(0, rectangle_top(test_current_clip));
+    assert_eq!(250, test_current_clip.Width);
+    assert_eq!(250, test_current_clip.Height);
+    pop_clip_for_window(test_window);
     let test_current_clip_after_pop = current_clip(test_window);
-    assert_eq!(test_current_clip_after_pop, rectangle_from(0, 0, 800, 600));
+    assert_eq!(0, rectangle_left(test_current_clip_after_pop));
+    assert_eq!(0, rectangle_top(test_current_clip_after_pop));
+    assert_eq!(800, test_current_clip_after_pop.Width);
+    assert_eq!(600, test_current_clip_after_pop.Height);
     close_window(test_window);
 }
 #[test]
 fn test_pop_clip_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    push_clip(rectangle_from(100, 100, 200, 200));
-    draw_circle(color_black(), 150, 150, 50);
+    clear_window(test_window, color_white());
+    push_clip(rectangle_from(0, 0, 250, 250));
+    fill_rectangle(color_red(), 0, 0, 300, 300);
     refresh_screen();
-    assert!(point_in_circle(point_at(150, 150), circle_at(150, 150, 50)));
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 275, 275));
     pop_clip();
-    draw_circle(color_red(), 300, 300, 50);
+    fill_rectangle(color_green(), 300, 300, 100, 100);
     refresh_screen();
-    assert!(point_in_circle(point_at(300, 300), circle_at(300, 300, 50)));
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_green(), get_pixel_from_window(test_window, 350, 350));
     close_window(test_window);
 }
 #[test]
 fn test_pop_clip_for_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     push_clip(test_bitmap, rectangle_from(0, 0, 50, 50));
-    pop_clip(test_bitmap);
-    assert_eq!(rectangle_from(0, 0, 100, 100), current_clip(test_bitmap));
+    fill_circle(color_black(), 25, 25, 20, option_draw_to_bitmap(test_bitmap));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 25, 25));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
+    pop_clip_for_bitmap(test_bitmap);
+    let test_clip = current_clip(test_bitmap);
+    assert_eq!(0, rectangle_left(full_clip));
+    assert_eq!(0, rectangle_top(full_clip));
+    assert_eq!(100, test_clip.Width);
+    assert_eq!(100, test_clip.height);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -205,8 +262,11 @@ fn test_push_clip_for_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     push_clip_for_window(test_window, test_rectangle);
-    let test_current_clip = current_clip_for_window(test_window);
-    assert_eq!(test_rectangle, test_current_clip);
+    let test_current_clip = current_clip(test_window);
+    assert_eq!(100, rectangle_left(test_current_clip));
+    assert_eq!(100, rectangle_top(test_current_clip));
+    assert_eq!(200, test_current_clip.Width);
+    assert_eq!(200, test_current_clip.Height);
     refresh_screen();
     close_window(test_window);
 }
@@ -214,12 +274,12 @@ fn test_push_clip_for_window_integration() {
 fn test_push_clip_for_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
     let test_rectangle = rectangle_from(50, 50, 100, 100);
-    push_clip(test_bitmap, test_rectangle);
+    push_clip_for_bitmap(test_bitmap, test_rectangle);
     let test_current_clip = current_clip(test_bitmap);
     assert_eq!(50, rectangle_left(test_current_clip));
     assert_eq!(50, rectangle_top(test_current_clip));
-    assert_eq!(100, test_current_clip.width);
-    assert_eq!(100, test_current_clip.height);
+    assert_eq!(100, test_current_clip.Width);
+    assert_eq!(100, test_current_clip.Height);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -228,7 +288,10 @@ fn test_push_clip_integration() {
     let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     push_clip(test_rectangle);
     let test_current_clip = current_clip();
-    assert_eq!(test_rectangle, test_current_clip);
+    assert_eq!(100, rectangle_left(test_current_clip));
+    assert_eq!(100, rectangle_top(test_current_clip));
+    assert_eq!(200, test_current_clip.Width);
+    assert_eq!(200, test_current_clip.Height);
     close_window(test_window);
 }
 #[test]
@@ -236,7 +299,11 @@ fn test_reset_clip_for_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     push_clip(test_bitmap, rectangle_from(10, 10, 50, 50));
     reset_clip_for_bitmap(test_bitmap);
-    assert_eq!(rectangle_from(0, 0, 100, 100), current_clip_for_bitmap(test_bitmap));
+    let test_clip = current_clip(test_bitmap);
+    assert_eq!(0, rectangle_left(reset_clip));
+    assert_eq!(0, rectangle_top(reset_clip));
+    assert_eq!(100, test_clip.width);
+    assert_eq!(100, test_clip.height);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -244,8 +311,11 @@ fn test_reset_clip_integration() {
     let test_window = open_window("Test Window", 800, 600);
     push_clip(rectangle_from(100, 100, 200, 200));
     reset_clip();
-    let test_clip_rect = current_clip();
-    assert_eq!(test_clip_rect, rectangle_from(0, 0, 800, 600));
+    let test_clip = current_clip();
+    assert_eq!(0, rectangle_left(test_clip));
+    assert_eq!(0, rectangle_top(test_clip));
+    assert_eq!(800, test_clip.Width);
+    assert_eq!(600, test_clip.Height);
     close_window(test_window);
 }
 #[test]
@@ -253,8 +323,11 @@ fn test_reset_clip_for_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     push_clip(test_window, rectangle_from(100, 100, 200, 200));
     reset_clip_for_window(test_window);
-    let test_clip_rect = current_clip_for_window(test_window);
-    assert_eq!(test_clip_rect, rectangle_from(0, 0, 800, 600));
+    let test_clip = current_clip(test_window);
+    assert_eq!(0, rectangle_left(test_clip));
+    assert_eq!(0, rectangle_top(test_clip));
+    assert_eq!(800, test_clip.Width);
+    assert_eq!(600, test_clip.Height);
     close_window(test_window);
 }
 #[test]
@@ -263,25 +336,34 @@ fn test_set_clip_integration() {
     let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
     set_clip(test_rectangle);
     let test_current_clip = current_clip();
-    assert_eq!(test_rectangle, test_current_clip);
+    assert_eq!(100, rectangle_left(test_current_clip));
+    assert_eq!(100, rectangle_top(test_current_clip));
+    assert_eq!(200, test_current_clip.Width);
+    assert_eq!(200, test_current_clip.Height);
     close_window(test_window);
 }
 #[test]
 fn test_set_clip_for_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
     let test_rectangle = rectangle_from(50, 50, 100, 100);
-    set_clip(test_bitmap, test_rectangle);
+    set_clip_for_bitmap(test_bitmap, test_rectangle);
     let test_current_clip = current_clip(test_bitmap);
-    assert_eq!(test_rectangle, test_current_clip);
+    assert_eq!(50, rectangle_left(test_current_clip));
+    assert_eq!(50, rectangle_top(test_current_clip));
+    assert_eq!(100, test_current_clip.Width);
+    assert_eq!(100, test_current_clip.Height);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_set_clip_for_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rectangle = rectangle_from(100, 100, 200, 200);
-    set_clip(test_window, test_rectangle);
+    set_clip_for_window(test_window, test_rectangle);
     let test_current_clip = current_clip(test_window);
-    assert_eq!(test_rectangle, test_current_clip);
+    assert_eq!(100, rectangle_left(test_current_clip));
+    assert_eq!(100, rectangle_top(test_current_clip));
+    assert_eq!(200, test_current_clip.Width);
+    assert_eq!(200, test_current_clip.Height);
     close_window(test_window);
 }
 #[test]
@@ -292,546 +374,640 @@ fn test_option_defaults_integration() {
 #[test]
 fn test_option_draw_to_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     let test_options = option_draw_to_bitmap(test_bitmap);
     draw_circle(color_black(), circle_at(50.0, 50.0, 25.0), test_options);
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 100.0, 100.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 75, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 90, 90));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_option_draw_to_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     let test_options = option_defaults();
     let test_drawing_options = option_draw_to_bitmap_with_options(test_bitmap, test_options);
     draw_circle(color_black(), circle_at(50.0, 50.0, 25.0), test_drawing_options);
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 100.0, 100.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 75, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 90, 90));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_option_draw_to_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_circle = circle_at(400.0, 300.0, 50.0);
-    draw_circle(color_black(), test_circle, option_draw_to_window(test_window));
+    clear_window(test_window, color_white());
+    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), option_draw_to_window(test_window));
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), test_circle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_option_draw_to_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     let test_options = option_defaults();
-    let test_draw_options = option_draw_to_window_with_options(test_window, test_options);
-    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), test_draw_options);
+    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), option_draw_to_window_with_options(test_window, test_options));
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 460, 300));
     close_window(test_window);
 }
 #[test]
 fn test_option_flip_x_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    draw_bitmap_with_options(test_bitmap, 100.0, 100.0, option_flip_x());
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 50, 100);
+    draw_bitmap(test_bitmap, 100.0, 100.0, option_flip_x());
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 100.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(150.0, 100.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 125, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 75, 100));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_flip_x_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    draw_bitmap_with_options(test_bitmap, 400, 300, option_flip_x(option_defaults()));
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 50, 100);
+    draw_bitmap(test_bitmap, 400, 300, option_flip_x_with_options(option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), bitmap_height(test_bitmap))));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(0, bitmap_height(test_bitmap))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 425, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 375, 300));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_flip_xy_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    draw_bitmap_with_options(test_bitmap, 400.0, 300.0, option_flip_xy());
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 50, 50);
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_flip_xy());
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), 0.0)));
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(0.0, bitmap_height(test_bitmap))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 350));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 450, 250));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_flip_xy_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_options = option_defaults();
-    let test_options_flipped = option_flip_xy(test_options);
-    draw_bitmap_with_options(test_bitmap, 400, 300, test_options_flipped);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 50, 50);
+    draw_bitmap(test_bitmap, 400, 300, option_flip_xy_with_options(option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), 0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(0, bitmap_height(test_bitmap))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 350));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 450, 250));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_flip_y_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    draw_bitmap_with_options(test_bitmap, 400.0, 300.0, option_flip_y());
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 100, 50);
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_flip_y());
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, 400.0, bitmap_height(test_bitmap)));
-    assert!(!pixel_drawn_at_point(test_bitmap, 400.0, 0.0));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 325));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 275));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_flip_y_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    draw_bitmap_with_options(test_bitmap, 400.0, 300.0, option_flip_y(option_defaults()));
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 100, 50);
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_flip_y_with_options(option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(400.0, bitmap_height(test_bitmap))));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(400.0, 0.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 325));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 275));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_line_width_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_line(color_black(), 100.0, 100.0, 200.0, 200.0, option_line_width(1));
+    clear_window(test_window, color_white());
+    draw_line(color_black(), 100.0, 100.0, 200.0, 200.0, option_line_width(5));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    draw_line(color_black(), 300.0, 300.0, 400.0, 400.0, option_line_width(5));
-    refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(300.0, 300.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 140, 150));
     close_window(test_window);
 }
 #[test]
 fn test_option_line_width_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_circle = circle_at(400.0, 300.0, 50.0);
-    draw_circle(color_black(), test_circle, option_line_width(3, option_defaults()));
+    clear_window(test_window, color_white());
+    draw_line(color_black(), 100.0, 100.0, 200.0, 200.0, option_line_width_with_options(5, option_defaults()));
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), test_circle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 145, 150));
     close_window(test_window);
 }
 #[test]
 fn test_option_part_bmp_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_options = option_part_bmp(0.0, 0.0, 50.0, 50.0);
-    draw_bitmap_with_options(test_bitmap, 100.0, 100.0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_black());
+    draw_bitmap(test_bitmap, 100.0, 100.0, option_part_bmp(0.0, 0.0, 50.0, 50.0));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(25.0, 25.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(75.0, 75.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 175, 175));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_part_bmp_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_options = option_part_bmp(10.0, 10.0, 50.0, 50.0, option_defaults());
-    draw_bitmap_with_options(test_bitmap, 100.0, 100.0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_black());
+    draw_bitmap(test_bitmap, 100.0, 100.0, option_part_bmp_with_options(0.0, 0.0, 50.0, 50.0, option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(110.0, 110.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(160.0, 160.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 175, 175));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_part_bmp_from_rectangle_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_rectangle = rectangle_from(100, 100, 200, 200);
-    let test_options = option_part_bmp(test_rectangle);
-    draw_bitmap_with_options(test_bitmap, 0, 0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_black());
+    draw_bitmap(test_bitmap, 0, 0, option_part_bmp_from_rectangle(rectangle_from(0, 0, 50, 50)));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(150, 150)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(350, 350)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 25, 25));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 75, 75));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_part_bmp_from_rectangle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
-    let test_options = option_part_bmp(test_rectangle, option_defaults());
-    draw_bitmap_with_options(test_bitmap, 0.0, 0.0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_black());
+    draw_bitmap(test_bitmap, 0, 0, option_part_bmp_from_rectangle_with_options(rectangle_from(0, 0, 50, 50), option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(150.0, 150.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(350.0, 350.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 25, 25));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 75, 75));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_rotate_bmp_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    draw_bitmap_with_options(test_bitmap, 400.0, 300.0, option_rotate_bmp(45.0));
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 50, 100);
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_rotate_bmp(90.0));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(400.0, 300.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), 300.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 350));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_rotate_bmp_with_anchor_integration() {
-    let test_window = open_window("Rotation Test", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_options = option_rotate_bmp(45.0, 50.0, 50.0);
-    draw_bitmap_with_options(test_bitmap, 400.0, 300.0, test_options);
+    let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 50, 100);
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_rotate_bmp_with_anchor(90.0, 50.0, 50.0));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(400.0, 300.0)));
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), bitmap_height(test_bitmap))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 500, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 450, 300));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_rotate_bmp_with_anchor_and_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_options = option_rotate_bmp(45.0, 50.0, 50.0, option_defaults());
-    draw_bitmap_with_options(test_bitmap, 400.0, 300.0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 50, 100);
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_rotate_bmp_with_anchor_and_options(90.0, 50.0, 50.0, option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(400.0, 300.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 500, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_rotate_bmp_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_options = option_rotate_bmp(45.0, option_defaults());
-    draw_bitmap_with_options(test_bitmap, 400.0, 300.0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_black(), 0, 0, 50, 100);
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_rotate_bmp_with_options(90.0, option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(400.0, 300.0)));
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(cosine(45.0), sine(45.0))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 350));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_scale_bmp_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    draw_bitmap_with_options(test_bitmap, 100.0, 100.0, option_scale_bmp(2.0, 2.0));
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 50, 50);
+    clear_bitmap(test_bitmap, color_black());
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_scale_bmp(2.0, 2.0));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), bitmap_height(test_bitmap))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 451, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_scale_bmp_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_options = option_scale_bmp(2.0, 2.0, option_defaults());
-    draw_bitmap_with_options(test_bitmap, 100.0, 100.0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 50, 50);
+    clear_bitmap(test_bitmap, color_black());
+    draw_bitmap(test_bitmap, 400.0, 300.0, option_scale_bmp_with_options(2.0, 2.0, option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), bitmap_height(test_bitmap))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 451, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_to_screen_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_options = option_to_screen();
-    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), test_options);
+    clear_window(test_window, color_white());
+    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), option_to_screen());
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 451, 300));
     close_window(test_window);
 }
 #[test]
 fn test_option_to_screen_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_options = option_defaults();
-    let test_screen_options = option_to_screen(test_options);
-    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), test_screen_options);
+    clear_window(test_window, color_white());
+    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), option_to_screen_with_options(option_defaults()));
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 400, 250));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
     close_window(test_window);
 }
 #[test]
 fn test_option_to_world_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     move_camera_to(100.0, 100.0);
-    draw_circle(color_black(), 100.0, 100.0, 50.0, option_to_world());
+    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), option_to_world());
     refresh_screen();
-    assert!(point_in_circle(point_at(0.0, 0.0), circle_at(100.0, 100.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 350, 200));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 375, 200));
     close_window(test_window);
 }
 #[test]
 fn test_option_to_world_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_options = option_defaults();
-    let test_world_options = option_to_world(test_options);
-    draw_circle(color_black(), circle_at(100.0, 100.0, 50.0), test_world_options);
+    clear_window(test_window, color_white());
+    move_camera_to(100.0, 100.0);
+    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0), option_to_world_with_options(option_defaults()));
     refresh_screen();
-    assert!(point_in_circle(point_at(100.0, 100.0), circle_at(100.0, 100.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 350, 200));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 375, 200));
     close_window(test_window);
 }
 #[test]
 fn test_option_with_animation_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_animation = create_animation("script", "test_animation");
+    clear_bitmap(test_bitmap, color_black());
+    let test_animation = create_animation("test_animation", "default");
     draw_bitmap(test_bitmap, 100, 100, option_with_animation(test_animation));
-    draw_bitmap(test_bitmap, 100.0, 100.0, option_with_animation(test_animation));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    free_bitmap(test_bitmap);
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 75, 75));
     free_animation(test_animation);
+    free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_with_animation_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_animation = create_animation("script", "test_animation");
-    draw_bitmap(test_bitmap, 100, 100, option_with_animation(test_animation));
-    let test_options = option_with_animation(test_animation, option_defaults());
-    draw_bitmap(test_bitmap, 100.0, 100.0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_black());
+    let test_animation = create_animation("test_animation", "default");
+    draw_bitmap(test_bitmap, 100, 100, option_with_animation_with_options(test_animation, option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
-    free_bitmap(test_bitmap);
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 75, 75));
     free_animation(test_animation);
+    free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_option_with_bitmap_cell_integration() {
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    bitmap_set_cell_details(test_bitmap, 32, 32, 4, 4, 16);
     let test_window = open_window("Test Window", 800, 600);
-    draw_bitmap_with_options(test_bitmap, 100.0, 100.0, option_with_bitmap_cell(5));
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 64, 64);
+    clear_bitmap(test_bitmap, color_black());
+    bitmap_set_cell_details(test_bitmap, 32, 32, 2, 2, 4);
+    draw_bitmap(test_bitmap, 100, 100, option_with_bitmap_cell(1));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(116.0, 116.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(150.0, 150.0)));
-    close_window(test_window);
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 116, 116));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 84, 84));
     free_bitmap(test_bitmap);
+    close_window(test_window);
 }
 #[test]
 fn test_option_with_bitmap_cell_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    bitmap_set_cell_details(test_bitmap, 32, 32, 4, 4, 16);
-    let test_options = option_with_bitmap_cell(5, option_defaults());
-    draw_bitmap(test_bitmap, 100.0, 100.0, test_options);
+    clear_window(test_window, color_white());
+    let test_bitmap = create_bitmap("test_bitmap", 64, 64);
+    clear_bitmap(test_bitmap, color_black());
+    bitmap_set_cell_details(test_bitmap, 32, 32, 2, 2, 4);
+    draw_bitmap(test_bitmap, 100, 100, option_with_bitmap_cell_with_options(1, option_defaults()));
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(116.0, 116.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(150.0, 150.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 116, 116));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 84, 84));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_draw_ellipse_within_rectangle_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    draw_ellipse(color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    draw_ellipse_within_rectangle(color_black(), rectangle_from(100, 100, 200, 150));
     refresh_screen();
-    assert!(point_in_circle(point_at(200.0, 175.0), circle_at(rectangle_center(test_rectangle), test_rectangle.width)));
-    assert!(!point_in_circle(point_at(350.0, 175.0), circle_at(rectangle_center(test_rectangle), test_rectangle.width)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 300, 175));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 200, 175));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 175));
     close_window(test_window);
 }
 #[test]
 fn test_draw_ellipse_within_rectangle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 100.0);
-    draw_ellipse(color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    draw_ellipse_within_rectangle_with_options(color_black(), rectangle_from(100, 100, 200, 100), option_defaults());
     refresh_screen();
-    assert!(point_in_circle(point_at(200.0, 150.0), circle_at(rectangle_center(test_rectangle), test_rectangle.width)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 300, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 200, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 150));
     close_window(test_window);
 }
 #[test]
 fn test_draw_ellipse_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_ellipse(color_black(), 400.0, 300.0, 100.0, 50.0);
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
-    assert!(!point_in_circle(point_at(550.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_ellipse_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_ellipse(color_black(), 400.0, 300.0, 100.0, 50.0, option_defaults());
+    clear_window(test_window, color_white());
+    draw_ellipse_with_options(color_black(), 400.0, 300.0, 100.0, 50.0, option_defaults());
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_ellipse_on_bitmap_within_rectangle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    let test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0);
-    draw_ellipse_on_bitmap(test_bitmap, color_black(), test_rectangle);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(200.0, 200.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let rect = rectangle_from(50.0, 50.0, 100.0, 100.0);
+    draw_ellipse_on_bitmap_within_rectangle(test_bitmap, color_black(), rect);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 150, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 125, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 175, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_ellipse_on_bitmap_within_rectangle_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    let test_rect = rectangle_from(50.0, 50.0, 100.0, 100.0);
-    draw_ellipse_on_bitmap(test_bitmap, color_black(), test_rect, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(75.0, 75.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(0.0, 0.0)));
+    clear_bitmap(test_bitmap, color_white());
+    draw_ellipse_on_bitmap_within_rectangle_with_options(test_bitmap, color_black(), rectangle_from(50.0, 50.0, 100.0, 100.0), option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 150, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 125, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 175, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_ellipse_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    let test_color = color_black();
-    draw_ellipse_on_bitmap(test_bitmap, test_color, 100.0, 100.0, 50.0, 30.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 100.0, 100.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 160.0, 100.0));
+    clear_bitmap(test_bitmap, color_white());
+    draw_ellipse_on_bitmap(test_bitmap, color_black(), 100.0, 100.0, 50.0, 30.0);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 125, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 100, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 160, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_ellipse_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    draw_ellipse_on_bitmap(test_bitmap, color_black(), 100.0, 100.0, 50.0, 30.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(150.0, 100.0)));
+    clear_bitmap(test_bitmap, color_white());
+    draw_ellipse_on_bitmap_with_options(test_bitmap, color_black(), 100.0, 100.0, 50.0, 30.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 125, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 100, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 160, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_ellipse_on_window_within_rectangle_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 100.0);
-    draw_ellipse_on_window(test_window, color_black(), test_rectangle);
+    clear_window(test_window, color_white());
+    let rect = rectangle_from(100.0, 100.0, 200.0, 100.0);
+    draw_ellipse_on_window_within_rectangle(test_window, color_black(), rect);
     refresh_screen();
-    assert!(point_in_circle(point_at(200.0, 150.0), circle_at(rectangle_center(test_rectangle), test_rectangle.width)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 300, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 250, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 150));
     close_window(test_window);
 }
 #[test]
 fn test_draw_ellipse_on_window_within_rectangle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rect = rectangle_from(100.0, 100.0, 200.0, 100.0);
-    draw_ellipse_on_window(test_window, color_black(), test_rect, option_defaults());
+    clear_window(test_window, color_white());
+    let rect = rectangle_from(100.0, 100.0, 200.0, 100.0);
+    draw_ellipse_on_window_within_rectangle_with_options(test_window, color_black(), rect, option_defaults());
     refresh_screen();
-    assert!(point_in_circle(point_at(200.0, 150.0), circle_at(point_at(200.0, 150.0), 100.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 300, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 250, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 150));
     close_window(test_window);
 }
 #[test]
 fn test_draw_ellipse_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_ellipse_on_window(test_window, color_black(), 400.0, 300.0, 100.0, 50.0);
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_ellipse_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_ellipse_on_window(test_window, color_black(), 400.0, 300.0, 100.0, 50.0, option_defaults());
+    clear_window(test_window, color_white());
+    draw_ellipse_on_window_with_options(test_window, color_black(), 400.0, 300.0, 100.0, 50.0, option_defaults());
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 450, 325));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_ellipse_within_rectangle_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 100.0);
-    fill_ellipse(color_black(), test_rectangle);
+    clear_window(test_window, color_white());
+    fill_ellipse_within_rectangle(color_black(), rectangle_from(100.0, 100.0, 200.0, 100.0));
     refresh_screen();
-    assert!(point_in_circle(point_at(200.0, 150.0), circle_at(rectangle_center(test_rectangle), test_rectangle.width)));
-    assert!(!point_in_circle(point_at(350.0, 150.0), circle_at(rectangle_center(test_rectangle), test_rectangle.width)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 100));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_ellipse_within_rectangle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 100.0);
-    fill_ellipse(color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    fill_ellipse_within_rectangle_with_options(color_black(), rectangle_from(100.0, 100.0, 200.0, 100.0), option_defaults());
     refresh_screen();
-    assert!(point_in_circle(point_at(200.0, 150.0), circle_at(rectangle_center(test_rectangle), test_rectangle.width)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 100));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_ellipse_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_ellipse(color_black(), 400.0, 300.0, 100.0, 50.0);
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
-    assert!(!point_in_circle(point_at(550.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 325));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_ellipse_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    fill_ellipse(color_black(), 400.0, 300.0, 100.0, 50.0, option_defaults());
+    clear_window(test_window, color_white());
+    fill_ellipse_with_options(color_black(), 400.0, 300.0, 100.0, 50.0, option_defaults());
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 325));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 300, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_ellipse_on_bitmap_within_rectangle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    let test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0);
-    fill_ellipse_on_bitmap(test_bitmap, color_black(), test_rectangle);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(200.0, 200.0)));
+    clear_bitmap(test_bitmap, color_white());
+    fill_ellipse_on_bitmap_within_rectangle(test_bitmap, color_black(), rectangle_from(50.0, 50.0, 100.0, 100.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 100, 100));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 75, 75));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 175, 175));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_ellipse_on_bitmap_within_rectangle_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    let test_rect = rectangle_from(50.0, 50.0, 100.0, 100.0);
-    fill_ellipse_on_bitmap(test_bitmap, color_black(), test_rect, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(200.0, 100.0)));
+    clear_bitmap(test_bitmap, color_white());
+    fill_ellipse_on_bitmap_within_rectangle_with_options(test_bitmap, color_black(), rectangle_from(50.0, 50.0, 100.0, 100.0), option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 100, 100));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 75, 75));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 175, 175));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_ellipse_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
     fill_ellipse_on_bitmap(test_bitmap, color_black(), 100.0, 100.0, 50.0, 30.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 100.0, 100.0));
-    assert!(pixel_drawn_at_point(test_bitmap, 125.0, 100.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 150.0, 100.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 125, 100));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 125, 125));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 150, 100));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_ellipse_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 200, 200);
-    fill_ellipse_on_bitmap(test_bitmap, color_black(), 50.0, 50.0, 100.0, 50.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 150.0, 50.0));
+    clear_bitmap(test_bitmap, color_white());
+    fill_ellipse_on_bitmap_with_options(test_bitmap, color_black(), 50.0, 50.0, 100.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 100, 50));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 100, 75));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 150, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_ellipse_on_window_within_rectangle_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    fill_ellipse_on_window(test_window, color_black(), test_rectangle);
+    clear_window(test_window, color_white());
+    fill_ellipse_on_window_within_rectangle(test_window, color_black(), rectangle_from(100.0, 100.0, 200.0, 150.0));
     refresh_screen();
-    assert!(point_in_circle(point_at(200.0, 175.0), circle_at(rectangle_center(test_rectangle), test_rectangle.width)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 175));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 175));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 175));
     close_window(test_window);
 }
 #[test]
 fn test_fill_ellipse_on_window_within_rectangle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    fill_ellipse_on_window(test_window, color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    fill_ellipse_on_window_within_rectangle_with_options(test_window, color_black(), rectangle_from(100.0, 100.0, 200.0, 150.0), option_defaults());
     refresh_screen();
-    assert!(point_in_circle(point_at(200.0, 175.0), circle_at(200.0, 175.0, 100.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 175));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 175));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 175));
     close_window(test_window);
 }
 #[test]
 fn test_fill_ellipse_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_ellipse_on_window(test_window, color_black(), 400.0, 300.0, 100.0, 50.0);
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 325));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     close_window(test_window);
 }
 #[test]
 fn test_fill_ellipse_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    fill_ellipse_on_window(test_window, color_black(), 400.0, 300.0, 100.0, 50.0, option_defaults());
+    clear_window(test_window, color_white());
+    fill_ellipse_on_window_with_options(test_window, color_black(), 400.0, 300.0, 100.0, 50.0, option_defaults());
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 300));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 450, 325));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 500, 300));
     close_window(test_window);
 }
 #[test]
@@ -839,10 +1015,10 @@ fn test_clear_screen_to_white_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    clear_screen();
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    clear_screen_to_white();
     refresh_screen();
-    assert_ne!(color_black(), get_pixel(point_at(100.0, 100.0)));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 100, 100));
     close_window(test_window);
 }
 #[test]
@@ -850,169 +1026,171 @@ fn test_clear_screen_integration() {
     let test_window = open_window("Test Window", 800, 600);
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(400.0, 300.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
     clear_screen(color_white());
     refresh_screen();
-    assert_ne!(color_black(), get_pixel(point_at(400.0, 300.0)));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 100, 100));
     close_window(test_window);
 }
 #[test]
 fn test_display_details_integration() {
-    let test_number_of_displays = number_of_displays();
-    assert!(test_number_of_displays > 0);
-    let test_display = display_details(0);
-    assert!(test_display.is_some());
-    assert!(display_width(test_display) > 0);
-    assert!(display_height(test_display) > 0);
-    assert_eq!(0, test_number_of_displays);
+    let displays = number_of_displays();
+    assert!(displays > 0);
+    let display = display_details(0);
+    assert!(display.is_some());
+    assert!(display_width(display) > 0);
+    assert!(display_height(display) > 0);
+    assert!(display_name(display).is_some());
 }
 #[test]
 fn test_display_height_integration() {
-    let test_display = display_details(0);
-    let test_height = display_height(test_display);
-    assert!(test_height > 0);
+    let display = display_details(0);
+    assert!(display_height(display) > 0);
 }
 #[test]
 fn test_display_name_integration() {
-    let test_display = display_details(0);
-    let test_display_name = display_name(test_display);
-    assert!(test_display_name.is_some());
+    let display = display_details(0);
+    assert!(display_name(display).is_some());
+    assert!(!display_name(display).is_empty());
 }
 #[test]
 fn test_display_width_integration() {
-    let test_display = display_details(0);
-    let test_width = display_width(test_display);
-    assert!(test_width > 0);
+    let display = display_details(0);
+    assert!(display_width(display) > 0);
 }
 #[test]
 fn test_display_x_integration() {
-    let test_display = display_details(0);
-    let test_x = display_x(test_display);
-    assert!(test_x > -1);
+    let display = display_details(0);
+    assert!(display_x(display) > 0);
 }
 #[test]
 fn test_display_y_integration() {
-    let test_display = display_details(0);
-    let test_y = display_y(test_display);
-    assert_ne!(-1, test_y);
+    let display = display_details(0);
+    assert!(display_y(display) > 0);
 }
 #[test]
 fn test_number_of_displays_integration() {
-    let test_display_count = number_of_displays();
-    assert!(test_display_count > 0);
+    assert!(number_of_displays() > 0);
 }
 #[test]
 fn test_refresh_screen_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_circle(color_black(), circle_at(400.0, 300.0, 50.0));
     refresh_screen();
-    assert!(point_in_circle(point_at(400.0, 300.0), circle_at(400.0, 300.0, 50.0)));
     close_window(test_window);
 }
 #[test]
 fn test_refresh_screen_with_target_fps_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    refresh_screen(60);
-    assert!(window_close_requested(test_window));
+    clear_window(test_window, color_white());
+    draw_circle(color_black(), circle_at(400.0, 300.0, 50.0));
+    refresh_screen_with_target_fps(60);
     close_window(test_window);
 }
 #[test]
 fn test_save_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_pixel_on_bitmap(test_bitmap, color_black(), 50, 50);
-    save_bitmap(test_bitmap, "test_save");
+    save_bitmap(test_bitmap, "test_bitmap");
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_screen_height_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_height = screen_height();
-    assert_eq!(600, test_height);
+    assert_eq!(600, screen_height());
     close_window(test_window);
 }
 #[test]
 fn test_screen_width_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_width = screen_width();
-    assert_eq!(800, test_width);
+    assert_eq!(800, screen_width());
     close_window(test_window);
 }
 #[test]
 fn test_take_screenshot_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_circle(color_black(), 400, 300, 50);
+    clear_window(test_window, color_white());
+    draw_circle(color_black(), circle_at(400, 300, 50));
     refresh_screen();
-    take_screenshot("screenshot_test");
+    take_screenshot("test_screenshot");
     close_window(test_window);
 }
 #[test]
 fn test_take_screenshot_of_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_circle(color_black(), 400, 300, 50);
+    clear_window(test_window, color_white());
+    draw_circle(color_black(), circle_at(400, 300, 50));
     refresh_screen();
-    take_screenshot(test_window, "screenshot_test");
+    take_screenshot_of_window(test_window, "test_screenshot");
     close_window(test_window);
 }
 #[test]
 fn test_bitmap_bounding_circle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_point = point_at(50.0, 50.0);
-    let test_circle = bitmap_bounding_circle(test_bitmap, test_point);
-    assert_eq!(50.0, circle_radius(test_circle));
-    assert_eq!(test_point, center_point(test_circle));
+    let bounding_circle = bitmap_bounding_circle(test_bitmap, test_point);
+    assert_eq!(test_point, center_point(bounding_circle));
+    assert_eq!(100, circle_radius(bounding_circle));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_bounding_rectangle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_rectangle = bitmap_bounding_rectangle(test_bitmap);
-    assert_eq!(bitmap_width(test_bitmap), test_rectangle.width);
-    assert_eq!(bitmap_height(test_bitmap), test_rectangle.height);
+    let bounding_rect = bitmap_bounding_rectangle(test_bitmap);
+    assert_eq!(0, bounding_rect.X);
+    assert_eq!(0, bounding_rect.Y);
+    assert_eq!(100, bounding_rect.Width);
+    assert_eq!(100, bounding_rect.Height);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_bounding_rectangle_at_location_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_rectangle = bitmap_bounding_rectangle_at_location(test_bitmap, 50.0, 50.0);
-    assert_eq!(50.0, rectangle_left(test_rectangle));
-    assert_eq!(50.0, rectangle_top(test_rectangle));
-    assert_eq!(150.0, rectangle_right(test_rectangle));
-    assert_eq!(150.0, rectangle_bottom(test_rectangle));
+    let bounding_rect = bitmap_bounding_rectangle_at_location(test_bitmap, 50.0, 50.0);
+    assert_eq!(50, bounding_rect.X);
+    assert_eq!(50, bounding_rect.Y);
+    assert_eq!(100, bounding_rect.Width);
+    assert_eq!(100, bounding_rect.Height);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_center_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_center = bitmap_cell_center(test_bitmap);
-    assert_eq!(50.0, test_center.x);
-    assert_eq!(50.0, test_center.y);
+    let center = bitmap_cell_center(test_bitmap);
+    assert_eq!(50.0, center.X);
+    assert_eq!(50.0, center.Y);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_circle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_circle = bitmap_cell_circle(test_bitmap, 50.0, 50.0);
-    assert_eq!(50.0, circle_radius(test_circle));
-    assert_eq!(50.0, circle_x(test_circle));
-    assert_eq!(50.0, circle_y(test_circle));
+    bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4);
+    let circle = bitmap_cell_circle(test_bitmap, 50.0, 50.0);
+    assert_eq!(50.0, circle.Center.X);
+    assert_eq!(50.0, circle.Center.Y);
+    assert_eq!(25, circle.Radius);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_circle_at_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4);
-    let test_circle = bitmap_cell_circle_at_point(test_bitmap, point_at(100, 100));
-    assert_eq!(125, circle_x(test_circle));
-    assert_eq!(125, circle_y(test_circle));
-    assert_eq!(25, circle_radius(test_circle));
+    let circle = bitmap_cell_circle_at_point(test_bitmap, point_at(100, 100));
+    assert_eq!(100.0, circle.Center.X);
+    assert_eq!(100.0, circle.Center.Y);
+    assert_eq!(25, circle.Radius);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_circle_at_point_with_scale_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 50, 50, 2, 2, 4);
-    let test_circle = bitmap_cell_circle_at_point_with_scale(test_bitmap, point_at(100.0, 100.0), 2.0);
-    assert_eq!(50.0, circle_radius(test_circle));
+    let circle = bitmap_cell_circle_at_point_with_scale(test_bitmap, point_at(100.0, 100.0), 2.0);
+    assert_eq!(100.0, circle.Center.X);
+    assert_eq!(100.0, circle.Center.Y);
+    assert_eq!(50, circle.Radius);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1040,29 +1218,31 @@ fn test_bitmap_cell_height_integration() {
 fn test_bitmap_cell_offset_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
-    let test_offset = bitmap_cell_offset(test_bitmap, 5);
-    assert_eq!(75, test_offset.x);
-    assert_eq!(0, test_offset.y);
+    let offset = bitmap_cell_offset(test_bitmap, 5);
+    assert_eq!(25.0, offset.X);
+    assert_eq!(25.0, offset.Y);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_rectangle_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
-    let test_rectangle = bitmap_cell_rectangle(test_bitmap);
-    assert_eq!(25, test_rectangle.width);
-    assert_eq!(25, test_rectangle.height);
+    let rect = bitmap_cell_rectangle(test_bitmap);
+    assert_eq!(0, rect.X);
+    assert_eq!(0, rect.Y);
+    assert_eq!(25, rect.Width);
+    assert_eq!(25, rect.Height);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_cell_rectangle_at_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
-    let test_rectangle = bitmap_cell_rectangle_at_point(test_bitmap, point_at(50.0, 50.0));
-    assert_eq!(50.0, rectangle_left(test_rectangle));
-    assert_eq!(50.0, rectangle_top(test_rectangle));
-    assert_eq!(75.0, rectangle_right(test_rectangle));
-    assert_eq!(75.0, rectangle_bottom(test_rectangle));
+    let rect = bitmap_cell_rectangle_at_point(test_bitmap, point_at(50.0, 50.0));
+    assert_eq!(50.0, rect.X);
+    assert_eq!(50.0, rect.Y);
+    assert_eq!(25.0, rect.Width);
+    assert_eq!(25.0, rect.Height);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1083,55 +1263,50 @@ fn test_bitmap_cell_width_integration() {
 fn test_bitmap_center_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     let test_center = bitmap_center(test_bitmap);
-    assert_eq!(50.0, test_center.x);
-    assert_eq!(50.0, test_center.y);
+    assert_eq!(50.0, test_center.X);
+    assert_eq!(50.0, test_center.Y);
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_filename_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_filename = bitmap_filename(test_bitmap);
-    assert_eq!("", test_filename);
+    assert_eq!("", bitmap_filename(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_height_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_height = bitmap_height(test_bitmap);
-    assert_eq!(100, test_height);
+    assert_eq!(100, bitmap_height(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_height_of_bitmap_named_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    assert_eq!(100, bitmap_height_of_bitmap_named("test_bitmap"));
+    let test_bitmap = create_bitmap("bitmap_height", 100, 100);
+    assert_eq!(100, bitmap_height_of_bitmap_named("bitmap_height"));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_name_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_bitmap_name = bitmap_name(test_bitmap);
-    assert_eq!("test_bitmap", test_bitmap_name);
+    let test_bitmap = create_bitmap("bitmap_name", 100, 100);
+    assert_eq!("bitmap_name", bitmap_name(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_named_integration() {
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    let test_named_bitmap = bitmap_named("test_bitmap");
-    assert!(test_named_bitmap.is_some());
-    let test_nonexistent_bitmap = bitmap_named("nonexistent_bitmap");
-    assert!(test_nonexistent_bitmap.is_none());
-    free_all_bitmaps();
+    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    assert!(bitmap_named("test_bitmap").is_some());
+    assert!(bitmap_named("nonexistent_bitmap").is_none());
+    free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_rectangle_of_cell_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     bitmap_set_cell_details(test_bitmap, 25, 25, 4, 4, 16);
-    let test_rectangle = bitmap_rectangle_of_cell(test_bitmap, 5);
-    assert_eq!(0, rectangle_left(test_rectangle));
-    assert_eq!(75, rectangle_top(test_rectangle));
-    assert_eq!(25, rectangle_right(test_rectangle));
-    assert_eq!(100, rectangle_bottom(test_rectangle));
+    let rect = bitmap_rectangle_of_cell(test_bitmap, 5);
+    assert_eq!(25.0, rect.X);
+    assert_eq!(25.0, rect.Y);
+    assert_eq!(25.0, rect.Width);
+    assert_eq!(25.0, rect.Height);
     free_bitmap(test_bitmap);
 }
 #[test]
@@ -1155,57 +1330,52 @@ fn test_bitmap_valid_integration() {
 #[test]
 fn test_bitmap_width_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_width = bitmap_width(test_bitmap);
-    assert_eq!(100, test_width);
+    assert_eq!(100, bitmap_width(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_bitmap_width_of_bitmap_named_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_window = open_window("Test Window", 800, 600);
-    draw_bitmap(bitmap_named("test_bitmap"), 100, 100);
-    refresh_screen();
-    assert_eq!(100, bitmap_width_of_bitmap_named("test_bitmap"));
+    let test_bitmap = create_bitmap("bitmap_width", 100, 100);
+    assert_eq!(100, bitmap_width_of_bitmap_named("bitmap_width"));
     free_bitmap(test_bitmap);
-    close_window(test_window);
 }
 #[test]
 fn test_clear_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
     draw_pixel_on_bitmap(test_bitmap, color_black(), 50, 50);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
     clear_bitmap(test_bitmap, color_white());
-    assert!(!pixel_drawn_at_point(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 50, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_clear_bitmap_named_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_window = open_window("Test Window", 800, 600);
-    draw_bitmap(test_bitmap, 100.0, 100.0);
-    refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    clear_bitmap_named("test_bitmap", color_white());
-    refresh_screen();
-    assert!(!pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    close_window(test_window);
+    let test_bitmap = create_bitmap("bitmap_named", 100, 100);
+    fill_rectangle_on_bitmap(test_bitmap, color_red(), 0, 0, 100, 100);
+    assert_eq!(color_red(), get_pixel(test_bitmap, 50, 50));
+    clear_bitmap_named("bitmap_named", color_white());
+    assert_eq!(color_white(), get_pixel(test_bitmap, 50, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_create_bitmap_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    let test_bitmap = create_bitmap("bitmap_name1", 100, 100);
     assert!(test_bitmap.is_some());
     assert_eq!(100, bitmap_width(test_bitmap));
     assert_eq!(100, bitmap_height(test_bitmap));
+    assert_eq!("bitmap_name1", bitmap_name(test_bitmap));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_bitmap_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_window(test_window, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_red(), 0, 0, 50, 50);
     draw_bitmap(test_bitmap, 100.0, 100.0);
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), bitmap_height(test_bitmap))));
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 175, 175));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
@@ -1213,10 +1383,12 @@ fn test_draw_bitmap_integration() {
 fn test_draw_bitmap_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_window(test_window, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_red(), 0, 0, 100, 100);
     draw_bitmap_with_options(test_bitmap, 100.0, 100.0, option_defaults());
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(150.0, 100.0)));
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
@@ -1224,53 +1396,62 @@ fn test_draw_bitmap_with_options_integration() {
 fn test_draw_bitmap_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_window(test_window, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_red(), 0, 0, 100, 100);
     draw_bitmap_named("test_bitmap", 100.0, 100.0);
     refresh_screen();
-    assert!(pixel_drawn_at_point(bitmap_named("test_bitmap"), 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(bitmap_named("test_bitmap"), bitmap_width(bitmap_named("test_bitmap")), bitmap_height(bitmap_named("test_bitmap"))));
-    free_all_bitmaps();
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
+    free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_draw_bitmap_named_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_bitmap("test_bitmap", 100.0, 100.0, option_defaults());
+    clear_window(test_window, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_red(), 0, 0, 100, 100);
+    draw_bitmap_named_with_options("test_bitmap", 100.0, 100.0, option_defaults());
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(150.0, 150.0)));
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_draw_bitmap_on_bitmap_on_bitmap_integration() {
-    let test_destination = create_bitmap("test_destination", 100, 100);
-    let test_source = create_bitmap("test_source", 50, 50);
-    draw_bitmap_on_bitmap_on_bitmap(test_destination, test_source, 25.0, 25.0);
-    assert!(pixel_drawn_at_point(test_destination, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_destination, point_at(75.0, 75.0)));
-    free_bitmap(test_destination);
-    free_bitmap(test_source);
+    let dest_bitmap = create_bitmap("test_destination", 100, 100);
+    let source_bitmap = create_bitmap("test_source", 50, 50);
+    clear_bitmap(dest_bitmap, color_white());
+    fill_rectangle_on_bitmap(source_bitmap, color_red(), 0, 0, 50, 50);
+    draw_bitmap_on_bitmap_on_bitmap(dest_bitmap, source_bitmap, 25.0, 25.0);
+    assert_eq!(color_red(), get_pixel(dest_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(dest_bitmap, 10, 10));
+    free_bitmap(dest_bitmap);
+    free_bitmap(source_bitmap);
 }
 #[test]
 fn test_draw_bitmap_on_bitmap_on_bitmap_with_options_integration() {
-    let test_destination = create_bitmap("test_destination", 100, 100);
-    let test_source = create_bitmap("test_source", 50, 50);
-    draw_pixel_on_bitmap(test_source, color_black(), point_at(25.0, 25.0));
-    draw_bitmap_on_bitmap_on_bitmap_with_options(test_destination, test_source, 25.0, 25.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_destination, point_at(25.0, 25.0)));
-    assert!(!pixel_drawn_at_point(test_destination, point_at(75.0, 75.0)));
-    free_bitmap(test_destination);
-    free_bitmap(test_source);
+    let dest_bitmap = create_bitmap("test_destination", 100, 100);
+    let source_bitmap = create_bitmap("test_source", 50, 50);
+    clear_bitmap(dest_bitmap, color_white());
+    fill_rectangle_on_bitmap(source_bitmap, color_red(), 0, 0, 50, 50);
+    draw_bitmap_on_bitmap_on_bitmap_with_options(dest_bitmap, source_bitmap, 25.0, 25.0, option_defaults());
+    assert_eq!(color_red(), get_pixel(dest_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(dest_bitmap, 10, 10));
+    free_bitmap(dest_bitmap);
+    free_bitmap(source_bitmap);
 }
 #[test]
 fn test_draw_bitmap_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_window(test_window, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_red(), 0, 0, 100, 100);
     draw_bitmap_on_window(test_window, test_bitmap, 100.0, 100.0);
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(150.0, 150.0)));
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
@@ -1278,24 +1459,29 @@ fn test_draw_bitmap_on_window_integration() {
 fn test_draw_bitmap_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_window(test_window, color_white());
+    fill_rectangle_on_bitmap(test_bitmap, color_red(), 0, 0, 100, 100);
     draw_bitmap_on_window_with_options(test_window, test_bitmap, 100.0, 100.0, option_defaults());
     refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(150.0, 100.0)));
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     free_bitmap(test_bitmap);
     close_window(test_window);
 }
 #[test]
 fn test_free_all_bitmaps_integration() {
-    let test_bitmap_1 = create_bitmap("test_bitmap_1", 100, 100);
-    let test_bitmap_2 = create_bitmap("test_bitmap_2", 100, 100);
+    let bitmap1 = create_bitmap("test_bitmap_1", 100, 100);
+    let bitmap2 = create_bitmap("test_bitmap_2", 100, 100);
+    assert!(bitmap_valid(bitmap1));
+    assert!(bitmap_valid(bitmap2));
     free_all_bitmaps();
-    assert!(!bitmap_valid(test_bitmap_1));
-    assert!(!bitmap_valid(test_bitmap_2));
+    assert!(!bitmap_valid(bitmap1));
+    assert!(!bitmap_valid(bitmap2));
 }
 #[test]
 fn test_free_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    assert!(bitmap_valid(test_bitmap));
     free_bitmap(test_bitmap);
     assert!(!bitmap_valid(test_bitmap));
 }
@@ -1308,921 +1494,1033 @@ fn test_has_bitmap_integration() {
 }
 #[test]
 fn test_load_bitmap_integration() {
-    let test_window = open_window("Test Window", 800, 600);
-    let test_bitmap = load_bitmap("test_bitmap", "test_bitmap.png");
-    draw_bitmap(test_bitmap, 100.0, 100.0);
-    refresh_screen();
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(bitmap_width(test_bitmap), bitmap_height(test_bitmap))));
-    free_bitmap(test_bitmap);
-    close_window(test_window);
+    let loaded_bitmap = load_bitmap("loaded_bitmap", "frog.png");
+    assert_eq!(color_black(), get_pixel(loaded_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(loaded_bitmap, 75, 75));
+    free_bitmap(loaded_bitmap);
 }
 #[test]
 fn test_pixel_drawn_at_point_pt_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_pixel_on_bitmap(test_bitmap, color_black(), point_at(50.0, 50.0));
-    assert!(pixel_drawn_at_point_pt(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point_pt(test_bitmap, point_at(75.0, 75.0)));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_pixel_drawn_at_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_pixel_on_bitmap(test_bitmap, color_black(), 50.0, 50.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 75.0, 75.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_pixel_drawn_at_point_in_cell_pt_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_pixel_on_bitmap(test_bitmap, color_black(), point_at(50.0, 50.0));
     bitmap_set_cell_details(test_bitmap, 100, 100, 1, 1, 1);
-    assert!(pixel_drawn_at_point(test_bitmap, 0, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, 0, point_at(75.0, 50.0)));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_pixel_drawn_at_point_in_cell_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_pixel(color_black(), point_at(50.0, 50.0));
-    let test_window = open_window("Test Window", 800, 600);
-    draw_bitmap(test_bitmap, 100.0, 100.0);
-    refresh_screen();
-    assert!(pixel_drawn_at_point_in_cell(test_bitmap, 0, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point_in_cell(test_bitmap, 0, point_at(75.0, 75.0)));
+    clear_bitmap(test_bitmap, color_white());
+    draw_pixel_on_bitmap(test_bitmap, color_black(), point_at(50.0, 50.0));
+    bitmap_set_cell_details(test_bitmap, 100, 100, 1, 1, 1);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
     free_bitmap(test_bitmap);
-    close_window(test_window);
 }
 #[test]
 fn test_setup_collision_mask_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     setup_collision_mask(test_bitmap);
-    let test_pixel_drawn = pixel_drawn_at_point(test_bitmap, point_at(50, 50));
-    assert!(test_pixel_drawn);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_line_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
-    draw_line(color_black(), test_line);
+    clear_window(test_window, color_white());
+    draw_line_record(color_black(), line_from(point_at(100.0, 100.0), point_at(200.0, 200.0)));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
-    draw_line_record_with_options(color_black(), test_line, option_line_width(3, option_defaults()));
+    clear_window(test_window, color_white());
+    draw_line_record_with_options(color_black(), line_from(point_at(100.0, 100.0), point_at(200.0, 200.0)), option_line_width(3, option_defaults()));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_point_to_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_line_point_to_point(color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_point_to_point_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_line_point_to_point_with_options(color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0), option_defaults());
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_line(color_black(), 100.0, 100.0, 200.0, 200.0);
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_line_with_options(color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults());
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_on_bitmap_record_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_line = line_from(point_at(10.0, 10.0), point_at(90.0, 90.0));
-    draw_line_on_bitmap(test_bitmap, color_black(), test_line);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
+    clear_bitmap(test_bitmap, color_white());
+    draw_line_on_bitmap_record(test_bitmap, color_black(), line_from(point_at(10.0, 10.0), point_at(90.0, 90.0)));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 95, 95));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_line_on_bitmap_record_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_line = line_from(point_at(10.0, 10.0), point_at(90.0, 90.0));
-    draw_line_on_bitmap(test_bitmap, color_black(), test_line, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(95.0, 50.0)));
+    clear_bitmap(test_bitmap, color_white());
+    draw_line_on_bitmap_record_with_options(test_bitmap, color_black(), line_from(point_at(10.0, 10.0), point_at(90.0, 90.0)), option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 95, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_line_on_bitmap_point_to_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_line_on_bitmap(test_bitmap, color_black(), point_at(10.0, 10.0), point_at(90.0, 90.0));
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 0.0, 0.0));
+    clear_bitmap(test_bitmap, color_white());
+    draw_line_on_bitmap_point_to_point(test_bitmap, color_black(), point_at(10.0, 10.0), point_at(90.0, 90.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 0, 0));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_line_on_bitmap_point_to_point_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_from_pt = point_at(10.0, 10.0);
-    let test_to_pt = point_at(90.0, 90.0);
-    draw_line_on_bitmap_point_to_point_with_options(test_bitmap, color_black(), test_from_pt, test_to_pt, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 10.0, 10.0));
-    assert!(pixel_drawn_at_point(test_bitmap, 90.0, 90.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 5.0, 5.0));
+    clear_bitmap(test_bitmap, color_white());
+    draw_line_on_bitmap_point_to_point_with_options(test_bitmap, color_black(), point_at(10.0, 10.0), point_at(90.0, 90.0), option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 10, 10));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 90, 90));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 5, 5));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_line_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_color = color_black();
-    draw_line_on_bitmap(test_bitmap, test_color, 10.0, 10.0, 90.0, 90.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 95.0, 50.0));
+    clear_bitmap(test_bitmap, color_white());
+    draw_line_on_bitmap(test_bitmap, color_black(), 10.0, 10.0, 90.0, 90.0);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 95, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_line_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_line_on_bitmap_with_options(test_bitmap, color_black(), 10.0, 10.0, 90.0, 90.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(5.0, 5.0)));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 5, 5));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_line_on_window_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_line = line_from(point_at(100.0, 100.0), point_at(700.0, 500.0));
-    draw_line_on_window(test_window, color_black(), test_line);
+    clear_window(test_window, color_white());
+    line_from(point_at(100.0, 100.0), point_at(150.0, 150.0));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(test_window, point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(test_window, point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_on_window_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_line = line_from(point_at(100.0, 100.0), point_at(200.0, 200.0));
-    draw_line_on_window(test_window, color_black(), test_line, option_defaults());
+    clear_window(test_window, color_white());
+    option_defaults();
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(test_window, point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(test_window, point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_on_window_point_to_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_line_on_window(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0));
+    clear_window(test_window, color_white());
+    draw_line_on_window_point_to_point(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(test_window, 100.0, 100.0));
-    assert_ne!(color_black(), get_pixel(test_window, 99.0, 99.0));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_on_window_point_to_point_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_line_on_window(test_window, color_black(), point_at(100.0, 100.0), point_at(200.0, 200.0), option_defaults());
+    clear_window(test_window, color_white());
+    option_defaults();
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(test_window, 100.0, 100.0));
-    assert_ne!(color_black(), get_pixel(test_window, 99.0, 99.0));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_line_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 200.0);
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(test_window, 100.0, 100.0));
-    assert_ne!(color_black(), get_pixel(test_window, 99.0, 99.0));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_line_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_line_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults());
+    clear_window(test_window, color_white());
+    draw_line_on_window_with_options(test_window, color_black(), 100.0, 100.0, 200.0, 200.0, option_defaults());
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(test_window, 100.0, 100.0));
-    assert_ne!(color_black(), get_pixel(test_window, 99.0, 99.0));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_pixel_at_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_pixel(color_black(), point_at(100.0, 100.0));
+    clear_window(test_window, color_white());
+    draw_pixel_at_point(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_pixel_at_point_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel_at_point_with_options(color_black(), point_at(100.0, 100.0), option_defaults());
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_pixel_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_pixel_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_pixel(color_black(), 100.0, 100.0, option_defaults());
+    clear_window(test_window, color_white());
+    draw_pixel_with_options(color_black(), 100.0, 100.0, option_defaults());
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_pixel_on_bitmap_at_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_color = color_black();
-    let test_point = point_at(50.0, 50.0);
-    draw_pixel_on_bitmap(test_bitmap, test_color, test_point);
-    assert!(pixel_drawn_at_point(test_bitmap, test_point));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(0.0, 0.0)));
+    clear_bitmap(test_bitmap, color_white());
+    draw_pixel_on_bitmap_at_point(test_bitmap, color_black(), point_at(50.0, 50.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 0, 0));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_pixel_on_bitmap_at_point_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_color = color_black();
-    let test_point = point_at(50.0, 50.0);
-    draw_pixel_on_bitmap(test_bitmap, test_color, test_point, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, test_point));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(0.0, 0.0)));
+    clear_bitmap(test_bitmap, color_white());
+    draw_pixel_on_bitmap_at_point_with_options(test_bitmap, color_black(), point_at(50.0, 50.0), option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 0, 0));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_pixel_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_color = color_black();
-    draw_pixel_on_bitmap(test_bitmap, test_color, 50.0, 50.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 51.0, 50.0));
+    clear_bitmap(test_bitmap, color_white());
+    draw_pixel_on_bitmap(test_bitmap, color_black(), 50.0, 50.0);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 51, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_pixel_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_color = color_black();
-    draw_pixel_on_bitmap(test_bitmap, test_color, 50.0, 50.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 51.0, 50.0));
+    clear_bitmap(test_bitmap, color_white());
+    draw_pixel_on_bitmap_with_options(test_bitmap, color_black(), 50.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 51, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_pixel_on_window_at_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_color = color_black();
-    let test_point = point_at(100.0, 100.0);
-    draw_pixel_on_window(test_window, test_color, test_point);
+    clear_window(test_window, color_white());
+    draw_pixel_on_window_at_point(test_window, color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_pixel_on_window_at_point_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_point = point_at(100.0, 100.0);
-    draw_pixel_on_window(test_window, color_black(), test_point, option_defaults());
+    clear_window(test_window, color_white());
+    draw_pixel_on_window_at_point_with_options(test_window, color_black(), point_at(100.0, 100.0), option_defaults());
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_pixel_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel_on_window(test_window, color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_pixel_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_pixel_on_window(test_window, color_black(), 100.0, 100.0, option_defaults());
+    clear_window(test_window, color_white());
+    draw_pixel_on_window_with_options(test_window, color_black(), 100.0, 100.0, option_defaults());
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(point_at(100.0, 100.0)));
-    assert_ne!(color_black(), get_pixel(point_at(99.0, 99.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_get_pixel_from_bitmap_at_point_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_pixel_on_bitmap(test_bitmap, color_black(), point_at(50.0, 50.0));
-    let test_color = get_pixel_from_bitmap_at_point(test_bitmap, point_at(50.0, 50.0));
-    assert_eq!(test_color, color_black());
+    assert_eq!(color_black(), get_pixel_from_bitmap_at_point(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel_from_bitmap_at_point(test_bitmap, 49, 49));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_get_pixel_from_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_pixel_on_bitmap(test_bitmap, color_black(), 50.0, 50.0);
-    let test_pixel_color = get_pixel_from_bitmap(test_bitmap, 50.0, 50.0);
-    assert_eq!(color_black(), test_pixel_color);
+    assert_eq!(color_black(), get_pixel_from_bitmap(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel_from_bitmap(test_bitmap, 49, 49));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_get_pixel_at_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel_at_point(point_at(100.0, 100.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_get_pixel_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(color_black(), get_pixel(100.0, 100.0));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_get_pixel_from_window_at_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    assert_eq!(color_black(), get_pixel_from_window_at_point(test_window, point_at(100.0, 100.0)));
+    assert_eq!(color_black(), get_pixel_from_window_at_point(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window_at_point(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_get_pixel_from_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    assert_eq!(color_black(), get_pixel_from_window(test_window, 100.0, 100.0));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_get_pixel_from_window_at_point_from_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel(color_black(), point_at(100.0, 100.0));
     refresh_screen();
-    let test_pixel = get_pixel_from_window_at_point_from_window(test_window, point_at(100.0, 100.0));
-    assert_eq!(test_pixel, color_black());
+    assert_eq!(color_black(), get_pixel_from_window_at_point_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window_at_point_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_get_pixel_from_window_from_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_pixel(color_black(), 100.0, 100.0);
     refresh_screen();
-    let test_pixel_color = get_pixel_from_window(test_window, 100.0, 100.0);
-    assert_eq!(test_pixel_color, color_black());
+    assert_eq!(color_black(), get_pixel_from_window_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window_from_window(test_window, 99, 99));
     close_window(test_window);
 }
 #[test]
 fn test_draw_quad_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
-    draw_quad(color_black(), test_quad);
+    clear_window(test_window, color_white());
+    let quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
+    draw_quad(color_black(), quad);
     refresh_screen();
-    assert!(point_in_quad(point_at(150.0, 150.0), test_quad));
-    assert!(!point_in_quad(point_at(250.0, 250.0), test_quad));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 250, 250));
     close_window(test_window);
 }
 #[test]
 fn test_draw_quad_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
-    draw_quad_with_options(color_black(), test_quad, option_defaults());
+    clear_window(test_window, color_white());
+    let quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
+    draw_quad_with_options(color_black(), quad, option_defaults());
     refresh_screen();
-    assert!(point_in_quad(point_at(150.0, 150.0), test_quad));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 250, 250));
     close_window(test_window);
 }
 #[test]
 fn test_draw_quad_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_quad = quad_from(point_at(10.0, 10.0), point_at(90.0, 10.0), point_at(10.0, 90.0), point_at(90.0, 90.0));
-    draw_quad_on_bitmap(test_bitmap, color_black(), test_quad);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let quad = quad_from(point_at(10.0, 10.0), point_at(90.0, 10.0), point_at(10.0, 90.0), point_at(90.0, 90.0));
+    draw_quad_on_bitmap(test_bitmap, color_black(), quad);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 10, 10));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 5, 5));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_quad_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_quad = quad_from(point_at(10.0, 10.0), point_at(90.0, 10.0), point_at(90.0, 90.0), point_at(10.0, 90.0));
-    draw_quad_on_bitmap_with_options(test_bitmap, color_black(), test_quad, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(101.0, 50.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let quad = quad_from(point_at(10.0, 10.0), point_at(90.0, 10.0), point_at(90.0, 90.0), point_at(10.0, 90.0));
+    draw_quad_on_bitmap_with_options(test_bitmap, color_black(), quad, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 10, 10));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 5, 5));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_quad_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
-    draw_quad_on_window(test_window, color_black(), test_quad);
+    clear_window(test_window, color_white());
+    let quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
+    draw_quad_on_window(test_window, color_black(), quad);
     refresh_screen();
-    assert!(point_in_quad(point_at(150.0, 150.0), test_quad));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 250, 250));
     close_window(test_window);
 }
 #[test]
 fn test_draw_quad_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
-    draw_quad_on_window(test_window, color_black(), test_quad, option_defaults());
+    clear_window(test_window, color_white());
+    let quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
+    draw_quad_on_window_with_options(test_window, color_black(), quad, option_defaults());
     refresh_screen();
-    assert!(point_in_quad(point_at(150.0, 150.0), test_quad));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 250, 250));
     close_window(test_window);
 }
 #[test]
 fn test_draw_rectangle_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    draw_rectangle(color_black(), test_rectangle);
+    clear_window(test_window, color_white());
+    let rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
+    draw_rectangle_record(color_black(), rectangle);
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(301.0, 251.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 301, 251));
     close_window(test_window);
 }
 #[test]
 fn test_draw_rectangle_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    draw_rectangle(color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    let rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
+    draw_rectangle_record_with_options(color_black(), rectangle, option_defaults());
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(350.0, 300.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 300));
     close_window(test_window);
 }
 #[test]
 fn test_draw_rectangle_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_rectangle(color_black(), 100.0, 100.0, 200.0, 150.0);
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), rectangle_from(100.0, 100.0, 200.0, 150.0)));
-    assert!(!point_in_rectangle(point_at(301.0, 251.0), rectangle_from(100.0, 100.0, 200.0, 150.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 301, 251));
     close_window(test_window);
 }
 #[test]
 fn test_draw_rectangle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_rectangle_with_options(color_black(), 100.0, 100.0, 200.0, 150.0, option_line_width(3, option_defaults()));
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), rectangle_from(100.0, 100.0, 200.0, 150.0)));
-    assert!(!point_in_rectangle(point_at(301.0, 251.0), rectangle_from(100.0, 100.0, 200.0, 150.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 101, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 301, 251));
     close_window(test_window);
 }
 #[test]
 fn test_draw_rectangle_on_bitmap_record_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_rectangle = rectangle_from(50.0, 50.0, 20.0, 30.0);
-    draw_rectangle_on_bitmap(test_bitmap, color_black(), test_rectangle);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(80.0, 90.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let rectangle = rectangle_from(50.0, 50.0, 20.0, 30.0);
+    draw_rectangle_on_bitmap_record(test_bitmap, color_black(), rectangle);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 80, 90));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_rectangle_on_bitmap_record_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_rectangle = rectangle_from(50.0, 50.0, 20.0, 20.0);
-    draw_rectangle_on_bitmap(test_bitmap, color_black(), test_rectangle, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(75.0, 75.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let rectangle = rectangle_from(50.0, 50.0, 20.0, 20.0);
+    draw_rectangle_on_bitmap_record_with_options(test_bitmap, color_black(), rectangle, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_rectangle_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_rectangle_on_bitmap(test_bitmap, color_black(), 50.0, 50.0, 20.0, 20.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 75.0, 75.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_rectangle_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_rectangle_on_bitmap_with_options(test_bitmap, color_black(), 50.0, 50.0, 20.0, 20.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 75.0, 75.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_rectangle_on_window_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 50.0, 50.0);
-    draw_rectangle_on_window(test_window, color_black(), test_rectangle);
+    clear_window(test_window, color_white());
+    let rectangle = rectangle_from(100.0, 100.0, 50.0, 50.0);
+    draw_rectangle_on_window_record(test_window, color_black(), rectangle);
     refresh_screen();
-    assert!(point_in_rectangle(point_at(125.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(200.0, 200.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 200, 200));
     close_window(test_window);
 }
 #[test]
 fn test_draw_rectangle_on_window_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 50.0, 50.0);
-    draw_rectangle_on_window(test_window, color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    let rectangle = rectangle_from(100.0, 100.0, 50.0, 50.0);
+    draw_rectangle_on_window_record_with_options(test_window, color_black(), rectangle, option_defaults());
     refresh_screen();
-    assert!(point_in_rectangle(point_at(125.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(175.0, 175.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 175, 175));
     close_window(test_window);
 }
 #[test]
 fn test_draw_rectangle_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_rectangle_on_window(test_window, color_black(), 100.0, 100.0, 50.0, 50.0);
     refresh_screen();
-    assert!(point_in_rectangle(point_at(100.0, 100.0), rectangle_from(100.0, 100.0, 50.0, 50.0)));
-    assert!(!point_in_rectangle(point_at(200.0, 200.0), rectangle_from(100.0, 100.0, 50.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 200, 200));
     close_window(test_window);
 }
 #[test]
 fn test_draw_rectangle_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 50.0, 50.0);
-    draw_rectangle_on_window(test_window, color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    draw_rectangle_on_window_with_options(test_window, color_black(), 100.0, 100.0, 50.0, 50.0, option_defaults());
     refresh_screen();
-    assert!(point_in_rectangle(point_at(125.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(200.0, 200.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 200, 200));
     close_window(test_window);
 }
 #[test]
 fn test_fill_quad_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_quad = quad_from(point_at(100.0, 100.0), point_at(300.0, 100.0), point_at(100.0, 300.0), point_at(300.0, 300.0));
-    fill_quad(color_black(), test_quad);
+    clear_window(test_window, color_white());
+    let quad = quad_from(point_at(100.0, 100.0), point_at(300.0, 100.0), point_at(100.0, 300.0), point_at(300.0, 300.0));
+    fill_quad(color_black(), quad);
     refresh_screen();
-    assert!(point_in_quad(point_at(200.0, 200.0), test_quad));
-    assert!(!point_in_quad(point_at(400.0, 400.0), test_quad));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 200));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 400));
     close_window(test_window);
 }
 #[test]
 fn test_fill_quad_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_quad = quad_from(point_at(100.0, 100.0), point_at(300.0, 100.0), point_at(100.0, 300.0), point_at(300.0, 300.0));
-    fill_quad_with_options(color_black(), test_quad, option_defaults());
+    clear_window(test_window, color_white());
+    let quad = quad_from(point_at(100.0, 100.0), point_at(300.0, 100.0), point_at(100.0, 300.0), point_at(300.0, 300.0));
+    fill_quad_with_options(color_black(), quad, option_defaults());
     refresh_screen();
-    assert!(point_in_quad(point_at(200.0, 200.0), test_quad));
-    assert!(!point_in_quad(point_at(400.0, 400.0), test_quad));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 200));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 400, 400));
     close_window(test_window);
 }
 #[test]
 fn test_fill_quad_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_quad = quad_from(point_at(10.0, 10.0), point_at(90.0, 10.0), point_at(10.0, 90.0), point_at(90.0, 90.0));
-    fill_quad_on_bitmap(test_bitmap, color_black(), test_quad);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(0.0, 0.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let quad = quad_from(point_at(10.0, 10.0), point_at(90.0, 10.0), point_at(10.0, 90.0), point_at(90.0, 90.0));
+    fill_quad_on_bitmap(test_bitmap, color_black(), quad);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 0, 0));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_quad_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_quad = quad_from(point_at(10.0, 10.0), point_at(90.0, 10.0), point_at(90.0, 90.0), point_at(10.0, 90.0));
-    fill_quad_on_bitmap_with_options(test_bitmap, color_black(), test_quad, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(101.0, 50.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let quad = quad_from(point_at(10.0, 10.0), point_at(90.0, 10.0), point_at(90.0, 90.0), point_at(10.0, 90.0));
+    fill_quad_on_bitmap_with_options(test_bitmap, color_black(), quad, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 95, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_quad_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
-    fill_quad_on_window(test_window, color_black(), test_quad);
+    clear_window(test_window, color_white());
+    let quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(100.0, 200.0), point_at(200.0, 200.0));
+    fill_quad_on_window(test_window, color_black(), quad);
     refresh_screen();
-    assert!(point_in_quad(point_at(150.0, 150.0), test_quad));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 250, 250));
     close_window(test_window);
 }
 #[test]
 fn test_fill_quad_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(200.0, 200.0), point_at(100.0, 200.0));
-    fill_quad_on_window(test_window, color_black(), test_quad, option_defaults());
+    clear_window(test_window, color_white());
+    let quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(200.0, 200.0), point_at(100.0, 200.0));
+    fill_quad_on_window_with_options(test_window, color_black(), quad, option_defaults());
     refresh_screen();
-    assert!(point_in_quad(point_at(150.0, 150.0), test_quad));
-    assert!(!point_in_quad(point_at(250.0, 150.0), test_quad));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 250, 150));
     close_window(test_window);
 }
 #[test]
 fn test_fill_rectangle_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    fill_rectangle(color_black(), test_rectangle);
+    clear_window(test_window, color_white());
+    let rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
+    fill_rectangle_record(color_black(), rectangle);
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(350.0, 275.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 275));
     close_window(test_window);
 }
 #[test]
 fn test_fill_rectangle_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    fill_rectangle_record_with_options(color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    let rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
+    fill_rectangle_record_with_options(color_black(), rectangle, option_defaults());
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(350.0, 275.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 275));
     close_window(test_window);
 }
 #[test]
 fn test_fill_rectangle_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_rectangle(color_black(), 100.0, 100.0, 200.0, 150.0);
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), rectangle_from(100.0, 100.0, 200.0, 150.0)));
-    assert!(!point_in_rectangle(point_at(301.0, 251.0), rectangle_from(100.0, 100.0, 200.0, 150.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 301, 251));
     close_window(test_window);
 }
 #[test]
 fn test_fill_rectangle_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    fill_rectangle(color_black(), 100.0, 100.0, 200.0, 150.0, option_defaults());
+    clear_window(test_window, color_white());
+    fill_rectangle_with_options(color_black(), 100.0, 100.0, 200.0, 150.0, option_defaults());
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), rectangle_from(100.0, 100.0, 200.0, 150.0)));
-    assert!(!point_in_rectangle(point_at(301.0, 251.0), rectangle_from(100.0, 100.0, 200.0, 150.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 301, 251));
     close_window(test_window);
 }
 #[test]
 fn test_fill_rectangle_on_bitmap_record_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_rectangle = rectangle_from(25.0, 25.0, 50.0, 50.0);
-    fill_rectangle_on_bitmap(test_bitmap, color_black(), test_rectangle);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(10.0, 10.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let rectangle = rectangle_from(25.0, 25.0, 50.0, 50.0);
+    fill_rectangle_on_bitmap_record(test_bitmap, color_black(), rectangle);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 10, 10));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_rectangle_on_bitmap_record_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_rectangle = rectangle_from(25.0, 25.0, 50.0, 50.0);
-    fill_rectangle_on_bitmap(test_bitmap, color_black(), test_rectangle, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(10.0, 10.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let rectangle = rectangle_from(25.0, 25.0, 50.0, 50.0);
+    fill_rectangle_on_bitmap_record_with_options(test_bitmap, color_black(), rectangle, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 10, 10));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_rectangle_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     fill_rectangle_on_bitmap(test_bitmap, color_black(), 25.0, 25.0, 50.0, 50.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 75.0, 75.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_rectangle_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    fill_rectangle_on_bitmap(test_bitmap, color_black(), 25.0, 25.0, 50.0, 50.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(10.0, 10.0)));
+    clear_bitmap(test_bitmap, color_white());
+    fill_rectangle_on_bitmap_with_options(test_bitmap, color_black(), 25.0, 25.0, 50.0, 50.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 10, 10));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_rectangle_on_window_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    fill_rectangle_on_window(test_window, color_black(), test_rectangle);
+    clear_window(test_window, color_white());
+    let rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
+    fill_rectangle_on_window_record(test_window, color_black(), rectangle);
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(350.0, 275.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 275));
     close_window(test_window);
 }
 #[test]
 fn test_fill_rectangle_on_window_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
-    fill_rectangle_on_window(test_window, color_black(), test_rectangle, option_defaults());
+    clear_window(test_window, color_white());
+    let rectangle = rectangle_from(100.0, 100.0, 200.0, 150.0);
+    fill_rectangle_on_window_record_with_options(test_window, color_black(), rectangle, option_defaults());
     refresh_screen();
-    assert!(point_in_rectangle(point_at(150.0, 125.0), test_rectangle));
-    assert!(!point_in_rectangle(point_at(350.0, 275.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 275));
     close_window(test_window);
 }
 #[test]
 fn test_fill_rectangle_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_rectangle_on_window(test_window, color_black(), 100.0, 100.0, 50.0, 50.0);
     refresh_screen();
-    assert!(point_in_rectangle(point_at(125.0, 125.0), rectangle_from(100.0, 100.0, 50.0, 50.0)));
-    assert!(!point_in_rectangle(point_at(175.0, 175.0), rectangle_from(100.0, 100.0, 50.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 175, 175));
     close_window(test_window);
 }
 #[test]
 fn test_fill_rectangle_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    fill_rectangle_on_window(test_window, color_black(), 100.0, 100.0, 50.0, 50.0, option_defaults());
+    clear_window(test_window, color_white());
+    fill_rectangle_on_window_with_options(test_window, color_black(), 100.0, 100.0, 50.0, 50.0, option_defaults());
     refresh_screen();
-    assert!(point_in_rectangle(point_at(125.0, 125.0), rectangle_from(100.0, 100.0, 50.0, 50.0)));
-    assert!(!point_in_rectangle(point_at(175.0, 175.0), rectangle_from(100.0, 100.0, 50.0, 50.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 125, 125));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 175, 175));
     close_window(test_window);
 }
 #[test]
 fn test_draw_text_font_as_string_integration() {
-    let test_window = open_window("Text Drawing Test", 800, 600);
-    draw_text_font_as_string("Hello, World!", color_black(), "hara", 24, 100.0, 100.0);
+    let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    load_font("hara", "hara.ttf");
+    draw_text_font_as_string("Test Text", color_black(), "hara", 24, 100.0, 100.0);
+    refresh_screen();
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_with_options_font_as_string_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text("Hello, World!", color_black(), "leaguegothic", 24, 100.0, 100.0, option_defaults());
+    clear_window(test_window, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text_with_options_font_as_string("Test Text", color_black(), "hara", 24, 100.0, 100.0, option_defaults());
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_no_font_no_size_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text_no_font_no_size("Hello, World!", color_black(), 100.0, 100.0);
+    clear_window(test_window, color_white());
+    draw_text_no_font_no_size("Test Text", color_black(), 100.0, 100.0);
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 105, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
 }
 #[test]
 fn test_draw_text_no_font_no_size_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text_no_font_no_size_with_options("Hello, World!", color_black(), 100.0, 100.0, option_defaults());
+    clear_window(test_window, color_white());
+    draw_text_no_font_no_size_with_options("Test Text", color_black(), 100.0, 100.0, option_defaults());
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 105, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
 }
 #[test]
 fn test_draw_text_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text("Hello, World!", color_black(), font_named("hara"), 24, 100.0, 100.0);
+    clear_window(test_window, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text("Test Text", color_black(), font_named("hara"), 24, 100.0, 100.0);
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text_with_options("Hello, World!", color_black(), font_named("hara"), 24, 100.0, 100.0, option_defaults());
+    clear_window(test_window, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text_with_options("Test Text", color_black(), font_named("hara"), 24, 100.0, 100.0, option_defaults());
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_on_bitmap_font_as_string_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_text_on_bitmap(test_bitmap, "Hello", color_black(), "hara", 12, 10.0, 10.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 10.0, 10.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 90.0, 90.0));
+    let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text_on_bitmap_font_as_string(test_bitmap, "Test Text", color_black(), "hara", 24, 100.0, 100.0);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 120, 110));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 90, 90));
     free_bitmap(test_bitmap);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_on_bitmap_with_options_font_as_string_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_text_on_bitmap(test_bitmap, "Hello", color_black(), "hara", 12, 10.0, 10.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 10.0, 10.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 90.0, 90.0));
+    let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text_on_bitmap_with_options_font_as_string(test_bitmap, "Test Text", color_black(), "hara", 24, 100.0, 100.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 120, 110));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 90, 90));
     free_bitmap(test_bitmap);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_on_bitmap_no_font_no_size_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_text_on_bitmap(test_bitmap, "Test", color_black(), 10.0, 10.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 10.0, 10.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 90.0, 90.0));
+    let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
+    draw_text_on_bitmap_no_font_no_size(test_bitmap, "Test Text", color_black(), 100.0, 100.0);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 105, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 90, 90));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_text_on_bitmap_no_font_no_size_with_options_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_text_on_bitmap(test_bitmap, "Test", color_black(), 10.0, 10.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 10.0, 10.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 90.0, 90.0));
+    let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
+    draw_text_on_bitmap_no_font_no_size_with_options(test_bitmap, "Test Text", color_black(), 100.0, 100.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 105, 100));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 90, 90));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_text_on_bitmap_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_text_on_bitmap(test_bitmap, "Hello", color_black(), font_named("hara"), 12, 10.0, 10.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 10.0, 10.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 90.0, 90.0));
+    let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text_on_bitmap(test_bitmap, "Test Text", color_black(), font_named("hara"), 24, 100.0, 100.0);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 120, 110));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 90, 90));
     free_bitmap(test_bitmap);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_on_bitmap_with_options_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_text_on_bitmap(test_bitmap, "Test", color_black(), font_named("hara"), 24, 10.0, 10.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 10.0, 10.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 90.0, 90.0));
+    let test_bitmap = create_bitmap("test_bitmap", 200, 200);
+    clear_bitmap(test_bitmap, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text_on_bitmap_with_options(test_bitmap, "Test Text", color_black(), font_named("hara"), 24, 100.0, 100.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 120, 110));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 90, 90));
     free_bitmap(test_bitmap);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_on_window_font_as_string_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text_on_window(test_window, "Hello, World!", color_black(), "hara", 24, 10.0, 10.0);
+    clear_window(test_window, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text_on_window_font_as_string(test_window, "Test Text", color_black(), "hara", 24, 100.0, 100.0);
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_on_window_with_options_font_as_string_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text_on_window(test_window, "Hello, World!", color_black(), "hara", 24, 10.0, 10.0, option_defaults());
+    clear_window(test_window, color_white());
+    load_font("hara", "hara.ttf");
+    draw_text_on_window_with_options_font_as_string(test_window, "Test Text", color_black(), "hara", 24, 100.0, 100.0, option_defaults());
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_on_window_no_font_no_size_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text_on_window(test_window, "Hello, World!", color_black(), 10.0, 10.0);
+    clear_window(test_window, color_white());
+    draw_text_on_window_no_font_no_size(test_window, "Test Text", color_black(), 100.0, 100.0);
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 105, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
 }
 #[test]
 fn test_draw_text_on_window_no_font_no_size_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    draw_text_on_window(test_window, "Hello, World!", color_black(), 10.0, 10.0, option_defaults());
+    clear_window(test_window, color_white());
+    draw_text_on_window_no_font_no_size_with_options(test_window, "Test Text", color_black(), 100.0, 100.0, option_defaults());
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 105, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
 }
 #[test]
 fn test_draw_text_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_font = load_font("test_font", "hara.ttf");
+    clear_window(test_window, color_white());
+    load_font("hara", "hara.ttf");
+    let test_font = font_named("hara");
     font_load_size(test_font, 24);
-    draw_text_on_window(test_window, "Hello, World!", color_black(), test_font, 24, 10.0, 10.0);
+    draw_text_on_window(test_window, "Test Text", color_black(), test_font, 24, 100.0, 100.0);
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
-    free_font(test_font);
+    free_all_fonts();
 }
 #[test]
 fn test_draw_text_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     let test_font = load_font("test_font", "hara.ttf");
-    draw_text_on_window(test_window, "Hello, World!", color_black(), test_font, 24, 10.0, 10.0, option_defaults());
+    draw_text_on_window_with_options(test_window, "Test Text", color_black(), test_font, 24, 100.0, 100.0, option_defaults());
     refresh_screen();
-    let test_rectangle = rectangle_from(100.0, 100.0, text_width("Hello, World!", get_system_font(), 12), text_height("Hello, World!", get_system_font(), 12));
-    assert!(point_in_rectangle(point_at(100.0, 100.0), test_rectangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
     free_font(test_font);
 }
 #[test]
 fn test_font_has_size_name_as_string_integration() {
-    let test_result1 = font_has_size_name_as_string("hara", 12);
-    assert!(test_result1);
-    let test_result2 = font_has_size_name_as_string("nonexistent_font", 12);
-    assert!(!test_result2);
+    load_font("hara", "hara.ttf");
+    font_load_size("hara", 12);
+    assert!(font_has_size_name_as_string("hara", 12));
+    assert!(!font_has_size_name_as_string("nonexistent_font", 12));
+    free_all_fonts();
 }
 #[test]
 fn test_font_has_size_integration() {
     let test_font = load_font("test_font", "hara.ttf");
-    let has_size_12 = font_has_size(test_font, 12);
-    assert!(has_size_12);
-    let has_size_999 = font_has_size(test_font, 999);
-    assert!(!has_size_999);
+    font_load_size(test_font, 12);
+    assert!(font_has_size(test_font, 12));
+    assert!(!font_has_size(test_font, 999));
     free_font(test_font);
 }
 #[test]
 fn test_font_load_size_name_as_string_integration() {
-    font_load_size("test_font", 12);
-    let test_font_size_check = font_has_size("test_font", 12);
-    assert!(test_font_size_check);
+    load_font("test_font", "hara.ttf");
+    font_load_size_name_as_string("test_font", 12);
+    assert!(font_has_size("test_font", 12));
+    free_all_fonts();
 }
 #[test]
 fn test_font_load_size_integration() {
@@ -2233,48 +2531,50 @@ fn test_font_load_size_integration() {
 }
 #[test]
 fn test_font_named_integration() {
-    let test_window = open_window("Font Test", 800, 600);
+    let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
+    load_font("hara", "hara.ttf");
     let test_font = font_named("hara");
     draw_text("Test Text", color_black(), test_font, 24, 100.0, 100.0);
     refresh_screen();
     assert!(test_font.is_some());
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 120, 110));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 90, 90));
     close_window(test_window);
+    free_all_fonts();
 }
 #[test]
 fn test_free_all_fonts_integration() {
     let test_font = load_font("test_font", "hara.ttf");
-    let test_font_named = font_named("test_font");
-    assert!(test_font_named.is_some());
+    assert!(has_font("test_font"));
     free_all_fonts();
-    let test_has_font = has_font("test_font");
-    assert!(!test_has_font);
+    assert!(!has_font("test_font"));
 }
 #[test]
 fn test_free_font_integration() {
     let test_font = load_font("test_font", "hara.ttf");
+    assert!(has_font(test_font));
     free_font(test_font);
     assert!(!has_font(test_font));
 }
 #[test]
 fn test_get_font_style_name_as_string_integration() {
     let test_font = load_font("test_font", "hara.ttf");
-    let test_style = get_font_style("test_font");
-    assert!(test_style.is_some());
+    let style = get_font_style_name_as_string("test_font");
+    assert_eq!(FontStyle::BoldFont, style);
     free_font(test_font);
 }
 #[test]
 fn test_get_font_style_integration() {
     let test_font = load_font("test_font", "hara.ttf");
-    let test_style = get_font_style(test_font);
-    assert_ne!(FontStyle::BoldFont, test_style);
+    let style = get_font_style(test_font);
+    assert_eq!(FontStyle::BoldFont, style);
     free_font(test_font);
 }
 #[test]
 fn test_get_system_font_integration() {
-    let test_font = get_system_font();
-    assert!(test_font.is_some());
-    let test_has_size = font_has_size(test_font, 12);
-    assert!(test_has_size);
+    let system_font = get_system_font();
+    assert!(system_font.is_some());
 }
 #[test]
 fn test_has_font_integration() {
@@ -2285,280 +2585,312 @@ fn test_has_font_integration() {
 }
 #[test]
 fn test_has_font_name_as_string_integration() {
-    let test_result_hara = has_font("hara");
-    assert!(test_result_hara);
-    let test_result_nonexistent = has_font("nonexistent_font");
-    assert!(!test_result_nonexistent);
+    assert!(has_font_name_as_string("hara"));
+    assert!(!has_font_name_as_string("nonexistent_font"));
 }
 #[test]
 fn test_load_font_integration() {
-    let test_window = open_window("Font Test", 800, 600);
+    let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     let test_font = load_font("test_font", "hara.ttf");
-    draw_text("Hello, World!", color_black(), test_font, 24, 100.0, 100.0, option_defaults());
+    draw_text("Test Text", color_black(), test_font, 24, 100.0, 100.0, option_defaults());
     refresh_screen();
     assert!(has_font("test_font"));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 105, 105));
     close_window(test_window);
     free_font(test_font);
 }
 #[test]
 fn test_set_font_style_name_as_string_integration() {
-    let test_window = open_window("Test Window", 800, 600);
     let test_font = load_font("test_font", "hara.ttf");
-    font_load_size("test_font", 24);
     set_font_style_name_as_string("test_font", FontStyle::BoldFont);
-    draw_text("Bold Text", color_black(), "test_font", 24, 100.0, 100.0);
-    refresh_screen();
-    assert_eq!(FontStyle::BoldFont, get_font_style_name_as_string("test_font"));
-    close_window(test_window);
+    assert_eq!(FontStyle::BoldFont, get_font_style("test_font"));
     free_font(test_font);
 }
 #[test]
 fn test_set_font_style_integration() {
-    let test_font = font_named("hara");
+    let test_font = load_font("test_font", "hara.ttf");
     set_font_style(test_font, FontStyle::BoldFont);
-    let test_style = get_font_style(test_font);
-    assert_eq!(FontStyle::BoldFont, test_style);
+    assert_eq!(FontStyle::BoldFont, get_font_style(test_font));
     free_font(test_font);
 }
 #[test]
 fn test_text_height_font_named_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_height = text_height_font_named("Hello, World!", "hara", 24);
-    assert!(test_height > 0);
+    let height = text_height_font_named("Test Text", "hara", 24);
+    assert!(height > 0);
+    assert!(height >= 24);
     close_window(test_window);
 }
 #[test]
 fn test_text_height_integration() {
     let test_font = load_font("test_font", "hara.ttf");
     font_load_size(test_font, 24);
-    let test_height = text_height("Hello, World!", test_font, 24);
-    assert!(test_height > 0);
+    let height = text_height("Test Text", test_font, 24);
+    assert!(height > 0);
+    assert!(height >= 24);
     free_font(test_font);
 }
 #[test]
 fn test_text_width_font_named_integration() {
-    let test_window = open_window("Test Window", 800, 600);
-    let test_width = text_width_font_named("Hello, World!", "hara", 24);
-    draw_text("Hello, World!", color_black(), "hara", 24, 100.0, 100.0);
-    refresh_screen();
-    assert!(test_width > 0);
-    close_window(test_window);
+    let test_font = load_font("hara", "hara.ttf");
+    font_load_size(test_font, 12);
+    let width = text_width_font_named("Test Text", "hara", 24);
+    assert!(width > 0);
+    assert!(width >= text_height("Test Text", "hara", 24));
+    free_font(test_font);
 }
 #[test]
 fn test_text_width_integration() {
     let test_font = load_font("test_font", "hara.ttf");
     font_load_size(test_font, 12);
-    let test_width = text_width("Hello, World!", test_font, 12);
-    assert!(test_width > 0);
+    let width = text_width("Test Text", test_font, 24);
+    assert!(width > 0);
+    assert!(width >= text_height("Text Height", test_font, 24));
     free_font(test_font);
 }
 #[test]
 fn test_draw_triangle_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 300.0));
-    draw_triangle(color_black(), test_triangle);
+    clear_window(test_window, color_white());
+    let triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 300.0));
+    draw_triangle_record(color_black(), triangle);
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 200.0), test_triangle));
-    assert!(!point_in_triangle(point_at(300.0, 300.0), test_triangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 200));
     close_window(test_window);
 }
 #[test]
 fn test_draw_triangle_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 300.0));
-    draw_triangle(color_black(), test_triangle, option_defaults());
+    clear_window(test_window, color_white());
+    let triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 300.0));
+    draw_triangle_record_with_options(color_black(), triangle, option_defaults());
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 150.0), test_triangle));
-    assert!(!point_in_triangle(point_at(300.0, 300.0), test_triangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 200));
     close_window(test_window);
 }
 #[test]
 fn test_draw_triangle_integration() {
-    let test_window = open_window("Triangle Test", 800, 600);
+    let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_triangle(color_black(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 150.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 200, 150));
     close_window(test_window);
 }
 #[test]
 fn test_draw_triangle_with_options_integration() {
-    let test_window = open_window("Triangle Test", 800, 600);
+    let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_triangle_with_options(color_black(), 100.0, 100.0, 200.0, 200.0, 150.0, 300.0, option_defaults());
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 150.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 300.0))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 150, 200));
     close_window(test_window);
 }
 #[test]
 fn test_draw_triangle_on_bitmap_record_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_triangle = triangle_from(point_at(25.0, 25.0), point_at(75.0, 25.0), point_at(50.0, 75.0));
-    draw_triangle_on_bitmap(test_bitmap, color_black(), test_triangle);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(10.0, 10.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let triangle = triangle_from(point_at(25.0, 25.0), point_at(75.0, 25.0), point_at(50.0, 75.0));
+    draw_triangle_on_bitmap_record(test_bitmap, color_black(), triangle);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 25, 25));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 50, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_triangle_on_bitmap_record_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_triangle = triangle_from(point_at(25.0, 25.0), point_at(75.0, 25.0), point_at(50.0, 75.0));
-    draw_triangle_on_bitmap(test_bitmap, color_black(), test_triangle, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(10.0, 10.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let triangle = triangle_from(point_at(25.0, 25.0), point_at(75.0, 25.0), point_at(50.0, 75.0));
+    draw_triangle_on_bitmap_record_with_options(test_bitmap, color_black(), triangle, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 25, 25));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 50, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_triangle_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     draw_triangle_on_bitmap(test_bitmap, color_black(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(10.0, 10.0)));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 25, 25));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 50, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_triangle_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    draw_triangle_on_bitmap(test_bitmap, color_black(), 10.0, 10.0, 50.0, 90.0, 90.0, 10.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(100.0, 100.0)));
+    clear_bitmap(test_bitmap, color_white());
+    draw_triangle_on_bitmap_with_options(test_bitmap, color_black(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 25, 25));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 50, 50));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_draw_triangle_on_window_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 300.0));
-    draw_triangle_on_window(test_window, color_black(), test_triangle);
+    clear_window(test_window, color_white());
+    let triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 300.0));
+    draw_triangle_on_window_record(test_window, color_black(), triangle);
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 200.0), test_triangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_draw_triangle_on_window_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 250.0));
-    draw_triangle_on_window(test_window, color_black(), test_triangle, option_defaults());
+    clear_window(test_window, color_white());
+    let triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 200.0), point_at(150.0, 250.0));
+    draw_triangle_on_window_record_with_options(test_window, color_black(), triangle, option_defaults());
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 150.0), test_triangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_draw_triangle_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_triangle_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
     refresh_screen();
-    assert!(point_in_triangle(point_at(200.0, 200.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_draw_triangle_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     draw_triangle_on_window_with_options(test_window, color_black(), 100.0, 100.0, 200.0, 200.0, 150.0, 300.0, option_defaults());
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 200.0), triangle_from(100.0, 100.0, 200.0, 200.0, 150.0, 300.0)));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 100, 100));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_triangle_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0));
-    fill_triangle(color_black(), test_triangle);
+    clear_window(test_window, color_white());
+    let triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0));
+    fill_triangle_record(color_black(), triangle);
     refresh_screen();
-    assert!(point_in_triangle(point_at(200.0, 200.0), test_triangle));
-    assert!(!point_in_triangle(point_at(400.0, 400.0), test_triangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_triangle_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0));
-    fill_triangle(color_black(), test_triangle, option_defaults());
+    clear_window(test_window, color_white());
+    let triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0));
+    fill_triangle_record_with_options(color_black(), triangle, option_defaults());
     refresh_screen();
-    assert!(point_in_triangle(point_at(200.0, 200.0), test_triangle));
-    assert!(!point_in_triangle(point_at(400.0, 400.0), test_triangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_triangle_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_triangle(color_black(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 150.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_triangle_with_options_integration() {
-    let test_window = open_window("Triangle Test", 800, 600);
+    let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_triangle_with_options(color_red(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0, option_defaults());
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 150.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0))));
-    assert!(!point_in_triangle(point_at(350.0, 150.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0))));
+    assert_eq!(color_red(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 150));
     close_window(test_window);
 }
 #[test]
 fn test_fill_triangle_on_bitmap_record_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_triangle = triangle_from(point_at(25.0, 25.0), point_at(75.0, 25.0), point_at(50.0, 75.0));
-    fill_triangle_on_bitmap(test_bitmap, color_black(), test_triangle);
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(0.0, 0.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let triangle = triangle_from(point_at(25.0, 25.0), point_at(75.0, 25.0), point_at(50.0, 75.0));
+    fill_triangle_on_bitmap_record(test_bitmap, color_black(), triangle);
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 0, 0));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_triangle_on_bitmap_record_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
-    let test_triangle = triangle_from(point_at(25.0, 25.0), point_at(75.0, 25.0), point_at(50.0, 75.0));
-    fill_triangle_on_bitmap(test_bitmap, color_black(), test_triangle, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, point_at(50.0, 50.0)));
-    assert!(!pixel_drawn_at_point(test_bitmap, point_at(10.0, 10.0)));
+    clear_bitmap(test_bitmap, color_white());
+    let triangle = triangle_from(point_at(25.0, 25.0), point_at(75.0, 25.0), point_at(50.0, 75.0));
+    fill_triangle_on_bitmap_record_with_options(test_bitmap, color_black(), triangle, option_defaults());
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 10, 10));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_triangle_on_bitmap_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     fill_triangle_on_bitmap(test_bitmap, color_black(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0);
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 0.0, 0.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 0, 0));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_triangle_on_bitmap_with_options_integration() {
     let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    clear_bitmap(test_bitmap, color_white());
     fill_triangle_on_bitmap_with_options(test_bitmap, color_black(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0, option_defaults());
-    assert!(pixel_drawn_at_point(test_bitmap, 50.0, 50.0));
-    assert!(!pixel_drawn_at_point(test_bitmap, 0.0, 0.0));
+    assert_eq!(color_black(), get_pixel(test_bitmap, 50, 50));
+    assert_eq!(color_white(), get_pixel(test_bitmap, 0, 0));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_fill_triangle_on_window_record_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0));
-    fill_triangle_on_window(test_window, color_black(), test_triangle);
+    clear_window(test_window, color_white());
+    let triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0));
+    fill_triangle_on_window_record(test_window, color_black(), triangle);
     refresh_screen();
-    assert!(point_in_triangle(point_at(200.0, 200.0), test_triangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 200));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_triangle_on_window_record_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0));
-    fill_triangle_on_window(test_window, color_black(), test_triangle, option_defaults());
+    clear_window(test_window, color_white());
+    let triangle = triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0));
+    fill_triangle_on_window_record_with_options(test_window, color_black(), triangle, option_defaults());
     refresh_screen();
-    assert!(point_in_triangle(point_at(200.0, 200.0), test_triangle));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 200));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_triangle_on_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    clear_window(test_window, color_white());
     fill_triangle_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
     refresh_screen();
-    assert!(point_in_triangle(point_at(200.0, 200.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 200, 200));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 50, 50));
     close_window(test_window);
 }
 #[test]
 fn test_fill_triangle_on_window_with_options_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    fill_triangle_on_window(test_window, color_black(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0, option_defaults());
+    clear_window(test_window, color_white());
+    fill_triangle_on_window_with_options(test_window, color_black(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0, option_defaults());
     refresh_screen();
-    assert!(point_in_triangle(point_at(150.0, 150.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0))));
-    assert!(!point_in_triangle(point_at(350.0, 150.0), triangle_from(point_at(100.0, 100.0), point_at(200.0, 300.0), point_at(300.0, 100.0))));
+    assert_eq!(color_black(), get_pixel_from_window(test_window, 150, 150));
+    assert_eq!(color_white(), get_pixel_from_window(test_window, 350, 150));
     close_window(test_window);
+}
 }

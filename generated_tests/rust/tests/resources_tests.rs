@@ -8,11 +8,14 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_resources {
+use super::*;
 #[test]
 fn test_deregister_free_notifier_integration() {
-    register_free_notifier(test_notifier);
-    deregister_free_notifier(test_notifier);
-    assert!(test_notifier.is_none());
+    let free_notifier = notifier_tracker::new();
+    register_free_notifier(free_notifier.on_free);
+    deregister_free_notifier(free_notifier.on_free);
+    assert!(free_notifier.WasNotified);
 }
 #[test]
 fn test_path_to_resource_integration() {
@@ -40,10 +43,11 @@ fn test_path_to_resources_for_kind_integration() {
 }
 #[test]
 fn test_register_free_notifier_integration() {
-    register_free_notifier(free_notifier());
-    assert!(notifier_called);
-    deregister_free_notifier(free_notifier());
-    assert!(!notifier_called);
+    let free_notifier = notifier_tracker::new();
+    register_free_notifier(free_notifier.on_free);
+    assert!(free_notifier.WasNotified);
+    deregister_free_notifier(free_notifier.on_free);
+    assert!(!free_notifier.WasNotified);
 }
 #[test]
 fn test_set_resources_path_integration() {
@@ -51,4 +55,5 @@ fn test_set_resources_path_integration() {
     assert_eq!("/resources", path_to_resources());
     set_resources_path("/new/resources");
     assert_eq!("/new/resources", path_to_resources());
+}
 }

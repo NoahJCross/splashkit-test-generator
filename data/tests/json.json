@@ -1,5 +1,17 @@
 {
   "group": "json",
+  "constructor": [
+    {
+      "step_type": "function",
+      "function_name": "set_resources_path",
+      "args": [
+        {
+          "value_type": "primitive",
+          "value": "set this value before running tests, use an absolute path"
+        }
+      ]
+    }
+  ],
   "tests": [
     {
       "name": "create_json",
@@ -130,6 +142,42 @@
         },
         {
           "step_type": "function",
+          "function_name": "json_set_string",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_json1"
+            },
+            {
+              "value_type": "primitive",
+              "value": "key"
+            },
+            {
+              "value_type": "primitive",
+              "value": "value"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "json_set_string",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_json2"
+            },
+            {
+              "value_type": "primitive",
+              "value": "key"
+            },
+            {
+              "value_type": "primitive",
+              "value": "value"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "json_count_keys",
           "args": [
             {
@@ -212,7 +260,6 @@
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
-
             "value1": {
               "value_type": "primitive",
               "value": 0
@@ -456,7 +503,7 @@
           "args": [
             {
               "value_type": "primitive",
-              "value": "test.json"
+              "value": "person.json"
             }
           ],
           "store_result": "test_json"
@@ -481,7 +528,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "key"
+              "value": "firstName"
             }
           ],
           "store_result": "test_value"
@@ -492,7 +539,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": "expected_value"
+              "value": "John"
             },
             "value2": {
               "value_type": "variable",
@@ -714,9 +761,18 @@
               "value_type": "list",
               "target_type": "double",
               "value": [
-                { "value_type": "primitive", "value": 1.1 },
-                { "value_type": "primitive", "value": 2.2 },
-                { "value_type": "primitive", "value": 3.3 }
+                {
+                  "value_type": "primitive",
+                  "value": 1.1
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 2.2
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 3.3
+                }
               ]
             }
           ]
@@ -820,7 +876,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_json_nested1"
+              "variable_name": "test_json1"
             },
             {
               "value_type": "primitive",
@@ -838,7 +894,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_json_nested2"
+              "variable_name": "test_json2"
             },
             {
               "value_type": "primitive",
@@ -914,6 +970,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 2
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "size",
               "args": [
@@ -922,10 +982,6 @@
                   "variable_name": "out_result"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 2
             }
           }
         },
@@ -945,7 +1001,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_json_nested1"
+              "variable_name": "test_json1"
             }
           ]
         },
@@ -955,7 +1011,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_json_nested2"
+              "variable_name": "test_json2"
             }
           ]
         },
@@ -1074,7 +1130,6 @@
           "args": [],
           "store_result": "test_json"
         },
-
         {
           "step_type": "function",
           "function_name": "json_set_array_of_bool",
@@ -1091,9 +1146,18 @@
               "value_type": "list",
               "target_type": "bool",
               "value": [
-                { "value_type": "primitive", "value": true },
-                { "value_type": "primitive", "value": false },
-                { "value_type": "primitive", "value": true }
+                {
+                  "value_type": "primitive",
+                  "value": true
+                },
+                {
+                  "value_type": "primitive",
+                  "value": false
+                },
+                {
+                  "value_type": "primitive",
+                  "value": true
+                }
               ]
             }
           ]
@@ -1128,6 +1192,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "primitive",
+              "value": 3
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "size",
               "args": [
@@ -1136,10 +1204,6 @@
                   "variable_name": "out_result"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "primitive",
-              "value": 3
             }
           }
         },
@@ -1646,9 +1710,18 @@
               "value_type": "list",
               "target_type": "string",
               "value": [
-                { "value_type": "primitive", "value": "value1" },
-                { "value_type": "primitive", "value": "value2" },
-                { "value_type": "primitive", "value": "value3" }
+                {
+                  "value_type": "primitive",
+                  "value": "value1"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "value2"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "value3"
+                }
               ]
             }
           ]
@@ -1729,9 +1802,18 @@
               "value_type": "list",
               "target_type": "double",
               "value": [
-                { "value_type": "primitive", "value": 1.1 },
-                { "value_type": "primitive", "value": 2.2 },
-                { "value_type": "primitive", "value": 3.3 }
+                {
+                  "value_type": "primitive",
+                  "value": 1.1
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 2.2
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 3.3
+                }
               ]
             }
           ]
@@ -1928,8 +2010,14 @@
           "value_type": "list",
           "target_type": "json",
           "value": [
-            { "value_type": "variable", "variable_name": "test_json1" },
-            { "value_type": "variable", "variable_name": "test_json2" }
+            {
+              "value_type": "variable",
+              "variable_name": "test_json1"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "test_json2"
+            }
           ]
         },
         {
@@ -2270,7 +2358,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": 3.14
+              "value": 3.140000104904175
             },
             "value2": {
               "value_type": "function",
@@ -2466,7 +2554,7 @@
             },
             {
               "value_type": "primitive",
-              "value": "#FF0000FF"
+              "value": "#ff0000ff"
             }
           ]
         },
@@ -2487,7 +2575,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "primitive",
-              "value": "#FF0000FF"
+              "value": "#ff0000ff"
             },
             "value2": {
               "value_type": "function",

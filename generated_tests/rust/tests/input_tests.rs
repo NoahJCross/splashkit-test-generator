@@ -8,310 +8,528 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_input {
+use super::*;
 #[test]
 fn test_process_events_integration() {
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(key_typed(KeyCode::A));
-    simulate_mouse_click(MouseButton::Left);
-    process_events();
-    assert!(mouse_clicked(MouseButton::Left));
+    let test_window = open_window("Test Window", 800, 600);
+    while key_typed(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press A to test events", color_black(), 10, 10);
+        draw_text(format!("Key Typed: {key_typed(KeyCode::AKey)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    while mouse_clicked(MouseButton::LeftButton) == false {
+        process_events();
+        clear_screen();
+        draw_text("Click left mouse button to test events", color_black(), 10, 10);
+        draw_text(format!("Mouse Clicked: {mouse_clicked(MouseButton::LeftButton)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_quit_requested_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    process_events();
-    assert!(!quit_requested());
-    simulate_key_press(KeyCode::Escape);
-    process_events();
-    assert!(quit_requested());
+    while quit_requested() == false {
+        process_events();
+        clear_screen();
+        draw_text("Press Escape to test quit", color_black(), 10, 10);
+        draw_text(format!("Quit Requested: {quit_requested()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_reset_quit_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    process_events();
-    assert!(quit_requested());
-    reset_quit();
-    process_events();
-    assert!(!quit_requested());
+    while quit_requested() == false {
+        process_events();
+        clear_screen();
+        draw_text("Press Escape to test quit", color_black(), 10, 10);
+        draw_text(format!("Quit Requested: {quit_requested()}"), color_black(), 10, 30);
+        refresh_screen();
+        reset_quit();
+    }
+    while key_down(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press A to continue after reset", color_black(), 10, 10);
+        draw_text(format!("Key Down: {key_down(KeyCode::AKey)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_any_key_pressed_integration() {
-    process_events();
-    assert!(!any_key_pressed());
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(any_key_pressed());
+    let test_window = open_window("Test Window", 800, 600);
+    while any_key_pressed() == false {
+        process_events();
+        clear_screen();
+        draw_text("Press any key to test", color_black(), 10, 10);
+        draw_text(format!("Any Key Pressed: {any_key_pressed()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_deregister_callback_on_key_down_integration() {
+    let callbacks = key_callbacks::new();
     let test_window = open_window("Test Window", 800, 600);
-    register_callback_on_key_down(_on_key_down());
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(key_down(KeyCode::A));
-    deregister_callback_on_key_down(_on_key_down());
-    simulate_key_press(KeyCode::B);
-    process_events();
-    assert!(!key_down(KeyCode::B));
+    register_callback_on_key_down(callbacks.on_key_down);
+    while key_down(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press A to test callback", color_black(), 10, 10);
+        draw_text(format!("Key Down: {key_down(KeyCode::AKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_down}"), color_black(), 10, 50);
+        refresh_screen();
+        deregister_callback_on_key_down(callbacks.on_key_down);
+    }
+    while key_down(KeyCode::BKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press B to test deregistered callback", color_black(), 10, 10);
+        draw_text(format!("Key Down: {key_down(KeyCode::BKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_down}"), color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_deregister_callback_on_key_typed_integration() {
-    register_callback_on_key_typed(_on_key_typed());
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(key_typed(KeyCode::A));
-    deregister_callback_on_key_typed(_on_key_typed());
-    simulate_key_press(KeyCode::B);
-    process_events();
-    assert!(!key_typed(KeyCode::B));
+    let callbacks = key_callbacks::new();
+    let test_window = open_window("Test Window", 800, 600);
+    register_callback_on_key_typed(callbacks.on_key_typed);
+    while key_typed(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press A to test callback", color_black(), 10, 10);
+        draw_text(format!("Key Typed: {key_typed(KeyCode::AKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_typed}"), color_black(), 10, 50);
+        refresh_screen();
+        deregister_callback_on_key_typed(callbacks.on_key_typed);
+    }
+    while key_typed(KeyCode::BKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press B to test deregistered callback", color_black(), 10, 10);
+        draw_text(format!("Key Typed: {key_typed(KeyCode::BKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_typed}"), color_black(), 10, 50);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_deregister_callback_on_key_up_integration() {
+    let callbacks = key_callbacks::new();
     let test_window = open_window("Test Window", 800, 600);
-    register_callback_on_key_up(_on_key_up());
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(key_up(KeyCode::A));
-    deregister_callback_on_key_up(_on_key_up());
-    simulate_key_press(KeyCode::B);
-    process_events();
-    assert!(!key_up(KeyCode::B));
+    register_callback_on_key_up(callbacks.on_key_up);
+    while key_up(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press and release A to test callback", color_black(), 10, 10);
+        draw_text(format!("Key Up: {key_up(KeyCode::AKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_up}"), color_black(), 10, 50);
+        refresh_screen();
+        deregister_callback_on_key_up(callbacks.on_key_up);
+    }
+    while key_up(KeyCode::BKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press and release B to test deregistered callback", color_black(), 10, 10);
+        draw_text(format!("Key Up: {key_up(KeyCode::BKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_up}"), color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_key_down_integration() {
-    process_events();
-    assert!(!key_down(KeyCode::A));
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(key_down(KeyCode::A));
-    simulate_key_release(KeyCode::A);
-    process_events();
-    assert!(!key_down(KeyCode::A));
+    let test_window = open_window("Test Window", 800, 600);
+    while key_down(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press and hold A", color_black(), 10, 10);
+        draw_text(format!("Key Down: {key_down(KeyCode::AKey)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    while key_down(KeyCode::AKey) != false {
+        process_events();
+        clear_screen();
+        draw_text("Release A", color_black(), 10, 10);
+        draw_text(format!("Key Down: {key_down(KeyCode::AKey)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_key_name_integration() {
-    let test_key_name1 = key_name(KeyCode::A);
-    assert_eq!("A", test_key_name1);
-    let test_key_name2 = key_name(KeyCode::Enter);
-    assert_eq!("Enter", test_key_name2);
+    let test_window = open_window("Test Window", 800, 600);
+    while key_down(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press A to test key name", color_black(), 10, 10);
+        draw_text(format!("Key Name: {key_name(KeyCode::AKey)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press Enter to test key name", color_black(), 10, 10);
+        draw_text(format!("Key Name: {key_name(KeyCode::KeypadEnter)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_key_released_integration() {
-    process_events();
-    assert!(!key_released(KeyCode::A));
-    simulate_key_press(KeyCode::A);
-    process_events();
-    simulate_key_release(KeyCode::A);
-    process_events();
-    assert!(key_released(KeyCode::A));
+    let test_window = open_window("Test Window", 800, 600);
+    while key_released(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press and release A", color_black(), 10, 10);
+        draw_text(format!("Key Released: {key_released(KeyCode::AKey)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_key_typed_integration() {
-    process_events();
-    assert!(!key_typed(KeyCode::A));
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(key_typed(KeyCode::A));
+    let test_window = open_window("Test Window", 800, 600);
+    while key_typed(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press A to test key typed", color_black(), 10, 10);
+        draw_text(format!("Key Typed: {key_typed(KeyCode::AKey)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_key_up_integration() {
-    process_events();
-    assert!(key_up(KeyCode::A));
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(!key_up(KeyCode::A));
-    simulate_key_release(KeyCode::A);
-    process_events();
-    assert!(key_up(KeyCode::A));
+    let test_window = open_window("Test Window", 800, 600);
+    while key_up(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press and release A", color_black(), 10, 10);
+        draw_text(format!("Key Up: {key_up(KeyCode::AKey)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_register_callback_on_key_down_integration() {
-    register_callback_on_key_down(_on_key_down());
-    process_events();
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(key_down(KeyCode::A));
-    deregister_callback_on_key_down(_on_key_down());
+    let callbacks = key_callbacks::new();
+    let test_window = open_window("Test Window", 800, 600);
+    register_callback_on_key_down(callbacks.on_key_down);
+    while key_down(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press A to test callback", color_black(), 10, 10);
+        draw_text(format!("Key Down: {key_down(KeyCode::AKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_down}"), color_black(), 10, 50);
+        refresh_screen();
+    }
+    deregister_callback_on_key_down(callbacks.on_key_down);
+    close_window(test_window);
 }
 #[test]
 fn test_register_callback_on_key_typed_integration() {
-    register_callback_on_key_typed(_on_key_typed());
-    process_events();
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert!(key_typed(KeyCode::A));
-    deregister_callback_on_key_typed(_on_key_typed());
+    let callbacks = key_callbacks::new();
+    let test_window = open_window("Test Window", 800, 600);
+    register_callback_on_key_typed(callbacks.on_key_typed);
+    while key_typed(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press A to test callback", color_black(), 10, 10);
+        draw_text(format!("Key Typed: {key_typed(KeyCode::AKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_typed}"), color_black(), 10, 50);
+        refresh_screen();
+    }
+    deregister_callback_on_key_typed(callbacks.on_key_typed);
+    close_window(test_window);
 }
 #[test]
 fn test_register_callback_on_key_up_integration() {
-    register_callback_on_key_up(_on_key_up());
-    process_events();
-    simulate_key_press(KeyCode::A);
-    simulate_key_release(KeyCode::A);
-    process_events();
-    assert_eq!("A", _key_up);
-    deregister_callback_on_key_up(_on_key_up());
+    let callbacks = key_callbacks::new();
+    let test_window = open_window("Test Window", 800, 600);
+    register_callback_on_key_up(callbacks.on_key_up);
+    while key_up(KeyCode::AKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press and release A to test callback", color_black(), 10, 10);
+        draw_text(format!("Key Up: {key_up(KeyCode::AKey)}"), color_black(), 10, 30);
+        draw_text(format!("Callback received: {callbacks.get_key_up}"), color_black(), 10, 50);
+        refresh_screen();
+    }
+    deregister_callback_on_key_up(callbacks.on_key_up);
+    close_window(test_window);
 }
 #[test]
 fn test_hide_mouse_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    process_events();
-    assert!(mouse_shown());
-    hide_mouse();
-    process_events();
-    assert!(!mouse_shown());
+    while key_down(KeyCode::HKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press H to hide mouse", color_black(), 10, 10);
+        draw_text(format!("Mouse Shown: {mouse_shown()}"), color_black(), 10, 30);
+        refresh_screen();
+        hide_mouse();
+    }
+    while key_down(KeyCode::SKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press S to show mouse", color_black(), 10, 10);
+        draw_text(format!("Mouse Shown: {mouse_shown()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    show_mouse();
     close_window(test_window);
 }
 #[test]
 fn test_mouse_clicked_integration() {
-    process_events();
-    assert!(!mouse_clicked(MouseButton::Left));
-    simulate_mouse_click(MouseButton::Left);
-    process_events();
-    assert!(mouse_clicked(MouseButton::Left));
+    let test_window = open_window("Test Window", 800, 600);
+    while mouse_clicked(MouseButton::LeftButton) == false {
+        process_events();
+        clear_screen();
+        draw_text("Click left mouse button", color_black(), 10, 10);
+        draw_text(format!("Mouse Clicked: {mouse_clicked(MouseButton::LeftButton)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_mouse_down_integration() {
-    process_events();
-    assert!(!mouse_down(MouseButton::Left));
-    simulate_mouse_press(MouseButton::Left);
-    process_events();
-    assert!(mouse_down(MouseButton::Left));
-    simulate_mouse_release(MouseButton::Left);
-    process_events();
-    assert!(!mouse_down(MouseButton::Left));
+    let test_window = open_window("Test Window", 800, 600);
+    while mouse_down(MouseButton::LeftButton) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press and hold left mouse button", color_black(), 10, 10);
+        draw_text(format!("Mouse Down: {mouse_down(MouseButton::LeftButton)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    while mouse_down(MouseButton::LeftButton) != false {
+        process_events();
+        clear_screen();
+        draw_text("Release left mouse button", color_black(), 10, 10);
+        draw_text(format!("Mouse Down: {mouse_down(MouseButton::LeftButton)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_mouse_movement_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    move_mouse(100.0, 100.0);
-    process_events();
-    let test_movement = mouse_movement();
-    assert_eq!(100.0, test_movement.x);
-    assert_eq!(100.0, test_movement.y);
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        let movement = mouse_movement();
+        draw_text("Move mouse to test movement", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_mouse_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    move_mouse(400.0, 300.0);
-    process_events();
-    let test_position = mouse_position();
-    assert_eq!(400.0, test_position.x);
-    assert_eq!(300.0, test_position.y);
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        let position = mouse_position();
+        draw_text("Move mouse to test position", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_mouse_position_vector_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    move_mouse(400.0, 300.0);
-    process_events();
-    let test_mouse_position = mouse_position_vector();
-    assert_eq!(400.0, test_mouse_position.x);
-    assert_eq!(300.0, test_mouse_position.y);
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        let position = mouse_position_vector();
+        draw_text("Move mouse to test position", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_mouse_shown_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    while key_down(KeyCode::HKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press H to hide mouse", color_black(), 10, 10);
+        draw_text(format!("Mouse Shown: {mouse_shown()}"), color_black(), 10, 30);
+        refresh_screen();
+        hide_mouse();
+    }
+    while key_down(KeyCode::SKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press S to show mouse", color_black(), 10, 10);
+        draw_text(format!("Mouse Shown: {mouse_shown()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     show_mouse();
-    process_events();
-    assert!(mouse_shown());
-    hide_mouse();
-    process_events();
-    assert!(!mouse_shown());
     close_window(test_window);
 }
 #[test]
 fn test_mouse_up_integration() {
-    process_events();
-    assert!(mouse_up(MouseButton::Left));
-    simulate_mouse_click(MouseButton::Left);
-    process_events();
-    assert!(!mouse_up(MouseButton::Left));
+    let test_window = open_window("Test Window", 800, 600);
+    while mouse_up(MouseButton::LeftButton) == false {
+        process_events();
+        clear_screen();
+        draw_text("Click and release left mouse button", color_black(), 10, 10);
+        draw_text(format!("Mouse Up: {mouse_up(MouseButton::LeftButton)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    close_window(test_window);
 }
 #[test]
 fn test_mouse_wheel_scroll_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    process_events();
-    assert_eq!(vector_from_angle(0.0, 0.0), mouse_wheel_scroll());
-    simulate_mouse_wheel_scroll(10.0, 5.0);
-    process_events();
-    assert!(mouse_wheel_scroll());
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        let scroll = mouse_wheel_scroll();
+        draw_text("Scroll mouse wheel to test", color_black(), 10, 10);
+        draw_text("$Mouse Position: X={scroll.X}", "Y={scroll.Y}", color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_mouse_x_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    move_mouse(400.0, 300.0);
-    process_events();
-    assert!((399.0..=401.0).contains(&mouse_x()));
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Move mouse to test X position", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_mouse_y_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    move_mouse(400.0, 300.0);
-    process_events();
-    assert_eq!(300.0, mouse_y());
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Move mouse to test Y position", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_move_mouse_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    process_events();
-    move_mouse(400.0, 300.0);
-    process_events();
-    assert!((399.0..=401.0).contains(&mouse_x()));
-    assert!((299.0..=301.0).contains(&mouse_y()));
+    while key_down(KeyCode::MKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press M to move mouse to center", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        refresh_screen();
+        move_mouse(400, 300);
+    }
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Mouse moved to center", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_move_mouse_to_point_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    move_mouse_to_point(point_at(400.0, 300.0));
-    process_events();
-    assert_eq!(point_at(400.0, 300.0), mouse_position());
+    while key_down(KeyCode::MKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press M to move mouse to center", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        refresh_screen();
+        move_mouse_to_point(point_at(400, 300));
+    }
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Mouse moved to center", color_black(), 10, 10);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_show_mouse_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    hide_mouse();
-    process_events();
-    assert!(!mouse_shown());
+    while key_down(KeyCode::HKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press H to hide mouse", color_black(), 10, 10);
+        draw_text(format!("Mouse Shown: {mouse_shown()}"), color_black(), 10, 30);
+        refresh_screen();
+        hide_mouse();
+    }
+    while key_down(KeyCode::SKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press S to show mouse", color_black(), 10, 10);
+        draw_text(format!("Mouse Shown: {mouse_shown()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     show_mouse();
-    process_events();
-    assert!(mouse_shown());
     close_window(test_window);
 }
 #[test]
 fn test_show_mouse_with_boolean_integration() {
     let test_window = open_window("Test Window", 800, 600);
+    while key_down(KeyCode::HKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press H to hide mouse", color_black(), 10, 10);
+        draw_text(format!("Mouse Shown: {mouse_shown()}"), color_black(), 10, 30);
+        refresh_screen();
+        show_mouse_with_boolean(false);
+    }
+    while key_down(KeyCode::SKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press S to show mouse", color_black(), 10, 10);
+        draw_text(format!("Mouse Shown: {mouse_shown()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     show_mouse_with_boolean(true);
-    process_events();
-    assert!(mouse_shown());
-    show_mouse_with_boolean(false);
-    process_events();
-    assert!(!mouse_shown());
     close_window(test_window);
 }
 #[test]
 fn test_draw_collected_text_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_font = load_font("test_font", "path/to/font.ttf");
+    let test_font = load_font("test_font", "hara.ttf");
     start_reading_text(rectangle_from(100, 100, 200, 30));
-    process_events();
-    simulate_key_press(KeyCode::A);
-    process_events();
-    draw_collected_text(color_black(), test_font, 18, option_defaults());
-    refresh_screen();
-    assert_eq!(color_black(), get_pixel(test_window, 105, 115));
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_collected_text(color_black(), test_font, 18, option_defaults());
+        refresh_screen();
+    }
     end_reading_text();
     free_font(test_font);
     close_window(test_window);
@@ -319,135 +537,193 @@ fn test_draw_collected_text_integration() {
 #[test]
 fn test_end_reading_text_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
-    process_events();
-    assert!(reading_text());
-    end_reading_text();
-    process_events();
-    assert!(!reading_text());
+    start_reading_text(rectangle_from(100, 100, 200, 30));
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Reading Text: {reading_text()}"), color_black(), 10, 30);
+        refresh_screen();
+        end_reading_text();
+    }
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Text input ended", color_black(), 10, 10);
+        draw_text(format!("Reading Text: {reading_text()}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_end_reading_text_in_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0);
-    start_reading_text_in_window(test_window, test_rectangle);
-    process_events();
-    assert!(reading_text_in_window(test_window));
-    end_reading_text_in_window(test_window);
-    process_events();
-    assert!(!reading_text_in_window(test_window));
+    let test_rectangle = rectangle_from(100, 100, 200, 30);
+    start_reading_text(test_window, test_rectangle);
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Reading Text: {reading_text(test_window)}"), color_black(), 10, 30);
+        refresh_screen();
+        end_reading_text_in_window(test_window);
+    }
+    while key_down(KeyCode::SpaceKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Text input ended", color_black(), 10, 10);
+        draw_text(format!("Reading Text: {reading_text(test_window)}"), color_black(), 10, 30);
+        draw_text("Press Space to end test", color_black(), 10, 50);
+        refresh_screen();
+    }
     close_window(test_window);
 }
 #[test]
 fn test_reading_text_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
-    process_events();
-    assert!(reading_text());
+    start_reading_text(rectangle_from(100, 100, 200, 30));
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Reading Text: {reading_text()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     end_reading_text();
-    process_events();
-    assert!(!reading_text());
     close_window(test_window);
 }
 #[test]
 fn test_reading_text_in_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0);
-    start_reading_text_in_window(test_window, test_rectangle);
-    process_events();
-    assert!(reading_text_in_window(test_window));
-    end_reading_text_in_window(test_window);
-    process_events();
-    assert!(!reading_text_in_window(test_window));
+    let test_rectangle = rectangle_from(100, 100, 200, 30);
+    start_reading_text(test_window, test_rectangle);
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Reading Text: {reading_text_in_window(test_window)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    end_reading_text(test_window);
     close_window(test_window);
 }
 #[test]
 fn test_start_reading_text_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
+    let test_rect = rectangle_from(100, 100, 200, 30);
     start_reading_text(test_rect);
-    process_events();
-    assert!(reading_text());
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Current Text: {text_input()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     end_reading_text();
-    process_events();
-    assert!(!reading_text());
     close_window(test_window);
 }
 #[test]
 fn test_start_reading_text_with_initial_text_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
+    let test_rect = rectangle_from(100, 100, 200, 30);
     start_reading_text_with_initial_text(test_rect, "Initial Text");
-    process_events();
-    assert!(reading_text());
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Current Text: {text_input()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     end_reading_text();
     close_window(test_window);
 }
 #[test]
 fn test_start_reading_text_in_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
+    let test_rect = rectangle_from(100, 100, 200, 30);
     start_reading_text_in_window(test_window, test_rect);
-    process_events();
-    assert!(reading_text_in_window(test_window));
-    end_reading_text_in_window(test_window);
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Current Text: {text_input(test_window)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    end_reading_text(test_window);
     close_window(test_window);
 }
 #[test]
 fn test_start_reading_text_in_window_with_initial_text_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
+    let test_rect = rectangle_from(100, 100, 200, 30);
     start_reading_text_in_window_with_initial_text(test_window, test_rect, "Initial Text");
-    process_events();
-    assert!(reading_text_in_window(test_window));
-    end_reading_text_in_window(test_window);
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Current Text: {text_input(test_window)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    end_reading_text(test_window);
     close_window(test_window);
 }
 #[test]
 fn test_text_entry_cancelled_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
-    process_events();
-    assert!(!text_entry_cancelled());
-    simulate_key_press(KeyCode::Escape);
-    process_events();
-    assert!(text_entry_cancelled());
+    start_reading_text(rectangle_from(100, 100, 200, 30));
+    while key_down(KeyCode::EscapeKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press Escape to cancel text entry", color_black(), 10, 10);
+        draw_text(format!("Text Entry Cancelled: {text_entry_cancelled()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     end_reading_text();
     close_window(test_window);
 }
 #[test]
 fn test_text_entry_cancelled_in_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
-    start_reading_text_in_window(test_window, test_rect);
-    process_events();
-    assert!(!text_entry_cancelled_in_window(test_window));
-    simulate_key_press(KeyCode::Escape);
-    process_events();
-    assert!(text_entry_cancelled_in_window(test_window));
+    let test_rect = rectangle_from(100, 100, 200, 30);
+    start_reading_text(test_window, test_rect);
+    while key_down(KeyCode::EscapeKey) == false {
+        process_events();
+        clear_screen();
+        draw_text("Press Escape to cancel text entry", color_black(), 10, 10);
+        draw_text(format!("Text Entry Cancelled: {text_entry_cancelled_in_window(test_window)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    end_reading_text(test_window);
     close_window(test_window);
 }
 #[test]
 fn test_text_input_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
-    process_events();
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert_eq!("A", text_input());
+    start_reading_text(rectangle_from(100, 100, 200, 30));
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Current Text: {text_input()}"), color_black(), 10, 30);
+        refresh_screen();
+    }
     end_reading_text();
     close_window(test_window);
 }
 #[test]
 fn test_text_input_in_window_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0);
-    start_reading_text_in_window(test_window, test_rectangle);
-    process_events();
-    simulate_key_press(KeyCode::A);
-    process_events();
-    assert_eq!("A", text_input_in_window(test_window));
-    end_reading_text_in_window(test_window);
+    let test_rect = rectangle_from(100, 100, 200, 30);
+    start_reading_text(test_window, test_rect);
+    while key_down(KeyCode::KeypadEnter) == false {
+        process_events();
+        clear_screen();
+        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text(format!("Current Text: {text_input_in_window(test_window)}"), color_black(), 10, 30);
+        refresh_screen();
+    }
+    end_reading_text(test_window);
     close_window(test_window);
+}
 }

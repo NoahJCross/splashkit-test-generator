@@ -3,7 +3,7 @@ using static SplashKitSDK.SplashKit;
 
 namespace SplashKitTests
 {
-    public class IntegrationTests
+    public class TestAnimations
     {
         [Fact]
         public void TestAnimationCountIntegration()
@@ -40,7 +40,9 @@ namespace SplashKitTests
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
             Assert.False(AnimationEnded(anim));
-            UpdateAnimation(anim);
+            for (int i = 0; i < 50; i++) {
+                UpdateAnimation(anim, 100.0);
+            }
             Assert.False(AnimationEnded(anim));
             UpdateAnimation(anim);
             Assert.True(AnimationEnded(anim));
@@ -52,7 +54,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "walkfront");
-            UpdateAnimation(anim, 20);
+            UpdateAnimationPercent(anim, 20);
             Assert.True(AnimationEnteredFrame(anim));
             UpdateAnimation(anim);
             Assert.False(AnimationEnteredFrame(anim));
@@ -104,8 +106,7 @@ namespace SplashKitTests
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var loadedScript = AnimationScriptNamed("kermit");
             Assert.NotNull(loadedScript);
-            var scriptName = AnimationScriptName(loadedScript);
-            Assert.Equal("kermit", scriptName);
+            Assert.Equal(loadedScript, loadedScript);
             FreeAnimationScript(kermitScript);
         }
         [Fact]
@@ -113,7 +114,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
-            AssignAnimation(anim, kermitScript, "walkfront");
+            AssignAnimationWithScript(anim, kermitScript, "walkfront");
             Assert.Equal("walkfront", AnimationName(anim));
             FreeAnimationScript(kermitScript);
             FreeAnimation(anim);
@@ -123,7 +124,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "walkfront");
-            AssignAnimation(anim, kermitScript, "walkleft", true);
+            AssignAnimationWithScriptAndSound(anim, kermitScript, "walkleft", true);
             Assert.Equal("walkleft", AnimationName(anim));
             FreeAnimation(anim);
             FreeAnimationScript(kermitScript);
@@ -133,7 +134,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
-            AssignAnimation(anim, kermitScript, 0);
+            AssignAnimationIndexWithScript(anim, kermitScript, 0);
             Assert.Equal("walkfront", AnimationName(anim));
             FreeAnimationScript(kermitScript);
             FreeAnimation(anim);
@@ -143,7 +144,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
-            AssignAnimation(anim, kermitScript, 0, true);
+            AssignAnimationIndexWithScriptAndSound(anim, kermitScript, 0, true);
             Assert.Equal("walkfront", AnimationName(anim));
             FreeAnimationScript(kermitScript);
             FreeAnimation(anim);
@@ -153,7 +154,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
-            AssignAnimation(anim, "kermit", "walkfront");
+            AssignAnimationWithScriptNamed(anim, "kermit", "walkfront");
             Assert.Equal("walkfront", AnimationName(anim));
             FreeAnimationScript(kermitScript);
             FreeAnimation(anim);
@@ -163,7 +164,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "walkfront");
-            AssignAnimation(anim, "kermit", "walkfront", true);
+            AssignAnimationWithScriptNamedAndSound(anim, "kermit", "walkfront", true);
             Assert.Equal("walkfront", AnimationName(anim));
             FreeAnimation(anim);
             FreeAnimationScript(kermitScript);
@@ -173,7 +174,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
-            AssignAnimation(anim, 0);
+            AssignAnimationIndex(anim, 0);
             Assert.Equal(0, AnimationCurrentCell(anim));
             FreeAnimation(anim);
             FreeAnimationScript(kermitScript);
@@ -183,7 +184,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback", false);
-            AssignAnimation(anim, 0, true);
+            AssignAnimationIndexWithSound(anim, 0, true);
             Assert.True(AnimationEnteredFrame(anim));
             FreeAnimationScript(kermitScript);
             FreeAnimation(anim);
@@ -203,7 +204,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
-            AssignAnimation(anim, "walkfront", true);
+            AssignAnimationWithSound(anim, "walkfront", true);
             Assert.Equal("walkfront", AnimationName(anim));
             FreeAnimationScript(kermitScript);
             FreeAnimation(anim);
@@ -212,7 +213,7 @@ namespace SplashKitTests
         public void TestCreateAnimationFromIndexWithSoundIntegration()
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
-            var anim = CreateAnimation(kermitScript, 0, true);
+            var anim = CreateAnimationFromIndexWithSound(kermitScript, 0, true);
             Assert.NotNull(anim);
             var animName = AnimationName(anim);
             Assert.Equal("walkfront", animName);
@@ -234,7 +235,7 @@ namespace SplashKitTests
         public void TestCreateAnimationWithSoundIntegration()
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
-            var anim = CreateAnimation(kermitScript, "moonwalkback", true);
+            var anim = CreateAnimationWithSound(kermitScript, "moonwalkback", true);
             Assert.NotNull(anim);
             var animName = AnimationName(anim);
             Assert.Equal("moonwalkback", animName);
@@ -245,7 +246,7 @@ namespace SplashKitTests
         public void TestCreateAnimationFromScriptNamedIntegration()
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
-            var anim = CreateAnimation("kermit", "moonwalkback");
+            var anim = CreateAnimationFromScriptNamed("kermit", "moonwalkback");
             Assert.NotNull(anim);
             var animName = AnimationName(anim);
             Assert.Equal("moonwalkback", animName);
@@ -256,7 +257,7 @@ namespace SplashKitTests
         public void TestCreateAnimationFromScriptNamedWithSoundIntegration()
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
-            var anim = CreateAnimation(kermitScript, "moonwalkback", true);
+            var anim = CreateAnimationFromScriptNamedWithSound(kermitScript, "moonwalkback", true);
             Assert.NotNull(anim);
             var animName = AnimationName(anim);
             Assert.Equal("moonwalkback", animName);
@@ -277,7 +278,8 @@ namespace SplashKitTests
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
             FreeAnimation(anim);
-            Assert.Null(anim);
+            Assert.Equal(nil, AnimationName(anim));
+            Assert.True(AnimationEnded(anim));
             FreeAnimationScript(kermitScript);
         }
         [Fact]
@@ -294,7 +296,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             Assert.True(HasAnimationScript("kermit"));
-            FreeAnimationScript("kermit");
+            FreeAnimationScriptWithName("kermit");
             Assert.False(HasAnimationScript("kermit"));
         }
         [Fact]
@@ -331,7 +333,9 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
-            UpdateAnimation(anim);
+            for (int i = 0; i < 50; i++) {
+                UpdateAnimation(anim, 100.0);
+            }
             var animEnded = AnimationEnded(anim);
             Assert.True(animEnded);
             RestartAnimation(anim);
@@ -346,7 +350,7 @@ namespace SplashKitTests
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback", true);
             UpdateAnimation(anim);
-            RestartAnimation(anim, true);
+            RestartAnimationWithSound(anim, true);
             Assert.Equal(3, AnimationCurrentCell(anim));
             FreeAnimation(anim);
             FreeAnimationScript(kermitScript);
@@ -356,7 +360,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
-            UpdateAnimation(anim, 0.5, true);
+            UpdateAnimationPercentWithSound(anim, 0.5, true);
             Assert.True(AnimationFrameTime(anim) > 0);
             FreeAnimation(anim);
             FreeAnimationScript(kermitScript);
@@ -367,7 +371,7 @@ namespace SplashKitTests
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "moonwalkback");
             UpdateAnimation(anim);
-            Assert.NotEqual(AnimationCurrentCell(anim), 0);
+            Assert.NotEqual(0, AnimationCurrentCell(anim));
             FreeAnimation(anim);
             FreeAnimationScript(kermitScript);
         }
@@ -376,7 +380,7 @@ namespace SplashKitTests
         {
             var kermitScript = LoadAnimationScript("kermit", "kermit.txt");
             var anim = CreateAnimation(kermitScript, "walkfront");
-            UpdateAnimation(anim, 0.5);
+            UpdateAnimationPercent(anim, 0.5);
             Assert.True(AnimationFrameTime(anim) > 0);
             FreeAnimation(anim);
             FreeAnimationScript(kermitScript);

@@ -1,5 +1,5 @@
 {
-  "group": "interface",
+  "group": "networking",
   "tests": [
     {
       "name": "accept_all_new_connections",
@@ -362,7 +362,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "broadcast_message",
+          "function_name": "broadcast_message_to_all",
           "args": [
             {
               "value_type": "primitive",
@@ -470,7 +470,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "broadcast_message",
+          "function_name": "broadcast_message_to_server_named",
           "args": [
             {
               "value_type": "primitive",
@@ -1343,7 +1343,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "close_connection",
+          "function_name": "close_connection_named",
           "args": [
             {
               "value_type": "primitive",
@@ -1546,7 +1546,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "close_server",
+          "function_name": "close_server_named",
           "args": [
             {
               "value_type": "primitive",
@@ -1695,7 +1695,7 @@
             },
             "value2": {
               "value_type": "function",
-              "function_name": "connection_count",
+              "function_name": "connection_count_named",
               "args": [
                 {
                   "value_type": "primitive",
@@ -1939,7 +1939,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "connection_ip",
+          "function_name": "connection_ip_from_name",
           "args": [
             {
               "value_type": "primitive",
@@ -2203,7 +2203,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "connection_port",
+          "function_name": "connection_port_from_name",
           "args": [
             {
               "value_type": "primitive",
@@ -2311,7 +2311,7 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "create_server_with_port",
+          "function_name": "create_server_with_port_and_protocol",
           "args": [
             {
               "value_type": "primitive",
@@ -2756,7 +2756,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -2856,7 +2856,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_name",
               "args": [
                 {
                   "value_type": "primitive",
@@ -2951,7 +2951,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_server",
               "args": [
                 {
                   "value_type": "variable",
@@ -3495,7 +3495,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "is_connection_open",
+              "function_name": "is_connection_open_from_name",
               "args": [
                 {
                   "value_type": "primitive",
@@ -3522,7 +3522,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "is_connection_open",
+              "function_name": "is_connection_open_from_name",
               "args": [
                 {
                   "value_type": "primitive",
@@ -3589,7 +3589,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "last_connection",
+          "function_name": "last_connection_named",
           "args": [
             {
               "value_type": "primitive",
@@ -5063,7 +5063,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "open_connection",
+          "function_name": "open_connection_with_protocol",
           "args": [
             {
               "value_type": "primitive",
@@ -5305,7 +5305,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_connection",
           "args": [
             {
               "value_type": "variable",
@@ -5429,7 +5429,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_name",
           "args": [
             {
               "value_type": "primitive",
@@ -5553,7 +5553,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_server",
           "args": [
             {
               "value_type": "variable",
@@ -6127,7 +6127,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "reconnect",
+          "function_name": "reconnect_from_name",
           "args": [
             {
               "value_type": "primitive",
@@ -6490,7 +6490,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "retrieve_connection",
+          "function_name": "retrieve_connection_named",
           "args": [
             {
               "value_type": "primitive",
@@ -6869,7 +6869,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "server_has_new_connection",
+              "function_name": "server_has_new_connection_named",
               "args": [
                 {
                   "value_type": "primitive",
@@ -7529,7 +7529,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "notempty",
+            "compare_type": "not_empty",
             "value1": {
               "value_type": "variable",
               "variable_name": "response_text"
@@ -7595,7 +7595,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "http_post",
+          "function_name": "http_post_with_headers",
           "args": [
             {
               "value_type": "primitive",
@@ -7816,7 +7816,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "notempty",
+            "compare_type": "not_empty",
             "value1": {
               "value_type": "variable",
               "variable_name": "response_text"
@@ -9040,7 +9040,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "notempty",
+            "compare_type": "not_empty",
             "value1": {
               "value_type": "function",
               "function_name": "request_headers",
@@ -9979,7 +9979,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_response",
+          "function_name": "send_response_empty",
           "args": [
             {
               "value_type": "variable",
@@ -10127,7 +10127,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_response",
+          "function_name": "send_response_json_with_status",
           "args": [
             {
               "value_type": "variable",
@@ -10204,7 +10204,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_response",
+          "function_name": "send_response_with_status",
           "args": [
             {
               "value_type": "variable",
@@ -10285,7 +10285,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_response",
+          "function_name": "send_response_with_status_and_content_type",
           "args": [
             {
               "value_type": "variable",
@@ -10370,7 +10370,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_response",
+          "function_name": "send_response_with_status_and_content_type_and_headers",
           "args": [
             {
               "value_type": "variable",
@@ -10493,7 +10493,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "send_response",
+          "function_name": "send_response_json",
           "args": [
             {
               "value_type": "variable",
@@ -10603,7 +10603,7 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "start_web_server",
+          "function_name": "start_web_server_with_default_port",
           "args": [],
           "store_result": "test_server"
         },

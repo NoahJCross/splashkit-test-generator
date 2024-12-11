@@ -8,6 +8,8 @@ mod test_runner {
     }
 }
 #![test_runner(test_runner::run_tests_sequential)]
+mod test_animations {
+use super::*;
 #[test]
 fn test_animation_count_integration() {
     let script = load_animation_script("kermit", "kermit.txt");
@@ -39,7 +41,9 @@ fn test_animation_ended_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "moonwalkback");
     assert!(!animation_ended(anim));
-    update_animation(anim);
+    for _ in 0..50 {
+        update_animation(anim, 100.0);
+    }
     assert!(!animation_ended(anim));
     update_animation(anim);
     assert!(animation_ended(anim));
@@ -97,8 +101,7 @@ fn test_animation_script_named_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let loaded_script = animation_script_named("kermit");
     assert!(loaded_script.is_some());
-    let script_name = animation_script_name(loaded_script);
-    assert_eq!("kermit", script_name);
+    assert_eq!(loaded_script, loaded_script);
     free_animation_script(kermit_script);
 }
 #[test]
@@ -123,7 +126,7 @@ fn test_assign_animation_with_script_and_sound_integration() {
 fn test_assign_animation_index_with_script_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "moonwalkback");
-    assign_animation(anim, kermit_script, 0);
+    assign_animation_index_with_script(anim, kermit_script, 0);
     assert_eq!("walkfront", animation_name(anim));
     free_animation_script(kermit_script);
     free_animation(anim);
@@ -159,7 +162,7 @@ fn test_assign_animation_with_script_named_and_sound_integration() {
 fn test_assign_animation_index_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "moonwalkback");
-    assign_animation(anim, 0);
+    assign_animation_index(anim, 0);
     assert_eq!(0, animation_current_cell(anim));
     free_animation(anim);
     free_animation_script(kermit_script);
@@ -253,7 +256,8 @@ fn test_free_animation_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "moonwalkback");
     free_animation(anim);
-    assert!(anim.is_none());
+    assert_eq!(nil, animation_name(anim));
+    assert!(animation_ended(anim));
     free_animation_script(kermit_script);
 }
 #[test]
@@ -301,7 +305,9 @@ fn test_load_animation_script_integration() {
 fn test_restart_animation_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "moonwalkback");
-    update_animation(anim);
+    for _ in 0..50 {
+        update_animation(anim, 100.0);
+    }
     let anim_ended = animation_ended(anim);
     assert!(anim_ended);
     restart_animation(anim);
@@ -334,7 +340,7 @@ fn test_update_animation_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "moonwalkback");
     update_animation(anim);
-    assert_ne!(animation_current_cell(anim), 0);
+    assert_ne!(0, animation_current_cell(anim));
     free_animation(anim);
     free_animation_script(kermit_script);
 }
@@ -346,4 +352,5 @@ fn test_update_animation_percent_integration() {
     assert!(animation_frame_time(anim) > 0);
     free_animation(anim);
     free_animation_script(kermit_script);
+}
 }

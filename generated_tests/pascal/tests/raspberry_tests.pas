@@ -1,100 +1,100 @@
 uses SplashKit, TestFramework
 
 type
-TIntegrationTests = class(TTestCase)
-published
+TTestRaspberry = class(TTestCase)
+protected
 procedure TIntegrationTests.TestHasGpioIntegration;
 begin
     testGpioCapability := HasGpio();
     AssertTrue(testGpioCapability);
-    testGpioCapability := HasGpio();
-    AssertFalse(testGpioCapability);
 end;
 procedure TIntegrationTests.TestRaspiCleanupIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
-    RaspiWrite(Pins.PIN_11, PinValues.GPIO_HIGH);
+    RaspiSetMode(Pins.PIN11, PinModes.GPIO_OUTPUT);
+    RaspiWrite(Pins.PIN11, PinValues.GPIO_HIGH);
     RaspiCleanup();
-    AssertEquals(PinModes.GPIO_INPUT, RaspiGetMode(Pins.PIN_11));
-    AssertEquals(PinValues.GPIO_LOW, RaspiRead(Pins.PIN_11));
+    AssertEquals(PinModes.GPIO_INPUT, RaspiGetMode(Pins.PIN11));
+    AssertEquals(PinValues.GPIO_LOW, RaspiRead(Pins.PIN11));
 end;
 procedure TIntegrationTests.TestRaspiGetModeIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
-    testMode := RaspiGetMode(Pins.PIN_11);
+    RaspiSetMode(Pins.PIN11, PinModes.GPIO_OUTPUT);
+    testMode := RaspiGetMode(Pins.PIN11);
     AssertEquals(PinModes.GPIO_OUTPUT, testMode);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiInitIntegration;
 begin
     hasGpioCapability := HasGpio();
-if hasGpioCapability = true then
-        RaspiInit();
-        AssertTrue(HasGpio());
-        RaspiCleanup();
-end;
-    else
-        AssertFalse(HasGpio());
-end;
+    RaspiInit();
+    AssertTrue(HasGpio());
+    RaspiCleanup();
+    AssertFalse(HasGpio());
 end;
 procedure TIntegrationTests.TestRaspiReadIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
-    RaspiWrite(Pins.PIN_11, PinValues.GPIO_HIGH);
-    testReadValue := RaspiRead(Pins.PIN_11);
+    RaspiSetMode(Pins.PIN11, PinModes.GPIO_OUTPUT);
+    RaspiWrite(Pins.PIN11, PinValues.GPIO_HIGH);
+    testReadValue := RaspiRead(Pins.PIN11);
     AssertEquals(PinValues.GPIO_HIGH, testReadValue);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiSetModeIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
-    AssertEquals(PinModes.GPIO_OUTPUT, RaspiGetMode(Pins.PIN_11));
+    RaspiSetMode(Pins.PIN11, PinModes.GPIO_OUTPUT);
+    AssertEquals(PinModes.GPIO_OUTPUT, RaspiGetMode(Pins.PIN11));
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiSetPullUpDownIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_11, PinModes.GPIO_INPUT);
-    RaspiSetPullUpDown(Pins.PIN_11, PullUpDown.PUD_UP);
-    testPinValue := RaspiRead(Pins.PIN_11);
-    AssertEquals(PinValues.GPIO_HIGH, testPinValue);
-    RaspiSetPullUpDown(Pins.PIN_11, PullUpDown.PUD_DOWN);
-    testPinValue := RaspiRead(Pins.PIN_11);
-    AssertEquals(PinValues.GPIO_LOW, testPinValue);
+    RaspiSetMode(Pins.PIN11, PinModes.GPIO_INPUT);
+    RaspiSetPullUpDown(Pins.PIN11, PullUpDown.PUD_UP);
+    testPinValueUp := RaspiRead(Pins.PIN11);
+    AssertEquals(PinValues.GPIO_HIGH, testPinValueUp);
+    RaspiSetPullUpDown(Pins.PIN11, PullUpDown.PUD_DOWN);
+    testPinValueDown := RaspiRead(Pins.PIN11);
+    AssertEquals(PinValues.GPIO_LOW, testPinValueDown);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiSetPwmDutycycleIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_18, PinModes.PWM_OUTPUT);
-    RaspiSetPwmDutycycle(Pins.PIN_18, 50);
+    RaspiSetMode(Pins.PIN18, PinModes.GPIO_OUTPUT);
+    RaspiSetPwmDutycycle(Pins.PIN18, 50);
+    mode := RaspiGetMode(Pins.PIN18);
+    AssertEquals(PinModes.GPIO_OUTPUT, mode);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiSetPwmFrequencyIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_18, PinModes.PWM_OUTPUT);
-    RaspiSetPwmFrequency(Pins.PIN_18, 1000);
+    RaspiSetMode(Pins.PIN18, PinModes.GPIO_OUTPUT);
+    RaspiSetPwmFrequency(Pins.PIN18, 1000);
+    mode := RaspiGetMode(Pins.PIN18);
+    AssertEquals(PinModes.GPIO_OUTPUT, mode);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiSetPwmRangeIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_11, PinModes.GPIO_PWM);
-    RaspiSetPwmRange(Pins.PIN_11, 1024);
-    RaspiSetPwmDutycycle(Pins.PIN_11, 512);
+    RaspiSetMode(Pins.PIN11, PinModes.GPIO_OUTPUT);
+    RaspiSetPwmRange(Pins.PIN11, 1024);
+    RaspiSetPwmDutycycle(Pins.PIN11, 512);
+    mode := RaspiGetMode(Pins.PIN11);
+    AssertEquals(PinModes.GPIO_OUTPUT, mode);
     RaspiCleanup();
 end;
 procedure TIntegrationTests.TestRaspiWriteIntegration;
 begin
     RaspiInit();
-    RaspiSetMode(Pins.PIN_11, PinModes.GPIO_OUTPUT);
-    RaspiWrite(Pins.PIN_11, PinValues.GPIO_HIGH);
-    testPinValue := RaspiRead(Pins.PIN_11);
+    RaspiSetMode(Pins.PIN11, PinModes.GPIO_OUTPUT);
+    RaspiWrite(Pins.PIN11, PinValues.GPIO_HIGH);
+    testPinValue := RaspiRead(Pins.PIN11);
     AssertEquals(PinValues.GPIO_HIGH, testPinValue);
     RaspiCleanup();
 end;
@@ -102,5 +102,5 @@ end;
 
 procedure RegisterTests;
 begin
-TestFramework.RegisterTest(TIntegrationTests.Suite);
+#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
 end;
