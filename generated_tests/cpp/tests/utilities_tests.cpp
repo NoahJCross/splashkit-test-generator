@@ -20,8 +20,8 @@ public:
         REQUIRE(123.0 == convert_to_double("123."));
         REQUIRE(123.456 == convert_to_double("000123.456"));
         REQUIRE(123.456 == convert_to_double("123.456000"));
-        REQUIRE( == convert_to_double("inf"));
-        REQUIRE( == convert_to_double("-inf"));
+        REQUIRE(numeric_limits<double>::infinity() == convert_to_double("inf"));
+        REQUIRE(-numeric_limits<double>::infinity() == convert_to_double("-inf"));
         REQUIRE(123.0 == convert_to_double("1.23e2"));
     }
     TEST_CASE("convert_to_integer_integration") {
@@ -89,13 +89,13 @@ public:
     }
     TEST_CASE("split_integration") {
         auto result = split("splashkit library", ' ');
-        REQUIRE(std::vector<string> { "splashkit", "library" } == result);
-        REQUIRE(std::vector<string> { "" } == split("", ' '));
-        REQUIRE(std::vector<string> { "splashkit library" } == split("splashkit library", ','));
-        REQUIRE(std::vector<string> { "", "splashkit library" } == split(",splashkit library", ','));
-        REQUIRE(std::vector<string> { "splashkit library", "" } == split("splashkit library,", ','));
-        REQUIRE(std::vector<string> { "", "splashkit library", "" } == split(",splashkit library,", ','));
-        REQUIRE(std::vector<string> { "splashkit", "", "library" } == split("splashkit,,library", ','));
+        REQUIRE(vector<string> { "splashkit", "library" } == result);
+        REQUIRE(vector<string> { "" } == split("", ' '));
+        REQUIRE(vector<string> { "splashkit library" } == split("splashkit library", ','));
+        REQUIRE(vector<string> { "", "splashkit library" } == split(",splashkit library", ','));
+        REQUIRE(vector<string> { "splashkit library", "" } == split("splashkit library,", ','));
+        REQUIRE(vector<string> { "", "splashkit library", "" } == split(",splashkit library,", ','));
+        REQUIRE(vector<string> { "splashkit", "", "library" } == split("splashkit,,library", ','));
     }
     TEST_CASE("to_lowercase_integration") {
         REQUIRE("splashkit" == to_lowercase("SPLASHKIT"));
@@ -117,18 +117,18 @@ public:
         REQUIRE("" == trim(""));
     }
     TEST_CASE("rnd_range_integration") {
-        REQUIRE(rnd_range(-1, 5) >= -1 && rnd_range(-1, 5) <= 5);
-        REQUIRE(1 == rnd_range(1, 1));
-        REQUIRE(rnd_range(5, 1) >= 1 && rnd_range(5, 1) <= 5);
+        REQUIRE(rnd(-1, 5) >= -1 && rnd(-1, 5) <= 5);
+        REQUIRE(1 == rnd(1, 1));
+        REQUIRE(rnd(5, 1) >= 1 && rnd(5, 1) <= 5);
     }
     TEST_CASE("rnd_integration") {
-        REQUIRE(rnd() >= 0.0 && rnd() <= );
+        REQUIRE(rnd() >= 0.0 && rnd() <= numeric_limits<float>::max());
     }
     TEST_CASE("rnd_int_integration") {
-        REQUIRE(rnd_int(1) >= 0 && rnd_int(1) <= 1);
-        REQUIRE(rnd_int(10) >= 0 && rnd_int(10) <= 10);
-        REQUIRE(0 == rnd_int(-1));
-        REQUIRE(0 == rnd_int(0));
+        REQUIRE(rnd(1) >= 0 && rnd(1) <= 1);
+        REQUIRE(rnd(10) >= 0 && rnd(10) <= 10);
+        REQUIRE(0 == rnd(-1));
+        REQUIRE(0 == rnd(0));
     }
     TEST_CASE("current_ticks_integration") {
         auto test_ticks = current_ticks();

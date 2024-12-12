@@ -1169,7 +1169,7 @@
           "function_name": "set_music_volume",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             }
           ]
@@ -1565,7 +1565,7 @@
               "value": 2
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.75
             }
           ]
@@ -1736,7 +1736,7 @@
           "function_name": "set_music_volume",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             }
           ]
@@ -2435,7 +2435,7 @@
               "value": "test_sound"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.75
             }
           ]
@@ -2719,7 +2719,7 @@
               "variable_name": "test_sound"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.75
             }
           ]
@@ -2865,7 +2865,7 @@
               "value": 2
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.75
             }
           ]

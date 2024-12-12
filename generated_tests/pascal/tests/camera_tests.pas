@@ -30,7 +30,7 @@ begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testSprite := CreateSprite("test_sprite");
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-    CenterCameraOnVector(testSprite, VectorFromAngle(50.0, 50.0));
+    CenterCameraOn(testSprite, VectorFromAngle(50.0, 50.0));
     AssertEquals(PointAt(-267.8606182336807, -161.69777810573578), CameraPosition());
     FreeSprite(testSprite);
     CloseWindow(testWindow);
@@ -49,7 +49,7 @@ procedure TIntegrationTests.TestMoveCameraByVectorIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testVector := VectorFromAngle(0.0, 100.0);
-    MoveCameraByVector(testVector);
+    MoveCameraBy(testVector);
     AssertEquals(100.0, CameraX());
     AssertEquals(0.0, CameraY());
     CloseWindow(testWindow);
@@ -65,7 +65,7 @@ end;
 procedure TIntegrationTests.TestMoveCameraToPointIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    MoveCameraToPoint(PointAt(100.0, 100.0));
+    MoveCameraTo(PointAt(100.0, 100.0));
     AssertEquals(PointAt(100.0, 100.0), CameraPosition());
     CloseWindow(testWindow);
 end;
@@ -158,7 +158,7 @@ procedure TIntegrationTests.TestToScreenPointIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     SetCameraPosition(PointAt(100.0, 100.0));
-    testScreenPoint := ToScreenPoint(PointAt(150.0, 150.0));
+    testScreenPoint := ToScreen(PointAt(150.0, 150.0));
     AssertEquals(50.0, testScreenPoint.x);
     AssertEquals(50.0, testScreenPoint.y);
     CloseWindow(testWindow);
@@ -167,7 +167,7 @@ procedure TIntegrationTests.TestToScreenRectangleIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
-    screenRectangle := ToScreenRectangle(testRectangle);
+    screenRectangle := ToScreen(testRectangle);
     AssertEquals(ToScreenX(100.0), RectangleLeft(screenRectangle));
     AssertEquals(ToScreenY(100.0), RectangleTop(screenRectangle));
     CloseWindow(testWindow);
@@ -228,5 +228,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
+#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
 end;

@@ -251,8 +251,8 @@ fn test_pop_clip_for_bitmap_integration() {
     assert_eq!(color_white(), get_pixel(test_bitmap, 75, 75));
     pop_clip_for_bitmap(test_bitmap);
     let test_clip = current_clip(test_bitmap);
-    assert_eq!(0, rectangle_left(full_clip));
-    assert_eq!(0, rectangle_top(full_clip));
+    assert_eq!(0, rectangle_left(test_clip));
+    assert_eq!(0, rectangle_top(test_clip));
     assert_eq!(100, test_clip.Width);
     assert_eq!(100, test_clip.height);
     free_bitmap(test_bitmap);
@@ -300,8 +300,8 @@ fn test_reset_clip_for_bitmap_integration() {
     push_clip(test_bitmap, rectangle_from(10, 10, 50, 50));
     reset_clip_for_bitmap(test_bitmap);
     let test_clip = current_clip(test_bitmap);
-    assert_eq!(0, rectangle_left(reset_clip));
-    assert_eq!(0, rectangle_top(reset_clip));
+    assert_eq!(0, rectangle_left(test_clip));
+    assert_eq!(0, rectangle_top(test_clip));
     assert_eq!(100, test_clip.width);
     assert_eq!(100, test_clip.height);
     free_bitmap(test_bitmap);

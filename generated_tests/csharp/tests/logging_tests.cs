@@ -26,9 +26,9 @@ namespace SplashKitTests
         [Fact]
         public void TestInitCustomLoggerNameOverrideModeIntegration()
         {
-            InitCustomLoggerNameOverrideMode("test_app", true, LogMode.LogConsoleAndFile);
+            InitCustomLogger("test_app", true, LogMode.LogConsoleAndFile);
             Log(LogLevel.Info, "This message should appear in both console and file.");
-            InitCustomLoggerNameOverrideMode("test_app", false, LogMode.LogFileOnly);
+            InitCustomLogger("test_app", false, LogMode.LogFileOnly);
             Log(LogLevel.Info, "This message should only appear in the file.");
             CloseLogProcess();
         }

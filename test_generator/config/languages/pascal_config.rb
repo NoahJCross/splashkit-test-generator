@@ -42,6 +42,12 @@ module LanguageConfig
         'not_equal'    => ->(v1, v2) { "#{v1} <> #{v2}" }
       }.freeze,
 
+      numeric_constants: {
+        infinity: 'MaxDouble',
+        negative_infinity: '-MaxDouble',
+        max_value: 'MaxSingle'
+      }.freeze,
+
       control_flow: {
         loop:      ->(iterations) { "for i := 0 to #{iterations - 1} do\n" },
         while:     ->(condition) { "while #{condition} do\n" },
@@ -55,12 +61,6 @@ module LanguageConfig
         interpolation: ->(expr) { "' + #{expr} + '" },
         concatenation: ->(parts) { "'#{parts.join}'" },
         char:          ->(value) { "'#{value}'" }
-      }.freeze,
-
-      numeric_constants: {
-        'inf'          => 'MaxDouble',
-        'neg_inf'      => '-MaxDouble',
-        'max_value'    => 'MaxSingle'
       }.freeze,
 
       type_handlers: {
@@ -78,7 +78,9 @@ module LanguageConfig
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
           "#{type.to_pascal_case}.#{value.to_upper_case}#{semicolon ? ";\n" : ''}" 
-        }
+        },
+        unsigned_int: ->(value) { "Cardinal(#{value})" },
+        float: ->(value) { value }
       }.freeze,
 
       variable_handlers: {
@@ -86,7 +88,9 @@ module LanguageConfig
         reference:     ->(name) { name.to_camel_case.to_s },
         field_access:  ->(var, field) { "#{var}.#{field}" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" }
+        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
+        array_size:    ->(arr) { "Length(#{arr})" },
+        reference_operator: ->(var) { "@#{var}" }
       }.freeze,
 
       function_handlers: {

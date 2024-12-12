@@ -9,9 +9,9 @@ namespace SplashKitTests
         public void TestDeregisterFreeNotifierIntegration()
         {
             var freeNotifier = new NotifierTracker();
-            RegisterFreeNotifier(freeNotifier.On_free);
-            DeregisterFreeNotifier(freeNotifier.On_free);
-            Assert.True(freeNotifier.Wasnotified);
+            RegisterFreeNotifier(freeNotifier.OnFree);
+            DeregisterFreeNotifier(freeNotifier.OnFree);
+            Assert.True(freeNotifier.WasNotified);
         }
         [Fact]
         public void TestPathToResourceIntegration()
@@ -35,19 +35,19 @@ namespace SplashKitTests
         public void TestPathToResourcesForKindIntegration()
         {
             SetResourcesPath("resources");
-            var imagePath = PathToResourcesForKind(ResourceKind.ImageResource);
+            var imagePath = PathToResources(ResourceKind.ImageResource);
             Assert.Equal("resources/images", imagePath);
-            var soundPath = PathToResourcesForKind(ResourceKind.SoundResource);
+            var soundPath = PathToResources(ResourceKind.SoundResource);
             Assert.Equal("resources/sounds", soundPath);
         }
         [Fact]
         public void TestRegisterFreeNotifierIntegration()
         {
             var freeNotifier = new NotifierTracker();
-            RegisterFreeNotifier(freeNotifier.On_free);
-            Assert.True(freeNotifier.Wasnotified);
-            DeregisterFreeNotifier(freeNotifier.On_free);
-            Assert.False(freeNotifier.Wasnotified);
+            RegisterFreeNotifier(freeNotifier.OnFree);
+            Assert.True(freeNotifier.WasNotified);
+            DeregisterFreeNotifier(freeNotifier.OnFree);
+            Assert.False(freeNotifier.WasNotified);
         }
         [Fact]
         public void TestSetResourcesPathIntegration()

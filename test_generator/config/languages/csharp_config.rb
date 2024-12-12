@@ -12,9 +12,11 @@ module LanguageConfig
       supports_overloading: true,
       imports: [
         "using Xunit;\n",
-        "using static SplashKitSDK.SplashKit;\n\n",
+        "using static SplashKitSDK.SplashKit;\n\n"
       ],
       naming_convention: ->(name) { name.to_pascal_case },
+      
+
       assert_conditions: {
         'equal'                   => ->(v1, v2, _)    { "Assert.Equal(#{v1}, #{v2});\n" },
         'not_equal'               => ->(v1, v2, _)    { "Assert.NotEqual(#{v1}, #{v2});\n" },
@@ -41,6 +43,12 @@ module LanguageConfig
         'not_equal'    => ->(v1, v2) { "#{v1} != #{v2}" }
       }.freeze,
 
+      numeric_constants: {
+        infinity: 'float.PositiveInfinity',
+        negative_infinity: 'float.NegativeInfinity',
+        max_value: 'float.MaxValue'
+      }.freeze,
+
       control_flow: {
         loop:      ->(iterations) { "for (int i = 0; i < #{iterations}; i++) {\n" },
         while:     ->(condition) { "while (#{condition}) {\n" },
@@ -56,12 +64,6 @@ module LanguageConfig
         char:          ->(value) { "'#{value}'" }
       }.freeze,
 
-      numeric_constants: {
-        'inf'          => 'float.PositiveInfinity',
-        'neg_inf'      => 'float.NegativeInfinity',
-        'max_value'    => 'float.MaxValue'
-      }.freeze,
-
       type_handlers: {
         list:      ->(values, target_type = nil) { 
           mapped_type = DEFAULT_CONFIG[:type_handlers][:mapping][target_type] || target_type || 'dynamic'
@@ -74,15 +76,22 @@ module LanguageConfig
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
           "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
-        }
+        },
+        unsigned_int: ->(value) { "#{value}u" },
+        float: ->(value) { "#{value}f" }
       }.freeze,
 
       variable_handlers: {
         declaration:   ->(name) { "var #{name.to_camel_case} = " },
         reference:     ->(name) { name.to_camel_case.to_s },
-        field_access:  ->(var, field) { "#{var}.#{field.capitalize}" },
+        field_access: ->(var, field) { 
+          formatted_field = field.split('.').map(&:to_pascal_case).join('.')
+          "#{var}.#{formatted_field}"
+        },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" }
+        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
+        array_size:    ->(arr) { "#{arr}.Count" },
+        reference_operator: ->(var) { "ref #{var}" }
       }.freeze,
 
       function_handlers: {

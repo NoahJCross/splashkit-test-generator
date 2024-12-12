@@ -51,6 +51,12 @@ module LanguageConfig
         'not_equal'    => ->(v1, v2) { "#{v1} != #{v2}" }
       }.freeze,
 
+      numeric_constants: {
+        infinity: 'f64::INFINITY',
+        negative_infinity: 'f64::NEG_INFINITY',
+        max_value: 'f32::MAX'
+      }.freeze,
+
       control_flow: {
         loop:      ->(iterations) { "for _ in 0..#{iterations} {\n" },
         while:     ->(condition) { "while #{condition} {\n" },
@@ -66,12 +72,6 @@ module LanguageConfig
         char:          ->(value) { "'#{value}'" }
       }.freeze,
 
-      numeric_constants: {
-        'inf'          => 'f64::INFINITY',
-        'neg_inf'      => 'f64::NEG_INFINITY',
-        'max_value'    => 'f32::MAX'
-      }.freeze,
-
       type_handlers: {
         list:      ->(values, _) { "vec![#{values}]" },
         class:     ->(name, args) { "#{name}::new(#{args})" },
@@ -82,7 +82,9 @@ module LanguageConfig
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
           "#{type.to_pascal_case}::#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
-        }
+        },
+        unsigned_int: ->(value) { "#{value}u32" },
+        float: ->(value) { "#{value} as f32" }
       }.freeze,
 
       variable_handlers: {
@@ -90,13 +92,15 @@ module LanguageConfig
         reference:    ->(name) { name.to_snake_case.to_s },
         field_access: ->(var, field) { "#{var}.#{field}" },
         array_access: ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" }
+        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
+        array_size:   ->(arr) { "#{arr}.len()" },
+        reference_operator: ->(var) { "&#{var}" }
       }.freeze,
 
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
         pointer:   ->(name) { "let callback = |_| (); #{name}Wrapper::new(callback);\n" },
-        test:      ->(name) { "#[test]\nfn test_#{name.to_snake_case}_integration() {\n" }
+        test:      ->(name) { "#[test]\nfn test_#{name.to_snake_case}_integration() {\n" },
       }.freeze,
 
       class_wrapper: {

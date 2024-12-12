@@ -15,13 +15,17 @@ module TestGenerator
           'array_access'              => :format_array_access_value,
           'array_access_field'        => :format_array_access_field_value,
           'primitive'                 => :format_primitive_value,
+          'float'                     => :format_float_value,
           'enum'                      => :format_enum_value,
           'inf'                       => :format_infinity_value,
           'neg_inf'                   => :format_neg_infinity_value,
           'char'                      => :format_char_value,
           'max_value'                 => :format_max_value,
           'interpolated_string'       => :format_interpolated_string_value,
-          'class_instance'            => :format_class_instance_value
+          'class_instance'            => :format_class_instance_value,
+          'unsigned_int'              => :format_unsigned_int_value,
+          'ref'                       => :format_ref_value,
+          'size'                      => :format_array_size_value
         }
       end
 
@@ -182,6 +186,42 @@ module TestGenerator
 
         class_name = config.naming_convention.call(value[:class_name])
         config.type_handlers[:class].call(class_name, args)
+      end
+
+      # Formats array size access
+      # @param value [Hash] The array size value to format
+      # @param _ [Array] Unused functions parameter
+      # @param config [Hash] Language configuration
+      # @return [String] The formatted array size access
+      def format_array_size_value(value, _, config)
+        array_name = config.variable_handlers[:reference].call(value[:variable_name])
+        config.variable_handlers[:array_size].call(array_name)
+      end
+
+      # Formats float values
+      # @param value [Hash] The float value to format
+      # @return [String] The formatted float value
+      def format_float_value(value, _, config)
+        config.type_handlers[:float].call(value[:value])
+      end
+
+      # Formats unsigned integer values
+      # @param value [Hash] The unsigned integer value to format
+      # @param _ [Array] Unused functions parameter
+      # @param config [Hash] Language configuration
+      # @return [String] The formatted unsigned integer value
+      def format_unsigned_int_value(value, _, config)
+        config.type_handlers[:unsigned_int].call(value[:value])
+      end
+
+      # Formats reference values
+      # @param value [Hash] The reference value to format
+      # @param functions [Array] Available functions
+      # @param config [Hash] Language configuration
+      # @return [String] The formatted reference
+      def format_ref_value(value, _, config)
+        variable_name = config.variable_handlers[:reference].call(value[:variable_name])
+        config.variable_handlers[:reference_operator].call(variable_name)
       end
     end
   end

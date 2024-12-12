@@ -142,7 +142,7 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "init_custom_logger_name_override_mode",
+          "function_name": "init_custom_logger__name_override_mode",
           "args": [
             {
               "value_type": "primitive",
@@ -176,7 +176,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "init_custom_logger_name_override_mode",
+          "function_name": "init_custom_logger__name_override_mode",
           "args": [
             {
               "value_type": "primitive",

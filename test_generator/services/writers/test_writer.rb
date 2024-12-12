@@ -1,9 +1,10 @@
 module TestGenerator
   # Class responsible for writing test files for each function group
   class TestWriter
-    def initialize(group, functions, config, group_tests)
+    def initialize(group, group_functions, all_functions, config, group_tests)
       @group = group
-      @functions = functions
+      @group_functions = group_functions # Functions for this group only
+      @functions = all_functions # All available functions
       @config = config
       @group_tests = group_tests
       @formatter = CodeFormatter.new(config.indent_size)
@@ -63,7 +64,7 @@ module TestGenerator
     # @param file [File] File handle to write to
     # @return [void]
     def write_unwrapped_tests(file)
-      @functions.each do |function|
+      @group_functions.each do |function|
         write_test_method(file, function)
       end
     end
@@ -101,7 +102,7 @@ module TestGenerator
     # @param file [File] File handle to write to
     # @return [void]
     def write_test_methods(file)
-      @functions.each do |function|
+      @group_functions.each do |function|
         test_case = find_test_case(function)
         test = TestCase.new(test_case[:name], test_case[:steps], @config, @functions)
         file.puts(test.to_code(@formatter))
@@ -138,7 +139,7 @@ module TestGenerator
     # @raise [StandardError] If no test case is found
     def find_test_case(function)
       test_case = FunctionLookup.get_test_by_function_name(function, @group_tests)
-      MessageHandler.log_info("Found test case for #{function.name}: #{test_case ? 'yes' : 'no'}")
+      # MessageHandler.log_info("Found test case for #{function.name}: #{test_case ? 'yes' : 'no'}")
       validate_test_case_exists!(function, test_case)
       test_case
     end

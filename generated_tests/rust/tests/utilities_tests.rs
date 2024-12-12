@@ -29,8 +29,8 @@ fn test_convert_to_double_integration() {
     assert_eq!(123.0, convert_to_double("123."));
     assert_eq!(123.456, convert_to_double("000123.456"));
     assert_eq!(123.456, convert_to_double("123.456000"));
-    assert_eq!(, convert_to_double("inf"));
-    assert_eq!(, convert_to_double("-inf"));
+    assert_eq!(f64::INFINITY, convert_to_double("inf"));
+    assert_eq!(f64::NEG_INFINITY, convert_to_double("-inf"));
     assert_eq!(123.0, convert_to_double("1.23e2"));
 }
 #[test]
@@ -144,7 +144,7 @@ fn test_rnd_range_integration() {
 }
 #[test]
 fn test_rnd_integration() {
-    assert!((0.0..=).contains(&rnd()));
+    assert!((0.0..=f32::MAX).contains(&rnd()));
 }
 #[test]
 fn test_rnd_int_integration() {

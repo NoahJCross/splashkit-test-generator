@@ -365,7 +365,7 @@ fn test_apply_matrix_to_quad_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_matrix = identity_matrix();
     let test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(200.0, 200.0), point_at(100.0, 200.0));
-    apply_matrix_to_quad(test_matrix, test_quad);
+    apply_matrix_to_quad(test_matrix, &test_quad);
     assert_eq!(100.0, test_quad.points[0].x);
     assert_eq!(100.0, test_quad.points[0].y);
     close_window(test_window);
@@ -374,7 +374,7 @@ fn test_apply_matrix_to_quad_integration() {
 fn test_apply_matrix_to_triangle_integration() {
     let test_triangle = triangle_from(point_at(0.0, 0.0), point_at(1.0, 0.0), point_at(0.0, 1.0));
     let test_matrix = translation_matrix(1.0, 1.0);
-    apply_matrix_to_triangle(test_matrix, test_triangle);
+    apply_matrix_to_triangle(test_matrix, &test_triangle);
     assert_eq!(1.0, test_triangle.points[0].x);
     assert_eq!(1.0, test_triangle.points[0].y);
 }
@@ -518,7 +518,7 @@ fn test_ray_intersection_point_integration() {
     let test_heading = vector_to(1.0, 1.0);
     let test_line = line_from(point_at(0.0, 2.0), point_at(2.0, 0.0));
     let intersection_point = point_at(0.0, 0.0);
-    assert!(ray_intersection_point(test_from_pt, test_heading, test_line, intersection_point));
+    assert!(ray_intersection_point(test_from_pt, test_heading, test_line, &intersection_point));
     assert_eq!(1.0, intersection_point.X);
     assert_eq!(1.0, intersection_point.Y);
 }

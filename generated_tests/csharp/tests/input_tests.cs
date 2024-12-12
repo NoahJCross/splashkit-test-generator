@@ -77,22 +77,22 @@ namespace SplashKitTests
         {
             var callbacks = new KeyCallbacks();
             var testWindow = OpenWindow("Test Window", 800, 600);
-            RegisterCallbackOnKeyDown(callbacks.On_key_down);
+            RegisterCallbackOnKeyDown(callbacks.OnKeyDown);
             while (KeyDown(KeyCode.AKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press A to test callback", ColorBlack(), 10, 10);
                 DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_down}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyDown}", ColorBlack(), 10, 50);
                 RefreshScreen();
-                DeregisterCallbackOnKeyDown(callbacks.On_key_down);
+                DeregisterCallbackOnKeyDown(callbacks.OnKeyDown);
             }
             while (KeyDown(KeyCode.BKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press B to test deregistered callback", ColorBlack(), 10, 10);
                 DrawText($"Key Down: {KeyDown(KeyCode.BKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_down}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyDown}", ColorBlack(), 10, 50);
                 RefreshScreen();
             }
             CloseWindow(testWindow);
@@ -102,22 +102,22 @@ namespace SplashKitTests
         {
             var callbacks = new KeyCallbacks();
             var testWindow = OpenWindow("Test Window", 800, 600);
-            RegisterCallbackOnKeyTyped(callbacks.On_key_typed);
+            RegisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
             while (KeyTyped(KeyCode.AKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press A to test callback", ColorBlack(), 10, 10);
                 DrawText($"Key Typed: {KeyTyped(KeyCode.AKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_typed}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyTyped}", ColorBlack(), 10, 50);
                 RefreshScreen();
-                DeregisterCallbackOnKeyTyped(callbacks.On_key_typed);
+                DeregisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
             }
             while (KeyTyped(KeyCode.BKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press B to test deregistered callback", ColorBlack(), 10, 10);
                 DrawText($"Key Typed: {KeyTyped(KeyCode.BKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_typed}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyTyped}", ColorBlack(), 10, 50);
                 RefreshScreen();
             }
             CloseWindow(testWindow);
@@ -127,22 +127,22 @@ namespace SplashKitTests
         {
             var callbacks = new KeyCallbacks();
             var testWindow = OpenWindow("Test Window", 800, 600);
-            RegisterCallbackOnKeyUp(callbacks.On_key_up);
+            RegisterCallbackOnKeyUp(callbacks.OnKeyUp);
             while (KeyUp(KeyCode.AKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press and release A to test callback", ColorBlack(), 10, 10);
                 DrawText($"Key Up: {KeyUp(KeyCode.AKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_up}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyUp}", ColorBlack(), 10, 50);
                 RefreshScreen();
-                DeregisterCallbackOnKeyUp(callbacks.On_key_up);
+                DeregisterCallbackOnKeyUp(callbacks.OnKeyUp);
             }
             while (KeyUp(KeyCode.BKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press and release B to test deregistered callback", ColorBlack(), 10, 10);
                 DrawText($"Key Up: {KeyUp(KeyCode.BKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_up}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyUp}", ColorBlack(), 10, 50);
                 RefreshScreen();
             }
             CloseWindow(testWindow);
@@ -231,16 +231,16 @@ namespace SplashKitTests
         {
             var callbacks = new KeyCallbacks();
             var testWindow = OpenWindow("Test Window", 800, 600);
-            RegisterCallbackOnKeyDown(callbacks.On_key_down);
+            RegisterCallbackOnKeyDown(callbacks.OnKeyDown);
             while (KeyDown(KeyCode.AKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press A to test callback", ColorBlack(), 10, 10);
                 DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_down}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyDown}", ColorBlack(), 10, 50);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyDown(callbacks.On_key_down);
+            DeregisterCallbackOnKeyDown(callbacks.OnKeyDown);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -248,16 +248,16 @@ namespace SplashKitTests
         {
             var callbacks = new KeyCallbacks();
             var testWindow = OpenWindow("Test Window", 800, 600);
-            RegisterCallbackOnKeyTyped(callbacks.On_key_typed);
+            RegisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
             while (KeyTyped(KeyCode.AKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press A to test callback", ColorBlack(), 10, 10);
                 DrawText($"Key Typed: {KeyTyped(KeyCode.AKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_typed}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyTyped}", ColorBlack(), 10, 50);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyTyped(callbacks.On_key_typed);
+            DeregisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -265,16 +265,16 @@ namespace SplashKitTests
         {
             var callbacks = new KeyCallbacks();
             var testWindow = OpenWindow("Test Window", 800, 600);
-            RegisterCallbackOnKeyUp(callbacks.On_key_up);
+            RegisterCallbackOnKeyUp(callbacks.OnKeyUp);
             while (KeyUp(KeyCode.AKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press and release A to test callback", ColorBlack(), 10, 10);
                 DrawText($"Key Up: {KeyUp(KeyCode.AKey)}", ColorBlack(), 10, 30);
-                DrawText($"Callback received: {callbacks.Get_key_up}", ColorBlack(), 10, 50);
+                DrawText($"Callback received: {callbacks.GetKeyUp}", ColorBlack(), 10, 50);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyUp(callbacks.On_key_up);
+            DeregisterCallbackOnKeyUp(callbacks.OnKeyUp);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -421,7 +421,7 @@ namespace SplashKitTests
                 ClearScreen();
                 var scroll = MouseWheelScroll();
                 DrawText("Scroll mouse wheel to test", ColorBlack(), 10, 10);
-                DrawText("$Mouse Position: X={scroll.X}", "Y={scroll.Y}", ColorBlack(), 10, 30);
+                DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
                 DrawText("Press Space to end test", ColorBlack(), 10, 50);
                 RefreshScreen();
             }
@@ -487,7 +487,7 @@ namespace SplashKitTests
                 DrawText("Press M to move mouse to center", ColorBlack(), 10, 10);
                 DrawText($"Mouse Position: X={MouseX()}, Y={MouseY()}", ColorBlack(), 10, 30);
                 RefreshScreen();
-                MoveMouseToPoint(PointAt(400, 300));
+                MoveMouse(PointAt(400, 300));
             }
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
@@ -531,7 +531,7 @@ namespace SplashKitTests
                 DrawText("Press H to hide mouse", ColorBlack(), 10, 10);
                 DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
                 RefreshScreen();
-                ShowMouseWithBoolean(false);
+                ShowMouse(false);
             }
             while (KeyDown(KeyCode.SKey) == false) {
                 ProcessEvents();
@@ -540,7 +540,7 @@ namespace SplashKitTests
                 DrawText($"Mouse Shown: {MouseShown()}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
-            ShowMouseWithBoolean(true);
+            ShowMouse(true);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -552,7 +552,7 @@ namespace SplashKitTests
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
                 RefreshScreen();
             }
@@ -568,7 +568,7 @@ namespace SplashKitTests
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawText($"Reading Text: {ReadingText()}", ColorBlack(), 10, 30);
                 RefreshScreen();
                 EndReadingText();
@@ -592,10 +592,10 @@ namespace SplashKitTests
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawText($"Reading Text: {ReadingText(testWindow)}", ColorBlack(), 10, 30);
                 RefreshScreen();
-                EndReadingTextInWindow(testWindow);
+                EndReadingText(testWindow);
             }
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
@@ -615,7 +615,7 @@ namespace SplashKitTests
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawText($"Reading Text: {ReadingText()}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
@@ -631,8 +631,8 @@ namespace SplashKitTests
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
-                DrawText($"Reading Text: {ReadingTextInWindow(testWindow)}", ColorBlack(), 10, 30);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Reading Text: {ReadingText(testWindow)}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
             EndReadingText(testWindow);
@@ -647,7 +647,7 @@ namespace SplashKitTests
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawText($"Current Text: {TextInput()}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
@@ -659,11 +659,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 30);
-            StartReadingTextWithInitialText(testRect, "Initial Text");
+            StartReadingText(testRect, "Initial Text");
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawText($"Current Text: {TextInput()}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
@@ -675,11 +675,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 30);
-            StartReadingTextInWindow(testWindow, testRect);
+            StartReadingText(testWindow, testRect);
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawText($"Current Text: {TextInput(testWindow)}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
@@ -691,11 +691,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 30);
-            StartReadingTextInWindowWithInitialText(testWindow, testRect, "Initial Text");
+            StartReadingText(testWindow, testRect, "Initial Text");
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawText($"Current Text: {TextInput(testWindow)}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
@@ -727,7 +727,7 @@ namespace SplashKitTests
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Press Escape to cancel text entry", ColorBlack(), 10, 10);
-                DrawText($"Text Entry Cancelled: {TextEntryCancelledInWindow(testWindow)}", ColorBlack(), 10, 30);
+                DrawText($"Text Entry Cancelled: {TextEntryCancelled(testWindow)}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
             EndReadingText(testWindow);
@@ -741,7 +741,7 @@ namespace SplashKitTests
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
                 DrawText($"Current Text: {TextInput()}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
@@ -757,8 +757,8 @@ namespace SplashKitTests
             while (KeyDown(KeyCode.KeypadEnter) == false) {
                 ProcessEvents();
                 ClearScreen();
-                DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
-                DrawText($"Current Text: {TextInputInWindow(testWindow)}", ColorBlack(), 10, 30);
+                DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
+                DrawText($"Current Text: {TextInput(testWindow)}", ColorBlack(), 10, 30);
                 RefreshScreen();
             }
             EndReadingText(testWindow);

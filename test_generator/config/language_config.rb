@@ -24,7 +24,9 @@ module TestGenerator
                 :supports_overloading,
                 :naming_convention,
                 :class_wrapper,
-                :numeric_constants
+                :class_wrapper_handler,
+                :numeric_constants,
+                :float_handler
 
     def initialize(config)
       validate_config(config)
@@ -46,6 +48,7 @@ module TestGenerator
       @supports_overloading = config[:supports_overloading]
       @naming_convention = config[:naming_convention]
       @numeric_constants = config[:numeric_constants]
+      @class_wrapper_handler = ClassWrapperHandler.new(config[:class_wrapper])
     end
 
     # Creates a configuration instance for a specific language

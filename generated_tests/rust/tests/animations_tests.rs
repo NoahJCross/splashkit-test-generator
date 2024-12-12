@@ -54,7 +54,7 @@ fn test_animation_ended_integration() {
 fn test_animation_entered_frame_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "walkfront");
-    update_animation_percent(anim, 20);
+    update_animation_percent(anim, 20 as f32);
     assert!(animation_entered_frame(anim));
     update_animation(anim);
     assert!(!animation_entered_frame(anim));
@@ -330,7 +330,7 @@ fn test_restart_animation_with_sound_integration() {
 fn test_update_animation_percent_with_sound_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "moonwalkback");
-    update_animation_percent_with_sound(anim, 0.5, true);
+    update_animation_percent_with_sound(anim, 0.5 as f32, true);
     assert!(animation_frame_time(anim) > 0);
     free_animation(anim);
     free_animation_script(kermit_script);
@@ -348,7 +348,7 @@ fn test_update_animation_integration() {
 fn test_update_animation_percent_integration() {
     let kermit_script = load_animation_script("kermit", "kermit.txt");
     let anim = create_animation(kermit_script, "walkfront");
-    update_animation_percent(anim, 0.5);
+    update_animation_percent(anim, 0.5 as f32);
     assert!(animation_frame_time(anim) > 0);
     free_animation(anim);
     free_animation_script(kermit_script);

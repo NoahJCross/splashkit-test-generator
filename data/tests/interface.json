@@ -3222,16 +3222,13 @@
           "function_name": "hsb_color_slider_at_position",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 0.5
+              "value_type": "function",
+              "function_name": "color_black",
+              "args": []
             },
             {
-              "value_type": "primitive",
-              "value": 1.0
-            },
-            {
-              "value_type": "primitive",
-              "value": 0.5
+              "value_type": "variable",
+              "variable_name": "test_rect"
             }
           ],
           "store_result": "test_color"
@@ -3916,15 +3913,15 @@
                   "value": "Test Slider"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 100.0
                 }
               ]
@@ -4264,7 +4261,7 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "float",
           "variable_name": "test_result",
           "value": 5.0
         },
@@ -4299,7 +4296,7 @@
                   "variable_name": "test_result"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 1.0
                 },
                 {
@@ -4329,8 +4326,12 @@
               "variable_name": "test_result"
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 4.0
+              "value_type": "float",
+              "value": 1.0
+            },
+            "value3": {
+              "value_type": "float",
+              "value": 5.0
             }
           }
         },
@@ -4370,7 +4371,7 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "float",
           "variable_name": "test_result",
           "value": 5.0
         },
@@ -4405,7 +4406,7 @@
                   "variable_name": "test_result"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 1.0
                 }
               ]
@@ -4431,8 +4432,12 @@
               "variable_name": "test_result"
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 4.0
+              "value_type": "float",
+              "value": 1.0
+            },
+            "value3": {
+              "value_type": "float",
+              "value": 5.0
             }
           }
         },
@@ -4472,7 +4477,7 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "float",
           "variable_name": "test_result",
           "value": 5.0
         },
@@ -4511,7 +4516,7 @@
                   "variable_name": "test_result"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 1.0
                 }
               ]
@@ -4537,8 +4542,12 @@
               "variable_name": "test_result"
             },
             "value2": {
-              "value_type": "primitive",
-              "value": 4.0
+              "value_type": "float",
+              "value": 1.0
+            },
+            "value3": {
+              "value_type": "float",
+              "value": 5.0
             }
           }
         },
@@ -4997,7 +5006,7 @@
               "args": []
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             }
           ]
@@ -5224,15 +5233,15 @@
               "args": []
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.7
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.3
             }
           ]
@@ -5387,7 +5396,7 @@
                   "args": []
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 0.5
                 }
               ]
@@ -7377,7 +7386,7 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "float",
           "variable_name": "initial_value",
           "value": 50.0
         },
@@ -7418,11 +7427,11 @@
                   "variable_name": "slider_result"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 100.0
                 },
                 {
@@ -7493,7 +7502,7 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "float",
           "variable_name": "initial_value",
           "value": 50.0
         },
@@ -7534,11 +7543,11 @@
                   "variable_name": "slider_result"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 100.0
                 }
               ]
@@ -7605,7 +7614,7 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "float",
           "variable_name": "initial_value",
           "value": 50.0
         },
@@ -7650,11 +7659,11 @@
                   "variable_name": "slider_result"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "float",
                   "value": 100.0
                 }
               ]

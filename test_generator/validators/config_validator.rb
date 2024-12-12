@@ -63,12 +63,15 @@ module TestGenerator
       validate_control_flow
       validate_string_handlers
       validate_type_handlers
+      validate_assert_conditions
+      validate_if_conditions
+      validate_class_wrapper
     end
 
     # Validates required variable handler methods
     # @return [void]
     def validate_variable_handlers
-      required = %i[declaration reference field_access array_access matrix_access]
+      required = %i[declaration reference field_access array_access matrix_access array_size reference_operator]
       validate_methods(@config[:variable_handlers], required, 'variable_handlers')
     end
 
@@ -96,8 +99,30 @@ module TestGenerator
     # Validates required type handler methods
     # @return [void]
     def validate_type_handlers
-      required = %i[list class enum mapping]
+      required = %i[list class enum mapping unsigned_int float]
       validate_methods(@config[:type_handlers], required, 'type_handlers')
+    end
+
+    # Validates required assert condition methods
+    # @return [void]
+    def validate_assert_conditions
+      required = %w[equal not_equal greater_than less_than null not_null range true false 
+                    greater_than_or_equal less_than_or_equal throws not_empty contains empty]
+      validate_methods(@config[:assert_conditions], required, 'assert_conditions')
+    end
+
+    # Validates required if condition methods
+    # @return [void]
+    def validate_if_conditions
+      required = %w[greater_than true false equal not_equal]
+      validate_methods(@config[:if_conditions], required, 'if_conditions')
+    end
+
+    # Validates required class wrapper methods
+    # @return [void]
+    def validate_class_wrapper
+      required = %i[header constructor_wrapper footer]
+      validate_methods(@config[:class_wrapper], required, 'class_wrapper')
     end
 
     # Validates that a handler has all required methods

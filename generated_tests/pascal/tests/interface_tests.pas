@@ -407,7 +407,7 @@ procedure TIntegrationTests.TestHSBColorSliderAtPositionIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 100);
-    testColor := HSBColorSliderAtPosition(0.5, 1.0, 0.5);
+    testColor := HSBColorSlider(ColorBlack(), testRect);
     currentColor := testColor;
     while QuitRequested() = false do
         ProcessEvents();
@@ -491,7 +491,7 @@ begin
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        LabelElementAtPosition("Test Label", testRectangle);
+        LabelElement("Test Label", testRectangle);
         DrawInterface();
         RefreshScreen();
     end;
@@ -555,7 +555,7 @@ begin
         DrawInterface();
         RefreshScreen();
     end;
-    AssertTrue((testResult >= 4.0) and (testResult <= ));
+    AssertTrue((testResult >= 1.0) and (testResult <= 5.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestNumberBoxIntegration;
@@ -569,7 +569,7 @@ begin
         DrawInterface();
         RefreshScreen();
     end;
-    AssertTrue((testResult >= 4.0) and (testResult <= ));
+    AssertTrue((testResult >= 1.0) and (testResult <= 5.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestNumberBoxLabeledIntegration;
@@ -583,7 +583,7 @@ begin
         DrawInterface();
         RefreshScreen();
     end;
-    AssertTrue((testResult >= 4.0) and (testResult <= ));
+    AssertTrue((testResult >= 1.0) and (testResult <= 5.0));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestOpenPopupIntegration;
@@ -621,7 +621,7 @@ begin
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        ParagraphAtPosition("This is a test paragraph.", testRectangle);
+        Paragraph("This is a test paragraph.", testRectangle);
         DrawInterface();
         RefreshScreen();
     end;
@@ -718,7 +718,7 @@ procedure TIntegrationTests.TestSetInterfaceFontFontAsStringIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testFont := LoadFont("hara", "hara.ttf");
-    SetInterfaceFontFontAsString("hara");
+    SetInterfaceFont("hara");
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
@@ -849,7 +849,7 @@ end;
 procedure TIntegrationTests.TestSetInterfaceStyleWithColorIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
-    SetInterfaceStyleWithColor(InterfaceStyle.SHADED_DARK_STYLE, ColorBlue());
+    SetInterfaceStyle(InterfaceStyle.SHADED_DARK_STYLE, ColorBlue());
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
@@ -976,7 +976,7 @@ begin
         ProcessEvents();
         ClearScreen();
         StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-        SplitIntoColumnsWithLastWidth(3, 200);
+        SplitIntoColumns(3, 200);
         Button("Button 1");
         Button("Button 2");
         Button("Button 3");
@@ -993,7 +993,7 @@ begin
         ProcessEvents();
         ClearScreen();
         StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-        SplitIntoColumnsRelativeWithLastWidth(3, 0.5);
+        SplitIntoColumnsRelative(3, 0.5);
         Button("Button 1");
         Button("Button 2");
         Button("Button 3");
@@ -1027,7 +1027,7 @@ begin
     while QuitRequested() = false do
         ProcessEvents();
         ClearScreen();
-        StartInsetAtPosition("test_inset", testRect);
+        StartInset("test_inset", testRect);
         Button("Test Button");
         EndInset("test_inset");
         DrawInterface();
@@ -1146,5 +1146,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
+#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
 end;

@@ -9,7 +9,7 @@ public:
         free_json(test_json);
     }
     TEST_CASE("create_json_from_string_integration") {
-        auto test_json = create_json_from_string("{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}");
+        auto test_json = create_json("{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}");
         REQUIRE(json_has_key(test_json, "name"));
         REQUIRE("John" == json_read_string(test_json, "name"));
         free_json(test_json);
@@ -38,7 +38,7 @@ public:
     TEST_CASE("json_count_keys_integration") {
         auto test_json = create_json();
         json_set_string(test_json, "key1", "value1");
-        json_set_number_integer(test_json, "key2", 42);
+        json_set_number(test_json, "key2", 42);
         auto key_count = json_count_keys(test_json);
         REQUIRE(2 == key_count);
         free_json(test_json);
@@ -74,9 +74,9 @@ public:
     }
     TEST_CASE("json_read_array_of_double_integration") {
         auto test_json = create_json();
-        json_set_array_of_double(test_json, "numbers", std::vector<double> { 1.1, 2.2, 3.3 });
-        auto out_result = std::vector<double> {  };
-        json_read_array_of_double(test_json, "numbers", out_result);
+        json_set_array(test_json, "numbers", vector<double> { 1.1, 2.2, 3.3 });
+        auto out_result = vector<double> {  };
+        json_read_array(test_json, "numbers", &out_result);
         REQUIRE(1.1 == out_result[0]);
         REQUIRE(2.2 == out_result[1]);
         free_json(test_json);
@@ -88,11 +88,11 @@ public:
         auto test_json2 = create_json();
         json_set_string(test_json1, "key1", "value1");
         json_set_string(test_json2, "key2", "value2");
-        auto test_json_array = std::vector<Json> { test_json1, test_json2 };
-        json_set_array_of_json(test_json, "array_key", test_json_array);
-        auto out_result = std::vector<Json> {  };
-        json_read_array_of_json(test_json, "array_key", out_result);
-        REQUIRE(2 == size(out_result));
+        auto test_json_array = vector<Json> { test_json1, test_json2 };
+        json_set_array(test_json, "array_key", test_json_array);
+        auto out_result = vector<Json> {  };
+        json_read_array(test_json, "array_key", &out_result);
+        REQUIRE(2 == out_result.size());
         free_json(test_json);
         free_json(test_json1);
         free_json(test_json2);
@@ -100,19 +100,19 @@ public:
     }
     TEST_CASE("json_read_array_of_string_integration") {
         auto test_json = create_json();
-        json_set_array_of_string(test_json, "test_array", ["item1", "item2", "item3"]);
-        auto out_result = std::vector<string> {  };
-        json_read_array_of_string(test_json, "test_array", out_result);
-        REQUIRE(3 == size(out_result));
+        json_set_array(test_json, "test_array", vector<string> { "item1", "item2", "item3" });
+        auto out_result = vector<string> {  };
+        json_read_array(test_json, "test_array", &out_result);
+        REQUIRE(3 == out_result.size());
         REQUIRE("item1" == out_result[0]);
         free_json(test_json);
     }
     TEST_CASE("json_read_array_of_bool_integration") {
         auto test_json = create_json();
-        json_set_array_of_bool(test_json, "test_key", std::vector<bool> { true, false, true });
-        auto out_result = std::vector<bool> {  };
-        json_read_array_of_bool(test_json, "test_key", out_result);
-        REQUIRE(3 == size(out_result));
+        json_set_array(test_json, "test_key", vector<bool> { true, false, true });
+        auto out_result = vector<bool> {  };
+        json_read_array(test_json, "test_key", &out_result);
+        REQUIRE(3 == out_result.size());
         REQUIRE(out_result[0]);
         REQUIRE_FALSE(out_result[1]);
         free_json(test_json);
@@ -127,21 +127,21 @@ public:
     }
     TEST_CASE("json_read_number_integration") {
         auto test_json = create_json();
-        json_set_number_float(test_json, "test_key", 42.5);
+        json_set_number(test_json, "test_key", 42.5f);
         auto test_result = json_read_number(test_json, "test_key");
         REQUIRE(42.5 == test_result);
         free_json(test_json);
     }
     TEST_CASE("json_read_number_as_double_integration") {
         auto test_json = create_json();
-        json_set_number_double(test_json, "test_key", 3.14);
+        json_set_number(test_json, "test_key", 3.14);
         auto test_result = json_read_number_as_double(test_json, "test_key");
         REQUIRE(3.14 == test_result);
         free_json(test_json);
     }
     TEST_CASE("json_read_number_as_int_integration") {
         auto test_json = create_json();
-        json_set_number_integer(test_json, "test_key", 42);
+        json_set_number(test_json, "test_key", 42);
         auto test_result = json_read_number_as_int(test_json, "test_key");
         REQUIRE(42 == test_result);
         free_json(test_json);
@@ -163,26 +163,26 @@ public:
     }
     TEST_CASE("json_set_array_of_string_integration") {
         auto test_json = create_json();
-        json_set_array_of_string(test_json, "test_key", std::vector<string> { "value1", "value2", "value3" });
-        auto out_result = std::vector<string> {  };
-        json_read_array_of_string(test_json, "test_key", out_result);
-        REQUIRE(["value1", "value2", "value3"] == out_result);
+        json_set_array(test_json, "test_key", vector<string> { "value1", "value2", "value3" });
+        auto out_result = vector<string> {  };
+        json_read_array(test_json, "test_key", &out_result);
+        REQUIRE(vector<string> { "value1", "value2", "value3" } == out_result);
         free_json(test_json);
     }
     TEST_CASE("json_set_array_of_double_integration") {
         auto test_json = create_json();
-        json_set_array_of_double(test_json, "numbers", std::vector<double> { 1.1, 2.2, 3.3 });
-        auto out_result = std::vector<double> {  };
-        json_read_array_of_double(test_json, "numbers", out_result);
-        REQUIRE([1.1, 2.2, 3.3] == out_result);
+        json_set_array(test_json, "numbers", vector<double> { 1.1, 2.2, 3.3 });
+        auto out_result = vector<double> {  };
+        json_read_array(test_json, "numbers", &out_result);
+        REQUIRE(vector<double> { 1.1, 2.2, 3.3 } == out_result);
         free_json(test_json);
     }
     TEST_CASE("json_set_array_of_bool_integration") {
         auto test_json = create_json();
-        json_set_array_of_bool(test_json, "test_key", [true, false, true]);
-        auto out_result = std::vector<bool> {  };
-        json_read_array_of_bool(test_json, "test_key", out_result);
-        REQUIRE([true, false, true] == out_result);
+        json_set_array(test_json, "test_key", vector<bool> { true, false });
+        auto out_result = vector<bool> {  };
+        json_read_array(test_json, "test_key", &out_result);
+        REQUIRE(vector<bool> { true, false } == out_result);
         free_json(test_json);
     }
     TEST_CASE("json_set_array_of_json_integration") {
@@ -191,10 +191,10 @@ public:
         auto test_json2 = create_json();
         json_set_string(test_json1, "key1", "value1");
         json_set_string(test_json2, "key2", "value2");
-        auto test_json_array = std::vector<Json> { test_json1, test_json2 };
-        json_set_array_of_json(test_json, "array_key", test_json_array);
-        auto out_result = std::vector<Json> {  };
-        json_read_array_of_json(test_json, "array_key", out_result);
+        auto test_json_array = vector<Json> { test_json1, test_json2 };
+        json_set_array(test_json, "array_key", test_json_array);
+        auto out_result = vector<Json> {  };
+        json_read_array(test_json, "array_key", &out_result);
         REQUIRE("value1" == json_read_string(out_result[0], "key1"));
         REQUIRE("value2" == json_read_string(out_result[1], "key2"));
         free_all_json();
@@ -208,19 +208,19 @@ public:
     }
     TEST_CASE("json_set_number_integer_integration") {
         auto test_json = create_json();
-        json_set_number_integer(test_json, "age", 30);
+        json_set_number(test_json, "age", 30);
         REQUIRE(30 == json_read_number_as_int(test_json, "age"));
         free_json(test_json);
     }
     TEST_CASE("json_set_number_double_integration") {
         auto test_json = create_json();
-        json_set_number_double(test_json, "test_key", 3.14);
+        json_set_number(test_json, "test_key", 3.14);
         REQUIRE(3.14 == json_read_number_as_double(test_json, "test_key"));
         free_json(test_json);
     }
     TEST_CASE("json_set_number_float_integration") {
         auto test_json = create_json();
-        json_set_number_float(test_json, "test_key", 3.14);
+        json_set_number(test_json, "test_key", 3.14f);
         REQUIRE(3.140000104904175 == json_read_number(test_json, "test_key"));
         free_json(test_json);
     }

@@ -35,7 +35,7 @@ module TestGenerator
     # @return [String] The formatted test steps code
     def write_steps(formatter)
       @steps.map.with_index do |step, index|
-        TestStepWriter.write_test_step(step, @functions, @config, formatter)
+        StepWriter.write_test_step(step, @functions, @config, formatter)
       rescue StandardError => e
         raise TestGeneratorError, "Error writing step #{index + 1} in test '#{@name}': #{e.message}"
       end.join

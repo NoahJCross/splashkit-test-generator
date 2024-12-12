@@ -419,7 +419,7 @@
               "variable_name": "anim"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 20
             }
           ]
@@ -3033,7 +3033,7 @@
               "variable_name": "anim"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             },
             {
@@ -3211,7 +3211,7 @@
               "variable_name": "anim"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             }
           ]

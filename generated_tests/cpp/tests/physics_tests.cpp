@@ -10,7 +10,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_circle = circle_at(150.0, 150.0, 50.0);
         auto test_point = point_at(100.0, 100.0);
-        REQUIRE(bitmap_circle_collision_at_point(test_bitmap, test_point, test_circle));
+        REQUIRE(bitmap_circle_collision(test_bitmap, test_point, test_circle));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -31,7 +31,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_circle = circle_at(150.0, 150.0, 50.0);
         auto test_translation = translation_matrix(100.0, 100.0);
-        REQUIRE(bitmap_circle_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_circle));
+        REQUIRE(bitmap_circle_collision(test_bitmap, 0, test_translation, test_circle));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -42,7 +42,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_circle = circle_at(150.0, 150.0, 50.0);
         auto test_point = point_at(100.0, 100.0);
-        REQUIRE(bitmap_circle_collision_for_cell_at_point(test_bitmap, 0, test_point, test_circle));
+        REQUIRE(bitmap_circle_collision(test_bitmap, 0, test_point, test_circle));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -52,7 +52,7 @@ public:
         clear_bitmap(test_bitmap, color_black());
         setup_collision_mask(test_bitmap);
         auto test_circle = circle_at(150.0, 150.0, 50.0);
-        REQUIRE(bitmap_circle_collision_for_cell(test_bitmap, 0, 100.0, 100.0, test_circle));
+        REQUIRE(bitmap_circle_collision(test_bitmap, 0, 100.0, 100.0, test_circle));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -79,7 +79,7 @@ public:
         setup_collision_mask(test_bitmap2);
         auto test_point1 = point_at(0.0, 0.0);
         auto test_point2 = point_at(50.0, 50.0);
-        REQUIRE(bitmap_collision_at_points(test_bitmap1, test_point1, test_bitmap2, test_point2));
+        REQUIRE(bitmap_collision(test_bitmap1, test_point1, test_bitmap2, test_point2));
         free_all_bitmaps();
         close_window(test_window);
     }
@@ -93,7 +93,7 @@ public:
         setup_collision_mask(test_bitmap2);
         auto matrix1 = translation_matrix(0.0, 0.0);
         auto matrix2 = translation_matrix(50.0, 50.0);
-        REQUIRE(bitmap_collision_for_cells_with_translations(test_bitmap1, 0, matrix1, test_bitmap2, 0, matrix2));
+        REQUIRE(bitmap_collision(test_bitmap1, 0, matrix1, test_bitmap2, 0, matrix2));
         free_all_bitmaps();
         close_window(test_window);
     }
@@ -107,7 +107,7 @@ public:
         setup_collision_mask(test_bitmap2);
         auto test_point1 = point_at(100.0, 100.0);
         auto test_point2 = point_at(125.0, 125.0);
-        REQUIRE(bitmap_collision_for_cells_at_points(test_bitmap1, 0, test_point1, test_bitmap2, 0, test_point2));
+        REQUIRE(bitmap_collision(test_bitmap1, 0, test_point1, test_bitmap2, 0, test_point2));
         free_all_bitmaps();
         close_window(test_window);
     }
@@ -119,8 +119,8 @@ public:
         clear_bitmap(test_bitmap2, color_black());
         setup_collision_mask(test_bitmap1);
         setup_collision_mask(test_bitmap2);
-        REQUIRE_FALSE(bitmap_collision_for_cells(test_bitmap1, 0, 100.0, 100.0, test_bitmap2, 0, 200.0, 100.0));
-        REQUIRE(bitmap_collision_for_cells(test_bitmap1, 0, 100.0, 100.0, test_bitmap2, 0, 150.0, 100.0));
+        REQUIRE_FALSE(bitmap_collision(test_bitmap1, 0, 100.0, 100.0, test_bitmap2, 0, 200.0, 100.0));
+        REQUIRE(bitmap_collision(test_bitmap1, 0, 100.0, 100.0, test_bitmap2, 0, 150.0, 100.0));
         free_all_bitmaps();
         close_window(test_window);
     }
@@ -131,7 +131,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_translation = translation_matrix(100.0, 100.0);
         auto test_point = point_at(150.0, 150.0);
-        REQUIRE(bitmap_point_collision_with_translation(test_bitmap, test_translation, test_point));
+        REQUIRE(bitmap_point_collision(test_bitmap, test_translation, test_point));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -142,7 +142,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_bmp_point = point_at(50.0, 50.0);
         auto test_point = point_at(75.0, 75.0);
-        REQUIRE(bitmap_point_collision_at_point(test_bitmap, test_bmp_point, test_point));
+        REQUIRE(bitmap_point_collision(test_bitmap, test_bmp_point, test_point));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -163,7 +163,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_translation = translation_matrix(100.0, 100.0);
         auto test_point = point_at(150.0, 150.0);
-        REQUIRE(bitmap_point_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_point));
+        REQUIRE(bitmap_point_collision(test_bitmap, 0, test_translation, test_point));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -172,7 +172,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         clear_bitmap(test_bitmap, color_black());
         setup_collision_mask(test_bitmap);
-        REQUIRE(bitmap_point_collision_for_cell_at_point(test_bitmap, 0, 50.0, 50.0, 50.0, 50.0));
+        REQUIRE(bitmap_point_collision(test_bitmap, 0, 50.0, 50.0, 50.0, 50.0));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -180,9 +180,9 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         clear_bitmap(test_bitmap, color_black());
-        draw_pixel(color_white(), 50, 50, option_draw_to_bitmap(test_bitmap));
+        draw_pixel(color_white(), 50, 50, option_draw_to(test_bitmap));
         setup_collision_mask(test_bitmap);
-        REQUIRE(bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 50.0, 50.0));
+        REQUIRE(bitmap_point_collision(test_bitmap, 0, 0.0, 0.0, 50.0, 50.0));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -193,7 +193,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0);
         auto test_point = point_at(100.0, 100.0);
-        REQUIRE(bitmap_rectangle_collision_at_point(test_bitmap, test_point, test_rectangle));
+        REQUIRE(bitmap_rectangle_collision(test_bitmap, test_point, test_rectangle));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -214,7 +214,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_rectangle = rectangle_from(150.0, 150.0, 50.0, 50.0);
         auto test_translation = translation_matrix(100.0, 100.0);
-        REQUIRE(bitmap_rectangle_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_rectangle));
+        REQUIRE(bitmap_rectangle_collision(test_bitmap, 0, test_translation, test_rectangle));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -225,7 +225,7 @@ public:
         setup_collision_mask(test_bitmap);
         auto test_rectangle = rectangle_from(100.0, 100.0, 50.0, 50.0);
         auto test_point = point_at(100.0, 100.0);
-        REQUIRE(bitmap_rectangle_collision_for_cell_at_point(test_bitmap, 0, test_point, test_rectangle));
+        REQUIRE(bitmap_rectangle_collision(test_bitmap, 0, test_point, test_rectangle));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -235,7 +235,7 @@ public:
         clear_bitmap(test_bitmap, color_black());
         setup_collision_mask(test_bitmap);
         auto test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0);
-        REQUIRE(bitmap_rectangle_collision_for_cell(test_bitmap, 0, 50.0, 50.0, test_rectangle));
+        REQUIRE(bitmap_rectangle_collision(test_bitmap, 0, 50.0, 50.0, test_rectangle));
         free_bitmap(test_bitmap);
         close_window(test_window);
     }
@@ -261,7 +261,7 @@ public:
         auto test_sprite = create_sprite(test_bitmap);
         sprite_set_collision_kind(test_sprite, CollisionTestKind::PIXEL_COLLISIONS);
         sprite_set_position(test_sprite, point_at(50.0, 50.0));
-        REQUIRE(sprite_bitmap_collision_with_cell_at_point(test_sprite, test_bitmap, 0, point_at(50.0, 50.0)));
+        REQUIRE(sprite_bitmap_collision(test_sprite, test_bitmap, 0, point_at(50.0, 50.0)));
         free_all_sprites();
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -274,7 +274,7 @@ public:
         auto test_sprite = create_sprite(test_bitmap);
         sprite_set_collision_kind(test_sprite, CollisionTestKind::PIXEL_COLLISIONS);
         sprite_set_position(test_sprite, point_at(50.0, 50.0));
-        REQUIRE(sprite_bitmap_collision_with_cell(test_sprite, test_bitmap, 0, 50.0, 50.0));
+        REQUIRE(sprite_bitmap_collision(test_sprite, test_bitmap, 0, 50.0, 50.0));
         free_all_sprites();
         free_all_bitmaps();
         close_window(test_window);
@@ -330,7 +330,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_matrix = identity_matrix();
         auto test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(200.0, 200.0), point_at(100.0, 200.0));
-        apply_matrix_to_quad(test_matrix, test_quad);
+        apply_matrix(test_matrix, &test_quad);
         REQUIRE(100.0 == test_quad->points[0]->x);
         REQUIRE(100.0 == test_quad->points[0]->y);
         close_window(test_window);
@@ -338,7 +338,7 @@ public:
     TEST_CASE("apply_matrix_to_triangle_integration") {
         auto test_triangle = triangle_from(point_at(0.0, 0.0), point_at(1.0, 0.0), point_at(0.0, 1.0));
         auto test_matrix = translation_matrix(1.0, 1.0);
-        apply_matrix_to_triangle(test_matrix, test_triangle);
+        apply_matrix(test_matrix, &test_triangle);
         REQUIRE(1.0 == test_triangle->points[0]->x);
         REQUIRE(1.0 == test_triangle->points[0]->y);
     }
@@ -352,28 +352,28 @@ public:
     TEST_CASE("matrix_inverse_integration") {
         auto test_matrix = scale_rotate_translate_matrix(point_at(2.0, 2.0), 45.0, point_at(10.0, 10.0));
         auto inverse_matrix = matrix_inverse(test_matrix);
-        auto result_matrix = matrix_multiply_matrix(test_matrix, inverse_matrix);
+        auto result_matrix = matrix_multiply(test_matrix, inverse_matrix);
         REQUIRE(1.0 == result_matrix->Elements[0][0]);
         REQUIRE(1.0 == result_matrix->Elements[1][1]);
     }
     TEST_CASE("matrix_multiply_point_integration") {
         auto test_matrix = translation_matrix(10.0, 10.0);
         auto test_point = point_at(10.0, 20.0);
-        auto result_point = matrix_multiply_point(test_matrix, test_point);
+        auto result_point = matrix_multiply(test_matrix, test_point);
         REQUIRE(20.0 == result_point->X);
         REQUIRE(30.0 == result_point->Y);
     }
     TEST_CASE("matrix_multiply_matrix_integration") {
         auto test_matrix1 = scale_matrix(2.0);
         auto test_matrix2 = translation_matrix(10.0, 10.0);
-        auto result_matrix = matrix_multiply_matrix(test_matrix2, test_matrix1);
+        auto result_matrix = matrix_multiply(test_matrix2, test_matrix1);
         REQUIRE(2.0 == result_matrix->Elements[0][0]);
         REQUIRE(20.0 == result_matrix->Elements[0][2]);
     }
     TEST_CASE("matrix_multiply_vector_integration") {
         auto test_vector = vector_to(2.0, 2.0);
         auto test_matrix = scale_matrix(2.0);
-        auto result_vector = matrix_multiply_vector(test_matrix, test_vector);
+        auto result_vector = matrix_multiply(test_matrix, test_vector);
         REQUIRE(4.0 == result_vector->X);
         REQUIRE(4.0 == result_vector->Y);
     }
@@ -384,30 +384,30 @@ public:
     TEST_CASE("rotation_matrix_integration") {
         auto test_matrix = rotation_matrix(90.0);
         auto test_point = point_at(1.0, 0.0);
-        auto result_point = matrix_multiply_point(test_matrix, test_point);
+        auto result_point = matrix_multiply(test_matrix, test_point);
         REQUIRE(0 == result_point->X);
         REQUIRE(1 == result_point->Y);
     }
     TEST_CASE("scale_matrix_from_point_integration") {
         auto test_scale = point_at(2.0, 3.0);
-        auto test_matrix = scale_matrix_from_point(test_scale);
+        auto test_matrix = scale_matrix(test_scale);
         auto test_point = point_at(1.0, 1.0);
-        auto result_point = matrix_multiply_point(test_matrix, test_point);
+        auto result_point = matrix_multiply(test_matrix, test_point);
         REQUIRE(2.0 == result_point->X);
         REQUIRE(3.0 == result_point->Y);
     }
     TEST_CASE("scale_matrix_from_vector_integration") {
         auto test_scale = vector_to(2.0, 3.0);
-        auto test_matrix = scale_matrix_from_vector(test_scale);
+        auto test_matrix = scale_matrix(test_scale);
         auto test_point = point_at(1.0, 1.0);
-        auto result_point = matrix_multiply_point(test_matrix, test_point);
+        auto result_point = matrix_multiply(test_matrix, test_point);
         REQUIRE(2.0 == result_point->X);
         REQUIRE(3.0 == result_point->Y);
     }
     TEST_CASE("scale_matrix_integration") {
         auto test_point = point_at(1.0, 1.5);
         auto test_matrix = scale_matrix(2.0);
-        auto result_point = matrix_multiply_point(test_matrix, test_point);
+        auto result_point = matrix_multiply(test_matrix, test_point);
         REQUIRE(2.0 == result_point->x);
         REQUIRE(3.0 == result_point->y);
     }
@@ -416,30 +416,30 @@ public:
         auto test_translate = point_at(10.0, 10.0);
         auto test_matrix = scale_rotate_translate_matrix(test_scale, 90.0, test_translate);
         auto test_point = point_at(1.0, 0.0);
-        auto result_point = matrix_multiply_point(test_matrix, test_point);
+        auto result_point = matrix_multiply(test_matrix, test_point);
         REQUIRE(10 == result_point->X);
         REQUIRE(11 == result_point->Y);
     }
     TEST_CASE("translation_matrix_to_point_integration") {
         auto test_point = point_at(10.0, 20.0);
-        auto test_matrix = translation_matrix_to_point(test_point);
+        auto test_matrix = translation_matrix(test_point);
         auto test_vector = point_at(5.0, 5.0);
-        auto result_point = matrix_multiply_vector(test_matrix, test_vector);
+        auto result_point = matrix_multiply(test_matrix, test_vector);
         REQUIRE(15.0 == result_point->X);
         REQUIRE(25.0 == result_point->Y);
     }
     TEST_CASE("translation_matrix_from_vector_integration") {
         auto test_vector = vector_to(10.0, 20.0);
-        auto test_matrix = translation_matrix_from_vector(test_vector);
+        auto test_matrix = translation_matrix(test_vector);
         auto test_point = point_at(0.0, 0.0);
-        auto result_point = matrix_multiply_point(test_matrix, test_point);
+        auto result_point = matrix_multiply(test_matrix, test_point);
         REQUIRE(10.0 == result_point->X);
         REQUIRE(20.0 == result_point->Y);
     }
     TEST_CASE("translation_matrix_integration") {
         auto test_matrix = translation_matrix(10.0, 20.0);
         auto test_point = point_at(0.0, 0.0);
-        auto result_point = matrix_multiply_point(test_matrix, test_point);
+        auto result_point = matrix_multiply(test_matrix, test_point);
         REQUIRE(10.0 == result_point->X);
         REQUIRE(20.0 == result_point->Y);
     }
@@ -464,7 +464,7 @@ public:
         auto test_heading = vector_to(1.0, 1.0);
         auto test_line = line_from(point_at(0.0, 2.0), point_at(2.0, 0.0));
         auto intersection_point = point_at(0.0, 0.0);
-        REQUIRE(ray_intersection_point(test_from_pt, test_heading, test_line, intersection_point));
+        REQUIRE(ray_intersection_point(test_from_pt, test_heading, test_line, &intersection_point));
         REQUIRE(1.0 == intersection_point->X);
         REQUIRE(1.0 == intersection_point->Y);
     }
@@ -598,7 +598,7 @@ public:
     }
     TEST_CASE("vector_to_point_integration") {
         auto test_point = point_at(3.0, 4.0);
-        auto result_vector = vector_to_point(test_point);
+        auto result_vector = vector_to(test_point);
         REQUIRE(3.0 == result_vector->X);
         REQUIRE(4.0 == result_vector->Y);
     }

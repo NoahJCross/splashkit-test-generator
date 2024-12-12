@@ -29,7 +29,7 @@ public:
     TEST_CASE("close_window_named_integration") {
         auto window = open_window("Test Window", 800, 600);
         REQUIRE(has_window("Test Window"));
-        close_window_named("Test Window");
+        close_window("Test Window");
         REQUIRE_FALSE(has_window("Test Window"));
     }
     TEST_CASE("close_window_integration") {
@@ -148,7 +148,7 @@ public:
     }
     TEST_CASE("move_window_to_named_integration") {
         auto window = open_window("Test Window", 800, 600);
-        move_window_to_named("Test Window", 150, 250);
+        move_window_to("Test Window", 150, 250);
         process_events();
         REQUIRE(150 == window_x("Test Window"));
         REQUIRE(250 == window_y("Test Window"));
@@ -181,7 +181,7 @@ public:
     }
     TEST_CASE("refresh_window_with_target_fps_integration") {
         auto window = open_window("Test Window", 800, 600);
-        refresh_window_with_target_fps(window, 60);
+        refresh_window(window, 60);
         close_window(window);
     }
     TEST_CASE("resize_current_window_integration") {
@@ -204,7 +204,7 @@ public:
     TEST_CASE("set_current_window_named_integration") {
         auto window1 = open_window("Test Window 1", 800, 600);
         auto window2 = open_window("Test Window 2", 800, 600);
-        set_current_window_named("Test Window 2");
+        set_current_window("Test Window 2");
         REQUIRE(window2 == current_window());
         close_all_windows();
     }
@@ -223,11 +223,11 @@ public:
     TEST_CASE("window_close_requested_named_integration") {
         auto window = open_window("Test Window", 800, 600);
         process_events();
-        REQUIRE_FALSE(window_close_requested_named("Test Window"));
-        while (window_close_requested_named("Test Window") == false) {
+        REQUIRE_FALSE(window_close_requested("Test Window"));
+        while (window_close_requested("Test Window") == false) {
             process_events();
         }
-        REQUIRE(window_close_requested_named("Test Window"));
+        REQUIRE(window_close_requested("Test Window"));
         close_window(window);
     }
     TEST_CASE("window_close_requested_integration") {
@@ -242,10 +242,10 @@ public:
     }
     TEST_CASE("window_has_border_named_integration") {
         auto window = open_window("Test Window", 800, 600);
-        REQUIRE(window_has_border_named("Test Window"));
+        REQUIRE(window_has_border("Test Window"));
         window_toggle_border("Test Window");
         process_events();
-        REQUIRE_FALSE(window_has_border_named("Test Window"));
+        REQUIRE_FALSE(window_has_border("Test Window"));
         close_window(window);
     }
     TEST_CASE("window_has_border_integration") {
@@ -266,10 +266,10 @@ public:
     }
     TEST_CASE("window_height_named_integration") {
         auto window = open_window("Test Window", 800, 600);
-        REQUIRE(600 == window_height_named("Test Window"));
+        REQUIRE(600 == window_height("Test Window"));
         resize_window(window, 800, 400);
         process_events();
-        REQUIRE(400 == window_height_named("Test Window"));
+        REQUIRE(400 == window_height("Test Window"));
         close_window(window);
     }
     TEST_CASE("window_height_integration") {
@@ -282,10 +282,10 @@ public:
     }
     TEST_CASE("window_is_fullscreen_named_integration") {
         auto window = open_window("Test Window", 800, 600);
-        REQUIRE_FALSE(window_is_fullscreen_named("Test Window"));
+        REQUIRE_FALSE(window_is_fullscreen("Test Window"));
         window_toggle_fullscreen("Test Window");
         process_events();
-        REQUIRE(window_is_fullscreen_named("Test Window"));
+        REQUIRE(window_is_fullscreen("Test Window"));
         close_window(window);
     }
     TEST_CASE("window_is_fullscreen_integration") {
@@ -307,7 +307,7 @@ public:
         auto window = open_window("Test Window", 800, 600);
         move_window_to("Test Window", 100, 200);
         process_events();
-        auto position = window_position_named("Test Window");
+        auto position = window_position("Test Window");
         REQUIRE(100 == position->X);
         REQUIRE(200 == position->Y);
         close_window(window);
@@ -333,7 +333,7 @@ public:
     TEST_CASE("window_toggle_border_named_integration") {
         auto window = open_window("Test Window", 800, 600);
         REQUIRE(window_has_border("Test Window"));
-        window_toggle_border_named("Test Window");
+        window_toggle_border("Test Window");
         process_events();
         REQUIRE_FALSE(window_has_border("Test Window"));
         close_window(window);
@@ -349,7 +349,7 @@ public:
     TEST_CASE("window_toggle_fullscreen_named_integration") {
         auto window = open_window("Test Window", 800, 600);
         REQUIRE_FALSE(window_is_fullscreen("Test Window"));
-        window_toggle_fullscreen_named("Test Window");
+        window_toggle_fullscreen("Test Window");
         process_events();
         REQUIRE(window_is_fullscreen("Test Window"));
         close_window(window);
@@ -364,10 +364,10 @@ public:
     }
     TEST_CASE("window_width_named_integration") {
         auto window = open_window("Test Window", 800, 600);
-        REQUIRE(800 == window_width_named("Test Window"));
+        REQUIRE(800 == window_width("Test Window"));
         resize_window(window, 1024, 600);
         process_events();
-        REQUIRE(1024 == window_width_named("Test Window"));
+        REQUIRE(1024 == window_width("Test Window"));
         close_window(window);
     }
     TEST_CASE("window_width_integration") {
@@ -392,10 +392,10 @@ public:
         auto window = open_window("Test Window", 800, 600);
         move_window_to("Test Window", 100, 200);
         process_events();
-        REQUIRE(100 == window_x_named("Test Window"));
+        REQUIRE(100 == window_x("Test Window"));
         move_window_to("Test Window", 300, 200);
         process_events();
-        REQUIRE(300 == window_x_named("Test Window"));
+        REQUIRE(300 == window_x("Test Window"));
         close_window(window);
     }
     TEST_CASE("window_x_integration") {
@@ -412,10 +412,10 @@ public:
         auto window = open_window("Test Window", 800, 600);
         move_window_to("Test Window", 100, 200);
         process_events();
-        REQUIRE(200 == window_y_named("Test Window"));
+        REQUIRE(200 == window_y("Test Window"));
         move_window_to("Test Window", 100, 400);
         process_events();
-        REQUIRE(400 == window_y_named("Test Window"));
+        REQUIRE(400 == window_y("Test Window"));
         close_window(window);
     }
     TEST_CASE("window_y_integration") {

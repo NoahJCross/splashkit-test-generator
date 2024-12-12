@@ -4636,7 +4636,7 @@
               "variable_name": "test_matrix"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "test_quad"
             }
           ]
@@ -4763,7 +4763,7 @@
               "variable_name": "test_matrix"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "test_triangle"
             }
           ]
@@ -6260,7 +6260,7 @@
                   "variable_name": "test_line"
                 },
                 {
-                  "value_type": "variable",
+                  "value_type": "ref",
                   "variable_name": "intersection_point"
                 }
               ]

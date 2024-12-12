@@ -33,7 +33,7 @@ namespace SplashKitTests
             Assert.True(HasBitmap("FrogBmp"));
             Assert.True(HasFont("hara"));
             Assert.True(HasSoundEffect("error"));
-            Assert.True(HasTimerNamed("my timer"));
+            Assert.True(HasTimer("my timer"));
             Assert.True(HasResourceBundle("blah"));
             FreeResourceBundle("test");
             Assert.False(HasResourceBundle("test_bundle"));

@@ -21,9 +21,9 @@ begin
 end;
 procedure TIntegrationTests.TestInitCustomLoggerNameOverrideModeIntegration;
 begin
-    InitCustomLoggerNameOverrideMode("test_app", true, LogMode.LOG_CONSOLE_AND_FILE);
+    InitCustomLogger("test_app", true, LogMode.LOG_CONSOLE_AND_FILE);
     Log(LogLevel.INFO, "This message should appear in both console and file.");
-    InitCustomLoggerNameOverrideMode("test_app", false, LogMode.LOG_FILE_ONLY);
+    InitCustomLogger("test_app", false, LogMode.LOG_FILE_ONLY);
     Log(LogLevel.INFO, "This message should only appear in the file.");
     CloseLogProcess();
 end;
@@ -37,5 +37,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
+#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
 end;

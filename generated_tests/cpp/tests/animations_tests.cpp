@@ -42,7 +42,7 @@ public:
     TEST_CASE("animation_entered_frame_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "walkfront");
-        update_animation_percent(anim, 20);
+        update_animation(anim, 20f);
         REQUIRE(animation_entered_frame(anim));
         update_animation(anim);
         REQUIRE_FALSE(animation_entered_frame(anim));
@@ -90,7 +90,7 @@ public:
     TEST_CASE("assign_animation_with_script_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback");
-        assign_animation_with_script(anim, kermit_script, "walkfront");
+        assign_animation(anim, kermit_script, "walkfront");
         REQUIRE("walkfront" == animation_name(anim));
         free_animation_script(kermit_script);
         free_animation(anim);
@@ -98,7 +98,7 @@ public:
     TEST_CASE("assign_animation_with_script_and_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "walkfront");
-        assign_animation_with_script_and_sound(anim, kermit_script, "walkleft", true);
+        assign_animation(anim, kermit_script, "walkleft", true);
         REQUIRE("walkleft" == animation_name(anim));
         free_animation(anim);
         free_animation_script(kermit_script);
@@ -106,7 +106,7 @@ public:
     TEST_CASE("assign_animation_index_with_script_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback");
-        assign_animation_index_with_script(anim, kermit_script, 0);
+        assign_animation(anim, kermit_script, 0);
         REQUIRE("walkfront" == animation_name(anim));
         free_animation_script(kermit_script);
         free_animation(anim);
@@ -114,7 +114,7 @@ public:
     TEST_CASE("assign_animation_index_with_script_and_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback");
-        assign_animation_index_with_script_and_sound(anim, kermit_script, 0, true);
+        assign_animation(anim, kermit_script, 0, true);
         REQUIRE("walkfront" == animation_name(anim));
         free_animation_script(kermit_script);
         free_animation(anim);
@@ -122,7 +122,7 @@ public:
     TEST_CASE("assign_animation_with_script_named_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback");
-        assign_animation_with_script_named(anim, "kermit", "walkfront");
+        assign_animation(anim, "kermit", "walkfront");
         REQUIRE("walkfront" == animation_name(anim));
         free_animation_script(kermit_script);
         free_animation(anim);
@@ -130,7 +130,7 @@ public:
     TEST_CASE("assign_animation_with_script_named_and_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "walkfront");
-        assign_animation_with_script_named_and_sound(anim, "kermit", "walkfront", true);
+        assign_animation(anim, "kermit", "walkfront", true);
         REQUIRE("walkfront" == animation_name(anim));
         free_animation(anim);
         free_animation_script(kermit_script);
@@ -138,7 +138,7 @@ public:
     TEST_CASE("assign_animation_index_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback");
-        assign_animation_index(anim, 0);
+        assign_animation(anim, 0);
         REQUIRE(0 == animation_current_cell(anim));
         free_animation(anim);
         free_animation_script(kermit_script);
@@ -146,7 +146,7 @@ public:
     TEST_CASE("assign_animation_index_with_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback", false);
-        assign_animation_index_with_sound(anim, 0, true);
+        assign_animation(anim, 0, true);
         REQUIRE(animation_entered_frame(anim));
         free_animation_script(kermit_script);
         free_animation(anim);
@@ -162,14 +162,14 @@ public:
     TEST_CASE("assign_animation_with_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback");
-        assign_animation_with_sound(anim, "walkfront", true);
+        assign_animation(anim, "walkfront", true);
         REQUIRE("walkfront" == animation_name(anim));
         free_animation_script(kermit_script);
         free_animation(anim);
     }
     TEST_CASE("create_animation_from_index_with_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
-        auto anim = create_animation_from_index_with_sound(kermit_script, 0, true);
+        auto anim = create_animation(kermit_script, 0, true);
         REQUIRE(anim != nullptr);
         auto anim_name = animation_name(anim);
         REQUIRE("walkfront" == anim_name);
@@ -187,7 +187,7 @@ public:
     }
     TEST_CASE("create_animation_with_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
-        auto anim = create_animation_with_sound(kermit_script, "moonwalkback", true);
+        auto anim = create_animation(kermit_script, "moonwalkback", true);
         REQUIRE(anim != nullptr);
         auto anim_name = animation_name(anim);
         REQUIRE("moonwalkback" == anim_name);
@@ -196,7 +196,7 @@ public:
     }
     TEST_CASE("create_animation_from_script_named_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
-        auto anim = create_animation_from_script_named("kermit", "moonwalkback");
+        auto anim = create_animation("kermit", "moonwalkback");
         REQUIRE(anim != nullptr);
         auto anim_name = animation_name(anim);
         REQUIRE("moonwalkback" == anim_name);
@@ -205,7 +205,7 @@ public:
     }
     TEST_CASE("create_animation_from_script_named_with_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
-        auto anim = create_animation_from_script_named_with_sound(kermit_script, "moonwalkback", true);
+        auto anim = create_animation(kermit_script, "moonwalkback", true);
         REQUIRE(anim != nullptr);
         auto anim_name = animation_name(anim);
         REQUIRE("moonwalkback" == anim_name);
@@ -236,7 +236,7 @@ public:
     TEST_CASE("free_animation_script_with_name_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         REQUIRE(has_animation_script("kermit"));
-        free_animation_script_with_name("kermit");
+        free_animation_script("kermit");
         REQUIRE_FALSE(has_animation_script("kermit"));
     }
     TEST_CASE("has_animation_named_integration") {
@@ -280,7 +280,7 @@ public:
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback", true);
         update_animation(anim);
-        restart_animation_with_sound(anim, true);
+        restart_animation(anim, true);
         REQUIRE(3 == animation_current_cell(anim));
         free_animation(anim);
         free_animation_script(kermit_script);
@@ -288,7 +288,7 @@ public:
     TEST_CASE("update_animation_percent_with_sound_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "moonwalkback");
-        update_animation_percent_with_sound(anim, 0.5, true);
+        update_animation(anim, 0.5f, true);
         REQUIRE(animation_frame_time(anim) > 0);
         free_animation(anim);
         free_animation_script(kermit_script);
@@ -304,7 +304,7 @@ public:
     TEST_CASE("update_animation_percent_integration") {
         auto kermit_script = load_animation_script("kermit", "kermit.txt");
         auto anim = create_animation(kermit_script, "walkfront");
-        update_animation_percent(anim, 0.5);
+        update_animation(anim, 0.5f);
         REQUIRE(animation_frame_time(anim) > 0);
         free_animation(anim);
         free_animation_script(kermit_script);

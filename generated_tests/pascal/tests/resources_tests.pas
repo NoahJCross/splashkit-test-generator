@@ -8,7 +8,7 @@ begin
     freeNotifier := NotifierTracker.Create();
     RegisterFreeNotifier(freeNotifier.on_free);
     DeregisterFreeNotifier(freeNotifier.on_free);
-    AssertTrue(freeNotifier.WasNotified);
+    AssertTrue(freeNotifier.was_notified);
 end;
 procedure TIntegrationTests.TestPathToResourceIntegration;
 begin
@@ -29,18 +29,18 @@ end;
 procedure TIntegrationTests.TestPathToResourcesForKindIntegration;
 begin
     SetResourcesPath("resources");
-    imagePath := PathToResourcesForKind(ResourceKind.IMAGE_RESOURCE);
+    imagePath := PathToResources(ResourceKind.IMAGE_RESOURCE);
     AssertEquals("resources/images", imagePath);
-    soundPath := PathToResourcesForKind(ResourceKind.SOUND_RESOURCE);
+    soundPath := PathToResources(ResourceKind.SOUND_RESOURCE);
     AssertEquals("resources/sounds", soundPath);
 end;
 procedure TIntegrationTests.TestRegisterFreeNotifierIntegration;
 begin
     freeNotifier := NotifierTracker.Create();
     RegisterFreeNotifier(freeNotifier.on_free);
-    AssertTrue(freeNotifier.WasNotified);
+    AssertTrue(freeNotifier.was_notified);
     DeregisterFreeNotifier(freeNotifier.on_free);
-    AssertFalse(freeNotifier.WasNotified);
+    AssertFalse(freeNotifier.was_notified);
 end;
 procedure TIntegrationTests.TestSetResourcesPathIntegration;
 begin
@@ -53,5 +53,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
+#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
 end;

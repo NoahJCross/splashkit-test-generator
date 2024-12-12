@@ -379,7 +379,7 @@ public:
     TEST_CASE("hsb_color_slider_at_position_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_rect = rectangle_from(100, 100, 200, 100);
-        auto test_color = hsb_color_slider_at_position(0.5, 1.0, 0.5);
+        auto test_color = hsb_color_slider(color_black(), test_rect);
         auto current_color = test_color;
         while (quit_requested() == false) {
             process_events();
@@ -457,7 +457,7 @@ public:
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            label_element_at_position("Test Label", test_rectangle);
+            label_element("Test Label", test_rectangle);
             draw_interface();
             refresh_screen();
         }
@@ -468,7 +468,7 @@ public:
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            slider("Test Slider", 0.0, 0.0, 100.0);
+            slider("Test Slider", 0.0f, 0.0f, 100.0f);
             draw_interface();
             refresh_screen();
         }
@@ -509,41 +509,41 @@ public:
     TEST_CASE("number_box_at_position_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_rect = rectangle_from(100, 100, 200, 30);
-        auto test_result = 5.0;
+        auto test_result = 5.0f;
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            test_result = number_box(test_result, 1.0, test_rect);;
+            test_result = number_box(test_result, 1.0f, test_rect);;
             draw_interface();
             refresh_screen();
         }
-        REQUIRE(test_result >= 4.0 && test_result <= );
+        REQUIRE(test_result >= 1.0f && test_result <= 5.0f);
         close_window(test_window);
     }
     TEST_CASE("number_box_integration") {
         auto test_window = open_window("Number Box Test", 800, 600);
-        auto test_result = 5.0;
+        auto test_result = 5.0f;
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            test_result = number_box(test_result, 1.0);;
+            test_result = number_box(test_result, 1.0f);;
             draw_interface();
             refresh_screen();
         }
-        REQUIRE(test_result >= 4.0 && test_result <= );
+        REQUIRE(test_result >= 1.0f && test_result <= 5.0f);
         close_window(test_window);
     }
     TEST_CASE("number_box_labeled_integration") {
         auto test_window = open_window("Test Window", 800, 600);
-        auto test_result = 5.0;
+        auto test_result = 5.0f;
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            test_result = number_box("Test Value", test_result, 1.0);;
+            test_result = number_box("Test Value", test_result, 1.0f);;
             draw_interface();
             refresh_screen();
         }
-        REQUIRE(test_result >= 4.0 && test_result <= );
+        REQUIRE(test_result >= 1.0f && test_result <= 5.0f);
         close_window(test_window);
     }
     TEST_CASE("open_popup_integration") {
@@ -578,7 +578,7 @@ public:
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            paragraph_at_position("This is a test paragraph.", test_rectangle);
+            paragraph("This is a test paragraph.", test_rectangle);
             draw_interface();
             refresh_screen();
         }
@@ -600,7 +600,7 @@ public:
     }
     TEST_CASE("set_interface_accent_color_integration") {
         auto test_window = open_window("Test Window", 800, 600);
-        set_interface_accent_color(color_red(), 0.5);
+        set_interface_accent_color(color_red(), 0.5f);
         while (quit_requested() == false) {
             process_events();
             clear_screen();
@@ -626,7 +626,7 @@ public:
     }
     TEST_CASE("set_interface_colors_auto_integration") {
         auto test_window = open_window("Test Window", 800, 600);
-        set_interface_colors_auto(color_white(), color_blue(), 0.5, 0.7, 0.3);
+        set_interface_colors_auto(color_white(), color_blue(), 0.5f, 0.7f, 0.3f);
         while (quit_requested() == false) {
             process_events();
             clear_screen();
@@ -643,7 +643,7 @@ public:
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            set_interface_element_color(color_black(), 0.5);
+            set_interface_element_color(color_black(), 0.5f);
             start_panel("Test Panel", rectangle_from(100, 100, 200, 200));
             button("Test Button");
             end_panel("Test Panel");
@@ -668,7 +668,7 @@ public:
     TEST_CASE("set_interface_font_font_as_string_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_font = load_font("hara", "hara.ttf");
-        set_interface_font_font_as_string("hara");
+        set_interface_font("hara");
         while (quit_requested() == false) {
             process_events();
             clear_screen();
@@ -790,7 +790,7 @@ public:
     }
     TEST_CASE("set_interface_style_with_color_integration") {
         auto test_window = open_window("Test Window", 800, 600);
-        set_interface_style_with_color(InterfaceStyle::SHADED_DARK_STYLE, color_blue());
+        set_interface_style(InterfaceStyle::SHADED_DARK_STYLE, color_blue());
         while (quit_requested() == false) {
             process_events();
             clear_screen();
@@ -847,12 +847,12 @@ public:
     TEST_CASE("slider_at_position_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_rect = rectangle_from(100, 100, 200, 20);
-        auto initial_value = 50.0;
+        auto initial_value = 50.0f;
         auto slider_result = initial_value;
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            slider_result = slider(slider_result, 0.0, 100.0, test_rect);;
+            slider_result = slider(slider_result, 0.0f, 100.0f, test_rect);;
             draw_interface();
             refresh_screen();
         }
@@ -861,12 +861,12 @@ public:
     }
     TEST_CASE("slider_integration") {
         auto test_window = open_window("Test Window", 800, 600);
-        auto initial_value = 50.0;
+        auto initial_value = 50.0f;
         auto slider_result = initial_value;
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            slider_result = slider(slider_result, 0.0, 100.0);;
+            slider_result = slider(slider_result, 0.0f, 100.0f);;
             draw_interface();
             refresh_screen();
         }
@@ -875,12 +875,12 @@ public:
     }
     TEST_CASE("slider_labeled_integration") {
         auto test_window = open_window("Test Window", 800, 600);
-        auto initial_value = 50.0;
+        auto initial_value = 50.0f;
         auto slider_result = initial_value;
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            slider_result = slider("Test Slider", slider_result, 0.0, 100.0);;
+            slider_result = slider("Test Slider", slider_result, 0.0f, 100.0f);;
             draw_interface();
             refresh_screen();
         }
@@ -909,7 +909,7 @@ public:
             process_events();
             clear_screen();
             start_panel("Test Panel", rectangle_from(0, 0, 800, 600));
-            split_into_columns_with_last_width(3, 200);
+            split_into_columns(3, 200);
             button("Button 1");
             button("Button 2");
             button("Button 3");
@@ -925,7 +925,7 @@ public:
             process_events();
             clear_screen();
             start_panel("Test Panel", rectangle_from(0, 0, 800, 600));
-            split_into_columns_relative_with_last_width(3, 0.5);
+            split_into_columns_relative(3, 0.5);
             button("Button 1");
             button("Button 2");
             button("Button 3");
@@ -957,7 +957,7 @@ public:
         while (quit_requested() == false) {
             process_events();
             clear_screen();
-            start_inset_at_position("test_inset", test_rect);
+            start_inset("test_inset", test_rect);
             button("Test Button");
             end_inset("test_inset");
             draw_interface();

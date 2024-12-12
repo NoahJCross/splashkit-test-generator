@@ -25,7 +25,7 @@ public:
     TEST_CASE("fade_music_in_named_integration") {
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
-        fade_music_in_named("test_music", 1000);
+        fade_music_in("test_music", 1000);
         REQUIRE(music_playing());
         free_music(test_music);
         close_audio();
@@ -33,7 +33,7 @@ public:
     TEST_CASE("fade_music_in_named_with_times_integration") {
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
-        fade_music_in_named_with_times("test_music", 2, 1000);
+        fade_music_in("test_music", 2, 1000);
         REQUIRE(music_playing());
         free_music(test_music);
         close_audio();
@@ -49,7 +49,7 @@ public:
     TEST_CASE("fade_music_in_with_times_integration") {
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
-        fade_music_in_with_times(test_music, 2, 1000);
+        fade_music_in(test_music, 2, 1000);
         REQUIRE(music_playing());
         free_music(test_music);
         close_audio();
@@ -140,7 +140,7 @@ public:
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
         play_music(test_music);
-        set_music_volume(0.5);
+        set_music_volume(0.5f);
         REQUIRE(0.5 == music_volume());
         free_music(test_music);
         close_audio();
@@ -157,7 +157,7 @@ public:
     TEST_CASE("play_music_named_integration") {
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
-        play_music_named("test_music");
+        play_music("test_music");
         REQUIRE(music_playing());
         free_music(test_music);
         close_audio();
@@ -165,7 +165,7 @@ public:
     TEST_CASE("play_music_named_with_times_integration") {
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
-        play_music_named_with_times("test_music", 2);
+        play_music("test_music", 2);
         REQUIRE(music_playing());
         free_music(test_music);
         close_audio();
@@ -181,7 +181,7 @@ public:
     TEST_CASE("play_music_with_times_integration") {
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
-        play_music_with_times(test_music, 2);
+        play_music(test_music, 2);
         REQUIRE(music_playing());
         free_music(test_music);
         close_audio();
@@ -189,7 +189,7 @@ public:
     TEST_CASE("play_music_with_times_and_volume_integration") {
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
-        play_music_with_times_and_volume(test_music, 2, 0.75);
+        play_music(test_music, 2, 0.75f);
         REQUIRE(music_playing());
         REQUIRE(0.75 == music_volume());
         free_music(test_music);
@@ -210,7 +210,7 @@ public:
         open_audio();
         auto test_music = load_music("test_music", "magical_night.ogg");
         play_music(test_music);
-        set_music_volume(0.5);
+        set_music_volume(0.5f);
         REQUIRE(0.5 == music_volume());
         free_music(test_music);
         close_audio();
@@ -282,7 +282,7 @@ public:
     TEST_CASE("play_sound_effect_named_integration") {
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "breakdance.wav");
-        play_sound_effect_named("test_sound");
+        play_sound_effect("test_sound");
         REQUIRE(sound_effect_playing(test_sound));
         free_sound_effect(test_sound);
         close_audio();
@@ -290,7 +290,7 @@ public:
     TEST_CASE("play_sound_effect_named_with_volume_integration") {
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "breakdance.wav");
-        play_sound_effect_named_with_volume("test_sound", 0.75);
+        play_sound_effect("test_sound", 0.75f);
         REQUIRE(sound_effect_playing(test_sound));
         free_sound_effect(test_sound);
         close_audio();
@@ -298,7 +298,7 @@ public:
     TEST_CASE("play_sound_effect_named_with_times_integration") {
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "breakdance.wav");
-        play_sound_effect_named_with_times("test_sound", 3);
+        play_sound_effect("test_sound", 3);
         REQUIRE(sound_effect_playing(test_sound));
         free_sound_effect(test_sound);
         close_audio();
@@ -306,7 +306,7 @@ public:
     TEST_CASE("play_sound_effect_named_with_times_and_volume_integration") {
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "breakdance.wav");
-        play_sound_effect_named_with_times_and_volume("test_sound", 2, 0.75);
+        play_sound_effect("test_sound", 2, 0.75);
         REQUIRE(sound_effect_playing(test_sound));
         free_sound_effect(test_sound);
         close_audio();
@@ -322,7 +322,7 @@ public:
     TEST_CASE("play_sound_effect_with_volume_integration") {
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "breakdance.wav");
-        play_sound_effect_with_volume(test_sound, 0.75);
+        play_sound_effect(test_sound, 0.75f);
         REQUIRE(sound_effect_playing(test_sound));
         free_sound_effect(test_sound);
         close_audio();
@@ -330,7 +330,7 @@ public:
     TEST_CASE("play_sound_effect_with_times_integration") {
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "SwinGameStart.wav");
-        play_sound_effect_with_times(test_sound, 3);
+        play_sound_effect(test_sound, 3);
         REQUIRE(sound_effect_playing(test_sound));
         free_sound_effect(test_sound);
         close_audio();
@@ -338,7 +338,7 @@ public:
     TEST_CASE("play_sound_effect_with_times_and_volume_integration") {
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "SwinGameStart.wav");
-        play_sound_effect_with_times_and_volume(test_sound, 2, 0.75);
+        play_sound_effect(test_sound, 2, 0.75f);
         REQUIRE(sound_effect_playing(test_sound));
         free_sound_effect(test_sound);
         close_audio();
@@ -369,9 +369,9 @@ public:
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "SwinGameStart.wav");
         play_sound_effect("test_sound");
-        REQUIRE(sound_effect_playing_named("test_sound"));
+        REQUIRE(sound_effect_playing("test_sound"));
         stop_sound_effect("test_sound");
-        REQUIRE_FALSE(sound_effect_playing_named("test_sound"));
+        REQUIRE_FALSE(sound_effect_playing("test_sound"));
         free_sound_effect(test_sound);
         close_audio();
     }
@@ -397,7 +397,7 @@ public:
         open_audio();
         auto test_sound = load_sound_effect("test_sound", "SwinGameStart.wav");
         play_sound_effect("test_sound");
-        stop_sound_effect_named("test_sound");
+        stop_sound_effect("test_sound");
         REQUIRE_FALSE(sound_effect_playing("test_sound"));
         free_sound_effect(test_sound);
         close_audio();

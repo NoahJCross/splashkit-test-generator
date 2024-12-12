@@ -9,14 +9,14 @@ public:
             process_events();
             clear_screen();
             draw_text("Press A to test events", color_black(), 10, 10);
-            draw_text(std::string("Key Typed: " << key_typed(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Key Typed: " << key_typed(KeyCode::A_KEY) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         while (mouse_clicked(MouseButton::LEFT_BUTTON) == false) {
             process_events();
             clear_screen();
             draw_text("Click left mouse button to test events", color_black(), 10, 10);
-            draw_text(std::string("Mouse Clicked: " << mouse_clicked(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Clicked: " << mouse_clicked(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -27,7 +27,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press Escape to test quit", color_black(), 10, 10);
-            draw_text(std::string("Quit Requested: " << quit_requested() << ""), color_black(), 10, 30);
+            draw_text(string("Quit Requested: " << quit_requested() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -38,7 +38,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press Escape to test quit", color_black(), 10, 10);
-            draw_text(std::string("Quit Requested: " << quit_requested() << ""), color_black(), 10, 30);
+            draw_text(string("Quit Requested: " << quit_requested() << ""), color_black(), 10, 30);
             refresh_screen();
             reset_quit();
         }
@@ -46,7 +46,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press A to continue after reset", color_black(), 10, 10);
-            draw_text(std::string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -57,7 +57,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press any key to test", color_black(), 10, 10);
-            draw_text(std::string("Any Key Pressed: " << any_key_pressed() << ""), color_black(), 10, 30);
+            draw_text(string("Any Key Pressed: " << any_key_pressed() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -70,8 +70,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press A to test callback", color_black(), 10, 10);
-            draw_text(std::string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_down << ""), color_black(), 10, 50);
+            draw_text(string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_down << ""), color_black(), 10, 50);
             refresh_screen();
             deregister_callback_on_key_down(callbacks->on_key_down);
         }
@@ -79,8 +79,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press B to test deregistered callback", color_black(), 10, 10);
-            draw_text(std::string("Key Down: " << key_down(KeyCode::B_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_down << ""), color_black(), 10, 50);
+            draw_text(string("Key Down: " << key_down(KeyCode::B_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_down << ""), color_black(), 10, 50);
             refresh_screen();
         }
         close_window(test_window);
@@ -93,8 +93,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press A to test callback", color_black(), 10, 10);
-            draw_text(std::string("Key Typed: " << key_typed(KeyCode::A_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_typed << ""), color_black(), 10, 50);
+            draw_text(string("Key Typed: " << key_typed(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_typed << ""), color_black(), 10, 50);
             refresh_screen();
             deregister_callback_on_key_typed(callbacks->on_key_typed);
         }
@@ -102,8 +102,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press B to test deregistered callback", color_black(), 10, 10);
-            draw_text(std::string("Key Typed: " << key_typed(KeyCode::B_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_typed << ""), color_black(), 10, 50);
+            draw_text(string("Key Typed: " << key_typed(KeyCode::B_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_typed << ""), color_black(), 10, 50);
             refresh_screen();
         }
         close_window(test_window);
@@ -116,8 +116,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press and release A to test callback", color_black(), 10, 10);
-            draw_text(std::string("Key Up: " << key_up(KeyCode::A_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_up << ""), color_black(), 10, 50);
+            draw_text(string("Key Up: " << key_up(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_up << ""), color_black(), 10, 50);
             refresh_screen();
             deregister_callback_on_key_up(callbacks->on_key_up);
         }
@@ -125,8 +125,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press and release B to test deregistered callback", color_black(), 10, 10);
-            draw_text(std::string("Key Up: " << key_up(KeyCode::B_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_up << ""), color_black(), 10, 50);
+            draw_text(string("Key Up: " << key_up(KeyCode::B_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_up << ""), color_black(), 10, 50);
             refresh_screen();
         }
         close_window(test_window);
@@ -137,14 +137,14 @@ public:
             process_events();
             clear_screen();
             draw_text("Press and hold A", color_black(), 10, 10);
-            draw_text(std::string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         while (key_down(KeyCode::A_KEY) != false) {
             process_events();
             clear_screen();
             draw_text("Release A", color_black(), 10, 10);
-            draw_text(std::string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -155,14 +155,14 @@ public:
             process_events();
             clear_screen();
             draw_text("Press A to test key name", color_black(), 10, 10);
-            draw_text(std::string("Key Name: " << key_name(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Key Name: " << key_name(KeyCode::A_KEY) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
             draw_text("Press Enter to test key name", color_black(), 10, 10);
-            draw_text(std::string("Key Name: " << key_name(KeyCode::KEYPAD_ENTER) << ""), color_black(), 10, 30);
+            draw_text(string("Key Name: " << key_name(KeyCode::KEYPAD_ENTER) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -173,7 +173,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press and release A", color_black(), 10, 10);
-            draw_text(std::string("Key Released: " << key_released(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Key Released: " << key_released(KeyCode::A_KEY) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -184,7 +184,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press A to test key typed", color_black(), 10, 10);
-            draw_text(std::string("Key Typed: " << key_typed(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Key Typed: " << key_typed(KeyCode::A_KEY) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -195,7 +195,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press and release A", color_black(), 10, 10);
-            draw_text(std::string("Key Up: " << key_up(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Key Up: " << key_up(KeyCode::A_KEY) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -208,8 +208,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press A to test callback", color_black(), 10, 10);
-            draw_text(std::string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_down << ""), color_black(), 10, 50);
+            draw_text(string("Key Down: " << key_down(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_down << ""), color_black(), 10, 50);
             refresh_screen();
         }
         deregister_callback_on_key_down(callbacks->on_key_down);
@@ -223,8 +223,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press A to test callback", color_black(), 10, 10);
-            draw_text(std::string("Key Typed: " << key_typed(KeyCode::A_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_typed << ""), color_black(), 10, 50);
+            draw_text(string("Key Typed: " << key_typed(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_typed << ""), color_black(), 10, 50);
             refresh_screen();
         }
         deregister_callback_on_key_typed(callbacks->on_key_typed);
@@ -238,8 +238,8 @@ public:
             process_events();
             clear_screen();
             draw_text("Press and release A to test callback", color_black(), 10, 10);
-            draw_text(std::string("Key Up: " << key_up(KeyCode::A_KEY) << ""), color_black(), 10, 30);
-            draw_text(std::string("Callback received: " << callbacks->get_key_up << ""), color_black(), 10, 50);
+            draw_text(string("Key Up: " << key_up(KeyCode::A_KEY) << ""), color_black(), 10, 30);
+            draw_text(string("Callback received: " << callbacks->get_key_up << ""), color_black(), 10, 50);
             refresh_screen();
         }
         deregister_callback_on_key_up(callbacks->on_key_up);
@@ -251,7 +251,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press H to hide mouse", color_black(), 10, 10);
-            draw_text(std::string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
             refresh_screen();
             hide_mouse();
         }
@@ -259,7 +259,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press S to show mouse", color_black(), 10, 10);
-            draw_text(std::string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         show_mouse();
@@ -271,7 +271,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Click left mouse button", color_black(), 10, 10);
-            draw_text(std::string("Mouse Clicked: " << mouse_clicked(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Clicked: " << mouse_clicked(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -282,14 +282,14 @@ public:
             process_events();
             clear_screen();
             draw_text("Press and hold left mouse button", color_black(), 10, 10);
-            draw_text(std::string("Mouse Down: " << mouse_down(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Down: " << mouse_down(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         while (mouse_down(MouseButton::LEFT_BUTTON) != false) {
             process_events();
             clear_screen();
             draw_text("Release left mouse button", color_black(), 10, 10);
-            draw_text(std::string("Mouse Down: " << mouse_down(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Down: " << mouse_down(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -301,7 +301,7 @@ public:
             clear_screen();
             auto movement = mouse_movement();
             draw_text("Move mouse to test movement", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -314,7 +314,7 @@ public:
             clear_screen();
             auto position = mouse_position();
             draw_text("Move mouse to test position", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -327,7 +327,7 @@ public:
             clear_screen();
             auto position = mouse_position_vector();
             draw_text("Move mouse to test position", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -339,7 +339,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press H to hide mouse", color_black(), 10, 10);
-            draw_text(std::string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
             refresh_screen();
             hide_mouse();
         }
@@ -347,7 +347,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press S to show mouse", color_black(), 10, 10);
-            draw_text(std::string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         show_mouse();
@@ -359,7 +359,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Click and release left mouse button", color_black(), 10, 10);
-            draw_text(std::string("Mouse Up: " << mouse_up(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Up: " << mouse_up(MouseButton::LEFT_BUTTON) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         close_window(test_window);
@@ -371,7 +371,7 @@ public:
             clear_screen();
             auto scroll = mouse_wheel_scroll();
             draw_text("Scroll mouse wheel to test", color_black(), 10, 10);
-            draw_text("$Mouse Position: X={scroll.X}", "Y={scroll.Y}", color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -383,7 +383,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Move mouse to test X position", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -395,7 +395,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Move mouse to test Y position", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -407,7 +407,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press M to move mouse to center", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             refresh_screen();
             move_mouse(400, 300);
         }
@@ -415,7 +415,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Mouse moved to center", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -427,15 +427,15 @@ public:
             process_events();
             clear_screen();
             draw_text("Press M to move mouse to center", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             refresh_screen();
-            move_mouse_to_point(point_at(400, 300));
+            move_mouse(point_at(400, 300));
         }
         while (key_down(KeyCode::SPACE_KEY) == false) {
             process_events();
             clear_screen();
             draw_text("Mouse moved to center", color_black(), 10, 10);
-            draw_text(std::string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Position: X=" << mouse_x() << ", Y=" << mouse_y() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -447,7 +447,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press H to hide mouse", color_black(), 10, 10);
-            draw_text(std::string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
             refresh_screen();
             hide_mouse();
         }
@@ -455,7 +455,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press S to show mouse", color_black(), 10, 10);
-            draw_text(std::string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         show_mouse();
@@ -467,18 +467,18 @@ public:
             process_events();
             clear_screen();
             draw_text("Press H to hide mouse", color_black(), 10, 10);
-            draw_text(std::string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
             refresh_screen();
-            show_mouse_with_boolean(false);
+            show_mouse(false);
         }
         while (key_down(KeyCode::S_KEY) == false) {
             process_events();
             clear_screen();
             draw_text("Press S to show mouse", color_black(), 10, 10);
-            draw_text(std::string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
+            draw_text(string("Mouse Shown: " << mouse_shown() << ""), color_black(), 10, 30);
             refresh_screen();
         }
-        show_mouse_with_boolean(true);
+        show_mouse(true);
         close_window(test_window);
     }
     TEST_CASE("draw_collected_text_integration") {
@@ -488,7 +488,7 @@ public:
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
             draw_collected_text(color_black(), test_font, 18, option_defaults());
             refresh_screen();
         }
@@ -502,8 +502,8 @@ public:
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Reading Text: " << reading_text() << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Reading Text: " << reading_text() << ""), color_black(), 10, 30);
             refresh_screen();
             end_reading_text();
         }
@@ -511,7 +511,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Text input ended", color_black(), 10, 10);
-            draw_text(std::string("Reading Text: " << reading_text() << ""), color_black(), 10, 30);
+            draw_text(string("Reading Text: " << reading_text() << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -524,16 +524,16 @@ public:
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Reading Text: " << reading_text(test_window) << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Reading Text: " << reading_text(test_window) << ""), color_black(), 10, 30);
             refresh_screen();
-            end_reading_text_in_window(test_window);
+            end_reading_text(test_window);
         }
         while (key_down(KeyCode::SPACE_KEY) == false) {
             process_events();
             clear_screen();
             draw_text("Text input ended", color_black(), 10, 10);
-            draw_text(std::string("Reading Text: " << reading_text(test_window) << ""), color_black(), 10, 30);
+            draw_text(string("Reading Text: " << reading_text(test_window) << ""), color_black(), 10, 30);
             draw_text("Press Space to end test", color_black(), 10, 50);
             refresh_screen();
         }
@@ -545,8 +545,8 @@ public:
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Reading Text: " << reading_text() << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Reading Text: " << reading_text() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text();
@@ -559,8 +559,8 @@ public:
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Reading Text: " << reading_text_in_window(test_window) << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Reading Text: " << reading_text(test_window) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text(test_window);
@@ -573,8 +573,8 @@ public:
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Current Text: " << text_input() << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Current Text: " << text_input() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text();
@@ -583,12 +583,12 @@ public:
     TEST_CASE("start_reading_text_with_initial_text_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_rect = rectangle_from(100, 100, 200, 30);
-        start_reading_text_with_initial_text(test_rect, "Initial Text");
+        start_reading_text(test_rect, "Initial Text");
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Current Text: " << text_input() << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Current Text: " << text_input() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text();
@@ -597,12 +597,12 @@ public:
     TEST_CASE("start_reading_text_in_window_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_rect = rectangle_from(100, 100, 200, 30);
-        start_reading_text_in_window(test_window, test_rect);
+        start_reading_text(test_window, test_rect);
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Current Text: " << text_input(test_window) << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Current Text: " << text_input(test_window) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text(test_window);
@@ -611,12 +611,12 @@ public:
     TEST_CASE("start_reading_text_in_window_with_initial_text_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_rect = rectangle_from(100, 100, 200, 30);
-        start_reading_text_in_window_with_initial_text(test_window, test_rect, "Initial Text");
+        start_reading_text(test_window, test_rect, "Initial Text");
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Current Text: " << text_input(test_window) << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Current Text: " << text_input(test_window) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text(test_window);
@@ -629,7 +629,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press Escape to cancel text entry", color_black(), 10, 10);
-            draw_text(std::string("Text Entry Cancelled: " << text_entry_cancelled() << ""), color_black(), 10, 30);
+            draw_text(string("Text Entry Cancelled: " << text_entry_cancelled() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text();
@@ -643,7 +643,7 @@ public:
             process_events();
             clear_screen();
             draw_text("Press Escape to cancel text entry", color_black(), 10, 10);
-            draw_text(std::string("Text Entry Cancelled: " << text_entry_cancelled_in_window(test_window) << ""), color_black(), 10, 30);
+            draw_text(string("Text Entry Cancelled: " << text_entry_cancelled(test_window) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text(test_window);
@@ -655,8 +655,8 @@ public:
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Current Text: " << text_input() << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Current Text: " << text_input() << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text();
@@ -669,8 +669,8 @@ public:
         while (key_down(KeyCode::KEYPAD_ENTER) == false) {
             process_events();
             clear_screen();
-            draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
-            draw_text(std::string("Current Text: " << text_input_in_window(test_window) << ""), color_black(), 10, 30);
+            draw_text("Type some text, press Enter when done", color_black(), 10, 10);
+            draw_text(string("Current Text: " << text_input(test_window) << ""), color_black(), 10, 30);
             refresh_screen();
         }
         end_reading_text(test_window);

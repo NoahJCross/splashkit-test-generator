@@ -402,7 +402,7 @@ fn test_mouse_wheel_scroll_integration() {
         clear_screen();
         let scroll = mouse_wheel_scroll();
         draw_text("Scroll mouse wheel to test", color_black(), 10, 10);
-        draw_text("$Mouse Position: X={scroll.X}", "Y={scroll.Y}", color_black(), 10, 30);
+        draw_text(format!("Mouse Position: X={mouse_x()}, Y={mouse_y()}"), color_black(), 10, 30);
         draw_text("Press Space to end test", color_black(), 10, 50);
         refresh_screen();
     }
@@ -526,7 +526,7 @@ fn test_draw_collected_text_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_collected_text(color_black(), test_font, 18, option_defaults());
         refresh_screen();
     }
@@ -541,7 +541,7 @@ fn test_end_reading_text_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Reading Text: {reading_text()}"), color_black(), 10, 30);
         refresh_screen();
         end_reading_text();
@@ -564,7 +564,7 @@ fn test_end_reading_text_in_window_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Reading Text: {reading_text(test_window)}"), color_black(), 10, 30);
         refresh_screen();
         end_reading_text_in_window(test_window);
@@ -586,7 +586,7 @@ fn test_reading_text_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Reading Text: {reading_text()}"), color_black(), 10, 30);
         refresh_screen();
     }
@@ -601,7 +601,7 @@ fn test_reading_text_in_window_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Reading Text: {reading_text_in_window(test_window)}"), color_black(), 10, 30);
         refresh_screen();
     }
@@ -616,7 +616,7 @@ fn test_start_reading_text_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Current Text: {text_input()}"), color_black(), 10, 30);
         refresh_screen();
     }
@@ -631,7 +631,7 @@ fn test_start_reading_text_with_initial_text_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Current Text: {text_input()}"), color_black(), 10, 30);
         refresh_screen();
     }
@@ -646,7 +646,7 @@ fn test_start_reading_text_in_window_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Current Text: {text_input(test_window)}"), color_black(), 10, 30);
         refresh_screen();
     }
@@ -661,7 +661,7 @@ fn test_start_reading_text_in_window_with_initial_text_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Current Text: {text_input(test_window)}"), color_black(), 10, 30);
         refresh_screen();
     }
@@ -704,7 +704,7 @@ fn test_text_input_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Current Text: {text_input()}"), color_black(), 10, 30);
         refresh_screen();
     }
@@ -719,7 +719,7 @@ fn test_text_input_in_window_integration() {
     while key_down(KeyCode::KeypadEnter) == false {
         process_events();
         clear_screen();
-        draw_text("Type some text", "press Enter when done", color_black(), 10, 10);
+        draw_text("Type some text, press Enter when done", color_black(), 10, 10);
         draw_text(format!("Current Text: {text_input_in_window(test_window)}"), color_black(), 10, 30);
         refresh_screen();
     }

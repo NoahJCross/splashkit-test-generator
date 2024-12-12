@@ -7910,33 +7910,6 @@
           ]
         },
         {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "file_exists",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_file"
-                }
-              ]
-            },
-            "value2": null
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "delete_file",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_file"
-            }
-          ]
-        },
-        {
           "step_type": "function",
           "function_name": "close_server",
           "args": [

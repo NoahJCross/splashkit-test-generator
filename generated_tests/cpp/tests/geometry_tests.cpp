@@ -18,7 +18,7 @@ public:
     }
     TEST_CASE("circle_at_from_points_integration") {
         auto test_window = open_window("Circle Test", 800, 600);
-        auto test_circle = circle_at_from_points(400.0, 300.0, 50.0);
+        auto test_circle = circle_at(400.0, 300.0, 50.0);
         draw_circle(color_black(), test_circle, option_defaults());
         refresh_screen();
         REQUIRE(point_in_circle(point_at(400.0, 300.0), test_circle));
@@ -38,7 +38,7 @@ public:
     TEST_CASE("circle_triangle_intersect_get_closest_point_integration") {
         auto test_circle = circle_at(100.0, 100.0, 50.0);
         auto test_triangle = triangle_from(point_at(50.0, 50.0), point_at(150.0, 50.0), point_at(100.0, 150.0));
-        auto test_result = circle_triangle_intersect_get_closest_point(test_circle, test_triangle, point_at(0.0, 0.0));
+        auto test_result = circle_triangle_intersect(test_circle, test_triangle, point_at(0.0, 0.0));
         REQUIRE(test_result);
         REQUIRE(circle_radius(test_circle) == point_point_distance(center_point(test_circle), closest_point_on_triangle_from_circle(test_circle, test_triangle)));
     }
@@ -60,9 +60,9 @@ public:
         REQUIRE(test_result2);
     }
     TEST_CASE("circles_intersect_using_values_integration") {
-        auto test_intersect_result = circles_intersect_using_values(0.0, 0.0, 5.0, 10.0, 0.0, 5.0);
+        auto test_intersect_result = circles_intersect(0.0, 0.0, 5.0, 10.0, 0.0, 5.0);
         REQUIRE(test_intersect_result);
-        auto test_not_intersect_result = circles_intersect_using_values(0.0, 0.0, 5.0, 11.0, 0.0, 5.0);
+        auto test_not_intersect_result = circles_intersect(0.0, 0.0, 5.0, 11.0, 0.0, 5.0);
         REQUIRE_FALSE(test_not_intersect_result);
     }
     TEST_CASE("closest_point_on_circle_integration") {
@@ -118,7 +118,7 @@ public:
         auto test_circle = circle_at(150.0, 150.0, 50.0);
         auto test_point1 = point_at(0.0, 0.0);
         auto test_point2 = point_at(0.0, 0.0);
-        auto test_result = tangent_points(test_from_pt, test_circle, test_point1, test_point2);
+        auto test_result = tangent_points(test_from_pt, test_circle, &test_point1, &test_point2);
         REQUIRE(test_result);
         REQUIRE(point_at(0.0, 0.0) != point_at(0.0, 0.0));
     }
@@ -127,30 +127,30 @@ public:
         auto test_vector = vector_from_angle(45.0, 45.0);
         auto test_point1 = point_at(0.0, 0.0);
         auto test_point2 = point_at(0.0, 0.0);
-        widest_points(test_circle, test_vector, test_point1, test_point2);
+        widest_points(test_circle, test_vector, &test_point1, &test_point2);
         REQUIRE(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
         REQUIRE(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
     }
     TEST_CASE("cosine_integration") {
-        auto test_cosine_0 = cosine(0.0);
+        auto test_cosine_0 = cosine(0.0f);
         REQUIRE(1.0 == test_cosine_0);
-        auto test_cosine_90 = cosine(90.0);
+        auto test_cosine_90 = cosine(90.0f);
         REQUIRE(0.0 == test_cosine_90);
-        auto test_cosine_180 = cosine(180.0);
+        auto test_cosine_180 = cosine(180.0f);
         REQUIRE(-1.0 == test_cosine_180);
     }
     TEST_CASE("sine_integration") {
-        auto test_sine_0 = sine(0.0);
+        auto test_sine_0 = sine(0.0f);
         REQUIRE(0.0 == test_sine_0);
-        auto test_sine_90 = sine(90.0);
+        auto test_sine_90 = sine(90.0f);
         REQUIRE(1.0 == test_sine_90);
-        auto test_sine_180 = sine(180.0);
+        auto test_sine_180 = sine(180.0f);
         REQUIRE(0.0 == test_sine_180);
-        auto test_sine_270 = sine(270.0);
+        auto test_sine_270 = sine(270.0f);
         REQUIRE(-1.0 == test_sine_270);
     }
     TEST_CASE("tangent_integration") {
-        auto test_tangent_result = tangent(45.0);
+        auto test_tangent_result = tangent(45.0f);
         REQUIRE(test_tangent_result >= 1.0 && test_tangent_result <= 2.0);
     }
     TEST_CASE("closest_point_on_line_integration") {
@@ -163,26 +163,26 @@ public:
         auto test_line1 = line_from(point_at(-10.0, 0.0), point_at(10.0, 0.0));
         auto test_line2 = line_from(point_at(0.0, -10.0), point_at(0.0, 10.0));
         auto test_index = 0;
-        auto test_lines = std::vector<Line> { test_line1, test_line2 };
+        auto test_lines = vector<Line> { test_line1, test_line2 };
         auto test_closest_point = closest_point_on_lines(test_from_pt, test_lines, test_index);
         REQUIRE(0.0 == point_point_distance(test_from_pt, test_closest_point));
     }
     TEST_CASE("line_from_point_to_point_integration") {
         auto test_start_point = point_at(0.0, 0.0);
         auto test_end_point = point_at(100.0, 100.0);
-        auto test_line = line_from_point_to_point(test_start_point, test_end_point);
+        auto test_line = line_from(test_start_point, test_end_point);
         REQUIRE(141.421356 == line_length(test_line));
     }
     TEST_CASE("line_from_start_with_offset_integration") {
         auto test_start_point = point_at(0.0, 0.0);
         auto test_offset_vector = vector_from_angle(45.0, 10.0);
-        auto test_line = line_from_start_with_offset(test_start_point, test_offset_vector);
+        auto test_line = line_from(test_start_point, test_offset_vector);
         REQUIRE(point_on_line(point_at(0.0, 0.0), test_line));
         REQUIRE(point_on_line(point_offset_by(test_start_point, test_offset_vector), test_line));
     }
     TEST_CASE("line_from_vector_integration") {
         auto test_vector = vector_from_angle(100.0, 50.0);
-        auto test_line = line_from_vector(test_vector);
+        auto test_line = line_from(test_vector);
         REQUIRE(point_at_origin() == test_line->start_point);
         REQUIRE(point_at(100.0, 50.0) == test_line->end_point);
     }
@@ -194,7 +194,7 @@ public:
         auto test_line1 = line_from(0.0, 0.0, 10.0, 10.0);
         auto test_line2 = line_from(10.0, 0.0, 0.0, 10.0);
         auto test_point = point_at(0.0, 0.0);
-        auto test_intersection_result = line_intersection_point(test_line1, test_line2, test_point);
+        auto test_intersection_result = line_intersection_point(test_line1, test_line2, &test_point);
         REQUIRE(test_intersection_result);
     }
     TEST_CASE("line_intersects_circle_integration") {
@@ -207,7 +207,7 @@ public:
         auto test_line = line_from(0.0, 0.0, 10.0, 10.0);
         auto test_line1 = line_from(5.0, 5.0, 15.0, 15.0);
         auto test_line2 = line_from(20.0, 20.0, 30.0, 30.0);
-        auto test_lines = std::vector<Line> { test_line1, test_line2 };
+        auto test_lines = vector<Line> { test_line1, test_line2 };
         auto test_result = line_intersects_lines(test_line, test_lines);
         REQUIRE(test_result);
     }
@@ -246,13 +246,13 @@ public:
     }
     TEST_CASE("lines_from_rectangle_integration") {
         auto test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
-        auto test_lines = lines_from_rectangle(test_rectangle);
-        REQUIRE(4 == size(test_lines));
+        auto test_lines = lines_from(test_rectangle);
+        REQUIRE(4 == test_lines.size());
     }
     TEST_CASE("lines_from_triangle_integration") {
         auto test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 86.6));
-        auto test_lines = lines_from_triangle(test_triangle);
-        REQUIRE(3 == size(test_lines));
+        auto test_lines = lines_from(test_triangle);
+        REQUIRE(3 == test_lines.size());
     }
     TEST_CASE("lines_intersect_integration") {
         auto test_line1 = line_from(point_at(0.0, 0.0), point_at(10.0, 10.0));
@@ -277,9 +277,9 @@ public:
         REQUIRE_FALSE(point_in_circle(point_at(200.0, 100.0), test_circle));
     }
     TEST_CASE("point_in_circle_with_values_integration") {
-        auto test_result1 = point_in_circle_with_values(100.0, 100.0, 100.0, 100.0, 50.0);
+        auto test_result1 = point_in_circle(100.0, 100.0, 100.0, 100.0, 50.0);
         REQUIRE(test_result1);
-        auto test_result2 = point_in_circle_with_values(200.0, 100.0, 100.0, 100.0, 50.0);
+        auto test_result2 = point_in_circle(200.0, 100.0, 100.0, 100.0, 50.0);
         REQUIRE_FALSE(test_result2);
     }
     TEST_CASE("point_in_quad_integration") {
@@ -295,9 +295,9 @@ public:
         REQUIRE_FALSE(point_in_rectangle(test_point_outside, test_rectangle));
     }
     TEST_CASE("point_in_rectangle_with_values_integration") {
-        auto test_result_inside = point_in_rectangle_with_values(10.0, 10.0, 0.0, 0.0, 20.0, 20.0);
+        auto test_result_inside = point_in_rectangle(10.0, 10.0, 0.0, 0.0, 20.0, 20.0);
         REQUIRE(test_result_inside);
-        auto test_result_outside = point_in_rectangle_with_values(25.0, 25.0, 0.0, 0.0, 20.0, 20.0);
+        auto test_result_outside = point_in_rectangle(25.0, 25.0, 0.0, 0.0, 20.0, 20.0);
         REQUIRE_FALSE(test_result_outside);
     }
     TEST_CASE("point_in_triangle_integration") {
@@ -336,9 +336,9 @@ public:
         auto test_point_on_line = point_at(5.0, 5.0);
         auto test_point_near_line = point_at(5.1, 5.1);
         auto test_point_far_from_line = point_at(15.0, 15.0);
-        REQUIRE(point_on_line_with_proximity(test_point_on_line, test_line, 0.1));
-        REQUIRE(point_on_line_with_proximity(test_point_near_line, test_line, 0.2));
-        REQUIRE_FALSE(point_on_line_with_proximity(test_point_far_from_line, test_line, 0.1));
+        REQUIRE(point_on_line(test_point_on_line, test_line, 0.1f));
+        REQUIRE(point_on_line(test_point_near_line, test_line, 0.2f));
+        REQUIRE_FALSE(point_on_line(test_point_far_from_line, test_line, 0.1f));
     }
     TEST_CASE("point_point_angle_integration") {
         auto test_point1 = point_at(0.0, 0.0);
@@ -391,19 +391,19 @@ public:
         auto test_p2 = point_at(100.0, 0.0);
         auto test_p3 = point_at(0.0, 100.0);
         auto test_p4 = point_at(100.0, 100.0);
-        auto test_quad = quad_from_points(test_p1, test_p2, test_p3, test_p4);
+        auto test_quad = quad_from(test_p1, test_p2, test_p3, test_p4);
         REQUIRE(point_in_quad(point_at(50.0, 50.0), test_quad));
     }
     TEST_CASE("quad_from_rectangle_integration") {
         auto test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
-        auto test_quad = quad_from_rectangle(test_rectangle);
+        auto test_quad = quad_from(test_rectangle);
         REQUIRE(point_in_quad(point_at(50.0, 50.0), test_quad));
         REQUIRE_FALSE(point_in_quad(point_at(150.0, 150.0), test_quad));
     }
     TEST_CASE("quad_from_rectangle_with_transformation_integration") {
         auto test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
         auto test_transform = rotation_matrix(45.0);
-        auto test_quad = quad_from_rectangle_with_transformation(test_rectangle, test_transform);
+        auto test_quad = quad_from(test_rectangle, test_transform);
         REQUIRE(point_in_quad(point_at(50.0, 50.0), test_quad));
         REQUIRE_FALSE(point_in_quad(point_at(150.0, 150.0), test_quad));
     }
@@ -420,17 +420,17 @@ public:
     }
     TEST_CASE("set_quad_point_integration") {
         auto test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
-        set_quad_point(test_quad, 2, point_at(50.0, 150.0));
+        set_quad_point(&test_quad, 2, point_at(50.0, 150.0));
         REQUIRE(point_in_quad(point_at(50.0, 150.0), test_quad));
     }
     TEST_CASE("triangles_from_integration") {
         auto test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
         auto test_triangles = triangles_from(test_quad);
-        REQUIRE(2 == size(test_triangles));
+        REQUIRE(2 == test_triangles.size());
     }
     TEST_CASE("inset_rectangle_integration") {
         auto test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
-        auto test_inset_rectangle = inset_rectangle(test_rectangle, 10.0);
+        auto test_inset_rectangle = inset_rectangle(test_rectangle, 10.0f);
         REQUIRE(10.0 == rectangle_left(test_inset_rectangle));
         REQUIRE(10.0 == rectangle_top(test_inset_rectangle));
         REQUIRE(90.0 == rectangle_right(test_inset_rectangle));
@@ -447,7 +447,7 @@ public:
     }
     TEST_CASE("rectangle_around_circle_integration") {
         auto test_circle = circle_at(100.0, 100.0, 50.0);
-        auto test_rectangle = rectangle_around_circle(test_circle);
+        auto test_rectangle = rectangle_around(test_circle);
         REQUIRE(50.0 == rectangle_left(test_rectangle));
         REQUIRE(50.0 == rectangle_top(test_rectangle));
         REQUIRE(150.0 == rectangle_right(test_rectangle));
@@ -455,13 +455,13 @@ public:
     }
     TEST_CASE("rectangle_around_line_integration") {
         auto test_line = line_from(point_at(10.0, 10.0), point_at(50.0, 50.0));
-        auto test_rectangle = rectangle_around_line(test_line);
+        auto test_rectangle = rectangle_around(test_line);
         REQUIRE(point_in_rectangle(point_at(10.0, 10.0), test_rectangle));
         REQUIRE(point_in_rectangle(point_at(50.0, 50.0), test_rectangle));
     }
     TEST_CASE("rectangle_around_quad_integration") {
         auto test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
-        auto test_rectangle = rectangle_around_quad(test_quad);
+        auto test_rectangle = rectangle_around(test_quad);
         REQUIRE(0.0 == rectangle_left(test_rectangle));
         REQUIRE(0.0 == rectangle_top(test_rectangle));
         REQUIRE(100.0 == rectangle_right(test_rectangle));
@@ -469,7 +469,7 @@ public:
     }
     TEST_CASE("rectangle_around_triangle_integration") {
         auto test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 100.0));
-        auto test_rectangle = rectangle_around_triangle(test_triangle);
+        auto test_rectangle = rectangle_around(test_triangle);
         REQUIRE(0.0 == rectangle_left(test_rectangle));
         REQUIRE(0.0 == rectangle_top(test_rectangle));
         REQUIRE(100.0 == rectangle_right(test_rectangle));
@@ -486,7 +486,7 @@ public:
     }
     TEST_CASE("rectangle_from_point_and_size_integration") {
         auto test_point = point_at(10.0, 20.0);
-        auto test_rectangle = rectangle_from_point_and_size(test_point, 50.0, 30.0);
+        auto test_rectangle = rectangle_from(test_point, 50.0, 30.0);
         REQUIRE(10.0 == rectangle_left(test_rectangle));
         REQUIRE(20.0 == rectangle_top(test_rectangle));
         REQUIRE(60.0 == rectangle_right(test_rectangle));
@@ -495,7 +495,7 @@ public:
     TEST_CASE("rectangle_from_points_integration") {
         auto test_point1 = point_at(0.0, 0.0);
         auto test_point2 = point_at(100.0, 100.0);
-        auto test_rectangle = rectangle_from_points(test_point1, test_point2);
+        auto test_rectangle = rectangle_from(test_point1, test_point2);
         REQUIRE(0.0 == rectangle_left(test_rectangle));
         REQUIRE(0.0 == rectangle_top(test_rectangle));
         REQUIRE(100.0 == rectangle_right(test_rectangle));
@@ -553,7 +553,7 @@ public:
         REQUIRE(point_in_triangle(point_at(50.0, 50.0), test_triangle));
     }
     TEST_CASE("triangle_from__from_coordinates_integration") {
-        auto test_triangle = triangle_from__from_coordinates(0.0, 0.0, 100.0, 0.0, 50.0, 100.0);
+        auto test_triangle = triangle_from(0.0, 0.0, 100.0, 0.0, 50.0, 100.0);
         REQUIRE(point_in_triangle(point_at(50.0, 50.0), test_triangle));
         REQUIRE_FALSE(point_in_triangle(point_at(150.0, 150.0), test_triangle));
     }

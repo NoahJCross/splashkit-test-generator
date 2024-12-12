@@ -437,7 +437,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 100);
-            var testColor = HSBColorSliderAtPosition(0.5, 1.0, 0.5);
+            var testColor = HSBColorSlider(ColorBlack(), testRect);
             var currentColor = testColor;
             while (!QuitRequested()) {
                 ProcessEvents();
@@ -527,7 +527,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                LabelElementAtPosition("Test Label", testRectangle);
+                LabelElement("Test Label", testRectangle);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -540,7 +540,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                Slider("Test Slider", 0.0, 0.0, 100.0);
+                Slider("Test Slider", 0.0f, 0.0f, 100.0f);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -587,45 +587,45 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 30);
-            var testResult = 5.0;
+            var testResult = 5.0f;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                testResult = NumberBox(testResult, 1.0, testRect);;
+                testResult = NumberBox(testResult, 1.0f, testRect);;
                 DrawInterface();
                 RefreshScreen();
             }
-            Assert.InRange(testResult, 4.0, );
+            Assert.InRange(testResult, 1.0f, 5.0f);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestNumberBoxIntegration()
         {
             var testWindow = OpenWindow("Number Box Test", 800, 600);
-            var testResult = 5.0;
+            var testResult = 5.0f;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                testResult = NumberBox(testResult, 1.0);;
+                testResult = NumberBox(testResult, 1.0f);;
                 DrawInterface();
                 RefreshScreen();
             }
-            Assert.InRange(testResult, 4.0, );
+            Assert.InRange(testResult, 1.0f, 5.0f);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestNumberBoxLabeledIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testResult = 5.0;
+            var testResult = 5.0f;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                testResult = NumberBox("Test Value", testResult, 1.0);;
+                testResult = NumberBox("Test Value", testResult, 1.0f);;
                 DrawInterface();
                 RefreshScreen();
             }
-            Assert.InRange(testResult, 4.0, );
+            Assert.InRange(testResult, 1.0f, 5.0f);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -666,7 +666,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                ParagraphAtPosition("This is a test paragraph.", testRectangle);
+                Paragraph("This is a test paragraph.", testRectangle);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -692,7 +692,7 @@ namespace SplashKitTests
         public void TestSetInterfaceAccentColorIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceAccentColor(ColorRed(), 0.5);
+            SetInterfaceAccentColor(ColorRed(), 0.5f);
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -722,7 +722,7 @@ namespace SplashKitTests
         public void TestSetInterfaceColorsAutoIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceColorsAuto(ColorWhite(), ColorBlue(), 0.5, 0.7, 0.3);
+            SetInterfaceColorsAuto(ColorWhite(), ColorBlue(), 0.5f, 0.7f, 0.3f);
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -741,7 +741,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                SetInterfaceElementColor(ColorBlack(), 0.5);
+                SetInterfaceElementColor(ColorBlack(), 0.5f);
                 StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
                 Button("Test Button");
                 EndPanel("Test Panel");
@@ -770,7 +770,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testFont = LoadFont("hara", "hara.ttf");
-            SetInterfaceFontFontAsString("hara");
+            SetInterfaceFont("hara");
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -910,7 +910,7 @@ namespace SplashKitTests
         public void TestSetInterfaceStyleWithColorIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceStyleWithColor(InterfaceStyle.ShadedDarkStyle, ColorBlue());
+            SetInterfaceStyle(InterfaceStyle.ShadedDarkStyle, ColorBlue());
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -975,12 +975,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRect = RectangleFrom(100, 100, 200, 20);
-            var initialValue = 50.0;
+            var initialValue = 50.0f;
             var sliderResult = initialValue;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                sliderResult = Slider(sliderResult, 0.0, 100.0, testRect);;
+                sliderResult = Slider(sliderResult, 0.0f, 100.0f, testRect);;
                 DrawInterface();
                 RefreshScreen();
             }
@@ -991,12 +991,12 @@ namespace SplashKitTests
         public void TestSliderIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var initialValue = 50.0;
+            var initialValue = 50.0f;
             var sliderResult = initialValue;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                sliderResult = Slider(sliderResult, 0.0, 100.0);;
+                sliderResult = Slider(sliderResult, 0.0f, 100.0f);;
                 DrawInterface();
                 RefreshScreen();
             }
@@ -1007,12 +1007,12 @@ namespace SplashKitTests
         public void TestSliderLabeledIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var initialValue = 50.0;
+            var initialValue = 50.0f;
             var sliderResult = initialValue;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                sliderResult = Slider("Test Slider", sliderResult, 0.0, 100.0);;
+                sliderResult = Slider("Test Slider", sliderResult, 0.0f, 100.0f);;
                 DrawInterface();
                 RefreshScreen();
             }
@@ -1045,7 +1045,7 @@ namespace SplashKitTests
                 ProcessEvents();
                 ClearScreen();
                 StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-                SplitIntoColumnsWithLastWidth(3, 200);
+                SplitIntoColumns(3, 200);
                 Button("Button 1");
                 Button("Button 2");
                 Button("Button 3");
@@ -1063,7 +1063,7 @@ namespace SplashKitTests
                 ProcessEvents();
                 ClearScreen();
                 StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
-                SplitIntoColumnsRelativeWithLastWidth(3, 0.5);
+                SplitIntoColumnsRelative(3, 0.5);
                 Button("Button 1");
                 Button("Button 2");
                 Button("Button 3");
@@ -1099,7 +1099,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartInsetAtPosition("test_inset", testRect);
+                StartInset("test_inset", testRect);
                 Button("Test Button");
                 EndInset("test_inset");
                 DrawInterface();

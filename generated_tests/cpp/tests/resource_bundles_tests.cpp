@@ -25,7 +25,7 @@ public:
         REQUIRE(has_bitmap("FrogBmp"));
         REQUIRE(has_font("hara"));
         REQUIRE(has_sound_effect("error"));
-        REQUIRE(has_timer_named("my timer"));
+        REQUIRE(has_timer("my timer"));
         REQUIRE(has_resource_bundle("blah"));
         free_resource_bundle("test");
         REQUIRE_FALSE(has_resource_bundle("test_bundle"));

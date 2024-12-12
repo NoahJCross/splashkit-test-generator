@@ -26,8 +26,8 @@ module TestGenerator
   def self.write_group_files(functions, tests_dir, config, group_tests)
     functions
       .group_by { |func| func.group || 'ungrouped' }
-      .each do |group, _|
-        TestWriter.new(group, functions, config, group_tests).write_to(tests_dir)
+      .each do |group, group_funcs|
+        TestWriter.new(group, group_funcs, functions, config, group_tests).write_to(tests_dir)
       end
   end
 

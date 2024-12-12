@@ -29,21 +29,21 @@ namespace SplashKitTests
         public void TestWriteCharIntegration()
         {
             # TODO: Implement io_setup step
-            WriteChar("A");
+            Write("A");
             Assert.Equal("A", "A");
         }
         [Fact]
         public void TestWriteDoubleIntegration()
         {
             # TODO: Implement io_setup step
-            WriteDouble(3.14);
+            Write(3.14);
             Assert.Equal("3.14", "3.14");
         }
         [Fact]
         public void TestWriteIntIntegration()
         {
             # TODO: Implement io_setup step
-            WriteInt(42);
+            Write(42);
             Assert.Equal("42", "42");
         }
         [Fact]
@@ -57,28 +57,28 @@ namespace SplashKitTests
         public void TestWriteLineCharIntegration()
         {
             # TODO: Implement io_setup step
-            WriteLineChar("A");
+            WriteLine("A");
             Assert.Equal({:value_type=>"concat", :value=>["A", "new_line"]}, {:value_type=>"string_with_newline", :value=>"A"});
         }
         [Fact]
         public void TestWriteLineEmptyIntegration()
         {
             # TODO: Implement io_setup step
-            WriteLineEmpty();
+            WriteLine();
             Assert.Equal(Environment.NewLine, {:value_type=>"io_step", :variable_name=>"string_writer", :variable_field=>"to_string"});
         }
         [Fact]
         public void TestWriteLineDoubleIntegration()
         {
             # TODO: Implement io_setup step
-            WriteLineDouble(3.14);
+            WriteLine(3.14);
             Assert.Equal({:value_type=>"concat", :value=>["3.14", "new_line"]}, {:value_type=>"string_with_newline", :value=>"3.14"});
         }
         [Fact]
         public void TestWriteLineIntIntegration()
         {
             # TODO: Implement io_setup step
-            WriteLineInt(42);
+            WriteLine(42);
             Assert.Equal({:value_type=>"concat", :value=>["42", "new_line"]}, {:value_type=>"string_with_newline", :value=>"42"});
         }
         [Fact]

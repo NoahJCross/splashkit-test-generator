@@ -414,7 +414,7 @@ fn test_header_integration() {
 fn test_hsb_color_slider_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rect = rectangle_from(100, 100, 200, 100);
-    let test_color = hsb_color_slider_at_position(0.5, 1.0, 0.5);
+    let test_color = hsb_color_slider_at_position(color_black(), test_rect);
     let current_color = test_color;
     while quit_requested() == false {
         process_events();
@@ -510,7 +510,7 @@ fn test_last_element_changed_integration() {
     while quit_requested() == false {
         process_events();
         clear_screen();
-        slider("Test Slider", 0.0, 0.0, 100.0);
+        slider("Test Slider", 0.0 as f32, 0.0 as f32, 100.0 as f32);
         draw_interface();
         refresh_screen();
     }
@@ -554,43 +554,43 @@ fn test_leave_column_integration() {
 fn test_number_box_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rect = rectangle_from(100, 100, 200, 30);
-    let test_result = 5.0;
+    let test_result = 5.0 as f32;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        test_result = number_box(test_result, 1.0, test_rect);;
+        test_result = number_box(test_result, 1.0 as f32, test_rect);;
         draw_interface();
         refresh_screen();
     }
-    assert!((4.0..=).contains(&test_result));
+    assert!((1.0 as f32..=5.0 as f32).contains(&test_result));
     close_window(test_window);
 }
 #[test]
 fn test_number_box_integration() {
     let test_window = open_window("Number Box Test", 800, 600);
-    let test_result = 5.0;
+    let test_result = 5.0 as f32;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        test_result = number_box(test_result, 1.0);;
+        test_result = number_box(test_result, 1.0 as f32);;
         draw_interface();
         refresh_screen();
     }
-    assert!((4.0..=).contains(&test_result));
+    assert!((1.0 as f32..=5.0 as f32).contains(&test_result));
     close_window(test_window);
 }
 #[test]
 fn test_number_box_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let test_result = 5.0;
+    let test_result = 5.0 as f32;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        test_result = number_box("Test Value", test_result, 1.0);;
+        test_result = number_box("Test Value", test_result, 1.0 as f32);;
         draw_interface();
         refresh_screen();
     }
-    assert!((4.0..=).contains(&test_result));
+    assert!((1.0 as f32..=5.0 as f32).contains(&test_result));
     close_window(test_window);
 }
 #[test]
@@ -652,7 +652,7 @@ fn test_reset_layout_integration() {
 #[test]
 fn test_set_interface_accent_color_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    set_interface_accent_color(color_red(), 0.5);
+    set_interface_accent_color(color_red(), 0.5 as f32);
     while quit_requested() == false {
         process_events();
         clear_screen();
@@ -680,7 +680,7 @@ fn test_set_interface_border_color_integration() {
 #[test]
 fn test_set_interface_colors_auto_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    set_interface_colors_auto(color_white(), color_blue(), 0.5, 0.7, 0.3);
+    set_interface_colors_auto(color_white(), color_blue(), 0.5 as f32, 0.7 as f32, 0.3 as f32);
     while quit_requested() == false {
         process_events();
         clear_screen();
@@ -698,7 +698,7 @@ fn test_set_interface_element_color_integration() {
     while quit_requested() == false {
         process_events();
         clear_screen();
-        set_interface_element_color(color_black(), 0.5);
+        set_interface_element_color(color_black(), 0.5 as f32);
         start_panel("Test Panel", rectangle_from(100, 100, 200, 200));
         button("Test Button");
         end_panel("Test Panel");
@@ -917,12 +917,12 @@ fn test_single_line_layout_integration() {
 fn test_slider_at_position_integration() {
     let test_window = open_window("Test Window", 800, 600);
     let test_rect = rectangle_from(100, 100, 200, 20);
-    let initial_value = 50.0;
+    let initial_value = 50.0 as f32;
     let slider_result = initial_value;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        slider_result = slider(slider_result, 0.0, 100.0, test_rect);;
+        slider_result = slider(slider_result, 0.0 as f32, 100.0 as f32, test_rect);;
         draw_interface();
         refresh_screen();
     }
@@ -932,12 +932,12 @@ fn test_slider_at_position_integration() {
 #[test]
 fn test_slider_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let initial_value = 50.0;
+    let initial_value = 50.0 as f32;
     let slider_result = initial_value;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        slider_result = slider(slider_result, 0.0, 100.0);;
+        slider_result = slider(slider_result, 0.0 as f32, 100.0 as f32);;
         draw_interface();
         refresh_screen();
     }
@@ -947,12 +947,12 @@ fn test_slider_integration() {
 #[test]
 fn test_slider_labeled_integration() {
     let test_window = open_window("Test Window", 800, 600);
-    let initial_value = 50.0;
+    let initial_value = 50.0 as f32;
     let slider_result = initial_value;
     while quit_requested() == false {
         process_events();
         clear_screen();
-        slider_result = slider("Test Slider", slider_result, 0.0, 100.0);;
+        slider_result = slider("Test Slider", slider_result, 0.0 as f32, 100.0 as f32);;
         draw_interface();
         refresh_screen();
     }

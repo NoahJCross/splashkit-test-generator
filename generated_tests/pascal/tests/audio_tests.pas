@@ -29,7 +29,7 @@ procedure TIntegrationTests.TestFadeMusicInNamedIntegration;
 begin
     OpenAudio();
     testMusic := LoadMusic("test_music", "magical_night.ogg");
-    FadeMusicInNamed("test_music", 1000);
+    FadeMusicIn("test_music", 1000);
     AssertTrue(MusicPlaying());
     FreeMusic(testMusic);
     CloseAudio();
@@ -38,7 +38,7 @@ procedure TIntegrationTests.TestFadeMusicInNamedWithTimesIntegration;
 begin
     OpenAudio();
     testMusic := LoadMusic("test_music", "magical_night.ogg");
-    FadeMusicInNamedWithTimes("test_music", 2, 1000);
+    FadeMusicIn("test_music", 2, 1000);
     AssertTrue(MusicPlaying());
     FreeMusic(testMusic);
     CloseAudio();
@@ -56,7 +56,7 @@ procedure TIntegrationTests.TestFadeMusicInWithTimesIntegration;
 begin
     OpenAudio();
     testMusic := LoadMusic("test_music", "magical_night.ogg");
-    FadeMusicInWithTimes(testMusic, 2, 1000);
+    FadeMusicIn(testMusic, 2, 1000);
     AssertTrue(MusicPlaying());
     FreeMusic(testMusic);
     CloseAudio();
@@ -177,7 +177,7 @@ procedure TIntegrationTests.TestPlayMusicNamedIntegration;
 begin
     OpenAudio();
     testMusic := LoadMusic("test_music", "magical_night.ogg");
-    PlayMusicNamed("test_music");
+    PlayMusic("test_music");
     AssertTrue(MusicPlaying());
     FreeMusic(testMusic);
     CloseAudio();
@@ -186,7 +186,7 @@ procedure TIntegrationTests.TestPlayMusicNamedWithTimesIntegration;
 begin
     OpenAudio();
     testMusic := LoadMusic("test_music", "magical_night.ogg");
-    PlayMusicNamedWithTimes("test_music", 2);
+    PlayMusic("test_music", 2);
     AssertTrue(MusicPlaying());
     FreeMusic(testMusic);
     CloseAudio();
@@ -204,7 +204,7 @@ procedure TIntegrationTests.TestPlayMusicWithTimesIntegration;
 begin
     OpenAudio();
     testMusic := LoadMusic("test_music", "magical_night.ogg");
-    PlayMusicWithTimes(testMusic, 2);
+    PlayMusic(testMusic, 2);
     AssertTrue(MusicPlaying());
     FreeMusic(testMusic);
     CloseAudio();
@@ -213,7 +213,7 @@ procedure TIntegrationTests.TestPlayMusicWithTimesAndVolumeIntegration;
 begin
     OpenAudio();
     testMusic := LoadMusic("test_music", "magical_night.ogg");
-    PlayMusicWithTimesAndVolume(testMusic, 2, 0.75);
+    PlayMusic(testMusic, 2, 0.75);
     AssertTrue(MusicPlaying());
     AssertEquals(0.75, MusicVolume());
     FreeMusic(testMusic);
@@ -316,7 +316,7 @@ procedure TIntegrationTests.TestPlaySoundEffectNamedIntegration;
 begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "breakdance.wav");
-    PlaySoundEffectNamed("test_sound");
+    PlaySoundEffect("test_sound");
     AssertTrue(SoundEffectPlaying(testSound));
     FreeSoundEffect(testSound);
     CloseAudio();
@@ -325,7 +325,7 @@ procedure TIntegrationTests.TestPlaySoundEffectNamedWithVolumeIntegration;
 begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "breakdance.wav");
-    PlaySoundEffectNamedWithVolume("test_sound", 0.75);
+    PlaySoundEffect("test_sound", 0.75);
     AssertTrue(SoundEffectPlaying(testSound));
     FreeSoundEffect(testSound);
     CloseAudio();
@@ -334,7 +334,7 @@ procedure TIntegrationTests.TestPlaySoundEffectNamedWithTimesIntegration;
 begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "breakdance.wav");
-    PlaySoundEffectNamedWithTimes("test_sound", 3);
+    PlaySoundEffect("test_sound", 3);
     AssertTrue(SoundEffectPlaying(testSound));
     FreeSoundEffect(testSound);
     CloseAudio();
@@ -343,7 +343,7 @@ procedure TIntegrationTests.TestPlaySoundEffectNamedWithTimesAndVolumeIntegratio
 begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "breakdance.wav");
-    PlaySoundEffectNamedWithTimesAndVolume("test_sound", 2, 0.75);
+    PlaySoundEffect("test_sound", 2, 0.75);
     AssertTrue(SoundEffectPlaying(testSound));
     FreeSoundEffect(testSound);
     CloseAudio();
@@ -361,7 +361,7 @@ procedure TIntegrationTests.TestPlaySoundEffectWithVolumeIntegration;
 begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "breakdance.wav");
-    PlaySoundEffectWithVolume(testSound, 0.75);
+    PlaySoundEffect(testSound, 0.75);
     AssertTrue(SoundEffectPlaying(testSound));
     FreeSoundEffect(testSound);
     CloseAudio();
@@ -370,7 +370,7 @@ procedure TIntegrationTests.TestPlaySoundEffectWithTimesIntegration;
 begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "SwinGameStart.wav");
-    PlaySoundEffectWithTimes(testSound, 3);
+    PlaySoundEffect(testSound, 3);
     AssertTrue(SoundEffectPlaying(testSound));
     FreeSoundEffect(testSound);
     CloseAudio();
@@ -379,7 +379,7 @@ procedure TIntegrationTests.TestPlaySoundEffectWithTimesAndVolumeIntegration;
 begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "SwinGameStart.wav");
-    PlaySoundEffectWithTimesAndVolume(testSound, 2, 0.75);
+    PlaySoundEffect(testSound, 2, 0.75);
     AssertTrue(SoundEffectPlaying(testSound));
     FreeSoundEffect(testSound);
     CloseAudio();
@@ -414,9 +414,9 @@ begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "SwinGameStart.wav");
     PlaySoundEffect("test_sound");
-    AssertTrue(SoundEffectPlayingNamed("test_sound"));
+    AssertTrue(SoundEffectPlaying("test_sound"));
     StopSoundEffect("test_sound");
-    AssertFalse(SoundEffectPlayingNamed("test_sound"));
+    AssertFalse(SoundEffectPlaying("test_sound"));
     FreeSoundEffect(testSound);
     CloseAudio();
 end;
@@ -445,7 +445,7 @@ begin
     OpenAudio();
     testSound := LoadSoundEffect("test_sound", "SwinGameStart.wav");
     PlaySoundEffect("test_sound");
-    StopSoundEffectNamed("test_sound");
+    StopSoundEffect("test_sound");
     AssertFalse(SoundEffectPlaying("test_sound"));
     FreeSoundEffect(testSound);
     CloseAudio();
@@ -464,5 +464,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
+#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
 end;

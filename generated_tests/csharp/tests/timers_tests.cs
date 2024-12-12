@@ -10,7 +10,7 @@ namespace SplashKitTests
         {
             var testTimer = CreateTimer("test_timer");
             Assert.NotNull(testTimer);
-            Assert.True(HasTimerNamed("test_timer"));
+            Assert.True(HasTimer("test_timer"));
             FreeTimer(testTimer);
         }
         [Fact]
@@ -18,27 +18,27 @@ namespace SplashKitTests
         {
             var testTimer1 = CreateTimer("test_timer_1");
             var testTimer2 = CreateTimer("test_timer_2");
-            Assert.True(HasTimerNamed("test_timer_1"));
-            Assert.True(HasTimerNamed("test_timer_2"));
+            Assert.True(HasTimer("test_timer_1"));
+            Assert.True(HasTimer("test_timer_2"));
             FreeAllTimers();
-            Assert.False(HasTimerNamed("test_timer_1"));
-            Assert.False(HasTimerNamed("test_timer_2"));
+            Assert.False(HasTimer("test_timer_1"));
+            Assert.False(HasTimer("test_timer_2"));
         }
         [Fact]
         public void TestFreeTimerIntegration()
         {
             var testTimer = CreateTimer("test_timer");
-            Assert.True(HasTimerNamed("test_timer"));
+            Assert.True(HasTimer("test_timer"));
             FreeTimer(testTimer);
-            Assert.False(HasTimerNamed("test_timer"));
+            Assert.False(HasTimer("test_timer"));
         }
         [Fact]
         public void TestHasTimerNamedIntegration()
         {
             var testTimer = CreateTimer("test_timer");
-            Assert.True(HasTimerNamed("test_timer"));
+            Assert.True(HasTimer("test_timer"));
             FreeTimer(testTimer);
-            Assert.False(HasTimerNamed("test_timer"));
+            Assert.False(HasTimer("test_timer"));
         }
         [Fact]
         public void TestPauseTimerNamedIntegration()
@@ -46,7 +46,7 @@ namespace SplashKitTests
             var testTimer = CreateTimer("test_timer");
             StartTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
-            PauseTimerNamed("test_timer");
+            PauseTimer("test_timer");
             Assert.True(TimerPaused("test_timer"));
             Assert.Equal(initialTicks, TimerTicks(testTimer));
             FreeTimer(testTimer);
@@ -69,7 +69,7 @@ namespace SplashKitTests
             StartTimer(testTimer);
             Delay(100);
             var initialTicks = TimerTicks(testTimer);
-            ResetTimerNamed("test_timer");
+            ResetTimer("test_timer");
             Assert.True(TimerTicks(testTimer) < initialTicks);
             FreeTimer(testTimer);
         }
@@ -91,7 +91,7 @@ namespace SplashKitTests
             StartTimer(testTimer);
             PauseTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
-            ResumeTimerNamed("test_timer");
+            ResumeTimer("test_timer");
             Delay(100);
             Assert.True(TimerTicks(testTimer) > initialTicks);
             FreeTimer(testTimer);
@@ -112,7 +112,7 @@ namespace SplashKitTests
         public void TestStartTimerNamedIntegration()
         {
             var testTimer = CreateTimer("test_timer");
-            StartTimerNamed("test_timer");
+            StartTimer("test_timer");
             Assert.True(TimerStarted("test_timer"));
             FreeTimer(testTimer);
         }
@@ -130,9 +130,9 @@ namespace SplashKitTests
             var testTimer = CreateTimer("test_timer");
             StartTimer(testTimer);
             Delay(100);
-            Assert.True(TimerTicks(testTimer));
-            StopTimerNamed("test_timer");
-            Assert.Equal(0, TimerTicks(testTimer));
+            Assert.True(TimerTicks(testTimer) > 100u);
+            StopTimer("test_timer");
+            Assert.Equal(0u, TimerTicks(testTimer));
             FreeTimer(testTimer);
         }
         [Fact]
@@ -158,9 +158,9 @@ namespace SplashKitTests
         {
             var testTimer = CreateTimer("test_timer");
             StartTimer(testTimer);
-            Assert.False(TimerPausedNamed("test_timer"));
+            Assert.False(TimerPaused("test_timer"));
             PauseTimer("test_timer");
-            Assert.True(TimerPausedNamed("test_timer"));
+            Assert.True(TimerPaused("test_timer"));
             FreeTimer(testTimer);
         }
         [Fact]
@@ -177,9 +177,9 @@ namespace SplashKitTests
         public void TestTimerStartedNamedIntegration()
         {
             var testTimer = CreateTimer("test_timer");
-            Assert.False(TimerStartedNamed("test_timer"));
+            Assert.False(TimerStarted("test_timer"));
             StartTimer("test_timer");
-            Assert.True(TimerStartedNamed("test_timer"));
+            Assert.True(TimerStarted("test_timer"));
             FreeTimer(testTimer);
         }
         [Fact]
@@ -196,9 +196,9 @@ namespace SplashKitTests
         {
             var testTimer = CreateTimer("test_timer");
             StartTimer(testTimer);
-            var initialTicks = TimerTicksNamed("test_timer");
+            var initialTicks = TimerTicks("test_timer");
             Delay(100);
-            var afterDelayTicks = TimerTicksNamed("test_timer");
+            var afterDelayTicks = TimerTicks("test_timer");
             Assert.True(afterDelayTicks > initialTicks);
             FreeTimer(testTimer);
         }

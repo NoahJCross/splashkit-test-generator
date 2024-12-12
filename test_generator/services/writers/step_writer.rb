@@ -1,6 +1,6 @@
 module TestGenerator
   # Class responsible for writing individual test steps based on their type and configuration
-  class TestStepWriter
+  class StepWriter
     def initialize(step, functions, config, formatter)
       @step = step
       @functions = functions

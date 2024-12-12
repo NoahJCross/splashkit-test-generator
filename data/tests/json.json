@@ -797,7 +797,7 @@
               "value": "numbers"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "out_result"
             }
           ]
@@ -960,7 +960,7 @@
               "value": "array_key"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "out_result"
             }
           ]
@@ -974,14 +974,8 @@
               "value": 2
             },
             "value2": {
-              "value_type": "function",
-              "function_name": "size",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "out_result"
-                }
-              ]
+              "value_type": "size",
+              "variable_name": "out_result"
             }
           }
         },
@@ -1044,8 +1038,22 @@
               "value": "test_array"
             },
             {
-              "value_type": "primitive",
-              "value": ["item1", "item2", "item3"]
+              "value_type": "list",
+              "target_type": "string",
+              "value": [
+                {
+                  "value_type": "primitive",
+                  "value": "item1"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "item2"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "item3"
+                }
+              ]
             }
           ]
         },
@@ -1069,7 +1077,7 @@
               "value": "test_array"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "out_result"
             }
           ]
@@ -1083,14 +1091,8 @@
               "value": 3
             },
             "value2": {
-              "value_type": "function",
-              "function_name": "size",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "out_result"
-                }
-              ]
+              "value_type": "size",
+              "variable_name": "out_result"
             }
           }
         },
@@ -1182,7 +1184,7 @@
               "value": "test_key"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "out_result"
             }
           ]
@@ -1196,14 +1198,8 @@
               "value": 3
             },
             "value2": {
-              "value_type": "function",
-              "function_name": "size",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "out_result"
-                }
-              ]
+              "value_type": "size",
+              "variable_name": "out_result"
             }
           }
         },
@@ -1360,7 +1356,7 @@
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 42.5
             }
           ]
@@ -1746,7 +1742,7 @@
               "value": "test_key"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "out_result"
             }
           ]
@@ -1756,8 +1752,22 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": ["value1", "value2", "value3"]
+              "value_type": "list",
+              "target_type": "string",
+              "value": [
+                {
+                  "value_type": "primitive",
+                  "value": "value1"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "value2"
+                },
+                {
+                  "value_type": "primitive",
+                  "value": "value3"
+                }
+              ]
             },
             "value2": {
               "value_type": "variable",
@@ -1838,7 +1848,7 @@
               "value": "numbers"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "out_result"
             }
           ]
@@ -1848,8 +1858,22 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": [1.1, 2.2, 3.3]
+              "value_type": "list",
+              "target_type": "double",
+              "value": [
+                {
+                  "value_type": "primitive",
+                  "value": 1.1
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 2.2
+                },
+                {
+                  "value_type": "primitive",
+                  "value": 3.3
+                }
+              ]
             },
             "value2": {
               "value_type": "variable",
@@ -1891,8 +1915,18 @@
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
-              "value": [true, false, true]
+              "value_type": "list",
+              "target_type": "bool",
+              "value": [
+                {
+                  "value_type": "primitive",
+                  "value": true
+                },
+                {
+                  "value_type": "primitive",
+                  "value": false
+                }
+              ]
             }
           ]
         },
@@ -1916,7 +1950,7 @@
               "value": "test_key"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "out_result"
             }
           ]
@@ -1926,8 +1960,18 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": [true, false, true]
+              "value_type": "list",
+              "target_type": "bool",
+              "value": [
+                {
+                  "value_type": "primitive",
+                  "value": true
+                },
+                {
+                  "value_type": "primitive",
+                  "value": false
+                }
+              ]
             },
             "value2": {
               "value_type": "variable",
@@ -2058,7 +2102,7 @@
               "value": "array_key"
             },
             {
-              "value_type": "variable",
+              "value_type": "ref",
               "variable_name": "out_result"
             }
           ]
@@ -2347,7 +2391,7 @@
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 3.14
             }
           ]

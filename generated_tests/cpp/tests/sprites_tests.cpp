@@ -9,9 +9,9 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite1 = create_sprite(test_bitmap);
         auto test_sprite2 = create_sprite(test_bitmap);
-        sprite_set_x(test_sprite1, 100);
-        sprite_set_x(test_sprite2, 200);
-        call_for_all_sprites_with_value(helper->SpriteFloatFunction, 300);
+        sprite_set_x(test_sprite1, 100f);
+        sprite_set_x(test_sprite2, 200f);
+        call_for_all_sprites(helper->SpriteFloatFunction, 300f);
         REQUIRE(300 == sprite_x(test_sprite1));
         REQUIRE(300 == sprite_x(test_sprite2));
         free_all_sprites();
@@ -52,8 +52,8 @@ public:
         auto test_sprite = create_sprite(test_bitmap);
         sprite_set_position(test_sprite, point_at(100, 100));
         auto center_point = center_point(test_sprite);
-        REQUIRE(150 == centerpoint->X);
-        REQUIRE(150 == centerpoint->Y);
+        REQUIRE(150 == center_point->X);
+        REQUIRE(150 == center_point->Y);
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -72,7 +72,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_animation = load_animation_script("test_animation", "kermit.txt");
-        auto test_sprite = create_sprite_with_animation(test_bitmap, test_animation);
+        auto test_sprite = create_sprite(test_bitmap, test_animation);
         REQUIRE(test_sprite != nullptr);
         REQUIRE(has_sprite(sprite_name(test_sprite)));
         free_sprite(test_sprite);
@@ -83,7 +83,7 @@ public:
     TEST_CASE("create_sprite_with_bitmap_named_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
-        auto test_sprite = create_sprite_with_bitmap_named("test_bitmap");
+        auto test_sprite = create_sprite("test_bitmap");
         REQUIRE(test_sprite != nullptr);
         REQUIRE(has_sprite(sprite_name(test_sprite)));
         free_sprite(test_sprite);
@@ -93,7 +93,7 @@ public:
     TEST_CASE("create_sprite_named_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
-        auto test_sprite = create_sprite_named("test_sprite", test_bitmap);
+        auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(test_sprite != nullptr);
         REQUIRE("test_sprite" == sprite_name(test_sprite));
         free_sprite(test_sprite);
@@ -104,7 +104,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_animation = load_animation_script("test_animation", "kermit.txt");
-        auto test_sprite = create_sprite_named_with_animation("test_sprite", test_bitmap, test_animation);
+        auto test_sprite = create_sprite("test_sprite", test_bitmap, test_animation);
         REQUIRE(test_sprite != nullptr);
         REQUIRE("test_sprite" == sprite_name(test_sprite));
         free_sprite(test_sprite);
@@ -116,7 +116,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_animation = load_animation_script("test_animation", "kermit.txt");
-        auto test_sprite = create_sprite_with_bitmap_and_animation_named("test_bitmap", "test_animation");
+        auto test_sprite = create_sprite("test_bitmap", "test_animation");
         REQUIRE(test_sprite != nullptr);
         REQUIRE(has_sprite(sprite_name(test_sprite)));
         free_sprite(test_sprite);
@@ -165,7 +165,7 @@ public:
         auto test_sprite = create_sprite(test_bitmap);
         sprite_set_position(test_sprite, point_at(400, 300));
         clear_screen(color_white());
-        draw_sprite_offset_by(test_sprite, vector_from_angle(50, 50));
+        draw_sprite(test_sprite, vector_from_angle(50, 50));
         refresh_screen();
         REQUIRE(color_white() != get_pixel(test_window, 450, 350));
         free_sprite(test_sprite);
@@ -193,7 +193,7 @@ public:
         auto test_sprite = create_sprite(test_bitmap);
         sprite_set_position(test_sprite, point_at(400, 300));
         clear_screen(color_white());
-        draw_sprite_offset_x_y(test_sprite, 50.0, 50.0);
+        draw_sprite(test_sprite, 50.0, 50.0);
         refresh_screen();
         REQUIRE(color_white() != get_pixel(test_window, 450, 350));
         free_sprite(test_sprite);
@@ -256,7 +256,7 @@ public:
         auto start_position = point_at(100.0, 100.0);
         sprite_set_position(test_sprite, start_position);
         sprite_set_velocity(test_sprite, vector_to(10.0, 10.0));
-        move_sprite(test_sprite, 1.0);
+        move_sprite(test_sprite);
         REQUIRE(110.0 == sprite_x(test_sprite));
         REQUIRE(110.0 == sprite_y(test_sprite));
         free_sprite(test_sprite);
@@ -268,7 +268,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_position(test_sprite, point_at(100, 100));
-        move_sprite_by_vector(test_sprite, vector_to(50, 50), 1.0);
+        move_sprite(test_sprite, vector_to(50, 50));
         REQUIRE(150 == sprite_x(test_sprite));
         REQUIRE(150 == sprite_y(test_sprite));
         free_sprite(test_sprite);
@@ -280,7 +280,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_position(test_sprite, point_at(100.0, 100.0));
-        move_sprite_by_vector_percent(test_sprite, vector_to(50.0, 50.0), 0.5);
+        move_sprite(test_sprite, vector_to(50.0, 50.0), 0.5f);
         REQUIRE(125.0 == sprite_x(test_sprite));
         REQUIRE(125.0 == sprite_y(test_sprite));
         free_sprite(test_sprite);
@@ -293,7 +293,7 @@ public:
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_position(test_sprite, point_at(100.0, 100.0));
         sprite_set_velocity(test_sprite, vector_to(10.0, 10.0));
-        move_sprite_percent(test_sprite, 0.5);
+        move_sprite(test_sprite, 0.5f);
         REQUIRE(105.0 == sprite_x(test_sprite));
         REQUIRE(105.0 == sprite_y(test_sprite));
         free_sprite(test_sprite);
@@ -365,7 +365,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        sprite_add_value_with_default(test_sprite, "health", 100.0);
+        sprite_add_value(test_sprite, "health", 100.0f);
         REQUIRE(sprite_has_value(test_sprite, "health"));
         REQUIRE(100.0 == sprite_value(test_sprite, "health"));
         free_sprite(test_sprite);
@@ -377,8 +377,8 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         auto anchor_point = sprite_anchor_point(test_sprite);
-        REQUIRE(50 == anchorpoint->X);
-        REQUIRE(50 == anchorpoint->Y);
+        REQUIRE(50 == anchor_point->X);
+        REQUIRE(50 == anchor_point->Y);
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -389,8 +389,8 @@ public:
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_position(test_sprite, point_at(100, 100));
         auto anchor_position = sprite_anchor_position(test_sprite);
-        REQUIRE(150 == anchorposition->X);
-        REQUIRE(150 == anchorposition->Y);
+        REQUIRE(150 == anchor_position->X);
+        REQUIRE(150 == anchor_position->Y);
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -426,8 +426,8 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         clear_bitmap(test_bitmap, color_red());
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        sprite_set_x(test_sprite, 400);
-        sprite_set_y(test_sprite, 300);
+        sprite_set_x(test_sprite, 400f);
+        sprite_set_y(test_sprite, 300f);
         draw_sprite(test_sprite);
         REQUIRE(sprite_at(test_sprite, point_at(400, 300)));
         REQUIRE_FALSE(sprite_at(test_sprite, point_at(600, 500)));
@@ -562,7 +562,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_dx(test_sprite));
-        sprite_set_dx(test_sprite, 5.0);
+        sprite_set_dx(test_sprite, 5.0f);
         REQUIRE(5.0 == sprite_dx(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -573,7 +573,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_dy(test_sprite));
-        sprite_set_dy(test_sprite, 5.0);
+        sprite_set_dy(test_sprite, 5.0f);
         REQUIRE(5.0 == sprite_dy(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -607,7 +607,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(100 == sprite_height(test_sprite));
-        sprite_set_scale(test_sprite, 2.0);
+        sprite_set_scale(test_sprite, 2.0f);
         REQUIRE(100 == sprite_height(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -620,7 +620,7 @@ public:
         sprite_add_layer(test_sprite, test_bitmap, "layer2");
         sprite_show_layer(test_sprite, "layer2");
         REQUIRE(2 == sprite_visible_layer_count(test_sprite));
-        sprite_hide_layer_named(test_sprite, "layer2");
+        sprite_hide_layer(test_sprite, "layer2");
         REQUIRE(1 == sprite_visible_layer_count(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -644,7 +644,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_add_layer(test_sprite, test_bitmap, "layer2");
-        REQUIRE(test_bitmap == sprite_layer_named(test_sprite, "layer2"));
+        REQUIRE(test_bitmap == sprite_layer(test_sprite, "layer2"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -654,7 +654,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         auto layer_idx = sprite_add_layer(test_sprite, test_bitmap, "layer2");
-        REQUIRE(test_bitmap == sprite_layer_at_index(test_sprite, layer_idx));
+        REQUIRE(test_bitmap == sprite_layer(test_sprite, layer_idx));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -663,7 +663,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        auto circle = sprite_layer_circle_named(test_sprite, "base_layer");
+        auto circle = sprite_layer_circle(test_sprite, "base_layer");
         REQUIRE(50 == circle->Center.X);
         REQUIRE(50 == circle->Center.Y);
         REQUIRE(50 == circle->Radius);
@@ -675,7 +675,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        auto circle = sprite_layer_circle_at_index(test_sprite, 0);
+        auto circle = sprite_layer_circle(test_sprite, 0);
         REQUIRE(50 == circle->Center.X);
         REQUIRE(50 == circle->Center.Y);
         REQUIRE(50 == circle->Radius);
@@ -699,9 +699,9 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        REQUIRE(100 == sprite_layer_height_named(test_sprite, "base_layer"));
+        REQUIRE(100 == sprite_layer_height(test_sprite, "base_layer"));
         auto layer_idx = sprite_add_layer(test_sprite, test_bitmap, "layer2");
-        REQUIRE(100 == sprite_layer_height_named(test_sprite, "layer2"));
+        REQUIRE(100 == sprite_layer_height(test_sprite, "layer2"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -742,9 +742,9 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        REQUIRE(vector_to(0, 0) == sprite_layer_offset_named(test_sprite, "base_layer"));
-        sprite_set_layer_offset_named(test_sprite, "base_layer", vector_to(10, 10));
-        REQUIRE(vector_to(10, 10) == sprite_layer_offset_named(test_sprite, "base_layer"));
+        REQUIRE(vector_to(0, 0) == sprite_layer_offset(test_sprite, "base_layer"));
+        sprite_set_layer_offset(test_sprite, "base_layer", vector_to(10, 10));
+        REQUIRE(vector_to(10, 10) == sprite_layer_offset(test_sprite, "base_layer"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -755,7 +755,7 @@ public:
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(vector_to(0, 0) == sprite_layer_offset(test_sprite, 0));
         auto layer_idx = sprite_add_layer(test_sprite, test_bitmap, "layer2");
-        sprite_set_layer_offset_at_index(test_sprite, layer_idx, vector_to(10, 10));
+        sprite_set_layer_offset(test_sprite, layer_idx, vector_to(10, 10));
         REQUIRE(vector_to(10, 10) == sprite_layer_offset(test_sprite, layer_idx));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -765,7 +765,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        auto rect = sprite_layer_rectangle_named(test_sprite, "base_layer");
+        auto rect = sprite_layer_rectangle(test_sprite, "base_layer");
         REQUIRE(0 == rect->X);
         REQUIRE(0 == rect->Y);
         REQUIRE(100 == rect->Width);
@@ -778,7 +778,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        auto rect = sprite_layer_rectangle_at_index(test_sprite, 0);
+        auto rect = sprite_layer_rectangle(test_sprite, 0);
         REQUIRE(0 == rect->X);
         REQUIRE(0 == rect->Y);
         REQUIRE(100 == rect->Width);
@@ -791,9 +791,9 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        REQUIRE(100 == sprite_layer_width_named(test_sprite, "base_layer"));
+        REQUIRE(100 == sprite_layer_width(test_sprite, "base_layer"));
         auto layer_idx = sprite_add_layer(test_sprite, test_bitmap, "layer2");
-        REQUIRE(100 == sprite_layer_width_named(test_sprite, "layer2"));
+        REQUIRE(100 == sprite_layer_width(test_sprite, "layer2"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -814,10 +814,10 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_position(test_sprite, point_at(100, 100));
-        sprite_set_rotation(test_sprite, 45);
+        sprite_set_rotation(test_sprite, 45f);
         auto matrix = sprite_location_matrix(test_sprite);
-        REQUIRE(150.0 == {:value_type=>"matrix_access", :variable_name=>"matrix", :field=>"elements", :row=>0, :col=>2});
-        REQUIRE(1 == {:value_type=>"matrix_access", :variable_name=>"matrix", :field=>"elements", :row=>2, :col=>2});
+        REQUIRE(150.0 == matrix->Elements[0][2]);
+        REQUIRE(1 == matrix->Elements[2][2]);
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -827,7 +827,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(1.0 == sprite_mass(test_sprite));
-        sprite_set_mass(test_sprite, 10.0);
+        sprite_set_mass(test_sprite, 10.0f);
         REQUIRE(10.0 == sprite_mass(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -849,7 +849,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_position(test_sprite, point_at(100, 100));
-        sprite_move_to_taking_seconds(test_sprite, point_at(200, 200), 1.0);
+        sprite_move_to(test_sprite, point_at(200, 200), 1.0f);
         update_sprite(test_sprite);
         auto position = sprite_position(test_sprite);
         free_sprite(test_sprite);
@@ -892,8 +892,8 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_position(test_sprite, point_at(400, 300));
-        REQUIRE(sprite_on_screen_at_point(test_sprite, point_at(400, 300)));
-        REQUIRE_FALSE(sprite_on_screen_at_point(test_sprite, point_at(0, 0)));
+        REQUIRE(sprite_on_screen_at(test_sprite, point_at(400, 300)));
+        REQUIRE_FALSE(sprite_on_screen_at(test_sprite, point_at(0, 0)));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -942,7 +942,7 @@ public:
         sprite_start_animation(test_sprite, "walkfront");
         REQUIRE_FALSE(sprite_animation_has_ended(test_sprite));
         update_sprite(test_sprite, 100);
-        sprite_replay_animation_with_sound(test_sprite, true);
+        sprite_replay_animation(test_sprite, true);
         REQUIRE_FALSE(sprite_animation_has_ended(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -953,7 +953,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_rotation(test_sprite));
-        sprite_set_rotation(test_sprite, 45.0);
+        sprite_set_rotation(test_sprite, 45.0f);
         REQUIRE(45.0 == sprite_rotation(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -964,7 +964,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(1.0 == sprite_scale(test_sprite));
-        sprite_set_scale(test_sprite, 2.0);
+        sprite_set_scale(test_sprite, 2.0f);
         REQUIRE(2.0 == sprite_scale(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -995,6 +995,7 @@ public:
         sprite_show_layer(test_sprite, layer1);
         auto layer2 = sprite_add_layer(test_sprite, test_bitmap, "layer2");
         sprite_show_layer(test_sprite, layer2);
+        auto visible_index = sprite_visible_index_of_layer(test_sprite, layer2);
         sprite_send_layer_backward(test_sprite, visible_index);
         REQUIRE(2 == sprite_visible_index_of_layer(test_sprite, layer2));
         free_sprite(test_sprite);
@@ -1009,6 +1010,7 @@ public:
         sprite_show_layer(test_sprite, layer1);
         auto layer2 = sprite_add_layer(test_sprite, test_bitmap, "layer2");
         sprite_show_layer(test_sprite, layer2);
+        auto visible_index = sprite_visible_index_of_layer(test_sprite, layer2);
         sprite_send_layer_to_back(test_sprite, visible_index);
         REQUIRE(2 == sprite_visible_index_of_layer(test_sprite, layer2));
         free_sprite(test_sprite);
@@ -1055,7 +1057,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_dx(test_sprite));
-        sprite_set_dx(test_sprite, 5.0);
+        sprite_set_dx(test_sprite, 5.0f);
         REQUIRE(5.0 == sprite_dx(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1066,7 +1068,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_dy(test_sprite));
-        sprite_set_dy(test_sprite, 5.0);
+        sprite_set_dy(test_sprite, 5.0f);
         REQUIRE(5.0 == sprite_dy(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1078,7 +1080,7 @@ public:
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_velocity(test_sprite, vector_from_angle(90, 1));
         REQUIRE(90.0 == sprite_heading(test_sprite));
-        sprite_set_heading(test_sprite, 45.0);
+        sprite_set_heading(test_sprite, 45.0f);
         REQUIRE(45.0 == sprite_heading(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1089,7 +1091,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(vector_to(0, 0) == sprite_layer_offset(test_sprite, "base_layer"));
-        sprite_set_layer_offset_named(test_sprite, "base_layer", vector_to(10.0, 10.0));
+        sprite_set_layer_offset(test_sprite, "base_layer", vector_to(10.0, 10.0));
         REQUIRE(vector_to(10.0, 10.0) == sprite_layer_offset(test_sprite, "base_layer"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1100,7 +1102,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(vector_to(0, 0) == sprite_layer_offset(test_sprite, 0));
-        sprite_set_layer_offset_at_index(test_sprite, 0, vector_to(10.0, 10.0));
+        sprite_set_layer_offset(test_sprite, 0, vector_to(10.0, 10.0));
         REQUIRE(vector_to(10.0, 10.0) == sprite_layer_offset(test_sprite, 0));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1111,7 +1113,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(1.0 == sprite_mass(test_sprite));
-        sprite_set_mass(test_sprite, 10.0);
+        sprite_set_mass(test_sprite, 10.0f);
         REQUIRE(10.0 == sprite_mass(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1144,7 +1146,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_rotation(test_sprite));
-        sprite_set_rotation(test_sprite, 45.0);
+        sprite_set_rotation(test_sprite, 45.0f);
         REQUIRE(45.0 == sprite_rotation(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1155,7 +1157,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(1.0 == sprite_scale(test_sprite));
-        sprite_set_scale(test_sprite, 2.0);
+        sprite_set_scale(test_sprite, 2.0f);
         REQUIRE(2.0 == sprite_scale(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1166,7 +1168,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_velocity(test_sprite, vector_from_angle(0, 1));
-        sprite_set_speed(test_sprite, 5.0);
+        sprite_set_speed(test_sprite, 5.0f);
         REQUIRE(5.0 == sprite_speed(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1177,8 +1179,8 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE_FALSE(sprite_has_value(test_sprite, "test_value"));
-        sprite_add_value(test_sprite, "test_value", 0.0);
-        sprite_set_value_named(test_sprite, "test_value", 10.5);
+        sprite_add_value(test_sprite, "test_value", 0.0f);
+        sprite_set_value(test_sprite, "test_value", 10.5f);
         REQUIRE(10.5 == sprite_value(test_sprite, "test_value"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1200,7 +1202,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_x(test_sprite));
-        sprite_set_x(test_sprite, 150.0);
+        sprite_set_x(test_sprite, 150.0f);
         REQUIRE(150.0 == sprite_x(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1211,7 +1213,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_y(test_sprite));
-        sprite_set_y(test_sprite, 300.0);
+        sprite_set_y(test_sprite, 300.0f);
         REQUIRE(300.0 == sprite_y(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1224,7 +1226,7 @@ public:
         auto layer_idx = sprite_add_layer(test_sprite, test_bitmap, "layer2");
         sprite_hide_layer(test_sprite, "layer2");
         REQUIRE(1 == sprite_visible_layer_count(test_sprite));
-        REQUIRE(layer_idx == sprite_show_layer_named(test_sprite, "layer2"));
+        REQUIRE(layer_idx == sprite_show_layer(test_sprite, "layer2"));
         REQUIRE(2 == sprite_visible_layer_count(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1259,7 +1261,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_animation = load_animation_script("test_animation", "kermit.txt");
         auto test_sprite = create_sprite(test_bitmap, test_animation);
-        sprite_start_animation_named(test_sprite, "walkfront");
+        sprite_start_animation(test_sprite, "walkfront");
         REQUIRE_FALSE(sprite_animation_has_ended(test_sprite));
         update_sprite_animation(test_sprite, 100);
         REQUIRE(sprite_animation_has_ended(test_sprite));
@@ -1273,7 +1275,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_animation = load_animation_script("test_animation", "kermit.txt");
         auto test_sprite = create_sprite(test_bitmap, test_animation);
-        sprite_start_animation_named_with_sound(test_sprite, "walkfront", true);
+        sprite_start_animation(test_sprite, "walkfront", true);
         REQUIRE_FALSE(sprite_animation_has_ended(test_sprite));
         update_sprite_animation(test_sprite, 100);
         REQUIRE(sprite_animation_has_ended(test_sprite));
@@ -1300,7 +1302,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_animation = load_animation_script("test_animation", "kermit.txt");
         auto test_sprite = create_sprite(test_bitmap, test_animation);
-        sprite_start_animation_with_sound(test_sprite, 0, true);
+        sprite_start_animation(test_sprite, 0, true);
         REQUIRE_FALSE(sprite_animation_has_ended(test_sprite));
         update_sprite_animation(test_sprite, 100);
         update_sprite_animation(test_sprite, true);
@@ -1314,11 +1316,11 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        sprite_set_x(test_sprite, 100);
+        sprite_set_x(test_sprite, 100f);
         sprite_call_on_event(test_sprite, helper->sprite_event_handler);
         update_sprite(test_sprite);
         REQUIRE(200 == sprite_x(test_sprite));
-        sprite_set_x(test_sprite, 100);
+        sprite_set_x(test_sprite, 100f);
         sprite_stop_calling_on_event(test_sprite, helper->sprite_event_handler);
         update_sprite(test_sprite);
         REQUIRE(100 == sprite_x(test_sprite));
@@ -1333,9 +1335,9 @@ public:
         sprite_add_layer(test_sprite, test_bitmap, "layer2");
         sprite_show_layer(test_sprite, "layer2");
         REQUIRE(2 == sprite_visible_layer_count(test_sprite));
-        sprite_toggle_layer_visible_named(test_sprite, "layer2");
+        sprite_toggle_layer_visible(test_sprite, "layer2");
         REQUIRE(1 == sprite_visible_layer_count(test_sprite));
-        sprite_toggle_layer_visible_named(test_sprite, "layer2");
+        sprite_toggle_layer_visible(test_sprite, "layer2");
         REQUIRE(2 == sprite_visible_layer_count(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1359,7 +1361,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(3 == sprite_value_count(test_sprite));
-        sprite_add_value(test_sprite, "test_value", 10.0);
+        sprite_add_value(test_sprite, "test_value", 0.0f);
         REQUIRE(10.0 == sprite_value(test_sprite, "test_value"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1370,8 +1372,8 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(3 == sprite_value_count(test_sprite));
-        sprite_add_value(test_sprite, "health", 0.0);
-        sprite_add_value(test_sprite, "speed", 0.0);
+        sprite_add_value(test_sprite, "health", 0.0f);
+        sprite_add_value(test_sprite, "speed", 0.0f);
         REQUIRE(5 == sprite_value_count(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1392,10 +1394,10 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
-        REQUIRE(0 == sprite_visible_index_of_layer_named(test_sprite, "base_layer"));
+        REQUIRE(0 == sprite_visible_index_of_layer(test_sprite, "base_layer"));
         sprite_add_layer(test_sprite, test_bitmap, "layer2");
         sprite_show_layer(test_sprite, "layer2");
-        REQUIRE(1 == sprite_visible_index_of_layer_named(test_sprite, "layer2"));
+        REQUIRE(1 == sprite_visible_index_of_layer(test_sprite, "layer2"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -1455,7 +1457,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(1 == sprite_scale(test_sprite));
-        sprite_set_scale(test_sprite, 2.0);
+        sprite_set_scale(test_sprite, 2.0f);
         REQUIRE(2 == sprite_scale(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1466,7 +1468,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_x(test_sprite));
-        sprite_set_x(test_sprite, 150.0);
+        sprite_set_x(test_sprite, 150.0f);
         REQUIRE(150.0 == sprite_x(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1477,7 +1479,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         REQUIRE(0.0 == sprite_y(test_sprite));
-        sprite_set_y(test_sprite, 200.0);
+        sprite_set_y(test_sprite, 200.0f);
         REQUIRE(200.0 == sprite_y(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1491,11 +1493,10 @@ public:
         call_on_sprite_event(helper->sprite_event_handler);
         sprite_start_animation(test_sprite, "test");
         update_sprite(test_sprite);
-        REQUIRE(helper->EventCalled);
+        REQUIRE(helper->event_called);
         stop_calling_on_sprite_event(helper->sprite_event_handler);
-        auto helper = helper();
         update_sprite(test_sprite);
-        REQUIRE_FALSE(helper->EventCalled);
+        REQUIRE_FALSE(helper->event_called);
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -1521,7 +1522,7 @@ public:
         auto test_sprite2 = create_sprite("test_sprite2", test_bitmap);
         sprite_set_velocity(test_sprite1, vector_to(100.0, 100.0));
         sprite_set_velocity(test_sprite2, vector_to(-100.0, -100.0));
-        update_all_sprites_percent(0.5);
+        update_all_sprites(0.5f);
         REQUIRE(50.0 == sprite_x(test_sprite1));
         REQUIRE(50.0 == sprite_y(test_sprite1));
         REQUIRE(-50.0 == sprite_x(test_sprite2));
@@ -1548,7 +1549,7 @@ public:
         auto test_animation = load_animation_script("test_animation", "kermit.txt");
         auto test_sprite = create_sprite(test_bitmap, test_animation);
         sprite_start_animation(test_sprite, "default", true);
-        update_sprite_with_sound(test_sprite, true);
+        update_sprite(test_sprite, true);
         REQUIRE(sprite_animation_has_ended(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1559,7 +1560,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_set_velocity(test_sprite, vector_to(100.0, 100.0));
-        update_sprite_percent(test_sprite, 0.5);
+        update_sprite(test_sprite, 0.5f);
         REQUIRE(50.0 == sprite_x(test_sprite));
         REQUIRE(50.0 == sprite_y(test_sprite));
         free_sprite(test_sprite);
@@ -1570,15 +1571,14 @@ public:
         auto helper = helper();
         auto test_window = open_window("Test Window", 800, 600);
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
-        auto test_sprite = create_sprite("test_sprite", test_bitmap);
+        auto test_sprite = create_sprite(test_bitmap);
         sprite_set_velocity(test_sprite, vector_to(100.0, 100.0));
-        sprite_add_to_animation_script(test_sprite, "test_sound.wav");
-        update_sprite_percent_with_sound(test_sprite, 0.5, true);
+        update_sprite(test_sprite, 0.5f, true);
         REQUIRE(50.0 == sprite_x(test_sprite));
         REQUIRE(50.0 == sprite_y(test_sprite));
-        REQUIRE(sound_playing("test_sound.wav"));
-        update_sprite_percent_with_sound(test_sprite, 0.5, false);
-        REQUIRE_FALSE(sound_playing("test_sound.wav"));
+        REQUIRE(sound_effect_playing("test_sound.wav"));
+        update_sprite(test_sprite, 0.5f, false);
+        REQUIRE_FALSE(sound_effect_playing("test_sound.wav"));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
         close_window(test_window);
@@ -1601,7 +1601,7 @@ public:
         auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
         auto test_sprite = create_sprite("test_sprite", test_bitmap);
         sprite_start_animation(test_sprite, "default");
-        update_sprite_animation_with_sound(test_sprite, true);
+        update_sprite_animation(test_sprite, true);
         REQUIRE(sprite_animation_has_ended(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1614,7 +1614,7 @@ public:
         auto test_sprite = create_sprite("test_sprite", test_bitmap, test_animation);
         sprite_start_animation(test_sprite, "walkfront");
         REQUIRE_FALSE(sprite_animation_has_ended(test_sprite));
-        update_sprite_animation_percent(test_sprite, 100);
+        update_sprite_animation(test_sprite, 100f);
         REQUIRE(sprite_animation_has_ended(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1627,7 +1627,7 @@ public:
         auto test_sprite = create_sprite("test_sprite", test_bitmap, test_animation);
         sprite_start_animation(test_sprite, "walkfront");
         REQUIRE_FALSE(sprite_animation_has_ended(test_sprite));
-        update_sprite_animation_percent_with_sound(test_sprite, 100, true);
+        update_sprite_animation(test_sprite, 100f, true);
         REQUIRE(sprite_animation_has_ended(test_sprite));
         free_sprite(test_sprite);
         free_bitmap(test_bitmap);
@@ -1640,7 +1640,7 @@ public:
         sprite_set_position(test_sprite, point_at(0, 0));
         auto center_point = point_at(50, 50);
         auto target_point = point_at(150, 150);
-        auto vector = vector_from_center_sprite_to_point_point(test_sprite, target_point);
+        auto vector = vector_from_center_sprite_to_point(test_sprite, target_point);
         REQUIRE(100 == vector->X);
         REQUIRE(100 == vector->Y);
         free_sprite(test_sprite);

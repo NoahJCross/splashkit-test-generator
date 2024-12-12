@@ -35,7 +35,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
-            FadeMusicInNamed("test_music", 1000);
+            FadeMusicIn("test_music", 1000);
             Assert.True(MusicPlaying());
             FreeMusic(testMusic);
             CloseAudio();
@@ -45,7 +45,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
-            FadeMusicInNamedWithTimes("test_music", 2, 1000);
+            FadeMusicIn("test_music", 2, 1000);
             Assert.True(MusicPlaying());
             FreeMusic(testMusic);
             CloseAudio();
@@ -65,7 +65,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
-            FadeMusicInWithTimes(testMusic, 2, 1000);
+            FadeMusicIn(testMusic, 2, 1000);
             Assert.True(MusicPlaying());
             FreeMusic(testMusic);
             CloseAudio();
@@ -178,7 +178,7 @@ namespace SplashKitTests
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
             PlayMusic(testMusic);
-            SetMusicVolume(0.5);
+            SetMusicVolume(0.5f);
             Assert.Equal(0.5, MusicVolume());
             FreeMusic(testMusic);
             CloseAudio();
@@ -199,7 +199,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
-            PlayMusicNamed("test_music");
+            PlayMusic("test_music");
             Assert.True(MusicPlaying());
             FreeMusic(testMusic);
             CloseAudio();
@@ -209,7 +209,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
-            PlayMusicNamedWithTimes("test_music", 2);
+            PlayMusic("test_music", 2);
             Assert.True(MusicPlaying());
             FreeMusic(testMusic);
             CloseAudio();
@@ -229,7 +229,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
-            PlayMusicWithTimes(testMusic, 2);
+            PlayMusic(testMusic, 2);
             Assert.True(MusicPlaying());
             FreeMusic(testMusic);
             CloseAudio();
@@ -239,7 +239,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
-            PlayMusicWithTimesAndVolume(testMusic, 2, 0.75);
+            PlayMusic(testMusic, 2, 0.75f);
             Assert.True(MusicPlaying());
             Assert.Equal(0.75, MusicVolume());
             FreeMusic(testMusic);
@@ -264,7 +264,7 @@ namespace SplashKitTests
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
             PlayMusic(testMusic);
-            SetMusicVolume(0.5);
+            SetMusicVolume(0.5f);
             Assert.Equal(0.5, MusicVolume());
             FreeMusic(testMusic);
             CloseAudio();
@@ -352,7 +352,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
-            PlaySoundEffectNamed("test_sound");
+            PlaySoundEffect("test_sound");
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -362,7 +362,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
-            PlaySoundEffectNamedWithVolume("test_sound", 0.75);
+            PlaySoundEffect("test_sound", 0.75f);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -372,7 +372,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
-            PlaySoundEffectNamedWithTimes("test_sound", 3);
+            PlaySoundEffect("test_sound", 3);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -382,7 +382,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
-            PlaySoundEffectNamedWithTimesAndVolume("test_sound", 2, 0.75);
+            PlaySoundEffect("test_sound", 2, 0.75);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -402,7 +402,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
-            PlaySoundEffectWithVolume(testSound, 0.75);
+            PlaySoundEffect(testSound, 0.75f);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -412,7 +412,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
-            PlaySoundEffectWithTimes(testSound, 3);
+            PlaySoundEffect(testSound, 3);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -422,7 +422,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
-            PlaySoundEffectWithTimesAndVolume(testSound, 2, 0.75);
+            PlaySoundEffect(testSound, 2, 0.75f);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -461,9 +461,9 @@ namespace SplashKitTests
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
             PlaySoundEffect("test_sound");
-            Assert.True(SoundEffectPlayingNamed("test_sound"));
+            Assert.True(SoundEffectPlaying("test_sound"));
             StopSoundEffect("test_sound");
-            Assert.False(SoundEffectPlayingNamed("test_sound"));
+            Assert.False(SoundEffectPlaying("test_sound"));
             FreeSoundEffect(testSound);
             CloseAudio();
         }
@@ -495,7 +495,7 @@ namespace SplashKitTests
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
             PlaySoundEffect("test_sound");
-            StopSoundEffectNamed("test_sound");
+            StopSoundEffect("test_sound");
             Assert.False(SoundEffectPlaying("test_sound"));
             FreeSoundEffect(testSound);
             CloseAudio();

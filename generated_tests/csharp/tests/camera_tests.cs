@@ -36,7 +36,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testSprite = CreateSprite("test_sprite");
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-            CenterCameraOnVector(testSprite, VectorFromAngle(50.0, 50.0));
+            CenterCameraOn(testSprite, VectorFromAngle(50.0, 50.0));
             Assert.Equal(PointAt(-267.8606182336807, -161.69777810573578), CameraPosition());
             FreeSprite(testSprite);
             CloseWindow(testWindow);
@@ -57,7 +57,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testVector = VectorFromAngle(0.0, 100.0);
-            MoveCameraByVector(testVector);
+            MoveCameraBy(testVector);
             Assert.Equal(100.0, CameraX());
             Assert.Equal(0.0, CameraY());
             CloseWindow(testWindow);
@@ -75,7 +75,7 @@ namespace SplashKitTests
         public void TestMoveCameraToPointIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            MoveCameraToPoint(PointAt(100.0, 100.0));
+            MoveCameraTo(PointAt(100.0, 100.0));
             Assert.Equal(PointAt(100.0, 100.0), CameraPosition());
             CloseWindow(testWindow);
         }
@@ -179,7 +179,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetCameraPosition(PointAt(100.0, 100.0));
-            var testScreenPoint = ToScreenPoint(PointAt(150.0, 150.0));
+            var testScreenPoint = ToScreen(PointAt(150.0, 150.0));
             Assert.Equal(50.0, testScreenPoint.X);
             Assert.Equal(50.0, testScreenPoint.Y);
             CloseWindow(testWindow);
@@ -189,7 +189,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
-            var screenRectangle = ToScreenRectangle(testRectangle);
+            var screenRectangle = ToScreen(testRectangle);
             Assert.Equal(ToScreenX(100.0), RectangleLeft(screenRectangle));
             Assert.Equal(ToScreenY(100.0), RectangleTop(screenRectangle));
             CloseWindow(testWindow);

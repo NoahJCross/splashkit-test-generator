@@ -395,7 +395,7 @@ begin
         ClearScreen();
         scroll := MouseWheelScroll();
         DrawText("Scroll mouse wheel to test", ColorBlack(), 10, 10);
-        DrawText("$Mouse Position: X={scroll.X}", "Y={scroll.Y}", ColorBlack(), 10, 30);
+        DrawText('Mouse Position: X=' + MouseX() + ', Y=' + MouseY() + '', ColorBlack(), 10, 30);
         DrawText("Press Space to end test", ColorBlack(), 10, 50);
         RefreshScreen();
     end;
@@ -457,7 +457,7 @@ begin
         DrawText("Press M to move mouse to center", ColorBlack(), 10, 10);
         DrawText('Mouse Position: X=' + MouseX() + ', Y=' + MouseY() + '', ColorBlack(), 10, 30);
         RefreshScreen();
-        MoveMouseToPoint(PointAt(400, 300));
+        MoveMouse(PointAt(400, 300));
     end;
     while KeyDown(KeyCode.SPACE_KEY) = false do
         ProcessEvents();
@@ -499,7 +499,7 @@ begin
         DrawText("Press H to hide mouse", ColorBlack(), 10, 10);
         DrawText('Mouse Shown: ' + MouseShown() + '', ColorBlack(), 10, 30);
         RefreshScreen();
-        ShowMouseWithBoolean(false);
+        ShowMouse(false);
     end;
     while KeyDown(KeyCode.S_KEY) = false do
         ProcessEvents();
@@ -508,7 +508,7 @@ begin
         DrawText('Mouse Shown: ' + MouseShown() + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
-    ShowMouseWithBoolean(true);
+    ShowMouse(true);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestDrawCollectedTextIntegration;
@@ -519,7 +519,7 @@ begin
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
         RefreshScreen();
     end;
@@ -534,7 +534,7 @@ begin
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawText('Reading Text: ' + ReadingText() + '', ColorBlack(), 10, 30);
         RefreshScreen();
         EndReadingText();
@@ -557,10 +557,10 @@ begin
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawText('Reading Text: ' + ReadingText(testWindow) + '', ColorBlack(), 10, 30);
         RefreshScreen();
-        EndReadingTextInWindow(testWindow);
+        EndReadingText(testWindow);
     end;
     while KeyDown(KeyCode.SPACE_KEY) = false do
         ProcessEvents();
@@ -579,7 +579,7 @@ begin
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawText('Reading Text: ' + ReadingText() + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
@@ -594,8 +594,8 @@ begin
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
-        DrawText('Reading Text: ' + ReadingTextInWindow(testWindow) + '', ColorBlack(), 10, 30);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
+        DrawText('Reading Text: ' + ReadingText(testWindow) + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
     EndReadingText(testWindow);
@@ -609,7 +609,7 @@ begin
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawText('Current Text: ' + TextInput() + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
@@ -620,11 +620,11 @@ procedure TIntegrationTests.TestStartReadingTextWithInitialTextIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 30);
-    StartReadingTextWithInitialText(testRect, "Initial Text");
+    StartReadingText(testRect, "Initial Text");
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawText('Current Text: ' + TextInput() + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
@@ -635,11 +635,11 @@ procedure TIntegrationTests.TestStartReadingTextInWindowIntegration;
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 30);
-    StartReadingTextInWindow(testWindow, testRect);
+    StartReadingText(testWindow, testRect);
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawText('Current Text: ' + TextInput(testWindow) + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
@@ -650,11 +650,11 @@ procedure TIntegrationTests.TestStartReadingTextInWindowWithInitialTextIntegrati
 begin
     testWindow := OpenWindow("Test Window", 800, 600);
     testRect := RectangleFrom(100, 100, 200, 30);
-    StartReadingTextInWindowWithInitialText(testWindow, testRect, "Initial Text");
+    StartReadingText(testWindow, testRect, "Initial Text");
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawText('Current Text: ' + TextInput(testWindow) + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
@@ -684,7 +684,7 @@ begin
         ProcessEvents();
         ClearScreen();
         DrawText("Press Escape to cancel text entry", ColorBlack(), 10, 10);
-        DrawText('Text Entry Cancelled: ' + TextEntryCancelledInWindow(testWindow) + '', ColorBlack(), 10, 30);
+        DrawText('Text Entry Cancelled: ' + TextEntryCancelled(testWindow) + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
     EndReadingText(testWindow);
@@ -697,7 +697,7 @@ begin
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
         DrawText('Current Text: ' + TextInput() + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
@@ -712,8 +712,8 @@ begin
     while KeyDown(KeyCode.KEYPAD_ENTER) = false do
         ProcessEvents();
         ClearScreen();
-        DrawText("Type some text", "press Enter when done", ColorBlack(), 10, 10);
-        DrawText('Current Text: ' + TextInputInWindow(testWindow) + '', ColorBlack(), 10, 30);
+        DrawText("Type some text, press Enter when done", ColorBlack(), 10, 10);
+        DrawText('Current Text: ' + TextInput(testWindow) + '', ColorBlack(), 10, 30);
         RefreshScreen();
     end;
     EndReadingText(testWindow);
@@ -723,5 +723,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
+#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
 end;

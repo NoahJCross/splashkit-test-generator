@@ -17,6 +17,7 @@ module LanguageConfig
 
       naming_convention: ->(name) { name.to_snake_case },
 
+
       assert_conditions: {
         'equal'                   => ->(v1, v2, _)    { "assert #{v1} == #{v2}\n" },
         'not_equal'               => ->(v1, v2, _)    { "assert #{v1} != #{v2}\n" },
@@ -43,6 +44,12 @@ module LanguageConfig
         'not_equal'    => ->(v1, v2) { "#{v1} != #{v2}" }
       }.freeze,
 
+      numeric_constants: {
+        infinity: "float('inf')",
+        negative_infinity: "float('-inf')",
+        max_value: '3.4028235e+38'
+      }.freeze,
+
       control_flow: {
         loop:      ->(iterations) { "for _ in range(#{iterations}):\n" },
         while:     ->(condition) { "while #{condition}:\n" },
@@ -58,12 +65,6 @@ module LanguageConfig
         char:          ->(value) { "'#{value}'" }
       }.freeze,
 
-      numeric_constants: {
-        'inf'          => "float('inf')",
-        'neg_inf'      => "float('-inf')",
-        'max_value'    => '3.4028235e+38'
-      }.freeze,
-
       type_handlers: {
         list:      ->(values, _) { "[#{values}]" },
         class:     ->(name, args) { "#{name}(#{args})" },
@@ -75,7 +76,9 @@ module LanguageConfig
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
           "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
-        }
+        },
+        unsigned_int: ->(value) { value },
+        float: ->(value) { value }
       }.freeze,
 
       variable_handlers: {
@@ -83,7 +86,9 @@ module LanguageConfig
         reference:     ->(name) { name.to_snake_case },
         field_access:  ->(var, field) { "#{var}.#{field}" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" }
+        matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
+        array_size:    ->(arr) { "len(#{arr})" },
+        reference_operator: ->(var) { var }
       }.freeze,
 
       function_handlers: {

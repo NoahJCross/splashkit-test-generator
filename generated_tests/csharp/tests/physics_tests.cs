@@ -14,7 +14,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
             var testPoint = PointAt(100.0, 100.0);
-            Assert.True(BitmapCircleCollisionAtPoint(testBitmap, testPoint, testCircle));
+            Assert.True(BitmapCircleCollision(testBitmap, testPoint, testCircle));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -39,7 +39,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
             var testTranslation = TranslationMatrix(100.0, 100.0);
-            Assert.True(BitmapCircleCollisionForCellWithTranslation(testBitmap, 0, testTranslation, testCircle));
+            Assert.True(BitmapCircleCollision(testBitmap, 0, testTranslation, testCircle));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -52,7 +52,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
             var testPoint = PointAt(100.0, 100.0);
-            Assert.True(BitmapCircleCollisionForCellAtPoint(testBitmap, 0, testPoint, testCircle));
+            Assert.True(BitmapCircleCollision(testBitmap, 0, testPoint, testCircle));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -64,7 +64,7 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorBlack());
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
-            Assert.True(BitmapCircleCollisionForCell(testBitmap, 0, 100.0, 100.0, testCircle));
+            Assert.True(BitmapCircleCollision(testBitmap, 0, 100.0, 100.0, testCircle));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -95,7 +95,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap2);
             var testPoint1 = PointAt(0.0, 0.0);
             var testPoint2 = PointAt(50.0, 50.0);
-            Assert.True(BitmapCollisionAtPoints(testBitmap1, testPoint1, testBitmap2, testPoint2));
+            Assert.True(BitmapCollision(testBitmap1, testPoint1, testBitmap2, testPoint2));
             FreeAllBitmaps();
             CloseWindow(testWindow);
         }
@@ -111,7 +111,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap2);
             var matrix1 = TranslationMatrix(0.0, 0.0);
             var matrix2 = TranslationMatrix(50.0, 50.0);
-            Assert.True(BitmapCollisionForCellsWithTranslations(testBitmap1, 0, matrix1, testBitmap2, 0, matrix2));
+            Assert.True(BitmapCollision(testBitmap1, 0, matrix1, testBitmap2, 0, matrix2));
             FreeAllBitmaps();
             CloseWindow(testWindow);
         }
@@ -127,7 +127,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap2);
             var testPoint1 = PointAt(100.0, 100.0);
             var testPoint2 = PointAt(125.0, 125.0);
-            Assert.True(BitmapCollisionForCellsAtPoints(testBitmap1, 0, testPoint1, testBitmap2, 0, testPoint2));
+            Assert.True(BitmapCollision(testBitmap1, 0, testPoint1, testBitmap2, 0, testPoint2));
             FreeAllBitmaps();
             CloseWindow(testWindow);
         }
@@ -141,8 +141,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap2, ColorBlack());
             SetupCollisionMask(testBitmap1);
             SetupCollisionMask(testBitmap2);
-            Assert.False(BitmapCollisionForCells(testBitmap1, 0, 100.0, 100.0, testBitmap2, 0, 200.0, 100.0));
-            Assert.True(BitmapCollisionForCells(testBitmap1, 0, 100.0, 100.0, testBitmap2, 0, 150.0, 100.0));
+            Assert.False(BitmapCollision(testBitmap1, 0, 100.0, 100.0, testBitmap2, 0, 200.0, 100.0));
+            Assert.True(BitmapCollision(testBitmap1, 0, 100.0, 100.0, testBitmap2, 0, 150.0, 100.0));
             FreeAllBitmaps();
             CloseWindow(testWindow);
         }
@@ -155,7 +155,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testTranslation = TranslationMatrix(100.0, 100.0);
             var testPoint = PointAt(150.0, 150.0);
-            Assert.True(BitmapPointCollisionWithTranslation(testBitmap, testTranslation, testPoint));
+            Assert.True(BitmapPointCollision(testBitmap, testTranslation, testPoint));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -168,7 +168,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testBmpPoint = PointAt(50.0, 50.0);
             var testPoint = PointAt(75.0, 75.0);
-            Assert.True(BitmapPointCollisionAtPoint(testBitmap, testBmpPoint, testPoint));
+            Assert.True(BitmapPointCollision(testBitmap, testBmpPoint, testPoint));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -193,7 +193,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testTranslation = TranslationMatrix(100.0, 100.0);
             var testPoint = PointAt(150.0, 150.0);
-            Assert.True(BitmapPointCollisionForCellWithTranslation(testBitmap, 0, testTranslation, testPoint));
+            Assert.True(BitmapPointCollision(testBitmap, 0, testTranslation, testPoint));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -204,7 +204,7 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorBlack());
             SetupCollisionMask(testBitmap);
-            Assert.True(BitmapPointCollisionForCellAtPoint(testBitmap, 0, 50.0, 50.0, 50.0, 50.0));
+            Assert.True(BitmapPointCollision(testBitmap, 0, 50.0, 50.0, 50.0, 50.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -214,9 +214,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorBlack());
-            DrawPixel(ColorWhite(), 50, 50, OptionDrawToBitmap(testBitmap));
+            DrawPixel(ColorWhite(), 50, 50, OptionDrawTo(testBitmap));
             SetupCollisionMask(testBitmap);
-            Assert.True(BitmapPointCollisionForCell(testBitmap, 0, 0.0, 0.0, 50.0, 50.0));
+            Assert.True(BitmapPointCollision(testBitmap, 0, 0.0, 0.0, 50.0, 50.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -229,7 +229,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(50.0, 50.0, 100.0, 100.0);
             var testPoint = PointAt(100.0, 100.0);
-            Assert.True(BitmapRectangleCollisionAtPoint(testBitmap, testPoint, testRectangle));
+            Assert.True(BitmapRectangleCollision(testBitmap, testPoint, testRectangle));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -254,7 +254,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(150.0, 150.0, 50.0, 50.0);
             var testTranslation = TranslationMatrix(100.0, 100.0);
-            Assert.True(BitmapRectangleCollisionForCellWithTranslation(testBitmap, 0, testTranslation, testRectangle));
+            Assert.True(BitmapRectangleCollision(testBitmap, 0, testTranslation, testRectangle));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -267,7 +267,7 @@ namespace SplashKitTests
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(100.0, 100.0, 50.0, 50.0);
             var testPoint = PointAt(100.0, 100.0);
-            Assert.True(BitmapRectangleCollisionForCellAtPoint(testBitmap, 0, testPoint, testRectangle));
+            Assert.True(BitmapRectangleCollision(testBitmap, 0, testPoint, testRectangle));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -279,7 +279,7 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorBlack());
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(50.0, 50.0, 100.0, 100.0);
-            Assert.True(BitmapRectangleCollisionForCell(testBitmap, 0, 50.0, 50.0, testRectangle));
+            Assert.True(BitmapRectangleCollision(testBitmap, 0, 50.0, 50.0, testRectangle));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -309,7 +309,7 @@ namespace SplashKitTests
             var testSprite = CreateSprite(testBitmap);
             SpriteSetCollisionKind(testSprite, CollisionTestKind.PixelCollisions);
             SpriteSetPosition(testSprite, PointAt(50.0, 50.0));
-            Assert.True(SpriteBitmapCollisionWithCellAtPoint(testSprite, testBitmap, 0, PointAt(50.0, 50.0)));
+            Assert.True(SpriteBitmapCollision(testSprite, testBitmap, 0, PointAt(50.0, 50.0)));
             FreeAllSprites();
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -324,7 +324,7 @@ namespace SplashKitTests
             var testSprite = CreateSprite(testBitmap);
             SpriteSetCollisionKind(testSprite, CollisionTestKind.PixelCollisions);
             SpriteSetPosition(testSprite, PointAt(50.0, 50.0));
-            Assert.True(SpriteBitmapCollisionWithCell(testSprite, testBitmap, 0, 50.0, 50.0));
+            Assert.True(SpriteBitmapCollision(testSprite, testBitmap, 0, 50.0, 50.0));
             FreeAllSprites();
             FreeAllBitmaps();
             CloseWindow(testWindow);
@@ -388,7 +388,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testMatrix = IdentityMatrix();
             var testQuad = QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(200.0, 200.0), PointAt(100.0, 200.0));
-            ApplyMatrixToQuad(testMatrix, testQuad);
+            ApplyMatrix(testMatrix, ref testQuad);
             Assert.Equal(100.0, testQuad.Points[0].X);
             Assert.Equal(100.0, testQuad.Points[0].Y);
             CloseWindow(testWindow);
@@ -398,7 +398,7 @@ namespace SplashKitTests
         {
             var testTriangle = TriangleFrom(PointAt(0.0, 0.0), PointAt(1.0, 0.0), PointAt(0.0, 1.0));
             var testMatrix = TranslationMatrix(1.0, 1.0);
-            ApplyMatrixToTriangle(testMatrix, testTriangle);
+            ApplyMatrix(testMatrix, ref testTriangle);
             Assert.Equal(1.0, testTriangle.Points[0].X);
             Assert.Equal(1.0, testTriangle.Points[0].Y);
         }
@@ -416,7 +416,7 @@ namespace SplashKitTests
         {
             var testMatrix = ScaleRotateTranslateMatrix(PointAt(2.0, 2.0), 45.0, PointAt(10.0, 10.0));
             var inverseMatrix = MatrixInverse(testMatrix);
-            var resultMatrix = MatrixMultiplyMatrix(testMatrix, inverseMatrix);
+            var resultMatrix = MatrixMultiply(testMatrix, inverseMatrix);
             Assert.Equal(1.0, resultMatrix.Elements[0, 0]);
             Assert.Equal(1.0, resultMatrix.Elements[1, 1]);
         }
@@ -425,7 +425,7 @@ namespace SplashKitTests
         {
             var testMatrix = TranslationMatrix(10.0, 10.0);
             var testPoint = PointAt(10.0, 20.0);
-            var resultPoint = MatrixMultiplyPoint(testMatrix, testPoint);
+            var resultPoint = MatrixMultiply(testMatrix, testPoint);
             Assert.Equal(20.0, resultPoint.X);
             Assert.Equal(30.0, resultPoint.Y);
         }
@@ -434,7 +434,7 @@ namespace SplashKitTests
         {
             var testMatrix1 = ScaleMatrix(2.0);
             var testMatrix2 = TranslationMatrix(10.0, 10.0);
-            var resultMatrix = MatrixMultiplyMatrix(testMatrix2, testMatrix1);
+            var resultMatrix = MatrixMultiply(testMatrix2, testMatrix1);
             Assert.Equal(2.0, resultMatrix.Elements[0, 0]);
             Assert.Equal(20.0, resultMatrix.Elements[0, 2]);
         }
@@ -443,7 +443,7 @@ namespace SplashKitTests
         {
             var testVector = VectorTo(2.0, 2.0);
             var testMatrix = ScaleMatrix(2.0);
-            var resultVector = MatrixMultiplyVector(testMatrix, testVector);
+            var resultVector = MatrixMultiply(testMatrix, testVector);
             Assert.Equal(4.0, resultVector.X);
             Assert.Equal(4.0, resultVector.Y);
         }
@@ -458,7 +458,7 @@ namespace SplashKitTests
         {
             var testMatrix = RotationMatrix(90.0);
             var testPoint = PointAt(1.0, 0.0);
-            var resultPoint = MatrixMultiplyPoint(testMatrix, testPoint);
+            var resultPoint = MatrixMultiply(testMatrix, testPoint);
             Assert.Equal(0, resultPoint.X);
             Assert.Equal(1, resultPoint.Y);
         }
@@ -466,9 +466,9 @@ namespace SplashKitTests
         public void TestScaleMatrixFromPointIntegration()
         {
             var testScale = PointAt(2.0, 3.0);
-            var testMatrix = ScaleMatrixFromPoint(testScale);
+            var testMatrix = ScaleMatrix(testScale);
             var testPoint = PointAt(1.0, 1.0);
-            var resultPoint = MatrixMultiplyPoint(testMatrix, testPoint);
+            var resultPoint = MatrixMultiply(testMatrix, testPoint);
             Assert.Equal(2.0, resultPoint.X);
             Assert.Equal(3.0, resultPoint.Y);
         }
@@ -476,9 +476,9 @@ namespace SplashKitTests
         public void TestScaleMatrixFromVectorIntegration()
         {
             var testScale = VectorTo(2.0, 3.0);
-            var testMatrix = ScaleMatrixFromVector(testScale);
+            var testMatrix = ScaleMatrix(testScale);
             var testPoint = PointAt(1.0, 1.0);
-            var resultPoint = MatrixMultiplyPoint(testMatrix, testPoint);
+            var resultPoint = MatrixMultiply(testMatrix, testPoint);
             Assert.Equal(2.0, resultPoint.X);
             Assert.Equal(3.0, resultPoint.Y);
         }
@@ -487,7 +487,7 @@ namespace SplashKitTests
         {
             var testPoint = PointAt(1.0, 1.5);
             var testMatrix = ScaleMatrix(2.0);
-            var resultPoint = MatrixMultiplyPoint(testMatrix, testPoint);
+            var resultPoint = MatrixMultiply(testMatrix, testPoint);
             Assert.Equal(2.0, resultPoint.X);
             Assert.Equal(3.0, resultPoint.Y);
         }
@@ -498,7 +498,7 @@ namespace SplashKitTests
             var testTranslate = PointAt(10.0, 10.0);
             var testMatrix = ScaleRotateTranslateMatrix(testScale, 90.0, testTranslate);
             var testPoint = PointAt(1.0, 0.0);
-            var resultPoint = MatrixMultiplyPoint(testMatrix, testPoint);
+            var resultPoint = MatrixMultiply(testMatrix, testPoint);
             Assert.Equal(10, resultPoint.X);
             Assert.Equal(11, resultPoint.Y);
         }
@@ -506,9 +506,9 @@ namespace SplashKitTests
         public void TestTranslationMatrixToPointIntegration()
         {
             var testPoint = PointAt(10.0, 20.0);
-            var testMatrix = TranslationMatrixToPoint(testPoint);
+            var testMatrix = TranslationMatrix(testPoint);
             var testVector = PointAt(5.0, 5.0);
-            var resultPoint = MatrixMultiplyVector(testMatrix, testVector);
+            var resultPoint = MatrixMultiply(testMatrix, testVector);
             Assert.Equal(15.0, resultPoint.X);
             Assert.Equal(25.0, resultPoint.Y);
         }
@@ -516,9 +516,9 @@ namespace SplashKitTests
         public void TestTranslationMatrixFromVectorIntegration()
         {
             var testVector = VectorTo(10.0, 20.0);
-            var testMatrix = TranslationMatrixFromVector(testVector);
+            var testMatrix = TranslationMatrix(testVector);
             var testPoint = PointAt(0.0, 0.0);
-            var resultPoint = MatrixMultiplyPoint(testMatrix, testPoint);
+            var resultPoint = MatrixMultiply(testMatrix, testPoint);
             Assert.Equal(10.0, resultPoint.X);
             Assert.Equal(20.0, resultPoint.Y);
         }
@@ -527,7 +527,7 @@ namespace SplashKitTests
         {
             var testMatrix = TranslationMatrix(10.0, 20.0);
             var testPoint = PointAt(0.0, 0.0);
-            var resultPoint = MatrixMultiplyPoint(testMatrix, testPoint);
+            var resultPoint = MatrixMultiply(testMatrix, testPoint);
             Assert.Equal(10.0, resultPoint.X);
             Assert.Equal(20.0, resultPoint.Y);
         }
@@ -560,7 +560,7 @@ namespace SplashKitTests
             var testHeading = VectorTo(1.0, 1.0);
             var testLine = LineFrom(PointAt(0.0, 2.0), PointAt(2.0, 0.0));
             var intersectionPoint = PointAt(0.0, 0.0);
-            Assert.True(RayIntersectionPoint(testFromPt, testHeading, testLine, intersectionPoint));
+            Assert.True(RayIntersectionPoint(testFromPt, testHeading, testLine, ref intersectionPoint));
             Assert.Equal(1.0, intersectionPoint.X);
             Assert.Equal(1.0, intersectionPoint.Y);
         }
@@ -736,7 +736,7 @@ namespace SplashKitTests
         public void TestVectorToPointIntegration()
         {
             var testPoint = PointAt(3.0, 4.0);
-            var resultVector = VectorToPoint(testPoint);
+            var resultVector = VectorTo(testPoint);
             Assert.Equal(3.0, resultVector.X);
             Assert.Equal(4.0, resultVector.Y);
         }

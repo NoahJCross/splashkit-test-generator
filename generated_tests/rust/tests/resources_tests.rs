@@ -15,7 +15,7 @@ fn test_deregister_free_notifier_integration() {
     let free_notifier = notifier_tracker::new();
     register_free_notifier(free_notifier.on_free);
     deregister_free_notifier(free_notifier.on_free);
-    assert!(free_notifier.WasNotified);
+    assert!(free_notifier.was_notified);
 }
 #[test]
 fn test_path_to_resource_integration() {
@@ -45,9 +45,9 @@ fn test_path_to_resources_for_kind_integration() {
 fn test_register_free_notifier_integration() {
     let free_notifier = notifier_tracker::new();
     register_free_notifier(free_notifier.on_free);
-    assert!(free_notifier.WasNotified);
+    assert!(free_notifier.was_notified);
     deregister_free_notifier(free_notifier.on_free);
-    assert!(!free_notifier.WasNotified);
+    assert!(!free_notifier.was_notified);
 }
 #[test]
 fn test_set_resources_path_integration() {

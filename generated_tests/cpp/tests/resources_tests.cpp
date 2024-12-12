@@ -7,7 +7,7 @@ public:
         auto free_notifier = notifier_tracker();
         register_free_notifier(free_notifier->on_free);
         deregister_free_notifier(free_notifier->on_free);
-        REQUIRE(free_notifier->WasNotified);
+        REQUIRE(free_notifier->was_notified);
     }
     TEST_CASE("path_to_resource_integration") {
         set_resources_path("resources");
@@ -25,17 +25,17 @@ public:
     }
     TEST_CASE("path_to_resources_for_kind_integration") {
         set_resources_path("resources");
-        auto image_path = path_to_resources_for_kind(ResourceKind::IMAGE_RESOURCE);
+        auto image_path = path_to_resources(ResourceKind::IMAGE_RESOURCE);
         REQUIRE("resources/images" == image_path);
-        auto sound_path = path_to_resources_for_kind(ResourceKind::SOUND_RESOURCE);
+        auto sound_path = path_to_resources(ResourceKind::SOUND_RESOURCE);
         REQUIRE("resources/sounds" == sound_path);
     }
     TEST_CASE("register_free_notifier_integration") {
         auto free_notifier = notifier_tracker();
         register_free_notifier(free_notifier->on_free);
-        REQUIRE(free_notifier->WasNotified);
+        REQUIRE(free_notifier->was_notified);
         deregister_free_notifier(free_notifier->on_free);
-        REQUIRE_FALSE(free_notifier->WasNotified);
+        REQUIRE_FALSE(free_notifier->was_notified);
     }
     TEST_CASE("set_resources_path_integration") {
         set_resources_path("/resources");

@@ -26,7 +26,7 @@ public:
         auto test_window = open_window("Test Window", 800, 600);
         auto test_sprite = create_sprite("test_sprite");
         sprite_set_position(test_sprite, point_at(100.0, 100.0));
-        center_camera_on_vector(test_sprite, vector_from_angle(50.0, 50.0));
+        center_camera_on(test_sprite, vector_from_angle(50.0, 50.0));
         REQUIRE(point_at(-267.8606182336807, -161.69777810573578) == camera_position());
         free_sprite(test_sprite);
         close_window(test_window);
@@ -43,7 +43,7 @@ public:
     TEST_CASE("move_camera_by_vector_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_vector = vector_from_angle(0.0, 100.0);
-        move_camera_by_vector(test_vector);
+        move_camera_by(test_vector);
         REQUIRE(100.0 == camera_x());
         REQUIRE(0.0 == camera_y());
         close_window(test_window);
@@ -57,7 +57,7 @@ public:
     }
     TEST_CASE("move_camera_to_point_integration") {
         auto test_window = open_window("Test Window", 800, 600);
-        move_camera_to_point(point_at(100.0, 100.0));
+        move_camera_to(point_at(100.0, 100.0));
         REQUIRE(point_at(100.0, 100.0) == camera_position());
         close_window(test_window);
     }
@@ -139,7 +139,7 @@ public:
     TEST_CASE("to_screen_point_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         set_camera_position(point_at(100.0, 100.0));
-        auto test_screen_point = to_screen_point(point_at(150.0, 150.0));
+        auto test_screen_point = to_screen(point_at(150.0, 150.0));
         REQUIRE(50.0 == test_screen_point->x);
         REQUIRE(50.0 == test_screen_point->y);
         close_window(test_window);
@@ -147,7 +147,7 @@ public:
     TEST_CASE("to_screen_rectangle_integration") {
         auto test_window = open_window("Test Window", 800, 600);
         auto test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
-        auto screen_rectangle = to_screen_rectangle(test_rectangle);
+        auto screen_rectangle = to_screen(test_rectangle);
         REQUIRE(to_screen_x(100.0) == rectangle_left(screen_rectangle));
         REQUIRE(to_screen_y(100.0) == rectangle_top(screen_rectangle));
         close_window(test_window);

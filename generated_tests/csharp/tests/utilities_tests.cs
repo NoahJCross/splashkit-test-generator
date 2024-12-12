@@ -26,8 +26,8 @@ namespace SplashKitTests
             Assert.Equal(123.0, ConvertToDouble("123."));
             Assert.Equal(123.456, ConvertToDouble("000123.456"));
             Assert.Equal(123.456, ConvertToDouble("123.456000"));
-            Assert.Equal(, ConvertToDouble("inf"));
-            Assert.Equal(, ConvertToDouble("-inf"));
+            Assert.Equal(float.PositiveInfinity, ConvertToDouble("inf"));
+            Assert.Equal(float.NegativeInfinity, ConvertToDouble("-inf"));
             Assert.Equal(123.0, ConvertToDouble("1.23e2"));
         }
         [Fact]
@@ -147,22 +147,22 @@ namespace SplashKitTests
         [Fact]
         public void TestRndRangeIntegration()
         {
-            Assert.InRange(RndRange(-1, 5), -1, 5);
-            Assert.Equal(1, RndRange(1, 1));
-            Assert.InRange(RndRange(5, 1), 1, 5);
+            Assert.InRange(Rnd(-1, 5), -1, 5);
+            Assert.Equal(1, Rnd(1, 1));
+            Assert.InRange(Rnd(5, 1), 1, 5);
         }
         [Fact]
         public void TestRndIntegration()
         {
-            Assert.InRange(Rnd(), 0.0, );
+            Assert.InRange(Rnd(), 0.0, float.MaxValue);
         }
         [Fact]
         public void TestRndIntIntegration()
         {
-            Assert.InRange(RndInt(1), 0, 1);
-            Assert.InRange(RndInt(10), 0, 10);
-            Assert.Equal(0, RndInt(-1));
-            Assert.Equal(0, RndInt(0));
+            Assert.InRange(Rnd(1), 0, 1);
+            Assert.InRange(Rnd(10), 0, 10);
+            Assert.Equal(0, Rnd(-1));
+            Assert.Equal(0, Rnd(0));
         }
         [Fact]
         public void TestCurrentTicksIntegration()

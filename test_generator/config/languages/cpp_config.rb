@@ -29,9 +29,9 @@ module LanguageConfig
         'false'                   => ->(v1, _, _)     { "REQUIRE_FALSE(#{v1});\n" },
         'greater_than_or_equal'   => ->(v1, v2, _)    { "REQUIRE(#{v1} >= #{v2});\n" },
         'less_than_or_equal'      => ->(v1, v2, _)    { "REQUIRE(#{v1} <= #{v2});\n" },
-        'throws'                  => ->(v1, _, _)     { "REQUIRE_THROWS_AS(#{v1}, std::exception);\n" },
+        'throws'                  => ->(v1, _, _)     { "REQUIRE_THROWS_AS(#{v1}, exception);\n" },
         'not_empty'               => ->(v1, _, _)     { "REQUIRE(!#{v1}.empty());\n" },
-        'contains'                => ->(v1, v2, _)    { "REQUIRE(#{v2}.find(#{v1}) != std::string::npos);\n" },
+        'contains'                => ->(v1, v2, _)    { "REQUIRE(#{v2}.find(#{v1}) != string::npos);\n" },
         'empty'                   => ->(v1, _, _)     { "REQUIRE(#{v1}.empty());\n" }
       }.freeze,
 
@@ -41,6 +41,12 @@ module LanguageConfig
         'false'        => ->(v1, _)  { "#{v1} == false" },
         'equal'        => ->(v1, v2) { "#{v1} == #{v2}" },
         'not_equal'    => ->(v1, v2) { "#{v1} != #{v2}" }
+      }.freeze,
+
+      numeric_constants: {
+        infinity: 'numeric_limits<double>::infinity()',
+        negative_infinity: '-numeric_limits<double>::infinity()',
+        max_value: 'numeric_limits<float>::max()'
       }.freeze,
 
       control_flow: {
@@ -54,20 +60,14 @@ module LanguageConfig
 
       string_handlers: {
         interpolation: ->(expr) { "\" << #{expr} << \"" },
-        concatenation: ->(parts) { "std::string(\"#{parts.join}\")" },
+        concatenation: ->(parts) { "string(\"#{parts.join}\")" },
         char:          ->(value) { "'#{value}'" }
-      }.freeze,
-
-      numeric_constants: {
-        'inf'          => 'std::numeric_limits<double>::infinity()',
-        'neg_inf'      => '-std::numeric_limits<double>::infinity()',
-        'max_value'    => 'std::numeric_limits<float>::max()'
       }.freeze,
 
       type_handlers: {
         list:      ->(values, target_type = nil) { 
           mapped_type = DEFAULT_CONFIG[:type_handlers][:mapping][target_type] || target_type || 'auto'
-          "std::vector<#{mapped_type}> { #{values} }" 
+          "vector<#{mapped_type}> { #{values} }" 
         },
         class:     ->(name, args) { "#{name}(#{args})" },
         mapping:   {
@@ -76,15 +76,19 @@ module LanguageConfig
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
           "#{type.to_pascal_case}::#{value.to_upper_case}#{semicolon ? ";\n" : ''}"
-        }
-
+        },
+        unsigned_int: ->(value) { "#{value}u" },
+        float: ->(value) { "#{value}f" }
       }.freeze,
+
       variable_handlers: {
         declaration:   ->(name) { "auto #{name.to_snake_case} = " },
         reference:     ->(name) { name.to_snake_case.to_s },
         field_access:  ->(var, field) { "#{var}->#{field}" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" }
+        matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
+        array_size:    ->(arr) { "#{arr}.size()" },
+        reference_operator: ->(var) { "&#{var}" }
       }.freeze,
 
       function_handlers: {

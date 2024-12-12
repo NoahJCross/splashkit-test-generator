@@ -92,7 +92,7 @@
               "variable_name": "test_sprite1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 100
             }
           ]
@@ -106,7 +106,7 @@
               "variable_name": "test_sprite2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 200
             }
           ]
@@ -121,7 +121,7 @@
               "variable_field": "SpriteFloatFunction"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 300
             }
           ]
@@ -486,7 +486,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "centerPoint",
+              "variable_name": "center_point",
               "variable_field": "X"
             }
           }
@@ -501,7 +501,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "centerPoint",
+              "variable_name": "center_point",
               "variable_field": "Y"
             }
           }
@@ -3017,10 +3017,6 @@
             {
               "value_type": "variable",
               "variable_name": "test_sprite"
-            },
-            {
-              "value_type": "primitive",
-              "value": 1.0
             }
           ]
         },
@@ -3197,10 +3193,6 @@
                   "value": 50
                 }
               ]
-            },
-            {
-              "value_type": "primitive",
-              "value": 1.0
             }
           ]
         },
@@ -3379,7 +3371,7 @@
               ]
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             }
           ]
@@ -3569,7 +3561,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             }
           ]
@@ -4507,7 +4499,7 @@
               "value": "health"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 100.0
             }
           ]
@@ -4666,7 +4658,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "anchorPoint",
+              "variable_name": "anchor_point",
               "variable_field": "X"
             }
           }
@@ -4681,7 +4673,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "anchorPoint",
+              "variable_name": "anchor_point",
               "variable_field": "Y"
             }
           }
@@ -4819,7 +4811,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "anchorPosition",
+              "variable_name": "anchor_position",
               "variable_field": "X"
             }
           }
@@ -4834,7 +4826,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "anchorPosition",
+              "variable_name": "anchor_position",
               "variable_field": "Y"
             }
           }
@@ -5281,7 +5273,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 400
             }
           ]
@@ -5295,7 +5287,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 300
             }
           ]
@@ -7207,7 +7199,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 5.0
             }
           ]
@@ -7349,7 +7341,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 5.0
             }
           ]
@@ -7812,7 +7804,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 2.0
             }
           ]
@@ -10644,7 +10636,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 45
             }
           ]
@@ -10669,7 +10661,7 @@
               "value": 150.0
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "matrix",
               "field": "elements",
               "row": 0,
@@ -10686,7 +10678,7 @@
               "value": 1
             },
             "value2": {
-              "value_type": "matrix_access",
+              "value_type": "variable_matrix_access",
               "variable_name": "matrix",
               "field": "elements",
               "row": 2,
@@ -10811,7 +10803,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 10.0
             }
           ]
@@ -11107,7 +11099,7 @@
               ]
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 1.0
             }
           ]
@@ -12515,7 +12507,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 45.0
             }
           ]
@@ -12657,7 +12649,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 2.0
             }
           ]
@@ -13030,6 +13022,7 @@
             }
           ]
         },
+
         {
           "step_type": "function",
           "function_name": "sprite_add_layer",
@@ -13062,6 +13055,21 @@
               "variable_name": "layer2"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_visible_index_of_layer",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "layer2"
+            }
+          ],
+          "store_result": "visible_index"
         },
         {
           "step_type": "function",
@@ -13222,6 +13230,7 @@
             }
           ]
         },
+
         {
           "step_type": "function",
           "function_name": "sprite_add_layer",
@@ -13254,6 +13263,21 @@
               "variable_name": "layer2"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "sprite_visible_index_of_layer",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_sprite"
+            },
+            {
+              "value_type": "variable",
+              "variable_name": "layer2"
+            }
+          ],
+          "store_result": "visible_index"
         },
         {
           "step_type": "function",
@@ -13898,7 +13922,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 5.0
             }
           ]
@@ -14040,7 +14064,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 5.0
             }
           ]
@@ -14206,7 +14230,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 45.0
             }
           ]
@@ -14716,7 +14740,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 10.0
             }
           ]
@@ -15166,7 +15190,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 45.0
             }
           ]
@@ -15308,7 +15332,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 2.0
             }
           ]
@@ -15454,7 +15478,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 5.0
             }
           ]
@@ -15601,7 +15625,7 @@
               "value": "test_value"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.0
             }
           ]
@@ -15619,7 +15643,7 @@
               "value": "test_value"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 10.5
             }
           ]
@@ -15937,7 +15961,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 150.0
             }
           ]
@@ -16079,7 +16103,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 300.0
             }
           ]
@@ -17485,7 +17509,7 @@
             "value1": {
               "value_type": "variable_field",
               "variable_name": "helper",
-              "variable_field": "EventCalled"
+              "variable_field": "event_called"
             }
           }
         },
@@ -17499,13 +17523,6 @@
               "variable_field": "sprite_event_handler"
             }
           ]
-        },
-        {
-          "step_type": "variable",
-          "variable_name": "helper",
-          "value_type": "class_instance",
-          "class_name": "helper",
-          "args": []
         },
         {
           "step_type": "function",
@@ -17524,7 +17541,7 @@
             "value1": {
               "value_type": "variable_field",
               "variable_name": "helper",
-              "variable_field": "EventCalled"
+              "variable_field": "event_called"
             }
           }
         },
@@ -17632,7 +17649,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 100
             }
           ]
@@ -17691,7 +17708,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 100
             }
           ]
@@ -18245,8 +18262,8 @@
               "value": "test_value"
             },
             {
-              "value_type": "primitive",
-              "value": 10.0
+              "value_type": "float",
+              "value": 0.0
             }
           ]
         },
@@ -18384,7 +18401,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "sprite_add_value",
+          "function_name": "sprite_add_value_with_default",
           "args": [
             {
               "value_type": "variable",
@@ -18395,14 +18412,14 @@
               "value": "health"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.0
             }
           ]
         },
         {
           "step_type": "function",
-          "function_name": "sprite_add_value",
+          "function_name": "sprite_add_value_with_default",
           "args": [
             {
               "value_type": "variable",
@@ -18413,7 +18430,7 @@
               "value": "speed"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.0
             }
           ]
@@ -19594,7 +19611,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 2.0
             }
           ]
@@ -19736,7 +19753,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 150.0
             }
           ]
@@ -19878,7 +19895,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 200.0
             }
           ]
@@ -20270,7 +20287,7 @@
           "function_name": "update_all_sprites_percent",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             }
           ]
@@ -20776,7 +20793,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             }
           ]
@@ -20906,10 +20923,6 @@
           "function_name": "create_sprite",
           "args": [
             {
-              "value_type": "primitive",
-              "value": "test_sprite"
-            },
-            {
               "value_type": "variable",
               "variable_name": "test_bitmap"
             }
@@ -20942,20 +20955,6 @@
         },
         {
           "step_type": "function",
-          "function_name": "sprite_add_to_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sprite"
-            },
-            {
-              "value_type": "primitive",
-              "value": "test_sound.wav"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
           "function_name": "update_sprite_percent_with_sound",
           "args": [
             {
@@ -20963,7 +20962,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             },
             {
@@ -21018,7 +21017,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_playing",
+              "function_name": "sound_effect_playing",
               "args": [
                 {
                   "value_type": "primitive",
@@ -21037,7 +21036,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 0.5
             },
             {
@@ -21052,7 +21051,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "sound_playing",
+              "function_name": "sound_effect_playing",
               "args": [
                 {
                   "value_type": "primitive",
@@ -21507,7 +21506,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 100
             }
           ]
@@ -21676,7 +21675,7 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "float",
               "value": 100
             },
             {

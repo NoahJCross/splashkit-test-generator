@@ -19,17 +19,17 @@ public:
     }
     TEST_CASE("write_char_integration") {
         # TODO: Implement io_setup step
-        write_char("A");
+        write("A");
         REQUIRE("A" == "A");
     }
     TEST_CASE("write_double_integration") {
         # TODO: Implement io_setup step
-        write_double(3.14);
+        write(3.14);
         REQUIRE("3.14" == "3.14");
     }
     TEST_CASE("write_int_integration") {
         # TODO: Implement io_setup step
-        write_int(42);
+        write(42);
         REQUIRE("42" == "42");
     }
     TEST_CASE("write_integration") {
@@ -39,22 +39,22 @@ public:
     }
     TEST_CASE("write_line_char_integration") {
         # TODO: Implement io_setup step
-        write_line_char("A");
+        write_line("A");
         REQUIRE({:value_type=>"concat", :value=>["A", "new_line"]} == {:value_type=>"string_with_newline", :value=>"A"});
     }
     TEST_CASE("write_line_empty_integration") {
         # TODO: Implement io_setup step
-        write_line_empty();
+        write_line();
         REQUIRE(Environment::NEW_LINE == {:value_type=>"io_step", :variable_name=>"string_writer", :variable_field=>"to_string"});
     }
     TEST_CASE("write_line_double_integration") {
         # TODO: Implement io_setup step
-        write_line_double(3.14);
+        write_line(3.14);
         REQUIRE({:value_type=>"concat", :value=>["3.14", "new_line"]} == {:value_type=>"string_with_newline", :value=>"3.14"});
     }
     TEST_CASE("write_line_int_integration") {
         # TODO: Implement io_setup step
-        write_line_int(42);
+        write_line(42);
         REQUIRE({:value_type=>"concat", :value=>["42", "new_line"]} == {:value_type=>"string_with_newline", :value=>"42"});
     }
     TEST_CASE("write_line_integration") {

@@ -312,7 +312,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "pause_timer_named",
+          "function_name": "pause_timer__named",
           "args": [
             {
               "value_type": "primitive",
@@ -503,7 +503,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "reset_timer_named",
+          "function_name": "reset_timer__named",
           "args": [
             {
               "value_type": "primitive",
@@ -677,7 +677,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "resume_timer_named",
+          "function_name": "resume_timer__named",
           "args": [
             {
               "value_type": "primitive",
@@ -840,7 +840,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "start_timer_named",
+          "function_name": "start_timer__named",
           "args": [
             {
               "value_type": "primitive",
@@ -967,7 +967,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "greater_than",
             "value1": {
               "value_type": "function",
               "function_name": "timer_ticks",
@@ -978,12 +978,15 @@
                 }
               ]
             },
-            "value2": null
+            "value2": {
+              "value_type": "unsigned_int",
+              "value": 100
+            }
           }
         },
         {
           "step_type": "function",
-          "function_name": "stop_timer_named",
+          "function_name": "stop_timer__named",
           "args": [
             {
               "value_type": "primitive",
@@ -996,7 +999,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "unsigned_int",
               "value": 0
             },
             "value2": {
@@ -1184,7 +1187,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_paused_named",
+              "function_name": "timer_paused__named",
               "args": [
                 {
                   "value_type": "primitive",
@@ -1211,7 +1214,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_paused_named",
+              "function_name": "timer_paused__named",
               "args": [
                 {
                   "value_type": "primitive",
@@ -1334,7 +1337,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_started_named",
+              "function_name": "timer_started__named",
               "args": [
                 {
                   "value_type": "primitive",
@@ -1361,7 +1364,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_started_named",
+              "function_name": "timer_started__named",
               "args": [
                 {
                   "value_type": "primitive",
@@ -1480,7 +1483,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "timer_ticks_named",
+          "function_name": "timer_ticks__named",
           "args": [
             {
               "value_type": "primitive",
@@ -1501,7 +1504,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "timer_ticks_named",
+          "function_name": "timer_ticks__named",
           "args": [
             {
               "value_type": "primitive",

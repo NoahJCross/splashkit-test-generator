@@ -40,7 +40,7 @@
             "value1": {
               "value_type": "variable_field",
               "variable_name": "free_notifier",
-              "variable_field": "WasNotified"
+              "variable_field": "was_notified"
             },
             "value2": null
           }
@@ -269,7 +269,7 @@
             "value1": {
               "value_type": "variable_field",
               "variable_name": "free_notifier",
-              "variable_field": "WasNotified"
+              "variable_field": "was_notified"
             },
             "value2": null
           }
@@ -292,7 +292,7 @@
             "value1": {
               "value_type": "variable_field",
               "variable_name": "free_notifier",
-              "variable_field": "WasNotified"
+              "variable_field": "was_notified"
             },
             "value2": null
           }

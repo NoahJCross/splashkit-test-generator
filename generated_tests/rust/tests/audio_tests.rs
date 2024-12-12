@@ -165,7 +165,7 @@ fn test_music_volume_integration() {
     open_audio();
     let test_music = load_music("test_music", "magical_night.ogg");
     play_music(test_music);
-    set_music_volume(0.5);
+    set_music_volume(0.5 as f32);
     assert_eq!(0.5, music_volume());
     free_music(test_music);
     close_audio();
@@ -220,7 +220,7 @@ fn test_play_music_with_times_integration() {
 fn test_play_music_with_times_and_volume_integration() {
     open_audio();
     let test_music = load_music("test_music", "magical_night.ogg");
-    play_music_with_times_and_volume(test_music, 2, 0.75);
+    play_music_with_times_and_volume(test_music, 2, 0.75 as f32);
     assert!(music_playing());
     assert_eq!(0.75, music_volume());
     free_music(test_music);
@@ -243,7 +243,7 @@ fn test_set_music_volume_integration() {
     open_audio();
     let test_music = load_music("test_music", "magical_night.ogg");
     play_music(test_music);
-    set_music_volume(0.5);
+    set_music_volume(0.5 as f32);
     assert_eq!(0.5, music_volume());
     free_music(test_music);
     close_audio();
@@ -332,7 +332,7 @@ fn test_play_sound_effect_named_integration() {
 fn test_play_sound_effect_named_with_volume_integration() {
     open_audio();
     let test_sound = load_sound_effect("test_sound", "breakdance.wav");
-    play_sound_effect_named_with_volume("test_sound", 0.75);
+    play_sound_effect_named_with_volume("test_sound", 0.75 as f32);
     assert!(sound_effect_playing(test_sound));
     free_sound_effect(test_sound);
     close_audio();
@@ -368,7 +368,7 @@ fn test_play_sound_effect_integration() {
 fn test_play_sound_effect_with_volume_integration() {
     open_audio();
     let test_sound = load_sound_effect("test_sound", "breakdance.wav");
-    play_sound_effect_with_volume(test_sound, 0.75);
+    play_sound_effect_with_volume(test_sound, 0.75 as f32);
     assert!(sound_effect_playing(test_sound));
     free_sound_effect(test_sound);
     close_audio();
@@ -386,7 +386,7 @@ fn test_play_sound_effect_with_times_integration() {
 fn test_play_sound_effect_with_times_and_volume_integration() {
     open_audio();
     let test_sound = load_sound_effect("test_sound", "SwinGameStart.wav");
-    play_sound_effect_with_times_and_volume(test_sound, 2, 0.75);
+    play_sound_effect_with_times_and_volume(test_sound, 2, 0.75 as f32);
     assert!(sound_effect_playing(test_sound));
     free_sound_effect(test_sound);
     close_audio();

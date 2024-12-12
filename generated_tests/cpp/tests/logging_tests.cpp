@@ -18,9 +18,9 @@ public:
         close_log_process();
     }
     TEST_CASE("init_custom_logger__name_override_mode_integration") {
-        init_custom_logger_name_override_mode("test_app", true, LogMode::LOG_CONSOLE_AND_FILE);
+        init_custom_logger("test_app", true, LogMode::LOG_CONSOLE_AND_FILE);
         log(LogLevel::INFO, "This message should appear in both console and file.");
-        init_custom_logger_name_override_mode("test_app", false, LogMode::LOG_FILE_ONLY);
+        init_custom_logger("test_app", false, LogMode::LOG_FILE_ONLY);
         log(LogLevel::INFO, "This message should only appear in the file.");
         close_log_process();
     }

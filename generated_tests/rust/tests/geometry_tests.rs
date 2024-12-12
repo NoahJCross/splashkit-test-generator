@@ -143,7 +143,7 @@ fn test_tangent_points_integration() {
     let test_circle = circle_at(150.0, 150.0, 50.0);
     let test_point1 = point_at(0.0, 0.0);
     let test_point2 = point_at(0.0, 0.0);
-    let test_result = tangent_points(test_from_pt, test_circle, test_point1, test_point2);
+    let test_result = tangent_points(test_from_pt, test_circle, &test_point1, &test_point2);
     assert!(test_result);
     assert_ne!(point_at(0.0, 0.0), point_at(0.0, 0.0));
 }
@@ -153,33 +153,33 @@ fn test_widest_points_integration() {
     let test_vector = vector_from_angle(45.0, 45.0);
     let test_point1 = point_at(0.0, 0.0);
     let test_point2 = point_at(0.0, 0.0);
-    widest_points(test_circle, test_vector, test_point1, test_point2);
+    widest_points(test_circle, test_vector, &test_point1, &test_point2);
     assert!(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
     assert!(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
 }
 #[test]
 fn test_cosine_integration() {
-    let test_cosine_0 = cosine(0.0);
+    let test_cosine_0 = cosine(0.0 as f32);
     assert_eq!(1.0, test_cosine_0);
-    let test_cosine_90 = cosine(90.0);
+    let test_cosine_90 = cosine(90.0 as f32);
     assert_eq!(0.0, test_cosine_90);
-    let test_cosine_180 = cosine(180.0);
+    let test_cosine_180 = cosine(180.0 as f32);
     assert_eq!(-1.0, test_cosine_180);
 }
 #[test]
 fn test_sine_integration() {
-    let test_sine_0 = sine(0.0);
+    let test_sine_0 = sine(0.0 as f32);
     assert_eq!(0.0, test_sine_0);
-    let test_sine_90 = sine(90.0);
+    let test_sine_90 = sine(90.0 as f32);
     assert_eq!(1.0, test_sine_90);
-    let test_sine_180 = sine(180.0);
+    let test_sine_180 = sine(180.0 as f32);
     assert_eq!(0.0, test_sine_180);
-    let test_sine_270 = sine(270.0);
+    let test_sine_270 = sine(270.0 as f32);
     assert_eq!(-1.0, test_sine_270);
 }
 #[test]
 fn test_tangent_integration() {
-    let test_tangent_result = tangent(45.0);
+    let test_tangent_result = tangent(45.0 as f32);
     assert!((1.0..=2.0).contains(&test_tangent_result));
 }
 #[test]
@@ -230,7 +230,7 @@ fn test_line_intersection_point_integration() {
     let test_line1 = line_from(0.0, 0.0, 10.0, 10.0);
     let test_line2 = line_from(10.0, 0.0, 0.0, 10.0);
     let test_point = point_at(0.0, 0.0);
-    let test_intersection_result = line_intersection_point(test_line1, test_line2, test_point);
+    let test_intersection_result = line_intersection_point(test_line1, test_line2, &test_point);
     assert!(test_intersection_result);
 }
 #[test]
@@ -292,13 +292,13 @@ fn test_line_to_string_integration() {
 fn test_lines_from_rectangle_integration() {
     let test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
     let test_lines = lines_from_rectangle(test_rectangle);
-    assert_eq!(4, size(test_lines));
+    assert_eq!(4, test_lines.len());
 }
 #[test]
 fn test_lines_from_triangle_integration() {
     let test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 86.6));
     let test_lines = lines_from_triangle(test_triangle);
-    assert_eq!(3, size(test_lines));
+    assert_eq!(3, test_lines.len());
 }
 #[test]
 fn test_lines_intersect_integration() {
@@ -396,9 +396,9 @@ fn test_point_on_line_with_proximity_integration() {
     let test_point_on_line = point_at(5.0, 5.0);
     let test_point_near_line = point_at(5.1, 5.1);
     let test_point_far_from_line = point_at(15.0, 15.0);
-    assert!(point_on_line_with_proximity(test_point_on_line, test_line, 0.1));
-    assert!(point_on_line_with_proximity(test_point_near_line, test_line, 0.2));
-    assert!(!point_on_line_with_proximity(test_point_far_from_line, test_line, 0.1));
+    assert!(point_on_line_with_proximity(test_point_on_line, test_line, 0.1 as f32));
+    assert!(point_on_line_with_proximity(test_point_near_line, test_line, 0.2 as f32));
+    assert!(!point_on_line_with_proximity(test_point_far_from_line, test_line, 0.1 as f32));
 }
 #[test]
 fn test_point_point_angle_integration() {
@@ -493,19 +493,19 @@ fn test_quads_intersect_integration() {
 #[test]
 fn test_set_quad_point_integration() {
     let test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
-    set_quad_point(test_quad, 2, point_at(50.0, 150.0));
+    set_quad_point(&test_quad, 2, point_at(50.0, 150.0));
     assert!(point_in_quad(point_at(50.0, 150.0), test_quad));
 }
 #[test]
 fn test_triangles_from_integration() {
     let test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
     let test_triangles = triangles_from(test_quad);
-    assert_eq!(2, size(test_triangles));
+    assert_eq!(2, test_triangles.len());
 }
 #[test]
 fn test_inset_rectangle_integration() {
     let test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
-    let test_inset_rectangle = inset_rectangle(test_rectangle, 10.0);
+    let test_inset_rectangle = inset_rectangle(test_rectangle, 10.0 as f32);
     assert_eq!(10.0, rectangle_left(test_inset_rectangle));
     assert_eq!(10.0, rectangle_top(test_inset_rectangle));
     assert_eq!(90.0, rectangle_right(test_inset_rectangle));

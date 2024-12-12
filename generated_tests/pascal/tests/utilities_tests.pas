@@ -22,8 +22,8 @@ begin
     AssertEquals(123.0, ConvertToDouble("123."));
     AssertEquals(123.456, ConvertToDouble("000123.456"));
     AssertEquals(123.456, ConvertToDouble("123.456000"));
-    AssertEquals(, ConvertToDouble("inf"));
-    AssertEquals(, ConvertToDouble("-inf"));
+    AssertEquals(MaxDouble, ConvertToDouble("inf"));
+    AssertEquals(-MaxDouble, ConvertToDouble("-inf"));
     AssertEquals(123.0, ConvertToDouble("1.23e2"));
 end;
 procedure TIntegrationTests.TestConvertToIntegerIntegration;
@@ -131,20 +131,20 @@ begin
 end;
 procedure TIntegrationTests.TestRndRangeIntegration;
 begin
-    AssertTrue((RndRange(-1, 5) >= -1) and (RndRange(-1, 5) <= 5));
-    AssertEquals(1, RndRange(1, 1));
-    AssertTrue((RndRange(5, 1) >= 1) and (RndRange(5, 1) <= 5));
+    AssertTrue((Rnd(-1, 5) >= -1) and (Rnd(-1, 5) <= 5));
+    AssertEquals(1, Rnd(1, 1));
+    AssertTrue((Rnd(5, 1) >= 1) and (Rnd(5, 1) <= 5));
 end;
 procedure TIntegrationTests.TestRndIntegration;
 begin
-    AssertTrue((Rnd() >= 0.0) and (Rnd() <= ));
+    AssertTrue((Rnd() >= 0.0) and (Rnd() <= MaxSingle));
 end;
 procedure TIntegrationTests.TestRndIntIntegration;
 begin
-    AssertTrue((RndInt(1) >= 0) and (RndInt(1) <= 1));
-    AssertTrue((RndInt(10) >= 0) and (RndInt(10) <= 10));
-    AssertEquals(0, RndInt(-1));
-    AssertEquals(0, RndInt(0));
+    AssertTrue((Rnd(1) >= 0) and (Rnd(1) <= 1));
+    AssertTrue((Rnd(10) >= 0) and (Rnd(10) <= 10));
+    AssertEquals(0, Rnd(-1));
+    AssertEquals(0, Rnd(0));
 end;
 procedure TIntegrationTests.TestCurrentTicksIntegration;
 begin
@@ -177,5 +177,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f8aefd57268 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:113 (lambda)>
+#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
 end;

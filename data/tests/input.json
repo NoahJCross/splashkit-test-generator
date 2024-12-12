@@ -4838,12 +4838,33 @@
               "function_name": "draw_text",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": "$Mouse Position: X={scroll.X}"
-                },
-                {
-                  "value_type": "primitive",
-                  "value": "Y={scroll.Y}"
+                  "value_type": "interpolated_string",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "value": "Mouse Position: X="
+                    },
+                    {
+                      "type": "interpolation",
+                      "expression": {
+                        "value_type": "function",
+                        "function_name": "mouse_x",
+                        "args": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", Y="
+                    },
+                    {
+                      "type": "interpolation",
+                      "expression": {
+                        "value_type": "function",
+                        "function_name": "mouse_y",
+                        "args": []
+                      }
+                    }
+                  ]
                 },
                 {
                   "value_type": "function",
@@ -6406,12 +6427,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -6572,12 +6590,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -6869,12 +6884,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -7172,12 +7184,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -7349,12 +7358,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -7532,12 +7538,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -7709,12 +7712,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -7886,12 +7886,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -8077,12 +8074,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -8602,12 +8596,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",
@@ -8779,12 +8770,9 @@
               "args": [
                 {
                   "value_type": "primitive",
-                  "value": "Type some text"
+                  "value": "Type some text, press Enter when done"
                 },
-                {
-                  "value_type": "primitive",
-                  "value": "press Enter when done"
-                },
+
                 {
                   "value_type": "function",
                   "function_name": "color_black",

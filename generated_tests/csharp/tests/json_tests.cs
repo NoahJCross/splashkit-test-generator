@@ -15,7 +15,7 @@ namespace SplashKitTests
         [Fact]
         public void TestCreateJsonFromStringIntegration()
         {
-            var testJson = CreateJsonFromString("{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}");
+            var testJson = CreateJson("{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}");
             Assert.True(JsonHasKey(testJson, "name"));
             Assert.Equal("John", JsonReadString(testJson, "name"));
             FreeJson(testJson);
@@ -50,7 +50,7 @@ namespace SplashKitTests
         {
             var testJson = CreateJson();
             JsonSetString(testJson, "key1", "value1");
-            JsonSetNumberInteger(testJson, "key2", 42);
+            JsonSetNumber(testJson, "key2", 42);
             var keyCount = JsonCountKeys(testJson);
             Assert.Equal(2, keyCount);
             FreeJson(testJson);
@@ -96,9 +96,9 @@ namespace SplashKitTests
         public void TestJsonReadArrayOfDoubleIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArrayOfDouble(testJson, "numbers", new List<double> { 1.1, 2.2, 3.3 });
+            JsonSetArray(testJson, "numbers", new List<double> { 1.1, 2.2, 3.3 });
             var outResult = new List<double> {  };
-            JsonReadArrayOfDouble(testJson, "numbers", outResult);
+            JsonReadArray(testJson, "numbers", ref outResult);
             Assert.Equal(1.1, outResult[0]);
             Assert.Equal(2.2, outResult[1]);
             FreeJson(testJson);
@@ -113,10 +113,10 @@ namespace SplashKitTests
             JsonSetString(testJson1, "key1", "value1");
             JsonSetString(testJson2, "key2", "value2");
             var testJsonArray = new List<Json> { testJson1, testJson2 };
-            JsonSetArrayOfJson(testJson, "array_key", testJsonArray);
+            JsonSetArray(testJson, "array_key", testJsonArray);
             var outResult = new List<Json> {  };
-            JsonReadArrayOfJson(testJson, "array_key", outResult);
-            Assert.Equal(2, Size(outResult));
+            JsonReadArray(testJson, "array_key", ref outResult);
+            Assert.Equal(2, outResult.Count);
             FreeJson(testJson);
             FreeJson(testJson1);
             FreeJson(testJson2);
@@ -126,10 +126,10 @@ namespace SplashKitTests
         public void TestJsonReadArrayOfStringIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArrayOfString(testJson, "test_array", ["item1", "item2", "item3"]);
+            JsonSetArray(testJson, "test_array", new List<string> { "item1", "item2", "item3" });
             var outResult = new List<string> {  };
-            JsonReadArrayOfString(testJson, "test_array", outResult);
-            Assert.Equal(3, Size(outResult));
+            JsonReadArray(testJson, "test_array", ref outResult);
+            Assert.Equal(3, outResult.Count);
             Assert.Equal("item1", outResult[0]);
             FreeJson(testJson);
         }
@@ -137,10 +137,10 @@ namespace SplashKitTests
         public void TestJsonReadArrayOfBoolIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArrayOfBool(testJson, "test_key", new List<bool> { true, false, true });
+            JsonSetArray(testJson, "test_key", new List<bool> { true, false, true });
             var outResult = new List<bool> {  };
-            JsonReadArrayOfBool(testJson, "test_key", outResult);
-            Assert.Equal(3, Size(outResult));
+            JsonReadArray(testJson, "test_key", ref outResult);
+            Assert.Equal(3, outResult.Count);
             Assert.True(outResult[0]);
             Assert.False(outResult[1]);
             FreeJson(testJson);
@@ -159,7 +159,7 @@ namespace SplashKitTests
         public void TestJsonReadNumberIntegration()
         {
             var testJson = CreateJson();
-            JsonSetNumberFloat(testJson, "test_key", 42.5);
+            JsonSetNumber(testJson, "test_key", 42.5f);
             var testResult = JsonReadNumber(testJson, "test_key");
             Assert.Equal(42.5, testResult);
             FreeJson(testJson);
@@ -168,7 +168,7 @@ namespace SplashKitTests
         public void TestJsonReadNumberAsDoubleIntegration()
         {
             var testJson = CreateJson();
-            JsonSetNumberDouble(testJson, "test_key", 3.14);
+            JsonSetNumber(testJson, "test_key", 3.14);
             var testResult = JsonReadNumberAsDouble(testJson, "test_key");
             Assert.Equal(3.14, testResult);
             FreeJson(testJson);
@@ -177,7 +177,7 @@ namespace SplashKitTests
         public void TestJsonReadNumberAsIntIntegration()
         {
             var testJson = CreateJson();
-            JsonSetNumberInteger(testJson, "test_key", 42);
+            JsonSetNumber(testJson, "test_key", 42);
             var testResult = JsonReadNumberAsInt(testJson, "test_key");
             Assert.Equal(42, testResult);
             FreeJson(testJson);
@@ -205,30 +205,30 @@ namespace SplashKitTests
         public void TestJsonSetArrayOfStringIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArrayOfString(testJson, "test_key", new List<string> { "value1", "value2", "value3" });
+            JsonSetArray(testJson, "test_key", new List<string> { "value1", "value2", "value3" });
             var outResult = new List<string> {  };
-            JsonReadArrayOfString(testJson, "test_key", outResult);
-            Assert.Equal(["value1", "value2", "value3"], outResult);
+            JsonReadArray(testJson, "test_key", ref outResult);
+            Assert.Equal(new List<string> { "value1", "value2", "value3" }, outResult);
             FreeJson(testJson);
         }
         [Fact]
         public void TestJsonSetArrayOfDoubleIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArrayOfDouble(testJson, "numbers", new List<double> { 1.1, 2.2, 3.3 });
+            JsonSetArray(testJson, "numbers", new List<double> { 1.1, 2.2, 3.3 });
             var outResult = new List<double> {  };
-            JsonReadArrayOfDouble(testJson, "numbers", outResult);
-            Assert.Equal([1.1, 2.2, 3.3], outResult);
+            JsonReadArray(testJson, "numbers", ref outResult);
+            Assert.Equal(new List<double> { 1.1, 2.2, 3.3 }, outResult);
             FreeJson(testJson);
         }
         [Fact]
         public void TestJsonSetArrayOfBoolIntegration()
         {
             var testJson = CreateJson();
-            JsonSetArrayOfBool(testJson, "test_key", [true, false, true]);
+            JsonSetArray(testJson, "test_key", new List<bool> { true, false });
             var outResult = new List<bool> {  };
-            JsonReadArrayOfBool(testJson, "test_key", outResult);
-            Assert.Equal([true, false, true], outResult);
+            JsonReadArray(testJson, "test_key", ref outResult);
+            Assert.Equal(new List<bool> { true, false }, outResult);
             FreeJson(testJson);
         }
         [Fact]
@@ -240,9 +240,9 @@ namespace SplashKitTests
             JsonSetString(testJson1, "key1", "value1");
             JsonSetString(testJson2, "key2", "value2");
             var testJsonArray = new List<Json> { testJson1, testJson2 };
-            JsonSetArrayOfJson(testJson, "array_key", testJsonArray);
+            JsonSetArray(testJson, "array_key", testJsonArray);
             var outResult = new List<Json> {  };
-            JsonReadArrayOfJson(testJson, "array_key", outResult);
+            JsonReadArray(testJson, "array_key", ref outResult);
             Assert.Equal("value1", JsonReadString(outResult[0], "key1"));
             Assert.Equal("value2", JsonReadString(outResult[1], "key2"));
             FreeAllJson();
@@ -260,7 +260,7 @@ namespace SplashKitTests
         public void TestJsonSetNumberIntegerIntegration()
         {
             var testJson = CreateJson();
-            JsonSetNumberInteger(testJson, "age", 30);
+            JsonSetNumber(testJson, "age", 30);
             Assert.Equal(30, JsonReadNumberAsInt(testJson, "age"));
             FreeJson(testJson);
         }
@@ -268,7 +268,7 @@ namespace SplashKitTests
         public void TestJsonSetNumberDoubleIntegration()
         {
             var testJson = CreateJson();
-            JsonSetNumberDouble(testJson, "test_key", 3.14);
+            JsonSetNumber(testJson, "test_key", 3.14);
             Assert.Equal(3.14, JsonReadNumberAsDouble(testJson, "test_key"));
             FreeJson(testJson);
         }
@@ -276,7 +276,7 @@ namespace SplashKitTests
         public void TestJsonSetNumberFloatIntegration()
         {
             var testJson = CreateJson();
-            JsonSetNumberFloat(testJson, "test_key", 3.14);
+            JsonSetNumber(testJson, "test_key", 3.14f);
             Assert.Equal(3.140000104904175, JsonReadNumber(testJson, "test_key"));
             FreeJson(testJson);
         }
