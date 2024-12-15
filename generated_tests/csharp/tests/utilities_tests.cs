@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -191,7 +193,8 @@ namespace SplashKitTests
         [Fact]
         public void TestFileAsStringIntegration()
         {
-            Assert.Equal("BITMAP,ufo,ufo.png\n", FileAsString("blah.txt", ResourceKind.BundleResource));
+            Assert.Equal("BITMAP,ufo,ufo.png
+            ", FileAsString("blah.txt", ResourceKind.BundleResource));
             Assert.Equal("", FileAsString("", ResourceKind.BundleResource));
             Assert.Equal("", FileAsString("invalid.txt", ResourceKind.BundleResource));
         }

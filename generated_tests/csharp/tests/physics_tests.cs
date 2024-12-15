@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -204,7 +206,7 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorBlack());
             SetupCollisionMask(testBitmap);
-            Assert.True(BitmapPointCollision(testBitmap, 0, 50.0, 50.0, 50.0, 50.0));
+            Assert.True(BitmapPointCollision(testBitmap, 0, PointAt(50.0, 50.0), PointAt(50.0, 50.0)));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -214,7 +216,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorBlack());
-            DrawPixel(ColorWhite(), 50, 50, OptionDrawTo(testBitmap));
+            DrawPixel(ColorWhite(), 50.0, 50.0, OptionDrawTo(testBitmap));
             SetupCollisionMask(testBitmap);
             Assert.True(BitmapPointCollision(testBitmap, 0, 0.0, 0.0, 50.0, 50.0));
             FreeBitmap(testBitmap);
@@ -451,7 +453,7 @@ namespace SplashKitTests
         public void TestMatrixToStringIntegration()
         {
             var testMatrix = IdentityMatrix();
-            Assert.Equal(" ------------------------------\\n|        1         0         0 |\\n|        0         1         0 |\\n|        0         0         1 |\\n ------------------------------", MatrixToString(testMatrix));
+            Assert.Equal(" ------------------------------\n|        1         0         0 |\n|        0         1         0 |\n|        0         0         1 |\n ------------------------------", MatrixToString(testMatrix));
         }
         [Fact]
         public void TestRotationMatrixIntegration()
@@ -459,8 +461,8 @@ namespace SplashKitTests
             var testMatrix = RotationMatrix(90.0);
             var testPoint = PointAt(1.0, 0.0);
             var resultPoint = MatrixMultiply(testMatrix, testPoint);
-            Assert.Equal(0, resultPoint.X);
-            Assert.Equal(1, resultPoint.Y);
+            Assert.Equal(0.0, resultPoint.X);
+            Assert.Equal(1.0, resultPoint.Y);
         }
         [Fact]
         public void TestScaleMatrixFromPointIntegration()
@@ -499,15 +501,15 @@ namespace SplashKitTests
             var testMatrix = ScaleRotateTranslateMatrix(testScale, 90.0, testTranslate);
             var testPoint = PointAt(1.0, 0.0);
             var resultPoint = MatrixMultiply(testMatrix, testPoint);
-            Assert.Equal(10, resultPoint.X);
-            Assert.Equal(11, resultPoint.Y);
+            Assert.Equal(10.0, resultPoint.X);
+            Assert.Equal(11.0, resultPoint.Y);
         }
         [Fact]
         public void TestTranslationMatrixToPointIntegration()
         {
             var testPoint = PointAt(10.0, 20.0);
             var testMatrix = TranslationMatrix(testPoint);
-            var testVector = PointAt(5.0, 5.0);
+            var testVector = VectorTo(5.0, 5.0);
             var resultPoint = MatrixMultiply(testMatrix, testVector);
             Assert.Equal(15.0, resultPoint.X);
             Assert.Equal(25.0, resultPoint.Y);

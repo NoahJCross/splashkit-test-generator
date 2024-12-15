@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -16,8 +18,8 @@ namespace SplashKitTests
         [Fact]
         public void TestFreeAllTimersIntegration()
         {
-            var testTimer1 = CreateTimer("test_timer_1");
-            var testTimer2 = CreateTimer("test_timer_2");
+            CreateTimer("test_timer_1");
+            CreateTimer("test_timer_2");
             Assert.True(HasTimer("test_timer_1"));
             Assert.True(HasTimer("test_timer_2"));
             FreeAllTimers();

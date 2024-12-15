@@ -9,15 +9,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -41,7 +41,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -49,7 +49,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -57,20 +57,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 800
+                      "value_type": "double",
+                      "value": 800.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 600
+                      "value_type": "double",
+                      "value": 600.0
                     }
                   ]
                 }
@@ -86,7 +86,7 @@
               "function_name": "add_column",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 100
                 }
               ]
@@ -96,7 +96,7 @@
               "function_name": "add_column",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": -1
                 }
               ]
@@ -106,7 +106,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -116,7 +116,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -153,15 +153,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -185,7 +185,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -193,7 +193,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -201,20 +201,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 800
+                      "value_type": "double",
+                      "value": 800.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 600
+                      "value_type": "double",
+                      "value": 600.0
                     }
                   ]
                 }
@@ -230,7 +230,7 @@
               "function_name": "add_column_relative",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.5
                 }
               ]
@@ -240,7 +240,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 1"
                 }
               ]
@@ -250,7 +250,7 @@
               "function_name": "add_column_relative",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.5
                 }
               ]
@@ -260,7 +260,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 2"
                 }
               ]
@@ -270,7 +270,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -307,15 +307,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -326,15 +326,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -342,9 +342,10 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -364,7 +365,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -431,15 +432,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -450,15 +451,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -469,29 +470,30 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             }
           ],
           "store_result": "test_rectangle"
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -511,13 +513,13 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "button_clicked",
-              "function_name": "bitmap_button",
+              "function_name": "bitmap_button_at_position",
               "args": [
                 {
                   "value_type": "variable",
@@ -582,15 +584,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -601,15 +603,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -620,29 +622,30 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             }
           ],
           "store_result": "test_rectangle"
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -662,13 +665,13 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "button_clicked",
-              "function_name": "bitmap_button",
+              "function_name": "bitmap_button_at_position_with_options",
               "args": [
                 {
                   "value_type": "variable",
@@ -738,15 +741,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -757,15 +760,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -779,14 +782,14 @@
         },
         {
           "step_type": "function",
-          "function_name": "option_scale_bmp",
+          "function_name": "option_scale_bmp_with_options",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.5
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.5
             },
             {
@@ -798,9 +801,10 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -820,13 +824,13 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "button_clicked",
-              "function_name": "bitmap_button",
+              "function_name": "bitmap_button_with_options",
               "args": [
                 {
                   "value_type": "variable",
@@ -891,15 +895,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -910,15 +914,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -926,9 +930,10 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -948,16 +953,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "button_clicked",
-              "function_name": "bitmap_button",
+              "function_name": "bitmap_button_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Click Me"
                 },
                 {
@@ -1019,15 +1024,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1038,15 +1043,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -1060,14 +1065,14 @@
         },
         {
           "step_type": "function",
-          "function_name": "option_scale_bmp",
+          "function_name": "option_scale_bmp_with_options",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.5
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.5
             },
             {
@@ -1079,9 +1084,10 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -1101,16 +1107,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "button_clicked",
-              "function_name": "bitmap_button",
+              "function_name": "bitmap_button_labeled_with_options",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Click Me"
                 },
                 {
@@ -1176,15 +1182,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1195,29 +1201,30 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 50
+              "value_type": "double",
+              "value": 50.0
             }
           ],
           "store_result": "test_rectangle"
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -1237,16 +1244,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "button_clicked",
-              "function_name": "button",
+              "function_name": "button_at_position",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Click Me"
                 },
                 {
@@ -1298,15 +1305,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1314,9 +1321,10 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -1336,7 +1344,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -1345,7 +1353,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Click Me"
                 }
               ]
@@ -1393,15 +1401,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1409,9 +1417,10 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_clicked",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -1431,20 +1440,20 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "button_clicked",
-              "function_name": "button",
+              "function_name": "button_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Label:"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Click Me"
                 }
               ]
@@ -1492,15 +1501,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1511,35 +1520,36 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 50
+              "value_type": "double",
+              "value": 50.0
             }
           ],
           "store_result": "test_rect"
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "initial_checkbox_result",
-          "value": "false"
+          "value": false
         },
         {
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_checkbox_result",
-          "value": "initial_checkbox_result"
+          "value": "initial_checkbox_result",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -1559,16 +1569,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "current_checkbox_result",
-              "function_name": "checkbox",
+              "function_name": "checkbox_at_position",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Checkbox"
                 },
                 {
@@ -1624,15 +1634,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1640,15 +1650,16 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "initial_checkbox_result",
-          "value": "false"
+          "value": false
         },
         {
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_checkbox_result",
-          "value": "initial_checkbox_result"
+          "value": "initial_checkbox_result",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -1668,7 +1679,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -1677,7 +1688,7 @@
               "function_name": "checkbox",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Checkbox"
                 },
                 {
@@ -1729,15 +1740,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1745,15 +1756,16 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "initial_checkbox_result",
-          "value": "false"
+          "value": false
         },
         {
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_checkbox_result",
-          "value": "initial_checkbox_result"
+          "value": "initial_checkbox_result",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -1773,20 +1785,20 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "current_checkbox_result",
-              "function_name": "checkbox",
+              "function_name": "checkbox_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Checkbox"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Check me"
                 },
                 {
@@ -1838,15 +1850,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1862,7 +1874,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_color",
-          "value": "initial_color"
+          "value": "initial_color",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -1882,13 +1895,13 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "current_color",
-              "function_name": "color_slider",
+              "function_name": "color_slider_at_position",
               "args": [
                 {
                   "value_type": "variable",
@@ -1899,20 +1912,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 300
+                      "value_type": "double",
+                      "value": 300.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 300
+                      "value_type": "double",
+                      "value": 300.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 400
+                      "value_type": "double",
+                      "value": 400.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 24
+                      "value_type": "double",
+                      "value": 24.0
                     }
                   ]
                 }
@@ -1964,15 +1977,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1988,7 +2001,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_color",
-          "value": "test_color"
+          "value": "test_color",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -2008,7 +2022,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -2068,15 +2082,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2092,7 +2106,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_color",
-          "value": "test_color"
+          "value": "test_color",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -2112,16 +2127,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "current_color",
-              "function_name": "color_slider",
+              "function_name": "color_slider_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Color Slider"
                 },
                 {
@@ -2176,15 +2191,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2195,7 +2210,7 @@
           "function_name": "start_panel",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Panel"
             },
             {
@@ -2203,36 +2218,34 @@
               "function_name": "rectangle_from",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": 100
+                  "value_type": "double",
+                  "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
-                  "value": 100
+                  "value_type": "double",
+                  "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
-                  "value": 200
+                  "value_type": "double",
+                  "value": 200.0
                 },
                 {
-                  "value_type": "primitive",
-                  "value": 200
+                  "value_type": "double",
+                  "value": 200.0
                 }
               ]
             }
-          ],
-          "store_result": "test_panel"
+          ]
         },
         {
           "step_type": "function",
           "function_name": "button",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Button"
             }
-          ],
-          "store_result": "test_button"
+          ]
         },
         {
           "step_type": "function",
@@ -2300,7 +2313,7 @@
           "function_name": "end_panel",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Panel"
             }
           ]
@@ -2325,15 +2338,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2357,7 +2370,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -2365,7 +2378,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -2373,32 +2386,22 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "write_line",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": "Test Button clicked!"
                 }
               ]
             },
@@ -2407,7 +2410,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -2444,15 +2447,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2522,15 +2525,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2554,7 +2557,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -2562,11 +2565,11 @@
               "function_name": "start_inset",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Inset"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 60
                 }
               ]
@@ -2576,7 +2579,7 @@
               "function_name": "end_inset",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Inset"
                 }
               ]
@@ -2613,15 +2616,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2645,7 +2648,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -2653,7 +2656,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -2661,20 +2664,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -2685,7 +2688,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -2722,15 +2725,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2754,7 +2757,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -2762,7 +2765,7 @@
               "function_name": "start_popup",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Popup"
                 }
               ]
@@ -2772,7 +2775,7 @@
               "function_name": "end_popup",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Popup"
                 }
               ]
@@ -2809,15 +2812,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2841,7 +2844,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -2849,7 +2852,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -2857,20 +2860,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 10
+                      "value_type": "double",
+                      "value": 10.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 10
+                      "value_type": "double",
+                      "value": 10.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -2881,7 +2884,7 @@
               "function_name": "start_treenode",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Node"
                 }
               ]
@@ -2891,7 +2894,7 @@
               "function_name": "end_treenode",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Node"
                 }
               ]
@@ -2901,7 +2904,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -2938,15 +2941,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2970,7 +2973,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -2978,7 +2981,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -2986,20 +2989,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 10
+                      "value_type": "double",
+                      "value": 10.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 10
+                      "value_type": "double",
+                      "value": 10.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 300
+                      "value_type": "double",
+                      "value": 300.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -3010,7 +3013,7 @@
               "function_name": "add_column",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 100
                 }
               ]
@@ -3022,16 +3025,6 @@
             },
             {
               "step_type": "function",
-              "function_name": "write_line",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": "Button1 clicked!"
-                }
-              ]
-            },
-            {
-              "step_type": "function",
               "function_name": "leave_column",
               "args": []
             },
@@ -3040,7 +3033,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -3083,7 +3076,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 60
             },
             "value2": {
@@ -3102,15 +3095,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3134,7 +3127,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -3142,11 +3135,10 @@
               "function_name": "header",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Header"
                 }
-              ],
-              "store_result": "test_header_result"
+              ]
             },
             {
               "step_type": "function",
@@ -3180,15 +3172,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3199,20 +3191,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             }
           ],
           "store_result": "test_rect"
@@ -3237,7 +3229,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_color",
-          "value": "test_color"
+          "value": "test_color",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -3257,13 +3250,13 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "current_color",
-              "function_name": "hsb_color_slider",
+              "function_name": "hsb_color_slider_at_position",
               "args": [
                 {
                   "value_type": "variable",
@@ -3321,15 +3314,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "HSB Slider Test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3345,7 +3338,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_color",
-          "value": "test_color"
+          "value": "test_color",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -3365,7 +3359,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -3425,15 +3419,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3449,7 +3443,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "current_color",
-          "value": "test_color"
+          "value": "test_color",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -3469,16 +3464,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "current_color",
-              "function_name": "hsb_color_slider",
+              "function_name": "hsb_color_slider_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Color Slider"
                 },
                 {
@@ -3535,6 +3530,17 @@
           "store_result": "initial_state"
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "initial_state"
+            },
+            "value2": null
+          }
+        },
+        {
           "step_type": "function",
           "function_name": "disable_interface",
           "args": []
@@ -3588,15 +3594,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3607,20 +3613,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             },
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             }
           ],
           "store_result": "test_rectangle"
@@ -3643,7 +3649,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -3688,15 +3694,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3720,7 +3726,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -3728,7 +3734,7 @@
               "function_name": "label_element",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Label"
                 }
               ]
@@ -3765,15 +3771,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3784,20 +3790,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 50
+              "value_type": "double",
+              "value": 50.0
             }
           ],
           "store_result": "test_rectangle"
@@ -3820,7 +3826,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -3828,7 +3834,7 @@
               "function_name": "label_element_at_position",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Label"
                 },
                 {
@@ -3869,15 +3875,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3901,15 +3907,15 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "function",
-              "function_name": "slider",
+              "function_name": "slider_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Slider"
                 },
                 {
@@ -3970,15 +3976,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4002,7 +4008,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -4010,11 +4016,10 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
-              ],
-              "store_result": "test_button"
+              ]
             },
             {
               "step_type": "function",
@@ -4060,15 +4065,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4076,9 +4081,10 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_result",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -4098,7 +4104,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -4106,7 +4112,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -4114,20 +4120,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 10
+                      "value_type": "double",
+                      "value": 10.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 10
+                      "value_type": "double",
+                      "value": 10.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 300
+                      "value_type": "double",
+                      "value": 300.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -4143,7 +4149,7 @@
               "function_name": "add_column",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 100
                 }
               ]
@@ -4164,7 +4170,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -4174,7 +4180,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -4222,15 +4228,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4241,20 +4247,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 30
+              "value_type": "double",
+              "value": 30.0
             }
           ],
           "store_result": "test_rect"
@@ -4263,7 +4269,8 @@
           "step_type": "variable",
           "value_type": "float",
           "variable_name": "test_result",
-          "value": 5.0
+          "value": 5.0,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -4283,13 +4290,13 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "test_result",
-              "function_name": "number_box",
+              "function_name": "number_box_at_position",
               "args": [
                 {
                   "value_type": "variable",
@@ -4355,15 +4362,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Number Box Test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4373,7 +4380,8 @@
           "step_type": "variable",
           "value_type": "float",
           "variable_name": "test_result",
-          "value": 5.0
+          "value": 5.0,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -4393,7 +4401,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -4461,15 +4469,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4479,7 +4487,8 @@
           "step_type": "variable",
           "value_type": "float",
           "variable_name": "test_result",
-          "value": 5.0
+          "value": 5.0,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -4499,16 +4508,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "test_result",
-              "function_name": "number_box",
+              "function_name": "number_box_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Value"
                 },
                 {
@@ -4571,15 +4580,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4603,7 +4612,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -4611,7 +4620,7 @@
               "function_name": "start_popup",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Popup"
                 }
               ]
@@ -4621,7 +4630,7 @@
               "function_name": "end_popup",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Popup"
                 }
               ]
@@ -4658,15 +4667,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4681,11 +4690,11 @@
               "function_name": "load_font",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "hara"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "hara.ttf"
                 }
               ]
@@ -4697,7 +4706,7 @@
           "function_name": "set_interface_font_size",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 12
             }
           ]
@@ -4720,7 +4729,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -4728,7 +4737,7 @@
               "function_name": "paragraph",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "This is a test paragraph to check if the text wraps correctly."
                 }
               ]
@@ -4754,7 +4763,7 @@
               "function_name": "font_named",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "hara"
                 }
               ]
@@ -4781,15 +4790,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4800,20 +4809,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             }
           ],
           "store_result": "test_rectangle"
@@ -4836,7 +4845,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -4844,7 +4853,7 @@
               "function_name": "paragraph_at_position",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "This is a test paragraph."
                 },
                 {
@@ -4885,15 +4894,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4917,7 +4926,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -4930,7 +4939,7 @@
               "function_name": "add_column",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 200
                 }
               ]
@@ -4940,7 +4949,7 @@
               "function_name": "add_column",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": -1
                 }
               ]
@@ -4982,15 +4991,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5029,7 +5038,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -5037,7 +5046,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -5074,15 +5083,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5117,7 +5126,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -5125,7 +5134,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -5133,20 +5142,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     }
                   ]
                 }
@@ -5157,7 +5166,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -5167,7 +5176,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -5204,15 +5213,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5264,7 +5273,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -5272,7 +5281,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -5280,20 +5289,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -5304,7 +5313,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -5314,7 +5323,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -5351,15 +5360,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5383,7 +5392,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -5406,7 +5415,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -5414,20 +5423,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -5438,7 +5447,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -5448,7 +5457,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -5485,15 +5494,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5517,7 +5526,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -5525,7 +5534,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -5533,20 +5542,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -5557,7 +5566,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -5567,7 +5576,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -5604,15 +5613,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5623,22 +5632,21 @@
           "function_name": "load_font",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "hara"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "hara.ttf"
             }
-          ],
-          "store_result": "test_font"
+          ]
         },
         {
           "step_type": "function",
           "function_name": "set_interface_font_font_as_string",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "hara"
             }
           ]
@@ -5661,7 +5669,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -5669,7 +5677,7 @@
               "function_name": "label_element",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Text"
                 }
               ]
@@ -5706,15 +5714,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5725,11 +5733,11 @@
           "function_name": "load_font",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "hara"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "hara.ttf"
             }
           ],
@@ -5763,7 +5771,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -5771,7 +5779,7 @@
               "function_name": "label_element",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Text"
                 }
               ]
@@ -5818,15 +5826,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5837,7 +5845,7 @@
           "function_name": "set_interface_font_size",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 16
             }
           ]
@@ -5860,7 +5868,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -5868,7 +5876,7 @@
               "function_name": "label_element",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Text"
                 }
               ]
@@ -5905,15 +5913,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -5924,47 +5932,8 @@
           "function_name": "set_interface_label_width",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
-            }
-          ]
-        },
-        {
-          "step_type": "while",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "quit_requested",
-              "args": []
-            }
-          },
-          "while_steps": [
-            {
-              "step_type": "function",
-              "function_name": "process_events",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "clear_screen",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "get_interface_label_width",
-              "args": [],
-              "store_result": "test_width"
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_interface",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "refresh_screen",
-              "args": []
             }
           ]
         },
@@ -5973,7 +5942,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             "value2": {
@@ -6003,15 +5972,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -6022,7 +5991,7 @@
           "function_name": "set_interface_panel_shadows",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 10
             },
             {
@@ -6030,19 +5999,19 @@
               "function_name": "rgba_color",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 128
                 }
               ]
@@ -6052,12 +6021,12 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": 5
+                  "value_type": "double",
+                  "value": 5.0
                 },
                 {
-                  "value_type": "primitive",
-                  "value": 5
+                  "value_type": "double",
+                  "value": 5.0
                 }
               ]
             }
@@ -6081,7 +6050,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -6089,7 +6058,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -6097,20 +6066,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 150
+                      "value_type": "double",
+                      "value": 150.0
                     }
                   ]
                 }
@@ -6121,7 +6090,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -6147,38 +6116,38 @@
               "function_name": "rgba_color",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 128
                 }
               ]
             },
             "value2": {
               "value_type": "function",
-              "function_name": "get_pixel",
+              "function_name": "get_pixel_at_point",
               "args": [
                 {
                   "value_type": "function",
                   "function_name": "point_at",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 105
+                      "value_type": "double",
+                      "value": 105.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 105
+                      "value_type": "double",
+                      "value": 105.0
                     }
                   ]
                 }
@@ -6206,15 +6175,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -6249,15 +6218,15 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "function",
-              "function_name": "label_element",
+              "function_name": "label_element_at_position",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Text"
                 },
                 {
@@ -6265,20 +6234,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 50
+                      "value_type": "double",
+                      "value": 50.0
                     }
                   ]
                 }
@@ -6307,19 +6276,19 @@
             },
             "value2": {
               "value_type": "function",
-              "function_name": "get_pixel",
+              "function_name": "get_pixel_at_point",
               "args": [
                 {
                   "value_type": "function",
                   "function_name": "point_at",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 105
+                      "value_type": "double",
+                      "value": 105.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 105
+                      "value_type": "double",
+                      "value": 105.0
                     }
                   ]
                 }
@@ -6347,15 +6316,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -6366,7 +6335,7 @@
           "function_name": "set_interface_shadows",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 10
             },
             {
@@ -6374,19 +6343,19 @@
               "function_name": "rgba_color",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 128
                 }
               ]
@@ -6396,12 +6365,12 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": 5
+                  "value_type": "double",
+                  "value": 5.0
                 },
                 {
-                  "value_type": "primitive",
-                  "value": 5
+                  "value_type": "double",
+                  "value": 5.0
                 }
               ]
             }
@@ -6425,7 +6394,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -6433,7 +6402,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -6441,20 +6410,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -6465,7 +6434,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -6475,7 +6444,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -6501,38 +6470,38 @@
               "function_name": "rgba_color",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 128
                 }
               ]
             },
             "value2": {
               "value_type": "function",
-              "function_name": "get_pixel",
+              "function_name": "get_pixel_at_point",
               "args": [
                 {
                   "value_type": "function",
                   "function_name": "point_at",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 105
+                      "value_type": "double",
+                      "value": 105.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 105
+                      "value_type": "double",
+                      "value": 105.0
                     }
                   ]
                 }
@@ -6560,15 +6529,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -6579,11 +6548,11 @@
           "function_name": "set_interface_spacing",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 10
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 5
             }
           ]
@@ -6606,7 +6575,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -6614,7 +6583,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -6622,20 +6591,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -6646,7 +6615,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 1"
                 }
               ]
@@ -6656,7 +6625,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 2"
                 }
               ]
@@ -6666,7 +6635,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -6703,15 +6672,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -6746,7 +6715,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -6754,7 +6723,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -6762,20 +6731,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 100
+                      "value_type": "double",
+                      "value": 100.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 200
+                      "value_type": "double",
+                      "value": 200.0
                     }
                   ]
                 }
@@ -6786,7 +6755,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -6796,7 +6765,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -6833,15 +6802,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -6864,92 +6833,6 @@
           ]
         },
         {
-          "step_type": "while",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "quit_requested",
-              "args": []
-            }
-          },
-          "while_steps": [
-            {
-              "step_type": "function",
-              "function_name": "process_events",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "clear_screen",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "start_panel",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": "Test Panel"
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "rectangle_from",
-                  "args": [
-                    {
-                      "value_type": "primitive",
-                      "value": 100
-                    },
-                    {
-                      "value_type": "primitive",
-                      "value": 100
-                    },
-                    {
-                      "value_type": "primitive",
-                      "value": 200
-                    },
-                    {
-                      "value_type": "primitive",
-                      "value": 200
-                    }
-                  ]
-                }
-              ],
-              "store_result": "test_panel"
-            },
-            {
-              "step_type": "function",
-              "function_name": "button",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": "Test Button"
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "end_panel",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": "Test Panel"
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_interface",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "refresh_screen",
-              "args": []
-            }
-          ]
-        },
-        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
@@ -6960,19 +6843,19 @@
             },
             "value2": {
               "value_type": "function",
-              "function_name": "get_pixel",
+              "function_name": "get_pixel_at_point",
               "args": [
                 {
                   "value_type": "function",
                   "function_name": "point_at",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 150
+                      "value_type": "double",
+                      "value": 150.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 150
+                      "value_type": "double",
+                      "value": 150.0
                     }
                   ]
                 }
@@ -7000,15 +6883,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7043,7 +6926,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -7051,7 +6934,7 @@
               "function_name": "label_element",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Text"
                 }
               ]
@@ -7079,19 +6962,19 @@
             },
             "value2": {
               "value_type": "function",
-              "function_name": "get_pixel",
+              "function_name": "get_pixel_at_point",
               "args": [
                 {
                   "value_type": "function",
                   "function_name": "point_at",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 10
+                      "value_type": "double",
+                      "value": 10.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 10
+                      "value_type": "double",
+                      "value": 10.0
                     }
                   ]
                 }
@@ -7119,15 +7002,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7138,7 +7021,7 @@
           "function_name": "set_layout_height",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             }
           ]
@@ -7161,7 +7044,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -7169,7 +7052,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -7177,20 +7060,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 800
+                      "value_type": "double",
+                      "value": 800.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 600
+                      "value_type": "double",
+                      "value": 600.0
                     }
                   ]
                 }
@@ -7201,7 +7084,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -7211,7 +7094,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -7248,15 +7131,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7285,7 +7168,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -7293,22 +7176,20 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button1"
                 }
-              ],
-              "store_result": "test_button1"
+              ]
             },
             {
               "step_type": "function",
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button2"
                 }
-              ],
-              "store_result": "test_button2"
+              ]
             },
             {
               "step_type": "function",
@@ -7347,15 +7228,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7366,20 +7247,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 20
+              "value_type": "double",
+              "value": 20.0
             }
           ],
           "store_result": "test_rect"
@@ -7394,7 +7275,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "slider_result",
-          "value": "initial_value"
+          "value": "initial_value",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -7414,13 +7296,13 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "slider_result",
-              "function_name": "slider",
+              "function_name": "slider_at_position",
               "args": [
                 {
                   "value_type": "variable",
@@ -7486,15 +7368,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7510,7 +7392,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "slider_result",
-          "value": "initial_value"
+          "value": "initial_value",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -7530,7 +7413,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -7598,15 +7481,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7622,7 +7505,8 @@
           "step_type": "variable",
           "value_type": "reference",
           "variable_name": "slider_result",
-          "value": "initial_value"
+          "value": "initial_value",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -7642,16 +7526,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "slider_result",
-              "function_name": "slider",
+              "function_name": "slider_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Slider"
                 },
                 {
@@ -7714,15 +7598,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7746,7 +7630,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -7754,7 +7638,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -7762,20 +7646,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 800
+                      "value_type": "double",
+                      "value": 800.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 600
+                      "value_type": "double",
+                      "value": 600.0
                     }
                   ]
                 }
@@ -7786,7 +7670,7 @@
               "function_name": "split_into_columns",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 3
                 }
               ]
@@ -7796,7 +7680,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 1"
                 }
               ]
@@ -7806,7 +7690,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 2"
                 }
               ]
@@ -7816,7 +7700,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 3"
                 }
               ]
@@ -7826,7 +7710,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -7863,15 +7747,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7895,7 +7779,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -7903,7 +7787,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -7911,20 +7795,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 800
+                      "value_type": "double",
+                      "value": 800.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 600
+                      "value_type": "double",
+                      "value": 600.0
                     }
                   ]
                 }
@@ -7935,11 +7819,11 @@
               "function_name": "split_into_columns_with_last_width",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 3
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 200
                 }
               ]
@@ -7949,7 +7833,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 1"
                 }
               ]
@@ -7959,7 +7843,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 2"
                 }
               ]
@@ -7969,7 +7853,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 3"
                 }
               ]
@@ -7979,7 +7863,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -8016,15 +7900,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -8048,7 +7932,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8056,7 +7940,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -8064,20 +7948,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 800
+                      "value_type": "double",
+                      "value": 800.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 600
+                      "value_type": "double",
+                      "value": 600.0
                     }
                   ]
                 }
@@ -8088,11 +7972,11 @@
               "function_name": "split_into_columns_relative_with_last_width",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 3
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.5
                 }
               ]
@@ -8102,7 +7986,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 1"
                 }
               ]
@@ -8112,7 +7996,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 2"
                 }
               ]
@@ -8122,7 +8006,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Button 3"
                 }
               ]
@@ -8132,7 +8016,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -8169,15 +8053,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -8185,9 +8069,10 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "bool",
           "variable_name": "button_result",
-          "value": "false"
+          "value": false,
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -8207,7 +8092,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8220,7 +8105,7 @@
               "function_name": "add_column",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 200
                 }
               ]
@@ -8231,7 +8116,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -8284,15 +8169,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -8303,20 +8188,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             }
           ],
           "store_result": "test_rect"
@@ -8339,7 +8224,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8347,7 +8232,7 @@
               "function_name": "start_inset_at_position",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_inset"
                 },
                 {
@@ -8361,7 +8246,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -8371,7 +8256,7 @@
               "function_name": "end_inset",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_inset"
                 }
               ]
@@ -8408,15 +8293,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -8440,7 +8325,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8448,11 +8333,11 @@
               "function_name": "start_inset",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Inset"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 100
                 }
               ]
@@ -8462,7 +8347,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -8472,7 +8357,7 @@
               "function_name": "end_inset",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Inset"
                 }
               ]
@@ -8509,15 +8394,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -8528,20 +8413,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 150
+              "value_type": "double",
+              "value": 150.0
             }
           ],
           "store_result": "test_rectangle"
@@ -8564,7 +8449,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8572,7 +8457,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -8586,7 +8471,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -8596,7 +8481,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -8633,15 +8518,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -8665,7 +8550,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8673,7 +8558,7 @@
               "function_name": "start_popup",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Popup"
                 }
               ]
@@ -8683,7 +8568,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button"
                 }
               ]
@@ -8693,7 +8578,7 @@
               "function_name": "end_popup",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Popup"
                 }
               ]
@@ -8730,15 +8615,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -8762,7 +8647,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8770,7 +8655,7 @@
               "function_name": "start_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 },
                 {
@@ -8778,20 +8663,20 @@
                   "function_name": "rectangle_from",
                   "args": [
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 0
+                      "value_type": "double",
+                      "value": 0.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 800
+                      "value_type": "double",
+                      "value": 800.0
                     },
                     {
-                      "value_type": "primitive",
-                      "value": 600
+                      "value_type": "double",
+                      "value": 600.0
                     }
                   ]
                 }
@@ -8802,7 +8687,7 @@
               "function_name": "start_treenode",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Node"
                 }
               ]
@@ -8812,7 +8697,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button1"
                 }
               ]
@@ -8822,7 +8707,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button2"
                 }
               ]
@@ -8832,7 +8717,7 @@
               "function_name": "button",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Button3"
                 }
               ]
@@ -8842,7 +8727,7 @@
               "function_name": "end_treenode",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Node"
                 }
               ]
@@ -8852,7 +8737,7 @@
               "function_name": "end_panel",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Test Panel"
                 }
               ]
@@ -8889,15 +8774,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -8905,15 +8790,16 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "string",
           "variable_name": "initial_text",
           "value": "Initial Text"
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "string_ref",
           "variable_name": "text_result",
-          "value": "initial_text"
+          "value": "initial_text",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -8933,7 +8819,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8993,15 +8879,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -9012,35 +8898,36 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 200
+              "value_type": "double",
+              "value": 200.0
             },
             {
-              "value_type": "primitive",
-              "value": 30
+              "value_type": "double",
+              "value": 30.0
             }
           ],
           "store_result": "test_rect"
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "string",
           "variable_name": "initial_text",
           "value": "Initial Text"
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "string_ref",
           "variable_name": "text_result",
-          "value": "initial_text"
+          "value": "initial_text",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -9060,13 +8947,13 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "text_result",
-              "function_name": "text_box",
+              "function_name": "text_box_at_position",
               "args": [
                 {
                   "value_type": "variable",
@@ -9124,15 +9011,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -9140,15 +9027,16 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "string",
           "variable_name": "initial_text",
           "value": "Initial Text"
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "string_ref",
           "variable_name": "text_result",
-          "value": "initial_text"
+          "value": "initial_text",
+          "is_mutable": true
         },
         {
           "step_type": "while",
@@ -9168,16 +9056,16 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
               "step_type": "reassignment",
               "variable_name": "text_result",
-              "function_name": "text_box",
+              "function_name": "text_box_labeled",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Enter Name"
                 },
                 {

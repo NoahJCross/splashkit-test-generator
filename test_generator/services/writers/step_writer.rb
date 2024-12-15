@@ -8,7 +8,7 @@ module TestGenerator
       @formatter = formatter
     end
 
-    # Writes a test step using a new instance of TestStepWriter
+    # Writes a test step using a new instance of StepWriter
     # @param step [Hash] The test step to write
     # @param functions [Array<Function>] Available functions
     # @param config [Object] Language configuration
@@ -37,7 +37,10 @@ module TestGenerator
     # @return [String] Formatted variable declaration code
     def write_variable_step
       handlers = @config.variable_handlers
-      declaration = handlers[:declaration].call(@step[:variable_name])
+      declaration_op = @step[:is_mutable] ? 
+        handlers[:declaration][:mutable] : 
+        handlers[:declaration][:regular]
+      declaration = declaration_op.call(@step[:variable_name])
       value = if @step[:value_type] == 'reference'
                 handlers[:reference].call(@step[:value])
               else
@@ -51,7 +54,10 @@ module TestGenerator
     def write_function_step
       call = format_function_call
       if @step[:store_result]
-        declaration = @config.variable_handlers[:declaration].call(@step[:store_result])
+        declaration_op = @step[:is_mutable] ? 
+          @config.variable_handlers[:declaration][:mutable] :
+          @config.variable_handlers[:declaration][:regular]
+        declaration = declaration_op.call(@step[:store_result])
         @formatter.indent("#{declaration}#{call}")
       else
         @formatter.indent(call)
@@ -150,7 +156,7 @@ module TestGenerator
     def write_reassignment_step
       value = format_reassignment_value
       variable_ref = @config.variable_handlers[:reference].call(@step[:variable_name])
-      @formatter.indent("#{variable_ref} = #{value};")
+      @formatter.indent("#{variable_ref} = #{value}")
     end
 
     # Formats the value for a reassignment step
@@ -169,6 +175,16 @@ module TestGenerator
       args = @step[:args].map { |arg| ValueFormatter.format_value(arg, @functions, @config) }.join(', ')
       function_name = FunctionLookup.determine_function_name(@step, @config, @functions)
       @config.function_handlers[:call].call(function_name, args)
+    end
+
+    # Writes a prompt step that displays a message to the user
+    # @return [String] Formatted prompt code (e.g., cout, print, Console.WriteLine etc.)
+    def write_prompt_step
+      @formatter.indent(@config.prompt_handlers[:message].call(@step[:message]))
+    end
+
+    def write_string_ref_step(step)
+      "#{step[:value]}.clone()"
     end
   end
 end

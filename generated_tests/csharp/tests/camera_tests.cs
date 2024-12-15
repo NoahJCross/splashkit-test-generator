@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -48,7 +50,7 @@ namespace SplashKitTests
             var testSprite = CreateSprite("test_sprite");
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
             CenterCameraOn(testSprite, 0.0, 0.0);
-            Assert.Equal(PointAt(-300, -200), CameraPosition());
+            Assert.Equal(PointAt(-300.0, -200.0), CameraPosition());
             FreeSprite(testSprite);
             CloseWindow(testWindow);
         }
@@ -92,9 +94,9 @@ namespace SplashKitTests
         public void TestPointInWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPoint = PointAt(400, 300);
+            var testPoint = PointAt(400.0, 300.0);
             Assert.True(PointInWindow(testWindow, testPoint));
-            var testPointOutside = PointAt(1000, 1000);
+            var testPointOutside = PointAt(1000.0, 1000.0);
             Assert.False(PointInWindow(testWindow, testPointOutside));
             CloseWindow(testWindow);
         }
@@ -112,11 +114,11 @@ namespace SplashKitTests
         public void TestRectInWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetCameraX(0);
-            SetCameraY(0);
-            var testRectangle = RectangleFrom(0, 0, 100, 100);
+            SetCameraX(0.0);
+            SetCameraY(0.0);
+            var testRectangle = RectangleFrom(0.0, 0.0, 100.0, 100.0);
             Assert.True(RectInWindow(testWindow, testRectangle));
-            var testRectangleOutside = RectangleFrom(1000, 1000, 100, 100);
+            var testRectangleOutside = RectangleFrom(1000.0, 1000.0, 100.0, 100.0);
             Assert.False(RectInWindow(testWindow, testRectangleOutside));
             CloseWindow(testWindow);
         }
@@ -124,9 +126,9 @@ namespace SplashKitTests
         public void TestRectOnScreenIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(0, 0, 100, 100);
+            var testRectangle = RectangleFrom(0.0, 0.0, 100.0, 100.0);
             Assert.True(RectOnScreen(testRectangle));
-            MoveCameraTo(1000, 1000);
+            MoveCameraTo(1000.0, 1000.0);
             Assert.False(RectOnScreen(testRectangle));
             CloseWindow(testWindow);
         }
@@ -134,11 +136,11 @@ namespace SplashKitTests
         public void TestScreenCenterIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetCameraX(0);
-            SetCameraY(0);
+            SetCameraX(0.0);
+            SetCameraY(0.0);
             var testCenter = ScreenCenter();
-            Assert.Equal(400, testCenter.X);
-            Assert.Equal(300, testCenter.Y);
+            Assert.Equal(400.0, testCenter.X);
+            Assert.Equal(300.0, testCenter.Y);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -146,8 +148,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRectangle = ScreenRectangle();
-            Assert.Equal(800, testRectangle.Width);
-            Assert.Equal(600, testRectangle.Height);
+            Assert.Equal(800.0, testRectangle.Width);
+            Assert.Equal(600.0, testRectangle.Height);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -190,8 +192,8 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             var screenRectangle = ToScreen(testRectangle);
-            Assert.Equal(ToScreenX(100.0), RectangleLeft(screenRectangle));
-            Assert.Equal(ToScreenY(100.0), RectangleTop(screenRectangle));
+            Assert.Equal(ToScreenX(100.0)f, RectangleLeft(screenRectangle));
+            Assert.Equal(ToScreenY(100.0)f, RectangleTop(screenRectangle));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -249,8 +251,8 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testArea = WindowArea(testWindow);
-            Assert.Equal(800, testArea.Width);
-            Assert.Equal(600, testArea.Height);
+            Assert.Equal(800.0, testArea.Width);
+            Assert.Equal(600.0, testArea.Height);
             CloseWindow(testWindow);
         }
     }

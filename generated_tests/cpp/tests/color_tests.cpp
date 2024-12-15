@@ -971,10 +971,10 @@ public:
     TEST_CASE("color_to_string_integration") {
         auto red_color = color_red();
         auto red_color_string = color_to_string(red_color);
-        REQUIRE("#ff0000ff" == red_color_string);
+        REQUIRE(string("#ff0000ff") == red_color_string);
         auto transparent_color = color_transparent();
         auto transparent_color_string = color_to_string(transparent_color);
-        REQUIRE("#ffffffff" == transparent_color_string);
+        REQUIRE(string("#ffffffff") == transparent_color_string);
     }
     TEST_CASE("color_tomato_integration") {
         auto tomato_color = color_tomato();
@@ -1065,7 +1065,7 @@ public:
     }
     TEST_CASE("random_color_integration") {
         auto random_color_result = random_color();
-        REQUIRE("#000000FF" != color_to_string(random_color_result));
+        REQUIRE(string("#000000FF") != color_to_string(random_color_result));
         REQUIRE(alpha_of(random_color_result) >= 0 && alpha_of(random_color_result) <= 255);
     }
     TEST_CASE("random_rgb_color_integration") {
@@ -1123,12 +1123,12 @@ public:
         REQUIRE(0.0 == saturation_value_gray);
     }
     TEST_CASE("string_to_color_integration") {
-        auto red_color = string_to_color("#FF0000FF");
+        auto red_color = string_to_color(string("#FF0000FF"));
         REQUIRE(255 == red_of(red_color));
         REQUIRE(0 == green_of(red_color));
         REQUIRE(0 == blue_of(red_color));
         REQUIRE(255 == alpha_of(red_color));
-        auto green_color = string_to_color("#00FF00FF");
+        auto green_color = string_to_color(string("#00FF00FF"));
         REQUIRE(0 == red_of(green_color));
         REQUIRE(255 == green_of(green_color));
         REQUIRE(0 == blue_of(green_color));

@@ -6,32 +6,32 @@ class TestTimers:
 def test_create_timer_integration():
     test_timer = create_timer("test_timer")
     assert test_timer is not None
-    assert has_timer_named("test_timer")
+    assert has_timer__named("test_timer")
     free_timer(test_timer)
 
 
 def test_free_all_timers_integration():
-    test_timer1 = create_timer("test_timer_1")
-    test_timer2 = create_timer("test_timer_2")
-    assert has_timer_named("test_timer_1")
-    assert has_timer_named("test_timer_2")
+    create_timer("test_timer_1")
+    create_timer("test_timer_2")
+    assert has_timer__named("test_timer_1")
+    assert has_timer__named("test_timer_2")
     free_all_timers()
-    assert not has_timer_named("test_timer_1")
-    assert not has_timer_named("test_timer_2")
+    assert not has_timer__named("test_timer_1")
+    assert not has_timer__named("test_timer_2")
 
 
 def test_free_timer_integration():
     test_timer = create_timer("test_timer")
-    assert has_timer_named("test_timer")
+    assert has_timer__named("test_timer")
     free_timer(test_timer)
-    assert not has_timer_named("test_timer")
+    assert not has_timer__named("test_timer")
 
 
-def test_has_timer_named_integration():
+def test_has_timer__named_integration():
     test_timer = create_timer("test_timer")
-    assert has_timer_named("test_timer")
+    assert has_timer__named("test_timer")
     free_timer(test_timer)
-    assert not has_timer_named("test_timer")
+    assert not has_timer__named("test_timer")
 
 
 def test_pause_timer__named_integration():
@@ -39,7 +39,7 @@ def test_pause_timer__named_integration():
     start_timer(test_timer)
     initial_ticks = timer_ticks(test_timer)
     pause_timer__named("test_timer")
-    assert timer_paused("test_timer")
+    assert timer_paused__named("test_timer")
     assert initial_ticks == timer_ticks(test_timer)
     free_timer(test_timer)
 
@@ -99,7 +99,7 @@ def test_resume_timer_integration():
 def test_start_timer__named_integration():
     test_timer = create_timer("test_timer")
     start_timer__named("test_timer")
-    assert timer_started("test_timer")
+    assert timer_started__named("test_timer")
     free_timer(test_timer)
 
 
@@ -140,7 +140,7 @@ def test_timer_paused__named_integration():
     test_timer = create_timer("test_timer")
     start_timer(test_timer)
     assert not timer_paused__named("test_timer")
-    pause_timer("test_timer")
+    pause_timer__named("test_timer")
     assert timer_paused__named("test_timer")
     free_timer(test_timer)
 
@@ -157,7 +157,7 @@ def test_timer_paused_integration():
 def test_timer_started__named_integration():
     test_timer = create_timer("test_timer")
     assert not timer_started__named("test_timer")
-    start_timer("test_timer")
+    start_timer__named("test_timer")
     assert timer_started__named("test_timer")
     free_timer(test_timer)
 

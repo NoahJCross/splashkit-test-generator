@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -12,9 +14,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testCircle = CircleAt(400.0, 300.0, 50.0);
             DrawCircle(ColorBlack(), testCircle);
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -24,9 +26,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testCircle = CircleAt(400.0, 300.0, 50.0);
             DrawCircle(ColorBlack(), testCircle, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -36,9 +38,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawCircle(ColorBlack(), 400.0, 300.0, 50.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 425, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 425.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -47,9 +49,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
             DrawCircle(ColorBlack(), 400.0, 300.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -58,9 +60,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             DrawCircleOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 150, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 150.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -69,9 +71,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             DrawCircleOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 150, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 150.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -80,9 +82,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
             DrawCircleOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 50.0);
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -91,9 +93,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
             DrawCircleOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 350, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 400));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 350.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 400.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -103,9 +105,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testCircle = CircleAt(400.0, 300.0, 50.0);
             FillCircle(ColorBlack(), testCircle);
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -115,9 +117,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testCircle = CircleAt(400.0, 300.0, 50.0);
             FillCircle(ColorBlack(), testCircle, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -126,9 +128,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
             FillCircle(ColorBlack(), 400.0, 300.0, 50.0);
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -137,9 +139,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
             FillCircle(ColorBlack(), 400.0, 300.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -148,9 +150,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             FillCircleOnBitmap(testBitmap, ColorRed(), 100.0, 100.0, 50.0);
-            Assert.Equal(ColorRed(), GetPixel(testBitmap, 100, 100));
-            Assert.Equal(ColorRed(), GetPixel(testBitmap, 125, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160, 100));
+            Assert.Equal(ColorRed(), GetPixel(testBitmap, 100.0, 100.0));
+            Assert.Equal(ColorRed(), GetPixel(testBitmap, 125.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -159,9 +161,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             FillCircleOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100, 100));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100.0, 100.0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -170,9 +172,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
             FillCircleOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 50.0);
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -181,9 +183,9 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
             FillCircleOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -191,23 +193,23 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testClip = CurrentClip();
-            Assert.Equal(0, RectangleLeft(testClip));
-            Assert.Equal(0, RectangleTop(testClip));
-            Assert.Equal(800, testClip.Width);
-            Assert.Equal(600, testClip.Height);
+            Assert.Equal(0.0f, RectangleLeft(testClip));
+            Assert.Equal(0.0f, RectangleTop(testClip));
+            Assert.Equal(800.0, testClip.Width);
+            Assert.Equal(600.0, testClip.Height);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestCurrentClipForBitmapIntegration()
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testRectangle = RectangleFrom(10, 10, 50, 50);
+            var testRectangle = RectangleFrom(10.0, 10.0, 50.0, 50.0);
             PushClip(testBitmap, testRectangle);
             var testClip = CurrentClip(testBitmap);
-            Assert.Equal(0, RectangleLeft(testClip));
-            Assert.Equal(0, RectangleTop(testClip));
-            Assert.Equal(50, RectangleRight(testClip));
-            Assert.Equal(50, RectangleBottom(testClip));
+            Assert.Equal(0.0f, RectangleLeft(testClip));
+            Assert.Equal(0.0f, RectangleTop(testClip));
+            Assert.Equal(50.0, testClip.Width);
+            Assert.Equal(50.0, testClip.Height);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -215,29 +217,29 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testClip = CurrentClip(testWindow);
-            Assert.Equal(0, RectangleLeft(testClip));
-            Assert.Equal(0, RectangleTop(testClip));
-            Assert.Equal(800, testClip.Width);
-            Assert.Equal(600, testClip.Height);
+            Assert.Equal(0.0f, RectangleLeft(testClip));
+            Assert.Equal(0.0f, RectangleTop(testClip));
+            Assert.Equal(800.0, testClip.Width);
+            Assert.Equal(600.0, testClip.Height);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestPopClipForWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(0, 0, 250, 250);
+            var testRectangle = RectangleFrom(0.0, 0.0, 250.0, 250.0);
             PushClip(testWindow, testRectangle);
             var testCurrentClip = CurrentClip(testWindow);
-            Assert.Equal(0, RectangleLeft(testCurrentClip));
-            Assert.Equal(0, RectangleTop(testCurrentClip));
-            Assert.Equal(250, testCurrentClip.Width);
-            Assert.Equal(250, testCurrentClip.Height);
+            Assert.Equal(0.0f, RectangleLeft(testCurrentClip));
+            Assert.Equal(0.0f, RectangleTop(testCurrentClip));
+            Assert.Equal(250.0, testCurrentClip.Width);
+            Assert.Equal(250.0, testCurrentClip.Height);
             PopClip(testWindow);
             var testCurrentClipAfterPop = CurrentClip(testWindow);
-            Assert.Equal(0, RectangleLeft(testCurrentClipAfterPop));
-            Assert.Equal(0, RectangleTop(testCurrentClipAfterPop));
-            Assert.Equal(800, testCurrentClipAfterPop.Width);
-            Assert.Equal(600, testCurrentClipAfterPop.Height);
+            Assert.Equal(0.0f, RectangleLeft(testCurrentClipAfterPop));
+            Assert.Equal(0.0f, RectangleTop(testCurrentClipAfterPop));
+            Assert.Equal(800.0, testCurrentClipAfterPop.Width);
+            Assert.Equal(600.0, testCurrentClipAfterPop.Height);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -245,16 +247,16 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
-            PushClip(RectangleFrom(0, 0, 250, 250));
-            FillRectangle(ColorRed(), 0, 0, 300, 300);
+            PushClip(RectangleFrom(0.0, 0.0, 250.0, 250.0));
+            FillRectangle(ColorRed(), 0.0, 0.0, 300.0, 300.0);
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 275, 275));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 275.0, 275.0));
             PopClip();
-            FillRectangle(ColorGreen(), 300, 300, 100, 100);
+            FillRectangle(ColorGreen(), 300.0, 300.0, 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorGreen(), GetPixel(testWindow, 350, 350));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorGreen(), GetPixel(testWindow, 350.0, 350.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -262,16 +264,16 @@ namespace SplashKitTests
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            PushClip(testBitmap, RectangleFrom(0, 0, 50, 50));
-            FillCircle(ColorBlack(), 25, 25, 20, OptionDrawTo(testBitmap));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25, 25));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 75));
+            PushClip(testBitmap, RectangleFrom(0.0, 0.0, 50.0, 50.0));
+            FillCircle(ColorBlack(), 25.0, 25.0, 20.0, OptionDrawTo(testBitmap));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25.0, 25.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 75.0));
             PopClip(testBitmap);
             var testClip = CurrentClip(testBitmap);
-            Assert.Equal(0, RectangleLeft(testClip));
-            Assert.Equal(0, RectangleTop(testClip));
-            Assert.Equal(100, testClip.Width);
-            Assert.Equal(100, testClip.Height);
+            Assert.Equal(0.0f, RectangleLeft(testClip));
+            Assert.Equal(0.0f, RectangleTop(testClip));
+            Assert.Equal(100.0, testClip.Width);
+            Assert.Equal(100.0, testClip.Height);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -281,10 +283,10 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             PushClip(testWindow, testRectangle);
             var testCurrentClip = CurrentClip(testWindow);
-            Assert.Equal(100, RectangleLeft(testCurrentClip));
-            Assert.Equal(100, RectangleTop(testCurrentClip));
-            Assert.Equal(200, testCurrentClip.Width);
-            Assert.Equal(200, testCurrentClip.Height);
+            Assert.Equal(100.0f, RectangleLeft(testCurrentClip));
+            Assert.Equal(100.0f, RectangleTop(testCurrentClip));
+            Assert.Equal(200.0, testCurrentClip.Width);
+            Assert.Equal(200.0, testCurrentClip.Height);
             RefreshScreen();
             CloseWindow(testWindow);
         }
@@ -292,13 +294,13 @@ namespace SplashKitTests
         public void TestPushClipForBitmapIntegration()
         {
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
-            var testRectangle = RectangleFrom(50, 50, 100, 100);
+            var testRectangle = RectangleFrom(50.0, 50.0, 100.0, 100.0);
             PushClip(testBitmap, testRectangle);
             var testCurrentClip = CurrentClip(testBitmap);
-            Assert.Equal(50, RectangleLeft(testCurrentClip));
-            Assert.Equal(50, RectangleTop(testCurrentClip));
-            Assert.Equal(100, testCurrentClip.Width);
-            Assert.Equal(100, testCurrentClip.Height);
+            Assert.Equal(50.0f, RectangleLeft(testCurrentClip));
+            Assert.Equal(50.0f, RectangleTop(testCurrentClip));
+            Assert.Equal(100.0, testCurrentClip.Width);
+            Assert.Equal(100.0, testCurrentClip.Height);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -308,49 +310,49 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             PushClip(testRectangle);
             var testCurrentClip = CurrentClip();
-            Assert.Equal(100, RectangleLeft(testCurrentClip));
-            Assert.Equal(100, RectangleTop(testCurrentClip));
-            Assert.Equal(200, testCurrentClip.Width);
-            Assert.Equal(200, testCurrentClip.Height);
+            Assert.Equal(100.0f, RectangleLeft(testCurrentClip));
+            Assert.Equal(100.0f, RectangleTop(testCurrentClip));
+            Assert.Equal(200.0, testCurrentClip.Width);
+            Assert.Equal(200.0, testCurrentClip.Height);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestResetClipForBitmapIntegration()
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            PushClip(testBitmap, RectangleFrom(10, 10, 50, 50));
+            PushClip(testBitmap, RectangleFrom(10.0, 10.0, 50.0, 50.0));
             ResetClip(testBitmap);
             var testClip = CurrentClip(testBitmap);
-            Assert.Equal(0, RectangleLeft(testClip));
-            Assert.Equal(0, RectangleTop(testClip));
-            Assert.Equal(100, testClip.Width);
-            Assert.Equal(100, testClip.Height);
+            Assert.Equal(0.0f, RectangleLeft(testClip));
+            Assert.Equal(0.0f, RectangleTop(testClip));
+            Assert.Equal(100.0, testClip.Width);
+            Assert.Equal(100.0, testClip.Height);
             FreeBitmap(testBitmap);
         }
         [Fact]
         public void TestResetClipIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            PushClip(RectangleFrom(100, 100, 200, 200));
+            PushClip(RectangleFrom(100.0, 100.0, 200.0, 200.0));
             ResetClip();
             var testClip = CurrentClip();
-            Assert.Equal(0, RectangleLeft(testClip));
-            Assert.Equal(0, RectangleTop(testClip));
-            Assert.Equal(800, testClip.Width);
-            Assert.Equal(600, testClip.Height);
+            Assert.Equal(0.0f, RectangleLeft(testClip));
+            Assert.Equal(0.0f, RectangleTop(testClip));
+            Assert.Equal(800.0, testClip.Width);
+            Assert.Equal(600.0, testClip.Height);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestResetClipForWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            PushClip(testWindow, RectangleFrom(100, 100, 200, 200));
+            PushClip(testWindow, RectangleFrom(100.0, 100.0, 200.0, 200.0));
             ResetClip(testWindow);
             var testClip = CurrentClip(testWindow);
-            Assert.Equal(0, RectangleLeft(testClip));
-            Assert.Equal(0, RectangleTop(testClip));
-            Assert.Equal(800, testClip.Width);
-            Assert.Equal(600, testClip.Height);
+            Assert.Equal(0.0f, RectangleLeft(testClip));
+            Assert.Equal(0.0f, RectangleTop(testClip));
+            Assert.Equal(800.0, testClip.Width);
+            Assert.Equal(600.0, testClip.Height);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -360,36 +362,36 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             SetClip(testRectangle);
             var testCurrentClip = CurrentClip();
-            Assert.Equal(100, RectangleLeft(testCurrentClip));
-            Assert.Equal(100, RectangleTop(testCurrentClip));
-            Assert.Equal(200, testCurrentClip.Width);
-            Assert.Equal(200, testCurrentClip.Height);
+            Assert.Equal(100.0f, RectangleLeft(testCurrentClip));
+            Assert.Equal(100.0f, RectangleTop(testCurrentClip));
+            Assert.Equal(200.0, testCurrentClip.Width);
+            Assert.Equal(200.0, testCurrentClip.Height);
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSetClipForBitmapIntegration()
         {
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
-            var testRectangle = RectangleFrom(50, 50, 100, 100);
+            var testRectangle = RectangleFrom(50.0, 50.0, 100.0, 100.0);
             SetClip(testBitmap, testRectangle);
             var testCurrentClip = CurrentClip(testBitmap);
-            Assert.Equal(50, RectangleLeft(testCurrentClip));
-            Assert.Equal(50, RectangleTop(testCurrentClip));
-            Assert.Equal(100, testCurrentClip.Width);
-            Assert.Equal(100, testCurrentClip.Height);
+            Assert.Equal(50.0f, RectangleLeft(testCurrentClip));
+            Assert.Equal(50.0f, RectangleTop(testCurrentClip));
+            Assert.Equal(100.0, testCurrentClip.Width);
+            Assert.Equal(100.0, testCurrentClip.Height);
             FreeBitmap(testBitmap);
         }
         [Fact]
         public void TestSetClipForWindowIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(100, 100, 200, 200);
+            var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             SetClip(testWindow, testRectangle);
             var testCurrentClip = CurrentClip(testWindow);
-            Assert.Equal(100, RectangleLeft(testCurrentClip));
-            Assert.Equal(100, RectangleTop(testCurrentClip));
-            Assert.Equal(200, testCurrentClip.Width);
-            Assert.Equal(200, testCurrentClip.Height);
+            Assert.Equal(100.0f, RectangleLeft(testCurrentClip));
+            Assert.Equal(100.0f, RectangleTop(testCurrentClip));
+            Assert.Equal(200.0, testCurrentClip.Width);
+            Assert.Equal(200.0, testCurrentClip.Height);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -405,8 +407,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var testOptions = OptionDrawTo(testBitmap);
             DrawCircle(ColorBlack(), CircleAt(50.0, 50.0, 25.0), testOptions);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 75, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 75.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90.0, 90.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -417,8 +419,8 @@ namespace SplashKitTests
             var testOptions = OptionDefaults();
             var testDrawingOptions = OptionDrawTo(testBitmap, testOptions);
             DrawCircle(ColorBlack(), CircleAt(50.0, 50.0, 25.0), testDrawingOptions);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 75, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 75.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90.0, 90.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -428,8 +430,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionDrawTo(testWindow));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -440,8 +442,8 @@ namespace SplashKitTests
             var testOptions = OptionDefaults();
             DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionDrawTo(testWindow, testOptions));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 460.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -451,11 +453,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 50, 100);
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
             DrawBitmap(testBitmap, 100.0, 100.0, OptionFlipX());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75.0, 100.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -466,11 +468,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 50, 100);
-            DrawBitmap(testBitmap, 400, 300, OptionFlipX(OptionDefaults()));
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
+            DrawBitmap(testBitmap, 400.0, 300.0, OptionFlipX(OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 375, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 425.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 375.0, 300.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -481,11 +483,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 50, 50);
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 50.0);
             DrawBitmap(testBitmap, 400.0, 300.0, OptionFlipXy());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 350));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 450, 250));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 350.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 450.0, 250.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -496,11 +498,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 50, 50);
-            DrawBitmap(testBitmap, 400, 300, OptionFlipXy(OptionDefaults()));
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 50.0);
+            DrawBitmap(testBitmap, 400.0, 300.0, OptionFlipXy(OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 350));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 450, 250));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 350.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 450.0, 250.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -511,11 +513,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 100, 50);
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 100.0, 50.0);
             DrawBitmap(testBitmap, 400.0, 300.0, OptionFlipY());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 325));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 275));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 325.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 275.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -526,11 +528,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 100, 50);
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 100.0, 50.0);
             DrawBitmap(testBitmap, 400.0, 300.0, OptionFlipY(OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 325));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 275));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 325.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 275.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -541,8 +543,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionLineWidth(5));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 140, 150));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 140.0, 150.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -552,8 +554,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionLineWidth(5, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 145, 150));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 145.0, 150.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -565,8 +567,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorBlack());
             DrawBitmap(testBitmap, 100.0, 100.0, OptionPartBmp(0.0, 0.0, 50.0, 50.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175.0, 175.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -579,8 +581,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorBlack());
             DrawBitmap(testBitmap, 100.0, 100.0, OptionPartBmp(0.0, 0.0, 50.0, 50.0, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175.0, 175.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -591,10 +593,10 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorBlack());
-            DrawBitmap(testBitmap, 0, 0, OptionPartBmp(RectangleFrom(0, 0, 50, 50)));
+            DrawBitmap(testBitmap, 0.0, 0.0, OptionPartBmp(RectangleFrom(0.0, 0.0, 50.0, 50.0)));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 25, 25));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 25.0, 25.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75.0, 75.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -605,10 +607,10 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorBlack());
-            DrawBitmap(testBitmap, 0, 0, OptionPartBmp(RectangleFrom(0, 0, 50, 50), OptionDefaults()));
+            DrawBitmap(testBitmap, 0.0, 0.0, OptionPartBmp(RectangleFrom(0.0, 0.0, 50.0, 50.0), OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 25, 25));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 25.0, 25.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75.0, 75.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -619,11 +621,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 50, 100);
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
             DrawBitmap(testBitmap, 400.0, 300.0, OptionRotateBmp(90.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 350));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 350.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -634,11 +636,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 50, 100);
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
             DrawBitmap(testBitmap, 400.0, 300.0, OptionRotateBmp(90.0, 50.0, 50.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 500, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 450, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 500.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 450.0, 300.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -649,11 +651,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 50, 100);
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
             DrawBitmap(testBitmap, 400.0, 300.0, OptionRotateBmp(90.0, 50.0, 50.0, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 500, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 500.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -664,11 +666,11 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0, 0, 50, 100);
+            FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
             DrawBitmap(testBitmap, 400.0, 300.0, OptionRotateBmp(90.0, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 350));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 350.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -681,8 +683,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorBlack());
             DrawBitmap(testBitmap, 400.0, 300.0, OptionScaleBmp(2.0, 2.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 451, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 451.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -695,8 +697,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorBlack());
             DrawBitmap(testBitmap, 400.0, 300.0, OptionScaleBmp(2.0, 2.0, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 451, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 451.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -707,8 +709,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionToScreen());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 451, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 451.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -718,8 +720,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionToScreen(OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400, 250));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 400.0, 250.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -730,8 +732,8 @@ namespace SplashKitTests
             MoveCameraTo(100.0, 100.0);
             DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionToWorld());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 350, 200));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 375, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 350.0, 200.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 375.0, 200.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -742,8 +744,8 @@ namespace SplashKitTests
             MoveCameraTo(100.0, 100.0);
             DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionToWorld(OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 350, 200));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 375, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 350.0, 200.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 375.0, 200.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -754,10 +756,10 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorBlack());
             var testAnimation = CreateAnimation("test_animation", "default");
-            DrawBitmap(testBitmap, 100, 100, OptionWithAnimation(testAnimation));
+            DrawBitmap(testBitmap, 100.0, 100.0, OptionWithAnimation(testAnimation));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75.0, 75.0));
             FreeAnimation(testAnimation);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -770,10 +772,10 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorBlack());
             var testAnimation = CreateAnimation("test_animation", "default");
-            DrawBitmap(testBitmap, 100, 100, OptionWithAnimation(testAnimation, OptionDefaults()));
+            DrawBitmap(testBitmap, 100.0, 100.0, OptionWithAnimation(testAnimation, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 75.0, 75.0));
             FreeAnimation(testAnimation);
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
@@ -786,10 +788,10 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 64, 64);
             ClearBitmap(testBitmap, ColorBlack());
             BitmapSetCellDetails(testBitmap, 32, 32, 2, 2, 4);
-            DrawBitmap(testBitmap, 100, 100, OptionWithBitmapCell(1));
+            DrawBitmap(testBitmap, 100.0, 100.0, OptionWithBitmapCell(1));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 116, 116));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 84, 84));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 116.0, 116.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 84.0, 84.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -801,10 +803,10 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 64, 64);
             ClearBitmap(testBitmap, ColorBlack());
             BitmapSetCellDetails(testBitmap, 32, 32, 2, 2, 4);
-            DrawBitmap(testBitmap, 100, 100, OptionWithBitmapCell(1, OptionDefaults()));
+            DrawBitmap(testBitmap, 100.0, 100.0, OptionWithBitmapCell(1, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 116, 116));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 84, 84));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 116.0, 116.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 84.0, 84.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -813,11 +815,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
-            DrawEllipse(ColorBlack(), RectangleFrom(100, 100, 200, 150));
+            DrawEllipse(ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 150.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 300, 175));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200, 175));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 300.0, 175.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200.0, 175.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 175.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -825,11 +827,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
-            DrawEllipse(ColorBlack(), RectangleFrom(100, 100, 200, 100), OptionDefaults());
+            DrawEllipse(ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 100.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 300, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 150));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 300.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 150.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -839,9 +841,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawEllipse(ColorBlack(), 400.0, 300.0, 100.0, 50.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -851,9 +853,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawEllipse(ColorBlack(), 400.0, 300.0, 100.0, 50.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -863,9 +865,9 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var rect = RectangleFrom(50.0, 50.0, 100.0, 100.0);
             DrawEllipseOnBitmap(testBitmap, ColorBlack(), rect);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 150, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 125, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 175, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 150.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 125.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 175.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -874,9 +876,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             DrawEllipseOnBitmap(testBitmap, ColorBlack(), RectangleFrom(50.0, 50.0, 100.0, 100.0), OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 150, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 125, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 175, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 150.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 125.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 175.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -885,9 +887,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             DrawEllipseOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, 30.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -896,9 +898,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             DrawEllipseOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, 30.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 160.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -909,9 +911,9 @@ namespace SplashKitTests
             var rect = RectangleFrom(100.0, 100.0, 200.0, 100.0);
             DrawEllipseOnWindow(testWindow, ColorBlack(), rect);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 300, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 150));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 300.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 150.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -922,9 +924,9 @@ namespace SplashKitTests
             var rect = RectangleFrom(100.0, 100.0, 200.0, 100.0);
             DrawEllipseOnWindow(testWindow, ColorBlack(), rect, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 300, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 150));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 300.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 150.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -934,9 +936,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawEllipseOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 100.0, 50.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -946,9 +948,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawEllipseOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 100.0, 50.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 450, 325));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 450.0, 325.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -958,9 +960,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillEllipse(ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 100));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 100.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -970,9 +972,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillEllipse(ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 100.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 100));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 100.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -982,9 +984,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillEllipse(ColorBlack(), 400.0, 300.0, 100.0, 50.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 325));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 325.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -994,9 +996,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillEllipse(ColorBlack(), 400.0, 300.0, 100.0, 50.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 325));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 300, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 325.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 300.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1005,9 +1007,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             FillEllipseOnBitmap(testBitmap, ColorBlack(), RectangleFrom(50.0, 50.0, 100.0, 100.0));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100, 100));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 75, 75));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 175, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100.0, 100.0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 75.0, 75.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 175.0, 175.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1016,9 +1018,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             FillEllipseOnBitmap(testBitmap, ColorBlack(), RectangleFrom(50.0, 50.0, 100.0, 100.0), OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100, 100));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 75, 75));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 175, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100.0, 100.0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 75.0, 75.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 175.0, 175.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1027,9 +1029,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             FillEllipseOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, 30.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125, 100));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 150, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125.0, 100.0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 150.0, 100.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1038,9 +1040,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             FillEllipseOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0, 100.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100, 50));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100, 75));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 150, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100.0, 50.0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 100.0, 75.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 150.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1050,9 +1052,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillEllipseOnWindow(testWindow, ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 150.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 175));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 175));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 175.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 175.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 175.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1062,9 +1064,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillEllipseOnWindow(testWindow, ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 150.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 175));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 175));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 175.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 175.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 175.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1074,9 +1076,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillEllipseOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 100.0, 50.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 325));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 325.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1086,9 +1088,9 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillEllipseOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 100.0, 50.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 300));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450, 325));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 300.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 450.0, 325.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 500.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1097,10 +1099,10 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
             ClearScreen();
             RefreshScreen();
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 100, 100));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 100.0, 100.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1109,10 +1111,10 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
             ClearScreen(ColorWhite());
             RefreshScreen();
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 100, 100));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 100.0, 100.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1120,41 +1122,41 @@ namespace SplashKitTests
         {
             var displays = NumberOfDisplays();
             Assert.True(displays > 0);
-            var display = DisplayDetails(0);
+            var display = DisplayDetails(0u);
             Assert.NotNull(display);
             Assert.True(DisplayWidth(display) > 0);
             Assert.True(DisplayHeight(display) > 0);
-            Assert.NotNull(DisplayName(display));
+            Assert.NotEmpty(DisplayName(display));
         }
         [Fact]
         public void TestDisplayHeightIntegration()
         {
-            var display = DisplayDetails(0);
+            var display = DisplayDetails(0u);
             Assert.True(DisplayHeight(display) > 0);
         }
         [Fact]
         public void TestDisplayNameIntegration()
         {
-            var display = DisplayDetails(0);
-            Assert.NotNull(DisplayName(display));
+            var display = DisplayDetails(0u);
+            Assert.NotEmpty(DisplayName(display));
             Assert.NotEmpty(DisplayName(display));
         }
         [Fact]
         public void TestDisplayWidthIntegration()
         {
-            var display = DisplayDetails(0);
+            var display = DisplayDetails(0u);
             Assert.True(DisplayWidth(display) > 0);
         }
         [Fact]
         public void TestDisplayXIntegration()
         {
-            var display = DisplayDetails(0);
+            var display = DisplayDetails(0u);
             Assert.True(DisplayX(display) > 0);
         }
         [Fact]
         public void TestDisplayYIntegration()
         {
-            var display = DisplayDetails(0);
+            var display = DisplayDetails(0u);
             Assert.True(DisplayY(display) > 0);
         }
         [Fact]
@@ -1177,7 +1179,7 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
             DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0));
-            RefreshScreen(60);
+            RefreshScreen(60u);
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1185,7 +1187,7 @@ namespace SplashKitTests
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
-            DrawPixelOnBitmap(testBitmap, ColorBlack(), 50, 50);
+            DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
             SaveBitmap(testBitmap, "test_bitmap");
             FreeBitmap(testBitmap);
         }
@@ -1208,7 +1210,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
-            DrawCircle(ColorBlack(), CircleAt(400, 300, 50));
+            DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0));
             RefreshScreen();
             TakeScreenshot("test_screenshot");
             CloseWindow(testWindow);
@@ -1218,7 +1220,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             ClearWindow(testWindow, ColorWhite());
-            DrawCircle(ColorBlack(), CircleAt(400, 300, 50));
+            DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0));
             RefreshScreen();
             TakeScreenshot(testWindow, "test_screenshot");
             CloseWindow(testWindow);
@@ -1230,7 +1232,7 @@ namespace SplashKitTests
             var testPoint = PointAt(50.0, 50.0);
             var boundingCircle = BitmapBoundingCircle(testBitmap, testPoint);
             Assert.Equal(testPoint, CenterPoint(boundingCircle));
-            Assert.Equal(100, CircleRadius(boundingCircle));
+            Assert.Equal(100.0f, CircleRadius(boundingCircle));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1238,10 +1240,10 @@ namespace SplashKitTests
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var boundingRect = BitmapBoundingRectangle(testBitmap);
-            Assert.Equal(0, boundingRect.X);
-            Assert.Equal(0, boundingRect.Y);
-            Assert.Equal(100, boundingRect.Width);
-            Assert.Equal(100, boundingRect.Height);
+            Assert.Equal(0.0, boundingRect.X);
+            Assert.Equal(0.0, boundingRect.Y);
+            Assert.Equal(100.0, boundingRect.Width);
+            Assert.Equal(100.0, boundingRect.Height);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1249,10 +1251,10 @@ namespace SplashKitTests
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             var boundingRect = BitmapBoundingRectangle(testBitmap, 50.0, 50.0);
-            Assert.Equal(50, boundingRect.X);
-            Assert.Equal(50, boundingRect.Y);
-            Assert.Equal(100, boundingRect.Width);
-            Assert.Equal(100, boundingRect.Height);
+            Assert.Equal(50.0, boundingRect.X);
+            Assert.Equal(50.0, boundingRect.Y);
+            Assert.Equal(100.0, boundingRect.Width);
+            Assert.Equal(100.0, boundingRect.Height);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1271,8 +1273,8 @@ namespace SplashKitTests
             BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
             var circle = BitmapCellCircle(testBitmap, 50.0, 50.0);
             Assert.Equal(50.0, circle.Center.X);
-            Assert.Equal(50.0, circle.Center.Y);
-            Assert.Equal(25, circle.Radius);
+            Assert.Equal(50.0, circle.Center.X);
+            Assert.Equal(25.0, circle.Radius);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1280,10 +1282,10 @@ namespace SplashKitTests
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
-            var circle = BitmapCellCircle(testBitmap, PointAt(100, 100));
+            var circle = BitmapCellCircle(testBitmap, PointAt(100.0, 100.0));
             Assert.Equal(100.0, circle.Center.X);
-            Assert.Equal(100.0, circle.Center.Y);
-            Assert.Equal(25, circle.Radius);
+            Assert.Equal(100.0, circle.Center.X);
+            Assert.Equal(25.0, circle.Radius);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1293,8 +1295,8 @@ namespace SplashKitTests
             BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
             var circle = BitmapCellCircle(testBitmap, PointAt(100.0, 100.0), 2.0);
             Assert.Equal(100.0, circle.Center.X);
-            Assert.Equal(100.0, circle.Center.Y);
-            Assert.Equal(50, circle.Radius);
+            Assert.Equal(100.0, circle.Center.X);
+            Assert.Equal(50.0, circle.Radius);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1337,10 +1339,10 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
             var rect = BitmapCellRectangle(testBitmap);
-            Assert.Equal(0, rect.X);
-            Assert.Equal(0, rect.Y);
-            Assert.Equal(25, rect.Width);
-            Assert.Equal(25, rect.Height);
+            Assert.Equal(0.0, rect.X);
+            Assert.Equal(0.0, rect.Y);
+            Assert.Equal(25.0, rect.Width);
+            Assert.Equal(25.0, rect.Height);
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1466,20 +1468,20 @@ namespace SplashKitTests
         public void TestClearBitmapIntegration()
         {
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            DrawPixelOnBitmap(testBitmap, ColorBlack(), 50, 50);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
+            DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
             ClearBitmap(testBitmap, ColorWhite());
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50, 50));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
         public void TestClearBitmapNamedIntegration()
         {
             var testBitmap = CreateBitmap("bitmap_named", 100, 100);
-            FillRectangleOnBitmap(testBitmap, ColorRed(), 0, 0, 100, 100);
-            Assert.Equal(ColorRed(), GetPixel(testBitmap, 50, 50));
+            FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
+            Assert.Equal(ColorRed(), GetPixel(testBitmap, 50.0, 50.0));
             ClearBitmap("bitmap_named", ColorWhite());
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50, 50));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1498,11 +1500,11 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearWindow(testWindow, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorRed(), 0, 0, 50, 50);
+            FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 50.0, 50.0);
             DrawBitmap(testBitmap, 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175, 175));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175.0, 175.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -1512,11 +1514,11 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearWindow(testWindow, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorRed(), 0, 0, 100, 100);
+            FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
             DrawBitmap(testBitmap, 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -1526,11 +1528,11 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearWindow(testWindow, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorRed(), 0, 0, 100, 100);
+            FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
             DrawBitmap("test_bitmap", 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -1540,11 +1542,11 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearWindow(testWindow, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorRed(), 0, 0, 100, 100);
+            FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
             DrawBitmap("test_bitmap", 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -1554,10 +1556,10 @@ namespace SplashKitTests
             var destBitmap = CreateBitmap("test_destination", 100, 100);
             var sourceBitmap = CreateBitmap("test_source", 50, 50);
             ClearBitmap(destBitmap, ColorWhite());
-            FillRectangleOnBitmap(sourceBitmap, ColorRed(), 0, 0, 50, 50);
+            FillRectangleOnBitmap(sourceBitmap, ColorRed(), 0.0, 0.0, 50.0, 50.0);
             DrawBitmapOnBitmap(destBitmap, sourceBitmap, 25.0, 25.0);
-            Assert.Equal(ColorRed(), GetPixel(destBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(destBitmap, 10, 10));
+            Assert.Equal(ColorRed(), GetPixel(destBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(destBitmap, 10.0, 10.0));
             FreeBitmap(destBitmap);
             FreeBitmap(sourceBitmap);
         }
@@ -1567,10 +1569,10 @@ namespace SplashKitTests
             var destBitmap = CreateBitmap("test_destination", 100, 100);
             var sourceBitmap = CreateBitmap("test_source", 50, 50);
             ClearBitmap(destBitmap, ColorWhite());
-            FillRectangleOnBitmap(sourceBitmap, ColorRed(), 0, 0, 50, 50);
+            FillRectangleOnBitmap(sourceBitmap, ColorRed(), 0.0, 0.0, 50.0, 50.0);
             DrawBitmapOnBitmap(destBitmap, sourceBitmap, 25.0, 25.0, OptionDefaults());
-            Assert.Equal(ColorRed(), GetPixel(destBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(destBitmap, 10, 10));
+            Assert.Equal(ColorRed(), GetPixel(destBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(destBitmap, 10.0, 10.0));
             FreeBitmap(destBitmap);
             FreeBitmap(sourceBitmap);
         }
@@ -1580,11 +1582,11 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearWindow(testWindow, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorRed(), 0, 0, 100, 100);
+            FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
             DrawBitmapOnWindow(testWindow, testBitmap, 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -1594,11 +1596,11 @@ namespace SplashKitTests
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearWindow(testWindow, ColorWhite());
-            FillRectangleOnBitmap(testBitmap, ColorRed(), 0, 0, 100, 100);
+            FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
             DrawBitmapOnWindow(testWindow, testBitmap, 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             FreeBitmap(testBitmap);
             CloseWindow(testWindow);
         }
@@ -1633,8 +1635,8 @@ namespace SplashKitTests
         public void TestLoadBitmapIntegration()
         {
             var loadedBitmap = LoadBitmap("loaded_bitmap", "frog.png");
-            Assert.Equal(ColorBlack(), GetPixel(loadedBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(loadedBitmap, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(loadedBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(loadedBitmap, 75.0, 75.0));
             FreeBitmap(loadedBitmap);
         }
         [Fact]
@@ -1643,8 +1645,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 75.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1653,8 +1655,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 75.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1664,8 +1666,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
             BitmapSetCellDetails(testBitmap, 100, 100, 1, 1, 1);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1675,8 +1677,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
             BitmapSetCellDetails(testBitmap, 100, 100, 1, 1, 1);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 75.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1685,7 +1687,7 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1695,8 +1697,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLine(ColorBlack(), LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0)));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1706,8 +1708,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLine(ColorBlack(), LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0)), OptionLineWidth(3, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1717,8 +1719,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLine(ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1728,8 +1730,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLine(ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1739,8 +1741,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1750,8 +1752,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1760,8 +1762,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawLineOnBitmap(testBitmap, ColorBlack(), LineFrom(PointAt(10.0, 10.0), PointAt(90.0, 90.0)));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 95, 95));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 95.0, 95.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1770,8 +1772,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawLineOnBitmap(testBitmap, ColorBlack(), LineFrom(PointAt(10.0, 10.0), PointAt(90.0, 90.0)), OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 95, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 95.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1780,8 +1782,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawLineOnBitmap(testBitmap, ColorBlack(), PointAt(10.0, 10.0), PointAt(90.0, 90.0));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0, 0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0.0, 0.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1790,9 +1792,9 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawLineOnBitmap(testBitmap, ColorBlack(), PointAt(10.0, 10.0), PointAt(90.0, 90.0), OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 10, 10));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 90, 90));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 5, 5));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 10.0, 10.0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 90.0, 90.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 5.0, 5.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1801,8 +1803,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawLineOnBitmap(testBitmap, ColorBlack(), 10.0, 10.0, 90.0, 90.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 95, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 95.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1811,8 +1813,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawLineOnBitmap(testBitmap, ColorBlack(), 10.0, 10.0, 90.0, 90.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 5, 5));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 5.0, 5.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1822,8 +1824,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             LineFrom(PointAt(100.0, 100.0), PointAt(150.0, 150.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1833,8 +1835,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             OptionDefaults();
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1844,8 +1846,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLineOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1855,8 +1857,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             OptionDefaults();
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1866,8 +1868,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLineOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1877,8 +1879,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawLineOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1888,8 +1890,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1899,8 +1901,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1910,8 +1912,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1921,8 +1923,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1931,8 +1933,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0, 0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0.0, 0.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1941,8 +1943,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0), OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0, 0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0.0, 0.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1951,8 +1953,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 51, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 51.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1961,8 +1963,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 51, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 51.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -1972,8 +1974,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixelOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1983,8 +1985,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixelOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -1994,8 +1996,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixelOnWindow(testWindow, ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2005,8 +2007,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixelOnWindow(testWindow, ColorBlack(), 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2015,8 +2017,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 49, 49));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, PointAt(50.0, 50.0)));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, PointAt(49.0, 49.0)));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2025,8 +2027,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 49, 49));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 49.0, 49.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2036,8 +2038,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2047,8 +2049,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2058,8 +2060,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, PointAt(100.0, 100.0)));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, PointAt(99.0, 99.0)));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2069,8 +2071,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2080,8 +2082,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixelFromWindow(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixelFromWindow(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixelFromWindow(testWindow, PointAt(100.0, 100.0)));
+            Assert.Equal(ColorWhite(), GetPixelFromWindow(testWindow, PointAt(99.0, 99.0)));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2091,8 +2093,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawPixel(ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixelFromWindow(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixelFromWindow(testWindow, 99, 99));
+            Assert.Equal(ColorBlack(), GetPixelFromWindow(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixelFromWindow(testWindow, 99.0, 99.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2103,9 +2105,9 @@ namespace SplashKitTests
             var quad = QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
             DrawQuad(ColorBlack(), quad);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250, 250));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250.0, 250.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2116,9 +2118,9 @@ namespace SplashKitTests
             var quad = QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
             DrawQuad(ColorBlack(), quad, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250, 250));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250.0, 250.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2128,9 +2130,9 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var quad = QuadFrom(PointAt(10.0, 10.0), PointAt(90.0, 10.0), PointAt(10.0, 90.0), PointAt(90.0, 90.0));
             DrawQuadOnBitmap(testBitmap, ColorBlack(), quad);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 10, 10));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 5, 5));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 10.0, 10.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 5.0, 5.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2140,9 +2142,9 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var quad = QuadFrom(PointAt(10.0, 10.0), PointAt(90.0, 10.0), PointAt(90.0, 90.0), PointAt(10.0, 90.0));
             DrawQuadOnBitmap(testBitmap, ColorBlack(), quad, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 10, 10));
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 5, 5));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 10.0, 10.0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 5.0, 5.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2153,9 +2155,9 @@ namespace SplashKitTests
             var quad = QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
             DrawQuadOnWindow(testWindow, ColorBlack(), quad);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250, 250));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250.0, 250.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2166,9 +2168,9 @@ namespace SplashKitTests
             var quad = QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
             DrawQuadOnWindow(testWindow, ColorBlack(), quad, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250, 250));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250.0, 250.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2179,9 +2181,9 @@ namespace SplashKitTests
             var rectangle = RectangleFrom(100.0, 100.0, 200.0, 150.0);
             DrawRectangle(ColorBlack(), rectangle);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301, 251));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301.0, 251.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2192,9 +2194,9 @@ namespace SplashKitTests
             var rectangle = RectangleFrom(100.0, 100.0, 200.0, 150.0);
             DrawRectangle(ColorBlack(), rectangle, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 300));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 300.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2204,8 +2206,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawRectangle(ColorBlack(), 100.0, 100.0, 200.0, 150.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301, 251));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301.0, 251.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2215,10 +2217,10 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawRectangle(ColorBlack(), 100.0, 100.0, 200.0, 150.0, OptionLineWidth(3, OptionDefaults()));
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 101, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301, 251));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 101.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301.0, 251.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2228,8 +2230,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var rectangle = RectangleFrom(50.0, 50.0, 20.0, 30.0);
             DrawRectangleOnBitmap(testBitmap, ColorBlack(), rectangle);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 80, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 80.0, 90.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2239,8 +2241,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var rectangle = RectangleFrom(50.0, 50.0, 20.0, 20.0);
             DrawRectangleOnBitmap(testBitmap, ColorBlack(), rectangle, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 75.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2249,8 +2251,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawRectangleOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0, 20.0, 20.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 75.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2259,8 +2261,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawRectangleOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0, 20.0, 20.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 75.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2271,9 +2273,9 @@ namespace SplashKitTests
             var rectangle = RectangleFrom(100.0, 100.0, 50.0, 50.0);
             DrawRectangleOnWindow(testWindow, ColorBlack(), rectangle);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200.0, 200.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2284,9 +2286,9 @@ namespace SplashKitTests
             var rectangle = RectangleFrom(100.0, 100.0, 50.0, 50.0);
             DrawRectangleOnWindow(testWindow, ColorBlack(), rectangle, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175.0, 175.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2296,8 +2298,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawRectangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 50.0, 50.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200.0, 200.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2307,8 +2309,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawRectangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 50.0, 50.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200.0, 200.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2319,8 +2321,8 @@ namespace SplashKitTests
             var quad = QuadFrom(PointAt(100.0, 100.0), PointAt(300.0, 100.0), PointAt(100.0, 300.0), PointAt(300.0, 300.0));
             FillQuad(ColorBlack(), quad);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 200));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 400));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 200.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 400.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2331,8 +2333,8 @@ namespace SplashKitTests
             var quad = QuadFrom(PointAt(100.0, 100.0), PointAt(300.0, 100.0), PointAt(100.0, 300.0), PointAt(300.0, 300.0));
             FillQuad(ColorBlack(), quad, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 200));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400, 400));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 200.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 400.0, 400.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2342,8 +2344,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var quad = QuadFrom(PointAt(10.0, 10.0), PointAt(90.0, 10.0), PointAt(10.0, 90.0), PointAt(90.0, 90.0));
             FillQuadOnBitmap(testBitmap, ColorBlack(), quad);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0, 0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0.0, 0.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2353,8 +2355,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var quad = QuadFrom(PointAt(10.0, 10.0), PointAt(90.0, 10.0), PointAt(90.0, 90.0), PointAt(10.0, 90.0));
             FillQuadOnBitmap(testBitmap, ColorBlack(), quad, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 95, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 95.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2365,8 +2367,8 @@ namespace SplashKitTests
             var quad = QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
             FillQuadOnWindow(testWindow, ColorBlack(), quad);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250, 250));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250.0, 250.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2377,8 +2379,8 @@ namespace SplashKitTests
             var quad = QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(200.0, 200.0), PointAt(100.0, 200.0));
             FillQuadOnWindow(testWindow, ColorBlack(), quad, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250, 150));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 250.0, 150.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2389,8 +2391,8 @@ namespace SplashKitTests
             var rectangle = RectangleFrom(100.0, 100.0, 200.0, 150.0);
             FillRectangle(ColorBlack(), rectangle);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 275));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 275.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2401,8 +2403,8 @@ namespace SplashKitTests
             var rectangle = RectangleFrom(100.0, 100.0, 200.0, 150.0);
             FillRectangle(ColorBlack(), rectangle, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 275));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 275.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2412,8 +2414,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillRectangle(ColorBlack(), 100.0, 100.0, 200.0, 150.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301, 251));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301.0, 251.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2423,8 +2425,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillRectangle(ColorBlack(), 100.0, 100.0, 200.0, 150.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301, 251));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 301.0, 251.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2434,8 +2436,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var rectangle = RectangleFrom(25.0, 25.0, 50.0, 50.0);
             FillRectangleOnBitmap(testBitmap, ColorBlack(), rectangle);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 10, 10));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 10.0, 10.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2445,8 +2447,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var rectangle = RectangleFrom(25.0, 25.0, 50.0, 50.0);
             FillRectangleOnBitmap(testBitmap, ColorBlack(), rectangle, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 10, 10));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 10.0, 10.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2455,8 +2457,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             FillRectangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 50.0, 50.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75, 75));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 75.0, 75.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2465,8 +2467,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             FillRectangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 50.0, 50.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 10, 10));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 10.0, 10.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2477,8 +2479,8 @@ namespace SplashKitTests
             var rectangle = RectangleFrom(100.0, 100.0, 200.0, 150.0);
             FillRectangleOnWindow(testWindow, ColorBlack(), rectangle);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 275));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 275.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2489,8 +2491,8 @@ namespace SplashKitTests
             var rectangle = RectangleFrom(100.0, 100.0, 200.0, 150.0);
             FillRectangleOnWindow(testWindow, ColorBlack(), rectangle, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 275));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 275.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2500,8 +2502,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillRectangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 50.0, 50.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175.0, 175.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2511,8 +2513,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillRectangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 50.0, 50.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125, 125));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175, 175));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 125.0, 125.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 175.0, 175.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2524,8 +2526,8 @@ namespace SplashKitTests
             LoadFont("hara", "hara.ttf");
             DrawText("Test Text", ColorBlack(), "hara", 24, 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeAllFonts();
         }
@@ -2537,8 +2539,8 @@ namespace SplashKitTests
             LoadFont("hara", "hara.ttf");
             DrawText("Test Text", ColorBlack(), "hara", 24, 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeAllFonts();
         }
@@ -2549,8 +2551,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawText("Test Text", ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2560,8 +2562,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawText("Test Text", ColorBlack(), 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2572,8 +2574,8 @@ namespace SplashKitTests
             LoadFont("hara", "hara.ttf");
             DrawText("Test Text", ColorBlack(), FontNamed("hara"), 24, 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeAllFonts();
         }
@@ -2585,8 +2587,8 @@ namespace SplashKitTests
             LoadFont("hara", "hara.ttf");
             DrawText("Test Text", ColorBlack(), FontNamed("hara"), 24, 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeAllFonts();
         }
@@ -2597,8 +2599,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             LoadFont("hara", "hara.ttf");
             DrawTextOnBitmap(testBitmap, "Test Text", ColorBlack(), "hara", 24, 100.0, 100.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90.0, 90.0));
             FreeBitmap(testBitmap);
             FreeAllFonts();
         }
@@ -2609,8 +2611,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             LoadFont("hara", "hara.ttf");
             DrawTextOnBitmap(testBitmap, "Test Text", ColorBlack(), "hara", 24, 100.0, 100.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90.0, 90.0));
             FreeBitmap(testBitmap);
             FreeAllFonts();
         }
@@ -2620,8 +2622,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             DrawTextOnBitmap(testBitmap, "Test Text", ColorBlack(), 100.0, 100.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 105, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 105.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90.0, 90.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2630,8 +2632,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 200, 200);
             ClearBitmap(testBitmap, ColorWhite());
             DrawTextOnBitmap(testBitmap, "Test Text", ColorBlack(), 100.0, 100.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 105, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 105.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90.0, 90.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2641,8 +2643,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             LoadFont("hara", "hara.ttf");
             DrawTextOnBitmap(testBitmap, "Test Text", ColorBlack(), FontNamed("hara"), 24, 100.0, 100.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90.0, 90.0));
             FreeBitmap(testBitmap);
             FreeAllFonts();
         }
@@ -2653,8 +2655,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             LoadFont("hara", "hara.ttf");
             DrawTextOnBitmap(testBitmap, "Test Text", ColorBlack(), FontNamed("hara"), 24, 100.0, 100.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 90.0, 90.0));
             FreeBitmap(testBitmap);
             FreeAllFonts();
         }
@@ -2666,8 +2668,8 @@ namespace SplashKitTests
             LoadFont("hara", "hara.ttf");
             DrawTextOnWindow(testWindow, "Test Text", ColorBlack(), "hara", 24, 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeAllFonts();
         }
@@ -2679,8 +2681,8 @@ namespace SplashKitTests
             LoadFont("hara", "hara.ttf");
             DrawTextOnWindow(testWindow, "Test Text", ColorBlack(), "hara", 24, 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeAllFonts();
         }
@@ -2691,8 +2693,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawTextOnWindow(testWindow, "Test Text", ColorBlack(), 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2702,8 +2704,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawTextOnWindow(testWindow, "Test Text", ColorBlack(), 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2716,8 +2718,8 @@ namespace SplashKitTests
             FontLoadSize(testFont, 24);
             DrawTextOnWindow(testWindow, "Test Text", ColorBlack(), testFont, 24, 100.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeAllFonts();
         }
@@ -2729,8 +2731,8 @@ namespace SplashKitTests
             var testFont = LoadFont("test_font", "hara.ttf");
             DrawTextOnWindow(testWindow, "Test Text", ColorBlack(), testFont, 24, 100.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeFont(testFont);
         }
@@ -2778,15 +2780,15 @@ namespace SplashKitTests
             DrawText("Test Text", ColorBlack(), testFont, 24, 100.0, 100.0);
             RefreshScreen();
             Assert.NotNull(testFont);
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120, 110));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90, 90));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 120.0, 110.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 90.0, 90.0));
             CloseWindow(testWindow);
             FreeAllFonts();
         }
         [Fact]
         public void TestFreeAllFontsIntegration()
         {
-            var testFont = LoadFont("test_font", "hara.ttf");
+            LoadFont("test_font", "hara.ttf");
             Assert.True(HasFont("test_font"));
             FreeAllFonts();
             Assert.False(HasFont("test_font"));
@@ -2844,7 +2846,7 @@ namespace SplashKitTests
             DrawText("Test Text", ColorBlack(), testFont, 24, 100.0, 100.0, OptionDefaults());
             RefreshScreen();
             Assert.True(HasFont("test_font"));
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105, 105));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 105.0, 105.0));
             CloseWindow(testWindow);
             FreeFont(testFont);
         }
@@ -2911,8 +2913,8 @@ namespace SplashKitTests
             var triangle = TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0), PointAt(150.0, 300.0));
             DrawTriangle(ColorBlack(), triangle);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 200.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2923,8 +2925,8 @@ namespace SplashKitTests
             var triangle = TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0), PointAt(150.0, 300.0));
             DrawTriangle(ColorBlack(), triangle, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 200.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2934,8 +2936,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawTriangle(ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200, 150));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 200.0, 150.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2945,8 +2947,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawTriangle(ColorBlack(), 100.0, 100.0, 200.0, 200.0, 150.0, 300.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150, 200));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 150.0, 200.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -2956,8 +2958,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var triangle = TriangleFrom(PointAt(25.0, 25.0), PointAt(75.0, 25.0), PointAt(50.0, 75.0));
             DrawTriangleOnBitmap(testBitmap, ColorBlack(), triangle);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25, 25));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25.0, 25.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2967,8 +2969,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var triangle = TriangleFrom(PointAt(25.0, 25.0), PointAt(75.0, 25.0), PointAt(50.0, 75.0));
             DrawTriangleOnBitmap(testBitmap, ColorBlack(), triangle, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25, 25));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25.0, 25.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2977,8 +2979,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawTriangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25, 25));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25.0, 25.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2987,8 +2989,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             DrawTriangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25, 25));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 25.0, 25.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 50.0, 50.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -2999,8 +3001,8 @@ namespace SplashKitTests
             var triangle = TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0), PointAt(150.0, 300.0));
             DrawTriangleOnWindow(testWindow, ColorBlack(), triangle);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3011,8 +3013,8 @@ namespace SplashKitTests
             var triangle = TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0), PointAt(150.0, 250.0));
             DrawTriangleOnWindow(testWindow, ColorBlack(), triangle, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3022,8 +3024,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawTriangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3033,8 +3035,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             DrawTriangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0, 150.0, 300.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100, 100));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 100.0, 100.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3045,8 +3047,8 @@ namespace SplashKitTests
             var triangle = TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 300.0), PointAt(300.0, 100.0));
             FillTriangle(ColorBlack(), triangle);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3057,8 +3059,8 @@ namespace SplashKitTests
             var triangle = TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 300.0), PointAt(300.0, 100.0));
             FillTriangle(ColorBlack(), triangle, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3068,8 +3070,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillTriangle(ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3079,8 +3081,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillTriangle(ColorRed(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorRed(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 150));
+            Assert.Equal(ColorRed(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 150.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3090,8 +3092,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var triangle = TriangleFrom(PointAt(25.0, 25.0), PointAt(75.0, 25.0), PointAt(50.0, 75.0));
             FillTriangleOnBitmap(testBitmap, ColorBlack(), triangle);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0, 0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0.0, 0.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -3101,8 +3103,8 @@ namespace SplashKitTests
             ClearBitmap(testBitmap, ColorWhite());
             var triangle = TriangleFrom(PointAt(25.0, 25.0), PointAt(75.0, 25.0), PointAt(50.0, 75.0));
             FillTriangleOnBitmap(testBitmap, ColorBlack(), triangle, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 10, 10));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 10.0, 10.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -3111,8 +3113,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             FillTriangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0);
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0, 0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0.0, 0.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -3121,8 +3123,8 @@ namespace SplashKitTests
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
             ClearBitmap(testBitmap, ColorWhite());
             FillTriangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0, OptionDefaults());
-            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50, 50));
-            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0, 0));
+            Assert.Equal(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
+            Assert.Equal(ColorWhite(), GetPixel(testBitmap, 0.0, 0.0));
             FreeBitmap(testBitmap);
         }
         [Fact]
@@ -3133,8 +3135,8 @@ namespace SplashKitTests
             var triangle = TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 300.0), PointAt(300.0, 100.0));
             FillTriangleOnWindow(testWindow, ColorBlack(), triangle);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 200));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 200.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3145,8 +3147,8 @@ namespace SplashKitTests
             var triangle = TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 300.0), PointAt(300.0, 100.0));
             FillTriangleOnWindow(testWindow, ColorBlack(), triangle, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 200));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 200.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3156,8 +3158,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillTriangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200, 200));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50, 50));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 200.0, 200.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -3167,8 +3169,8 @@ namespace SplashKitTests
             ClearWindow(testWindow, ColorWhite());
             FillTriangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0, OptionDefaults());
             RefreshScreen();
-            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150, 150));
-            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350, 150));
+            Assert.Equal(ColorBlack(), GetPixel(testWindow, 150.0, 150.0));
+            Assert.Equal(ColorWhite(), GetPixel(testWindow, 350.0, 150.0));
             CloseWindow(testWindow);
         }
     }

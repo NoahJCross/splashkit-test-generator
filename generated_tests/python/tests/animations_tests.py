@@ -23,8 +23,8 @@ def test_animation_current_vector_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
     anim = create_animation(kermit_script, "moonwalkback")
     current_vector = animation_current_vector(anim)
-    assert 0 == current_vector.x
-    assert 0 == current_vector.y
+    assert 0.0 == current_vector.x
+    assert 0.0 == current_vector.y
     free_animation(anim)
     free_animation_script(kermit_script)
 
@@ -34,7 +34,7 @@ def test_animation_ended_integration():
     anim = create_animation(kermit_script, "moonwalkback")
     assert not animation_ended(anim)
     for _ in range(50):
-        update_animation(anim, 100.0)
+        update_animation_percent(anim, 100.0)
     
     assert not animation_ended(anim)
     update_animation(anim)
@@ -59,7 +59,7 @@ def test_animation_frame_time_integration():
     anim = create_animation(kermit_script, "walkfront")
     update_animation(anim)
     frame_time = animation_frame_time(anim)
-    assert frame_time > 0
+    assert frame_time > 0.0
     free_animation(anim)
     free_animation_script(kermit_script)
 
@@ -162,7 +162,7 @@ def test_assign_animation_index_integration():
 
 def test_assign_animation_index_with_sound_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
-    anim = create_animation(kermit_script, "moonwalkback", false)
+    anim = create_animation_with_sound(kermit_script, "moonwalkback", false)
     assign_animation_index_with_sound(anim, 0, true)
     assert animation_entered_frame(anim)
     free_animation_script(kermit_script)
@@ -229,7 +229,7 @@ def test_create_animation_from_script_named_integration():
 
 def test_create_animation_from_script_named_with_sound_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
-    anim = create_animation_from_script_named_with_sound(kermit_script, "moonwalkback", true)
+    anim = create_animation_from_script_named_with_sound("", "moonwalkback", true)
     assert anim is not None
     anim_name = animation_name(anim)
     assert "moonwalkback" == anim_name
@@ -238,17 +238,20 @@ def test_create_animation_from_script_named_with_sound_integration():
 
 
 def test_free_all_animation_scripts_integration():
-    kermit_script = load_animation_script("kermit", "kermit.txt")
-    assert has_animation_script("kermit")
+    load_animation_script("kermitq", "kermit.txt")
+    load_animation_script("kermit2", "kermit.txt")
+    assert has_animation_script("kermit1")
+    assert has_animation_script("kermit2")
     free_all_animation_scripts()
-    assert not has_animation_script("kermit")
+    assert not has_animation_script("kermit1")
+    assert not has_animation_script("kermit2")
 
 
 def test_free_animation_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
     anim = create_animation(kermit_script, "moonwalkback")
     free_animation(anim)
-    assert nil == animation_name(anim)
+    assert "" == animation_name(anim)
     assert animation_ended(anim)
     free_animation_script(kermit_script)
 
@@ -262,7 +265,7 @@ def test_free_animation_script_integration():
 
 
 def test_free_animation_script_with_name_integration():
-    kermit_script = load_animation_script("kermit", "kermit.txt")
+    load_animation_script("kermit", "kermit.txt")
     assert has_animation_script("kermit")
     free_animation_script_with_name("kermit")
     assert not has_animation_script("kermit")
@@ -298,7 +301,7 @@ def test_restart_animation_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
     anim = create_animation(kermit_script, "moonwalkback")
     for _ in range(50):
-        update_animation(anim, 100.0)
+        update_animation_percent(anim, 100.0)
     
     anim_ended = animation_ended(anim)
     assert anim_ended
@@ -311,7 +314,7 @@ def test_restart_animation_integration():
 
 def test_restart_animation_with_sound_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
-    anim = create_animation(kermit_script, "moonwalkback", true)
+    anim = create_animation_with_sound(kermit_script, "moonwalkback", true)
     update_animation(anim)
     restart_animation_with_sound(anim, true)
     assert 3 == animation_current_cell(anim)
@@ -323,7 +326,7 @@ def test_update_animation_percent_with_sound_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
     anim = create_animation(kermit_script, "moonwalkback")
     update_animation_percent_with_sound(anim, 0.5, true)
-    assert animation_frame_time(anim) > 0
+    assert animation_frame_time(anim) > 0.0
     free_animation(anim)
     free_animation_script(kermit_script)
 
@@ -341,7 +344,7 @@ def test_update_animation_percent_integration():
     kermit_script = load_animation_script("kermit", "kermit.txt")
     anim = create_animation(kermit_script, "walkfront")
     update_animation_percent(anim, 0.5)
-    assert animation_frame_time(anim) > 0
+    assert animation_frame_time(anim) > 0.0
     free_animation(anim)
     free_animation_script(kermit_script)
 

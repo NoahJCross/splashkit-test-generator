@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -15,7 +17,7 @@ namespace SplashKitTests
         [Fact]
         public void TestCreateJsonFromStringIntegration()
         {
-            var testJson = CreateJson("{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}");
+            var testJson = CreateJson("{"name":"John","age":30,"city":"New York"}");
             Assert.True(JsonHasKey(testJson, "name"));
             Assert.Equal("John", JsonReadString(testJson, "name"));
             FreeJson(testJson);
@@ -77,7 +79,7 @@ namespace SplashKitTests
         [Fact]
         public void TestJsonFromStringIntegration()
         {
-            var testJson = JsonFromString("{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}");
+            var testJson = JsonFromString("{"name":"John","age":30,"city":"New York"}");
             Assert.Equal("John", JsonReadString(testJson, "name"));
             Assert.Equal(30, JsonReadNumberAsInt(testJson, "age"));
             Assert.Equal("New York", JsonReadString(testJson, "city"));

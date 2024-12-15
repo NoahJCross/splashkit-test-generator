@@ -6,7 +6,7 @@
       "function_name": "set_resources_path",
       "args": [
         {
-          "value_type": "primitive",
+          "value_type": "string",
           "value": "set this value before running tests, use an absolute path"
         }
       ]
@@ -21,11 +21,11 @@
           "function_name": "load_resource_bundle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.txt"
             }
           ]
@@ -39,7 +39,7 @@
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test"
                 }
               ]
@@ -56,7 +56,7 @@
               "function_name": "has_bitmap",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "FrogBmp"
                 }
               ]
@@ -70,10 +70,10 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_font",
+              "function_name": "has_font_name_as_string",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "hara"
                 }
               ]
@@ -86,7 +86,7 @@
           "function_name": "free_resource_bundle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test"
             }
           ]
@@ -100,7 +100,7 @@
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test"
                 }
               ]
@@ -118,11 +118,11 @@
           "function_name": "load_resource_bundle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.txt"
             }
           ]
@@ -136,7 +136,7 @@
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test"
                 }
               ]
@@ -149,7 +149,7 @@
           "function_name": "free_resource_bundle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test"
             }
           ]
@@ -163,7 +163,7 @@
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test"
                 }
               ]
@@ -180,7 +180,7 @@
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "nonexistent"
                 }
               ]
@@ -198,11 +198,11 @@
           "function_name": "load_resource_bundle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.txt"
             }
           ]
@@ -216,7 +216,7 @@
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test"
                 }
               ]
@@ -233,7 +233,7 @@
               "function_name": "has_animation_script",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "WalkingScript"
                 }
               ]
@@ -250,7 +250,7 @@
               "function_name": "has_bitmap",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "FrogBmp"
                 }
               ]
@@ -264,10 +264,10 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_font",
+              "function_name": "has_font_name_as_string",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "hara"
                 }
               ]
@@ -284,7 +284,7 @@
               "function_name": "has_sound_effect",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "error"
                 }
               ]
@@ -298,10 +298,10 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer_named",
+              "function_name": "has_timer__named",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "my timer"
                 }
               ]
@@ -318,7 +318,7 @@
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "blah"
                 }
               ]
@@ -331,7 +331,7 @@
           "function_name": "free_resource_bundle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test"
             }
           ]
@@ -345,7 +345,7 @@
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_bundle"
                 }
               ]

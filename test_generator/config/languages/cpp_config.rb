@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-# rubocop:disable Layout/HashAlignment
-
 module LanguageConfig
   # Configuration class for generating Cpp test files
   class CppConfig < BaseConfig
@@ -55,13 +52,16 @@ module LanguageConfig
         if:        ->(condition) { "if (#{condition}) {\n" },
         else:      -> { "else {\n" },
         break:     -> { "break;\n" },
-        end:       -> { "}\n" }
+        end:       -> { "}\n" },
+        new_line: 'endl'
       }.freeze,
 
       string_handlers: {
-        interpolation: ->(expr) { "\" << #{expr} << \"" },
-        concatenation: ->(parts) { "string(\"#{parts.join}\")" },
-        char:          ->(value) { "'#{value}'" }
+        char: ->(value) { "'#{value}'" },
+        string_ref: ->(value) { value },
+        format_string: ->(text_parts, expressions) {
+          text_parts.zip(expressions).flatten.compact.each_with_index.map { |p, i| i.odd? ? p : "\"#{p}\"" }.join(' << ')
+        }
       }.freeze,
 
       type_handlers: {
@@ -78,11 +78,16 @@ module LanguageConfig
           "#{type.to_pascal_case}::#{value.to_upper_case}#{semicolon ? ";\n" : ''}"
         },
         unsigned_int: ->(value) { "#{value}u" },
-        float: ->(value) { "#{value}f" }
+        float: ->(value) { "#{value}f" },
+        double: ->(value) { "#{value}d" },
+        string: ->(value) { "string(\"#{value}\")" }
       }.freeze,
 
       variable_handlers: {
-        declaration:   ->(name) { "auto #{name.to_snake_case} = " },
+        declaration: {
+          regular: ->(name) { "auto #{name.to_snake_case} = " },
+          mutable: ->(name) { "auto #{name.to_snake_case} = " }
+        },
         reference:     ->(name) { name.to_snake_case.to_s },
         field_access:  ->(var, field) { "#{var}->#{field}" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
@@ -95,6 +100,12 @@ module LanguageConfig
         call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
         pointer:   ->(_) { "nullptr;\n" },
         test:      ->(name) { "TEST_CASE(\"#{name.to_snake_case}_integration\") {\n" }
+      }.freeze,
+
+      comment_syntax: {
+        single: "//",
+        multi_start: "/*",
+        multi_end: "*/",
       }.freeze,
 
       class_wrapper: {
@@ -119,6 +130,9 @@ module LanguageConfig
         '3. Compile: g++ integration_tests.cpp -l SplashKit -o integration_tests'
       ].join("\n"),
       run_command: './integration_tests',
+      prompt_handlers: {
+        message: ->(text) { "cout << \"#{text}\";\n" }
+      }.freeze
     }.freeze
   end
 end

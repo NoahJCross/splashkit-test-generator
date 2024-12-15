@@ -4,62 +4,45 @@
 class TestTerminal {
 public:
     TEST_CASE("read_char_integration") {
-        # TODO: Implement io_setup step
+        cout << "Enter the letter A";
         auto result = read_char();
-        REQUIRE("A" == result);
+        REQUIRE('A' == result);
     }
     TEST_CASE("read_line_integration") {
-        # TODO: Implement io_setup step
+        cout << "Enter the text: Test Input";
         auto result = read_line();
-        REQUIRE("Test Input" == "Test Input");
+        REQUIRE(string("Test Input") == result);
     }
     TEST_CASE("terminal_has_input_integration") {
-        # TODO: Implement io_setup step
-        REQUIRE(terminal_has_input());
+        cout << "Enter some text: Some Input";
+        auto result = terminal_has_input();
+        REQUIRE(result);
     }
     TEST_CASE("write_char_integration") {
-        # TODO: Implement io_setup step
-        write("A");
-        REQUIRE("A" == "A");
+        write('A');
     }
     TEST_CASE("write_double_integration") {
-        # TODO: Implement io_setup step
         write(3.14);
-        REQUIRE("3.14" == "3.14");
     }
     TEST_CASE("write_int_integration") {
-        # TODO: Implement io_setup step
         write(42);
-        REQUIRE("42" == "42");
     }
     TEST_CASE("write_integration") {
-        # TODO: Implement io_setup step
-        write("Test String");
-        REQUIRE("Test String" == "Test String");
+        write(string("Test String"));
     }
     TEST_CASE("write_line_char_integration") {
-        # TODO: Implement io_setup step
-        write_line("A");
-        REQUIRE({:value_type=>"concat", :value=>["A", "new_line"]} == {:value_type=>"string_with_newline", :value=>"A"});
+        write_line('A');
     }
     TEST_CASE("write_line_empty_integration") {
-        # TODO: Implement io_setup step
         write_line();
-        REQUIRE(Environment::NEW_LINE == {:value_type=>"io_step", :variable_name=>"string_writer", :variable_field=>"to_string"});
     }
     TEST_CASE("write_line_double_integration") {
-        # TODO: Implement io_setup step
         write_line(3.14);
-        REQUIRE({:value_type=>"concat", :value=>["3.14", "new_line"]} == {:value_type=>"string_with_newline", :value=>"3.14"});
     }
     TEST_CASE("write_line_int_integration") {
-        # TODO: Implement io_setup step
         write_line(42);
-        REQUIRE({:value_type=>"concat", :value=>["42", "new_line"]} == {:value_type=>"string_with_newline", :value=>"42"});
     }
     TEST_CASE("write_line_integration") {
-        # TODO: Implement io_setup step
-        write_line("Test Line");
-        REQUIRE({:value_type=>"concat", :value=>["Test Line", "new_line"]} == {:value_type=>"string_with_newline", :value=>"Test Line"});
+        write_line(string("Test Line"));
     }
 };

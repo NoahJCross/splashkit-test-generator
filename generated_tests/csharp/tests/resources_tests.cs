@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -26,7 +28,7 @@ namespace SplashKitTests
         public void TestPathToResourcesIntegration()
         {
             var resourcePath = PathToResources();
-            Assert.NotNull(resourcePath);
+            Assert.NotEmpty(resourcePath);
             SetResourcesPath("/new/resources");
             var newResourcePath = PathToResources();
             Assert.Equal("/new/resources", newResourcePath);

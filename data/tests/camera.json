@@ -9,15 +9,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -34,7 +34,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
@@ -49,7 +49,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
@@ -79,15 +79,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -102,11 +102,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -118,7 +118,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -148,15 +148,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -171,11 +171,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 }
               ]
@@ -187,7 +187,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 200.0
             },
             "value2": {
@@ -217,15 +217,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -233,10 +233,10 @@
         },
         {
           "step_type": "function",
-          "function_name": "create_sprite",
+          "function_name": "create_sprite_with_bitmap_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_sprite"
             }
           ],
@@ -255,11 +255,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -279,11 +279,11 @@
               "function_name": "vector_from_angle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 }
               ]
@@ -299,11 +299,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": -267.8606182336807
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": -161.69777810573578
                 }
               ]
@@ -345,15 +345,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -361,10 +361,10 @@
         },
         {
           "step_type": "function",
-          "function_name": "create_sprite",
+          "function_name": "create_sprite_with_bitmap_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_sprite"
             }
           ],
@@ -383,11 +383,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -403,11 +403,11 @@
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ]
@@ -421,12 +421,12 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": -300
+                  "value_type": "double",
+                  "value": -300.0
                 },
                 {
-                  "value_type": "primitive",
-                  "value": -200
+                  "value_type": "double",
+                  "value": -200.0
                 }
               ]
             },
@@ -467,15 +467,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -486,11 +486,11 @@
           "function_name": "vector_from_angle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -511,7 +511,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -526,7 +526,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value2": {
@@ -556,15 +556,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -575,11 +575,11 @@
           "function_name": "move_camera_by",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ]
@@ -589,7 +589,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -604,7 +604,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -634,15 +634,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -657,11 +657,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -677,11 +677,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -713,15 +713,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -732,11 +732,11 @@
           "function_name": "move_camera_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ]
@@ -746,7 +746,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -761,7 +761,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -791,15 +791,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -810,12 +810,12 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 400
+              "value_type": "double",
+              "value": 400.0
             },
             {
-              "value_type": "primitive",
-              "value": 300
+              "value_type": "double",
+              "value": 300.0
             }
           ],
           "store_result": "test_point"
@@ -845,12 +845,12 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 1000
+              "value_type": "double",
+              "value": 1000.0
             },
             {
-              "value_type": "primitive",
-              "value": 1000
+              "value_type": "double",
+              "value": 1000.0
             }
           ],
           "store_result": "test_point_outside"
@@ -895,15 +895,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -914,11 +914,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 400.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 300.0
             }
           ],
@@ -945,11 +945,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1000.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1000.0
             }
           ],
@@ -991,15 +991,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1010,8 +1010,8 @@
           "function_name": "set_camera_x",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             }
           ]
         },
@@ -1020,8 +1020,8 @@
           "function_name": "set_camera_y",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             }
           ]
         },
@@ -1030,20 +1030,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             },
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             }
           ],
           "store_result": "test_rectangle"
@@ -1073,20 +1073,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 1000
+              "value_type": "double",
+              "value": 1000.0
             },
             {
-              "value_type": "primitive",
-              "value": 1000
+              "value_type": "double",
+              "value": 1000.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             }
           ],
           "store_result": "test_rectangle_outside"
@@ -1131,15 +1131,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1150,20 +1150,20 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             },
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             },
             {
-              "value_type": "primitive",
-              "value": 100
+              "value_type": "double",
+              "value": 100.0
             }
           ],
           "store_result": "test_rectangle"
@@ -1189,12 +1189,12 @@
           "function_name": "move_camera_to",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 1000
+              "value_type": "double",
+              "value": 1000.0
             },
             {
-              "value_type": "primitive",
-              "value": 1000
+              "value_type": "double",
+              "value": 1000.0
             }
           ]
         },
@@ -1234,15 +1234,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1253,8 +1253,8 @@
           "function_name": "set_camera_x",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             }
           ]
         },
@@ -1263,8 +1263,8 @@
           "function_name": "set_camera_y",
           "args": [
             {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             }
           ]
         },
@@ -1279,8 +1279,8 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 400
+              "value_type": "double",
+              "value": 400.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -1294,8 +1294,8 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 300
+              "value_type": "double",
+              "value": 300.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -1324,15 +1324,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1349,8 +1349,8 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 800
+              "value_type": "double",
+              "value": 800.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -1364,8 +1364,8 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 600
+              "value_type": "double",
+              "value": 600.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -1394,15 +1394,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1417,11 +1417,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1437,11 +1437,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1473,15 +1473,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1492,7 +1492,7 @@
           "function_name": "set_camera_x",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ]
@@ -1502,7 +1502,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -1532,15 +1532,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1551,7 +1551,7 @@
           "function_name": "set_camera_y",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ]
@@ -1561,7 +1561,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -1591,15 +1591,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1614,11 +1614,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1634,11 +1634,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 150.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 150.0
                 }
               ]
@@ -1651,7 +1651,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             "value2": {
@@ -1666,7 +1666,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             "value2": {
@@ -1696,15 +1696,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1715,19 +1715,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 200.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 200.0
             }
           ],
@@ -1750,10 +1750,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
+              "cast_to": "float",
               "function_name": "to_screen_x",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1776,10 +1777,11 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
+              "cast_to": "float",
               "function_name": "to_screen_y",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1816,7 +1818,7 @@
           "function_name": "set_camera_x",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ]
@@ -1826,7 +1828,7 @@
           "function_name": "to_screen_x",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             }
           ],
@@ -1837,7 +1839,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50.0
             },
             "value2": {
@@ -1856,15 +1858,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1879,11 +1881,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1895,7 +1897,7 @@
           "function_name": "to_screen_y",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             }
           ],
@@ -1906,7 +1908,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50.0
             },
             "value2": {
@@ -1935,15 +1937,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1958,11 +1960,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1978,11 +1980,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 400.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 300.0
                 }
               ]
@@ -1995,7 +1997,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 500.0
             },
             "value2": {
@@ -2010,7 +2012,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 400.0
             },
             "value2": {
@@ -2040,15 +2042,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2063,11 +2065,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -2079,7 +2081,7 @@
           "function_name": "to_world_x",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 400.0
             }
           ],
@@ -2090,7 +2092,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 500.0
             },
             "value2": {
@@ -2119,15 +2121,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2142,11 +2144,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -2158,7 +2160,7 @@
           "function_name": "to_world_y",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 300.0
             }
           ],
@@ -2169,7 +2171,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 400.0
             },
             "value2": {
@@ -2208,11 +2210,11 @@
               "function_name": "vector_from_angle",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 }
               ]
@@ -2233,15 +2235,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2263,8 +2265,8 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 800
+              "value_type": "double",
+              "value": 800.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -2278,8 +2280,8 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 600
+              "value_type": "double",
+              "value": 600.0
             },
             "value2": {
               "value_type": "variable_field",

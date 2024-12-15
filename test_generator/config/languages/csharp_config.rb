@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-# rubocop:disable Layout/HashAlignment
-
 module LanguageConfig
   # Configuration class for generating Csharp test files
   class CsharpConfig < BaseConfig
@@ -11,11 +8,12 @@ module LanguageConfig
     DEFAULT_CONFIG = {
       supports_overloading: true,
       imports: [
+        "using System;\n",
+        "using System.IO;\n",
         "using Xunit;\n",
         "using static SplashKitSDK.SplashKit;\n\n"
       ],
       naming_convention: ->(name) { name.to_pascal_case },
-      
 
       assert_conditions: {
         'equal'                   => ->(v1, v2, _)    { "Assert.Equal(#{v1}, #{v2});\n" },
@@ -55,13 +53,16 @@ module LanguageConfig
         if:        ->(condition) { "if (#{condition}) {\n" },
         else:      -> { "else\n{\n" },
         break:     -> { "break;\n" },
-        end:       -> { "}\n" }
+        end:       -> { "}\n" },
+        new_line: 'Environment.NewLine'
       }.freeze,
 
       string_handlers: {
-        interpolation: ->(expr) { "{#{expr}}" },
-        concatenation: ->(parts) { "$\"#{parts.join}\"" },
-        char:          ->(value) { "'#{value}'" }
+        char:          ->(value) { "'#{value}'" },
+        string_ref: ->(value) { value },
+        format_string: ->(text_parts, expressions) {
+          "$\"#{text_parts.zip(expressions.map { |e| "{#{e}}" }).flatten.compact.join}\""
+        }
       }.freeze,
 
       type_handlers: {
@@ -78,11 +79,16 @@ module LanguageConfig
           "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
         },
         unsigned_int: ->(value) { "#{value}u" },
-        float: ->(value) { "#{value}f" }
+        float: ->(value) { "#{value}f" },
+        double: ->(value) { "#{value}d" },
+        string: ->(value) { "\"#{value}\"" }
       }.freeze,
 
       variable_handlers: {
-        declaration:   ->(name) { "var #{name.to_camel_case} = " },
+        declaration: {
+          regular: ->(name) { "var #{name.to_camel_case} = " },
+          mutable: ->(name) { "var #{name.to_camel_case} = " }
+        },
         reference:     ->(name) { name.to_camel_case.to_s },
         field_access: ->(var, field) { 
           formatted_field = field.split('.').map(&:to_pascal_case).join('.')
@@ -100,6 +106,12 @@ module LanguageConfig
         test:      ->(name) { "[Fact]\npublic void Test#{name.to_pascal_case}Integration()\n{\n" }
       }.freeze,
 
+      comment_syntax: {
+        single: "//",
+        multi_start: "/*",
+        multi_end: "*/",
+      }.freeze,
+
       class_wrapper: {
         header: [
           "namespace SplashKitTests\n",
@@ -108,8 +120,8 @@ module LanguageConfig
           "{\n"
         ],
         constructor_wrapper: {
-          header: ->(group) { "public Test#{group.to_pascal_case}()\n{\n" },
-          footer: "}\n\n"
+          header: "private TextWriter oldOut;\nprivate TextReader oldIn;\n\n[TestInitialize]\npublic void Setup()\n{\n",
+          footer: "}\n\n[TestCleanup]\npublic void Cleanup()\n{\n    if (oldOut != null) Console.SetOut(oldOut);\n    if (oldIn != null) Console.SetIn(oldIn);\n}\n"
         },
         footer: [
           "}\n",
@@ -127,6 +139,10 @@ module LanguageConfig
         '4. Add SplashKit: dotnet add package SplashKit'
       ].join("\n"),
       run_command: 'dotnet test',
+
+      prompt_handlers: {
+        message: ->(text) { "Console.WriteLine(\"#{text}\");\n" }
+      }.freeze
     }.freeze
   end
 end

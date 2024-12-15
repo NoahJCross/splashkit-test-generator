@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -178,7 +180,7 @@ namespace SplashKitTests
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
             PlayMusic(testMusic);
-            SetMusicVolume(0.5f);
+            SetMusicVolume(0.5);
             Assert.Equal(0.5, MusicVolume());
             FreeMusic(testMusic);
             CloseAudio();
@@ -239,7 +241,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
-            PlayMusic(testMusic, 2, 0.75f);
+            PlayMusic(testMusic, 2, 0.75);
             Assert.True(MusicPlaying());
             Assert.Equal(0.75, MusicVolume());
             FreeMusic(testMusic);
@@ -264,7 +266,7 @@ namespace SplashKitTests
             OpenAudio();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
             PlayMusic(testMusic);
-            SetMusicVolume(0.5f);
+            SetMusicVolume(0.5);
             Assert.Equal(0.5, MusicVolume());
             FreeMusic(testMusic);
             CloseAudio();
@@ -362,7 +364,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
-            PlaySoundEffect("test_sound", 0.75f);
+            PlaySoundEffect("test_sound", 0.75);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -402,7 +404,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
-            PlaySoundEffect(testSound, 0.75f);
+            PlaySoundEffect(testSound, 0.75);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();
@@ -422,7 +424,7 @@ namespace SplashKitTests
         {
             OpenAudio();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
-            PlaySoundEffect(testSound, 2, 0.75f);
+            PlaySoundEffect(testSound, 2, 0.75);
             Assert.True(SoundEffectPlaying(testSound));
             FreeSoundEffect(testSound);
             CloseAudio();

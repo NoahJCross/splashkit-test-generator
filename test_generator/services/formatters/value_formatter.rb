@@ -1,4 +1,3 @@
-# Module for formatting values in test generation
 module TestGenerator
   # Formats values for test generation based on their type and language configuration
   module ValueFormatter
@@ -14,7 +13,11 @@ module TestGenerator
           'list'                      => :format_list_value,
           'array_access'              => :format_array_access_value,
           'array_access_field'        => :format_array_access_field_value,
-          'primitive'                 => :format_primitive_value,
+          'double'                    => :format_primitive_value,
+          'int'                       => :format_primitive_value,
+          'bool'                      => :format_primitive_value,
+          'string'                    => :format_string_value,
+          'string_ref'                => :format_string_ref_value,
           'float'                     => :format_float_value,
           'enum'                      => :format_enum_value,
           'inf'                       => :format_infinity_value,
@@ -24,8 +27,9 @@ module TestGenerator
           'interpolated_string'       => :format_interpolated_string_value,
           'class_instance'            => :format_class_instance_value,
           'unsigned_int'              => :format_unsigned_int_value,
+          'unsigned_short'            => :format_primitive_value,
           'ref'                       => :format_ref_value,
-          'size'                      => :format_array_size_value
+          'size'                      => :format_array_size_value,
         }
       end
 
@@ -50,7 +54,9 @@ module TestGenerator
         function_name = FunctionLookup.determine_function_name(value, config, functions)
         raise "Function name is required for function value #{JSON.pretty_generate(value)}" unless function_name
 
-        config.function_handlers[:call].call(function_name, args, false)
+        result = config.function_handlers[:call].call(function_name, args, false)
+        result = config.type_handlers[value[:cast_to].to_sym].call(result) if value[:cast_to]
+        result
       end
 
       # Formats variable references
@@ -95,7 +101,7 @@ module TestGenerator
       # @return [String] The formatted matrix access
       def format_variable_matrix_access_value(value, functions, config)
         variable_value = format_variable_value(value, functions, config)
-        variable_with_field = config.variable_handlers[:field_access].call(variable_value, 'Elements')
+        variable_with_field = config.variable_handlers[:field_access].call(variable_value, value[:field])
         config.variable_handlers[:matrix_access].call(variable_with_field, value[:row], value[:col])
       end
 
@@ -164,15 +170,16 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted interpolated string
       def format_interpolated_string_value(value, functions, config)
-        formatted_parts = value[:parts].map do |part|
+        text_parts = []
+        expressions = []
+        value[:parts].each do |part|
           if part[:type] == 'text'
-            part[:value]
+            text_parts << part[:value]
           else
-            expression = format_value(part[:expression], functions, config)
-            config.string_handlers[:interpolation].call(expression)
+            expressions << format_value(part[:expression], functions, config)
           end
         end
-        config.string_handlers[:concatenation].call(formatted_parts)
+        config.string_handlers[:format_string].call(text_parts, expressions)
       end
 
       # Formats class instance creation
@@ -222,6 +229,24 @@ module TestGenerator
       def format_ref_value(value, _, config)
         variable_name = config.variable_handlers[:reference].call(value[:variable_name])
         config.variable_handlers[:reference_operator].call(variable_name)
+      end
+
+      # Formats string values
+      # @param value [Hash] The string value to format
+      # @param _ [Array] Unused functions parameter
+      # @param config [Hash] Language configuration
+      # @return [String] The formatted string value
+      def format_string_value(value, _, config)
+        config.type_handlers[:string].call(value[:value])
+      end
+
+      # Formats string reference values
+      # @param value [Hash] The string reference value to format
+      # @param _ [Array] Unused functions parameter
+      # @param config [Hash] Language configuration
+      # @return [String] The formatted string reference
+      def format_string_ref_value(value, _, config)
+        config.string_handlers[:string_ref].call(value[:value])
       end
     end
   end

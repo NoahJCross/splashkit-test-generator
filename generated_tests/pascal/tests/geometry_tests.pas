@@ -3,7 +3,7 @@ uses SplashKit, TestFramework
 type
 TTestGeometry = class(TTestCase)
 protected
-procedure TIntegrationTests.TestCenterPointIntegration;
+procedure TIntegrationTests.TestCenterPointOfCircleIntegration;
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testCenterPoint := CenterPoint(testCircle);
@@ -11,7 +11,7 @@ begin
 end;
 procedure TIntegrationTests.TestCircleAtIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
+    testWindow := OpenWindow('Test Window', 800, 600);
     testCircle := CircleAt(PointAt(400.0, 300.0), 50.0);
     DrawCircle(ColorBlack(), testCircle);
     RefreshScreen();
@@ -20,7 +20,7 @@ begin
 end;
 procedure TIntegrationTests.TestCircleAtFromPointsIntegration;
 begin
-    testWindow := OpenWindow("Circle Test", 800, 600);
+    testWindow := OpenWindow('Circle Test', 800, 600);
     testCircle := CircleAt(400.0, 300.0, 50.0);
     DrawCircle(ColorBlack(), testCircle, OptionDefaults());
     RefreshScreen();
@@ -44,7 +44,8 @@ procedure TIntegrationTests.TestCircleTriangleIntersectGetClosestPointIntegratio
 begin
     testCircle := CircleAt(100.0, 100.0, 50.0);
     testTriangle := TriangleFrom(PointAt(50.0, 50.0), PointAt(150.0, 50.0), PointAt(100.0, 150.0));
-    testResult := CircleTriangleIntersect(testCircle, testTriangle, PointAt(0.0, 0.0));
+    testPoint := PointAt(0.0, 0.0);
+    testResult := CircleTriangleIntersect(testCircle, testTriangle, @testPoint);
     AssertTrue(testResult);
     AssertEquals(CircleRadius(testCircle), PointPointDistance(CenterPoint(testCircle), ClosestPointOnTriangleFromCircle(testCircle, testTriangle)));
 end;
@@ -117,7 +118,7 @@ begin
     testPoint1 := PointAt(150.0, 100.0);
     testHeading := VectorFromAngle(180.0, 1.0);
     testPoint2 := PointAt(0.0, 0.0);
-    testResult := DistantPointOnCircleHeading(testPoint1, testCircle, testHeading, testPoint2);
+    testResult := DistantPointOnCircleHeading(testPoint1, testCircle, testHeading, @testPoint2);
     AssertTrue(testResult);
     AssertEquals(50.0, testPoint1.x);
     AssertEquals(100.0, testPoint1.y);
@@ -128,7 +129,7 @@ begin
     testRayOrigin := PointAt(0.0, 0.0);
     testRayHeading := VectorFromAngle(45.0, 1.0);
     testDistance := RayCircleIntersectDistance(testRayOrigin, testRayHeading, testCircle);
-    AssertTrue((testDistance >= 70) and (testDistance <= 71));
+    AssertTrue((testDistance >= 70.0) and (testDistance <= 71.0));
 end;
 procedure TIntegrationTests.TestTangentPointsIntegration;
 begin
@@ -188,7 +189,7 @@ begin
     testLine2 := LineFrom(PointAt(0.0, -10.0), PointAt(0.0, 10.0));
     testIndex := 0;
     testLines := TArray<Line>.Create(testLine1, testLine2);
-    testClosestPoint := ClosestPointOnLines(testFromPt, testLines, testIndex);
+    testClosestPoint := ClosestPointOnLines(testFromPt, testLines, @testIndex);
     AssertEquals(0.0, PointPointDistance(testFromPt, testClosestPoint));
 end;
 procedure TIntegrationTests.TestLineFromPointToPointIntegration;
@@ -279,7 +280,7 @@ procedure TIntegrationTests.TestLineToStringIntegration;
 begin
     testLine := LineFrom(PointAt(0.0, 0.0), PointAt(100.0, 100.0));
     testLineString := LineToString(testLine);
-    AssertNotEquals("", testLineString);
+    AssertNotEquals('Line from Pt @0:0 to Pt @100:100', testLineString);
 end;
 procedure TIntegrationTests.TestLinesFromRectangleIntegration;
 begin
@@ -411,31 +412,31 @@ procedure TIntegrationTests.TestPointToStringIntegration;
 begin
     testPoint := PointAt(10.0, 20.0);
     testString := PointToString(testPoint);
-    AssertEquals("Point(10, 20)", testString);
+    AssertEquals('Pt @10:20', testString);
 end;
 procedure TIntegrationTests.TestRandomBitmapPointIntegration;
 begin
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     testPoint := RandomBitmapPoint(testBitmap);
-    AssertTrue((testPoint.x >= 0) and (testPoint.x <= BitmapWidth(testBitmap)));
-    AssertTrue((testPoint.y >= 0) and (testPoint.y <= BitmapHeight(testBitmap)));
+    AssertTrue((testPoint.x >= 0.0) and (testPoint.x <= BitmapWidth(testBitmap)));
+    AssertTrue((testPoint.y >= 0.0) and (testPoint.y <= BitmapHeight(testBitmap)));
     FreeBitmap(testBitmap);
 end;
 procedure TIntegrationTests.TestRandomScreenPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
+    testWindow := OpenWindow('Test Window', 800, 600);
     testPoint := RandomScreenPoint();
     RefreshScreen();
-    AssertTrue((testPoint.x >= 0) and (testPoint.x <= WindowWidth(testWindow)));
-    AssertTrue((testPoint.y >= 0) and (testPoint.y <= WindowHeight(testWindow)));
+    AssertTrue((testPoint.x >= 0.0) and (testPoint.x <= WindowWidth(testWindow)));
+    AssertTrue((testPoint.y >= 0.0) and (testPoint.y <= WindowHeight(testWindow)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestRandomWindowPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
+    testWindow := OpenWindow('Test Window', 800, 600);
     testPoint := RandomWindowPoint(testWindow);
-    AssertTrue((testPoint.x >= 0) and (testPoint.x <= WindowWidth(testWindow)));
-    AssertTrue((testPoint.y >= 0) and (testPoint.y <= WindowHeight(testWindow)));
+    AssertTrue((testPoint.x >= 0.0) and (testPoint.x <= WindowWidth(testWindow)));
+    AssertTrue((testPoint.y >= 0.0) and (testPoint.y <= WindowHeight(testWindow)));
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestSamePointIntegration;
@@ -608,7 +609,7 @@ procedure TIntegrationTests.TestRectangleToStringIntegration;
 begin
     testRectangle := RectangleFrom(10.0, 20.0, 30.0, 40.0);
     testString := RectangleToString(testRectangle);
-    AssertEquals("Rectangle(x: 10, y: 20, width: 30, height: 40)", testString);
+    AssertEquals('Rect @10,20 30x40', testString);
 end;
 procedure TIntegrationTests.TestRectangleTopIntegration;
 begin
@@ -655,7 +656,7 @@ procedure TIntegrationTests.TestTriangleToStringIntegration;
 begin
     testTriangle := TriangleFrom(PointAt(0.0, 0.0), PointAt(100.0, 0.0), PointAt(50.0, 100.0));
     testTriangleString := TriangleToString(testTriangle);
-    AssertNotEquals("", testTriangleString);
+    AssertNotEquals('Triangle @Pt @0:0 - Pt @100:0 - Pt @50:100', testTriangleString);
 end;
 procedure TIntegrationTests.TestTrianglesIntersectIntegration;
 begin
@@ -668,5 +669,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
+#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
 end;

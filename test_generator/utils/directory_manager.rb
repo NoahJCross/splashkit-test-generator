@@ -21,13 +21,12 @@ module TestGenerator
 
     private
 
-    # Creates the necessary directories for test generation
+    # Creates the necessary directories for test generation if they don't exist
     # @raise [StandardError] If directory creation fails
     def create_directories
       @language_dir = "generated_tests/#{@language}"
       @tests_dir = "#{@language_dir}/tests"
-      FileUtils.rm_rf(@language_dir) if Dir.exist?(@language_dir)
-      FileUtils.mkdir_p(@tests_dir)
+      FileUtils.mkdir_p(@tests_dir) unless Dir.exist?(@tests_dir)
     rescue StandardError => e
       MessageHandler.log_error('Error creating directories', e.message)
       raise

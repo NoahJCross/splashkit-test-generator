@@ -4,30 +4,30 @@
 class TestResourceBundles {
 public:
     TEST_CASE("free_resource_bundle_integration") {
-        load_resource_bundle("test", "test.txt");
-        REQUIRE(has_resource_bundle("test"));
-        REQUIRE(has_bitmap("FrogBmp"));
-        REQUIRE(has_font("hara"));
-        free_resource_bundle("test");
-        REQUIRE_FALSE(has_resource_bundle("test"));
+        load_resource_bundle(string("test"), string("test.txt"));
+        REQUIRE(has_resource_bundle(string("test")));
+        REQUIRE(has_bitmap(string("FrogBmp")));
+        REQUIRE(has_font(string("hara")));
+        free_resource_bundle(string("test"));
+        REQUIRE_FALSE(has_resource_bundle(string("test")));
     }
     TEST_CASE("has_resource_bundle_integration") {
-        load_resource_bundle("test", "test.txt");
-        REQUIRE(has_resource_bundle("test"));
-        free_resource_bundle("test");
-        REQUIRE_FALSE(has_resource_bundle("test"));
-        REQUIRE_FALSE(has_resource_bundle("nonexistent"));
+        load_resource_bundle(string("test"), string("test.txt"));
+        REQUIRE(has_resource_bundle(string("test")));
+        free_resource_bundle(string("test"));
+        REQUIRE_FALSE(has_resource_bundle(string("test")));
+        REQUIRE_FALSE(has_resource_bundle(string("nonexistent")));
     }
     TEST_CASE("load_resource_bundle_integration") {
-        load_resource_bundle("test", "test.txt");
-        REQUIRE(has_resource_bundle("test"));
-        REQUIRE(has_animation_script("WalkingScript"));
-        REQUIRE(has_bitmap("FrogBmp"));
-        REQUIRE(has_font("hara"));
-        REQUIRE(has_sound_effect("error"));
-        REQUIRE(has_timer("my timer"));
-        REQUIRE(has_resource_bundle("blah"));
-        free_resource_bundle("test");
-        REQUIRE_FALSE(has_resource_bundle("test_bundle"));
+        load_resource_bundle(string("test"), string("test.txt"));
+        REQUIRE(has_resource_bundle(string("test")));
+        REQUIRE(has_animation_script(string("WalkingScript")));
+        REQUIRE(has_bitmap(string("FrogBmp")));
+        REQUIRE(has_font(string("hara")));
+        REQUIRE(has_sound_effect(string("error")));
+        REQUIRE(has_timer(string("my timer")));
+        REQUIRE(has_resource_bundle(string("blah")));
+        free_resource_bundle(string("test"));
+        REQUIRE_FALSE(has_resource_bundle(string("test_bundle")));
     }
 };

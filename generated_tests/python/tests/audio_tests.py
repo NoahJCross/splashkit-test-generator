@@ -412,9 +412,9 @@ def test_sound_effect_named_integration():
 def test_sound_effect_playing_named_integration():
     open_audio()
     test_sound = load_sound_effect("test_sound", "SwinGameStart.wav")
-    play_sound_effect("test_sound")
+    play_sound_effect_named("test_sound")
     assert sound_effect_playing_named("test_sound")
-    stop_sound_effect("test_sound")
+    stop_sound_effect_named("test_sound")
     assert not sound_effect_playing_named("test_sound")
     free_sound_effect(test_sound)
     close_audio()
@@ -443,9 +443,9 @@ def test_sound_effect_valid_integration():
 def test_stop_sound_effect_named_integration():
     open_audio()
     test_sound = load_sound_effect("test_sound", "SwinGameStart.wav")
-    play_sound_effect("test_sound")
+    play_sound_effect_named("test_sound")
     stop_sound_effect_named("test_sound")
-    assert not sound_effect_playing("test_sound")
+    assert not sound_effect_playing_named("test_sound")
     free_sound_effect(test_sound)
     close_audio()
 

@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-# rubocop:disable Layout/HashAlignment
-
 module LanguageConfig
   # Configuration class for generating Rust test files
   class RustConfig < BaseConfig
@@ -11,16 +8,9 @@ module LanguageConfig
     DEFAULT_CONFIG = {
       supports_overloading: false,
       imports: [
+        "use std::*;\n",
         "use splashkit::*;\n",
         "#[cfg(test)]\n",
-        "mod test_runner {\n",
-        "    pub fn run_tests_sequential(tests: &[&dyn Fn()]) {\n",
-        "        for test in tests {\n",
-        "            test();\n",
-        "        }\n",
-        "    }\n",
-        "}\n",
-        "#![test_runner(test_runner::run_tests_sequential)]\n"
       ],
 
       naming_convention: ->(name) { name.to_snake_case },
@@ -30,8 +20,8 @@ module LanguageConfig
         'not_equal'               => ->(v1, v2, _)    { "assert_ne!(#{v1}, #{v2});\n" },
         'greater_than'            => ->(v1, v2, _)    { "assert!(#{v1} > #{v2});\n" },
         'less_than'               => ->(v1, v2, _)    { "assert!(#{v1} < #{v2});\n" },
-        'null'                    => ->(v1, _, _)     { "assert!(#{v1}.is_none());\n" },
-        'not_null'                => ->(v1, _, _)     { "assert!(#{v1}.is_some());\n" },
+        'null'                    => ->(v1, _, _)     { "assert!(#{v1}.is_null());\n" },
+        'not_null'                => ->(v1, _, _)     { "assert!(!#{v1}.is_null());\n" },
         'range'                   => ->(v1, v2, v3)   { "assert!((#{v2}..=#{v3}).contains(&#{v1}));\n" },
         'true'                    => ->(v1, _, _)     { "assert!(#{v1});\n" },
         'false'                   => ->(v1, _, _)     { "assert!(!#{v1});\n" },
@@ -63,13 +53,17 @@ module LanguageConfig
         if:        ->(condition) { "if #{condition} {\n" },
         else:      -> { "else {\n" },
         break:     -> { "break;\n" },
-        end:       -> { "}\n" }
+        end:       -> { "}\n" },
+        new_line: "'\\n'"
       }.freeze,
 
       string_handlers: {
         interpolation: ->(expr) { "{#{expr}}" },
-        concatenation: ->(parts) { "format!(\"#{parts.join}\")" },
-        char:          ->(value) { "'#{value}'" }
+        char:          ->(value) { "'#{value}'" },
+        string_ref:    ->(value) { "#{value}.clone()" },
+        format_string: ->(text_parts, expressions) {
+          "format!(\"#{text_parts.join('{}')}#{'{}'}\", #{expressions.join(', ')})"
+        }
       }.freeze,
 
       type_handlers: {
@@ -84,23 +78,34 @@ module LanguageConfig
           "#{type.to_pascal_case}::#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
         },
         unsigned_int: ->(value) { "#{value}u32" },
-        float: ->(value) { "#{value} as f32" }
+        float: ->(value) { "#{value} as f32" },
+        double: ->(value) { "#{value} as f64" },
+        string: ->(value) { "\"#{value&.to_s&.gsub('"', '\\"')}\".to_string()" }
       }.freeze,
 
       variable_handlers: {
-        declaration:  ->(name) { "let #{name.to_snake_case} = " },
+        declaration: {
+          regular: ->(name) { "let #{name.to_snake_case} = " },
+          mutable: ->(name) { "let mut #{name.to_snake_case} = " }
+        },
         reference:    ->(name) { name.to_snake_case.to_s },
         field_access: ->(var, field) { "#{var}.#{field}" },
         array_access: ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
+        matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:   ->(arr) { "#{arr}.len()" },
-        reference_operator: ->(var) { "&#{var}" }
+        reference_operator: ->(var) { "&mut #{var}" }
       }.freeze,
 
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
         pointer:   ->(name) { "let callback = |_| (); #{name}Wrapper::new(callback);\n" },
         test:      ->(name) { "#[test]\nfn test_#{name.to_snake_case}_integration() {\n" },
+      }.freeze,
+
+      comment_syntax: {
+        single: "//",
+        multi_start: "/*",
+        multi_end: "*/",
       }.freeze,
 
       class_wrapper: {
@@ -127,7 +132,10 @@ module LanguageConfig
         '   splashkit = "*"',
         '4. Move integration_tests.rs to splashkit_tests/src/lib.rs'
       ].join("\n"),
-      run_command: 'cd splashkit_tests && cargo test'
+      run_command: 'cd splashkit_tests && cargo test',
+      prompt_handlers: {
+        message: ->(text) { "print!(\"#{text}\");\n" }
+      }.freeze
     }.freeze
   end
 end

@@ -6,7 +6,7 @@
       "function_name": "set_resources_path",
       "args": [
         {
-          "value_type": "primitive",
+          "value_type": "string",
           "value": "set this value before running tests, use an absolute path"
         }
       ]
@@ -21,15 +21,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -40,11 +40,11 @@
           "function_name": "load_font",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_font"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "hara.ttf"
             }
           ],
@@ -55,11 +55,11 @@
           "function_name": "display_dialog",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Dialog"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "This is a test message"
             },
             {
@@ -67,7 +67,7 @@
               "variable_name": "test_font"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 20
             }
           ]
@@ -106,11 +106,11 @@
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -127,11 +127,11 @@
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "library"
                 }
               ]
@@ -148,11 +148,11 @@
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "it lib"
                 }
               ]
@@ -169,11 +169,11 @@
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -190,11 +190,11 @@
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "unreal"
                 }
               ]
@@ -211,11 +211,11 @@
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -233,7 +233,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123.0
             },
             "value2": {
@@ -241,7 +241,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123"
                 }
               ]
@@ -253,7 +253,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 123.456
             },
             "value2": {
@@ -261,7 +261,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123.456"
                 }
               ]
@@ -273,7 +273,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": -123.0
             },
             "value2": {
@@ -281,7 +281,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123"
                 }
               ]
@@ -293,7 +293,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -123.456
             },
             "value2": {
@@ -301,7 +301,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -313,7 +313,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.456
             },
             "value2": {
@@ -321,7 +321,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ".456"
                 }
               ]
@@ -333,7 +333,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123.0
             },
             "value2": {
@@ -341,7 +341,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123."
                 }
               ]
@@ -353,7 +353,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 123.456
             },
             "value2": {
@@ -361,7 +361,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "000123.456"
                 }
               ]
@@ -373,7 +373,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 123.456
             },
             "value2": {
@@ -381,7 +381,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123.456000"
                 }
               ]
@@ -400,7 +400,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "inf"
                 }
               ]
@@ -419,7 +419,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-inf"
                 }
               ]
@@ -431,7 +431,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123.0
             },
             "value2": {
@@ -439,7 +439,7 @@
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "1.23e2"
                 }
               ]
@@ -456,7 +456,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123
             },
             "value2": {
@@ -464,7 +464,7 @@
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123"
                 }
               ]
@@ -476,7 +476,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123
             },
             "value2": {
@@ -484,7 +484,7 @@
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123.456"
                 }
               ]
@@ -496,7 +496,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": -123
             },
             "value2": {
@@ -504,7 +504,7 @@
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123"
                 }
               ]
@@ -516,7 +516,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": -123
             },
             "value2": {
@@ -524,7 +524,7 @@
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -536,7 +536,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123
             },
             "value2": {
@@ -544,7 +544,7 @@
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123."
                 }
               ]
@@ -556,7 +556,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123
             },
             "value2": {
@@ -564,7 +564,7 @@
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "000123.456"
                 }
               ]
@@ -576,7 +576,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123
             },
             "value2": {
@@ -584,7 +584,7 @@
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123.456000"
                 }
               ]
@@ -601,7 +601,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -609,11 +609,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -625,7 +625,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 10
             },
             "value2": {
@@ -633,11 +633,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "library"
                 }
               ]
@@ -649,7 +649,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 7
             },
             "value2": {
@@ -657,11 +657,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "it lib"
                 }
               ]
@@ -673,7 +673,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": -1
             },
             "value2": {
@@ -681,11 +681,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "unreal"
                 }
               ]
@@ -697,7 +697,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -705,11 +705,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 }
               ]
@@ -721,7 +721,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": -1
             },
             "value2": {
@@ -729,11 +729,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library is the best"
                 }
               ]
@@ -745,7 +745,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -753,11 +753,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -769,7 +769,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": -1
             },
             "value2": {
@@ -777,11 +777,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -793,7 +793,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -801,11 +801,11 @@
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -826,7 +826,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123.456"
                 }
               ]
@@ -843,7 +843,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123"
                 }
               ]
@@ -860,7 +860,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -877,7 +877,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123"
                 }
               ]
@@ -894,7 +894,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123."
                 }
               ]
@@ -911,7 +911,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "000123.456"
                 }
               ]
@@ -928,7 +928,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123.456000"
                 }
               ]
@@ -945,7 +945,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ".456"
                 }
               ]
@@ -962,7 +962,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SplashKit"
                 }
               ]
@@ -979,7 +979,7 @@
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1001,7 +1001,7 @@
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123"
                 }
               ]
@@ -1018,7 +1018,7 @@
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123"
                 }
               ]
@@ -1035,7 +1035,7 @@
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123.456"
                 }
               ]
@@ -1052,7 +1052,7 @@
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -1069,7 +1069,7 @@
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ".456"
                 }
               ]
@@ -1086,7 +1086,7 @@
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SplashKit"
                 }
               ]
@@ -1103,7 +1103,7 @@
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1125,7 +1125,7 @@
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123"
                 }
               ]
@@ -1142,7 +1142,7 @@
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "123.456"
                 }
               ]
@@ -1159,7 +1159,7 @@
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123"
                 }
               ]
@@ -1176,7 +1176,7 @@
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -1193,7 +1193,7 @@
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SplashKit"
                 }
               ]
@@ -1210,7 +1210,7 @@
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1228,7 +1228,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 9
             },
             "value2": {
@@ -1236,7 +1236,7 @@
               "function_name": "length_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -1248,7 +1248,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -1256,7 +1256,7 @@
               "function_name": "length_of",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1273,7 +1273,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "SK library"
             },
             "value2": {
@@ -1281,15 +1281,15 @@
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SK"
                 }
               ]
@@ -1301,7 +1301,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit lib"
             },
             "value2": {
@@ -1309,15 +1309,15 @@
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "lib"
                 }
               ]
@@ -1329,7 +1329,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkitlibrary"
             },
             "value2": {
@@ -1337,15 +1337,15 @@
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "it lib"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "itlib"
                 }
               ]
@@ -1357,7 +1357,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit library"
             },
             "value2": {
@@ -1365,15 +1365,15 @@
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "unreal"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "tournament"
                 }
               ]
@@ -1385,7 +1385,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "SK"
             },
             "value2": {
@@ -1393,15 +1393,15 @@
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SK"
                 }
               ]
@@ -1413,7 +1413,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": " library"
             },
             "value2": {
@@ -1421,15 +1421,15 @@
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1441,7 +1441,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit library"
             },
             "value2": {
@@ -1449,15 +1449,15 @@
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SK"
                 }
               ]
@@ -1469,7 +1469,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {
@@ -1477,15 +1477,15 @@
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SK"
                 }
               ]
@@ -1502,7 +1502,7 @@
           "function_name": "split",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit library"
             },
             {
@@ -1521,11 +1521,11 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "library"
                 }
               ]
@@ -1545,7 +1545,7 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1555,7 +1555,7 @@
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
@@ -1575,7 +1575,7 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 }
               ]
@@ -1585,7 +1585,7 @@
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
@@ -1605,11 +1605,11 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 }
               ]
@@ -1619,7 +1619,7 @@
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ",splashkit library"
                 },
                 {
@@ -1639,11 +1639,11 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1653,7 +1653,7 @@
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library,"
                 },
                 {
@@ -1673,15 +1673,15 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1691,7 +1691,7 @@
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ",splashkit library,"
                 },
                 {
@@ -1711,15 +1711,15 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "library"
                 }
               ]
@@ -1729,7 +1729,7 @@
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit,,library"
                 },
                 {
@@ -1750,7 +1750,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit"
             },
             "value2": {
@@ -1758,7 +1758,7 @@
               "function_name": "to_lowercase",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SPLASHKIT"
                 }
               ]
@@ -1770,7 +1770,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {
@@ -1778,7 +1778,7 @@
               "function_name": "to_lowercase",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1790,7 +1790,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit"
             },
             "value2": {
@@ -1798,7 +1798,7 @@
               "function_name": "to_lowercase",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -1810,7 +1810,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit"
             },
             "value2": {
@@ -1818,7 +1818,7 @@
               "function_name": "to_lowercase",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SpLaShKiT"
                 }
               ]
@@ -1835,7 +1835,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "SPLASHKIT"
             },
             "value2": {
@@ -1843,7 +1843,7 @@
               "function_name": "to_uppercase",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -1855,7 +1855,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {
@@ -1863,7 +1863,7 @@
               "function_name": "to_uppercase",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -1875,7 +1875,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "SPLASHKIT"
             },
             "value2": {
@@ -1883,7 +1883,7 @@
               "function_name": "to_uppercase",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SPLASHKIT"
                 }
               ]
@@ -1895,7 +1895,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "SPLASHKIT"
             },
             "value2": {
@@ -1903,7 +1903,7 @@
               "function_name": "to_uppercase",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "SpLaShKiT"
                 }
               ]
@@ -1920,7 +1920,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit"
             },
             "value2": {
@@ -1928,7 +1928,7 @@
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "  splashkit"
                 }
               ]
@@ -1940,7 +1940,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit"
             },
             "value2": {
@@ -1948,7 +1948,7 @@
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit  "
                 }
               ]
@@ -1960,7 +1960,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit"
             },
             "value2": {
@@ -1968,7 +1968,7 @@
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "  splashkit  "
                 }
               ]
@@ -1980,7 +1980,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "splashkit"
             },
             "value2": {
@@ -1988,7 +1988,7 @@
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -2000,7 +2000,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {
@@ -2008,7 +2008,7 @@
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 }
               ]
@@ -2029,21 +2029,21 @@
               "function_name": "rnd_range",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": -1
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 5
                 }
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": -1
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 5
             }
           }
@@ -2053,7 +2053,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             },
             "value2": {
@@ -2061,11 +2061,11 @@
               "function_name": "rnd_range",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 1
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 1
                 }
               ]
@@ -2081,21 +2081,21 @@
               "function_name": "rnd_range",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 5
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 1
                 }
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 5
             }
           }
@@ -2115,7 +2115,7 @@
               "args": []
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value3": {
@@ -2137,17 +2137,17 @@
               "function_name": "rnd_int",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 1
                 }
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             }
           }
@@ -2161,17 +2161,17 @@
               "function_name": "rnd_int",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 10
                 }
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 10
             }
           }
@@ -2181,7 +2181,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2189,7 +2189,7 @@
               "function_name": "rnd_int",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": -1
                 }
               ]
@@ -2201,7 +2201,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2209,7 +2209,7 @@
               "function_name": "rnd_int",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 }
               ]
@@ -2236,7 +2236,7 @@
               "variable_name": "test_ticks"
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             }
           }
@@ -2251,7 +2251,7 @@
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_timer"
             }
           ],
@@ -2283,7 +2283,7 @@
           "function_name": "delay",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 200
             }
           ]
@@ -2318,7 +2318,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "BITMAP,ufo,ufo.png\n"
             },
             "value2": {
@@ -2326,7 +2326,7 @@
               "function_name": "file_as_string",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "blah.txt"
                 },
                 {
@@ -2343,7 +2343,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {
@@ -2351,7 +2351,7 @@
               "function_name": "file_as_string",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": ""
                 },
                 {
@@ -2368,7 +2368,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {
@@ -2376,7 +2376,7 @@
               "function_name": "file_as_string",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "invalid.txt"
                 },
                 {

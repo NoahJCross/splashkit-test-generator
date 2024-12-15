@@ -1,77 +1,71 @@
+use std::*;
 use splashkit::*;
 #[cfg(test)]
-mod test_runner {
-    pub fn run_tests_sequential(tests: &[&dyn Fn()]) {
-        for test in tests {
-            test();
-        }
-    }
-}
-#![test_runner(test_runner::run_tests_sequential)]
 mod test_geometry {
 use super::*;
 #[test]
-fn test_center_point_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
-    let test_center_point = center_point(test_circle);
+fn test_center_point_of_circle_integration() {
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
+    let test_center_point = center_point_of_circle(test_circle);
     assert_eq!(test_center_point, point_at(100.0, 100.0));
 }
 #[test]
 fn test_circle_at_integration() {
-    let test_window = open_window("Test Window", 800, 600);
+    let test_window = open_window("Test Window".to_string(), 800, 600);
     let test_circle = circle_at(point_at(400.0, 300.0), 50.0);
-    draw_circle(color_black(), test_circle);
+    draw_circle_record(color_black(), test_circle);
     refresh_screen();
     assert!(point_in_circle(point_at(400.0, 300.0), test_circle));
     close_window(test_window);
 }
 #[test]
 fn test_circle_at_from_points_integration() {
-    let test_window = open_window("Circle Test", 800, 600);
+    let test_window = open_window("Circle Test".to_string(), 800, 600);
     let test_circle = circle_at_from_points(400.0, 300.0, 50.0);
-    draw_circle(color_black(), test_circle, option_defaults());
+    draw_circle_record_with_options(color_black(), test_circle, option_defaults());
     refresh_screen();
     assert!(point_in_circle(point_at(400.0, 300.0), test_circle));
     close_window(test_window);
 }
 #[test]
 fn test_circle_radius_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_radius = circle_radius(test_circle);
     assert_eq!(50.0, test_radius);
 }
 #[test]
 fn test_circle_triangle_intersect_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_triangle = triangle_from(point_at(50.0, 50.0), point_at(150.0, 50.0), point_at(100.0, 150.0));
     let test_result = circle_triangle_intersect(test_circle, test_triangle);
     assert!(test_result);
 }
 #[test]
 fn test_circle_triangle_intersect_get_closest_point_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_triangle = triangle_from(point_at(50.0, 50.0), point_at(150.0, 50.0), point_at(100.0, 150.0));
-    let test_result = circle_triangle_intersect_get_closest_point(test_circle, test_triangle, point_at(0.0, 0.0));
+    let mut test_point = point_at(0.0, 0.0);
+    let test_result = circle_triangle_intersect_get_closest_point(test_circle, test_triangle, &mut test_point);
     assert!(test_result);
-    assert_eq!(circle_radius(test_circle), point_point_distance(center_point(test_circle), closest_point_on_triangle_from_circle(test_circle, test_triangle)));
+    assert_eq!(circle_radius(test_circle), point_point_distance(center_point_of_circle(test_circle), closest_point_on_triangle_from_circle(test_circle, test_triangle)));
 }
 #[test]
 fn test_circle_x_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     assert_eq!(100.0, circle_x(test_circle));
 }
 #[test]
 fn test_circle_y_integration() {
-    let test_circle = circle_at(100.0, 150.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 150.0, 50.0);
     assert_eq!(150.0, circle_y(test_circle));
 }
 #[test]
 fn test_circles_intersect_integration() {
-    let test_circle1 = circle_at(0.0, 0.0, 50.0);
-    let test_circle2 = circle_at(100.0, 0.0, 50.0);
+    let test_circle1 = circle_at_from_points(0.0, 0.0, 50.0);
+    let test_circle2 = circle_at_from_points(100.0, 0.0, 50.0);
     let test_result1 = circles_intersect(test_circle1, test_circle2);
     assert!(!test_result1);
-    let test_circle3 = circle_at(50.0, 0.0, 50.0);
+    let test_circle3 = circle_at_from_points(50.0, 0.0, 50.0);
     let test_result2 = circles_intersect(test_circle1, test_circle3);
     assert!(test_result2);
 }
@@ -84,78 +78,78 @@ fn test_circles_intersect_using_values_integration() {
 }
 #[test]
 fn test_closest_point_on_circle_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_point = point_at(150.0, 100.0);
     let test_closest_point = closest_point_on_circle(test_point, test_circle);
     assert_eq!(circle_radius(test_circle), point_point_distance(test_closest_point, test_point));
 }
 #[test]
 fn test_closest_point_on_line_from_circle_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_line = line_from(50.0, 50.0, 150.0, 150.0);
     let test_closest_point = closest_point_on_line_from_circle(test_circle, test_line);
     assert!(point_on_line(test_closest_point, test_line));
 }
 #[test]
 fn test_closest_point_on_rect_from_circle_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_rectangle = rectangle_from(150.0, 50.0, 100.0, 100.0);
     let test_closest_point = closest_point_on_rect_from_circle(test_circle, test_rectangle);
     assert!(point_in_rectangle(test_closest_point, test_rectangle));
-    assert_eq!(circle_radius(test_circle), point_point_distance(center_point(test_circle), test_closest_point));
+    assert_eq!(circle_radius(test_circle), point_point_distance(center_point_of_circle(test_circle), test_closest_point));
 }
 #[test]
 fn test_closest_point_on_triangle_from_circle_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_triangle = triangle_from(point_at(50.0, 50.0), point_at(150.0, 50.0), point_at(100.0, 150.0));
     let test_closest_point = closest_point_on_triangle_from_circle(test_circle, test_triangle);
     assert!(point_in_triangle(test_closest_point, test_triangle));
 }
 #[test]
 fn test_distant_point_on_circle_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_point = point_at(100.0, 150.0);
     let test_distant_point = distant_point_on_circle(test_point, test_circle);
     assert_eq!(circle_radius(test_circle), point_point_distance(test_point, test_distant_point));
 }
 #[test]
 fn test_distant_point_on_circle_heading_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_point1 = point_at(150.0, 100.0);
     let test_heading = vector_from_angle(180.0, 1.0);
-    let test_point2 = point_at(0.0, 0.0);
-    let test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, test_point2);
+    let mut test_point2 = point_at(0.0, 0.0);
+    let test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, &mut test_point2);
     assert!(test_result);
     assert_eq!(50.0, test_point1.x);
     assert_eq!(100.0, test_point1.y);
 }
 #[test]
 fn test_ray_circle_intersect_distance_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_ray_origin = point_at(0.0, 0.0);
     let test_ray_heading = vector_from_angle(45.0, 1.0);
     let test_distance = ray_circle_intersect_distance(test_ray_origin, test_ray_heading, test_circle);
-    assert!((70..=71).contains(&test_distance));
+    assert!((70.0 as f32..=71.0 as f32).contains(&test_distance));
 }
 #[test]
 fn test_tangent_points_integration() {
     let test_from_pt = point_at(100.0, 100.0);
-    let test_circle = circle_at(150.0, 150.0, 50.0);
-    let test_point1 = point_at(0.0, 0.0);
-    let test_point2 = point_at(0.0, 0.0);
-    let test_result = tangent_points(test_from_pt, test_circle, &test_point1, &test_point2);
+    let test_circle = circle_at_from_points(150.0, 150.0, 50.0);
+    let mut test_point1 = point_at(0.0, 0.0);
+    let mut test_point2 = point_at(0.0, 0.0);
+    let test_result = tangent_points(test_from_pt, test_circle, &mut test_point1, &mut test_point2);
     assert!(test_result);
     assert_ne!(point_at(0.0, 0.0), point_at(0.0, 0.0));
 }
 #[test]
 fn test_widest_points_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_vector = vector_from_angle(45.0, 45.0);
-    let test_point1 = point_at(0.0, 0.0);
-    let test_point2 = point_at(0.0, 0.0);
-    widest_points(test_circle, test_vector, &test_point1, &test_point2);
-    assert!(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
-    assert!(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
+    let mut test_point1 = point_at(0.0, 0.0);
+    let mut test_point2 = point_at(0.0, 0.0);
+    widest_points(test_circle, test_vector, &mut test_point1, &mut test_point2);
+    assert!(point_in_circle(point_at(circle_x(test_circle) as f64, circle_y(test_circle) as f64), test_circle));
+    assert!(point_in_circle(point_at(circle_x(test_circle) as f64, circle_y(test_circle) as f64), test_circle));
 }
 #[test]
 fn test_cosine_integration() {
@@ -184,18 +178,18 @@ fn test_tangent_integration() {
 }
 #[test]
 fn test_closest_point_on_line_integration() {
-    let test_line = line_from(point_at(0.0, 0.0), point_at(10.0, 10.0));
+    let test_line = line_from_point_to_point(point_at(0.0, 0.0), point_at(10.0, 10.0));
     let test_closest_point = closest_point_on_line(point_at(5.0, 5.0), test_line);
     assert_eq!(0.0, point_point_distance(point_at(5.0, 5.0), test_closest_point));
 }
 #[test]
 fn test_closest_point_on_lines_integration() {
     let test_from_pt = point_at(0.0, 0.0);
-    let test_line1 = line_from(point_at(-10.0, 0.0), point_at(10.0, 0.0));
-    let test_line2 = line_from(point_at(0.0, -10.0), point_at(0.0, 10.0));
-    let test_index = 0;
+    let test_line1 = line_from_point_to_point(point_at(-10.0, 0.0), point_at(10.0, 0.0));
+    let test_line2 = line_from_point_to_point(point_at(0.0, -10.0), point_at(0.0, 10.0));
+    let mut test_index = 0;
     let test_lines = vec![test_line1, test_line2];
-    let test_closest_point = closest_point_on_lines(test_from_pt, test_lines, test_index);
+    let test_closest_point = closest_point_on_lines(test_from_pt, test_lines, &mut test_index);
     assert_eq!(0.0, point_point_distance(test_from_pt, test_closest_point));
 }
 #[test]
@@ -229,14 +223,14 @@ fn test_line_from_integration() {
 fn test_line_intersection_point_integration() {
     let test_line1 = line_from(0.0, 0.0, 10.0, 10.0);
     let test_line2 = line_from(10.0, 0.0, 0.0, 10.0);
-    let test_point = point_at(0.0, 0.0);
-    let test_intersection_result = line_intersection_point(test_line1, test_line2, &test_point);
+    let mut test_point = point_at(0.0, 0.0);
+    let test_intersection_result = line_intersection_point(test_line1, test_line2, &mut test_point);
     assert!(test_intersection_result);
 }
 #[test]
 fn test_line_intersects_circle_integration() {
     let test_line = line_from(0.0, 0.0, 10.0, 10.0);
-    let test_circle = circle_at(5.0, 5.0, 3.0);
+    let test_circle = circle_at_from_points(5.0, 5.0, 3.0);
     let test_result = line_intersects_circle(test_line, test_circle);
     assert!(test_result);
 }
@@ -252,26 +246,26 @@ fn test_line_intersects_lines_integration() {
 #[test]
 fn test_line_intersects_rect_integration() {
     let test_rect = rectangle_from(0.0, 0.0, 100.0, 100.0);
-    let test_line = line_from(point_at(-50.0, 50.0), point_at(150.0, 50.0));
+    let test_line = line_from_point_to_point(point_at(-50.0, 50.0), point_at(150.0, 50.0));
     assert!(line_intersects_rect(test_line, test_rect));
-    let test_line_outside = line_from(point_at(-50.0, 150.0), point_at(150.0, 150.0));
+    let test_line_outside = line_from_point_to_point(point_at(-50.0, 150.0), point_at(150.0, 150.0));
     assert!(!line_intersects_rect(test_line_outside, test_rect));
 }
 #[test]
 fn test_line_length_integration() {
-    let test_line = line_from(point_at(0.0, 0.0), point_at(3.0, 4.0));
+    let test_line = line_from_point_to_point(point_at(0.0, 0.0), point_at(3.0, 4.0));
     let test_length = line_length(test_line);
     assert_eq!(5.0, test_length);
 }
 #[test]
 fn test_line_length_squared_integration() {
-    let test_line = line_from(point_at(0.0, 0.0), point_at(3.0, 4.0));
+    let test_line = line_from_point_to_point(point_at(0.0, 0.0), point_at(3.0, 4.0));
     let test_result = line_length_squared(test_line);
     assert_eq!(25.0, test_result);
 }
 #[test]
 fn test_line_mid_point_integration() {
-    let test_line = line_from(point_at(0.0, 0.0), point_at(100.0, 100.0));
+    let test_line = line_from_point_to_point(point_at(0.0, 0.0), point_at(100.0, 100.0));
     let test_mid_point = line_mid_point(test_line);
     assert_eq!(0.0, point_point_distance(test_mid_point, point_at(50.0, 50.0)));
 }
@@ -284,9 +278,9 @@ fn test_line_normal_integration() {
 }
 #[test]
 fn test_line_to_string_integration() {
-    let test_line = line_from(point_at(0.0, 0.0), point_at(100.0, 100.0));
+    let test_line = line_from_point_to_point(point_at(0.0, 0.0), point_at(100.0, 100.0));
     let test_line_string = line_to_string(test_line);
-    assert_ne!("", test_line_string);
+    assert_ne!("Line from Pt @0:0 to Pt @100:100".to_string(), test_line_string);
 }
 #[test]
 fn test_lines_from_rectangle_integration() {
@@ -302,8 +296,8 @@ fn test_lines_from_triangle_integration() {
 }
 #[test]
 fn test_lines_intersect_integration() {
-    let test_line1 = line_from(point_at(0.0, 0.0), point_at(10.0, 10.0));
-    let test_line2 = line_from(point_at(5.0, 0.0), point_at(5.0, 10.0));
+    let test_line1 = line_from_point_to_point(point_at(0.0, 0.0), point_at(10.0, 10.0));
+    let test_line2 = line_from_point_to_point(point_at(5.0, 0.0), point_at(5.0, 10.0));
     let test_result = lines_intersect(test_line1, test_line2);
     assert!(test_result);
 }
@@ -321,7 +315,7 @@ fn test_point_at_origin_integration() {
 }
 #[test]
 fn test_point_in_circle_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     assert!(point_in_circle(point_at(100.0, 100.0), test_circle));
     assert!(point_in_circle(point_at(150.0, 100.0), test_circle));
     assert!(!point_in_circle(point_at(200.0, 100.0), test_circle));
@@ -335,7 +329,7 @@ fn test_point_in_circle_with_values_integration() {
 }
 #[test]
 fn test_point_in_quad_integration() {
-    let test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(100.0, 100.0), point_at(0.0, 100.0));
+    let test_quad = quad_from_points(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(100.0, 100.0), point_at(0.0, 100.0));
     assert!(point_in_quad(point_at(50.0, 50.0), test_quad));
     assert!(!point_in_quad(point_at(150.0, 50.0), test_quad));
 }
@@ -392,7 +386,7 @@ fn test_point_on_line_integration() {
 }
 #[test]
 fn test_point_on_line_with_proximity_integration() {
-    let test_line = line_from(point_at(0.0, 0.0), point_at(10.0, 10.0));
+    let test_line = line_from_point_to_point(point_at(0.0, 0.0), point_at(10.0, 10.0));
     let test_point_on_line = point_at(5.0, 5.0);
     let test_point_near_line = point_at(5.1, 5.1);
     let test_point_far_from_line = point_at(15.0, 15.0);
@@ -418,31 +412,31 @@ fn test_point_point_distance_integration() {
 fn test_point_to_string_integration() {
     let test_point = point_at(10.0, 20.0);
     let test_string = point_to_string(test_point);
-    assert_eq!("Point(10, 20)", test_string);
+    assert_eq!("Pt @10:20".to_string(), test_string);
 }
 #[test]
 fn test_random_bitmap_point_integration() {
-    let test_bitmap = create_bitmap("test_bitmap", 100, 100);
+    let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
     let test_point = random_bitmap_point(test_bitmap);
-    assert!((0..=bitmap_width(test_bitmap)).contains(&test_point.x));
-    assert!((0..=bitmap_height(test_bitmap)).contains(&test_point.y));
+    assert!((0.0..=bitmap_width(test_bitmap) as f64).contains(&test_point.x));
+    assert!((0.0..=bitmap_height(test_bitmap) as f64).contains(&test_point.y));
     free_bitmap(test_bitmap);
 }
 #[test]
 fn test_random_screen_point_integration() {
-    let test_window = open_window("Test Window", 800, 600);
+    let test_window = open_window("Test Window".to_string(), 800, 600);
     let test_point = random_screen_point();
     refresh_screen();
-    assert!((0..=window_width(test_window)).contains(&test_point.x));
-    assert!((0..=window_height(test_window)).contains(&test_point.y));
+    assert!((0.0..=window_width(test_window) as f64).contains(&test_point.x));
+    assert!((0.0..=window_height(test_window) as f64).contains(&test_point.y));
     close_window(test_window);
 }
 #[test]
 fn test_random_window_point_integration() {
-    let test_window = open_window("Test Window", 800, 600);
+    let test_window = open_window("Test Window".to_string(), 800, 600);
     let test_point = random_window_point(test_window);
-    assert!((0..=window_width(test_window)).contains(&test_point.x));
-    assert!((0..=window_height(test_window)).contains(&test_point.y));
+    assert!((0.0..=window_width(test_window) as f64).contains(&test_point.x));
+    assert!((0.0..=window_height(test_window) as f64).contains(&test_point.y));
     close_window(test_window);
 }
 #[test]
@@ -485,20 +479,20 @@ fn test_quad_from_integration() {
 }
 #[test]
 fn test_quads_intersect_integration() {
-    let test_quad1 = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
-    let test_quad2 = quad_from(point_at(50.0, 50.0), point_at(150.0, 50.0), point_at(50.0, 150.0), point_at(150.0, 150.0));
+    let test_quad1 = quad_from_points(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
+    let test_quad2 = quad_from_points(point_at(50.0, 50.0), point_at(150.0, 50.0), point_at(50.0, 150.0), point_at(150.0, 150.0));
     let test_result = quads_intersect(test_quad1, test_quad2);
     assert!(test_result);
 }
 #[test]
 fn test_set_quad_point_integration() {
-    let test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
-    set_quad_point(&test_quad, 2, point_at(50.0, 150.0));
+    let mut test_quad = quad_from_points(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
+    set_quad_point(&mut test_quad, 2, point_at(50.0, 150.0));
     assert!(point_in_quad(point_at(50.0, 150.0), test_quad));
 }
 #[test]
 fn test_triangles_from_integration() {
-    let test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
+    let test_quad = quad_from_points(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
     let test_triangles = triangles_from(test_quad);
     assert_eq!(2, test_triangles.len());
 }
@@ -523,7 +517,7 @@ fn test_intersection_integration() {
 }
 #[test]
 fn test_rectangle_around_circle_integration() {
-    let test_circle = circle_at(100.0, 100.0, 50.0);
+    let test_circle = circle_at_from_points(100.0, 100.0, 50.0);
     let test_rectangle = rectangle_around_circle(test_circle);
     assert_eq!(50.0, rectangle_left(test_rectangle));
     assert_eq!(50.0, rectangle_top(test_rectangle));
@@ -532,14 +526,14 @@ fn test_rectangle_around_circle_integration() {
 }
 #[test]
 fn test_rectangle_around_line_integration() {
-    let test_line = line_from(point_at(10.0, 10.0), point_at(50.0, 50.0));
+    let test_line = line_from_point_to_point(point_at(10.0, 10.0), point_at(50.0, 50.0));
     let test_rectangle = rectangle_around_line(test_line);
     assert!(point_in_rectangle(point_at(10.0, 10.0), test_rectangle));
     assert!(point_in_rectangle(point_at(50.0, 50.0), test_rectangle));
 }
 #[test]
 fn test_rectangle_around_quad_integration() {
-    let test_quad = quad_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
+    let test_quad = quad_from_points(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(0.0, 100.0), point_at(100.0, 100.0));
     let test_rectangle = rectangle_around_quad(test_quad);
     assert_eq!(0.0, rectangle_left(test_rectangle));
     assert_eq!(0.0, rectangle_top(test_rectangle));
@@ -562,7 +556,7 @@ fn test_rectangle_bottom_integration() {
 }
 #[test]
 fn test_rectangle_center_integration() {
-    let test_rectangle = rectangle_from(point_at(0.0, 0.0), 100.0, 100.0);
+    let test_rectangle = rectangle_from_point_and_size(point_at(0.0, 0.0), 100.0, 100.0);
     let test_center_point = rectangle_center(test_rectangle);
     assert_eq!(0.0, point_point_distance(point_at(50.0, 50.0), test_center_point));
 }
@@ -615,7 +609,7 @@ fn test_rectangle_right_integration() {
 fn test_rectangle_to_string_integration() {
     let test_rectangle = rectangle_from(10.0, 20.0, 30.0, 40.0);
     let test_string = rectangle_to_string(test_rectangle);
-    assert_eq!("Rectangle(x: 10, y: 20, width: 30, height: 40)", test_string);
+    assert_eq!("Rect @10,20 30x40".to_string(), test_string);
 }
 #[test]
 fn test_rectangle_top_integration() {
@@ -654,7 +648,7 @@ fn test_triangle_from__from_coordinates_integration() {
 #[test]
 fn test_triangle_rectangle_intersect_integration() {
     let test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 100.0));
-    let test_rectangle = rectangle_from(point_at(40.0, 40.0), 60.0, 60.0);
+    let test_rectangle = rectangle_from_point_and_size(point_at(40.0, 40.0), 60.0, 60.0);
     let test_result = triangle_rectangle_intersect(test_triangle, test_rectangle);
     assert!(test_result);
 }
@@ -662,7 +656,7 @@ fn test_triangle_rectangle_intersect_integration() {
 fn test_triangle_to_string_integration() {
     let test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 100.0));
     let test_triangle_string = triangle_to_string(test_triangle);
-    assert_ne!("", test_triangle_string);
+    assert_ne!("Triangle @Pt @0:0 - Pt @100:0 - Pt @50:100".to_string(), test_triangle_string);
 }
 #[test]
 fn test_triangles_intersect_integration() {

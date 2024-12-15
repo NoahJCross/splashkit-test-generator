@@ -10,7 +10,7 @@ def test_create_json_integration():
 
 
 def test_create_json_from_string_integration():
-    test_json = create_json_from_string("{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}")
+    test_json = create_json_from_string("{"name":"John","age":30,"city":"New York"}")
     assert json_has_key(test_json, "name")
     assert "John" == json_read_string(test_json, "name")
     free_json(test_json)
@@ -66,7 +66,7 @@ def test_json_from_file_integration():
 
 
 def test_json_from_string_integration():
-    test_json = json_from_string("{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}")
+    test_json = json_from_string("{"name":"John","age":30,"city":"New York"}")
     assert "John" == json_read_string(test_json, "name")
     assert 30 == json_read_number_as_int(test_json, "age")
     assert "New York" == json_read_string(test_json, "city")

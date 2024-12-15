@@ -1109,10 +1109,10 @@ procedure TIntegrationTests.TestColorToStringIntegration;
 begin
     redColor := ColorRed();
     redColorString := ColorToString(redColor);
-    AssertEquals("#ff0000ff", redColorString);
+    AssertEquals('#ff0000ff', redColorString);
     transparentColor := ColorTransparent();
     transparentColorString := ColorToString(transparentColor);
-    AssertEquals("#ffffffff", transparentColorString);
+    AssertEquals('#ffffffff', transparentColorString);
 end;
 procedure TIntegrationTests.TestColorTomatoIntegration;
 begin
@@ -1216,7 +1216,7 @@ end;
 procedure TIntegrationTests.TestRandomColorIntegration;
 begin
     randomColorResult := RandomColor();
-    AssertNotEquals("#000000FF", ColorToString(randomColorResult));
+    AssertNotEquals('#000000FF', ColorToString(randomColorResult));
     AssertTrue((AlphaOf(randomColorResult) >= 0) and (AlphaOf(randomColorResult) <= 255));
 end;
 procedure TIntegrationTests.TestRandomRGBColorIntegration;
@@ -1282,12 +1282,12 @@ begin
 end;
 procedure TIntegrationTests.TestStringToColorIntegration;
 begin
-    redColor := StringToColor("#FF0000FF");
+    redColor := StringToColor('#FF0000FF');
     AssertEquals(255, RedOf(redColor));
     AssertEquals(0, GreenOf(redColor));
     AssertEquals(0, BlueOf(redColor));
     AssertEquals(255, AlphaOf(redColor));
-    greenColor := StringToColor("#00FF00FF");
+    greenColor := StringToColor('#00FF00FF');
     AssertEquals(0, RedOf(greenColor));
     AssertEquals(255, GreenOf(greenColor));
     AssertEquals(0, BlueOf(greenColor));
@@ -1297,5 +1297,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
+#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
 end;

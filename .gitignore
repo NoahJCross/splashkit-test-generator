@@ -1,0 +1,9 @@
+data/generated
+test_runner
+python.py
+run_tests.rb
+splashkit_test_generator.sln
+generated_tests/csharp/bin
+generated_tests/csharp/obj
+generated_tests/csharp/TestRunner.csproj
+generated_tests/rust/target

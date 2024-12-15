@@ -8,7 +8,7 @@ def test_bitmap_circle_collision_at_point_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     clear_bitmap(test_bitmap, color_black())
     setup_collision_mask(test_bitmap)
-    test_circle = circle_at(150.0, 150.0, 50.0)
+    test_circle = circle_at_from_points(150.0, 150.0, 50.0)
     test_point = point_at(100.0, 100.0)
     assert bitmap_circle_collision_at_point(test_bitmap, test_point, test_circle)
     free_bitmap(test_bitmap)
@@ -20,7 +20,7 @@ def test_bitmap_circle_collision_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     clear_bitmap(test_bitmap, color_black())
     setup_collision_mask(test_bitmap)
-    test_circle = circle_at(150.0, 150.0, 50.0)
+    test_circle = circle_at_from_points(150.0, 150.0, 50.0)
     assert bitmap_circle_collision(test_bitmap, 100.0, 100.0, test_circle)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -31,7 +31,7 @@ def test_bitmap_circle_collision_for_cell_with_translation_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     clear_bitmap(test_bitmap, color_black())
     setup_collision_mask(test_bitmap)
-    test_circle = circle_at(150.0, 150.0, 50.0)
+    test_circle = circle_at_from_points(150.0, 150.0, 50.0)
     test_translation = translation_matrix(100.0, 100.0)
     assert bitmap_circle_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_circle)
     free_bitmap(test_bitmap)
@@ -43,7 +43,7 @@ def test_bitmap_circle_collision_for_cell_at_point_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     clear_bitmap(test_bitmap, color_black())
     setup_collision_mask(test_bitmap)
-    test_circle = circle_at(150.0, 150.0, 50.0)
+    test_circle = circle_at_from_points(150.0, 150.0, 50.0)
     test_point = point_at(100.0, 100.0)
     assert bitmap_circle_collision_for_cell_at_point(test_bitmap, 0, test_point, test_circle)
     free_bitmap(test_bitmap)
@@ -55,7 +55,7 @@ def test_bitmap_circle_collision_for_cell_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     clear_bitmap(test_bitmap, color_black())
     setup_collision_mask(test_bitmap)
-    test_circle = circle_at(150.0, 150.0, 50.0)
+    test_circle = circle_at_from_points(150.0, 150.0, 50.0)
     assert bitmap_circle_collision_for_cell(test_bitmap, 0, 100.0, 100.0, test_circle)
     free_bitmap(test_bitmap)
     close_window(test_window)
@@ -69,8 +69,8 @@ def test_bitmap_collision_integration():
     setup_collision_mask(test_bitmap1)
     clear_bitmap(test_bitmap2, color_black())
     setup_collision_mask(test_bitmap2)
-    assert bitmap_collision(test_bitmap1, 0, 0.0, 0.0, test_bitmap2, 0, 50.0, 50.0)
-    assert not bitmap_collision(test_bitmap1, 0, 0.0, 0.0, test_bitmap2, 0, 200.0, 200.0)
+    assert bitmap_collision_for_cells(test_bitmap1, 0, 0.0, 0.0, test_bitmap2, 0, 50.0, 50.0)
+    assert not bitmap_collision_for_cells(test_bitmap1, 0, 0.0, 0.0, test_bitmap2, 0, 200.0, 200.0)
     free_all_bitmaps()
     close_window(test_window)
 
@@ -186,7 +186,7 @@ def test_bitmap_point_collision_for_cell_at_point_integration():
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     clear_bitmap(test_bitmap, color_black())
     setup_collision_mask(test_bitmap)
-    assert bitmap_point_collision_for_cell_at_point(test_bitmap, 0, 50.0, 50.0, 50.0, 50.0)
+    assert bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(50.0, 50.0), point_at(50.0, 50.0))
     free_bitmap(test_bitmap)
     close_window(test_window)
 
@@ -195,7 +195,7 @@ def test_bitmap_point_collision_for_cell_integration():
     test_window = open_window("Test Window", 800, 600)
     test_bitmap = create_bitmap("test_bitmap", 100, 100)
     clear_bitmap(test_bitmap, color_black())
-    draw_pixel(color_white(), 50, 50, option_draw_to_bitmap(test_bitmap))
+    draw_pixel_with_options(color_white(), 50.0, 50.0, option_draw_to_bitmap(test_bitmap))
     setup_collision_mask(test_bitmap)
     assert bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 50.0, 50.0)
     free_bitmap(test_bitmap)
@@ -356,7 +356,7 @@ def test_sprite_rectangle_collision_integration():
 def test_apply_matrix_to_quad_integration():
     test_window = open_window("Test Window", 800, 600)
     test_matrix = identity_matrix()
-    test_quad = quad_from(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(200.0, 200.0), point_at(100.0, 200.0))
+    test_quad = quad_from_points(point_at(100.0, 100.0), point_at(200.0, 100.0), point_at(200.0, 200.0), point_at(100.0, 200.0))
     apply_matrix_to_quad(test_matrix, test_quad)
     assert 100.0 == test_quad.points[0].x
     assert 100.0 == test_quad.points[0].y
@@ -373,55 +373,55 @@ def test_apply_matrix_to_triangle_integration():
 
 def test_identity_matrix_integration():
     test_matrix = identity_matrix()
-    assert 1.0 == test_matrix.Elements[0][0]
-    assert 1.0 == test_matrix.Elements[1][1]
-    assert 0.0 == test_matrix.Elements[0][1]
-    assert 0.0 == test_matrix.Elements[1][0]
+    assert 1.0 == test_matrix.elements[0][0]
+    assert 1.0 == test_matrix.elements[1][1]
+    assert 0.0 == test_matrix.elements[0][1]
+    assert 0.0 == test_matrix.elements[1][0]
 
 
 def test_matrix_inverse_integration():
     test_matrix = scale_rotate_translate_matrix(point_at(2.0, 2.0), 45.0, point_at(10.0, 10.0))
     inverse_matrix = matrix_inverse(test_matrix)
     result_matrix = matrix_multiply_matrix(test_matrix, inverse_matrix)
-    assert 1.0 == result_matrix.Elements[0][0]
-    assert 1.0 == result_matrix.Elements[1][1]
+    assert 1.0 == result_matrix.elements[0][0]
+    assert 1.0 == result_matrix.elements[1][1]
 
 
 def test_matrix_multiply_point_integration():
     test_matrix = translation_matrix(10.0, 10.0)
     test_point = point_at(10.0, 20.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert 20.0 == result_point.X
-    assert 30.0 == result_point.Y
+    assert 20.0 == result_point.x
+    assert 30.0 == result_point.y
 
 
 def test_matrix_multiply_matrix_integration():
     test_matrix1 = scale_matrix(2.0)
     test_matrix2 = translation_matrix(10.0, 10.0)
     result_matrix = matrix_multiply_matrix(test_matrix2, test_matrix1)
-    assert 2.0 == result_matrix.Elements[0][0]
-    assert 20.0 == result_matrix.Elements[0][2]
+    assert 2.0 == result_matrix.elements[0][0]
+    assert 20.0 == result_matrix.elements[0][2]
 
 
 def test_matrix_multiply_vector_integration():
     test_vector = vector_to(2.0, 2.0)
     test_matrix = scale_matrix(2.0)
     result_vector = matrix_multiply_vector(test_matrix, test_vector)
-    assert 4.0 == result_vector.X
-    assert 4.0 == result_vector.Y
+    assert 4.0 == result_vector.x
+    assert 4.0 == result_vector.y
 
 
 def test_matrix_to_string_integration():
     test_matrix = identity_matrix()
-    assert " ------------------------------\\n|        1         0         0 |\\n|        0         1         0 |\\n|        0         0         1 |\\n ------------------------------" == matrix_to_string(test_matrix)
+    assert " ------------------------------\n|        1         0         0 |\n|        0         1         0 |\n|        0         0         1 |\n ------------------------------" == matrix_to_string(test_matrix)
 
 
 def test_rotation_matrix_integration():
     test_matrix = rotation_matrix(90.0)
     test_point = point_at(1.0, 0.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert 0 == result_point.X
-    assert 1 == result_point.Y
+    assert 0.0 == result_point.x
+    assert 1.0 == result_point.y
 
 
 def test_scale_matrix_from_point_integration():
@@ -429,8 +429,8 @@ def test_scale_matrix_from_point_integration():
     test_matrix = scale_matrix_from_point(test_scale)
     test_point = point_at(1.0, 1.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert 2.0 == result_point.X
-    assert 3.0 == result_point.Y
+    assert 2.0 == result_point.x
+    assert 3.0 == result_point.y
 
 
 def test_scale_matrix_from_vector_integration():
@@ -438,8 +438,8 @@ def test_scale_matrix_from_vector_integration():
     test_matrix = scale_matrix_from_vector(test_scale)
     test_point = point_at(1.0, 1.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert 2.0 == result_point.X
-    assert 3.0 == result_point.Y
+    assert 2.0 == result_point.x
+    assert 3.0 == result_point.y
 
 
 def test_scale_matrix_integration():
@@ -456,17 +456,17 @@ def test_scale_rotate_translate_matrix_integration():
     test_matrix = scale_rotate_translate_matrix(test_scale, 90.0, test_translate)
     test_point = point_at(1.0, 0.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert 10 == result_point.X
-    assert 11 == result_point.Y
+    assert 10.0 == result_point.x
+    assert 11.0 == result_point.y
 
 
 def test_translation_matrix_to_point_integration():
     test_point = point_at(10.0, 20.0)
     test_matrix = translation_matrix_to_point(test_point)
-    test_vector = point_at(5.0, 5.0)
+    test_vector = vector_to(5.0, 5.0)
     result_point = matrix_multiply_vector(test_matrix, test_vector)
-    assert 15.0 == result_point.X
-    assert 25.0 == result_point.Y
+    assert 15.0 == result_point.x
+    assert 25.0 == result_point.y
 
 
 def test_translation_matrix_from_vector_integration():
@@ -474,16 +474,16 @@ def test_translation_matrix_from_vector_integration():
     test_matrix = translation_matrix_from_vector(test_vector)
     test_point = point_at(0.0, 0.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert 10.0 == result_point.X
-    assert 20.0 == result_point.Y
+    assert 10.0 == result_point.x
+    assert 20.0 == result_point.y
 
 
 def test_translation_matrix_integration():
     test_matrix = translation_matrix(10.0, 20.0)
     test_point = point_at(0.0, 0.0)
     result_point = matrix_multiply_point(test_matrix, test_point)
-    assert 10.0 == result_point.X
-    assert 20.0 == result_point.Y
+    assert 10.0 == result_point.x
+    assert 20.0 == result_point.y
 
 
 def test_angle_between_integration():
@@ -508,26 +508,26 @@ def test_is_zero_vector_integration():
 def test_ray_intersection_point_integration():
     test_from_pt = point_at(0.0, 0.0)
     test_heading = vector_to(1.0, 1.0)
-    test_line = line_from(point_at(0.0, 2.0), point_at(2.0, 0.0))
+    test_line = line_from_point_to_point(point_at(0.0, 2.0), point_at(2.0, 0.0))
     intersection_point = point_at(0.0, 0.0)
     assert ray_intersection_point(test_from_pt, test_heading, test_line, intersection_point)
-    assert 1.0 == intersection_point.X
-    assert 1.0 == intersection_point.Y
+    assert 1.0 == intersection_point.x
+    assert 1.0 == intersection_point.y
 
 
 def test_unit_vector_integration():
     test_vector = vector_to(3.0, 4.0)
     test_unit_vector = unit_vector(test_vector)
-    assert 0.6 == test_unit_vector.X
-    assert 0.8 == test_unit_vector.Y
+    assert 0.6 == test_unit_vector.x
+    assert 0.8 == test_unit_vector.y
 
 
 def test_vector_add_integration():
     test_vector1 = vector_to(1.0, 2.0)
     test_vector2 = vector_to(3.0, 4.0)
     result_vector = vector_add(test_vector1, test_vector2)
-    assert 4.0 == result_vector.X
-    assert 6.0 == result_vector.Y
+    assert 4.0 == result_vector.x
+    assert 6.0 == result_vector.y
 
 
 def test_vector_angle_integration():
@@ -537,23 +537,23 @@ def test_vector_angle_integration():
 
 def test_vector_from_angle_integration():
     test_vector = vector_from_angle(0.0, 1.0)
-    assert 1.0 == test_vector.X
-    assert 0.0 == test_vector.Y
+    assert 1.0 == test_vector.x
+    assert 0.0 == test_vector.y
 
 
 def test_vector_from_line_integration():
-    test_line = line_from(point_at(0.0, 0.0), point_at(3.0, 4.0))
+    test_line = line_from_point_to_point(point_at(0.0, 0.0), point_at(3.0, 4.0))
     test_vector = vector_from_line(test_line)
-    assert 3.0 == test_vector.X
-    assert 4.0 == test_vector.Y
+    assert 3.0 == test_vector.x
+    assert 4.0 == test_vector.y
 
 
 def test_vector_from_point_to_rect_integration():
     test_rect = rectangle_from(0.0, 0.0, 100.0, 100.0)
     test_point = point_at(50.0, 50.0)
     test_vector = vector_from_point_to_rect(test_point, test_rect)
-    assert 0.0 == test_vector.X
-    assert 0.0 == test_vector.Y
+    assert 0.0 == test_vector.x
+    assert 0.0 == test_vector.y
 
 
 def test_vector_in_rect_integration():
@@ -567,15 +567,15 @@ def test_vector_in_rect_integration():
 def test_vector_invert_integration():
     test_vector = vector_to(3.0, 4.0)
     inverted_vector = vector_invert(test_vector)
-    assert -3.0 == inverted_vector.X
-    assert -4.0 == inverted_vector.Y
+    assert -3.0 == inverted_vector.x
+    assert -4.0 == inverted_vector.y
 
 
 def test_vector_limit_integration():
     test_vector = vector_to(6.0, 8.0)
     limited_vector = vector_limit(test_vector, 5.0)
-    assert 3.0 == limited_vector.X
-    assert 4.0 == limited_vector.Y
+    assert 3.0 == limited_vector.x
+    assert 4.0 == limited_vector.y
 
 
 def test_vector_magnitude_integration():
@@ -591,42 +591,42 @@ def test_vector_magnitude_squared_integration():
 def test_vector_multiply_integration():
     test_vector = vector_to(3.0, 4.0)
     result_vector = vector_multiply(test_vector, 2.0)
-    assert 6.0 == result_vector.X
-    assert 8.0 == result_vector.Y
+    assert 6.0 == result_vector.x
+    assert 8.0 == result_vector.y
 
 
 def test_vector_normal_integration():
     test_vector = vector_to(3.0, 4.0)
     normal_vector = vector_normal(test_vector)
-    assert -0.8 == normal_vector.X
-    assert 0.6 == normal_vector.Y
+    assert -0.8 == normal_vector.x
+    assert 0.6 == normal_vector.y
 
 
 def test_vector_out_of_circle_from_circle_integration():
-    test_circle_src = circle_at(0.0, 0.0, 5.0)
-    test_circle_bounds = circle_at(8.0, 0.0, 5.0)
+    test_circle_src = circle_at_from_points(0.0, 0.0, 5.0)
+    test_circle_bounds = circle_at_from_points(8.0, 0.0, 5.0)
     test_velocity = vector_to(1.0, 0.0)
     result_vector = vector_out_of_circle_from_circle(test_circle_src, test_circle_bounds, test_velocity)
-    assert -3.42 == result_vector.X
-    assert 0.0 == result_vector.Y
+    assert -3.42 == result_vector.x
+    assert 0.0 == result_vector.y
 
 
 def test_vector_out_of_circle_from_point_integration():
     test_point = point_at(100.0, 100.0)
-    test_circle = circle_at(100.0, 100.0, 10.0)
+    test_circle = circle_at_from_points(100.0, 100.0, 10.0)
     test_velocity = vector_to(1.0, 0.0)
     result_vector = vector_out_of_circle_from_point(test_point, test_circle, test_velocity)
-    assert -11.42 == result_vector.X
-    assert 0.0 == result_vector.Y
+    assert -11.42 == result_vector.x
+    assert 0.0 == result_vector.y
 
 
 def test_vector_out_of_rect_from_circle_integration():
-    test_circle = circle_at(75.0, 75.0, 25.0)
+    test_circle = circle_at_from_points(75.0, 75.0, 25.0)
     test_rect = rectangle_from(0.0, 0.0, 100.0, 100.0)
     test_velocity = vector_to(1.0, 0.0)
     result_vector = vector_out_of_rect_from_circle(test_circle, test_rect, test_velocity)
-    assert -101.42 == result_vector.X
-    assert 0.0 == result_vector.Y
+    assert -101.42 == result_vector.x
+    assert 0.0 == result_vector.y
 
 
 def test_vector_out_of_rect_from_point_integration():
@@ -634,8 +634,8 @@ def test_vector_out_of_rect_from_point_integration():
     test_rect = rectangle_from(0.0, 0.0, 100.0, 100.0)
     test_velocity = vector_to(1.0, 0.0)
     result_vector = vector_out_of_rect_from_point(test_point, test_rect, test_velocity)
-    assert -76.4 == result_vector.X
-    assert 0.0 == result_vector.Y
+    assert -76.4 == result_vector.x
+    assert 0.0 == result_vector.y
 
 
 def test_vector_out_of_rect_from_rect_integration():
@@ -643,37 +643,37 @@ def test_vector_out_of_rect_from_rect_integration():
     test_bounds_rect = rectangle_from(0.0, 0.0, 100.0, 100.0)
     test_velocity = vector_to(1.0, 0.0)
     result_vector = vector_out_of_rect_from_rect(test_src_rect, test_bounds_rect, test_velocity)
-    assert -126.0 == result_vector.X
-    assert 0.0 == result_vector.Y
+    assert -126.0 == result_vector.x
+    assert 0.0 == result_vector.y
 
 
 def test_vector_point_to_point_integration():
     test_start_point = point_at(0.0, 0.0)
     test_end_point = point_at(3.0, 4.0)
     result_vector = vector_point_to_point(test_start_point, test_end_point)
-    assert 3.0 == result_vector.X
-    assert 4.0 == result_vector.Y
+    assert 3.0 == result_vector.x
+    assert 4.0 == result_vector.y
 
 
 def test_vector_subtract_integration():
     test_vector1 = vector_to(3.0, 4.0)
     test_vector2 = vector_to(1.0, 1.0)
     result_vector = vector_subtract(test_vector1, test_vector2)
-    assert 2.0 == result_vector.X
-    assert 3.0 == result_vector.Y
+    assert 2.0 == result_vector.x
+    assert 3.0 == result_vector.y
 
 
 def test_vector_to_point_integration():
     test_point = point_at(3.0, 4.0)
     result_vector = vector_to_point(test_point)
-    assert 3.0 == result_vector.X
-    assert 4.0 == result_vector.Y
+    assert 3.0 == result_vector.x
+    assert 4.0 == result_vector.y
 
 
 def test_vector_to_integration():
     test_vector = vector_to(3.0, 4.0)
-    assert 3.0 == test_vector.X
-    assert 4.0 == test_vector.Y
+    assert 3.0 == test_vector.x
+    assert 4.0 == test_vector.y
 
 
 def test_vector_to_string_integration():

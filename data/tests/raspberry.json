@@ -495,7 +495,7 @@
               "value": "pin18"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             }
           ]
@@ -568,7 +568,7 @@
               "value": "pin18"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1000
             }
           ]
@@ -641,7 +641,7 @@
               "value": "pin11"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1024
             }
           ]
@@ -656,7 +656,7 @@
               "value": "pin11"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 512
             }
           ]

@@ -3,7 +3,7 @@
 module TestGenerator
   # Module for looking up tests and functions by their unique names
   module FunctionLookup
-    # Determines the appropriate function name based on the step configuration
+    # Determines the appropriate function name based on the configuration
     # @param step [Hash] The step containing the function name
     # @param config [Object] The language configuration object
     # @param functions [Array<Function>] List of available functions
@@ -11,8 +11,7 @@ module TestGenerator
     # @raise [Error] If global function is not found
     def self.determine_function_name(step, config, functions)
       function = get_function_by_unique_global_name(step[:function_name], functions)
-
-      # MessageHandler.log_info("Found function: #{function.name}")
+      MessageHandler.log_info("Found function: #{function.name}")
       config.supports_overloading ? function.name : function.unique_global_name
     rescue NoMethodError => e
       raise HandlerError, "Error processing function '#{step[:function_name]}': #{e.message}"

@@ -20,7 +20,7 @@ def test_path_to_resource_integration():
 
 def test_path_to_resources_integration():
     resource_path = path_to_resources()
-    assert resource_path is not None
+    assert len(resource_path) > 0
     set_resources_path("/new/resources")
     new_resource_path = path_to_resources()
     assert "/new/resources" == new_resource_path

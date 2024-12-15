@@ -1,0 +1,7 @@
+[package]
+name = "splashkit_tests"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+splashkit = { path = "../../data/generated/rust" }

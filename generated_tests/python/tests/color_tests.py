@@ -1237,11 +1237,11 @@ def test_red_of_integration():
 
 
 def test_rgb_color_from_double_integration():
-    red_color = rgb_color(1.0, 0.0, 0.0)
+    red_color = rgb_color_from_double(1.0, 0.0, 0.0)
     assert 255 == red_of(red_color)
     assert 0 == green_of(red_color)
     assert 0 == blue_of(red_color)
-    green_color = rgb_color(0.0, 1.0, 0.0)
+    green_color = rgb_color_from_double(0.0, 1.0, 0.0)
     assert 0 == red_of(green_color)
     assert 255 == green_of(green_color)
     assert 0 == blue_of(green_color)
@@ -1256,7 +1256,7 @@ def test_rgb_color_integration():
 
 
 def test_rgba_color_from_double_integration():
-    test_color = rgba_color(1.0, 0.5, 0.0, 0.75)
+    test_color = rgba_color_from_double(1.0, 0.5, 0.0, 0.75)
     assert 255 == red_of(test_color)
     assert 127 == green_of(test_color)
     assert 0 == blue_of(test_color)

@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -124,7 +126,7 @@ namespace SplashKitTests
         public void TestCloseAllConnectionsIntegration()
         {
             var testServer = CreateServer("test_server", 5000);
-            var testConnection = OpenConnection("test_connection", "127.0.0.1", 5000);
+            OpenConnection("test_connection", "127.0.0.1", 5000);
             CheckNetworkActivity();
             Assert.True(HasConnection("test_connection"));
             CloseAllConnections();
@@ -135,8 +137,8 @@ namespace SplashKitTests
         [Fact]
         public void TestCloseAllServersIntegration()
         {
-            var testServer1 = CreateServer("test_server_1", 5000);
-            var testServer2 = CreateServer("test_server_2", 5001);
+            CreateServer("test_server_1", 5000);
+            CreateServer("test_server_2", 5001);
             Assert.True(HasServer("test_server_1"));
             Assert.True(HasServer("test_server_2"));
             CloseAllServers();
@@ -185,7 +187,7 @@ namespace SplashKitTests
         [Fact]
         public void TestCloseServerNamedIntegration()
         {
-            var testServer = CreateServer("test_server", 5000);
+            CreateServer("test_server", 5000);
             var closeResult = CloseServer("test_server");
             Assert.True(closeResult);
             Assert.False(HasServer("test_server"));
@@ -292,7 +294,7 @@ namespace SplashKitTests
         [Fact]
         public void TestDecToHexIntegration()
         {
-            var testHexResult = DecToHex(2130706433);
+            var testHexResult = DecToHex(2130706433u);
             Assert.Equal("0x7F000001", testHexResult);
         }
         [Fact]
@@ -416,7 +418,7 @@ namespace SplashKitTests
         [Fact]
         public void TestIpv4ToStrIntegration()
         {
-            var testIPStr = Ipv4ToStr(2130706433);
+            var testIPStr = Ipv4ToStr(2130706433u);
             Assert.Equal("127.0.0.1", testIPStr);
         }
         [Fact]
@@ -497,7 +499,7 @@ namespace SplashKitTests
             CheckNetworkActivity();
             SendMessageTo("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.True(MessageCount(testConnection));
+            Assert.True(MessageCount(testConnection) > 0);
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
@@ -509,7 +511,7 @@ namespace SplashKitTests
             CheckNetworkActivity();
             SendMessageTo("Test Message", testConnection);
             CheckNetworkActivity();
-            Assert.Equal(1, MessageCount("test_server"));
+            Assert.Equal(1, MessageCount(testServer));
             CloseConnection(testConnection);
             CloseServer(testServer);
         }
@@ -537,7 +539,7 @@ namespace SplashKitTests
             CheckNetworkActivity();
             var testMessage = ReadMessage(testServer);
             var testMessageBytes = MessageDataBytes(testMessage);
-            Assert.NotNull(testMessageBytes);
+            Assert.NotEmpty(testMessageBytes);
             CloseMessage(testMessage);
             CloseConnection(testConnection);
             CloseServer(testServer);
@@ -593,7 +595,7 @@ namespace SplashKitTests
         [Fact]
         public void TestNameForConnectionIntegration()
         {
-            var testConnectionName = NameForConnection("localhost", 8080);
+            var testConnectionName = NameForConnection("localhost", 8080u);
             Assert.Equal("localhost:8080", testConnectionName);
         }
         [Fact]
@@ -753,9 +755,9 @@ namespace SplashKitTests
         [Fact]
         public void TestReleaseAllConnectionsIntegration()
         {
-            var testServer = CreateServer("test_server", 8080);
-            var testConnection1 = OpenConnection("test_connection1", "127.0.0.1", 8080);
-            var testConnection2 = OpenConnection("test_connection2", "127.0.0.1", 8080);
+            CreateServer("test_server", 8080);
+            OpenConnection("test_connection1", "127.0.0.1", 8080);
+            OpenConnection("test_connection2", "127.0.0.1", 8080);
             CheckNetworkActivity();
             Assert.True(HasConnection("test_connection1"));
             Assert.True(HasConnection("test_connection2"));
@@ -853,7 +855,7 @@ namespace SplashKitTests
         [Fact]
         public void TestSetUDPPacketSizeIntegration()
         {
-            SetUDPPacketSize(1024);
+            SetUDPPacketSize(1024u);
             Assert.Equal(1024, UDPPacketSize());
         }
         [Fact]
@@ -907,7 +909,7 @@ namespace SplashKitTests
             var testResponse = HttpGet("http://localhost:8080/test", 80);
             Assert.NotNull(testResponse);
             FreeResponse(testResponse);
-            Assert.Equal("IntPtr.Zero", testResponse);
+            Assert.Null(testResponse);
             CloseServer(testServer);
         }
         [Fact]
@@ -929,7 +931,7 @@ namespace SplashKitTests
             var testResponse = HttpPost("http://localhost:8080/test", 80, "Test Body", headers);
             Assert.NotNull(testResponse);
             var responseText = HttpResponseToString(testResponse);
-            Assert.Contains("Test Body", responseText);
+            Assert.True(Contains(responseText, "Test Body"));
             FreeResponse(testResponse);
             CloseServer(testServer);
         }
@@ -940,7 +942,7 @@ namespace SplashKitTests
             var testResponse = HttpPost("http://localhost:8080/test", 80, "Test Body");
             Assert.NotNull(testResponse);
             var responseText = HttpResponseToString(testResponse);
-            Assert.Contains("Test Body", responseText);
+            Assert.True(Contains(responseText, "Test Body"));
             FreeResponse(testResponse);
             CloseServer(testServer);
         }
@@ -1281,7 +1283,7 @@ namespace SplashKitTests
         public void TestStartWebServerIntegration()
         {
             var testServer = StartWebServer(8080);
-            Assert.NotEqual("testServer", {:value_type=>"pointer_zero"});
+            Assert.NotNull(testServer);
             StopWebServer(testServer);
         }
         [Fact]

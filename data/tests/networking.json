@@ -9,11 +9,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -24,15 +24,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -90,11 +90,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -105,15 +105,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -176,11 +176,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -191,15 +191,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -210,15 +210,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -234,7 +234,7 @@
           "function_name": "broadcast_message",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -254,7 +254,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -271,7 +271,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -307,11 +307,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -322,15 +322,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -341,15 +341,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -365,7 +365,7 @@
           "function_name": "broadcast_message_to_all",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             }
           ]
@@ -381,7 +381,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -398,7 +398,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -434,11 +434,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -449,15 +449,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -473,11 +473,11 @@
           "function_name": "broadcast_message_to_server_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             }
           ]
@@ -493,7 +493,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -534,11 +534,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -549,15 +549,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -610,11 +610,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -625,15 +625,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -649,7 +649,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -669,7 +669,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -685,7 +685,7 @@
           "function_name": "clear_messages_from_name",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             }
           ]
@@ -701,7 +701,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -742,11 +742,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -757,15 +757,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -781,7 +781,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -801,7 +801,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -828,7 +828,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_connection",
               "args": [
                 {
                   "value_type": "variable",
@@ -869,11 +869,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -884,15 +884,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -908,7 +908,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -928,7 +928,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_server",
               "args": [
                 {
                   "value_type": "variable",
@@ -941,7 +941,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "clear_messages_from_connection",
+          "function_name": "clear_messages_from_server",
           "args": [
             {
               "value_type": "variable",
@@ -960,7 +960,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "has_messages",
+              "function_name": "has_messages_on_server",
               "args": [
                 {
                   "value_type": "variable",
@@ -991,11 +991,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1006,19 +1006,18 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
-          ],
-          "store_result": "test_connection"
+          ]
         },
         {
           "step_type": "function",
@@ -1034,7 +1033,7 @@
               "function_name": "has_connection",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection"
                 }
               ]
@@ -1061,7 +1060,7 @@
               "function_name": "has_connection",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection"
                 }
               ]
@@ -1089,30 +1088,28 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server_1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
-          ],
-          "store_result": "test_server1"
+          ]
         },
         {
           "step_type": "function",
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server_2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5001
             }
-          ],
-          "store_result": "test_server2"
+          ]
         },
         {
           "step_type": "assertion",
@@ -1123,7 +1120,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server_1"
                 }
               ]
@@ -1140,7 +1137,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server_2"
                 }
               ]
@@ -1162,7 +1159,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server_1"
                 }
               ]
@@ -1179,7 +1176,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server_2"
                 }
               ]
@@ -1197,11 +1194,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1212,15 +1209,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -1290,11 +1287,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1305,15 +1302,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -1346,7 +1343,7 @@
           "function_name": "close_connection_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             }
           ],
@@ -1400,11 +1397,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1415,15 +1412,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1439,7 +1436,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -1534,22 +1531,21 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
-          ],
-          "store_result": "test_server"
+          ]
         },
         {
           "step_type": "function",
           "function_name": "close_server_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             }
           ],
@@ -1575,7 +1571,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -1593,11 +1589,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1634,7 +1630,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -1652,11 +1648,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1667,15 +1663,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ]
@@ -1690,7 +1686,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             },
             "value2": {
@@ -1698,7 +1694,7 @@
               "function_name": "connection_count_named",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -1730,11 +1726,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1745,15 +1741,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1769,7 +1765,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             },
             "value2": {
@@ -1814,11 +1810,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1829,15 +1825,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -1864,7 +1860,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 2130706433
             },
             "value2": {
@@ -1903,11 +1899,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -1918,15 +1914,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -1942,7 +1938,7 @@
           "function_name": "connection_ip_from_name",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             }
           ],
@@ -1953,7 +1949,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 2130706433
             },
             "value2": {
@@ -1992,11 +1988,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2007,15 +2003,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2031,7 +2027,7 @@
           "function_name": "connection_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             }
           ],
@@ -2078,11 +2074,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2093,15 +2089,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2128,7 +2124,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 5000
             },
             "value2": {
@@ -2167,11 +2163,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2182,15 +2178,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2206,7 +2202,7 @@
           "function_name": "connection_port_from_name",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             }
           ],
@@ -2217,7 +2213,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 5000
             },
             "value2": {
@@ -2256,11 +2252,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2286,7 +2282,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -2314,11 +2310,11 @@
           "function_name": "create_server_with_port_and_protocol",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             },
             {
@@ -2349,7 +2345,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -2377,7 +2373,7 @@
           "function_name": "dec_to_hex",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_int",
               "value": 2130706433
             }
           ],
@@ -2388,7 +2384,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "0x7F000001"
             },
             "value2": {
@@ -2407,11 +2403,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2422,15 +2418,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ]
@@ -2492,11 +2488,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -2507,15 +2503,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -2535,7 +2531,7 @@
               "function_name": "has_connection",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection"
                 }
               ]
@@ -2562,7 +2558,7 @@
               "function_name": "has_connection",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection"
                 }
               ]
@@ -2590,11 +2586,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2605,15 +2601,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2641,7 +2637,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_message"
             },
             {
@@ -2697,11 +2693,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2712,15 +2708,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2736,7 +2732,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -2797,11 +2793,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2812,15 +2808,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2836,7 +2832,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -2859,7 +2855,7 @@
               "function_name": "has_messages_on_name",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -2897,11 +2893,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2912,15 +2908,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -2931,7 +2927,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -2992,11 +2988,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3007,15 +3003,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3068,11 +3064,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3087,7 +3083,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -3114,7 +3110,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -3132,7 +3128,7 @@
           "function_name": "hex_str_to_ipv4",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "0x7F000001"
             }
           ],
@@ -3143,7 +3139,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             "value2": {
@@ -3157,7 +3153,7 @@
           "function_name": "hex_str_to_ipv4",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "7F000001"
             }
           ],
@@ -3168,7 +3164,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             "value2": {
@@ -3187,7 +3183,7 @@
           "function_name": "hex_to_dec_string",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "7F"
             }
           ],
@@ -3198,7 +3194,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127"
             },
             "value2": {
@@ -3212,7 +3208,7 @@
           "function_name": "hex_to_dec_string",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "0x7F"
             }
           ],
@@ -3223,7 +3219,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127"
             },
             "value2": {
@@ -3242,7 +3238,7 @@
           "function_name": "ipv4_to_dec",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             }
           ],
@@ -3253,7 +3249,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 2130706433
             },
             "value2": {
@@ -3267,7 +3263,7 @@
           "function_name": "ipv4_to_dec",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "192.168.1.1"
             }
           ],
@@ -3278,7 +3274,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 3232235777
             },
             "value2": {
@@ -3297,7 +3293,7 @@
           "function_name": "ipv4_to_hex",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             }
           ],
@@ -3308,7 +3304,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "0x7F000001"
             },
             "value2": {
@@ -3327,7 +3323,7 @@
           "function_name": "ipv4_to_str",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_int",
               "value": 2130706433
             }
           ],
@@ -3338,7 +3334,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             "value2": {
@@ -3357,11 +3353,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3372,15 +3368,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3455,11 +3451,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3470,15 +3466,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3498,7 +3494,7 @@
               "function_name": "is_connection_open_from_name",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection"
                 }
               ]
@@ -3525,7 +3521,7 @@
               "function_name": "is_connection_open_from_name",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection"
                 }
               ]
@@ -3553,11 +3549,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3568,15 +3564,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3592,7 +3588,7 @@
           "function_name": "last_connection_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             }
           ],
@@ -3642,11 +3638,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3657,15 +3653,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3731,11 +3727,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3746,15 +3742,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3770,7 +3766,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -3786,7 +3782,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_server",
           "args": [
             {
               "value_type": "variable",
@@ -3855,11 +3851,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3870,15 +3866,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3894,7 +3890,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -3913,7 +3909,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             },
             "value2": {
@@ -3958,11 +3954,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3973,15 +3969,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -3997,7 +3993,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -4014,7 +4010,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "greater_than",
             "value1": {
               "value_type": "function",
               "function_name": "message_count_on_connection",
@@ -4025,7 +4021,10 @@
                 }
               ]
             },
-            "value2": null
+            "value2": {
+              "value_type": "int",
+              "value": 0
+            }
           }
         },
         {
@@ -4058,11 +4057,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4073,15 +4072,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4097,7 +4096,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -4116,7 +4115,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             },
             "value2": {
@@ -4124,8 +4123,8 @@
               "function_name": "message_count_on_server",
               "args": [
                 {
-                  "value_type": "primitive",
-                  "value": "test_server"
+                  "value_type": "variable",
+                  "variable_name": "test_server"
                 }
               ]
             }
@@ -4161,11 +4160,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4176,15 +4175,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4200,7 +4199,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -4216,7 +4215,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_server",
           "args": [
             {
               "value_type": "variable",
@@ -4230,7 +4229,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             "value2": {
@@ -4285,11 +4284,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4300,15 +4299,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4324,7 +4323,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -4340,7 +4339,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_server",
           "args": [
             {
               "value_type": "variable",
@@ -4363,7 +4362,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "not_empty",
             "value1": {
               "value_type": "variable",
               "variable_name": "test_message_bytes"
@@ -4411,11 +4410,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4426,15 +4425,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4450,7 +4449,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -4466,7 +4465,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_server",
           "args": [
             {
               "value_type": "variable",
@@ -4480,7 +4479,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             "value2": {
@@ -4535,11 +4534,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4550,15 +4549,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4574,7 +4573,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -4590,7 +4589,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_server",
           "args": [
             {
               "value_type": "variable",
@@ -4604,7 +4603,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 5000
             },
             "value2": {
@@ -4656,14 +4655,14 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "create_server_with_port",
+          "function_name": "create_server_with_port_and_protocol",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             },
             {
@@ -4676,18 +4675,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "open_connection",
+          "function_name": "open_connection_with_protocol",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             },
             {
@@ -4708,7 +4707,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -4724,7 +4723,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "read_message",
+          "function_name": "read_message_from_server",
           "args": [
             {
               "value_type": "variable",
@@ -4800,7 +4799,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             "value2": {
@@ -4819,11 +4818,11 @@
           "function_name": "name_for_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "localhost"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_int",
               "value": 8080
             }
           ],
@@ -4834,7 +4833,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "localhost:8080"
             },
             "value2": {
@@ -4853,11 +4852,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4868,15 +4867,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -4892,7 +4891,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             },
             "value2": {
@@ -4937,11 +4936,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -4952,15 +4951,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -5043,14 +5042,14 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "create_server_with_port",
+          "function_name": "create_server_with_port_and_protocol",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             },
             {
@@ -5066,15 +5065,15 @@
           "function_name": "open_connection_with_protocol",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             },
             {
@@ -5131,11 +5130,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5146,15 +5145,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5170,7 +5169,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -5195,7 +5194,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             "value2": {
@@ -5250,11 +5249,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5265,15 +5264,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5289,7 +5288,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -5319,7 +5318,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             "value2": {
@@ -5374,11 +5373,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5389,15 +5388,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5413,7 +5412,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -5432,7 +5431,7 @@
           "function_name": "read_message_from_name",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             }
           ],
@@ -5443,7 +5442,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             "value2": {
@@ -5498,11 +5497,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5513,15 +5512,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5537,7 +5536,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -5567,7 +5566,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             "value2": {
@@ -5622,11 +5621,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5637,15 +5636,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5661,7 +5660,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -5680,7 +5679,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             "value2": {
@@ -5688,7 +5687,7 @@
               "function_name": "read_message_data_from_name",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -5725,11 +5724,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5740,15 +5739,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5764,7 +5763,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -5783,7 +5782,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             "value2": {
@@ -5828,11 +5827,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5843,15 +5842,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5867,7 +5866,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -5886,7 +5885,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             "value2": {
@@ -5931,11 +5930,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -5946,15 +5945,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6059,11 +6058,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6074,15 +6073,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6130,7 +6129,7 @@
           "function_name": "reconnect_from_name",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             }
           ]
@@ -6146,10 +6145,10 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "is_connection_open",
+              "function_name": "is_connection_open_from_name",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection"
                 }
               ]
@@ -6187,53 +6186,50 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
-          ],
-          "store_result": "test_server"
+          ]
         },
         {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
-          ],
-          "store_result": "test_connection1"
+          ]
         },
         {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
-          ],
-          "store_result": "test_connection2"
+          ]
         },
         {
           "step_type": "function",
@@ -6249,7 +6245,7 @@
               "function_name": "has_connection",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection1"
                 }
               ]
@@ -6266,7 +6262,7 @@
               "function_name": "has_connection",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection2"
                 }
               ]
@@ -6288,7 +6284,7 @@
               "function_name": "has_connection",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection1"
                 }
               ]
@@ -6305,7 +6301,7 @@
               "function_name": "has_connection",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_connection2"
                 }
               ]
@@ -6322,7 +6318,7 @@
               "function_name": "has_server",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -6340,11 +6336,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6355,15 +6351,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6389,7 +6385,7 @@
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1
             }
           }
@@ -6409,7 +6405,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -6454,11 +6450,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6469,15 +6465,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6493,11 +6489,11 @@
           "function_name": "retrieve_connection_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             }
           ],
@@ -6547,11 +6543,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6562,15 +6558,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6590,7 +6586,7 @@
               "variable_name": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             }
           ],
@@ -6640,11 +6636,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6655,15 +6651,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6679,7 +6675,7 @@
           "function_name": "send_message_to_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
@@ -6735,11 +6731,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6750,15 +6746,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6774,11 +6770,11 @@
           "function_name": "send_message_to_name",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             }
           ],
@@ -6830,11 +6826,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6845,15 +6841,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ]
@@ -6872,7 +6868,7 @@
               "function_name": "server_has_new_connection_named",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_server"
                 }
               ]
@@ -6905,11 +6901,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6920,15 +6916,15 @@
           "function_name": "open_connection",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_connection"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "127.0.0.1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ]
@@ -6980,11 +6976,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 5000
             }
           ],
@@ -6995,7 +6991,7 @@
           "function_name": "server_named",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             }
           ],
@@ -7035,7 +7031,7 @@
           "function_name": "set_udp_packet_size",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_int",
               "value": 1024
             }
           ]
@@ -7045,7 +7041,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1024
             },
             "value2": {
@@ -7075,7 +7071,7 @@
               "variable_name": "test_packet_size"
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             }
           }
@@ -7090,11 +7086,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7105,15 +7101,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -7124,15 +7120,15 @@
           "function_name": "download_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_image"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test/resources/images/frog.png"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -7189,11 +7185,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7204,15 +7200,15 @@
           "function_name": "download_font",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_font"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test/resources/fonts/hara.ttf"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -7259,11 +7255,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7274,15 +7270,15 @@
           "function_name": "download_music",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_music"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test/resources/music/280.mp3"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -7329,11 +7325,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7344,15 +7340,15 @@
           "function_name": "download_sound_effect",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_sound"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test/resources/sounds/breakdance.wav"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -7399,11 +7395,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7414,11 +7410,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -7448,12 +7444,8 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "null",
             "value1": {
-              "value_type": "primitive",
-              "value": "IntPtr.Zero"
-            },
-            "value2": {
               "value_type": "variable",
               "variable_name": "test_response"
             }
@@ -7479,11 +7471,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7494,11 +7486,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -7567,11 +7559,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7584,11 +7576,11 @@
           "target_type": "string",
           "value": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Content-Type: application/json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Accept: application/json"
             }
           ]
@@ -7598,15 +7590,15 @@
           "function_name": "http_post_with_headers",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Body"
             },
             {
@@ -7641,14 +7633,20 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "contains",
+            "compare_type": "true",
             "value1": {
-              "value_type": "primitive",
-              "value": "Test Body"
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "response_text"
+              "value_type": "function",
+              "function_name": "contains",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "response_text"
+                },
+                {
+                  "value_type": "string",
+                  "value": "Test Body"
+                }
+              ]
             }
           }
         },
@@ -7682,11 +7680,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7697,15 +7695,15 @@
           "function_name": "http_post",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Body"
             }
           ],
@@ -7736,14 +7734,20 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "contains",
+            "compare_type": "true",
             "value1": {
-              "value_type": "primitive",
-              "value": "Test Body"
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "response_text"
+              "value_type": "function",
+              "function_name": "contains",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "response_text"
+                },
+                {
+                  "value_type": "string",
+                  "value": "Test Body"
+                }
+              ]
             }
           }
         },
@@ -7777,11 +7781,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7792,11 +7796,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -7854,11 +7858,11 @@
           "function_name": "create_server_with_port",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_server"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7869,11 +7873,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -7881,7 +7885,7 @@
         },
         {
           "step_type": "variable",
-          "value_type": "primitive",
+          "value_type": "string",
           "variable_name": "test_file",
           "value": "test_output.txt"
         },
@@ -7929,7 +7933,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -7957,11 +7961,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -8014,7 +8018,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8025,11 +8029,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -8076,7 +8080,7 @@
                   "variable_name": "test_request"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test"
                 }
               ]
@@ -8114,7 +8118,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8125,11 +8129,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -8176,7 +8180,7 @@
                   "variable_name": "test_request"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test"
                 }
               ]
@@ -8214,7 +8218,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8225,11 +8229,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -8276,7 +8280,7 @@
                   "variable_name": "test_request"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test"
                 }
               ]
@@ -8314,7 +8318,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8325,15 +8329,15 @@
           "function_name": "http_post",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test_path"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test=123"
             }
           ],
@@ -8380,7 +8384,7 @@
                   "variable_name": "test_request"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test_path"
                 }
               ]
@@ -8418,7 +8422,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8429,11 +8433,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -8480,7 +8484,7 @@
                   "variable_name": "test_request"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test"
                 }
               ]
@@ -8518,7 +8522,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8529,11 +8533,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -8585,7 +8589,7 @@
                   "value": "http_get_method"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test"
                 }
               ]
@@ -8623,7 +8627,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8634,11 +8638,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -8685,7 +8689,7 @@
                   "variable_name": "test_request"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test"
                 }
               ]
@@ -8723,7 +8727,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8788,7 +8792,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8799,15 +8803,15 @@
           "function_name": "http_post",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test body"
             }
           ],
@@ -8829,7 +8833,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test body"
             },
             "value2": {
@@ -8874,7 +8878,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8885,11 +8889,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test?param1=value1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -8919,7 +8923,7 @@
                   "variable_name": "test_request"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "param1"
                 }
               ]
@@ -8940,7 +8944,7 @@
                   "variable_name": "test_request"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "nonexistent_param"
                 }
               ]
@@ -8978,7 +8982,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -8989,11 +8993,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9057,7 +9061,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9068,11 +9072,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9140,7 +9144,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9151,11 +9155,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test?param1=value1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9181,11 +9185,11 @@
               "variable_name": "test_request"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "param1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "default_value"
             }
           ],
@@ -9196,7 +9200,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value1"
             },
             "value2": {
@@ -9235,7 +9239,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9246,11 +9250,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test?param1=value1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9283,7 +9287,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "param1=value1"
             },
             "value2": {
@@ -9322,7 +9326,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9333,11 +9337,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9370,7 +9374,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/test"
             },
             "value2": {
@@ -9409,7 +9413,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9420,11 +9424,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test/path"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9461,11 +9465,11 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "path"
                 }
               ]
@@ -9506,7 +9510,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9517,11 +9521,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test.css"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9547,7 +9551,7 @@
               "variable_name": "test_request"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.css"
             }
           ]
@@ -9570,7 +9574,7 @@
                   "value": "http_get_method"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test.css"
                 }
               ]
@@ -9608,7 +9612,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9619,11 +9623,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test.txt"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9649,11 +9653,11 @@
               "variable_name": "test_request"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.txt"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "text/plain"
             }
           ]
@@ -9676,7 +9680,7 @@
                   "value": "http_get_method"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test.txt"
                 }
               ]
@@ -9714,7 +9718,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9725,11 +9729,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test.html"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9755,7 +9759,7 @@
               "variable_name": "test_request"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.html"
             }
           ]
@@ -9778,7 +9782,7 @@
                   "value": "http_get_method"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test.html"
                 }
               ]
@@ -9816,7 +9820,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9827,11 +9831,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test.js"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9857,7 +9861,7 @@
               "variable_name": "test_request"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.js"
             }
           ]
@@ -9880,7 +9884,7 @@
                   "value": "http_get_method"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "/test.js"
                 }
               ]
@@ -9918,7 +9922,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -9929,11 +9933,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -9990,7 +9994,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -10001,11 +10005,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -10031,7 +10035,7 @@
               "variable_name": "test_request"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             }
           ]
@@ -10066,7 +10070,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -10077,11 +10081,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -10143,7 +10147,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -10154,11 +10158,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -10189,7 +10193,7 @@
               "value": "http_status_ok"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             }
           ]
@@ -10224,7 +10228,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -10235,11 +10239,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -10270,11 +10274,11 @@
               "value": "http_status_ok"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "text/plain"
             }
           ]
@@ -10309,7 +10313,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -10320,11 +10324,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -10355,11 +10359,11 @@
               "value": "http_status_ok"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "text/plain"
             },
             {
@@ -10367,11 +10371,11 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Header1: Value1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "Header2: Value2"
                 }
               ]
@@ -10408,7 +10412,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -10419,11 +10423,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],
@@ -10455,11 +10459,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "message"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Message"
             }
           ]
@@ -10518,7 +10522,7 @@
           "function_name": "split_uri_stubs",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/names/0"
             }
           ],
@@ -10532,11 +10536,11 @@
               "value_type": "list",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "names"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "0"
                 }
               ]
@@ -10552,7 +10556,7 @@
           "function_name": "split_uri_stubs",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/"
             }
           ],
@@ -10611,7 +10615,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -10620,13 +10624,10 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "not_null",
             "value1": {
-              "value_type": "primitive",
-              "value": "testServer"
-            },
-            "value2": {
-              "value_type": "pointer_zero"
+              "value_type": "variable",
+              "variable_name": "test_server"
             }
           }
         },
@@ -10650,7 +10651,7 @@
           "function_name": "start_web_server",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 8080
             }
           ],
@@ -10661,11 +10662,11 @@
           "function_name": "http_get",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "http://localhost:8080/test"
             },
             {
-              "value_type": "primitive",
+              "value_type": "unsigned_short",
               "value": 80
             }
           ],

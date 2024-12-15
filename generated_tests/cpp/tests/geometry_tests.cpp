@@ -3,13 +3,13 @@
 
 class TestGeometry {
 public:
-    TEST_CASE("center_point_integration") {
+    TEST_CASE("center_point_of_circle_integration") {
         auto test_circle = circle_at(100.0, 100.0, 50.0);
         auto test_center_point = center_point(test_circle);
         REQUIRE(test_center_point == point_at(100.0, 100.0));
     }
     TEST_CASE("circle_at_integration") {
-        auto test_window = open_window("Test Window", 800, 600);
+        auto test_window = open_window(string("Test Window"), 800, 600);
         auto test_circle = circle_at(point_at(400.0, 300.0), 50.0);
         draw_circle(color_black(), test_circle);
         refresh_screen();
@@ -17,7 +17,7 @@ public:
         close_window(test_window);
     }
     TEST_CASE("circle_at_from_points_integration") {
-        auto test_window = open_window("Circle Test", 800, 600);
+        auto test_window = open_window(string("Circle Test"), 800, 600);
         auto test_circle = circle_at(400.0, 300.0, 50.0);
         draw_circle(color_black(), test_circle, option_defaults());
         refresh_screen();
@@ -38,7 +38,8 @@ public:
     TEST_CASE("circle_triangle_intersect_get_closest_point_integration") {
         auto test_circle = circle_at(100.0, 100.0, 50.0);
         auto test_triangle = triangle_from(point_at(50.0, 50.0), point_at(150.0, 50.0), point_at(100.0, 150.0));
-        auto test_result = circle_triangle_intersect(test_circle, test_triangle, point_at(0.0, 0.0));
+        auto test_point = point_at(0.0, 0.0);
+        auto test_result = circle_triangle_intersect(test_circle, test_triangle, &test_point);
         REQUIRE(test_result);
         REQUIRE(circle_radius(test_circle) == point_point_distance(center_point(test_circle), closest_point_on_triangle_from_circle(test_circle, test_triangle)));
     }
@@ -101,7 +102,7 @@ public:
         auto test_point1 = point_at(150.0, 100.0);
         auto test_heading = vector_from_angle(180.0, 1.0);
         auto test_point2 = point_at(0.0, 0.0);
-        auto test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, test_point2);
+        auto test_result = distant_point_on_circle_heading(test_point1, test_circle, test_heading, &test_point2);
         REQUIRE(test_result);
         REQUIRE(50.0 == test_point1->x);
         REQUIRE(100.0 == test_point1->y);
@@ -111,7 +112,7 @@ public:
         auto test_ray_origin = point_at(0.0, 0.0);
         auto test_ray_heading = vector_from_angle(45.0, 1.0);
         auto test_distance = ray_circle_intersect_distance(test_ray_origin, test_ray_heading, test_circle);
-        REQUIRE(test_distance >= 70 && test_distance <= 71);
+        REQUIRE(test_distance >= 70.0f && test_distance <= 71.0f);
     }
     TEST_CASE("tangent_points_integration") {
         auto test_from_pt = point_at(100.0, 100.0);
@@ -128,8 +129,8 @@ public:
         auto test_point1 = point_at(0.0, 0.0);
         auto test_point2 = point_at(0.0, 0.0);
         widest_points(test_circle, test_vector, &test_point1, &test_point2);
-        REQUIRE(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
-        REQUIRE(point_in_circle(point_at(circle_x(test_circle), circle_y(test_circle)), test_circle));
+        REQUIRE(point_in_circle(point_at(circle_x(test_circle)d, circle_y(test_circle)d), test_circle));
+        REQUIRE(point_in_circle(point_at(circle_x(test_circle)d, circle_y(test_circle)d), test_circle));
     }
     TEST_CASE("cosine_integration") {
         auto test_cosine_0 = cosine(0.0f);
@@ -164,7 +165,7 @@ public:
         auto test_line2 = line_from(point_at(0.0, -10.0), point_at(0.0, 10.0));
         auto test_index = 0;
         auto test_lines = vector<Line> { test_line1, test_line2 };
-        auto test_closest_point = closest_point_on_lines(test_from_pt, test_lines, test_index);
+        auto test_closest_point = closest_point_on_lines(test_from_pt, test_lines, &test_index);
         REQUIRE(0.0 == point_point_distance(test_from_pt, test_closest_point));
     }
     TEST_CASE("line_from_point_to_point_integration") {
@@ -242,7 +243,7 @@ public:
     TEST_CASE("line_to_string_integration") {
         auto test_line = line_from(point_at(0.0, 0.0), point_at(100.0, 100.0));
         auto test_line_string = line_to_string(test_line);
-        REQUIRE("" != test_line_string);
+        REQUIRE(string("Line from Pt @0:0 to Pt @100:100") != test_line_string);
     }
     TEST_CASE("lines_from_rectangle_integration") {
         auto test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
@@ -355,28 +356,28 @@ public:
     TEST_CASE("point_to_string_integration") {
         auto test_point = point_at(10.0, 20.0);
         auto test_string = point_to_string(test_point);
-        REQUIRE("Point(10, 20)" == test_string);
+        REQUIRE(string("Pt @10:20") == test_string);
     }
     TEST_CASE("random_bitmap_point_integration") {
-        auto test_bitmap = create_bitmap("test_bitmap", 100, 100);
+        auto test_bitmap = create_bitmap(string("test_bitmap"), 100, 100);
         auto test_point = random_bitmap_point(test_bitmap);
-        REQUIRE(test_point->x >= 0 && test_point->x <= bitmap_width(test_bitmap));
-        REQUIRE(test_point->y >= 0 && test_point->y <= bitmap_height(test_bitmap));
+        REQUIRE(test_point->x >= 0.0 && test_point->x <= bitmap_width(test_bitmap)d);
+        REQUIRE(test_point->y >= 0.0 && test_point->y <= bitmap_height(test_bitmap)d);
         free_bitmap(test_bitmap);
     }
     TEST_CASE("random_screen_point_integration") {
-        auto test_window = open_window("Test Window", 800, 600);
+        auto test_window = open_window(string("Test Window"), 800, 600);
         auto test_point = random_screen_point();
         refresh_screen();
-        REQUIRE(test_point->x >= 0 && test_point->x <= window_width(test_window));
-        REQUIRE(test_point->y >= 0 && test_point->y <= window_height(test_window));
+        REQUIRE(test_point->x >= 0.0 && test_point->x <= window_width(test_window)d);
+        REQUIRE(test_point->y >= 0.0 && test_point->y <= window_height(test_window)d);
         close_window(test_window);
     }
     TEST_CASE("random_window_point_integration") {
-        auto test_window = open_window("Test Window", 800, 600);
+        auto test_window = open_window(string("Test Window"), 800, 600);
         auto test_point = random_window_point(test_window);
-        REQUIRE(test_point->x >= 0 && test_point->x <= window_width(test_window));
-        REQUIRE(test_point->y >= 0 && test_point->y <= window_height(test_window));
+        REQUIRE(test_point->x >= 0.0 && test_point->x <= window_width(test_window)d);
+        REQUIRE(test_point->y >= 0.0 && test_point->y <= window_height(test_window)d);
         close_window(test_window);
     }
     TEST_CASE("same_point_integration") {
@@ -526,7 +527,7 @@ public:
     TEST_CASE("rectangle_to_string_integration") {
         auto test_rectangle = rectangle_from(10.0, 20.0, 30.0, 40.0);
         auto test_string = rectangle_to_string(test_rectangle);
-        REQUIRE("Rectangle(x: 10, y: 20, width: 30, height: 40)" == test_string);
+        REQUIRE(string("Rect @10,20 30x40") == test_string);
     }
     TEST_CASE("rectangle_top_integration") {
         auto test_rectangle = rectangle_from(10.0, 20.0, 50.0, 60.0);
@@ -566,7 +567,7 @@ public:
     TEST_CASE("triangle_to_string_integration") {
         auto test_triangle = triangle_from(point_at(0.0, 0.0), point_at(100.0, 0.0), point_at(50.0, 100.0));
         auto test_triangle_string = triangle_to_string(test_triangle);
-        REQUIRE("" != test_triangle_string);
+        REQUIRE(string("Triangle @Pt @0:0 - Pt @100:0 - Pt @50:100") != test_triangle_string);
     }
     TEST_CASE("triangles_intersect_integration") {
         auto test_triangle1 = triangle_from(point_at(0.0, 0.0), point_at(2.0, 0.0), point_at(1.0, 2.0));

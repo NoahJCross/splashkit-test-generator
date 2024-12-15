@@ -26,7 +26,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -57,7 +57,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -93,7 +93,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -124,7 +124,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -160,7 +160,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -191,7 +191,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value2": {
@@ -226,11 +226,11 @@
               "variable_name": "gray_brightness"
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.4
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.6
             }
           }
@@ -251,7 +251,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -271,7 +271,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 248
             },
             "value2": {
@@ -291,7 +291,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -311,7 +311,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -342,7 +342,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -362,7 +362,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 235
             },
             "value2": {
@@ -382,7 +382,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 215
             },
             "value2": {
@@ -402,7 +402,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -433,7 +433,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -453,7 +453,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -473,7 +473,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -493,7 +493,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -524,7 +524,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -544,7 +544,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -564,7 +564,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 212
             },
             "value2": {
@@ -584,7 +584,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -615,7 +615,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -635,7 +635,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -655,7 +655,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -675,7 +675,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -706,7 +706,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -726,7 +726,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -746,7 +746,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 220
             },
             "value2": {
@@ -766,7 +766,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -797,7 +797,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -817,7 +817,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 228
             },
             "value2": {
@@ -837,7 +837,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 196
             },
             "value2": {
@@ -857,7 +857,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -888,7 +888,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -908,7 +908,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -928,7 +928,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -948,7 +948,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -979,7 +979,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -999,7 +999,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 235
             },
             "value2": {
@@ -1019,7 +1019,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -1039,7 +1039,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1070,7 +1070,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -1090,7 +1090,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -1110,7 +1110,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1130,7 +1130,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1161,7 +1161,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 138
             },
             "value2": {
@@ -1181,7 +1181,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 43
             },
             "value2": {
@@ -1201,7 +1201,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 226
             },
             "value2": {
@@ -1221,7 +1221,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1252,7 +1252,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -1272,7 +1272,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1292,7 +1292,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -1312,7 +1312,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1343,7 +1343,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 165
             },
             "value2": {
@@ -1363,7 +1363,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 42
             },
             "value2": {
@@ -1383,7 +1383,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 42
             },
             "value2": {
@@ -1403,7 +1403,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1434,7 +1434,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 222
             },
             "value2": {
@@ -1454,7 +1454,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 184
             },
             "value2": {
@@ -1474,7 +1474,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 135
             },
             "value2": {
@@ -1494,7 +1494,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1525,7 +1525,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 95
             },
             "value2": {
@@ -1545,7 +1545,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 158
             },
             "value2": {
@@ -1565,7 +1565,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 160
             },
             "value2": {
@@ -1585,7 +1585,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1616,7 +1616,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -1636,7 +1636,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1656,7 +1656,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -1676,7 +1676,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1707,7 +1707,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 210
             },
             "value2": {
@@ -1727,7 +1727,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 105
             },
             "value2": {
@@ -1747,7 +1747,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 30
             },
             "value2": {
@@ -1767,7 +1767,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1798,7 +1798,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1818,7 +1818,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -1838,7 +1838,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 80
             },
             "value2": {
@@ -1858,7 +1858,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1889,7 +1889,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             "value2": {
@@ -1909,7 +1909,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 149
             },
             "value2": {
@@ -1929,7 +1929,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 237
             },
             "value2": {
@@ -1949,7 +1949,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -1980,7 +1980,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2000,7 +2000,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 248
             },
             "value2": {
@@ -2020,7 +2020,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 220
             },
             "value2": {
@@ -2040,7 +2040,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2071,7 +2071,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 220
             },
             "value2": {
@@ -2091,7 +2091,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 20
             },
             "value2": {
@@ -2111,7 +2111,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 60
             },
             "value2": {
@@ -2131,7 +2131,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2162,7 +2162,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2182,7 +2182,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2202,7 +2202,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2222,7 +2222,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2253,7 +2253,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2273,7 +2273,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2293,7 +2293,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -2313,7 +2313,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2344,7 +2344,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2364,7 +2364,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -2384,7 +2384,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -2404,7 +2404,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2435,7 +2435,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 184
             },
             "value2": {
@@ -2455,7 +2455,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 134
             },
             "value2": {
@@ -2475,7 +2475,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 11
             },
             "value2": {
@@ -2495,7 +2495,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2526,7 +2526,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 169
             },
             "value2": {
@@ -2546,7 +2546,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 169
             },
             "value2": {
@@ -2566,7 +2566,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 169
             },
             "value2": {
@@ -2586,7 +2586,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2617,7 +2617,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2637,7 +2637,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             "value2": {
@@ -2657,7 +2657,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2677,7 +2677,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2708,7 +2708,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 189
             },
             "value2": {
@@ -2728,7 +2728,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 183
             },
             "value2": {
@@ -2748,7 +2748,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 107
             },
             "value2": {
@@ -2768,7 +2768,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2799,7 +2799,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -2819,7 +2819,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -2839,7 +2839,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -2859,7 +2859,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2890,7 +2890,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 85
             },
             "value2": {
@@ -2910,7 +2910,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 107
             },
             "value2": {
@@ -2930,7 +2930,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 47
             },
             "value2": {
@@ -2950,7 +2950,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -2981,7 +2981,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3001,7 +3001,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 140
             },
             "value2": {
@@ -3021,7 +3021,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -3041,7 +3041,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3072,7 +3072,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 153
             },
             "value2": {
@@ -3092,7 +3092,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             },
             "value2": {
@@ -3112,7 +3112,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 204
             },
             "value2": {
@@ -3132,7 +3132,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3163,7 +3163,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -3183,7 +3183,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -3203,7 +3203,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -3223,7 +3223,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3254,7 +3254,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 233
             },
             "value2": {
@@ -3274,7 +3274,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 150
             },
             "value2": {
@@ -3294,7 +3294,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 122
             },
             "value2": {
@@ -3314,7 +3314,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3345,7 +3345,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 143
             },
             "value2": {
@@ -3365,7 +3365,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 188
             },
             "value2": {
@@ -3385,7 +3385,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -3405,7 +3405,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3436,7 +3436,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 72
             },
             "value2": {
@@ -3456,7 +3456,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 61
             },
             "value2": {
@@ -3476,7 +3476,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -3496,7 +3496,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3527,7 +3527,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 47
             },
             "value2": {
@@ -3547,7 +3547,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 79
             },
             "value2": {
@@ -3567,7 +3567,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 79
             },
             "value2": {
@@ -3587,7 +3587,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3618,7 +3618,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -3638,7 +3638,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 206
             },
             "value2": {
@@ -3658,7 +3658,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 209
             },
             "value2": {
@@ -3678,7 +3678,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3709,7 +3709,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 148
             },
             "value2": {
@@ -3729,7 +3729,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -3749,7 +3749,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 211
             },
             "value2": {
@@ -3769,7 +3769,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3800,7 +3800,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3820,7 +3820,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 20
             },
             "value2": {
@@ -3840,7 +3840,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 147
             },
             "value2": {
@@ -3860,7 +3860,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3891,7 +3891,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -3911,7 +3911,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 191
             },
             "value2": {
@@ -3931,7 +3931,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3951,7 +3951,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -3982,7 +3982,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 105
             },
             "value2": {
@@ -4002,7 +4002,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 105
             },
             "value2": {
@@ -4022,7 +4022,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 105
             },
             "value2": {
@@ -4042,7 +4042,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4073,7 +4073,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 30
             },
             "value2": {
@@ -4093,7 +4093,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 144
             },
             "value2": {
@@ -4113,7 +4113,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4133,7 +4133,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4164,7 +4164,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 178
             },
             "value2": {
@@ -4184,7 +4184,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 34
             },
             "value2": {
@@ -4204,7 +4204,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 34
             },
             "value2": {
@@ -4224,7 +4224,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4255,7 +4255,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4275,7 +4275,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -4295,7 +4295,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -4315,7 +4315,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4346,7 +4346,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 34
             },
             "value2": {
@@ -4366,7 +4366,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -4386,7 +4386,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 34
             },
             "value2": {
@@ -4406,7 +4406,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4437,7 +4437,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4457,7 +4457,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -4477,7 +4477,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4497,7 +4497,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4528,7 +4528,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 220
             },
             "value2": {
@@ -4548,7 +4548,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 220
             },
             "value2": {
@@ -4568,7 +4568,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 220
             },
             "value2": {
@@ -4588,7 +4588,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4619,7 +4619,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 248
             },
             "value2": {
@@ -4639,7 +4639,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 248
             },
             "value2": {
@@ -4659,7 +4659,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4679,7 +4679,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4710,7 +4710,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4730,7 +4730,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 215
             },
             "value2": {
@@ -4750,7 +4750,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -4770,7 +4770,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4801,7 +4801,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 218
             },
             "value2": {
@@ -4821,7 +4821,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 165
             },
             "value2": {
@@ -4841,7 +4841,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 32
             },
             "value2": {
@@ -4861,7 +4861,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4892,7 +4892,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -4912,7 +4912,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -4932,7 +4932,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -4952,7 +4952,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -4983,7 +4983,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -5003,7 +5003,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -5023,7 +5023,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -5043,7 +5043,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5074,7 +5074,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 173
             },
             "value2": {
@@ -5094,7 +5094,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5114,7 +5114,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 47
             },
             "value2": {
@@ -5134,7 +5134,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5165,7 +5165,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -5185,7 +5185,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5205,7 +5205,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -5225,7 +5225,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5256,7 +5256,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5276,7 +5276,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 105
             },
             "value2": {
@@ -5296,7 +5296,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 180
             },
             "value2": {
@@ -5316,7 +5316,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5347,7 +5347,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -5367,7 +5367,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 92
             },
             "value2": {
@@ -5387,7 +5387,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 92
             },
             "value2": {
@@ -5407,7 +5407,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5438,7 +5438,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 75
             },
             "value2": {
@@ -5458,7 +5458,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -5478,7 +5478,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 130
             },
             "value2": {
@@ -5498,7 +5498,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5529,7 +5529,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5549,7 +5549,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5569,7 +5569,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -5589,7 +5589,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5620,7 +5620,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -5640,7 +5640,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 230
             },
             "value2": {
@@ -5660,7 +5660,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 140
             },
             "value2": {
@@ -5680,7 +5680,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5711,7 +5711,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 230
             },
             "value2": {
@@ -5731,7 +5731,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 230
             },
             "value2": {
@@ -5751,7 +5751,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -5771,7 +5771,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5802,7 +5802,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5822,7 +5822,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -5842,7 +5842,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -5862,7 +5862,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5893,7 +5893,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 124
             },
             "value2": {
@@ -5913,7 +5913,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 252
             },
             "value2": {
@@ -5933,7 +5933,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -5953,7 +5953,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -5984,7 +5984,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6004,7 +6004,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -6024,7 +6024,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -6044,7 +6044,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6075,7 +6075,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 173
             },
             "value2": {
@@ -6095,7 +6095,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 216
             },
             "value2": {
@@ -6115,7 +6115,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 230
             },
             "value2": {
@@ -6135,7 +6135,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6166,7 +6166,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -6186,7 +6186,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -6206,7 +6206,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -6226,7 +6226,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6257,7 +6257,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 224
             },
             "value2": {
@@ -6277,7 +6277,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6297,7 +6297,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6317,7 +6317,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6348,7 +6348,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -6368,7 +6368,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -6388,7 +6388,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 210
             },
             "value2": {
@@ -6408,7 +6408,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6439,7 +6439,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 211
             },
             "value2": {
@@ -6459,7 +6459,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 211
             },
             "value2": {
@@ -6479,7 +6479,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 211
             },
             "value2": {
@@ -6499,7 +6499,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6530,7 +6530,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 144
             },
             "value2": {
@@ -6550,7 +6550,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 238
             },
             "value2": {
@@ -6570,7 +6570,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 144
             },
             "value2": {
@@ -6590,7 +6590,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6621,7 +6621,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6641,7 +6641,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 182
             },
             "value2": {
@@ -6661,7 +6661,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 193
             },
             "value2": {
@@ -6681,7 +6681,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6712,7 +6712,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6732,7 +6732,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 160
             },
             "value2": {
@@ -6752,7 +6752,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 122
             },
             "value2": {
@@ -6772,7 +6772,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6803,7 +6803,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 32
             },
             "value2": {
@@ -6823,7 +6823,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 178
             },
             "value2": {
@@ -6843,7 +6843,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 170
             },
             "value2": {
@@ -6863,7 +6863,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6894,7 +6894,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 135
             },
             "value2": {
@@ -6914,7 +6914,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 206
             },
             "value2": {
@@ -6934,7 +6934,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -6954,7 +6954,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -6985,7 +6985,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 119
             },
             "value2": {
@@ -7005,7 +7005,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 136
             },
             "value2": {
@@ -7025,7 +7025,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 153
             },
             "value2": {
@@ -7045,7 +7045,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7076,7 +7076,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 176
             },
             "value2": {
@@ -7096,7 +7096,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 196
             },
             "value2": {
@@ -7116,7 +7116,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 222
             },
             "value2": {
@@ -7136,7 +7136,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7167,7 +7167,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7187,7 +7187,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7207,7 +7207,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 224
             },
             "value2": {
@@ -7227,7 +7227,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7258,7 +7258,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -7278,7 +7278,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7298,7 +7298,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -7318,7 +7318,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7349,7 +7349,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             },
             "value2": {
@@ -7369,7 +7369,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -7389,7 +7389,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             },
             "value2": {
@@ -7409,7 +7409,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7440,7 +7440,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -7460,7 +7460,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 240
             },
             "value2": {
@@ -7480,7 +7480,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 230
             },
             "value2": {
@@ -7500,7 +7500,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7531,7 +7531,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7551,7 +7551,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -7571,7 +7571,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7591,7 +7591,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7622,7 +7622,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -7642,7 +7642,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -7662,7 +7662,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -7682,7 +7682,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7713,7 +7713,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 102
             },
             "value2": {
@@ -7733,7 +7733,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -7753,7 +7753,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 170
             },
             "value2": {
@@ -7773,7 +7773,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7804,7 +7804,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -7824,7 +7824,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -7844,7 +7844,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -7864,7 +7864,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7895,7 +7895,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 186
             },
             "value2": {
@@ -7915,7 +7915,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 85
             },
             "value2": {
@@ -7935,7 +7935,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 211
             },
             "value2": {
@@ -7955,7 +7955,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -7986,7 +7986,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 147
             },
             "value2": {
@@ -8006,7 +8006,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 112
             },
             "value2": {
@@ -8026,7 +8026,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 219
             },
             "value2": {
@@ -8046,7 +8046,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8077,7 +8077,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 60
             },
             "value2": {
@@ -8097,7 +8097,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 179
             },
             "value2": {
@@ -8117,7 +8117,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 113
             },
             "value2": {
@@ -8137,7 +8137,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8168,7 +8168,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 123
             },
             "value2": {
@@ -8188,7 +8188,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 104
             },
             "value2": {
@@ -8208,7 +8208,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 238
             },
             "value2": {
@@ -8228,7 +8228,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8259,7 +8259,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -8279,7 +8279,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -8299,7 +8299,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 154
             },
             "value2": {
@@ -8319,7 +8319,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8350,7 +8350,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 72
             },
             "value2": {
@@ -8370,7 +8370,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 209
             },
             "value2": {
@@ -8390,7 +8390,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 204
             },
             "value2": {
@@ -8410,7 +8410,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8441,7 +8441,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 199
             },
             "value2": {
@@ -8461,7 +8461,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 21
             },
             "value2": {
@@ -8481,7 +8481,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 133
             },
             "value2": {
@@ -8501,7 +8501,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8532,7 +8532,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 25
             },
             "value2": {
@@ -8552,7 +8552,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 25
             },
             "value2": {
@@ -8572,7 +8572,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 112
             },
             "value2": {
@@ -8592,7 +8592,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8623,7 +8623,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -8643,7 +8643,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8663,7 +8663,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -8683,7 +8683,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8714,7 +8714,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8734,7 +8734,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 228
             },
             "value2": {
@@ -8754,7 +8754,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 225
             },
             "value2": {
@@ -8774,7 +8774,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8805,7 +8805,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8825,7 +8825,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 228
             },
             "value2": {
@@ -8845,7 +8845,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 181
             },
             "value2": {
@@ -8865,7 +8865,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8896,7 +8896,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8916,7 +8916,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 222
             },
             "value2": {
@@ -8936,7 +8936,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 173
             },
             "value2": {
@@ -8956,7 +8956,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -8987,7 +8987,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -9007,7 +9007,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -9027,7 +9027,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -9047,7 +9047,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9078,7 +9078,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 253
             },
             "value2": {
@@ -9098,7 +9098,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -9118,7 +9118,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 230
             },
             "value2": {
@@ -9138,7 +9138,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9169,7 +9169,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -9189,7 +9189,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -9209,7 +9209,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -9229,7 +9229,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9260,7 +9260,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 107
             },
             "value2": {
@@ -9280,7 +9280,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 142
             },
             "value2": {
@@ -9300,7 +9300,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 35
             },
             "value2": {
@@ -9320,7 +9320,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9351,7 +9351,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9371,7 +9371,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 165
             },
             "value2": {
@@ -9391,7 +9391,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -9411,7 +9411,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9442,7 +9442,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9462,7 +9462,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 69
             },
             "value2": {
@@ -9482,7 +9482,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -9502,7 +9502,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9533,7 +9533,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 218
             },
             "value2": {
@@ -9553,7 +9553,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 112
             },
             "value2": {
@@ -9573,7 +9573,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 214
             },
             "value2": {
@@ -9593,7 +9593,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9624,7 +9624,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 238
             },
             "value2": {
@@ -9644,7 +9644,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 232
             },
             "value2": {
@@ -9664,7 +9664,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 170
             },
             "value2": {
@@ -9684,7 +9684,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9715,7 +9715,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 152
             },
             "value2": {
@@ -9735,7 +9735,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 251
             },
             "value2": {
@@ -9755,7 +9755,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 152
             },
             "value2": {
@@ -9775,7 +9775,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9806,7 +9806,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 175
             },
             "value2": {
@@ -9826,7 +9826,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 238
             },
             "value2": {
@@ -9846,7 +9846,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 238
             },
             "value2": {
@@ -9866,7 +9866,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9897,7 +9897,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 219
             },
             "value2": {
@@ -9917,7 +9917,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 112
             },
             "value2": {
@@ -9937,7 +9937,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 147
             },
             "value2": {
@@ -9957,7 +9957,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -9988,7 +9988,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10008,7 +10008,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 239
             },
             "value2": {
@@ -10028,7 +10028,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 213
             },
             "value2": {
@@ -10048,7 +10048,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10079,7 +10079,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10099,7 +10099,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 218
             },
             "value2": {
@@ -10119,7 +10119,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 185
             },
             "value2": {
@@ -10139,7 +10139,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10170,7 +10170,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -10190,7 +10190,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 133
             },
             "value2": {
@@ -10210,7 +10210,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 63
             },
             "value2": {
@@ -10230,7 +10230,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10261,7 +10261,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10281,7 +10281,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 192
             },
             "value2": {
@@ -10301,7 +10301,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 203
             },
             "value2": {
@@ -10321,7 +10321,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10352,7 +10352,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 221
             },
             "value2": {
@@ -10372,7 +10372,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 160
             },
             "value2": {
@@ -10392,7 +10392,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 221
             },
             "value2": {
@@ -10412,7 +10412,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10443,7 +10443,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 176
             },
             "value2": {
@@ -10463,7 +10463,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 224
             },
             "value2": {
@@ -10483,7 +10483,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 230
             },
             "value2": {
@@ -10503,7 +10503,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10534,7 +10534,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -10554,7 +10554,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -10574,7 +10574,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -10594,7 +10594,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10625,7 +10625,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10645,7 +10645,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -10665,7 +10665,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -10685,7 +10685,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10716,7 +10716,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 188
             },
             "value2": {
@@ -10736,7 +10736,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 143
             },
             "value2": {
@@ -10756,7 +10756,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 143
             },
             "value2": {
@@ -10776,7 +10776,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10807,7 +10807,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 65
             },
             "value2": {
@@ -10827,7 +10827,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 105
             },
             "value2": {
@@ -10847,7 +10847,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 225
             },
             "value2": {
@@ -10867,7 +10867,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10898,7 +10898,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -10918,7 +10918,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 69
             },
             "value2": {
@@ -10938,7 +10938,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 19
             },
             "value2": {
@@ -10958,7 +10958,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -10989,7 +10989,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -11009,7 +11009,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -11029,7 +11029,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 114
             },
             "value2": {
@@ -11049,7 +11049,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11080,7 +11080,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 244
             },
             "value2": {
@@ -11100,7 +11100,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 164
             },
             "value2": {
@@ -11120,7 +11120,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 96
             },
             "value2": {
@@ -11140,7 +11140,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11171,7 +11171,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 46
             },
             "value2": {
@@ -11191,7 +11191,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 139
             },
             "value2": {
@@ -11211,7 +11211,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 87
             },
             "value2": {
@@ -11231,7 +11231,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11262,7 +11262,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11282,7 +11282,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -11302,7 +11302,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 238
             },
             "value2": {
@@ -11322,7 +11322,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11353,7 +11353,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 160
             },
             "value2": {
@@ -11373,7 +11373,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 82
             },
             "value2": {
@@ -11393,7 +11393,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 45
             },
             "value2": {
@@ -11413,7 +11413,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11444,7 +11444,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 192
             },
             "value2": {
@@ -11464,7 +11464,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 192
             },
             "value2": {
@@ -11484,7 +11484,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 192
             },
             "value2": {
@@ -11504,7 +11504,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11535,7 +11535,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 135
             },
             "value2": {
@@ -11555,7 +11555,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 206
             },
             "value2": {
@@ -11575,7 +11575,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 235
             },
             "value2": {
@@ -11595,7 +11595,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11626,7 +11626,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 106
             },
             "value2": {
@@ -11646,7 +11646,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 90
             },
             "value2": {
@@ -11666,7 +11666,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -11686,7 +11686,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11717,7 +11717,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 112
             },
             "value2": {
@@ -11737,7 +11737,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -11757,7 +11757,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 144
             },
             "value2": {
@@ -11777,7 +11777,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11808,7 +11808,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11828,7 +11828,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -11848,7 +11848,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 250
             },
             "value2": {
@@ -11868,7 +11868,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11899,7 +11899,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -11919,7 +11919,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11939,7 +11939,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -11959,7 +11959,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -11990,7 +11990,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 70
             },
             "value2": {
@@ -12010,7 +12010,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 130
             },
             "value2": {
@@ -12030,7 +12030,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 180
             },
             "value2": {
@@ -12050,7 +12050,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12081,7 +12081,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 237
             },
             "value2": {
@@ -12101,7 +12101,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 36
             },
             "value2": {
@@ -12121,7 +12121,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 25
             },
             "value2": {
@@ -12141,7 +12141,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12172,7 +12172,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 210
             },
             "value2": {
@@ -12192,7 +12192,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 180
             },
             "value2": {
@@ -12212,7 +12212,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 140
             },
             "value2": {
@@ -12232,7 +12232,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12263,7 +12263,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -12283,7 +12283,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -12303,7 +12303,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -12323,7 +12323,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12354,7 +12354,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 216
             },
             "value2": {
@@ -12374,7 +12374,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 191
             },
             "value2": {
@@ -12394,7 +12394,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 216
             },
             "value2": {
@@ -12414,7 +12414,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12456,7 +12456,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "#ff0000ff"
             },
             "value2": {
@@ -12487,7 +12487,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "#ffffffff"
             },
             "value2": {
@@ -12512,7 +12512,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12532,7 +12532,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 99
             },
             "value2": {
@@ -12552,7 +12552,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 71
             },
             "value2": {
@@ -12572,7 +12572,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12603,7 +12603,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12623,7 +12623,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12643,7 +12643,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12663,7 +12663,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12694,7 +12694,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 64
             },
             "value2": {
@@ -12714,7 +12714,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 224
             },
             "value2": {
@@ -12734,7 +12734,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 208
             },
             "value2": {
@@ -12754,7 +12754,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12785,7 +12785,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 238
             },
             "value2": {
@@ -12805,7 +12805,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 130
             },
             "value2": {
@@ -12825,7 +12825,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 238
             },
             "value2": {
@@ -12845,7 +12845,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12876,7 +12876,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -12896,7 +12896,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 222
             },
             "value2": {
@@ -12916,7 +12916,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 179
             },
             "value2": {
@@ -12936,7 +12936,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12967,7 +12967,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -12987,7 +12987,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13007,7 +13007,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13027,7 +13027,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13058,7 +13058,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -13078,7 +13078,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -13098,7 +13098,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 245
             },
             "value2": {
@@ -13118,7 +13118,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13149,7 +13149,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13169,7 +13169,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13189,7 +13189,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -13209,7 +13209,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13240,7 +13240,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 154
             },
             "value2": {
@@ -13260,7 +13260,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 205
             },
             "value2": {
@@ -13280,7 +13280,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             },
             "value2": {
@@ -13300,7 +13300,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13342,7 +13342,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -13373,7 +13373,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -13392,15 +13392,15 @@
           "function_name": "HSB_color",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             }
           ],
@@ -13411,7 +13411,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value2": {
@@ -13431,7 +13431,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -13451,7 +13451,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -13471,15 +13471,15 @@
           "function_name": "HSB_color",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.5
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.5
             }
           ],
@@ -13490,7 +13490,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value2": {
@@ -13532,7 +13532,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value2": {
@@ -13563,7 +13563,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.6666666666666666
             },
             "value2": {
@@ -13588,7 +13588,7 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "#000000FF"
             },
             "value2": {
@@ -13618,11 +13618,11 @@
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             }
           }
@@ -13637,7 +13637,7 @@
           "function_name": "random_rgb_color",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             }
           ],
@@ -13658,11 +13658,11 @@
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             }
           }
@@ -13682,11 +13682,11 @@
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             }
           }
@@ -13706,11 +13706,11 @@
               ]
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value3": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             }
           }
@@ -13720,7 +13720,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13762,7 +13762,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13793,7 +13793,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -13809,18 +13809,18 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "RGB_color",
+          "function_name": "rgb_color_from_double",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -13831,7 +13831,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13851,7 +13851,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -13871,7 +13871,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -13888,18 +13888,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "RGB_color",
+          "function_name": "rgb_color_from_double",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -13910,7 +13910,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -13930,7 +13930,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -13950,7 +13950,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -13975,15 +13975,15 @@
           "function_name": "RGB_color",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             }
           ],
@@ -13994,7 +13994,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -14014,7 +14014,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14034,7 +14034,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14054,7 +14054,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -14076,22 +14076,22 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "RGBA_color",
+          "function_name": "RGBA_color_from_double",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.5
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.75
             }
           ],
@@ -14102,7 +14102,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -14122,7 +14122,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 127
             },
             "value2": {
@@ -14142,7 +14142,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14162,7 +14162,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 191
             },
             "value2": {
@@ -14187,19 +14187,19 @@
           "function_name": "RGBA_color",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             }
           ],
@@ -14210,7 +14210,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -14230,7 +14230,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14250,7 +14250,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14270,7 +14270,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -14312,7 +14312,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -14343,7 +14343,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value2": {
@@ -14362,7 +14362,7 @@
           "function_name": "string_to_color",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "#FF0000FF"
             }
           ],
@@ -14373,7 +14373,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -14393,7 +14393,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14413,7 +14413,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14433,7 +14433,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -14453,7 +14453,7 @@
           "function_name": "string_to_color",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "#00FF00FF"
             }
           ],
@@ -14464,7 +14464,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14484,7 +14484,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {
@@ -14504,7 +14504,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -14524,7 +14524,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 255
             },
             "value2": {

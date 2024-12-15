@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Xunit;
 using static SplashKitSDK.SplashKit;
 
@@ -12,7 +14,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartPanel("Test Panel", RectangleFrom(0.0, 0.0, 800.0, 600.0));
                 StartCustomLayout();
                 AddColumn(100);
                 AddColumn(-1);
@@ -30,7 +32,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartPanel("Test Panel", RectangleFrom(0.0, 0.0, 800.0, 600.0));
                 StartCustomLayout();
                 AddColumnRelative(0.5);
                 Button("Button 1");
@@ -51,7 +53,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = BitmapButton(testBitmap);;
+                buttonClicked = BitmapButton(testBitmap);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -64,12 +66,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testRectangle = RectangleFrom(100, 100, 100, 100);
+            var testRectangle = RectangleFrom(100.0, 100.0, 100.0, 100.0);
             var buttonClicked = false;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = BitmapButton(testBitmap, testRectangle);;
+                buttonClicked = BitmapButton(testBitmap, testRectangle);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -82,12 +84,12 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var testBitmap = CreateBitmap("test_bitmap", 100, 100);
-            var testRectangle = RectangleFrom(100, 100, 100, 100);
+            var testRectangle = RectangleFrom(100.0, 100.0, 100.0, 100.0);
             var buttonClicked = false;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = BitmapButton(testBitmap, testRectangle, OptionDefaults());;
+                buttonClicked = BitmapButton(testBitmap, testRectangle, OptionDefaults());
                 DrawInterface();
                 RefreshScreen();
             }
@@ -106,7 +108,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = BitmapButton(testBitmap, testOptions2);;
+                buttonClicked = BitmapButton(testBitmap, testOptions2);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -123,7 +125,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = BitmapButton("Click Me", testBitmap);;
+                buttonClicked = BitmapButton("Click Me", testBitmap);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -142,7 +144,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = BitmapButton("Click Me", testBitmap, testOptions2);;
+                buttonClicked = BitmapButton("Click Me", testBitmap, testOptions2);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -154,12 +156,12 @@ namespace SplashKitTests
         public void TestButtonAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(100, 100, 200, 50);
+            var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 50.0);
             var buttonClicked = false;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = Button("Click Me", testRectangle);;
+                buttonClicked = Button("Click Me", testRectangle);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -174,7 +176,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = Button("Click Me");;
+                buttonClicked = Button("Click Me");
                 DrawInterface();
                 RefreshScreen();
             }
@@ -189,7 +191,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                buttonClicked = Button("Label:", "Click Me");;
+                buttonClicked = Button("Label:", "Click Me");
                 DrawInterface();
                 RefreshScreen();
             }
@@ -200,13 +202,13 @@ namespace SplashKitTests
         public void TestCheckboxAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100, 100, 200, 50);
+            var testRect = RectangleFrom(100.0, 100.0, 200.0, 50.0);
             var initialCheckboxResult = false;
             var currentCheckboxResult = initialCheckboxResult;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult, testRect);;
+                currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult, testRect);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -222,7 +224,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult);;
+                currentCheckboxResult = Checkbox("Test Checkbox", currentCheckboxResult);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -238,7 +240,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentCheckboxResult = Checkbox("Test Checkbox", "Check me", currentCheckboxResult);;
+                currentCheckboxResult = Checkbox("Test Checkbox", "Check me", currentCheckboxResult);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -254,7 +256,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentColor = ColorSlider(currentColor, RectangleFrom(300, 300, 400, 24));;
+                currentColor = ColorSlider(currentColor, RectangleFrom(300.0, 300.0, 400.0, 24.0));
                 DrawInterface();
                 RefreshScreen();
             }
@@ -270,7 +272,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentColor = ColorSlider(currentColor);;
+                currentColor = ColorSlider(currentColor);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -286,7 +288,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentColor = ColorSlider("Test Color Slider", currentColor);;
+                currentColor = ColorSlider("Test Color Slider", currentColor);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -297,8 +299,8 @@ namespace SplashKitTests
         public void TestDisableInterfaceIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testPanel = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-            var testButton = Button("Test Button");
+            StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
+            Button("Test Button");
             ProcessEvents();
             Assert.True(InterfaceEnabled());
             DisableInterface();
@@ -317,8 +319,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-                WriteLine("Test Button clicked!");
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
                 EndPanel("Test Panel");
                 DrawInterface();
                 RefreshScreen();
@@ -358,7 +359,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
                 EndPanel("Test Panel");
                 DrawInterface();
                 RefreshScreen();
@@ -386,7 +387,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(10, 10, 200, 200));
+                StartPanel("Test Panel", RectangleFrom(10.0, 10.0, 200.0, 200.0));
                 StartTreenode("Test Node");
                 EndTreenode("Test Node");
                 EndPanel("Test Panel");
@@ -402,10 +403,9 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(10, 10, 300, 200));
+                StartPanel("Test Panel", RectangleFrom(10.0, 10.0, 300.0, 200.0));
                 AddColumn(100);
                 EnterColumn();
-                WriteLine("Button1 clicked!");
                 LeaveColumn();
                 EndPanel("Test Panel");
                 DrawInterface();
@@ -426,7 +426,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                var testHeaderResult = Header("Test Header");
+                Header("Test Header");
                 DrawInterface();
                 RefreshScreen();
             }
@@ -436,13 +436,13 @@ namespace SplashKitTests
         public void TestHSBColorSliderAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100, 100, 200, 100);
+            var testRect = RectangleFrom(100.0, 100.0, 200.0, 100.0);
             var testColor = HSBColorSlider(ColorBlack(), testRect);
             var currentColor = testColor;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentColor = HSBColorSlider(currentColor, testRect);;
+                currentColor = HSBColorSlider(currentColor, testRect);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -458,7 +458,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentColor = HSBColorSlider(currentColor);;
+                currentColor = HSBColorSlider(currentColor);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -474,7 +474,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                currentColor = HSBColorSlider("Color Slider", currentColor);;
+                currentColor = HSBColorSlider("Color Slider", currentColor);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -485,6 +485,7 @@ namespace SplashKitTests
         public void TestInterfaceEnabledIntegration()
         {
             var initialState = InterfaceEnabled();
+            Assert.True(initialState);
             DisableInterface();
             var disabledState = InterfaceEnabled();
             Assert.False(disabledState);
@@ -496,7 +497,7 @@ namespace SplashKitTests
         public void TestInterfaceStylePanelIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(0, 0, 200, 200);
+            var testRectangle = RectangleFrom(0.0, 0.0, 200.0, 200.0);
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -523,7 +524,7 @@ namespace SplashKitTests
         public void TestLabelElementAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(100, 100, 200, 50);
+            var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 50.0);
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -554,7 +555,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                var testButton = Button("Test Button");
+                Button("Test Button");
                 DrawInterface();
                 RefreshScreen();
             }
@@ -569,12 +570,12 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(10, 10, 300, 200));
+                StartPanel("Test Panel", RectangleFrom(10.0, 10.0, 300.0, 200.0));
                 StartCustomLayout();
                 AddColumn(100);
                 EnterColumn();
                 LeaveColumn();
-                buttonResult = Button("Test Button");;
+                buttonResult = Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
                 RefreshScreen();
@@ -586,12 +587,12 @@ namespace SplashKitTests
         public void TestNumberBoxAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100, 100, 200, 30);
+            var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             var testResult = 5.0f;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                testResult = NumberBox(testResult, 1.0f, testRect);;
+                testResult = NumberBox(testResult, 1.0f, testRect);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -606,7 +607,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                testResult = NumberBox(testResult, 1.0f);;
+                testResult = NumberBox(testResult, 1.0f);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -621,7 +622,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                testResult = NumberBox("Test Value", testResult, 1.0f);;
+                testResult = NumberBox("Test Value", testResult, 1.0f);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -662,7 +663,7 @@ namespace SplashKitTests
         public void TestParagraphAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(100, 100, 200, 100);
+            var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 100.0);
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -710,7 +711,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 100));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 100.0));
                 Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
@@ -726,7 +727,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
                 Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
@@ -742,7 +743,7 @@ namespace SplashKitTests
                 ProcessEvents();
                 ClearScreen();
                 SetInterfaceElementColor(ColorBlack(), 0.5f);
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
                 Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
@@ -757,7 +758,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
                 Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
@@ -769,7 +770,7 @@ namespace SplashKitTests
         public void TestSetInterfaceFontFontAsStringIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testFont = LoadFont("hara", "hara.ttf");
+            LoadFont("hara", "hara.ttf");
             SetInterfaceFont("hara");
             while (!QuitRequested()) {
                 ProcessEvents();
@@ -815,13 +816,6 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceLabelWidth(100);
-            while (!QuitRequested()) {
-                ProcessEvents();
-                ClearScreen();
-                var testWidth = GetInterfaceLabelWidth();
-                DrawInterface();
-                RefreshScreen();
-            }
             Assert.Equal(100, GetInterfaceLabelWidth());
             CloseWindow(testWindow);
         }
@@ -829,16 +823,16 @@ namespace SplashKitTests
         public void TestSetInterfacePanelShadowsIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfacePanelShadows(10, RGBAColor(0, 0, 0, 128), PointAt(5, 5));
+            SetInterfacePanelShadows(10, RGBAColor(0, 0, 0, 128), PointAt(5.0, 5.0));
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 150));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 150.0));
                 EndPanel("Test Panel");
                 DrawInterface();
                 RefreshScreen();
             }
-            Assert.Equal(RGBAColor(0, 0, 0, 128), GetPixel(PointAt(105, 105)));
+            Assert.Equal(RGBAColor(0, 0, 0, 128), GetPixel(PointAt(105.0, 105.0)));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -849,28 +843,28 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                LabelElement("Test Text", RectangleFrom(100, 100, 200, 50));
+                LabelElement("Test Text", RectangleFrom(100.0, 100.0, 200.0, 50.0));
                 DrawInterface();
                 RefreshScreen();
             }
-            Assert.Equal(ColorRed(), GetPixel(PointAt(105, 105)));
+            Assert.Equal(ColorRed(), GetPixel(PointAt(105.0, 105.0)));
             CloseWindow(testWindow);
         }
         [Fact]
         public void TestSetInterfaceShadowsIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            SetInterfaceShadows(10, RGBAColor(0, 0, 0, 128), PointAt(5, 5));
+            SetInterfaceShadows(10, RGBAColor(0, 0, 0, 128), PointAt(5.0, 5.0));
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
                 Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
                 RefreshScreen();
             }
-            Assert.Equal(RGBAColor(0, 0, 0, 128), GetPixel(PointAt(105, 105)));
+            Assert.Equal(RGBAColor(0, 0, 0, 128), GetPixel(PointAt(105.0, 105.0)));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -881,7 +875,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
                 Button("Button 1");
                 Button("Button 2");
                 EndPanel("Test Panel");
@@ -898,7 +892,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
+                StartPanel("Test Panel", RectangleFrom(100.0, 100.0, 200.0, 200.0));
                 Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
@@ -911,16 +905,7 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             SetInterfaceStyle(InterfaceStyle.ShadedDarkStyle, ColorBlue());
-            while (!QuitRequested()) {
-                ProcessEvents();
-                ClearScreen();
-                var testPanel = StartPanel("Test Panel", RectangleFrom(100, 100, 200, 200));
-                Button("Test Button");
-                EndPanel("Test Panel");
-                DrawInterface();
-                RefreshScreen();
-            }
-            Assert.Equal(ColorBlue(), GetPixel(PointAt(150, 150)));
+            Assert.Equal(ColorBlue(), GetPixel(PointAt(150.0, 150.0)));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -935,7 +920,7 @@ namespace SplashKitTests
                 DrawInterface();
                 RefreshScreen();
             }
-            Assert.Equal(ColorRed(), GetPixel(PointAt(10, 10)));
+            Assert.Equal(ColorRed(), GetPixel(PointAt(10.0, 10.0)));
             CloseWindow(testWindow);
         }
         [Fact]
@@ -946,7 +931,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartPanel("Test Panel", RectangleFrom(0.0, 0.0, 800.0, 600.0));
                 Button("Test Button");
                 EndPanel("Test Panel");
                 DrawInterface();
@@ -962,8 +947,8 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                var testButton1 = Button("Button1");
-                var testButton2 = Button("Button2");
+                Button("Button1");
+                Button("Button2");
                 ResetLayout();
                 DrawInterface();
                 RefreshScreen();
@@ -974,13 +959,13 @@ namespace SplashKitTests
         public void TestSliderAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100, 100, 200, 20);
+            var testRect = RectangleFrom(100.0, 100.0, 200.0, 20.0);
             var initialValue = 50.0f;
             var sliderResult = initialValue;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                sliderResult = Slider(sliderResult, 0.0f, 100.0f, testRect);;
+                sliderResult = Slider(sliderResult, 0.0f, 100.0f, testRect);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -996,7 +981,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                sliderResult = Slider(sliderResult, 0.0f, 100.0f);;
+                sliderResult = Slider(sliderResult, 0.0f, 100.0f);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -1012,7 +997,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                sliderResult = Slider("Test Slider", sliderResult, 0.0f, 100.0f);;
+                sliderResult = Slider("Test Slider", sliderResult, 0.0f, 100.0f);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -1026,7 +1011,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartPanel("Test Panel", RectangleFrom(0.0, 0.0, 800.0, 600.0));
                 SplitIntoColumns(3);
                 Button("Button 1");
                 Button("Button 2");
@@ -1044,7 +1029,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartPanel("Test Panel", RectangleFrom(0.0, 0.0, 800.0, 600.0));
                 SplitIntoColumns(3, 200);
                 Button("Button 1");
                 Button("Button 2");
@@ -1062,7 +1047,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartPanel("Test Panel", RectangleFrom(0.0, 0.0, 800.0, 600.0));
                 SplitIntoColumnsRelative(3, 0.5);
                 Button("Button 1");
                 Button("Button 2");
@@ -1083,7 +1068,7 @@ namespace SplashKitTests
                 ClearScreen();
                 StartCustomLayout();
                 AddColumn(200);
-                buttonResult = Button("Test Button");;
+                buttonResult = Button("Test Button");
                 ResetLayout();
                 DrawInterface();
                 RefreshScreen();
@@ -1095,7 +1080,7 @@ namespace SplashKitTests
         public void TestStartInsetAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100, 100, 200, 200);
+            var testRect = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -1126,7 +1111,7 @@ namespace SplashKitTests
         public void TestStartPanelIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRectangle = RectangleFrom(100, 100, 200, 150);
+            var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 150.0);
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
@@ -1160,7 +1145,7 @@ namespace SplashKitTests
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                StartPanel("Test Panel", RectangleFrom(0, 0, 800, 600));
+                StartPanel("Test Panel", RectangleFrom(0.0, 0.0, 800.0, 600.0));
                 StartTreenode("Test Node");
                 Button("Test Button1");
                 Button("Test Button2");
@@ -1177,11 +1162,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var initialText = "Initial Text";
-            var textResult = initialText;
+            var textResult = initial_text;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                textResult = TextBox(textResult);;
+                textResult = TextBox(textResult);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -1192,13 +1177,13 @@ namespace SplashKitTests
         public void TestTextBoxAtPositionIntegration()
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            var testRect = RectangleFrom(100, 100, 200, 30);
+            var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             var initialText = "Initial Text";
-            var textResult = initialText;
+            var textResult = initial_text;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                textResult = TextBox(textResult, testRect);;
+                textResult = TextBox(textResult, testRect);
                 DrawInterface();
                 RefreshScreen();
             }
@@ -1210,11 +1195,11 @@ namespace SplashKitTests
         {
             var testWindow = OpenWindow("Test Window", 800, 600);
             var initialText = "Initial Text";
-            var textResult = initialText;
+            var textResult = initial_text;
             while (!QuitRequested()) {
                 ProcessEvents();
                 ClearScreen();
-                textResult = TextBox("Enter Name", textResult);;
+                textResult = TextBox("Enter Name", textResult);
                 DrawInterface();
                 RefreshScreen();
             }

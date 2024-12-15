@@ -30,8 +30,8 @@ def test_broadcast_message_integration():
     check_network_activity()
     broadcast_message("Test Message", test_server)
     check_network_activity()
-    assert has_messages(test_connection1)
-    assert has_messages(test_connection2)
+    assert has_messages_on_connection(test_connection1)
+    assert has_messages_on_connection(test_connection2)
     close_all_connections()
     close_server(test_server)
 
@@ -43,8 +43,8 @@ def test_broadcast_message_to_all_integration():
     check_network_activity()
     broadcast_message_to_all("Test Message")
     check_network_activity()
-    assert has_messages(test_connection1)
-    assert has_messages(test_connection2)
+    assert has_messages_on_connection(test_connection1)
+    assert has_messages_on_connection(test_connection2)
     close_all_connections()
     close_server(test_server)
 
@@ -55,7 +55,7 @@ def test_broadcast_message_to_server_named_integration():
     check_network_activity()
     broadcast_message_to_server_named("Test Message", "test_server")
     check_network_activity()
-    assert has_messages(test_connection)
+    assert has_messages_on_connection(test_connection)
     close_connection(test_connection)
     close_server(test_server)
 
@@ -75,10 +75,10 @@ def test_clear_messages_from_name_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    assert has_messages(test_connection)
+    assert has_messages_on_connection(test_connection)
     clear_messages_from_name("test_connection")
     check_network_activity()
-    assert not has_messages(test_connection)
+    assert not has_messages_on_connection(test_connection)
     close_connection(test_connection)
     close_server(test_server)
 
@@ -89,9 +89,9 @@ def test_clear_messages_from_connection_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    assert has_messages(test_connection)
+    assert has_messages_on_connection(test_connection)
     clear_messages_from_connection(test_connection)
-    assert not has_messages(test_connection)
+    assert not has_messages_on_connection(test_connection)
     close_connection(test_connection)
     close_server(test_server)
 
@@ -102,16 +102,16 @@ def test_clear_messages_from_server_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    assert has_messages(test_server)
-    clear_messages_from_connection(test_server)
+    assert has_messages_on_server(test_server)
+    clear_messages_from_server(test_server)
     check_network_activity()
-    assert not has_messages(test_server)
+    assert not has_messages_on_server(test_server)
     close_server(test_server)
 
 
 def test_close_all_connections_integration():
     test_server = create_server_with_port("test_server", 5000)
-    test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+    open_connection("test_connection", "127.0.0.1", 5000)
     check_network_activity()
     assert has_connection("test_connection")
     close_all_connections()
@@ -121,8 +121,8 @@ def test_close_all_connections_integration():
 
 
 def test_close_all_servers_integration():
-    test_server1 = create_server_with_port("test_server_1", 5000)
-    test_server2 = create_server_with_port("test_server_2", 5001)
+    create_server_with_port("test_server_1", 5000)
+    create_server_with_port("test_server_2", 5001)
     assert has_server("test_server_1")
     assert has_server("test_server_2")
     close_all_servers()
@@ -167,7 +167,7 @@ def test_close_message_integration():
 
 
 def test_close_server_named_integration():
-    test_server = create_server_with_port("test_server", 5000)
+    create_server_with_port("test_server", 5000)
     close_result = close_server_named("test_server")
     assert close_result
     assert not has_server("test_server")
@@ -424,7 +424,7 @@ def test_message_connection_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    test_message = read_message(test_server)
+    test_message = read_message_from_server(test_server)
     assert test_connection == message_connection(test_message)
     close_message(test_message)
     close_connection(test_connection)
@@ -448,7 +448,7 @@ def test_message_count_on_connection_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    assert message_count_on_connection(test_connection)
+    assert message_count_on_connection(test_connection) > 0
     close_connection(test_connection)
     close_server(test_server)
 
@@ -459,7 +459,7 @@ def test_message_count_from_name_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    assert 1 == message_count_on_server("test_server")
+    assert 1 == message_count_on_server(test_server)
     close_connection(test_connection)
     close_server(test_server)
 
@@ -470,7 +470,7 @@ def test_message_data_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    test_message = read_message(test_server)
+    test_message = read_message_from_server(test_server)
     assert "Test Message" == message_data(test_message)
     close_message(test_message)
     close_connection(test_connection)
@@ -483,9 +483,9 @@ def test_message_data_bytes_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    test_message = read_message(test_server)
+    test_message = read_message_from_server(test_server)
     test_message_bytes = message_data_bytes(test_message)
-    assert test_message_bytes is not None
+    assert len(test_message_bytes) > 0
     close_message(test_message)
     close_connection(test_connection)
     close_server(test_server)
@@ -497,7 +497,7 @@ def test_message_host_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    test_message = read_message(test_server)
+    test_message = read_message_from_server(test_server)
     assert "127.0.0.1" == message_host(test_message)
     close_message(test_message)
     close_connection(test_connection)
@@ -510,7 +510,7 @@ def test_message_port_integration():
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    test_message = read_message(test_server)
+    test_message = read_message_from_server(test_server)
     assert 5000 == message_port(test_message)
     close_message(test_message)
     close_connection(test_connection)
@@ -518,12 +518,12 @@ def test_message_port_integration():
 
 
 def test_message_protocol_integration():
-    test_server = create_server_with_port("test_server", 5000, ConnectionType.UDP)
-    test_connection = open_connection("test_connection", "127.0.0.1", 5000, ConnectionType.UDP)
+    test_server = create_server_with_port_and_protocol("test_server", 5000, ConnectionType.UDP)
+    test_connection = open_connection_with_protocol("test_connection", "127.0.0.1", 5000, ConnectionType.UDP)
     check_network_activity()
     send_message_to_connection("Test Message", test_connection)
     check_network_activity()
-    test_message = read_message(test_server)
+    test_message = read_message_from_server(test_server)
     assert ConnectionType.UDP == message_protocol(test_message)
     close_message(test_message)
     close_connection(test_connection)
@@ -561,7 +561,7 @@ def test_open_connection_integration():
 
 
 def test_open_connection_with_protocol_integration():
-    test_server = create_server_with_port("test_server", 5000, ConnectionType.TCP)
+    test_server = create_server_with_port_and_protocol("test_server", 5000, ConnectionType.TCP)
     test_connection = open_connection_with_protocol("test_connection", "127.0.0.1", 5000, ConnectionType.TCP)
     check_network_activity()
     assert test_connection is not None
@@ -677,15 +677,15 @@ def test_reconnect_from_name_integration():
     assert not is_connection_open(test_connection)
     reconnect_from_name("test_connection")
     check_network_activity()
-    assert is_connection_open("test_connection")
+    assert is_connection_open_from_name("test_connection")
     close_connection(test_connection)
     close_server(test_server)
 
 
 def test_release_all_connections_integration():
-    test_server = create_server_with_port("test_server", 8080)
-    test_connection1 = open_connection("test_connection1", "127.0.0.1", 8080)
-    test_connection2 = open_connection("test_connection2", "127.0.0.1", 8080)
+    create_server_with_port("test_server", 8080)
+    open_connection("test_connection1", "127.0.0.1", 8080)
+    open_connection("test_connection2", "127.0.0.1", 8080)
     check_network_activity()
     assert has_connection("test_connection1")
     assert has_connection("test_connection2")
@@ -822,7 +822,7 @@ def test_free_response_integration():
     test_response = http_get("http://localhost:8080/test", 80)
     assert test_response is not None
     free_response(test_response)
-    assert "IntPtr.Zero" == test_response
+    assert test_response is None
     close_server(test_server)
 
 
@@ -842,7 +842,7 @@ def test_http_post_with_headers_integration():
     test_response = http_post_with_headers("http://localhost:8080/test", 80, "Test Body", headers)
     assert test_response is not None
     response_text = http_response_to_string(test_response)
-    assert "Test Body" in response_text
+    assert contains(response_text, "Test Body")
     free_response(test_response)
     close_server(test_server)
 
@@ -852,7 +852,7 @@ def test_http_post_integration():
     test_response = http_post("http://localhost:8080/test", 80, "Test Body")
     assert test_response is not None
     response_text = http_response_to_string(test_response)
-    assert "Test Body" in response_text
+    assert contains(response_text, "Test Body")
     free_response(test_response)
     close_server(test_server)
 
@@ -1160,7 +1160,7 @@ def test_start_web_server_with_default_port_integration():
 
 def test_start_web_server_integration():
     test_server = start_web_server(8080)
-    assert "testServer" != {:value_type=>"pointer_zero"}
+    assert test_server is not None
     stop_web_server(test_server)
 
 

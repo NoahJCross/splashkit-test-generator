@@ -1,13 +1,6 @@
+use std::*;
 use splashkit::*;
 #[cfg(test)]
-mod test_runner {
-    pub fn run_tests_sequential(tests: &[&dyn Fn()]) {
-        for test in tests {
-            test();
-        }
-    }
-}
-#![test_runner(test_runner::run_tests_sequential)]
 mod test_color {
 use super::*;
 #[test]
@@ -1116,10 +1109,10 @@ fn test_color_thistle_integration() {
 fn test_color_to_string_integration() {
     let red_color = color_red();
     let red_color_string = color_to_string(red_color);
-    assert_eq!("#ff0000ff", red_color_string);
+    assert_eq!("#ff0000ff".to_string(), red_color_string);
     let transparent_color = color_transparent();
     let transparent_color_string = color_to_string(transparent_color);
-    assert_eq!("#ffffffff", transparent_color_string);
+    assert_eq!("#ffffffff".to_string(), transparent_color_string);
 }
 #[test]
 fn test_color_tomato_integration() {
@@ -1223,7 +1216,7 @@ fn test_hue_of_integration() {
 #[test]
 fn test_random_color_integration() {
     let random_color_result = random_color();
-    assert_ne!("#000000FF", color_to_string(random_color_result));
+    assert_ne!("#000000FF".to_string(), color_to_string(random_color_result));
     assert!((0..=255).contains(&alpha_of(random_color_result)));
 }
 #[test]
@@ -1245,11 +1238,11 @@ fn test_red_of_integration() {
 }
 #[test]
 fn test_rgb_color_from_double_integration() {
-    let red_color = rgb_color(1.0, 0.0, 0.0);
+    let red_color = rgb_color_from_double(1.0, 0.0, 0.0);
     assert_eq!(255, red_of(red_color));
     assert_eq!(0, green_of(red_color));
     assert_eq!(0, blue_of(red_color));
-    let green_color = rgb_color(0.0, 1.0, 0.0);
+    let green_color = rgb_color_from_double(0.0, 1.0, 0.0);
     assert_eq!(0, red_of(green_color));
     assert_eq!(255, green_of(green_color));
     assert_eq!(0, blue_of(green_color));
@@ -1264,7 +1257,7 @@ fn test_rgb_color_integration() {
 }
 #[test]
 fn test_rgba_color_from_double_integration() {
-    let test_color = rgba_color(1.0, 0.5, 0.0, 0.75);
+    let test_color = rgba_color_from_double(1.0, 0.5, 0.0, 0.75);
     assert_eq!(255, red_of(test_color));
     assert_eq!(127, green_of(test_color));
     assert_eq!(0, blue_of(test_color));
@@ -1289,12 +1282,12 @@ fn test_saturation_of_integration() {
 }
 #[test]
 fn test_string_to_color_integration() {
-    let red_color = string_to_color("#FF0000FF");
+    let red_color = string_to_color("#FF0000FF".to_string());
     assert_eq!(255, red_of(red_color));
     assert_eq!(0, green_of(red_color));
     assert_eq!(0, blue_of(red_color));
     assert_eq!(255, alpha_of(red_color));
-    let green_color = string_to_color("#00FF00FF");
+    let green_color = string_to_color("#00FF00FF".to_string());
     assert_eq!(0, red_of(green_color));
     assert_eq!(255, green_of(green_color));
     assert_eq!(0, blue_of(green_color));

@@ -92,7 +92,7 @@ module TestGenerator
     # Validates required string handler methods
     # @return [void]
     def validate_string_handlers
-      required = %i[interpolation concatenation char]
+      required = %i[char format_string]
       validate_methods(@config[:string_handlers], required, 'string_handlers')
     end
 

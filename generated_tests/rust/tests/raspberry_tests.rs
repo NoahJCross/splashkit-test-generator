@@ -1,13 +1,6 @@
+use std::*;
 use splashkit::*;
 #[cfg(test)]
-mod test_runner {
-    pub fn run_tests_sequential(tests: &[&dyn Fn()]) {
-        for test in tests {
-            test();
-        }
-    }
-}
-#![test_runner(test_runner::run_tests_sequential)]
 mod test_raspberry {
 use super::*;
 #[test]

@@ -168,7 +168,8 @@ def test_display_dialog_integration():
 
 
 def test_file_as_string_integration():
-    assert "BITMAP,ufo,ufo.png\n" == file_as_string("blah.txt", ResourceKind.BundleResource)
+    assert "BITMAP,ufo,ufo.png
+    " == file_as_string("blah.txt", ResourceKind.BundleResource)
     assert "" == file_as_string("", ResourceKind.BundleResource)
     assert "" == file_as_string("invalid.txt", ResourceKind.BundleResource)
 

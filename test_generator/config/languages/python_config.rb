@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-# rubocop:disable Layout/HashAlignment
-
 module LanguageConfig
   # Configuration class for generating python test files
   class PythonConfig < BaseConfig
@@ -56,13 +53,17 @@ module LanguageConfig
         if:        ->(condition) { "if #{condition}:\n" },
         else:      -> { "else:\n" },
         break:     -> { "break\n" },
-        end:       -> { "\n" }
+        end:       -> { "\n" },
+        new_line: "'\\n'"
       }.freeze,
 
       string_handlers: {
         interpolation: ->(expr) { "{#{expr}}" },
-        concatenation: ->(parts) { "f\"#{parts.join}\"" },
-        char:          ->(value) { "'#{value}'" }
+        char:          ->(value) { "'#{value}'" },
+        string_ref: ->(value) { value },
+        format_string: ->(text_parts, expressions) {
+          "f\"#{text_parts.zip(expressions.map { |e| "{#{e}}" }).flatten.compact.join}\""
+        }
       }.freeze,
 
       type_handlers: {
@@ -78,11 +79,16 @@ module LanguageConfig
           "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
         },
         unsigned_int: ->(value) { value },
-        float: ->(value) { value }
+        float: ->(value) { value },
+        double: ->(value) { value },
+        string: ->(value) { "\"#{value}\"" }
       }.freeze,
 
       variable_handlers: {
-        declaration:   ->(name) { "#{name.to_snake_case} = " },
+        declaration: {
+          regular: ->(name) { "#{name.to_snake_case} = " },
+          mutable: ->(name) { "#{name.to_snake_case} = " }
+        },
         reference:     ->(name) { name.to_snake_case },
         field_access:  ->(var, field) { "#{var}.#{field}" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
@@ -95,6 +101,12 @@ module LanguageConfig
         call:      ->(name, params, _ = true) { "#{name.to_snake_case}(#{params})" },
         pointer:   ->(_) { "None\n" },
         test:      ->(name) { "\ndef test_#{name.to_snake_case}_integration():\n" }
+      }.freeze,
+
+      comment_syntax: {
+        single: "#",
+        multi_start: "'''",
+        multi_end: "'''",
       }.freeze,
 
       class_wrapper: {
@@ -115,6 +127,9 @@ module LanguageConfig
         '2. Install pytest: pip install pytest'
       ].join("\n"),
       run_command: 'skm python3 integration_tests.py',
+      prompt_handlers: {
+        message: ->(text) { "print(\"#{text}\", end=\"\")\n" }
+      }.freeze
     }.freeze
   end
 end

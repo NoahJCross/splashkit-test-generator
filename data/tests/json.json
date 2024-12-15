@@ -6,7 +6,7 @@
       "function_name": "set_resources_path",
       "args": [
         {
-          "value_type": "primitive",
+          "value_type": "string",
           "value": "set this value before running tests, use an absolute path"
         }
       ]
@@ -52,7 +52,7 @@
           "function_name": "create_json_from_string",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}"
             }
           ],
@@ -71,7 +71,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "name"
                 }
               ]
@@ -83,7 +83,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "John"
             },
             "value2": {
@@ -95,7 +95,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "name"
                 }
               ]
@@ -149,11 +149,11 @@
               "variable_name": "test_json1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value"
             }
           ]
@@ -167,11 +167,11 @@
               "variable_name": "test_json2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value"
             }
           ]
@@ -196,7 +196,7 @@
               "variable_name": "count1"
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             }
           }
@@ -210,7 +210,7 @@
               "variable_name": "count2"
             },
             "value2": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             }
           }
@@ -247,7 +247,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -261,7 +261,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0
             },
             "value2": {
@@ -290,11 +290,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value"
             }
           ]
@@ -322,7 +322,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "key"
                 }
               ]
@@ -349,11 +349,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value1"
             }
           ]
@@ -367,11 +367,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 42
             }
           ]
@@ -392,7 +392,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 2
             },
             "value2": {
@@ -446,7 +446,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "color"
                 }
               ]
@@ -458,7 +458,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "#00ff00ff"
             },
             "value2": {
@@ -470,7 +470,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "color"
                 }
               ]
@@ -502,7 +502,7 @@
           "function_name": "json_from_file",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "person.json"
             }
           ],
@@ -527,7 +527,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "firstName"
             }
           ],
@@ -538,7 +538,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "John"
             },
             "value2": {
@@ -567,7 +567,7 @@
           "function_name": "json_from_string",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}"
             }
           ],
@@ -578,7 +578,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "John"
             },
             "value2": {
@@ -590,7 +590,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "name"
                 }
               ]
@@ -602,7 +602,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 30
             },
             "value2": {
@@ -614,7 +614,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "age"
                 }
               ]
@@ -626,7 +626,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "New York"
             },
             "value2": {
@@ -638,7 +638,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "city"
                 }
               ]
@@ -675,11 +675,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value1"
             }
           ]
@@ -697,7 +697,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "key1"
                 }
               ]
@@ -717,7 +717,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "key2"
                 }
               ]
@@ -754,7 +754,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "numbers"
             },
             {
@@ -762,15 +762,15 @@
               "target_type": "double",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 1.1
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 2.2
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 3.3
                 }
               ]
@@ -782,7 +782,8 @@
           "variable_name": "out_result",
           "target_type": "double",
           "value_type": "list",
-          "value": []
+          "value": [],
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -793,7 +794,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "numbers"
             },
             {
@@ -807,7 +808,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.1
             },
             "value2": {
@@ -822,7 +823,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.2
             },
             "value2": {
@@ -879,11 +880,11 @@
               "variable_name": "test_json1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value1"
             }
           ]
@@ -897,11 +898,11 @@
               "variable_name": "test_json2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value2"
             }
           ]
@@ -931,7 +932,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "array_key"
             },
             {
@@ -945,7 +946,8 @@
           "variable_name": "out_result",
           "target_type": "json",
           "value_type": "list",
-          "value": []
+          "value": [],
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -956,7 +958,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "array_key"
             },
             {
@@ -970,7 +972,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 2
             },
             "value2": {
@@ -1034,7 +1036,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_array"
             },
             {
@@ -1042,15 +1044,15 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "item1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "item2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "item3"
                 }
               ]
@@ -1062,7 +1064,8 @@
           "variable_name": "out_result",
           "target_type": "string",
           "value_type": "list",
-          "value": []
+          "value": [],
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -1073,7 +1076,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_array"
             },
             {
@@ -1087,7 +1090,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 3
             },
             "value2": {
@@ -1101,7 +1104,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "item1"
             },
             "value2": {
@@ -1141,7 +1144,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
@@ -1149,15 +1152,15 @@
               "target_type": "bool",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": true
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": false
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": true
                 }
               ]
@@ -1169,7 +1172,8 @@
           "variable_name": "out_result",
           "target_type": "bool",
           "value_type": "list",
-          "value": []
+          "value": [],
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -1180,7 +1184,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
@@ -1194,7 +1198,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 3
             },
             "value2": {
@@ -1255,11 +1259,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "bool",
               "value": true
             }
           ]
@@ -1277,7 +1281,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_key"
                 }
               ]
@@ -1293,11 +1297,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "bool",
               "value": false
             }
           ]
@@ -1315,7 +1319,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_key"
                 }
               ]
@@ -1352,7 +1356,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
@@ -1370,7 +1374,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             }
           ],
@@ -1381,7 +1385,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 42.5
             },
             "value2": {
@@ -1420,11 +1424,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.14
             }
           ]
@@ -1438,7 +1442,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             }
           ],
@@ -1449,7 +1453,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.14
             },
             "value2": {
@@ -1488,11 +1492,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 42
             }
           ]
@@ -1506,7 +1510,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             }
           ],
@@ -1517,7 +1521,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 42
             },
             "value2": {
@@ -1556,7 +1560,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "nestedObject"
             },
             {
@@ -1575,7 +1579,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "nestedObject"
             }
           ],
@@ -1631,11 +1635,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_value"
             }
           ]
@@ -1649,7 +1653,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             }
           ],
@@ -1660,7 +1664,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_value"
             },
             "value2": {
@@ -1699,7 +1703,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
@@ -1707,15 +1711,15 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "value1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "value2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "value3"
                 }
               ]
@@ -1727,7 +1731,8 @@
           "variable_name": "out_result",
           "target_type": "string",
           "value_type": "list",
-          "value": []
+          "value": [],
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -1738,7 +1743,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
@@ -1756,15 +1761,15 @@
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "value1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "value2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "value3"
                 }
               ]
@@ -1805,7 +1810,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "numbers"
             },
             {
@@ -1813,15 +1818,15 @@
               "target_type": "double",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 1.1
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 2.2
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 3.3
                 }
               ]
@@ -1833,7 +1838,8 @@
           "variable_name": "out_result",
           "target_type": "double",
           "value_type": "list",
-          "value": []
+          "value": [],
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -1844,7 +1850,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "numbers"
             },
             {
@@ -1862,15 +1868,15 @@
               "target_type": "double",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 1.1
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 2.2
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 3.3
                 }
               ]
@@ -1911,7 +1917,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
@@ -1919,11 +1925,11 @@
               "target_type": "bool",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": true
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": false
                 }
               ]
@@ -1935,7 +1941,8 @@
           "variable_name": "out_result",
           "target_type": "bool",
           "value_type": "list",
-          "value": []
+          "value": [],
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -1946,7 +1953,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
@@ -1964,11 +1971,11 @@
               "target_type": "bool",
               "value": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": true
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": false
                 }
               ]
@@ -2021,11 +2028,11 @@
               "variable_name": "test_json1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value1"
             }
           ]
@@ -2039,11 +2046,11 @@
               "variable_name": "test_json2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value2"
             }
           ]
@@ -2073,7 +2080,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "array_key"
             },
             {
@@ -2087,7 +2094,8 @@
           "variable_name": "out_result",
           "value_type": "list",
           "target_type": "json",
-          "value": []
+          "value": [],
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -2098,7 +2106,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "array_key"
             },
             {
@@ -2112,7 +2120,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value1"
             },
             "value2": {
@@ -2125,7 +2133,7 @@
                   "index": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "key1"
                 }
               ]
@@ -2137,7 +2145,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value2"
             },
             "value2": {
@@ -2150,7 +2158,7 @@
                   "index": 1
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "key2"
                 }
               ]
@@ -2182,11 +2190,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "bool",
               "value": true
             }
           ]
@@ -2204,7 +2212,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2224,7 +2232,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2261,11 +2269,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "age"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 30
             }
           ]
@@ -2275,7 +2283,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 30
             },
             "value2": {
@@ -2287,7 +2295,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "age"
                 }
               ]
@@ -2324,11 +2332,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.14
             }
           ]
@@ -2338,7 +2346,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.14
             },
             "value2": {
@@ -2350,7 +2358,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2387,7 +2395,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
@@ -2401,7 +2409,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.140000104904175
             },
             "value2": {
@@ -2413,7 +2421,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2456,7 +2464,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "nested"
             },
             {
@@ -2478,7 +2486,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "nested"
                 }
               ]
@@ -2530,11 +2538,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_value"
             }
           ]
@@ -2544,7 +2552,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_value"
             },
             "value2": {
@@ -2556,7 +2564,7 @@
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2593,11 +2601,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "color"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "#ff0000ff"
             }
           ]
@@ -2618,7 +2626,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "#ff0000ff"
             },
             "value2": {
@@ -2663,11 +2671,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "testKey"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "testValue"
             }
           ]
@@ -2681,7 +2689,7 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.json"
             }
           ]
@@ -2691,7 +2699,7 @@
           "function_name": "json_from_file",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test.json"
             }
           ],
@@ -2702,7 +2710,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "testValue"
             },
             "value2": {
@@ -2714,7 +2722,7 @@
                   "variable_name": "loaded_json"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "string",
                   "value": "testKey"
                 }
               ]
@@ -2761,11 +2769,11 @@
               "variable_name": "test_json"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "key"
             },
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "value"
             }
           ]
@@ -2786,7 +2794,7 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {

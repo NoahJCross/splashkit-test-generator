@@ -9,15 +9,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -28,15 +28,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -69,18 +69,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -91,11 +91,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -156,15 +156,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -175,15 +175,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -216,18 +216,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -246,11 +246,11 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
@@ -292,15 +292,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -311,15 +311,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -352,18 +352,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -374,11 +374,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -397,7 +397,7 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -443,15 +443,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -462,15 +462,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -503,18 +503,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -525,11 +525,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -548,7 +548,7 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -594,15 +594,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -613,15 +613,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -654,18 +654,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -684,15 +684,15 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
@@ -734,15 +734,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -753,15 +753,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -772,15 +772,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -842,22 +842,22 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_collision",
+              "function_name": "bitmap_collision_for_cells",
               "args": [
                 {
                   "value_type": "variable",
                   "variable_name": "test_bitmap1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
@@ -865,15 +865,15 @@
                   "variable_name": "test_bitmap2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 }
               ]
@@ -887,22 +887,22 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "bitmap_collision",
+              "function_name": "bitmap_collision_for_cells",
               "args": [
                 {
                   "value_type": "variable",
                   "variable_name": "test_bitmap1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
@@ -910,15 +910,15 @@
                   "variable_name": "test_bitmap2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 }
               ]
@@ -951,15 +951,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -970,15 +970,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -989,15 +989,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -1058,11 +1058,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -1073,11 +1073,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -1137,15 +1137,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1156,15 +1156,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -1175,15 +1175,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -1244,11 +1244,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -1259,11 +1259,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -1282,7 +1282,7 @@
                   "variable_name": "test_bitmap1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -1294,7 +1294,7 @@
                   "variable_name": "test_bitmap2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -1331,15 +1331,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1350,15 +1350,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             }
           ],
@@ -1369,15 +1369,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             }
           ],
@@ -1438,11 +1438,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -1453,11 +1453,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 125.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 125.0
             }
           ],
@@ -1476,7 +1476,7 @@
                   "variable_name": "test_bitmap1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -1488,7 +1488,7 @@
                   "variable_name": "test_bitmap2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -1525,15 +1525,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1544,15 +1544,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -1563,15 +1563,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -1640,15 +1640,15 @@
                   "variable_name": "test_bitmap1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
@@ -1656,15 +1656,15 @@
                   "variable_name": "test_bitmap2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1685,15 +1685,15 @@
                   "variable_name": "test_bitmap1"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
@@ -1701,15 +1701,15 @@
                   "variable_name": "test_bitmap2"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 150.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -1742,15 +1742,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1761,15 +1761,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -1805,11 +1805,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -1820,11 +1820,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             }
           ],
@@ -1885,15 +1885,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -1904,15 +1904,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -1948,11 +1948,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -1963,11 +1963,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 75.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 75.0
             }
           ],
@@ -2028,15 +2028,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2047,15 +2047,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -2099,19 +2099,19 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 }
               ]
@@ -2132,19 +2132,19 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 150.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 150.0
                 }
               ]
@@ -2182,15 +2182,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2201,15 +2201,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -2245,11 +2245,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -2260,11 +2260,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             }
           ],
@@ -2283,7 +2283,7 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -2329,15 +2329,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2348,15 +2348,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -2400,24 +2400,36 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
-                  "value": 50.0
+                  "value_type": "function",
+                  "function_name": "point_at",
+                  "args": [
+                    {
+                      "value_type": "double",
+                      "value": 50.0
+                    },
+                    {
+                      "value_type": "double",
+                      "value": 50.0
+                    }
+                  ]
                 },
                 {
-                  "value_type": "primitive",
-                  "value": 50.0
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 50.0
-                },
-                {
-                  "value_type": "primitive",
-                  "value": 50.0
+                  "value_type": "function",
+                  "function_name": "point_at",
+                  "args": [
+                    {
+                      "value_type": "double",
+                      "value": 50.0
+                    },
+                    {
+                      "value_type": "double",
+                      "value": 50.0
+                    }
+                  ]
                 }
               ]
             },
@@ -2454,15 +2466,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2473,15 +2485,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -2504,7 +2516,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "draw_pixel",
+          "function_name": "draw_pixel_with_options",
           "args": [
             {
               "value_type": "function",
@@ -2512,12 +2524,12 @@
               "args": []
             },
             {
-              "value_type": "primitive",
-              "value": 50
+              "value_type": "double",
+              "value": 50.0
             },
             {
-              "value_type": "primitive",
-              "value": 50
+              "value_type": "double",
+              "value": 50.0
             },
             {
               "value_type": "function",
@@ -2554,23 +2566,23 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 }
               ]
@@ -2608,15 +2620,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2627,15 +2639,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -2671,19 +2683,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -2694,11 +2706,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -2759,15 +2771,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2778,15 +2790,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -2822,19 +2834,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -2853,11 +2865,11 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
@@ -2899,15 +2911,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -2918,15 +2930,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -2962,19 +2974,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -2985,11 +2997,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -3008,7 +3020,7 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -3054,15 +3066,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3073,15 +3085,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -3117,19 +3129,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -3140,11 +3152,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -3163,7 +3175,7 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -3209,15 +3221,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3228,15 +3240,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -3272,19 +3284,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -3303,15 +3315,15 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
@@ -3353,15 +3365,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3372,15 +3384,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -3450,11 +3462,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -3478,11 +3490,11 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -3507,11 +3519,11 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 }
               ]
@@ -3549,15 +3561,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3568,15 +3580,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -3646,11 +3658,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 }
               ]
@@ -3674,7 +3686,7 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
@@ -3682,11 +3694,11 @@
                   "function_name": "point_at",
                   "args": [
                     {
-                      "value_type": "primitive",
+                      "value_type": "double",
                       "value": 50.0
                     },
                     {
-                      "value_type": "primitive",
+                      "value_type": "double",
                       "value": 50.0
                     }
                   ]
@@ -3731,15 +3743,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3750,15 +3762,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -3828,11 +3840,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 }
               ]
@@ -3856,15 +3868,15 @@
                   "variable_name": "test_bitmap"
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "int",
                   "value": 0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 50.0
                 }
               ]
@@ -3902,15 +3914,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -3921,15 +3933,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap_1"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             }
           ],
@@ -3940,15 +3952,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap_2"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 50
             }
           ],
@@ -4069,11 +4081,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -4093,11 +4105,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -4138,11 +4150,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 }
               ]
@@ -4200,15 +4212,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4219,15 +4231,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -4301,11 +4313,11 @@
                   "function_name": "point_at",
                   "args": [
                     {
-                      "value_type": "primitive",
+                      "value_type": "double",
                       "value": 75.0
                     },
                     {
-                      "value_type": "primitive",
+                      "value_type": "double",
                       "value": 75.0
                     }
                   ]
@@ -4332,11 +4344,11 @@
                   "function_name": "point_at",
                   "args": [
                     {
-                      "value_type": "primitive",
+                      "value_type": "double",
                       "value": 200.0
                     },
                     {
-                      "value_type": "primitive",
+                      "value_type": "double",
                       "value": 200.0
                     }
                   ]
@@ -4381,15 +4393,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4400,15 +4412,15 @@
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_bitmap"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100
             }
           ],
@@ -4470,19 +4482,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -4544,15 +4556,15 @@
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Test Window"
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 800
             },
             {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 600
             }
           ],
@@ -4566,32 +4578,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "quad_from",
+          "function_name": "quad_from_points",
           "args": [
             {
               "value_type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
-                  "value": 100.0
-                }
-              ]
-            },
-            {
-              "value_type": "function",
-              "function_name": "point_at",
-              "args": [
-                {
-                  "value_type": "primitive",
-                  "value": 200.0
-                },
-                {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 }
               ]
@@ -4601,11 +4599,25 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
+                  "value": 100.0
+                }
+              ]
+            },
+            {
+              "value_type": "function",
+              "function_name": "point_at",
+              "args": [
+                {
+                  "value_type": "double",
+                  "value": 200.0
+                },
+                {
+                  "value_type": "double",
                   "value": 200.0
                 }
               ]
@@ -4615,17 +4627,18 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 200.0
                 }
               ]
             }
           ],
-          "store_result": "test_quad"
+          "store_result": "test_quad",
+          "is_mutable": true
         },
         {
           "step_type": "function",
@@ -4646,7 +4659,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -4663,7 +4676,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 100.0
             },
             "value2": {
@@ -4699,11 +4712,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 }
               ]
@@ -4713,11 +4726,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 1.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 }
               ]
@@ -4727,28 +4740,29 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 1.0
                 }
               ]
             }
           ],
-          "store_result": "test_triangle"
+          "store_result": "test_triangle",
+          "is_mutable": true
         },
         {
           "step_type": "function",
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -4773,7 +4787,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -4790,7 +4804,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -4818,7 +4832,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -4835,7 +4849,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -4852,7 +4866,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value2": {
@@ -4869,7 +4883,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 0.0
             },
             "value2": {
@@ -4895,17 +4909,17 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 2.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 2.0
                 }
               ]
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 45.0
             },
             {
@@ -4913,11 +4927,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 10.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 10.0
                 }
               ]
@@ -4956,7 +4970,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -4974,7 +4988,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 1.0
             },
             "value2": {
@@ -4997,11 +5011,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             }
           ],
@@ -5012,11 +5026,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 20.0
             }
           ],
@@ -5042,13 +5056,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 20.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -5057,13 +5071,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 30.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -5077,7 +5091,7 @@
           "function_name": "scale_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             }
           ],
@@ -5088,11 +5102,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             }
           ],
@@ -5118,7 +5132,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 2.0
             },
             "value2": {
@@ -5135,7 +5149,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 20.0
             },
             "value2": {
@@ -5157,11 +5171,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             }
           ],
@@ -5172,7 +5186,7 @@
           "function_name": "scale_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             }
           ],
@@ -5198,13 +5212,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -5213,13 +5227,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -5239,7 +5253,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": " ------------------------------\\n|        1         0         0 |\\n|        0         1         0 |\\n|        0         0         1 |\\n ------------------------------"
             },
             "value2": {
@@ -5264,7 +5278,7 @@
           "function_name": "rotation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 90.0
             }
           ],
@@ -5275,11 +5289,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -5305,13 +5319,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 0
+              "value_type": "double",
+              "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "X"
+              "variable_field": "x"
             },
             "precision": 2
           }
@@ -5321,15 +5335,14 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 1
+              "value_type": "double",
+              "value": 1.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             },
-
             "precision": 2
           }
         }
@@ -5343,11 +5356,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             }
           ],
@@ -5369,11 +5382,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -5399,13 +5412,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -5414,13 +5427,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -5434,11 +5447,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.5
             }
           ],
@@ -5449,7 +5462,7 @@
           "function_name": "scale_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             }
           ],
@@ -5475,7 +5488,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             },
             "value2": {
@@ -5490,7 +5503,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
@@ -5510,11 +5523,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             }
           ],
@@ -5536,11 +5549,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -5566,13 +5579,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -5581,13 +5594,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -5601,11 +5614,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             }
           ],
@@ -5616,11 +5629,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             }
           ],
@@ -5635,7 +5648,7 @@
               "variable_name": "test_scale"
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 90.0
             },
             {
@@ -5650,11 +5663,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -5680,13 +5693,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 10
+              "value_type": "double",
+              "value": 10.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -5695,13 +5708,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
-              "value": 11
+              "value_type": "double",
+              "value": 11.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -5715,11 +5728,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 20.0
             }
           ],
@@ -5738,14 +5751,14 @@
         },
         {
           "step_type": "function",
-          "function_name": "point_at",
+          "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 5.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 5.0
             }
           ],
@@ -5771,13 +5784,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 15.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -5786,13 +5799,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 25.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -5806,11 +5819,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 20.0
             }
           ],
@@ -5832,11 +5845,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -5862,13 +5875,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -5877,13 +5890,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 20.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -5897,11 +5910,11 @@
           "function_name": "translation_matrix",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 20.0
             }
           ],
@@ -5912,11 +5925,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -5942,13 +5955,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -5957,13 +5970,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 20.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -5977,11 +5990,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -5992,11 +6005,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -6007,7 +6020,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 90.0
             },
             "value2": {
@@ -6036,11 +6049,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -6051,11 +6064,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             }
           ],
@@ -6066,7 +6079,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 11.0
             },
             "value2": {
@@ -6095,11 +6108,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -6110,11 +6123,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -6164,11 +6177,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -6179,11 +6192,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -6191,18 +6204,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "line_from",
+          "function_name": "line_from_point_to_point",
           "args": [
             {
               "value_type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 2.0
                 }
               ]
@@ -6212,11 +6225,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 2.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 }
               ]
@@ -6229,15 +6242,16 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
-          "store_result": "intersection_point"
+          "store_result": "intersection_point",
+          "is_mutable": true
         },
         {
           "step_type": "assertion",
@@ -6273,13 +6287,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "intersection_point",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -6288,13 +6302,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "intersection_point",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -6308,11 +6322,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -6334,15 +6348,14 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.6
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_unit_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             },
-
             "precision": 2
           }
         },
@@ -6351,13 +6364,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.8
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_unit_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -6371,11 +6384,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             }
           ],
@@ -6386,11 +6399,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -6416,13 +6429,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -6431,13 +6444,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 6.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -6451,11 +6464,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -6466,7 +6479,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 45.0
             },
             "value2": {
@@ -6491,11 +6504,11 @@
           "function_name": "vector_from_angle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -6506,13 +6519,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -6521,13 +6534,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -6538,18 +6551,18 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "line_from",
+          "function_name": "line_from_point_to_point",
           "args": [
             {
               "value_type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 0.0
                 }
               ]
@@ -6559,11 +6572,11 @@
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 3.0
                 },
                 {
-                  "value_type": "primitive",
+                  "value_type": "double",
                   "value": 4.0
                 }
               ]
@@ -6587,13 +6600,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -6602,13 +6615,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -6622,19 +6635,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -6645,11 +6658,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -6675,13 +6688,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -6690,13 +6703,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -6710,19 +6723,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -6733,11 +6746,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -6748,11 +6761,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 150.0
             }
           ],
@@ -6810,11 +6823,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -6836,13 +6849,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "inverted_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -6851,13 +6864,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "inverted_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -6871,11 +6884,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 6.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 8.0
             }
           ],
@@ -6890,7 +6903,7 @@
               "variable_name": "test_vector"
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 5.0
             }
           ],
@@ -6901,13 +6914,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "limited_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             },
             "precision": 4
           }
@@ -6917,13 +6930,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "limited_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -6937,11 +6950,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -6952,7 +6965,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 5.0
             },
             "value2": {
@@ -6977,11 +6990,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -6992,7 +7005,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "int",
               "value": 25.0
             },
             "value2": {
@@ -7017,11 +7030,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -7036,7 +7049,7 @@
               "variable_name": "test_vector"
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             }
           ],
@@ -7047,13 +7060,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 6.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -7062,13 +7075,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 8.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7082,11 +7095,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -7108,13 +7121,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -0.8
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "normal_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             },
             "precision": 2
           }
@@ -7124,13 +7137,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.6
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "normal_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             },
             "precision": 2
           }
@@ -7142,18 +7155,18 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 5.0
             }
           ],
@@ -7161,18 +7174,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 8.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 5.0
             }
           ],
@@ -7183,11 +7196,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -7217,13 +7230,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -3.42
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             },
             "precision": 2
           }
@@ -7233,13 +7246,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7253,11 +7266,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -7265,18 +7278,18 @@
         },
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 10.0
             }
           ],
@@ -7287,11 +7300,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -7321,13 +7334,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -11.42
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             },
             "precision": 2
           }
@@ -7337,13 +7350,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7354,18 +7367,18 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "circle_at",
+          "function_name": "circle_at_from_points",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 75.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 75.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 25.0
             }
           ],
@@ -7376,19 +7389,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -7399,11 +7412,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -7433,13 +7446,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -101.42
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -7448,13 +7461,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7468,11 +7481,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 75.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 75.0
             }
           ],
@@ -7483,19 +7496,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -7506,11 +7519,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -7540,13 +7553,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -76.4
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             },
             "precision": 2
           }
@@ -7556,13 +7569,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7576,19 +7589,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 75.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 75.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 50.0
             }
           ],
@@ -7599,19 +7612,19 @@
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 100.0
             }
           ],
@@ -7622,11 +7635,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -7656,13 +7669,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": -126.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -7671,13 +7684,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7691,11 +7704,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 0.0
             }
           ],
@@ -7706,11 +7719,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -7736,13 +7749,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -7751,13 +7764,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7771,11 +7784,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -7786,11 +7799,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 1.0
             }
           ],
@@ -7816,13 +7829,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 2.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -7831,13 +7844,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7851,11 +7864,11 @@
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -7877,13 +7890,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -7892,13 +7905,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "result_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7912,11 +7925,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -7927,13 +7940,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "X"
+              "variable_field": "x"
             }
           }
         },
@@ -7942,13 +7955,13 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             },
             "value2": {
               "value_type": "variable_field",
               "variable_name": "test_vector",
-              "variable_field": "Y"
+              "variable_field": "y"
             }
           }
         }
@@ -7962,11 +7975,11 @@
           "function_name": "vector_from_angle",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -7977,7 +7990,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "Vec -> 3.000000:4.000000"
             },
             "value2": {
@@ -8002,11 +8015,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -8017,11 +8030,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -8032,11 +8045,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 5.0
             }
           ],
@@ -8094,11 +8107,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -8109,11 +8122,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 4.0
             }
           ],
@@ -8124,11 +8137,11 @@
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 3.0
             },
             {
-              "value_type": "primitive",
+              "value_type": "double",
               "value": 5.0
             }
           ],

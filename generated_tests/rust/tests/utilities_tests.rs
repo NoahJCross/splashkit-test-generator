@@ -1,140 +1,133 @@
+use std::*;
 use splashkit::*;
 #[cfg(test)]
-mod test_runner {
-    pub fn run_tests_sequential(tests: &[&dyn Fn()]) {
-        for test in tests {
-            test();
-        }
-    }
-}
-#![test_runner(test_runner::run_tests_sequential)]
 mod test_utilities {
 use super::*;
 #[test]
 fn test_contains_integration() {
-    assert!(contains("splashkit library", "splashkit"));
-    assert!(contains("splashkit library", "library"));
-    assert!(contains("splashkit library", "it lib"));
-    assert!(contains("splashkit library", ""));
-    assert!(!contains("splashkit library", "unreal"));
-    assert!(!contains("", "splashkit"));
+    assert!(contains("splashkit library".to_string(), "splashkit".to_string()));
+    assert!(contains("splashkit library".to_string(), "library".to_string()));
+    assert!(contains("splashkit library".to_string(), "it lib".to_string()));
+    assert!(contains("splashkit library".to_string(), "".to_string()));
+    assert!(!contains("splashkit library".to_string(), "unreal".to_string()));
+    assert!(!contains("".to_string(), "splashkit".to_string()));
 }
 #[test]
 fn test_convert_to_double_integration() {
-    assert_eq!(123.0, convert_to_double("123"));
-    assert_eq!(123.456, convert_to_double("123.456"));
-    assert_eq!(-123.0, convert_to_double("-123"));
-    assert_eq!(-123.456, convert_to_double("-123.456"));
-    assert_eq!(0.456, convert_to_double(".456"));
-    assert_eq!(123.0, convert_to_double("123."));
-    assert_eq!(123.456, convert_to_double("000123.456"));
-    assert_eq!(123.456, convert_to_double("123.456000"));
-    assert_eq!(f64::INFINITY, convert_to_double("inf"));
-    assert_eq!(f64::NEG_INFINITY, convert_to_double("-inf"));
-    assert_eq!(123.0, convert_to_double("1.23e2"));
+    assert_eq!(123.0, convert_to_double("123".to_string()));
+    assert_eq!(123.456, convert_to_double("123.456".to_string()));
+    assert_eq!(-123.0, convert_to_double("-123".to_string()));
+    assert_eq!(-123.456, convert_to_double("-123.456".to_string()));
+    assert_eq!(0.456, convert_to_double(".456".to_string()));
+    assert_eq!(123.0, convert_to_double("123.".to_string()));
+    assert_eq!(123.456, convert_to_double("000123.456".to_string()));
+    assert_eq!(123.456, convert_to_double("123.456000".to_string()));
+    assert_eq!(f64::INFINITY, convert_to_double("inf".to_string()));
+    assert_eq!(f64::NEG_INFINITY, convert_to_double("-inf".to_string()));
+    assert_eq!(123.0, convert_to_double("1.23e2".to_string()));
 }
 #[test]
 fn test_convert_to_integer_integration() {
-    assert_eq!(123, convert_to_integer("123"));
-    assert_eq!(123, convert_to_integer("123.456"));
-    assert_eq!(-123, convert_to_integer("-123"));
-    assert_eq!(-123, convert_to_integer("-123.456"));
-    assert_eq!(123, convert_to_integer("123."));
-    assert_eq!(123, convert_to_integer("000123.456"));
-    assert_eq!(123, convert_to_integer("123.456000"));
+    assert_eq!(123, convert_to_integer("123".to_string()));
+    assert_eq!(123, convert_to_integer("123.456".to_string()));
+    assert_eq!(-123, convert_to_integer("-123".to_string()));
+    assert_eq!(-123, convert_to_integer("-123.456".to_string()));
+    assert_eq!(123, convert_to_integer("123.".to_string()));
+    assert_eq!(123, convert_to_integer("000123.456".to_string()));
+    assert_eq!(123, convert_to_integer("123.456000".to_string()));
 }
 #[test]
 fn test_index_of_integration() {
-    assert_eq!(0, index_of("splashkit library", "splashkit"));
-    assert_eq!(10, index_of("splashkit library", "library"));
-    assert_eq!(7, index_of("splashkit library", "it lib"));
-    assert_eq!(-1, index_of("splashkit library", "unreal"));
-    assert_eq!(0, index_of("splashkit library", "splashkit library"));
-    assert_eq!(-1, index_of("splashkit library", "splashkit library is the best"));
-    assert_eq!(0, index_of("splashkit library", ""));
-    assert_eq!(-1, index_of("", "splashkit"));
-    assert_eq!(0, index_of("", ""));
+    assert_eq!(0, index_of("splashkit library".to_string(), "splashkit".to_string()));
+    assert_eq!(10, index_of("splashkit library".to_string(), "library".to_string()));
+    assert_eq!(7, index_of("splashkit library".to_string(), "it lib".to_string()));
+    assert_eq!(-1, index_of("splashkit library".to_string(), "unreal".to_string()));
+    assert_eq!(0, index_of("splashkit library".to_string(), "splashkit library".to_string()));
+    assert_eq!(-1, index_of("splashkit library".to_string(), "splashkit library is the best".to_string()));
+    assert_eq!(0, index_of("splashkit library".to_string(), "".to_string()));
+    assert_eq!(-1, index_of("".to_string(), "splashkit".to_string()));
+    assert_eq!(0, index_of("".to_string(), "".to_string()));
 }
 #[test]
 fn test_is_double_integration() {
-    assert!(is_double("123.456"));
-    assert!(is_double("123"));
-    assert!(is_double("-123.456"));
-    assert!(is_double("-123"));
-    assert!(is_double("123."));
-    assert!(is_double("000123.456"));
-    assert!(is_double("123.456000"));
-    assert!(!is_double(".456"));
-    assert!(!is_double("SplashKit"));
-    assert!(!is_double(""));
+    assert!(is_double("123.456".to_string()));
+    assert!(is_double("123".to_string()));
+    assert!(is_double("-123.456".to_string()));
+    assert!(is_double("-123".to_string()));
+    assert!(is_double("123.".to_string()));
+    assert!(is_double("000123.456".to_string()));
+    assert!(is_double("123.456000".to_string()));
+    assert!(!is_double(".456".to_string()));
+    assert!(!is_double("SplashKit".to_string()));
+    assert!(!is_double("".to_string()));
 }
 #[test]
 fn test_is_integer_integration() {
-    assert!(is_integer("123"));
-    assert!(is_integer("-123"));
-    assert!(!is_integer("123.456"));
-    assert!(!is_integer("-123.456"));
-    assert!(!is_integer(".456"));
-    assert!(!is_integer("SplashKit"));
-    assert!(!is_integer(""));
+    assert!(is_integer("123".to_string()));
+    assert!(is_integer("-123".to_string()));
+    assert!(!is_integer("123.456".to_string()));
+    assert!(!is_integer("-123.456".to_string()));
+    assert!(!is_integer(".456".to_string()));
+    assert!(!is_integer("SplashKit".to_string()));
+    assert!(!is_integer("".to_string()));
 }
 #[test]
 fn test_is_number_integration() {
-    assert!(is_number("123"));
-    assert!(is_number("123.456"));
-    assert!(is_number("-123"));
-    assert!(is_number("-123.456"));
-    assert!(!is_number("SplashKit"));
-    assert!(!is_number(""));
+    assert!(is_number("123".to_string()));
+    assert!(is_number("123.456".to_string()));
+    assert!(is_number("-123".to_string()));
+    assert!(is_number("-123.456".to_string()));
+    assert!(!is_number("SplashKit".to_string()));
+    assert!(!is_number("".to_string()));
 }
 #[test]
 fn test_length_of_integration() {
-    assert_eq!(9, length_of("splashkit"));
-    assert_eq!(0, length_of(""));
+    assert_eq!(9, length_of("splashkit".to_string()));
+    assert_eq!(0, length_of("".to_string()));
 }
 #[test]
 fn test_replace_all_integration() {
-    assert_eq!("SK library", replace_all("splashkit library", "splashkit", "SK"));
-    assert_eq!("splashkit lib", replace_all("splashkit library", "library", "lib"));
-    assert_eq!("splashkitlibrary", replace_all("splashkit library", "it lib", "itlib"));
-    assert_eq!("splashkit library", replace_all("splashkit library", "unreal", "tournament"));
-    assert_eq!("SK", replace_all("splashkit library", "splashkit library", "SK"));
-    assert_eq!(" library", replace_all("splashkit library", "splashkit", ""));
-    assert_eq!("splashkit library", replace_all("splashkit library", "", "SK"));
-    assert_eq!("", replace_all("", "", "SK"));
+    assert_eq!("SK library".to_string(), replace_all("splashkit library".to_string(), "splashkit".to_string(), "SK".to_string()));
+    assert_eq!("splashkit lib".to_string(), replace_all("splashkit library".to_string(), "library".to_string(), "lib".to_string()));
+    assert_eq!("splashkitlibrary".to_string(), replace_all("splashkit library".to_string(), "it lib".to_string(), "itlib".to_string()));
+    assert_eq!("splashkit library".to_string(), replace_all("splashkit library".to_string(), "unreal".to_string(), "tournament".to_string()));
+    assert_eq!("SK".to_string(), replace_all("splashkit library".to_string(), "splashkit library".to_string(), "SK".to_string()));
+    assert_eq!(" library".to_string(), replace_all("splashkit library".to_string(), "splashkit".to_string(), "".to_string()));
+    assert_eq!("splashkit library".to_string(), replace_all("splashkit library".to_string(), "".to_string(), "SK".to_string()));
+    assert_eq!("".to_string(), replace_all("".to_string(), "".to_string(), "SK".to_string()));
 }
 #[test]
 fn test_split_integration() {
-    let result = split("splashkit library", ' ');
-    assert_eq!(vec!["splashkit", "library"], result);
-    assert_eq!(vec![""], split("", ' '));
-    assert_eq!(vec!["splashkit library"], split("splashkit library", ','));
-    assert_eq!(vec!["", "splashkit library"], split(",splashkit library", ','));
-    assert_eq!(vec!["splashkit library", ""], split("splashkit library,", ','));
-    assert_eq!(vec!["", "splashkit library", ""], split(",splashkit library,", ','));
-    assert_eq!(vec!["splashkit", "", "library"], split("splashkit,,library", ','));
+    let result = split("splashkit library".to_string(), ' ');
+    assert_eq!(vec!["splashkit".to_string(), "library".to_string()], result);
+    assert_eq!(vec!["".to_string()], split("".to_string(), ' '));
+    assert_eq!(vec!["splashkit library".to_string()], split("splashkit library".to_string(), ','));
+    assert_eq!(vec!["".to_string(), "splashkit library".to_string()], split(",splashkit library".to_string(), ','));
+    assert_eq!(vec!["splashkit library".to_string(), "".to_string()], split("splashkit library,".to_string(), ','));
+    assert_eq!(vec!["".to_string(), "splashkit library".to_string(), "".to_string()], split(",splashkit library,".to_string(), ','));
+    assert_eq!(vec!["splashkit".to_string(), "".to_string(), "library".to_string()], split("splashkit,,library".to_string(), ','));
 }
 #[test]
 fn test_to_lowercase_integration() {
-    assert_eq!("splashkit", to_lowercase("SPLASHKIT"));
-    assert_eq!("", to_lowercase(""));
-    assert_eq!("splashkit", to_lowercase("splashkit"));
-    assert_eq!("splashkit", to_lowercase("SpLaShKiT"));
+    assert_eq!("splashkit".to_string(), to_lowercase("SPLASHKIT".to_string()));
+    assert_eq!("".to_string(), to_lowercase("".to_string()));
+    assert_eq!("splashkit".to_string(), to_lowercase("splashkit".to_string()));
+    assert_eq!("splashkit".to_string(), to_lowercase("SpLaShKiT".to_string()));
 }
 #[test]
 fn test_to_uppercase_integration() {
-    assert_eq!("SPLASHKIT", to_uppercase("splashkit"));
-    assert_eq!("", to_uppercase(""));
-    assert_eq!("SPLASHKIT", to_uppercase("SPLASHKIT"));
-    assert_eq!("SPLASHKIT", to_uppercase("SpLaShKiT"));
+    assert_eq!("SPLASHKIT".to_string(), to_uppercase("splashkit".to_string()));
+    assert_eq!("".to_string(), to_uppercase("".to_string()));
+    assert_eq!("SPLASHKIT".to_string(), to_uppercase("SPLASHKIT".to_string()));
+    assert_eq!("SPLASHKIT".to_string(), to_uppercase("SpLaShKiT".to_string()));
 }
 #[test]
 fn test_trim_integration() {
-    assert_eq!("splashkit", trim("  splashkit"));
-    assert_eq!("splashkit", trim("splashkit  "));
-    assert_eq!("splashkit", trim("  splashkit  "));
-    assert_eq!("splashkit", trim("splashkit"));
-    assert_eq!("", trim(""));
+    assert_eq!("splashkit".to_string(), trim("  splashkit".to_string()));
+    assert_eq!("splashkit".to_string(), trim("splashkit  ".to_string()));
+    assert_eq!("splashkit".to_string(), trim("  splashkit  ".to_string()));
+    assert_eq!("splashkit".to_string(), trim("splashkit".to_string()));
+    assert_eq!("".to_string(), trim("".to_string()));
 }
 #[test]
 fn test_rnd_range_integration() {
@@ -160,7 +153,7 @@ fn test_current_ticks_integration() {
 }
 #[test]
 fn test_delay_integration() {
-    let test_timer = create_timer("test_timer");
+    let test_timer = create_timer("test_timer".to_string());
     start_timer(test_timer);
     let initial_ticks = timer_ticks(test_timer);
     delay(200);
@@ -168,16 +161,17 @@ fn test_delay_integration() {
 }
 #[test]
 fn test_display_dialog_integration() {
-    let test_window = open_window("Test Window", 800, 600);
-    let test_font = load_font("test_font", "hara.ttf");
-    display_dialog("Test Dialog", "This is a test message", test_font, 20);
+    let test_window = open_window("Test Window".to_string(), 800, 600);
+    let test_font = load_font("test_font".to_string(), "hara.ttf".to_string());
+    display_dialog("Test Dialog".to_string(), "This is a test message".to_string(), test_font, 20);
     free_font(test_font);
     close_window(test_window);
 }
 #[test]
 fn test_file_as_string_integration() {
-    assert_eq!("BITMAP,ufo,ufo.png\n", file_as_string("blah.txt", ResourceKind::BundleResource));
-    assert_eq!("", file_as_string("", ResourceKind::BundleResource));
-    assert_eq!("", file_as_string("invalid.txt", ResourceKind::BundleResource));
+    assert_eq!("BITMAP,ufo,ufo.png
+    ".to_string(), file_as_string("blah.txt".to_string(), ResourceKind::BundleResource));
+    assert_eq!("".to_string(), file_as_string("".to_string(), ResourceKind::BundleResource));
+    assert_eq!("".to_string(), file_as_string("invalid.txt".to_string(), ResourceKind::BundleResource));
 }
 }

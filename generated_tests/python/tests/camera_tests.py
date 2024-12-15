@@ -27,7 +27,7 @@ def test_camera_y_integration():
 
 def test_center_camera_on_vector_integration():
     test_window = open_window("Test Window", 800, 600)
-    test_sprite = create_sprite("test_sprite")
+    test_sprite = create_sprite_with_bitmap_named("test_sprite")
     sprite_set_position(test_sprite, point_at(100.0, 100.0))
     center_camera_on_vector(test_sprite, vector_from_angle(50.0, 50.0))
     assert point_at(-267.8606182336807, -161.69777810573578) == camera_position()
@@ -37,10 +37,10 @@ def test_center_camera_on_vector_integration():
 
 def test_center_camera_on_integration():
     test_window = open_window("Test Window", 800, 600)
-    test_sprite = create_sprite("test_sprite")
+    test_sprite = create_sprite_with_bitmap_named("test_sprite")
     sprite_set_position(test_sprite, point_at(100.0, 100.0))
     center_camera_on(test_sprite, 0.0, 0.0)
-    assert point_at(-300, -200) == camera_position()
+    assert point_at(-300.0, -200.0) == camera_position()
     free_sprite(test_sprite)
     close_window(test_window)
 
@@ -79,9 +79,9 @@ def test_move_camera_to_integration():
 
 def test_point_in_window_integration():
     test_window = open_window("Test Window", 800, 600)
-    test_point = point_at(400, 300)
+    test_point = point_at(400.0, 300.0)
     assert point_in_window(test_window, test_point)
-    test_point_outside = point_at(1000, 1000)
+    test_point_outside = point_at(1000.0, 1000.0)
     assert not point_in_window(test_window, test_point_outside)
     close_window(test_window)
 
@@ -97,39 +97,39 @@ def test_point_on_screen_integration():
 
 def test_rect_in_window_integration():
     test_window = open_window("Test Window", 800, 600)
-    set_camera_x(0)
-    set_camera_y(0)
-    test_rectangle = rectangle_from(0, 0, 100, 100)
+    set_camera_x(0.0)
+    set_camera_y(0.0)
+    test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0)
     assert rect_in_window(test_window, test_rectangle)
-    test_rectangle_outside = rectangle_from(1000, 1000, 100, 100)
+    test_rectangle_outside = rectangle_from(1000.0, 1000.0, 100.0, 100.0)
     assert not rect_in_window(test_window, test_rectangle_outside)
     close_window(test_window)
 
 
 def test_rect_on_screen_integration():
     test_window = open_window("Test Window", 800, 600)
-    test_rectangle = rectangle_from(0, 0, 100, 100)
+    test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0)
     assert rect_on_screen(test_rectangle)
-    move_camera_to(1000, 1000)
+    move_camera_to(1000.0, 1000.0)
     assert not rect_on_screen(test_rectangle)
     close_window(test_window)
 
 
 def test_screen_center_integration():
     test_window = open_window("Test Window", 800, 600)
-    set_camera_x(0)
-    set_camera_y(0)
+    set_camera_x(0.0)
+    set_camera_y(0.0)
     test_center = screen_center()
-    assert 400 == test_center.x
-    assert 300 == test_center.y
+    assert 400.0 == test_center.x
+    assert 300.0 == test_center.y
     close_window(test_window)
 
 
 def test_screen_rectangle_integration():
     test_window = open_window("Test Window", 800, 600)
     test_rectangle = screen_rectangle()
-    assert 800 == test_rectangle.width
-    assert 600 == test_rectangle.height
+    assert 800.0 == test_rectangle.width
+    assert 600.0 == test_rectangle.height
     close_window(test_window)
 
 
@@ -219,7 +219,7 @@ def test_vector_world_to_screen_integration():
 def test_window_area_integration():
     test_window = open_window("Test Window", 800, 600)
     test_area = window_area(test_window)
-    assert 800 == test_area.width
-    assert 600 == test_area.height
+    assert 800.0 == test_area.width
+    assert 600.0 == test_area.height
     close_window(test_window)
 

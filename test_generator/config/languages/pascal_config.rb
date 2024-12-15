@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-# rubocop:disable Layout/HashAlignment
-
 module LanguageConfig
   # Configuration class for generating Pascal test files
   class PascalConfig < BaseConfig
@@ -54,13 +51,16 @@ module LanguageConfig
         if:        ->(condition) { "if #{condition} then\n" },
         else:      -> { "else\n" },
         break:     -> { "break;\n" },
-        end:       -> { "end;\n" }
+        end:       -> { "end;\n" },
+        new_line: 'LineEnding'
       }.freeze,
 
       string_handlers: {
-        interpolation: ->(expr) { "' + #{expr} + '" },
-        concatenation: ->(parts) { "'#{parts.join}'" },
-        char:          ->(value) { "'#{value}'" }
+        char: ->(value) { "'#{value}'" },
+        string_ref: ->(value) { value },
+        format_string: ->(text_parts, expressions) {
+          text_parts.zip(expressions).flatten.compact.each_with_index.map { |p, i| i.odd? ? p : "'#{p}'" }.join(' + ')
+        }
       }.freeze,
 
       type_handlers: {
@@ -80,11 +80,16 @@ module LanguageConfig
           "#{type.to_pascal_case}.#{value.to_upper_case}#{semicolon ? ";\n" : ''}" 
         },
         unsigned_int: ->(value) { "Cardinal(#{value})" },
-        float: ->(value) { value }
+        float: ->(value) { value },
+        double: ->(value) { value },
+        string: ->(value) { "'#{value}'" }
       }.freeze,
 
       variable_handlers: {
-        declaration:   ->(name) { "#{name.to_camel_case} := " },
+        declaration: {
+          regular: ->(name) { "#{name.to_camel_case} := " },
+          mutable: ->(name) { "#{name.to_camel_case} := " }
+        },
         reference:     ->(name) { name.to_camel_case.to_s },
         field_access:  ->(var, field) { "#{var}.#{field}" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
@@ -97,6 +102,12 @@ module LanguageConfig
         call:      ->(name, params, semicolon = true) { "#{name.to_pascal_case}(#{params})#{semicolon ? ';' : ''}" },
         pointer:   ->(_) { "nil;\n" },
         test:      ->(name) { "procedure TIntegrationTests.Test#{name.to_pascal_case}Integration;\nbegin\n" }
+      }.freeze,
+
+      comment_syntax: {
+        single: "//",
+        multi_start: "{",
+        multi_end: "}",
       }.freeze,
 
       class_wrapper: {
@@ -128,6 +139,9 @@ module LanguageConfig
         '3. Compile: fpc integration_tests.pas'
       ].join("\n"),
       run_command: './integration_tests',
+      prompt_handlers: {
+        message: ->(text) { "Write('#{text}');\n" }
+      }.freeze
     }.freeze
   end
 end

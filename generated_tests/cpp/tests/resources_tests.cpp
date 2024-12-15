@@ -10,25 +10,25 @@ public:
         REQUIRE(free_notifier->was_notified);
     }
     TEST_CASE("path_to_resource_integration") {
-        set_resources_path("resources");
-        auto image_path = path_to_resource("test_image.png", ResourceKind::IMAGE_RESOURCE);
-        REQUIRE("" != image_path);
-        auto text_path = path_to_resource("nonexistent_file.txt", ResourceKind::ANIMATION_RESOURCE);
-        REQUIRE("" == text_path);
+        set_resources_path(string("resources"));
+        auto image_path = path_to_resource(string("test_image.png"), ResourceKind::IMAGE_RESOURCE);
+        REQUIRE(string("") != image_path);
+        auto text_path = path_to_resource(string("nonexistent_file.txt"), ResourceKind::ANIMATION_RESOURCE);
+        REQUIRE(string("") == text_path);
     }
     TEST_CASE("path_to_resources_integration") {
         auto resource_path = path_to_resources();
-        REQUIRE(resource_path != nullptr);
-        set_resources_path("/new/resources");
+        REQUIRE(!resource_path.empty());
+        set_resources_path(string("/new/resources"));
         auto new_resource_path = path_to_resources();
-        REQUIRE("/new/resources" == new_resource_path);
+        REQUIRE(string("/new/resources") == new_resource_path);
     }
     TEST_CASE("path_to_resources_for_kind_integration") {
-        set_resources_path("resources");
+        set_resources_path(string("resources"));
         auto image_path = path_to_resources(ResourceKind::IMAGE_RESOURCE);
-        REQUIRE("resources/images" == image_path);
+        REQUIRE(string("resources/images") == image_path);
         auto sound_path = path_to_resources(ResourceKind::SOUND_RESOURCE);
-        REQUIRE("resources/sounds" == sound_path);
+        REQUIRE(string("resources/sounds") == sound_path);
     }
     TEST_CASE("register_free_notifier_integration") {
         auto free_notifier = notifier_tracker();
@@ -38,9 +38,9 @@ public:
         REQUIRE_FALSE(free_notifier->was_notified);
     }
     TEST_CASE("set_resources_path_integration") {
-        set_resources_path("/resources");
-        REQUIRE("/resources" == path_to_resources());
-        set_resources_path("/new/resources");
-        REQUIRE("/new/resources" == path_to_resources());
+        set_resources_path(string("/resources"));
+        REQUIRE(string("/resources") == path_to_resources());
+        set_resources_path(string("/new/resources"));
+        REQUIRE(string("/new/resources") == path_to_resources());
     }
 };

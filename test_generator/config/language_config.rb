@@ -26,7 +26,7 @@ module TestGenerator
                 :class_wrapper,
                 :class_wrapper_handler,
                 :numeric_constants,
-                :float_handler
+                :prompt_handlers
 
     def initialize(config)
       validate_config(config)
@@ -48,6 +48,7 @@ module TestGenerator
       @supports_overloading = config[:supports_overloading]
       @naming_convention = config[:naming_convention]
       @numeric_constants = config[:numeric_constants]
+      @prompt_handlers = config[:prompt_handlers]
       @class_wrapper_handler = ClassWrapperHandler.new(config[:class_wrapper])
     end
 
@@ -87,7 +88,7 @@ module TestGenerator
         variable_handlers assert_conditions if_conditions control_flow
         string_handlers type_handlers runtime_requirement installation_steps
         run_command supports_overloading naming_convention class_wrapper
-        numeric_constants
+        numeric_constants prompt_handlers
       ]
       missing_keys = required_keys - config.keys
       raise ConfigurationError, "Missing required configuration keys: #{missing_keys.join(', ')}" if missing_keys.any?

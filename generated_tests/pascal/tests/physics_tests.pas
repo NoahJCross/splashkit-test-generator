@@ -5,8 +5,8 @@ TTestPhysics = class(TTestCase)
 protected
 procedure TIntegrationTests.TestBitmapCircleCollisionAtPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testCircle := CircleAt(150.0, 150.0, 50.0);
@@ -17,8 +17,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCircleCollisionIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testCircle := CircleAt(150.0, 150.0, 50.0);
@@ -28,8 +28,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCircleCollisionForCellWithTranslationIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testCircle := CircleAt(150.0, 150.0, 50.0);
@@ -40,8 +40,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCircleCollisionForCellAtPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testCircle := CircleAt(150.0, 150.0, 50.0);
@@ -52,8 +52,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCircleCollisionForCellIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testCircle := CircleAt(150.0, 150.0, 50.0);
@@ -63,9 +63,9 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCollisionIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap1 := CreateBitmap("test_bitmap1", 100, 100);
-    testBitmap2 := CreateBitmap("test_bitmap2", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap1 := CreateBitmap('test_bitmap1', 100, 100);
+    testBitmap2 := CreateBitmap('test_bitmap2', 100, 100);
     ClearBitmap(testBitmap1, ColorBlack());
     SetupCollisionMask(testBitmap1);
     ClearBitmap(testBitmap2, ColorBlack());
@@ -77,9 +77,9 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCollisionAtPointsIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap1 := CreateBitmap("test_bitmap1", 100, 100);
-    testBitmap2 := CreateBitmap("test_bitmap2", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap1 := CreateBitmap('test_bitmap1', 100, 100);
+    testBitmap2 := CreateBitmap('test_bitmap2', 100, 100);
     ClearBitmap(testBitmap1, ColorBlack());
     SetupCollisionMask(testBitmap1);
     ClearBitmap(testBitmap2, ColorBlack());
@@ -92,9 +92,9 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCollisionForCellsWithTranslationsIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap1 := CreateBitmap("test_bitmap1", 100, 100);
-    testBitmap2 := CreateBitmap("test_bitmap2", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap1 := CreateBitmap('test_bitmap1', 100, 100);
+    testBitmap2 := CreateBitmap('test_bitmap2', 100, 100);
     ClearBitmap(testBitmap1, ColorBlack());
     SetupCollisionMask(testBitmap1);
     ClearBitmap(testBitmap2, ColorBlack());
@@ -107,9 +107,9 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCollisionForCellsAtPointsIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap1 := CreateBitmap("test_bitmap1", 50, 50);
-    testBitmap2 := CreateBitmap("test_bitmap2", 50, 50);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap1 := CreateBitmap('test_bitmap1', 50, 50);
+    testBitmap2 := CreateBitmap('test_bitmap2', 50, 50);
     ClearBitmap(testBitmap1, ColorBlack());
     SetupCollisionMask(testBitmap1);
     ClearBitmap(testBitmap2, ColorBlack());
@@ -122,9 +122,9 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapCollisionForCellsIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap1 := CreateBitmap("test_bitmap1", 100, 100);
-    testBitmap2 := CreateBitmap("test_bitmap2", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap1 := CreateBitmap('test_bitmap1', 100, 100);
+    testBitmap2 := CreateBitmap('test_bitmap2', 100, 100);
     ClearBitmap(testBitmap1, ColorBlack());
     ClearBitmap(testBitmap2, ColorBlack());
     SetupCollisionMask(testBitmap1);
@@ -136,8 +136,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapPointCollisionWithTranslationIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testTranslation := TranslationMatrix(100.0, 100.0);
@@ -148,8 +148,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapPointCollisionAtPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testBmpPoint := PointAt(50.0, 50.0);
@@ -160,8 +160,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapPointCollisionIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     AssertTrue(BitmapPointCollision(testBitmap, 0.0, 0.0, 50.0, 50.0));
@@ -171,8 +171,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapPointCollisionForCellWithTranslationIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testTranslation := TranslationMatrix(100.0, 100.0);
@@ -183,20 +183,20 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapPointCollisionForCellAtPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
-    AssertTrue(BitmapPointCollision(testBitmap, 0, 50.0, 50.0, 50.0, 50.0));
+    AssertTrue(BitmapPointCollision(testBitmap, 0, PointAt(50.0, 50.0), PointAt(50.0, 50.0)));
     FreeBitmap(testBitmap);
     CloseWindow(testWindow);
 end;
 procedure TIntegrationTests.TestBitmapPointCollisionForCellIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
-    DrawPixel(ColorWhite(), 50, 50, OptionDrawTo(testBitmap));
+    DrawPixel(ColorWhite(), 50.0, 50.0, OptionDrawTo(testBitmap));
     SetupCollisionMask(testBitmap);
     AssertTrue(BitmapPointCollision(testBitmap, 0, 0.0, 0.0, 50.0, 50.0));
     FreeBitmap(testBitmap);
@@ -204,8 +204,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapRectangleCollisionAtPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testRectangle := RectangleFrom(50.0, 50.0, 100.0, 100.0);
@@ -216,8 +216,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapRectangleCollisionIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testRectangle := RectangleFrom(50.0, 50.0, 100.0, 100.0);
@@ -227,8 +227,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapRectangleCollisionForCellWithTranslationIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testRectangle := RectangleFrom(150.0, 150.0, 50.0, 50.0);
@@ -239,8 +239,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapRectangleCollisionForCellAtPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testRectangle := RectangleFrom(100.0, 100.0, 50.0, 50.0);
@@ -251,8 +251,8 @@ begin
 end;
 procedure TIntegrationTests.TestBitmapRectangleCollisionForCellIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testRectangle := RectangleFrom(50.0, 50.0, 100.0, 100.0);
@@ -262,8 +262,8 @@ begin
 end;
 procedure TIntegrationTests.TestSpriteBitmapCollisionIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testSprite := CreateSprite(testBitmap);
@@ -277,8 +277,8 @@ begin
 end;
 procedure TIntegrationTests.TestSpriteBitmapCollisionWithCellAtPointIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testSprite := CreateSprite(testBitmap);
@@ -291,8 +291,8 @@ begin
 end;
 procedure TIntegrationTests.TestSpriteBitmapCollisionWithCellIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testSprite := CreateSprite(testBitmap);
@@ -305,9 +305,9 @@ begin
 end;
 procedure TIntegrationTests.TestSpriteCollisionIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap1 := CreateBitmap("test_bitmap_1", 50, 50);
-    testBitmap2 := CreateBitmap("test_bitmap_2", 50, 50);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap1 := CreateBitmap('test_bitmap_1', 50, 50);
+    testBitmap2 := CreateBitmap('test_bitmap_2', 50, 50);
     ClearBitmap(testBitmap1, ColorBlack());
     SetupCollisionMask(testBitmap1);
     ClearBitmap(testBitmap2, ColorBlack());
@@ -327,8 +327,8 @@ begin
 end;
 procedure TIntegrationTests.TestSpritePointCollisionIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testSprite := CreateSprite(testBitmap);
@@ -341,8 +341,8 @@ begin
 end;
 procedure TIntegrationTests.TestSpriteRectangleCollisionIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
-    testBitmap := CreateBitmap("test_bitmap", 100, 100);
+    testWindow := OpenWindow('Test Window', 800, 600);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
     ClearBitmap(testBitmap, ColorBlack());
     SetupCollisionMask(testBitmap);
     testSprite := CreateSprite(testBitmap);
@@ -355,7 +355,7 @@ begin
 end;
 procedure TIntegrationTests.TestApplyMatrixToQuadIntegration;
 begin
-    testWindow := OpenWindow("Test Window", 800, 600);
+    testWindow := OpenWindow('Test Window', 800, 600);
     testMatrix := IdentityMatrix();
     testQuad := QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(200.0, 200.0), PointAt(100.0, 200.0));
     ApplyMatrix(testMatrix, @testQuad);
@@ -374,55 +374,55 @@ end;
 procedure TIntegrationTests.TestIdentityMatrixIntegration;
 begin
     testMatrix := IdentityMatrix();
-    AssertEquals(1.0, testMatrix.Elements[0, 0]);
-    AssertEquals(1.0, testMatrix.Elements[1, 1]);
-    AssertEquals(0.0, testMatrix.Elements[0, 1]);
-    AssertEquals(0.0, testMatrix.Elements[1, 0]);
+    AssertEquals(1.0, testMatrix.elements[0, 0]);
+    AssertEquals(1.0, testMatrix.elements[1, 1]);
+    AssertEquals(0.0, testMatrix.elements[0, 1]);
+    AssertEquals(0.0, testMatrix.elements[1, 0]);
 end;
 procedure TIntegrationTests.TestMatrixInverseIntegration;
 begin
     testMatrix := ScaleRotateTranslateMatrix(PointAt(2.0, 2.0), 45.0, PointAt(10.0, 10.0));
     inverseMatrix := MatrixInverse(testMatrix);
     resultMatrix := MatrixMultiply(testMatrix, inverseMatrix);
-    AssertEquals(1.0, resultMatrix.Elements[0, 0]);
-    AssertEquals(1.0, resultMatrix.Elements[1, 1]);
+    AssertEquals(1.0, resultMatrix.elements[0, 0]);
+    AssertEquals(1.0, resultMatrix.elements[1, 1]);
 end;
 procedure TIntegrationTests.TestMatrixMultiplyPointIntegration;
 begin
     testMatrix := TranslationMatrix(10.0, 10.0);
     testPoint := PointAt(10.0, 20.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(20.0, resultPoint.X);
-    AssertEquals(30.0, resultPoint.Y);
+    AssertEquals(20.0, resultPoint.x);
+    AssertEquals(30.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestMatrixMultiplyMatrixIntegration;
 begin
     testMatrix1 := ScaleMatrix(2.0);
     testMatrix2 := TranslationMatrix(10.0, 10.0);
     resultMatrix := MatrixMultiply(testMatrix2, testMatrix1);
-    AssertEquals(2.0, resultMatrix.Elements[0, 0]);
-    AssertEquals(20.0, resultMatrix.Elements[0, 2]);
+    AssertEquals(2.0, resultMatrix.elements[0, 0]);
+    AssertEquals(20.0, resultMatrix.elements[0, 2]);
 end;
 procedure TIntegrationTests.TestMatrixMultiplyVectorIntegration;
 begin
     testVector := VectorTo(2.0, 2.0);
     testMatrix := ScaleMatrix(2.0);
     resultVector := MatrixMultiply(testMatrix, testVector);
-    AssertEquals(4.0, resultVector.X);
-    AssertEquals(4.0, resultVector.Y);
+    AssertEquals(4.0, resultVector.x);
+    AssertEquals(4.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestMatrixToStringIntegration;
 begin
     testMatrix := IdentityMatrix();
-    AssertEquals(" ------------------------------\\n|        1         0         0 |\\n|        0         1         0 |\\n|        0         0         1 |\\n ------------------------------", MatrixToString(testMatrix));
+    AssertEquals(' ------------------------------\n|        1         0         0 |\n|        0         1         0 |\n|        0         0         1 |\n ------------------------------', MatrixToString(testMatrix));
 end;
 procedure TIntegrationTests.TestRotationMatrixIntegration;
 begin
     testMatrix := RotationMatrix(90.0);
     testPoint := PointAt(1.0, 0.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(0, resultPoint.X);
-    AssertEquals(1, resultPoint.Y);
+    AssertEquals(0.0, resultPoint.x);
+    AssertEquals(1.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestScaleMatrixFromPointIntegration;
 begin
@@ -430,8 +430,8 @@ begin
     testMatrix := ScaleMatrix(testScale);
     testPoint := PointAt(1.0, 1.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(2.0, resultPoint.X);
-    AssertEquals(3.0, resultPoint.Y);
+    AssertEquals(2.0, resultPoint.x);
+    AssertEquals(3.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestScaleMatrixFromVectorIntegration;
 begin
@@ -439,8 +439,8 @@ begin
     testMatrix := ScaleMatrix(testScale);
     testPoint := PointAt(1.0, 1.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(2.0, resultPoint.X);
-    AssertEquals(3.0, resultPoint.Y);
+    AssertEquals(2.0, resultPoint.x);
+    AssertEquals(3.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestScaleMatrixIntegration;
 begin
@@ -457,17 +457,17 @@ begin
     testMatrix := ScaleRotateTranslateMatrix(testScale, 90.0, testTranslate);
     testPoint := PointAt(1.0, 0.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(10, resultPoint.X);
-    AssertEquals(11, resultPoint.Y);
+    AssertEquals(10.0, resultPoint.x);
+    AssertEquals(11.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestTranslationMatrixToPointIntegration;
 begin
     testPoint := PointAt(10.0, 20.0);
     testMatrix := TranslationMatrix(testPoint);
-    testVector := PointAt(5.0, 5.0);
+    testVector := VectorTo(5.0, 5.0);
     resultPoint := MatrixMultiply(testMatrix, testVector);
-    AssertEquals(15.0, resultPoint.X);
-    AssertEquals(25.0, resultPoint.Y);
+    AssertEquals(15.0, resultPoint.x);
+    AssertEquals(25.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestTranslationMatrixFromVectorIntegration;
 begin
@@ -475,16 +475,16 @@ begin
     testMatrix := TranslationMatrix(testVector);
     testPoint := PointAt(0.0, 0.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(10.0, resultPoint.X);
-    AssertEquals(20.0, resultPoint.Y);
+    AssertEquals(10.0, resultPoint.x);
+    AssertEquals(20.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestTranslationMatrixIntegration;
 begin
     testMatrix := TranslationMatrix(10.0, 20.0);
     testPoint := PointAt(0.0, 0.0);
     resultPoint := MatrixMultiply(testMatrix, testPoint);
-    AssertEquals(10.0, resultPoint.X);
-    AssertEquals(20.0, resultPoint.Y);
+    AssertEquals(10.0, resultPoint.x);
+    AssertEquals(20.0, resultPoint.y);
 end;
 procedure TIntegrationTests.TestAngleBetweenIntegration;
 begin
@@ -512,23 +512,23 @@ begin
     testLine := LineFrom(PointAt(0.0, 2.0), PointAt(2.0, 0.0));
     intersectionPoint := PointAt(0.0, 0.0);
     AssertTrue(RayIntersectionPoint(testFromPt, testHeading, testLine, @intersectionPoint));
-    AssertEquals(1.0, intersectionPoint.X);
-    AssertEquals(1.0, intersectionPoint.Y);
+    AssertEquals(1.0, intersectionPoint.x);
+    AssertEquals(1.0, intersectionPoint.y);
 end;
 procedure TIntegrationTests.TestUnitVectorIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     testUnitVector := UnitVector(testVector);
-    AssertEquals(0.6, testUnitVector.X);
-    AssertEquals(0.8, testUnitVector.Y);
+    AssertEquals(0.6, testUnitVector.x);
+    AssertEquals(0.8, testUnitVector.y);
 end;
 procedure TIntegrationTests.TestVectorAddIntegration;
 begin
     testVector1 := VectorTo(1.0, 2.0);
     testVector2 := VectorTo(3.0, 4.0);
     resultVector := VectorAdd(testVector1, testVector2);
-    AssertEquals(4.0, resultVector.X);
-    AssertEquals(6.0, resultVector.Y);
+    AssertEquals(4.0, resultVector.x);
+    AssertEquals(6.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorAngleIntegration;
 begin
@@ -538,23 +538,23 @@ end;
 procedure TIntegrationTests.TestVectorFromAngleIntegration;
 begin
     testVector := VectorFromAngle(0.0, 1.0);
-    AssertEquals(1.0, testVector.X);
-    AssertEquals(0.0, testVector.Y);
+    AssertEquals(1.0, testVector.x);
+    AssertEquals(0.0, testVector.y);
 end;
 procedure TIntegrationTests.TestVectorFromLineIntegration;
 begin
     testLine := LineFrom(PointAt(0.0, 0.0), PointAt(3.0, 4.0));
     testVector := VectorFromLine(testLine);
-    AssertEquals(3.0, testVector.X);
-    AssertEquals(4.0, testVector.Y);
+    AssertEquals(3.0, testVector.x);
+    AssertEquals(4.0, testVector.y);
 end;
 procedure TIntegrationTests.TestVectorFromPointToRectIntegration;
 begin
     testRect := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     testPoint := PointAt(50.0, 50.0);
     testVector := VectorFromPointToRect(testPoint, testRect);
-    AssertEquals(0.0, testVector.X);
-    AssertEquals(0.0, testVector.Y);
+    AssertEquals(0.0, testVector.x);
+    AssertEquals(0.0, testVector.y);
 end;
 procedure TIntegrationTests.TestVectorInRectIntegration;
 begin
@@ -568,15 +568,15 @@ procedure TIntegrationTests.TestVectorInvertIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     invertedVector := VectorInvert(testVector);
-    AssertEquals(-3.0, invertedVector.X);
-    AssertEquals(-4.0, invertedVector.Y);
+    AssertEquals(-3.0, invertedVector.x);
+    AssertEquals(-4.0, invertedVector.y);
 end;
 procedure TIntegrationTests.TestVectorLimitIntegration;
 begin
     testVector := VectorTo(6.0, 8.0);
     limitedVector := VectorLimit(testVector, 5.0);
-    AssertEquals(3.0, limitedVector.X);
-    AssertEquals(4.0, limitedVector.Y);
+    AssertEquals(3.0, limitedVector.x);
+    AssertEquals(4.0, limitedVector.y);
 end;
 procedure TIntegrationTests.TestVectorMagnitudeIntegration;
 begin
@@ -592,15 +592,15 @@ procedure TIntegrationTests.TestVectorMultiplyIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     resultVector := VectorMultiply(testVector, 2.0);
-    AssertEquals(6.0, resultVector.X);
-    AssertEquals(8.0, resultVector.Y);
+    AssertEquals(6.0, resultVector.x);
+    AssertEquals(8.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorNormalIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
     normalVector := VectorNormal(testVector);
-    AssertEquals(-0.8, normalVector.X);
-    AssertEquals(0.6, normalVector.Y);
+    AssertEquals(-0.8, normalVector.x);
+    AssertEquals(0.6, normalVector.y);
 end;
 procedure TIntegrationTests.TestVectorOutOfCircleFromCircleIntegration;
 begin
@@ -608,8 +608,8 @@ begin
     testCircleBounds := CircleAt(8.0, 0.0, 5.0);
     testVelocity := VectorTo(1.0, 0.0);
     resultVector := VectorOutOfCircleFromCircle(testCircleSrc, testCircleBounds, testVelocity);
-    AssertEquals(-3.42, resultVector.X);
-    AssertEquals(0.0, resultVector.Y);
+    AssertEquals(-3.42, resultVector.x);
+    AssertEquals(0.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorOutOfCircleFromPointIntegration;
 begin
@@ -617,8 +617,8 @@ begin
     testCircle := CircleAt(100.0, 100.0, 10.0);
     testVelocity := VectorTo(1.0, 0.0);
     resultVector := VectorOutOfCircleFromPoint(testPoint, testCircle, testVelocity);
-    AssertEquals(-11.42, resultVector.X);
-    AssertEquals(0.0, resultVector.Y);
+    AssertEquals(-11.42, resultVector.x);
+    AssertEquals(0.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorOutOfRectFromCircleIntegration;
 begin
@@ -626,8 +626,8 @@ begin
     testRect := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     testVelocity := VectorTo(1.0, 0.0);
     resultVector := VectorOutOfRectFromCircle(testCircle, testRect, testVelocity);
-    AssertEquals(-101.42, resultVector.X);
-    AssertEquals(0.0, resultVector.Y);
+    AssertEquals(-101.42, resultVector.x);
+    AssertEquals(0.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorOutOfRectFromPointIntegration;
 begin
@@ -635,8 +635,8 @@ begin
     testRect := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     testVelocity := VectorTo(1.0, 0.0);
     resultVector := VectorOutOfRectFromPoint(testPoint, testRect, testVelocity);
-    AssertEquals(-76.4, resultVector.X);
-    AssertEquals(0.0, resultVector.Y);
+    AssertEquals(-76.4, resultVector.x);
+    AssertEquals(0.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorOutOfRectFromRectIntegration;
 begin
@@ -644,42 +644,42 @@ begin
     testBoundsRect := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     testVelocity := VectorTo(1.0, 0.0);
     resultVector := VectorOutOfRectFromRect(testSrcRect, testBoundsRect, testVelocity);
-    AssertEquals(-126.0, resultVector.X);
-    AssertEquals(0.0, resultVector.Y);
+    AssertEquals(-126.0, resultVector.x);
+    AssertEquals(0.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorPointToPointIntegration;
 begin
     testStartPoint := PointAt(0.0, 0.0);
     testEndPoint := PointAt(3.0, 4.0);
     resultVector := VectorPointToPoint(testStartPoint, testEndPoint);
-    AssertEquals(3.0, resultVector.X);
-    AssertEquals(4.0, resultVector.Y);
+    AssertEquals(3.0, resultVector.x);
+    AssertEquals(4.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorSubtractIntegration;
 begin
     testVector1 := VectorTo(3.0, 4.0);
     testVector2 := VectorTo(1.0, 1.0);
     resultVector := VectorSubtract(testVector1, testVector2);
-    AssertEquals(2.0, resultVector.X);
-    AssertEquals(3.0, resultVector.Y);
+    AssertEquals(2.0, resultVector.x);
+    AssertEquals(3.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorToPointIntegration;
 begin
     testPoint := PointAt(3.0, 4.0);
     resultVector := VectorTo(testPoint);
-    AssertEquals(3.0, resultVector.X);
-    AssertEquals(4.0, resultVector.Y);
+    AssertEquals(3.0, resultVector.x);
+    AssertEquals(4.0, resultVector.y);
 end;
 procedure TIntegrationTests.TestVectorToIntegration;
 begin
     testVector := VectorTo(3.0, 4.0);
-    AssertEquals(3.0, testVector.X);
-    AssertEquals(4.0, testVector.Y);
+    AssertEquals(3.0, testVector.x);
+    AssertEquals(4.0, testVector.y);
 end;
 procedure TIntegrationTests.TestVectorToStringIntegration;
 begin
     testVector := VectorFromAngle(3.0, 4.0);
-    AssertEquals("Vec -> 3.000000:4.000000", VectorToString(testVector));
+    AssertEquals('Vec -> 3.000000:4.000000', VectorToString(testVector));
 end;
 procedure TIntegrationTests.TestVectorsEqualIntegration;
 begin
@@ -701,5 +701,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
+#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
 end;

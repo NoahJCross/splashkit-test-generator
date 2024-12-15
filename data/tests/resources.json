@@ -55,7 +55,7 @@
           "function_name": "set_resources_path",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "resources"
             }
           ]
@@ -65,7 +65,7 @@
           "function_name": "path_to_resource",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "test_image.png"
             },
             {
@@ -81,7 +81,7 @@
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {
@@ -95,7 +95,7 @@
           "function_name": "path_to_resource",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "nonexistent_file.txt"
             },
             {
@@ -111,7 +111,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": ""
             },
             "value2": {
@@ -134,7 +134,7 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "not_empty",
             "value1": {
               "value_type": "variable",
               "variable_name": "resource_path"
@@ -147,7 +147,7 @@
           "function_name": "set_resources_path",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/new/resources"
             }
           ]
@@ -163,7 +163,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/new/resources"
             },
             "value2": {
@@ -182,7 +182,7 @@
           "function_name": "set_resources_path",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "resources"
             }
           ]
@@ -204,7 +204,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "resources/images"
             },
             "value2": {
@@ -230,7 +230,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "resources/sounds"
             },
             "value2": {
@@ -307,7 +307,7 @@
           "function_name": "set_resources_path",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/resources"
             }
           ]
@@ -317,7 +317,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/resources"
             },
             "value2": {
@@ -332,7 +332,7 @@
           "function_name": "set_resources_path",
           "args": [
             {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/new/resources"
             }
           ]
@@ -342,7 +342,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "primitive",
+              "value_type": "string",
               "value": "/new/resources"
             },
             "value2": {

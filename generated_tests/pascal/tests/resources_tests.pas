@@ -12,27 +12,27 @@ begin
 end;
 procedure TIntegrationTests.TestPathToResourceIntegration;
 begin
-    SetResourcesPath("resources");
-    imagePath := PathToResource("test_image.png", ResourceKind.IMAGE_RESOURCE);
-    AssertNotEquals("", imagePath);
-    textPath := PathToResource("nonexistent_file.txt", ResourceKind.ANIMATION_RESOURCE);
-    AssertEquals("", textPath);
+    SetResourcesPath('resources');
+    imagePath := PathToResource('test_image.png', ResourceKind.IMAGE_RESOURCE);
+    AssertNotEquals('', imagePath);
+    textPath := PathToResource('nonexistent_file.txt', ResourceKind.ANIMATION_RESOURCE);
+    AssertEquals('', textPath);
 end;
 procedure TIntegrationTests.TestPathToResourcesIntegration;
 begin
     resourcePath := PathToResources();
-    AssertNotNull(resourcePath);
-    SetResourcesPath("/new/resources");
+    AssertTrue(Length(resourcePath) > 0);
+    SetResourcesPath('/new/resources');
     newResourcePath := PathToResources();
-    AssertEquals("/new/resources", newResourcePath);
+    AssertEquals('/new/resources', newResourcePath);
 end;
 procedure TIntegrationTests.TestPathToResourcesForKindIntegration;
 begin
-    SetResourcesPath("resources");
+    SetResourcesPath('resources');
     imagePath := PathToResources(ResourceKind.IMAGE_RESOURCE);
-    AssertEquals("resources/images", imagePath);
+    AssertEquals('resources/images', imagePath);
     soundPath := PathToResources(ResourceKind.SOUND_RESOURCE);
-    AssertEquals("resources/sounds", soundPath);
+    AssertEquals('resources/sounds', soundPath);
 end;
 procedure TIntegrationTests.TestRegisterFreeNotifierIntegration;
 begin
@@ -44,14 +44,14 @@ begin
 end;
 procedure TIntegrationTests.TestSetResourcesPathIntegration;
 begin
-    SetResourcesPath("/resources");
-    AssertEquals("/resources", PathToResources());
-    SetResourcesPath("/new/resources");
-    AssertEquals("/new/resources", PathToResources());
+    SetResourcesPath('/resources');
+    AssertEquals('/resources', PathToResources());
+    SetResourcesPath('/new/resources');
+    AssertEquals('/new/resources', PathToResources());
 end;
 end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f7a8f3c6228 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:117 (lambda)>
+#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
 end;
