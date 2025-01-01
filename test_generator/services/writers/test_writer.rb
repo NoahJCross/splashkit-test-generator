@@ -73,9 +73,8 @@ module TestGenerator
     # @param file [File] File handle to write to
     # @return [void]
     def write_class_header(file)
-      @config.class_wrapper.header_lines(@group).each do |line|
-        file.puts(@formatter.format_line(line))
-        @formatter.increase_indent if @config.class_wrapper.indent_after?(line)
+      @config.class_wrapper_handler.header_lines(@group).each do |line|
+        file.puts(@formatter.format_line(line, @config))
       end
     end
 
@@ -85,17 +84,37 @@ module TestGenerator
     def write_constructor(file)
       return unless should_write_constructor?
 
-      header = @config.class_wrapper.constructor_header(@group)
-      file.puts(@formatter.format_line(header))
-      @formatter.increase_indent
+      write_constructor_header(file)
+      write_constructor_steps(file)
+      write_constructor_footer(file)
+    end
 
-      constructor_steps.each do |step|
-        file.puts(TestStepWriter.write_test_step(step, @functions, @config, @formatter))
+    # Writes the constructor header lines
+    # @param file [File] File handle to write to
+    # @return [void]
+    def write_constructor_header(file)
+      @config.class_wrapper_handler.constructor_header(@group).each do |line|
+        file.puts(@formatter.format_line(line, @config))
       end
+    end
 
-      footer = @config.class_wrapper.constructor_footer
-      @formatter.decrease_indent
-      file.puts(@formatter.format_line(footer))
+    # Writes the constructor steps, including resource path setup if needed
+    # @param file [File] File handle to write to
+    # @return [void]
+    def write_constructor_steps(file)
+      constructor_steps&.each do |step|
+        step = update_resources_path(step) if step[:function_name] == 'set_resources_path'
+        file.puts(StepWriter.write_test_step(step, @functions, @config, @formatter))
+      end
+    end
+
+    # Writes the constructor footer lines
+    # @param file [File] File handle to write to
+    # @return [void]
+    def write_constructor_footer(file)
+      @config.class_wrapper_handler.constructor_footer.each do |line|
+        file.puts(@formatter.format_line(line, @config))
+      end
     end
 
     # Writes individual test methods for each function
@@ -109,20 +128,19 @@ module TestGenerator
       end
     end
 
-    # Writes the class footer with proper indentation
+    # Writes the class footer
     # @param file [File] File handle to write to
     # @return [void]
     def write_class_footer(file)
-      @config.class_wrapper.footer_lines.each do |line|
-        @formatter.decrease_indent if @config.class_wrapper.unindent_before?(line)
-        file.puts(@formatter.indent(line))
+      @config.class_wrapper_handler.footer_lines.each do |line|
+        file.puts(@formatter.indent(line, @config))
       end
     end
 
     # Checks if constructor should be written
     # @return [Boolean] True if constructor should be written
     def should_write_constructor?
-      @config.class_wrapper.constructor_header(@group) && constructor_steps
+      @config.class_wrapper_handler.constructor_header(@group) && constructor_steps
     end
 
     # Gets constructor steps from group tests
@@ -144,6 +162,10 @@ module TestGenerator
       test_case
     end
 
+    # Validates that a test case exists for a given function
+    # @param function [Function] The function to validate
+    # @param test_case [Hash, nil] The test case or nil if not found
+    # @raise [ValidationError] If no test case is found
     def validate_test_case_exists!(function, test_case)
       return if test_case
 
@@ -153,6 +175,16 @@ module TestGenerator
         - Group: #{function.group}
         - Available groups: #{@group_tests.to_h.keys.join(', ')}
       ERROR
+    end
+
+    # Updates the resources path for set_resources_path step
+    # @param step [Hash] The step to update
+    # @return [Hash] The updated step
+    def update_resources_path(step)
+      step = step.dup
+      step[:args] = step[:args].map(&:dup)
+      step[:args][0][:value] = File.join(File.expand_path('../../..', __dir__), 'resources')
+      step
     end
   end
 end

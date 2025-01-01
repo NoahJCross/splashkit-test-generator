@@ -1,357 +1,366 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestAnimations = class(TTestCase)
-protected
-procedure TIntegrationTests.TestAnimationCountIntegration;
+    TTestAnimations = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
 begin
-    script := LoadAnimationScript('kermit', 'kermit.txt');
-    count := AnimationCount(script);
+    inherited;
+    SetResourcesPath('/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/resources');
+end;
+procedure TestAnimationCountIntegration;
+begin
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    count := AnimationCount(testScript);
     AssertTrue(count > 0);
-    FreeAnimationScript(script);
 end;
-procedure TIntegrationTests.TestAnimationCurrentCellIntegration;
+procedure TestAnimationCurrentCellIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    currentCell := AnimationCurrentCell(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    currentCell := AnimationCurrentCell(testAnimation);
     AssertTrue(currentCell > -1);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
 end;
-procedure TIntegrationTests.TestAnimationCurrentVectorIntegration;
+procedure TestAnimationCurrentVectorIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    currentVector := AnimationCurrentVector(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    currentVector := AnimationCurrentVector(testAnimation);
     AssertEquals(0.0, currentVector.x);
     AssertEquals(0.0, currentVector.y);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
 end;
-procedure TIntegrationTests.TestAnimationEndedIntegration;
+procedure TestAnimationEndedIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssertFalse(AnimationEnded(anim));
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssertFalse(AnimationEnded(testAnimation));
     for i := 0 to 49 do
-        UpdateAnimation(anim, 100.0);
+        UpdateAnimation(testAnimation, 100.0);
     end;
-    AssertFalse(AnimationEnded(anim));
-    UpdateAnimation(anim);
-    AssertTrue(AnimationEnded(anim));
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    AssertTrue(AnimationEnded(testAnimation));
 end;
-procedure TIntegrationTests.TestAnimationEnteredFrameIntegration;
+procedure TestAnimationEnteredFrameIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'walkfront');
-    UpdateAnimation(anim, 20);
-    AssertTrue(AnimationEnteredFrame(anim));
-    UpdateAnimation(anim);
-    AssertFalse(AnimationEnteredFrame(anim));
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'walkfront');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    UpdateAnimation(testAnimation, 20);
+    AssertTrue(AnimationEnteredFrame(testAnimation));
+    UpdateAnimation(testAnimation);
+    AssertFalse(AnimationEnteredFrame(testAnimation));
 end;
-procedure TIntegrationTests.TestAnimationFrameTimeIntegration;
+procedure TestAnimationFrameTimeIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'walkfront');
-    UpdateAnimation(anim);
-    frameTime := AnimationFrameTime(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'walkfront');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    UpdateAnimation(testAnimation);
+    frameTime := AnimationFrameTime(testAnimation);
     AssertTrue(frameTime > 0.0);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
 end;
-procedure TIntegrationTests.TestAnimationIndexIntegration;
+procedure TestAnimationIndexIntegration;
 begin
-    script := LoadAnimationScript('kermit', 'kermit.txt');
-    index := AnimationIndex(script, 'walkfront');
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    index := AnimationIndex(testScript, 'walkfront');
     AssertTrue(index > -1);
-    nonExistentIndex := AnimationIndex(script, 'NonExistentAnimation');
+    nonExistentIndex := AnimationIndex(testScript, 'NonExistentAnimation');
     AssertEquals(-1, nonExistentIndex);
-    FreeAnimationScript(script);
 end;
-procedure TIntegrationTests.TestAnimationNameIntegration;
+procedure TestAnimationNameIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    animName := AnimationName(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    animName := AnimationName(testAnimation);
     AssertEquals('moonwalkback', animName);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
 end;
-procedure TIntegrationTests.TestAnimationScriptNameIntegration;
+procedure TestAnimationScriptNameIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    scriptName := AnimationScriptName(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    scriptName := AnimationScriptName(testScript);
     AssertEquals('kermit', scriptName);
-    FreeAnimationScript(kermitScript);
 end;
-procedure TIntegrationTests.TestAnimationScriptNamedIntegration;
+procedure TestAnimationScriptNamedIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    loadedScript := AnimationScriptNamed('kermit');
-    AssertNotNull(loadedScript);
-    AssertEquals(loadedScript, loadedScript);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    AnimationScriptNamed('kermit');
+    AssertNotNull(testScript);
+    AssertEquals(testScript, testScript);
 end;
-procedure TIntegrationTests.TestAssignAnimationWithScriptIntegration;
+procedure TestAssignAnimationWithScriptIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssignAnimation(anim, kermitScript, 'walkfront');
-    AssertEquals('walkfront', AnimationName(anim));
-    FreeAnimationScript(kermitScript);
-    FreeAnimation(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, testScript, 'walkfront');
+    AssertEquals('walkfront', AnimationName(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationWithScriptAndSoundIntegration;
+procedure TestAssignAnimationWithScriptAndSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'walkfront');
-    AssignAnimation(anim, kermitScript, 'walkleft', true);
-    AssertEquals('walkleft', AnimationName(anim));
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'walkfront');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, testScript, 'walkleft', true);
+    AssertEquals('walkleft', AnimationName(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationIndexWithScriptIntegration;
+procedure TestAssignAnimationIndexWithScriptIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssignAnimation(anim, kermitScript, 0);
-    AssertEquals('walkfront', AnimationName(anim));
-    FreeAnimationScript(kermitScript);
-    FreeAnimation(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, testScript, 0);
+    AssertEquals('walkfront', AnimationName(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationIndexWithScriptAndSoundIntegration;
+procedure TestAssignAnimationIndexWithScriptAndSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssignAnimation(anim, kermitScript, 0, true);
-    AssertEquals('walkfront', AnimationName(anim));
-    FreeAnimationScript(kermitScript);
-    FreeAnimation(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, testScript, 0, true);
+    AssertEquals('walkfront', AnimationName(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationWithScriptNamedIntegration;
+procedure TestAssignAnimationWithScriptNamedIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssignAnimation(anim, 'kermit', 'walkfront');
-    AssertEquals('walkfront', AnimationName(anim));
-    FreeAnimationScript(kermitScript);
-    FreeAnimation(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, 'kermit', 'walkfront');
+    AssertEquals('walkfront', AnimationName(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationWithScriptNamedAndSoundIntegration;
+procedure TestAssignAnimationWithScriptNamedAndSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'walkfront');
-    AssignAnimation(anim, 'kermit', 'walkfront', true);
-    AssertEquals('walkfront', AnimationName(anim));
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'walkfront');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, 'kermit', 'walkfront', true);
+    AssertEquals('walkfront', AnimationName(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationIndexIntegration;
+procedure TestAssignAnimationIndexIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssignAnimation(anim, 0);
-    AssertEquals(0, AnimationCurrentCell(anim));
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, 0);
+    AssertEquals(0, AnimationCurrentCell(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationIndexWithSoundIntegration;
+procedure TestAssignAnimationIndexWithSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback', false);
-    AssignAnimation(anim, 0, true);
-    AssertTrue(AnimationEnteredFrame(anim));
-    FreeAnimationScript(kermitScript);
-    FreeAnimation(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback', false);
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, 0, true);
+    AssertTrue(AnimationEnteredFrame(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationIntegration;
+procedure TestAssignAnimationIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssignAnimation(anim, 'walkfront');
-    AssertEquals('walkfront', AnimationName(anim));
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, 'walkfront');
+    AssertEquals('walkfront', AnimationName(testAnimation));
 end;
-procedure TIntegrationTests.TestAssignAnimationWithSoundIntegration;
+procedure TestAssignAnimationWithSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssignAnimation(anim, 'walkfront', true);
-    AssertEquals('walkfront', AnimationName(anim));
-    FreeAnimationScript(kermitScript);
-    FreeAnimation(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssignAnimation(testAnimation, 'walkfront', true);
+    AssertEquals('walkfront', AnimationName(testAnimation));
 end;
-procedure TIntegrationTests.TestCreateAnimationFromIndexWithSoundIntegration;
+procedure TestCreateAnimationFromIndexWithSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 0, true);
-    AssertNotNull(anim);
-    animName := AnimationName(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 0, true);
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssertNotNull(testAnimation);
+    animName := AnimationName(testAnimation);
     AssertEquals('walkfront', animName);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
 end;
-procedure TIntegrationTests.TestCreateAnimationIntegration;
+procedure TestCreateAnimationIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    AssertNotNull(anim);
-    animName := AnimationName(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssertNotNull(testAnimation);
+    animName := AnimationName(testAnimation);
     AssertEquals('moonwalkback', animName);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
 end;
-procedure TIntegrationTests.TestCreateAnimationWithSoundIntegration;
+procedure TestCreateAnimationWithSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback', true);
-    AssertNotNull(anim);
-    animName := AnimationName(anim);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback', true);
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssertNotNull(testAnimation);
+    animName := AnimationName(testAnimation);
     AssertEquals('moonwalkback', animName);
-    FreeAnimationScript(kermitScript);
-    FreeAnimation(anim);
 end;
-procedure TIntegrationTests.TestCreateAnimationFromScriptNamedIntegration;
-begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation('kermit', 'moonwalkback');
-    AssertNotNull(anim);
-    animName := AnimationName(anim);
-    AssertEquals('moonwalkback', animName);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
-end;
-procedure TIntegrationTests.TestCreateAnimationFromScriptNamedWithSoundIntegration;
-begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation('', 'moonwalkback', true);
-    AssertNotNull(anim);
-    animName := AnimationName(anim);
-    AssertEquals('moonwalkback', animName);
-    FreeAnimationScript(kermitScript);
-    FreeAnimation(anim);
-end;
-procedure TIntegrationTests.TestFreeAllAnimationScriptsIntegration;
-begin
-    LoadAnimationScript('kermitq', 'kermit.txt');
-    LoadAnimationScript('kermit2', 'kermit.txt');
-    AssertTrue(HasAnimationScript('kermit1'));
-    AssertTrue(HasAnimationScript('kermit2'));
-    FreeAllAnimationScripts();
-    AssertFalse(HasAnimationScript('kermit1'));
-    AssertFalse(HasAnimationScript('kermit2'));
-end;
-procedure TIntegrationTests.TestFreeAnimationIntegration;
-begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    FreeAnimation(anim);
-    AssertEquals('', AnimationName(anim));
-    AssertTrue(AnimationEnded(anim));
-    FreeAnimationScript(kermitScript);
-end;
-procedure TIntegrationTests.TestFreeAnimationScriptIntegration;
-begin
-    script := LoadAnimationScript('kermit', 'kermit.txt');
-    AssertNotNull(script);
-    FreeAnimationScript(script);
-    scriptExists := HasAnimationScript('kermit');
-    AssertFalse(scriptExists);
-end;
-procedure TIntegrationTests.TestFreeAnimationScriptWithNameIntegration;
+procedure TestCreateAnimationFromScriptNamedIntegration;
 begin
     LoadAnimationScript('kermit', 'kermit.txt');
-    AssertTrue(HasAnimationScript('kermit'));
-    FreeAnimationScript('kermit');
-    AssertFalse(HasAnimationScript('kermit'));
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation('kermit', 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssertNotNull(testAnimation);
+    animName := AnimationName(testAnimation);
+    AssertEquals('moonwalkback', animName);
 end;
-procedure TIntegrationTests.TestHasAnimationNamedIntegration;
+procedure TestCreateAnimationFromScriptNamedWithSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    hasWalkfront := HasAnimationNamed(kermitScript, 'walkfront');
-    AssertTrue(hasWalkfront);
-    hasNonexistent := HasAnimationNamed(kermitScript, 'NonExistentAnimation');
-    AssertFalse(hasNonexistent);
-    FreeAnimationScript(kermitScript);
+    LoadAnimationScript('test_script', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation('test_script', 'moonwalkback', true);
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    AssertNotNull(testAnimation);
+    animName := AnimationName(testAnimation);
+    AssertEquals('moonwalkback', animName);
 end;
-procedure TIntegrationTests.TestHasAnimationScriptIntegration;
+procedure TestFreeAllAnimationScriptsIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    AssertTrue(HasAnimationScript('kermit'));
-    FreeAnimationScript(kermitScript);
-    AssertFalse(HasAnimationScript('kermit'));
+    LoadAnimationScript('free_all_kermit1', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    LoadAnimationScript('free_all_kermit2', 'kermit.txt');
+    AssertTrue(HasAnimationScript('free_all_kermit1'));
+    AssertTrue(HasAnimationScript('free_all_kermit2'));
+    FreeAllAnimationScripts();
+    AssertFalse(HasAnimationScript('free_all_kermit1'));
+    AssertFalse(HasAnimationScript('free_all_kermit2'));
 end;
-procedure TIntegrationTests.TestLoadAnimationScriptIntegration;
+procedure TestFreeAnimationIntegration;
 begin
-    loadedScript := LoadAnimationScript('test_animation', 'kermit.txt');
-    AssertNotNull(loadedScript);
-    scriptName := AnimationScriptName(loadedScript);
-    AssertEquals('test_animation', scriptName);
-    FreeAnimationScript(loadedScript);
-    scriptExists := HasAnimationScript('test_animation');
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    FreeAnimation(testAnimation);
+    AssertEquals('', AnimationName(testAnimation));
+    AssertTrue(AnimationEnded(testAnimation));
+end;
+procedure TestFreeAnimationScriptIntegration;
+begin
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    AssertNotNull(testScript);
+    FreeAnimationScript(testScript);
+    scriptExists := HasAnimationScript('has_kermit');
     AssertFalse(scriptExists);
 end;
-procedure TIntegrationTests.TestRestartAnimationIntegration;
+procedure TestFreeAnimationScriptWithNameIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
+    LoadAnimationScript('free_kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    AssertTrue(HasAnimationScript('free_kermit'));
+    FreeAnimationScript('free_kermit');
+    AssertFalse(HasAnimationScript('free_kermit'));
+end;
+procedure TestHasAnimationNamedIntegration;
+begin
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    hasWalkfront := HasAnimationNamed(testScript, 'walkfront');
+    AssertTrue(hasWalkfront);
+    hasNonexistent := HasAnimationNamed(testScript, 'NonExistentAnimation');
+    AssertFalse(hasNonexistent);
+end;
+procedure TestHasAnimationScriptIntegration;
+begin
+    testScript := LoadAnimationScript('has_kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    AssertTrue(HasAnimationScript('has_kermit'));
+    FreeAnimationScript(testScript);
+    AssertFalse(HasAnimationScript('has_kermit'));
+end;
+procedure TestLoadAnimationScriptIntegration;
+begin
+    testScript := LoadAnimationScript('test_animation_name', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    AssertNotNull(testScript);
+    scriptName := AnimationScriptName(testScript);
+    AssertEquals('test_animation_name', scriptName);
+    FreeAnimationScript(testScript);
+    scriptExists := HasAnimationScript('test_animation_name');
+    AssertFalse(scriptExists);
+end;
+procedure TestRestartAnimationIntegration;
+begin
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
     for i := 0 to 49 do
-        UpdateAnimation(anim, 100.0);
+        UpdateAnimation(testAnimation, 100.0);
     end;
-    animEnded := AnimationEnded(anim);
+    animEnded := AnimationEnded(testAnimation);
     AssertTrue(animEnded);
-    RestartAnimation(anim);
-    animEndedAfterRestart := AnimationEnded(anim);
+    RestartAnimation(testAnimation);
+    animEndedAfterRestart := AnimationEnded(testAnimation);
     AssertFalse(animEndedAfterRestart);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
 end;
-procedure TIntegrationTests.TestRestartAnimationWithSoundIntegration;
+procedure TestRestartAnimationWithSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback', true);
-    UpdateAnimation(anim);
-    RestartAnimation(anim, true);
-    AssertEquals(3, AnimationCurrentCell(anim));
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback', true);
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    UpdateAnimation(testAnimation);
+    RestartAnimation(testAnimation, true);
+    AssertEquals(3, AnimationCurrentCell(testAnimation));
 end;
-procedure TIntegrationTests.TestUpdateAnimationPercentWithSoundIntegration;
+procedure TestUpdateAnimationPercentWithSoundIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    UpdateAnimation(anim, 0.5, true);
-    AssertTrue(AnimationFrameTime(anim) > 0.0);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    UpdateAnimation(testAnimation, 0.5, true);
+    AssertTrue(AnimationFrameTime(testAnimation) > 0.0);
 end;
-procedure TIntegrationTests.TestUpdateAnimationIntegration;
+procedure TestUpdateAnimationIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'moonwalkback');
-    UpdateAnimation(anim);
-    AssertNotEquals(0, AnimationCurrentCell(anim));
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'moonwalkback');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    UpdateAnimation(testAnimation);
+    AssertNotEquals(0, AnimationCurrentCell(testAnimation));
 end;
-procedure TIntegrationTests.TestUpdateAnimationPercentIntegration;
+procedure TestUpdateAnimationPercentIntegration;
 begin
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
-    anim := CreateAnimation(kermitScript, 'walkfront');
-    UpdateAnimation(anim, 0.5);
-    AssertTrue(AnimationFrameTime(anim) > 0.0);
-    FreeAnimation(anim);
-    FreeAnimationScript(kermitScript);
+    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    CleanupAnimationScript := TAnimationScriptCleanup.Create;
+    testAnimation := CreateAnimation(testScript, 'walkfront');
+    CleanupAnimation := TAnimationCleanup.Create(testAnimation)
+    UpdateAnimation(testAnimation, 0.5);
+    AssertTrue(AnimationFrameTime(testAnimation) > 0.0);
 end;
 end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

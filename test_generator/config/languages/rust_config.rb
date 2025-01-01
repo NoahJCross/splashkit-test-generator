@@ -8,29 +8,31 @@ module LanguageConfig
     DEFAULT_CONFIG = {
       supports_overloading: false,
       imports: [
-        "use std::*;\n",
-        "use splashkit::*;\n",
-        "#[cfg(test)]\n",
+        'use std::*;',
+        'use splashkit::*;',
+        'use splashkit_tests::helpers::*;',
+        '#[cfg(test)]',
+        'use ctor::ctor;'
       ],
 
       naming_convention: ->(name) { name.to_snake_case },
 
       assert_conditions: {
-        'equal'                   => ->(v1, v2, _)    { "assert_eq!(#{v1}, #{v2});\n" },
-        'not_equal'               => ->(v1, v2, _)    { "assert_ne!(#{v1}, #{v2});\n" },
-        'greater_than'            => ->(v1, v2, _)    { "assert!(#{v1} > #{v2});\n" },
-        'less_than'               => ->(v1, v2, _)    { "assert!(#{v1} < #{v2});\n" },
-        'null'                    => ->(v1, _, _)     { "assert!(#{v1}.is_null());\n" },
-        'not_null'                => ->(v1, _, _)     { "assert!(!#{v1}.is_null());\n" },
-        'range'                   => ->(v1, v2, v3)   { "assert!((#{v2}..=#{v3}).contains(&#{v1}));\n" },
-        'true'                    => ->(v1, _, _)     { "assert!(#{v1});\n" },
-        'false'                   => ->(v1, _, _)     { "assert!(!#{v1});\n" },
-        'greater_than_or_equal'   => ->(v1, v2, _)    { "assert!(#{v1} >= #{v2});\n" },
-        'less_than_or_equal'      => ->(v1, v2, _)    { "assert!(#{v1} <= #{v2});\n" },
-        'throws'                  => ->(v1, _, _)     { "assert!(std::panic::catch_unwind(|| { #{v1} }).is_err());\n" },
-        'not_empty'               => ->(v1, _, _)     { "assert!(!#{v1}.is_empty());\n" },
-        'contains'                => ->(v1, v2, _)    { "assert!(#{v2}.contains(#{v1}));\n" },
-        'empty'                   => ->(v1, _, _)     { "assert!(#{v1}.is_empty());\n" }
+        'equal'                   => ->(v1, v2, precision = nil) { precision ? "assert!((#{v1} - #{v2}).abs() <= #{precision});" : "assert_eq!(#{v1}, #{v2});" },
+        'not_equal'               => ->(v1, v2, _)    { "assert_ne!(#{v1}, #{v2});" },
+        'greater_than'            => ->(v1, v2, _)    { "assert!(#{v1} > #{v2});" },
+        'less_than'               => ->(v1, v2, _)    { "assert!(#{v1} < #{v2});" },
+        'null'                    => ->(v1, _, _)     { "assert!(#{v1}.is_null());" },
+        'not_null'                => ->(v1, _, _)     { "assert!(!#{v1}.is_null());" },
+        'range'                   => ->(v1, v2, v3)   { "assert!((#{v2}..=#{v3}).contains(&#{v1}));" },
+        'true'                    => ->(v1, _, _)     { "assert!(#{v1});" },
+        'false'                   => ->(v1, _, _)     { "assert!(!#{v1});" },
+        'greater_than_or_equal'   => ->(v1, v2, _)    { "assert!(#{v1} >= #{v2});" },
+        'less_than_or_equal'      => ->(v1, v2, _)    { "assert!(#{v1} <= #{v2});" },
+        'throws'                  => ->(v1, _, _)     { "assert!(std::panic::catch_unwind(|| { #{v1} }).is_err());" },
+        'not_empty'               => ->(v1, _, _)     { "assert!(!#{v1}.is_empty());" },
+        'contains'                => ->(v1, v2, _)    { "assert!(#{v2}.contains(#{v1}));" },
+        'empty'                   => ->(v1, _, _)     { "assert!(#{v1}.is_empty());" }
       }.freeze,
 
       if_conditions: {
@@ -48,13 +50,13 @@ module LanguageConfig
       }.freeze,
 
       control_flow: {
-        loop:      ->(iterations) { "for _ in 0..#{iterations} {\n" },
-        while:     ->(condition) { "while #{condition} {\n" },
-        if:        ->(condition) { "if #{condition} {\n" },
-        else:      -> { "else {\n" },
-        break:     -> { "break;\n" },
-        end:       -> { "}\n" },
-        new_line: "'\\n'"
+        loop:      ->(iterations) { "for _ in 0..#{iterations} {" },
+        while:     ->(condition) { "while #{condition} {" },
+        if:        ->(condition) { "if #{condition} {" },
+        else:      -> { 'else {' },
+        break:     -> { 'break;' },
+        end:       -> { '}' },
+        new_line: "'\'"
       }.freeze,
 
       string_handlers: {
@@ -62,25 +64,38 @@ module LanguageConfig
         char:          ->(value) { "'#{value}'" },
         string_ref:    ->(value) { "#{value}.clone()" },
         format_string: ->(text_parts, expressions) {
-          "format!(\"#{text_parts.join('{}')}#{'{}'}\", #{expressions.join(', ')})"
+          "format!(\"#{text_parts.join('{}')}{}\", #{expressions.join(', ')})"
         }
       }.freeze,
 
       type_handlers: {
         list:      ->(values, _) { "vec![#{values}]" },
-        class:     ->(name, args) { "#{name}::new(#{args})" },
+        class_instance:     ->(name, args) { "#{name.to_pascal_case}::new(#{args})" },
         mapping:   {
           'double' => 'f64',
           'json'   => 'Json',
           'line'   => 'Line'
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}::#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
+          "#{type.to_pascal_case}::#{value.to_pascal_case}#{semicolon ? ";" : ''}" 
         },
-        unsigned_int: ->(value) { "#{value}u32" },
+        string: ->(value) { "\"#{value}\".to_string()" },
+        object: ->(object_type, variable_name) { {
+          object_type: object_type.to_pascal_case,
+          variable_name: variable_name.to_snake_case
+        } }
+      }.freeze,
+
+      literal_cast: {
+        unsigned_int: ->(value) { "#{value} as u32" },
         float: ->(value) { "#{value} as f32" },
         double: ->(value) { "#{value} as f64" },
-        string: ->(value) { "\"#{value&.to_s&.gsub('"', '\\"')}\".to_string()" }
+      }.freeze,
+
+      comparison_cast: {
+        unsigned_int: ->(value) { "#{value} as u32" },
+        float: ->(value) { "#{value} as f32" },
+        double: ->(value) { "#{value} as f64" },
       }.freeze,
 
       variable_handlers: {
@@ -88,8 +103,9 @@ module LanguageConfig
           regular: ->(name) { "let #{name.to_snake_case} = " },
           mutable: ->(name) { "let mut #{name.to_snake_case} = " }
         },
-        reference:    ->(name) { name.to_snake_case.to_s },
+        identifier:    ->(name) { name.to_snake_case.to_s },
         field_access: ->(var, field) { "#{var}.#{field}" },
+        delegate_call: ->(var, field) { "#{var}.#{field}();" },
         array_access: ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:   ->(arr) { "#{arr}.len()" },
@@ -98,43 +114,43 @@ module LanguageConfig
 
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
-        pointer:   ->(name) { "let callback = |_| (); #{name}Wrapper::new(callback);\n" },
-        test:      ->(name) { "#[test]\nfn test_#{name.to_snake_case}_integration() {\n" },
+        pointer:   ->(name) { "let callback = |_| (); #{name}Wrapper::new(callback);" },
+        test:      ->(name) { ["#[test]", "fn test_#{name.to_snake_case}_integration() {"] }
       }.freeze,
 
       comment_syntax: {
-        single: "//",
-        multi_start: "/*",
-        multi_end: "*/",
+        single: '//',
+        multi_start: '/*',
+        multi_end: '*/'
       }.freeze,
 
       class_wrapper: {
         header: [
-          ->(group) { "mod test_#{group.to_snake_case} {\n" },
-          "use super::*;\n"
+          ->(group) { "mod test_#{group.to_snake_case} {" },
+          'use super::*;'
         ],
         constructor_wrapper: {
-          header: "fn setup() {\n",
-          footer: "}\n\n"
+          header: ['#[ctor]', 'fn setup()', '{'],
+          footer: ['}']
         },
-        footer: ["}\n"],
-        indent_after: [->(group) { "mod test_#{group.to_snake_case} {\n" }, "fn setup() {\n"],
-        unindent_before: ["}\n"]
+        footer: ['}']
+      }.freeze,
+
+      cleanup_handlers: {
+        setup: ->(name, type, arg = nil) {
+          "let _#{name.to_snake_case} = #{type.to_pascal_case}Cleanup::new(#{arg});"
+        }
+      }.freeze,
+
+      indentation: {
+        indent_after: ['{'],
+        unindent_before: ['}']
       }.freeze,
 
       file_extension: 'rs',
-      runtime_requirement: 'Rust',
-      installation_steps: [
-        '1. Install SplashKit SDK following instructions at https://splashkit.io/installation/',
-        '2. Create new Cargo project: cargo new splashkit_tests',
-        '3. Add to Cargo.toml:',
-        '   [dependencies]',
-        '   splashkit = "*"',
-        '4. Move integration_tests.rs to splashkit_tests/src/lib.rs'
-      ].join("\n"),
-      run_command: 'cd splashkit_tests && cargo test',
-      prompt_handlers: {
-        message: ->(text) { "print!(\"#{text}\");\n" }
+
+      terminal_handlers: {
+        message: ->(text) { "print!(\"#{text}\");" }
       }.freeze
     }.freeze
   end

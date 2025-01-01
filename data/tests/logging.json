@@ -1,5 +1,12 @@
 {
   "group": "logging",
+  "cleanup": [
+    {
+      "cleanup_type": "logger",
+      "function_name": "close_log_process",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "close_log_process",
@@ -22,6 +29,11 @@
               "value": "log_console_and_file"
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "logger",
+          "store_result": "cleanup_logger"
         },
         {
           "step_type": "function",
@@ -58,6 +70,11 @@
               "value": "log_console"
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "logger",
+          "store_result": "cleanup_logger"
         },
         {
           "step_type": "function",
@@ -129,11 +146,6 @@
               "value": "This message should only appear in the log file."
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_log_process",
-          "args": []
         }
       ]
     },
@@ -158,6 +170,11 @@
               "value": "log_console_and_file"
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "logger",
+          "store_result": "cleanup_logger"
         },
         {
           "step_type": "function",
@@ -207,11 +224,6 @@
               "value": "This message should only appear in the file."
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_log_process",
-          "args": []
         }
       ]
     },
@@ -238,6 +250,11 @@
           ]
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "logger",
+          "store_result": "cleanup_logger"
+        },
+        {
           "step_type": "function",
           "function_name": "log",
           "args": [
@@ -251,11 +268,6 @@
               "value": "This message should appear in both console and file."
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_log_process",
-          "args": []
         }
       ]
     }

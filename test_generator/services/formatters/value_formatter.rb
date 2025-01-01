@@ -2,6 +2,9 @@ module TestGenerator
   # Formats values for test generation based on their type and language configuration
   module ValueFormatter
     class << self
+      def is_wsl
+        @is_wsl ||= system('uname -r | grep -q "WSL"')
+      end
       # Maps value types to their corresponding formatting methods
       # @return [Hash<String, Symbol>] Map of value types to formatter method names
       def formatter_map
@@ -30,6 +33,8 @@ module TestGenerator
           'unsigned_short'            => :format_primitive_value,
           'ref'                       => :format_ref_value,
           'size'                      => :format_array_size_value,
+          'object'                    => :format_object_value,
+          'precision'                 => :format_primitive_value
         }
       end
 
@@ -55,7 +60,9 @@ module TestGenerator
         raise "Function name is required for function value #{JSON.pretty_generate(value)}" unless function_name
 
         result = config.function_handlers[:call].call(function_name, args, false)
-        result = config.type_handlers[value[:cast_to].to_sym].call(result) if value[:cast_to]
+        if value[:cast_to] && config.comparison_cast
+          result = config.comparison_cast[value[:cast_to].to_sym].call(result)
+        end
         result
       end
 
@@ -65,7 +72,7 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted variable reference
       def format_variable_value(value, _, config)
-        config.variable_handlers[:reference].call(value[:variable_name])
+        config.variable_handlers[:identifier].call(value[:variable_name])
       end
 
       # Formats field access on variables
@@ -83,7 +90,11 @@ module TestGenerator
       # @param value [Hash] The primitive value to format
       # @return [String] The formatted primitive value
       def format_primitive_value(value, _, _)
-        value[:value].inspect
+        if value[:alt_value] && is_wsl
+          value[:alt_value].inspect
+        else
+          value[:value].inspect
+        end
       end
 
       # Formats enum values
@@ -110,8 +121,8 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted array access
       def format_array_access_value(value, _, config)
-        array_name = config.variable_handlers[:reference].call(value[:array_name])
-        config.variable_handlers[:array_access].call(array_name, value[:index])
+        array_identifier = config.variable_handlers[:identifier].call(value[:array_name])
+        config.variable_handlers[:array_access].call(array_identifier, value[:index])
       end
 
       # Formats list values
@@ -129,8 +140,8 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted array field access
       def format_array_access_field_value(value, _, config)
-        variable = config.variable_handlers[:reference].call(value[:variable_name])
-        array_access = config.variable_handlers[:field_access].call(variable, value[:array_name])
+        identifier = config.variable_handlers[:identifier].call(value[:variable_name])
+        array_access = config.variable_handlers[:field_access].call(identifier, value[:array_name])
         array_with_index = config.variable_handlers[:array_access].call(array_access, value[:index])
         config.variable_handlers[:field_access].call(array_with_index, value[:field])
       end
@@ -192,7 +203,7 @@ module TestGenerator
         raise "Class name is required for class instance value #{JSON.pretty_generate(value)}" unless value[:class_name]
 
         class_name = config.naming_convention.call(value[:class_name])
-        config.type_handlers[:class].call(class_name, args)
+        config.type_handlers[:class_instance].call(class_name, args)
       end
 
       # Formats array size access
@@ -201,15 +212,15 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted array size access
       def format_array_size_value(value, _, config)
-        array_name = config.variable_handlers[:reference].call(value[:variable_name])
-        config.variable_handlers[:array_size].call(array_name)
+        array_identifier = config.variable_handlers[:identifier].call(value[:variable_name])
+        config.variable_handlers[:array_size].call(array_identifier)
       end
 
       # Formats float values
       # @param value [Hash] The float value to format
       # @return [String] The formatted float value
       def format_float_value(value, _, config)
-        config.type_handlers[:float].call(value[:value])
+        config.literal_cast[:float].call(value[:value])
       end
 
       # Formats unsigned integer values
@@ -218,7 +229,7 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted unsigned integer value
       def format_unsigned_int_value(value, _, config)
-        config.type_handlers[:unsigned_int].call(value[:value])
+        config.literal_cast[:unsigned_int].call(value[:value])
       end
 
       # Formats reference values
@@ -227,8 +238,8 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted reference
       def format_ref_value(value, _, config)
-        variable_name = config.variable_handlers[:reference].call(value[:variable_name])
-        config.variable_handlers[:reference_operator].call(variable_name)
+        identifier = config.variable_handlers[:identifier].call(value[:variable_name])
+        config.variable_handlers[:reference_operator].call(identifier)
       end
 
       # Formats string values
@@ -247,6 +258,15 @@ module TestGenerator
       # @return [String] The formatted string reference
       def format_string_ref_value(value, _, config)
         config.string_handlers[:string_ref].call(value[:value])
+      end
+
+      # Formats object values
+      # @param value [Hash] The object value to format
+      # @param _ [Array] Unused functions parameter
+      # @param config [Hash] Language configuration
+      # @return [String] The formatted object
+      def format_object_value(value, _, config)
+        config.type_handlers[:object].call(value[:object_type], value[:variable_name])
       end
     end
   end

@@ -1,65 +1,79 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestTerminal = class(TTestCase)
-protected
-procedure TIntegrationTests.TestReadCharIntegration;
+    TTestTerminal = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
+    procedure TestReadCharIntegration;
 begin
     Write('Enter the letter A');
     result := ReadChar();
     AssertEquals('A', result);
 end;
-procedure TIntegrationTests.TestReadLineIntegration;
+procedure TestReadLineIntegration;
 begin
     Write('Enter the text: Test Input');
     result := ReadLine();
     AssertEquals('Test Input', result);
 end;
-procedure TIntegrationTests.TestTerminalHasInputIntegration;
+procedure TestTerminalHasInputIntegration;
 begin
     Write('Enter some text: Some Input');
     result := TerminalHasInput();
     AssertTrue(result);
 end;
-procedure TIntegrationTests.TestWriteCharIntegration;
+procedure TestWriteCharIntegration;
 begin
+    Write('Should print A:');
     Write('A');
-end;
-procedure TIntegrationTests.TestWriteDoubleIntegration;
-begin
-    Write(3.14);
-end;
-procedure TIntegrationTests.TestWriteIntIntegration;
-begin
-    Write(42);
-end;
-procedure TIntegrationTests.TestWriteIntegration;
-begin
-    Write('Test String');
-end;
-procedure TIntegrationTests.TestWriteLineCharIntegration;
-begin
-    WriteLine('A');
-end;
-procedure TIntegrationTests.TestWriteLineEmptyIntegration;
-begin
     WriteLine();
 end;
-procedure TIntegrationTests.TestWriteLineDoubleIntegration;
+procedure TestWriteDoubleIntegration;
 begin
+    Write('Should print 3.14:');
+    Write(3.14);
+    WriteLine();
+end;
+procedure TestWriteIntIntegration;
+begin
+    Write('Should print 42:');
+    Write(42);
+    WriteLine();
+end;
+procedure TestWriteIntegration;
+begin
+    Write('Should print Test String:');
+    Write('Test String');
+    WriteLine();
+end;
+procedure TestWriteLineCharIntegration;
+begin
+    Write('Should print A:');
+    WriteLine('A');
+end;
+procedure TestWriteLineEmptyIntegration;
+begin
+    Write('Should print empty line:');
+    WriteLine();
+end;
+procedure TestWriteLineDoubleIntegration;
+begin
+    Write('Should print 3.14:');
     WriteLine(3.14);
 end;
-procedure TIntegrationTests.TestWriteLineIntIntegration;
+procedure TestWriteLineIntIntegration;
 begin
+    Write('Should print 42:');
     WriteLine(42);
 end;
-procedure TIntegrationTests.TestWriteLineIntegration;
+procedure TestWriteLineIntegration;
 begin
+    Write('Should print Test Line:');
     WriteLine('Test Line');
 end;
 end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

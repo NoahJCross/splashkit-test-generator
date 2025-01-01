@@ -14,11 +14,9 @@ module TestGenerator
     # @param formatter [CodeFormatter] The formatter to use for code indentation
     # @return [String] The complete formatted test case code
     def to_code(formatter)
-      code = formatter.indent(write_header)
-      formatter.increase_indent
+      code = write_header(formatter)
       code << write_steps(formatter)
-      formatter.decrease_indent
-      code << formatter.indent(@config.control_flow[:end].call)
+      code << formatter.indent(@config.control_flow[:end].call, @config)
       code
     end
 
@@ -26,8 +24,10 @@ module TestGenerator
 
     # Writes the test case header with the test name
     # @return [String] The formatted test header
-    def write_header
-      @config.function_handlers[:test].call(@name)
+    def write_header(formatter)
+      @config.function_handlers[:test].call(@name).map do |line|
+        formatter.indent(line, @config)
+      end.join
     end
 
     # Writes all test steps in sequence

@@ -18,15 +18,17 @@ module TestGenerator
                 :control_flow,
                 :string_handlers,
                 :type_handlers,
-                :runtime_requirement,
-                :installation_steps,
-                :run_command,
                 :supports_overloading,
                 :naming_convention,
                 :class_wrapper,
                 :class_wrapper_handler,
                 :numeric_constants,
-                :prompt_handlers
+                :terminal_handlers,
+                :cleanup_handlers,
+                :comment_syntax,
+                :indentation,
+                :literal_cast,
+                :comparison_cast
 
     def initialize(config)
       validate_config(config)
@@ -42,13 +44,15 @@ module TestGenerator
       @control_flow = config[:control_flow]
       @string_handlers = config[:string_handlers]
       @type_handlers = config[:type_handlers]
-      @runtime_requirement = config[:runtime_requirement]
-      @installation_steps = config[:installation_steps]
-      @run_command = config[:run_command]
       @supports_overloading = config[:supports_overloading]
       @naming_convention = config[:naming_convention]
       @numeric_constants = config[:numeric_constants]
-      @prompt_handlers = config[:prompt_handlers]
+      @terminal_handlers = config[:terminal_handlers]
+      @cleanup_handlers = config[:cleanup_handlers]
+      @comment_syntax = config[:comment_syntax]
+      @indentation = config[:indentation]
+      @literal_cast = config[:literal_cast]
+      @comparison_cast = config[:comparison_cast]
       @class_wrapper_handler = ClassWrapperHandler.new(config[:class_wrapper])
     end
 
@@ -71,12 +75,6 @@ module TestGenerator
       end
     end
 
-    # Gets the class wrapper handler instance
-    # @return [ClassWrapperHandler] The class wrapper handler
-    def class_wrapper
-      @class_wrapper_handler ||= ClassWrapperHandler.new(@class_wrapper)
-    end
-
     private
 
     # Validates that all required configuration keys are present
@@ -86,9 +84,9 @@ module TestGenerator
       required_keys = %i[
         language indent_size file_extension imports function_handlers
         variable_handlers assert_conditions if_conditions control_flow
-        string_handlers type_handlers runtime_requirement installation_steps
-        run_command supports_overloading naming_convention class_wrapper
-        numeric_constants prompt_handlers
+        string_handlers type_handlers supports_overloading naming_convention class_wrapper
+        numeric_constants terminal_handlers cleanup_handlers comment_syntax
+        indentation literal_cast
       ]
       missing_keys = required_keys - config.keys
       raise ConfigurationError, "Missing required configuration keys: #{missing_keys.join(', ')}" if missing_keys.any?

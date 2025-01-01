@@ -1,0 +1,125 @@
+2024-12-31 15:41:44,018 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,018 WARNING [default] Attempting to get number of animations from invalid animation script
+2024-12-31 15:41:44,021 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,021 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,021 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,022 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,022 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,023 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,025 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,025 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,025 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,026 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,027 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,028 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,029 WARNING [default] Attempting to check if animation entered a new frame with invalid animation data.
+2024-12-31 15:41:44,030 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,030 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,031 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,032 WARNING [default] Attempting to get frame time with invalid animation data.
+2024-12-31 15:41:44,036 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,037 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,039 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,039 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,041 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,041 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,042 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,044 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,045 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,045 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,046 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,047 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,049 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,050 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,050 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,050 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,050 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,052 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,054 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,056 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,056 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,057 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,058 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,058 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,058 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,058 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,058 WARNING [default] Attempting to check if animation entered a new frame with invalid animation data.
+2024-12-31 15:41:44,059 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,059 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,059 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,060 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,060 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,061 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,062 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,062 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,062 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,062 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,062 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,063 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,063 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,063 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,063 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,063 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,063 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,064 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,064 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,064 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,064 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,065 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,065 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,065 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,065 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,066 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,067 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,067 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,068 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,068 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,068 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,068 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,069 WARNING [default] Attempting to setup an assign animation for invalid animation
+2024-12-31 15:41:44,069 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,069 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,069 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,070 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,070 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,070 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,070 WARNING [default] Unable to locate animation file for test_script (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,071 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,071 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,071 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,071 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,071 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,072 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,074 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,074 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,074 WARNING [default] Unable to locate animation file for free_all_kermit1 (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,075 WARNING [default] Unable to locate animation file for free_all_kermit2 (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,075 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,075 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,075 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,075 WARNING [default] Attempting to get name of invalid animation data.
+2024-12-31 15:41:44,076 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,076 WARNING [default] Unable to locate animation file for free_kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,077 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,077 WARNING [default] Attempting to get animation name from invalid animation script.
+2024-12-31 15:41:44,077 WARNING [default] Unable to locate animation file for has_kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,078 WARNING [default] Unable to locate animation file for test_animation_name (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,078 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,080 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,080 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,080 WARNING [default] Attempting to restart an invalid animation.
+2024-12-31 15:41:44,081 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,081 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,081 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,081 WARNING [default] Attempting to restart an invalid animation.
+2024-12-31 15:41:44,081 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,082 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,082 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,083 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,083 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,083 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,083 WARNING [default] Attempting to get frame time with invalid animation data.
+2024-12-31 15:41:44,083 WARNING [default] Unable to locate animation file for kermit (/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/generated_tests/rust/animations/kermit.txt)
+2024-12-31 15:41:44,084 WARNING [default] Attempting to get index from invalid animation script.
+2024-12-31 15:41:44,084 WARNING [default] Attempting to create animation from invalid script
+2024-12-31 15:41:44,084 WARNING [default] Attempting to get frame time with invalid animation data.

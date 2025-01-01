@@ -1,8 +1,12 @@
 #include "splashkit.h"
 #include <catch2/catch.hpp>
-
+#include "../helpers.hpp"
 class TestUtilities {
 public:
+    TestUtilities()
+    {
+        set_resources_path(string("/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/resources"));
+    }
     TEST_CASE("contains_integration") {
         REQUIRE(contains(string("splashkit library"), string("splashkit")));
         REQUIRE(contains(string("splashkit library"), string("library")));
@@ -136,6 +140,7 @@ public:
     }
     TEST_CASE("delay_integration") {
         auto test_timer = create_timer(string("test_timer"));
+        TimerCleanup cleanup_timer;
         start_timer(test_timer);
         auto initial_ticks = timer_ticks(test_timer);
         delay(200);
@@ -143,14 +148,14 @@ public:
     }
     TEST_CASE("display_dialog_integration") {
         auto test_window = open_window(string("Test Window"), 800, 600);
+        WindowCleanup cleanup_window;
         auto test_font = load_font(string("test_font"), string("hara.ttf"));
+        FontCleanup cleanup_font;
         display_dialog(string("Test Dialog"), string("This is a test message"), test_font, 20);
         free_font(test_font);
-        close_window(test_window);
     }
     TEST_CASE("file_as_string_integration") {
-        REQUIRE(string("BITMAP,ufo,ufo.png
-        ") == file_as_string(string("blah.txt"), ResourceKind::BUNDLE_RESOURCE));
+        REQUIRE(string("BITMAP,ufo,ufo.png\n") == file_as_string(string("blah.txt"), ResourceKind::BUNDLE_RESOURCE));
         REQUIRE(string("") == file_as_string(string(""), ResourceKind::BUNDLE_RESOURCE));
         REQUIRE(string("") == file_as_string(string("invalid.txt"), ResourceKind::BUNDLE_RESOURCE));
     }

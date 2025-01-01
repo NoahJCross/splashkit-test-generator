@@ -23,7 +23,6 @@ require_relative 'test_generator/services/formatters/code_formatter'
 require_relative 'test_generator/services/formatters/value_formatter'
 
 
-require_relative 'test_generator/services/writers/readme_writer'
 require_relative 'test_generator/services/writers/step_writer'
 require_relative 'test_generator/services/writers/test_case'
 require_relative 'test_generator/services/writers/test_writer'

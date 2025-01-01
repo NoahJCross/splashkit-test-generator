@@ -1,100 +1,103 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestJson = class(TTestCase)
-protected
-procedure TIntegrationTests.TestCreateJsonIntegration;
+    TTestJson = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
+begin
+    inherited;
+    SetResourcesPath('/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/resources');
+end;
+procedure TestCreateJsonIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     AssertNotNull(testJson);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestCreateJsonFromStringIntegration;
+procedure TestCreateJsonFromStringIntegration;
 begin
-    testJson := CreateJson('{"name":"John","age":30,"city":"New York"}');
+    testJson := CreateJson('{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}');
+    CleanupJson := TJsonCleanup.Create;
     AssertTrue(JsonHasKey(testJson, 'name'));
     AssertEquals('John', JsonReadString(testJson, 'name'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestFreeAllJsonIntegration;
+procedure TestFreeAllJsonIntegration;
 begin
     testJson1 := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     testJson2 := CreateJson();
     count1 := JsonCountKeys(testJson1);
     JsonSetString(testJson1, 'key', 'value');
     JsonSetString(testJson2, 'key', 'value');
     count2 := JsonCountKeys(testJson2);
-    AssertTrue(count1 > 0);
-    AssertTrue(count2 > 0);
+    AssertEquals(0, count1);
+    AssertTrue(0 > count2);
     FreeAllJson();
     count1AfterFree := JsonCountKeys(testJson1);
     count2AfterFree := JsonCountKeys(testJson2);
     AssertEquals(0, count1AfterFree);
     AssertEquals(0, count2AfterFree);
 end;
-procedure TIntegrationTests.TestFreeJsonIntegration;
+procedure TestFreeJsonIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'key', 'value');
     FreeJson(testJson);
     AssertFalse(JsonHasKey(testJson, 'key'));
 end;
-procedure TIntegrationTests.TestJsonCountKeysIntegration;
+procedure TestJsonCountKeysIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'key1', 'value1');
     JsonSetNumber(testJson, 'key2', 42);
     keyCount := JsonCountKeys(testJson);
     AssertEquals(2, keyCount);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonFromColorIntegration;
+procedure TestJsonFromColorIntegration;
 begin
     testColor := ColorBrightGreen();
     testJson := JsonFromColor(testColor);
     AssertTrue(JsonHasKey(testJson, 'color'));
     AssertEquals('#00ff00ff', JsonReadString(testJson, 'color'));
-    FreeJson(testJson);
-    FreeAllJson();
 end;
-procedure TIntegrationTests.TestJsonFromFileIntegration;
+procedure TestJsonFromFileIntegration;
 begin
     testJson := JsonFromFile('person.json');
     AssertNotNull(testJson);
     testValue := JsonReadString(testJson, 'firstName');
     AssertEquals('John', testValue);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonFromStringIntegration;
+procedure TestJsonFromStringIntegration;
 begin
-    testJson := JsonFromString('{"name":"John","age":30,"city":"New York"}');
+    testJson := JsonFromString('{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}');
     AssertEquals('John', JsonReadString(testJson, 'name'));
     AssertEquals(30, JsonReadNumberAsInt(testJson, 'age'));
     AssertEquals('New York', JsonReadString(testJson, 'city'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonHasKeyIntegration;
+procedure TestJsonHasKeyIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'key1', 'value1');
     AssertTrue(JsonHasKey(testJson, 'key1'));
     AssertFalse(JsonHasKey(testJson, 'key2'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonReadArrayOfDoubleIntegration;
+procedure TestJsonReadArrayOfDoubleIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetArray(testJson, 'numbers', TArray<Double>.Create(1.1, 2.2, 3.3));
     outResult := TArray<Double>.Create();
     JsonReadArray(testJson, 'numbers', @outResult);
     AssertEquals(1.1, outResult[0]);
     AssertEquals(2.2, outResult[1]);
-    FreeJson(testJson);
-    FreeAllJson();
 end;
-procedure TIntegrationTests.TestJsonReadArrayOfJsonIntegration;
+procedure TestJsonReadArrayOfJsonIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     testJson1 := CreateJson();
     testJson2 := CreateJson();
     JsonSetString(testJson1, 'key1', 'value1');
@@ -104,112 +107,108 @@ begin
     outResult := TArray<Json>.Create();
     JsonReadArray(testJson, 'array_key', @outResult);
     AssertEquals(2, Length(outResult));
-    FreeJson(testJson);
-    FreeJson(testJson1);
-    FreeJson(testJson2);
-    FreeAllJson();
 end;
-procedure TIntegrationTests.TestJsonReadArrayOfStringIntegration;
+procedure TestJsonReadArrayOfStringIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetArray(testJson, 'test_array', TArray<String>.Create('item1', 'item2', 'item3'));
     outResult := TArray<String>.Create();
     JsonReadArray(testJson, 'test_array', @outResult);
     AssertEquals(3, Length(outResult));
     AssertEquals('item1', outResult[0]);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonReadArrayOfBoolIntegration;
+procedure TestJsonReadArrayOfBoolIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetArray(testJson, 'test_key', TArray<Boolean>.Create(true, false, true));
     outResult := TArray<Boolean>.Create();
     JsonReadArray(testJson, 'test_key', @outResult);
     AssertEquals(3, Length(outResult));
     AssertTrue(outResult[0]);
     AssertFalse(outResult[1]);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonReadBoolIntegration;
+procedure TestJsonReadBoolIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetBool(testJson, 'test_key', true);
     AssertTrue(JsonReadBool(testJson, 'test_key'));
     JsonSetBool(testJson, 'test_key', false);
     AssertFalse(JsonReadBool(testJson, 'test_key'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonReadNumberIntegration;
+procedure TestJsonReadNumberIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetNumber(testJson, 'test_key', 42.5);
     testResult := JsonReadNumber(testJson, 'test_key');
     AssertEquals(42.5, testResult);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonReadNumberAsDoubleIntegration;
+procedure TestJsonReadNumberAsDoubleIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetNumber(testJson, 'test_key', 3.14);
     testResult := JsonReadNumberAsDouble(testJson, 'test_key');
     AssertEquals(3.14, testResult);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonReadNumberAsIntIntegration;
+procedure TestJsonReadNumberAsIntIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetNumber(testJson, 'test_key', 42);
     testResult := JsonReadNumberAsInt(testJson, 'test_key');
     AssertEquals(42, testResult);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonReadObjectIntegration;
+procedure TestJsonReadObjectIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetObject(testJson, 'nestedObject', CreateJson());
     readJson := JsonReadObject(testJson, 'nestedObject');
     AssertNotNull(readJson);
-    FreeJson(testJson);
-    FreeJson(readJson);
 end;
-procedure TIntegrationTests.TestJsonReadStringIntegration;
+procedure TestJsonReadStringIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'test_key', 'test_value');
     readValue := JsonReadString(testJson, 'test_key');
     AssertEquals('test_value', readValue);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonSetArrayOfStringIntegration;
+procedure TestJsonSetArrayOfStringIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetArray(testJson, 'test_key', TArray<String>.Create('value1', 'value2', 'value3'));
     outResult := TArray<String>.Create();
     JsonReadArray(testJson, 'test_key', @outResult);
     AssertEquals(TArray<String>.Create('value1', 'value2', 'value3'), outResult);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonSetArrayOfDoubleIntegration;
+procedure TestJsonSetArrayOfDoubleIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetArray(testJson, 'numbers', TArray<Double>.Create(1.1, 2.2, 3.3));
     outResult := TArray<Double>.Create();
     JsonReadArray(testJson, 'numbers', @outResult);
     AssertEquals(TArray<Double>.Create(1.1, 2.2, 3.3), outResult);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonSetArrayOfBoolIntegration;
+procedure TestJsonSetArrayOfBoolIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetArray(testJson, 'test_key', TArray<Boolean>.Create(true, false));
     outResult := TArray<Boolean>.Create();
     JsonReadArray(testJson, 'test_key', @outResult);
     AssertEquals(TArray<Boolean>.Create(true, false), outResult);
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonSetArrayOfJsonIntegration;
+procedure TestJsonSetArrayOfJsonIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     testJson1 := CreateJson();
     testJson2 := CreateJson();
     JsonSetString(testJson1, 'key1', 'value1');
@@ -220,83 +219,79 @@ begin
     JsonReadArray(testJson, 'array_key', @outResult);
     AssertEquals('value1', JsonReadString(outResult[0], 'key1'));
     AssertEquals('value2', JsonReadString(outResult[1], 'key2'));
-    FreeAllJson();
 end;
-procedure TIntegrationTests.TestJsonSetBoolIntegration;
+procedure TestJsonSetBoolIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetBool(testJson, 'test_key', true);
     AssertTrue(JsonHasKey(testJson, 'test_key'));
     AssertTrue(JsonReadBool(testJson, 'test_key'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonSetNumberIntegerIntegration;
+procedure TestJsonSetNumberIntegerIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetNumber(testJson, 'age', 30);
     AssertEquals(30, JsonReadNumberAsInt(testJson, 'age'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonSetNumberDoubleIntegration;
+procedure TestJsonSetNumberDoubleIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetNumber(testJson, 'test_key', 3.14);
     AssertEquals(3.14, JsonReadNumberAsDouble(testJson, 'test_key'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonSetNumberFloatIntegration;
+procedure TestJsonSetNumberFloatIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetNumber(testJson, 'test_key', 3.14);
     AssertEquals(3.140000104904175, JsonReadNumber(testJson, 'test_key'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonSetObjectIntegration;
+procedure TestJsonSetObjectIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     testNestedJson := CreateJson();
     JsonSetObject(testJson, 'nested', testNestedJson);
     AssertTrue(JsonHasKey(testJson, 'nested'));
-    FreeJson(testJson);
-    FreeJson(testNestedJson);
-    FreeAllJson();
 end;
-procedure TIntegrationTests.TestJsonSetStringIntegration;
+procedure TestJsonSetStringIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'test_key', 'test_value');
     AssertEquals('test_value', JsonReadString(testJson, 'test_key'));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonToColorIntegration;
+procedure TestJsonToColorIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'color', '#ff0000ff');
     testColor := JsonToColor(testJson);
     AssertEquals('#ff0000ff', ColorToString(testColor));
-    FreeJson(testJson);
 end;
-procedure TIntegrationTests.TestJsonToFileIntegration;
+procedure TestJsonToFileIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'testKey', 'testValue');
     JsonToFile(testJson, 'test.json');
     loadedJson := JsonFromFile('test.json');
     AssertEquals('testValue', JsonReadString(loadedJson, 'testKey'));
-    FreeJson(testJson);
-    FreeJson(loadedJson);
 end;
-procedure TIntegrationTests.TestJsonToStringIntegration;
+procedure TestJsonToStringIntegration;
 begin
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'key', 'value');
     testJsonString := JsonToString(testJson);
     AssertNotEquals('', testJsonString);
-    FreeJson(testJson);
 end;
 end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

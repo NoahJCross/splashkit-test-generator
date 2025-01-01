@@ -12,6 +12,23 @@
       ]
     }
   ],
+  "cleanup": [
+    {
+      "cleanup_type": "window",
+      "function_name": "close_all_windows",
+      "args": []
+    },
+    {
+      "cleanup_type": "font",
+      "function_name": "free_all_fonts",
+      "args": []
+    },
+    {
+      "cleanup_type": "timer",
+      "function_name": "free_all_timers",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "display_dialog",
@@ -36,6 +53,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "load_font",
           "args": [
@@ -49,6 +71,11 @@
             }
           ],
           "store_result": "test_font"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "font",
+          "store_result": "cleanup_font"
         },
         {
           "step_type": "function",
@@ -79,16 +106,6 @@
             {
               "value_type": "variable",
               "variable_name": "test_font"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -2258,6 +2275,11 @@
           "store_result": "test_timer"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
+        },
+        {
           "step_type": "function",
           "function_name": "start_timer",
           "args": [
@@ -2319,7 +2341,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "string",
-              "value": "BITMAP,ufo,ufo.png\n"
+              "value": "BITMAP,ufo,ufo.png\\n"
             },
             "value2": {
               "value_type": "function",

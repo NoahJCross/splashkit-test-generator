@@ -1,6 +1,6 @@
 #include "splashkit.h"
 #include <catch2/catch.hpp>
-
+#include "../helpers.hpp"
 class TestColor {
 public:
     TEST_CASE("alpha_of_integration") {

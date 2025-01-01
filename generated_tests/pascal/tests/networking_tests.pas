@@ -1,78 +1,81 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestNetworking = class(TTestCase)
-protected
-procedure TIntegrationTests.TestAcceptAllNewConnectionsIntegration;
+    TTestNetworking = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
+    procedure TestAcceptAllNewConnectionsIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     connectionsAccepted := AcceptAllNewConnections();
     AssertTrue(connectionsAccepted);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestAcceptNewConnectionIntegration;
+procedure TestAcceptNewConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     connectionAccepted := AcceptNewConnection(testServer);
     AssertTrue(connectionAccepted);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestBroadcastMessageIntegration;
+procedure TestBroadcastMessageIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection1 := OpenConnection('test_connection1', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     testConnection2 := OpenConnection('test_connection2', '127.0.0.1', 5000);
     CheckNetworkActivity();
     BroadcastMessage('Test Message', testServer);
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection1));
     AssertTrue(HasMessages(testConnection2));
-    CloseAllConnections();
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestBroadcastMessageToAllIntegration;
+procedure TestBroadcastMessageToAllIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection1 := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     testConnection2 := OpenConnection('test_connection2', '127.0.0.1', 5000);
     CheckNetworkActivity();
     BroadcastMessage('Test Message');
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection1));
     AssertTrue(HasMessages(testConnection2));
-    CloseAllConnections();
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestBroadcastMessageToServerNamedIntegration;
+procedure TestBroadcastMessageToServerNamedIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     BroadcastMessage('Test Message', 'test_server');
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestCheckNetworkActivityIntegration;
+procedure TestCheckNetworkActivityIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(HasNewConnections());
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestClearMessagesFromNameIntegration;
+procedure TestClearMessagesFromNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
@@ -80,26 +83,26 @@ begin
     ClearMessages('test_connection');
     CheckNetworkActivity();
     AssertFalse(HasMessages(testConnection));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestClearMessagesFromConnectionIntegration;
+procedure TestClearMessagesFromConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection));
     ClearMessages(testConnection);
     AssertFalse(HasMessages(testConnection));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestClearMessagesFromServerIntegration;
+procedure TestClearMessagesFromServerIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 8080);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
@@ -107,22 +110,23 @@ begin
     ClearMessages(testServer);
     CheckNetworkActivity();
     AssertFalse(HasMessages(testServer));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestCloseAllConnectionsIntegration;
+procedure TestCloseAllConnectionsIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(HasConnection('test_connection'));
     CloseAllConnections();
     CheckNetworkActivity();
     AssertFalse(HasConnection('test_connection'));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestCloseAllServersIntegration;
+procedure TestCloseAllServersIntegration;
 begin
     CreateServer('test_server_1', 5000);
+    CleanupServer := TServerCleanup.Create;
     CreateServer('test_server_2', 5001);
     AssertTrue(HasServer('test_server_1'));
     AssertTrue(HasServer('test_server_2'));
@@ -130,31 +134,35 @@ begin
     AssertFalse(HasServer('test_server_1'));
     AssertFalse(HasServer('test_server_2'));
 end;
-procedure TIntegrationTests.TestCloseConnectionIntegration;
+procedure TestCloseConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 8080);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     closeResult := CloseConnection(testConnection);
     AssertTrue(closeResult);
     AssertFalse(IsConnectionOpen(testConnection));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestCloseConnectionNamedIntegration;
+procedure TestCloseConnectionNamedIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 8080);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(IsConnectionOpen(testConnection));
     closeResult := CloseConnection('test_connection');
     AssertTrue(closeResult);
     AssertFalse(IsConnectionOpen(testConnection));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestCloseMessageIntegration;
+procedure TestCloseMessageIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
@@ -163,324 +171,330 @@ begin
     AssertNotNull(testMessage);
     CloseMessage(testMessage);
     AssertFalse(HasMessages());
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestCloseServerNamedIntegration;
+procedure TestCloseServerNamedIntegration;
 begin
     CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     closeResult := CloseServer('test_server');
     AssertTrue(closeResult);
     AssertFalse(HasServer('test_server'));
 end;
-procedure TIntegrationTests.TestCloseServerIntegration;
+procedure TestCloseServerIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     closeResult := CloseServer(testServer);
     AssertTrue(closeResult);
     AssertFalse(HasServer('test_server'));
 end;
-procedure TIntegrationTests.TestConnectionCountNamedIntegration;
+procedure TestConnectionCountNamedIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
-    AssertEquals(1, ConnectionCount('test_server'));
-    CloseAllConnections();
-    CloseServer(testServer);
+    AssertEquals(Cardinal(1), ConnectionCount('test_server'));
 end;
-procedure TIntegrationTests.TestConnectionCountIntegration;
+procedure TestConnectionCountIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
-    AssertEquals(1, ConnectionCount(testServer));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
+    AssertEquals(Cardinal(1), ConnectionCount(testServer));
 end;
-procedure TIntegrationTests.TestConnectionIPIntegration;
+procedure TestConnectionIPIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     testIP := ConnectionIP(testConnection);
-    AssertEquals(2130706433, testIP);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
+    AssertEquals(Cardinal(2130706433), testIP);
 end;
-procedure TIntegrationTests.TestConnectionIPFromNameIntegration;
+procedure TestConnectionIPFromNameIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 8080);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     testIP := ConnectionIP('test_connection');
-    AssertEquals(2130706433, testIP);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
+    AssertEquals(Cardinal(2130706433), testIP);
 end;
-procedure TIntegrationTests.TestConnectionNamedIntegration;
+procedure TestConnectionNamedIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     retrievedConnection := ConnectionNamed('test_connection');
     AssertNotNull(retrievedConnection);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestConnectionPortIntegration;
+procedure TestConnectionPortIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     testPort := ConnectionPort(testConnection);
     AssertEquals(5000, testPort);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestConnectionPortFromNameIntegration;
+procedure TestConnectionPortFromNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     testPort := ConnectionPort('test_connection');
     AssertEquals(5000, testPort);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestCreateServerWithPortIntegration;
+procedure TestCreateServerWithPortIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     AssertNotNull(testServer);
     AssertTrue(HasServer('test_server'));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestCreateServerWithPortAndProtocolIntegration;
+procedure TestCreateServerWithPortAndProtocolIntegration;
 begin
     testServer := CreateServer('test_server', 5000, ConnectionType.TCP);
+    CleanupServer := TServerCleanup.Create;
     AssertNotNull(testServer);
     AssertTrue(HasServer('test_server'));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestDecToHexIntegration;
+procedure TestDecToHexIntegration;
 begin
     testHexResult := DecToHex(Cardinal(2130706433));
     AssertEquals('0x7F000001', testHexResult);
 end;
-procedure TIntegrationTests.TestFetchNewConnectionIntegration;
+procedure TestFetchNewConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     newConnection := FetchNewConnection(testServer);
     AssertNotNull(newConnection);
-    CloseConnection(newConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHasConnectionIntegration;
+procedure TestHasConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 8080);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(HasConnection('test_connection'));
     CloseConnection(testConnection);
     AssertFalse(HasConnection('test_connection'));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHasMessagesIntegration;
+procedure TestHasMessagesIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertFalse(HasMessages());
     SendMessageTo('test_message', testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages());
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHasMessagesOnConnectionIntegration;
+procedure TestHasMessagesOnConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages(testConnection));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHasMessagesOnNameIntegration;
+procedure TestHasMessagesOnNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages('test_server'));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHasMessagesOnServerIntegration;
+procedure TestHasMessagesOnServerIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertTrue(HasMessages(testServer));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHasNewConnectionsIntegration;
+procedure TestHasNewConnectionsIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(HasNewConnections());
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHasServerIntegration;
+procedure TestHasServerIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     AssertTrue(HasServer('test_server'));
     CloseServer(testServer);
     AssertFalse(HasServer('test_server'));
 end;
-procedure TIntegrationTests.TestHexStrToIpv4Integration;
+procedure TestHexStrToIpv4Integration;
 begin
     testIpv4 := HexStrToIpv4('0x7F000001');
     AssertEquals('127.0.0.1', testIpv4);
     testIpv4NoPrefix := HexStrToIpv4('7F000001');
     AssertEquals('127.0.0.1', testIpv4NoPrefix);
 end;
-procedure TIntegrationTests.TestHexToDecStringIntegration;
+procedure TestHexToDecStringIntegration;
 begin
     testResult := HexToDecString('7F');
     AssertEquals('127', testResult);
     testResultWithPrefix := HexToDecString('0x7F');
     AssertEquals('127', testResultWithPrefix);
 end;
-procedure TIntegrationTests.TestIpv4ToDecIntegration;
+procedure TestIpv4ToDecIntegration;
 begin
     testResult1 := Ipv4ToDec('127.0.0.1');
-    AssertEquals(2130706433, testResult1);
+    AssertEquals(Cardinal(2130706433), testResult1);
     testResult2 := Ipv4ToDec('192.168.1.1');
     AssertEquals(3232235777, testResult2);
 end;
-procedure TIntegrationTests.TestIpv4ToHexIntegration;
+procedure TestIpv4ToHexIntegration;
 begin
     testIpv4Hex := Ipv4ToHex('127.0.0.1');
     AssertEquals('0x7F000001', testIpv4Hex);
 end;
-procedure TIntegrationTests.TestIpv4ToStrIntegration;
+procedure TestIpv4ToStrIntegration;
 begin
     testIPStr := Ipv4ToStr(Cardinal(2130706433));
     AssertEquals('127.0.0.1', testIPStr);
 end;
-procedure TIntegrationTests.TestIsConnectionOpenIntegration;
+procedure TestIsConnectionOpenIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(IsConnectionOpen(testConnection));
     CloseConnection(testConnection);
     AssertFalse(IsConnectionOpen(testConnection));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestIsConnectionOpenFromNameIntegration;
+procedure TestIsConnectionOpenFromNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(IsConnectionOpen('test_connection'));
     CloseConnection(testConnection);
     AssertFalse(IsConnectionOpen('test_connection'));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestLastConnectionNamedIntegration;
+procedure TestLastConnectionNamedIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     lastConnection := LastConnection('test_server');
     AssertEquals(testConnection, lastConnection);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestLastConnectionIntegration;
+procedure TestLastConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     lastConnection := LastConnection(testServer);
     AssertEquals(testConnection, lastConnection);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestMessageConnectionIntegration;
+procedure TestMessageConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals(testConnection, MessageConnection(testMessage));
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestMessageCountOnServerIntegration;
+procedure TestMessageCountOnServerIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
-    AssertEquals(1, MessageCount(testServer));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
+    AssertEquals(Cardinal(1), MessageCount(testServer));
 end;
-procedure TIntegrationTests.TestMessageCountOnConnectionIntegration;
+procedure TestMessageCountOnConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertTrue(MessageCount(testConnection) > 0);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestMessageCountFromNameIntegration;
+procedure TestMessageCountFromNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
-    AssertEquals(1, MessageCount(testServer));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
+    AssertEquals(Cardinal(1), MessageCount(testServer));
 end;
-procedure TIntegrationTests.TestMessageDataIntegration;
+procedure TestMessageDataIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals('Test Message', MessageData(testMessage));
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestMessageDataBytesIntegration;
+procedure TestMessageDataBytesIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
@@ -488,130 +502,131 @@ begin
     testMessageBytes := MessageDataBytes(testMessage);
     AssertTrue(Length(testMessageBytes) > 0);
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestMessageHostIntegration;
+procedure TestMessageHostIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals('127.0.0.1', MessageHost(testMessage));
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestMessagePortIntegration;
+procedure TestMessagePortIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals(5000, MessagePort(testMessage));
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestMessageProtocolIntegration;
+procedure TestMessageProtocolIntegration;
 begin
     testServer := CreateServer('test_server', 5000, ConnectionType.UDP);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000, ConnectionType.UDP);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testServer);
     AssertEquals(ConnectionType.UDP, MessageProtocol(testMessage));
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestMyIPIntegration;
+procedure TestMyIPIntegration;
 begin
     testIP := MyIP();
     AssertEquals('127.0.0.1', testIP);
 end;
-procedure TIntegrationTests.TestNameForConnectionIntegration;
+procedure TestNameForConnectionIntegration;
 begin
     testConnectionName := NameForConnection('localhost', Cardinal(8080));
     AssertEquals('localhost:8080', testConnectionName);
 end;
-procedure TIntegrationTests.TestNewConnectionCountIntegration;
+procedure TestNewConnectionCountIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertEquals(1, NewConnectionCount(testServer));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestOpenConnectionIntegration;
+procedure TestOpenConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 8080);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertNotNull(testConnection);
     AssertTrue(IsConnectionOpen(testConnection));
     CloseConnection(testConnection);
     AssertFalse(IsConnectionOpen(testConnection));
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestOpenConnectionWithProtocolIntegration;
+procedure TestOpenConnectionWithProtocolIntegration;
 begin
     testServer := CreateServer('test_server', 5000, ConnectionType.TCP);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000, ConnectionType.TCP);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertNotNull(testConnection);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReadMessageIntegration;
+procedure TestReadMessageIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage();
     AssertEquals('Test Message', MessageData(testMessage));
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReadMessageFromConnectionIntegration;
+procedure TestReadMessageFromConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage(testConnection);
     AssertEquals('Test Message', MessageData(testMessage));
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReadMessageFromNameIntegration;
+procedure TestReadMessageFromNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     testMessage := ReadMessage('test_server');
     AssertEquals('Test Message', MessageData(testMessage));
     CloseMessage(testMessage);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReadMessageFromServerIntegration;
+procedure TestReadMessageFromServerIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
@@ -621,43 +636,45 @@ begin
     CloseServer(testServer);
     CloseMessage(testMessage);
 end;
-procedure TIntegrationTests.TestReadMessageDataFromNameIntegration;
+procedure TestReadMessageDataFromNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertEquals('Test Message', ReadMessageData('test_server'));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReadMessageDataFromConnectionIntegration;
+procedure TestReadMessageDataFromConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertEquals('Test Message', ReadMessageData(testConnection));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReadMessageDataFromServerIntegration;
+procedure TestReadMessageDataFromServerIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertEquals('Test Message', ReadMessageData(testServer));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReconnectIntegration;
+procedure TestReconnectIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     CloseConnection(testConnection);
     CheckNetworkActivity();
@@ -665,13 +682,13 @@ begin
     Reconnect(testConnection);
     CheckNetworkActivity();
     AssertTrue(IsConnectionOpen(testConnection));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReconnectFromNameIntegration;
+procedure TestReconnectFromNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     CloseConnection(testConnection);
     CheckNetworkActivity();
@@ -679,13 +696,13 @@ begin
     Reconnect('test_connection');
     CheckNetworkActivity();
     AssertTrue(IsConnectionOpen('test_connection'));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestReleaseAllConnectionsIntegration;
+procedure TestReleaseAllConnectionsIntegration;
 begin
     CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     OpenConnection('test_connection1', '127.0.0.1', 8080);
+    CleanupConnection := TConnectionCleanup.Create;
     OpenConnection('test_connection2', '127.0.0.1', 8080);
     CheckNetworkActivity();
     AssertTrue(HasConnection('test_connection1'));
@@ -695,187 +712,184 @@ begin
     AssertFalse(HasConnection('test_connection2'));
     AssertFalse(HasServer('test_server'));
 end;
-procedure TIntegrationTests.TestResetNewConnectionCountIntegration;
+procedure TestResetNewConnectionCountIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertEquals(NewConnectionCount(testServer), 1);
     ResetNewConnectionCount(testServer);
     AssertEquals(0, NewConnectionCount(testServer));
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestRetrieveConnectionNamedIntegration;
+procedure TestRetrieveConnectionNamedIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     retrievedConnection := RetrieveConnection('test_connection', 0);
     AssertEquals(testConnection, retrievedConnection);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestRetrieveConnectionIntegration;
+procedure TestRetrieveConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     retrievedConnection := RetrieveConnection(testServer, 0);
     AssertEquals(testConnection, retrievedConnection);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestSendMessageToConnectionIntegration;
+procedure TestSendMessageToConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     sendResult := SendMessageTo('Test Message', testConnection);
     CheckNetworkActivity();
     AssertTrue(sendResult);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestSendMessageToNameIntegration;
+procedure TestSendMessageToNameIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     testConnection := OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     sendResult := SendMessageTo('Test Message', 'test_connection');
     CheckNetworkActivity();
     AssertTrue(sendResult);
-    CloseConnection(testConnection);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestServerHasNewConnectionNamedIntegration;
+procedure TestServerHasNewConnectionNamedIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(ServerHasNewConnection('test_server'));
-    CloseServer(testServer);
-    CloseAllConnections();
 end;
-procedure TIntegrationTests.TestServerHasNewConnectionIntegration;
+procedure TestServerHasNewConnectionIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     OpenConnection('test_connection', '127.0.0.1', 5000);
+    CleanupConnection := TConnectionCleanup.Create;
     CheckNetworkActivity();
     AssertTrue(ServerHasNewConnection(testServer));
-    CloseServer(testServer);
-    CloseAllConnections();
 end;
-procedure TIntegrationTests.TestServerNamedIntegration;
+procedure TestServerNamedIntegration;
 begin
     testServer := CreateServer('test_server', 5000);
+    CleanupServer := TServerCleanup.Create;
     retrievedServer := ServerNamed('test_server');
     AssertEquals(testServer, retrievedServer);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestSetUDPPacketSizeIntegration;
+procedure TestSetUDPPacketSizeIntegration;
 begin
     SetUDPPacketSize(Cardinal(1024));
-    AssertEquals(1024, UDPPacketSize());
+    AssertEquals(Cardinal(1024), UDPPacketSize());
 end;
-procedure TIntegrationTests.TestUDPPacketSizeIntegration;
+procedure TestUDPPacketSizeIntegration;
 begin
     testPacketSize := UDPPacketSize();
     AssertTrue(testPacketSize > 0);
 end;
-procedure TIntegrationTests.TestDownloadBitmapIntegration;
+procedure TestDownloadBitmapIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testBitmap := DownloadBitmap('test_image', 'http://localhost:8080/test/resources/images/frog.png', 80);
     AssertNotNull(testBitmap);
     FreeBitmap(testBitmap);
-    CloseWindow(testWindow);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestDownloadFontIntegration;
+procedure TestDownloadFontIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testFont := DownloadFont('test_font', 'http://localhost:8080/test/resources/fonts/hara.ttf', 80);
     AssertNotNull(testFont);
-    FreeFont(testFont);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestDownloadMusicIntegration;
+procedure TestDownloadMusicIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testMusic := DownloadMusic('test_music', 'http://localhost:8080/test/resources/music/280.mp3', 80);
     AssertNotNull(testMusic);
-    FreeMusic(testMusic);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestDownloadSoundEffectIntegration;
+procedure TestDownloadSoundEffectIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testSoundEffect := DownloadSoundEffect('test_sound', 'http://localhost:8080/test/resources/sounds/breakdance.wav', 80);
     AssertNotNull(testSoundEffect);
-    FreeSoundEffect(testSoundEffect);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestFreeResponseIntegration;
+procedure TestFreeResponseIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testResponse := HttpGet('http://localhost:8080/test', 80);
     AssertNotNull(testResponse);
     FreeResponse(testResponse);
     AssertNull(testResponse);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHttpGetIntegration;
+procedure TestHttpGetIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testResponse := HttpGet('http://localhost:8080/test', 80);
     AssertNotNull(testResponse);
     responseText := HttpResponseToString(testResponse);
     AssertTrue(Length(responseText) > 0);
     FreeResponse(testResponse);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHttpPostWithHeadersIntegration;
+procedure TestHttpPostWithHeadersIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     headers := TArray<String>.Create('Content-Type: application/json', 'Accept: application/json');
     testResponse := HttpPost('http://localhost:8080/test', 80, 'Test Body', headers);
     AssertNotNull(testResponse);
     responseText := HttpResponseToString(testResponse);
     AssertTrue(Contains(responseText, 'Test Body'));
     FreeResponse(testResponse);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHttpPostIntegration;
+procedure TestHttpPostIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testResponse := HttpPost('http://localhost:8080/test', 80, 'Test Body');
     AssertNotNull(testResponse);
     responseText := HttpResponseToString(testResponse);
     AssertTrue(Contains(responseText, 'Test Body'));
     FreeResponse(testResponse);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHttpResponseToStringIntegration;
+procedure TestHttpResponseToStringIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testResponse := HttpGet('http://localhost:8080/test', 80);
     responseText := HttpResponseToString(testResponse);
     AssertTrue(Length(responseText) > 0);
     FreeResponse(testResponse);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestSaveResponseToFileIntegration;
+procedure TestSaveResponseToFileIntegration;
 begin
     testServer := CreateServer('test_server', 8080);
+    CleanupServer := TServerCleanup.Create;
     testResponse := HttpGet('http://localhost:8080/test', 80);
     testFile := 'test_output.txt';
     SaveResponseToFile(testResponse, testFile);
     FreeResponse(testResponse);
-    CloseServer(testServer);
 end;
-procedure TIntegrationTests.TestHasIncomingRequestsIntegration;
+procedure TestHasIncomingRequestsIntegration;
 begin
     testServer := StartWebServer(8080);
     AssertFalse(HasIncomingRequests(testServer));
@@ -884,7 +898,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestIsDeleteRequestForIntegration;
+procedure TestIsDeleteRequestForIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -894,7 +908,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestIsGetRequestForIntegration;
+procedure TestIsGetRequestForIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -904,7 +918,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestIsOptionsRequestForIntegration;
+procedure TestIsOptionsRequestForIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -914,7 +928,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestIsPostRequestForIntegration;
+procedure TestIsPostRequestForIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpPost('http://localhost:8080/test_path', 80, 'test=123');
@@ -924,7 +938,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestIsPutRequestForIntegration;
+procedure TestIsPutRequestForIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -934,7 +948,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestIsRequestForIntegration;
+procedure TestIsRequestForIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -944,7 +958,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestIsTraceRequestForIntegration;
+procedure TestIsTraceRequestForIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -954,7 +968,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestNextWebRequestIntegration;
+procedure TestNextWebRequestIntegration;
 begin
     testServer := StartWebServer(8080);
     AssertFalse(HasIncomingRequests(testServer));
@@ -962,7 +976,7 @@ begin
     AssertNull(testRequest);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestRequestBodyIntegration;
+procedure TestRequestBodyIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpPost('http://localhost:8080/test', 80, 'test body');
@@ -971,7 +985,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestRequestHasQueryParameterIntegration;
+procedure TestRequestHasQueryParameterIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test?param1=value1', 80);
@@ -981,7 +995,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestRequestHeadersIntegration;
+procedure TestRequestHeadersIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -990,7 +1004,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestRequestMethodIntegration;
+procedure TestRequestMethodIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -999,7 +1013,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestRequestQueryParameterIntegration;
+procedure TestRequestQueryParameterIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test?param1=value1', 80);
@@ -1009,7 +1023,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestRequestQueryStringIntegration;
+procedure TestRequestQueryStringIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test?param1=value1', 80);
@@ -1019,7 +1033,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestRequestURIIntegration;
+procedure TestRequestURIIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -1029,7 +1043,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestRequestURIStubsIntegration;
+procedure TestRequestURIStubsIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test/path', 80);
@@ -1039,7 +1053,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendCSSFileResponseIntegration;
+procedure TestSendCSSFileResponseIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test.css', 80);
@@ -1049,7 +1063,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendFileResponseIntegration;
+procedure TestSendFileResponseIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test.txt', 80);
@@ -1059,7 +1073,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendHtmlFileResponseIntegration;
+procedure TestSendHtmlFileResponseIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test.html', 80);
@@ -1069,7 +1083,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendJavascriptFileResponseIntegration;
+procedure TestSendJavascriptFileResponseIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test.js', 80);
@@ -1079,7 +1093,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendResponseEmptyIntegration;
+procedure TestSendResponseEmptyIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -1088,7 +1102,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendResponseIntegration;
+procedure TestSendResponseIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -1097,7 +1111,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendResponseJsonWithStatusIntegration;
+procedure TestSendResponseJsonWithStatusIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -1106,7 +1120,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendResponseWithStatusIntegration;
+procedure TestSendResponseWithStatusIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -1115,7 +1129,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendResponseWithStatusAndContentTypeIntegration;
+procedure TestSendResponseWithStatusAndContentTypeIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -1124,7 +1138,7 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendResponseWithStatusAndContentTypeAndHeadersIntegration;
+procedure TestSendResponseWithStatusAndContentTypeAndHeadersIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -1133,38 +1147,39 @@ begin
     FreeResponse(testResponse);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSendResponseJsonIntegration;
+procedure TestSendResponseJsonIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
     testRequest := NextWebRequest(testServer);
     testJson := CreateJson();
+    CleanupJson := TJsonCleanup.Create;
     JsonSetString(testJson, 'message', 'Test Message');
     SendResponse(testRequest, testJson);
     FreeResponse(testResponse);
     FreeJson(testJson);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestSplitURIStubsIntegration;
+procedure TestSplitURIStubsIntegration;
 begin
     testStubs := SplitURIStubs('/names/0');
     AssertEquals(TArray<Integer>.Create('names', '0'), testStubs);
     testStubsEmpty := SplitURIStubs('/');
     AssertTrue(Length(testStubsEmpty) = 0);
 end;
-procedure TIntegrationTests.TestStartWebServerWithDefaultPortIntegration;
+procedure TestStartWebServerWithDefaultPortIntegration;
 begin
     testServer := StartWebServer();
     AssertNotNull(testServer);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestStartWebServerIntegration;
+procedure TestStartWebServerIntegration;
 begin
     testServer := StartWebServer(8080);
     AssertNotNull(testServer);
     StopWebServer(testServer);
 end;
-procedure TIntegrationTests.TestStopWebServerIntegration;
+procedure TestStopWebServerIntegration;
 begin
     testServer := StartWebServer(8080);
     testResponse := HttpGet('http://localhost:8080/test', 80);
@@ -1176,5 +1191,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

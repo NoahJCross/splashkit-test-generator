@@ -1,15 +1,13 @@
-using System;
-using System.IO;
 using Xunit;
+using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
-
+using HttpMethod = SplashKitSDK.HttpMethod;
 namespace SplashKitTests
 {
     public class TestColor
     {
         [Fact]
-        public void TestAlphaOfIntegration()
-        {
+        public void TestAlphaOfIntegration() {
             var redColor = ColorRed();
             var alphaValue = AlphaOf(redColor);
             Assert.Equal(255, alphaValue);
@@ -18,8 +16,7 @@ namespace SplashKitTests
             Assert.Equal(255, alphaValueTransparent);
         }
         [Fact]
-        public void TestBlueOfIntegration()
-        {
+        public void TestBlueOfIntegration() {
             var blueColor = ColorBlue();
             var blueValue = BlueOf(blueColor);
             Assert.Equal(255, blueValue);
@@ -28,8 +25,7 @@ namespace SplashKitTests
             Assert.Equal(0, blueValueRed);
         }
         [Fact]
-        public void TestBrightnessOfIntegration()
-        {
+        public void TestBrightnessOfIntegration() {
             var whiteColor = ColorWhite();
             var whiteBrightness = BrightnessOf(whiteColor);
             Assert.Equal(1.0, whiteBrightness);
@@ -41,8 +37,7 @@ namespace SplashKitTests
             Assert.InRange(grayBrightness, 0.4, 0.6);
         }
         [Fact]
-        public void TestColorAliceBlueIntegration()
-        {
+        public void TestColorAliceBlueIntegration() {
             var aliceBlueColor = ColorAliceBlue();
             Assert.Equal(240, RedOf(aliceBlueColor));
             Assert.Equal(248, GreenOf(aliceBlueColor));
@@ -50,8 +45,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(aliceBlueColor));
         }
         [Fact]
-        public void TestColorAntiqueWhiteIntegration()
-        {
+        public void TestColorAntiqueWhiteIntegration() {
             var antiqueWhiteColor = ColorAntiqueWhite();
             Assert.Equal(250, RedOf(antiqueWhiteColor));
             Assert.Equal(235, GreenOf(antiqueWhiteColor));
@@ -59,8 +53,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(antiqueWhiteColor));
         }
         [Fact]
-        public void TestColorAquaIntegration()
-        {
+        public void TestColorAquaIntegration() {
             var aquaColor = ColorAqua();
             Assert.Equal(0, RedOf(aquaColor));
             Assert.Equal(255, GreenOf(aquaColor));
@@ -68,8 +61,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(aquaColor));
         }
         [Fact]
-        public void TestColorAquamarineIntegration()
-        {
+        public void TestColorAquamarineIntegration() {
             var aquamarineColor = ColorAquamarine();
             Assert.Equal(127, RedOf(aquamarineColor));
             Assert.Equal(255, GreenOf(aquamarineColor));
@@ -77,8 +69,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(aquamarineColor));
         }
         [Fact]
-        public void TestColorAzureIntegration()
-        {
+        public void TestColorAzureIntegration() {
             var azureColor = ColorAzure();
             Assert.Equal(240, RedOf(azureColor));
             Assert.Equal(255, GreenOf(azureColor));
@@ -86,8 +77,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(azureColor));
         }
         [Fact]
-        public void TestColorBeigeIntegration()
-        {
+        public void TestColorBeigeIntegration() {
             var beigeColor = ColorBeige();
             Assert.Equal(245, RedOf(beigeColor));
             Assert.Equal(245, GreenOf(beigeColor));
@@ -95,8 +85,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(beigeColor));
         }
         [Fact]
-        public void TestColorBisqueIntegration()
-        {
+        public void TestColorBisqueIntegration() {
             var bisqueColor = ColorBisque();
             Assert.Equal(255, RedOf(bisqueColor));
             Assert.Equal(228, GreenOf(bisqueColor));
@@ -104,8 +93,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(bisqueColor));
         }
         [Fact]
-        public void TestColorBlackIntegration()
-        {
+        public void TestColorBlackIntegration() {
             var blackColor = ColorBlack();
             Assert.Equal(0, RedOf(blackColor));
             Assert.Equal(0, GreenOf(blackColor));
@@ -113,8 +101,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(blackColor));
         }
         [Fact]
-        public void TestColorBlanchedAlmondIntegration()
-        {
+        public void TestColorBlanchedAlmondIntegration() {
             var blanchedAlmondColor = ColorBlanchedAlmond();
             Assert.Equal(255, RedOf(blanchedAlmondColor));
             Assert.Equal(235, GreenOf(blanchedAlmondColor));
@@ -122,8 +109,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(blanchedAlmondColor));
         }
         [Fact]
-        public void TestColorBlueIntegration()
-        {
+        public void TestColorBlueIntegration() {
             var blueColor = ColorBlue();
             Assert.Equal(0, RedOf(blueColor));
             Assert.Equal(0, GreenOf(blueColor));
@@ -131,8 +117,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(blueColor));
         }
         [Fact]
-        public void TestColorBlueVioletIntegration()
-        {
+        public void TestColorBlueVioletIntegration() {
             var blueVioletColor = ColorBlueViolet();
             Assert.Equal(138, RedOf(blueVioletColor));
             Assert.Equal(43, GreenOf(blueVioletColor));
@@ -140,8 +125,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(blueVioletColor));
         }
         [Fact]
-        public void TestColorBrightGreenIntegration()
-        {
+        public void TestColorBrightGreenIntegration() {
             var brightGreenColor = ColorBrightGreen();
             Assert.Equal(0, RedOf(brightGreenColor));
             Assert.Equal(255, GreenOf(brightGreenColor));
@@ -149,8 +133,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(brightGreenColor));
         }
         [Fact]
-        public void TestColorBrownIntegration()
-        {
+        public void TestColorBrownIntegration() {
             var brownColor = ColorBrown();
             Assert.Equal(165, RedOf(brownColor));
             Assert.Equal(42, GreenOf(brownColor));
@@ -158,8 +141,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(brownColor));
         }
         [Fact]
-        public void TestColorBurlyWoodIntegration()
-        {
+        public void TestColorBurlyWoodIntegration() {
             var burlyWoodColor = ColorBurlyWood();
             Assert.Equal(222, RedOf(burlyWoodColor));
             Assert.Equal(184, GreenOf(burlyWoodColor));
@@ -167,8 +149,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(burlyWoodColor));
         }
         [Fact]
-        public void TestColorCadetBlueIntegration()
-        {
+        public void TestColorCadetBlueIntegration() {
             var cadetBlueColor = ColorCadetBlue();
             Assert.Equal(95, RedOf(cadetBlueColor));
             Assert.Equal(158, GreenOf(cadetBlueColor));
@@ -176,8 +157,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(cadetBlueColor));
         }
         [Fact]
-        public void TestColorChartreuseIntegration()
-        {
+        public void TestColorChartreuseIntegration() {
             var chartreuseColor = ColorChartreuse();
             Assert.Equal(127, RedOf(chartreuseColor));
             Assert.Equal(255, GreenOf(chartreuseColor));
@@ -185,8 +165,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(chartreuseColor));
         }
         [Fact]
-        public void TestColorChocolateIntegration()
-        {
+        public void TestColorChocolateIntegration() {
             var chocolateColor = ColorChocolate();
             Assert.Equal(210, RedOf(chocolateColor));
             Assert.Equal(105, GreenOf(chocolateColor));
@@ -194,8 +173,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(chocolateColor));
         }
         [Fact]
-        public void TestColorCoralIntegration()
-        {
+        public void TestColorCoralIntegration() {
             var coralColor = ColorCoral();
             Assert.Equal(255, RedOf(coralColor));
             Assert.Equal(127, GreenOf(coralColor));
@@ -203,8 +181,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(coralColor));
         }
         [Fact]
-        public void TestColorCornflowerBlueIntegration()
-        {
+        public void TestColorCornflowerBlueIntegration() {
             var cornflowerBlueColor = ColorCornflowerBlue();
             Assert.Equal(100, RedOf(cornflowerBlueColor));
             Assert.Equal(149, GreenOf(cornflowerBlueColor));
@@ -212,8 +189,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(cornflowerBlueColor));
         }
         [Fact]
-        public void TestColorCornsilkIntegration()
-        {
+        public void TestColorCornsilkIntegration() {
             var cornsilkColor = ColorCornsilk();
             Assert.Equal(255, RedOf(cornsilkColor));
             Assert.Equal(248, GreenOf(cornsilkColor));
@@ -221,8 +197,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(cornsilkColor));
         }
         [Fact]
-        public void TestColorCrimsonIntegration()
-        {
+        public void TestColorCrimsonIntegration() {
             var crimsonColor = ColorCrimson();
             Assert.Equal(220, RedOf(crimsonColor));
             Assert.Equal(20, GreenOf(crimsonColor));
@@ -230,8 +205,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(crimsonColor));
         }
         [Fact]
-        public void TestColorCyanIntegration()
-        {
+        public void TestColorCyanIntegration() {
             var cyanColor = ColorCyan();
             Assert.Equal(0, RedOf(cyanColor));
             Assert.Equal(255, GreenOf(cyanColor));
@@ -239,8 +213,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(cyanColor));
         }
         [Fact]
-        public void TestColorDarkBlueIntegration()
-        {
+        public void TestColorDarkBlueIntegration() {
             var darkBlueColor = ColorDarkBlue();
             Assert.Equal(0, RedOf(darkBlueColor));
             Assert.Equal(0, GreenOf(darkBlueColor));
@@ -248,8 +221,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkBlueColor));
         }
         [Fact]
-        public void TestColorDarkCyanIntegration()
-        {
+        public void TestColorDarkCyanIntegration() {
             var darkCyanColor = ColorDarkCyan();
             Assert.Equal(0, RedOf(darkCyanColor));
             Assert.Equal(139, GreenOf(darkCyanColor));
@@ -257,8 +229,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkCyanColor));
         }
         [Fact]
-        public void TestColorDarkGoldenrodIntegration()
-        {
+        public void TestColorDarkGoldenrodIntegration() {
             var darkGoldenrodColor = ColorDarkGoldenrod();
             Assert.Equal(184, RedOf(darkGoldenrodColor));
             Assert.Equal(134, GreenOf(darkGoldenrodColor));
@@ -266,8 +237,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkGoldenrodColor));
         }
         [Fact]
-        public void TestColorDarkGrayIntegration()
-        {
+        public void TestColorDarkGrayIntegration() {
             var darkGrayColor = ColorDarkGray();
             Assert.Equal(169, RedOf(darkGrayColor));
             Assert.Equal(169, GreenOf(darkGrayColor));
@@ -275,8 +245,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkGrayColor));
         }
         [Fact]
-        public void TestColorDarkGreenIntegration()
-        {
+        public void TestColorDarkGreenIntegration() {
             var darkGreenColor = ColorDarkGreen();
             Assert.Equal(0, RedOf(darkGreenColor));
             Assert.Equal(100, GreenOf(darkGreenColor));
@@ -284,8 +253,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkGreenColor));
         }
         [Fact]
-        public void TestColorDarkKhakiIntegration()
-        {
+        public void TestColorDarkKhakiIntegration() {
             var darkKhakiColor = ColorDarkKhaki();
             Assert.Equal(189, RedOf(darkKhakiColor));
             Assert.Equal(183, GreenOf(darkKhakiColor));
@@ -293,8 +261,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkKhakiColor));
         }
         [Fact]
-        public void TestColorDarkMagentaIntegration()
-        {
+        public void TestColorDarkMagentaIntegration() {
             var darkMagentaColor = ColorDarkMagenta();
             Assert.Equal(139, RedOf(darkMagentaColor));
             Assert.Equal(0, GreenOf(darkMagentaColor));
@@ -302,8 +269,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkMagentaColor));
         }
         [Fact]
-        public void TestColorDarkOliveGreenIntegration()
-        {
+        public void TestColorDarkOliveGreenIntegration() {
             var darkOliveGreenColor = ColorDarkOliveGreen();
             Assert.Equal(85, RedOf(darkOliveGreenColor));
             Assert.Equal(107, GreenOf(darkOliveGreenColor));
@@ -311,8 +277,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkOliveGreenColor));
         }
         [Fact]
-        public void TestColorDarkOrangeIntegration()
-        {
+        public void TestColorDarkOrangeIntegration() {
             var darkOrangeColor = ColorDarkOrange();
             Assert.Equal(255, RedOf(darkOrangeColor));
             Assert.Equal(140, GreenOf(darkOrangeColor));
@@ -320,8 +285,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkOrangeColor));
         }
         [Fact]
-        public void TestColorDarkOrchidIntegration()
-        {
+        public void TestColorDarkOrchidIntegration() {
             var darkOrchidColor = ColorDarkOrchid();
             Assert.Equal(153, RedOf(darkOrchidColor));
             Assert.Equal(50, GreenOf(darkOrchidColor));
@@ -329,8 +293,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkOrchidColor));
         }
         [Fact]
-        public void TestColorDarkRedIntegration()
-        {
+        public void TestColorDarkRedIntegration() {
             var darkRedColor = ColorDarkRed();
             Assert.Equal(139, RedOf(darkRedColor));
             Assert.Equal(0, GreenOf(darkRedColor));
@@ -338,8 +301,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkRedColor));
         }
         [Fact]
-        public void TestColorDarkSalmonIntegration()
-        {
+        public void TestColorDarkSalmonIntegration() {
             var darkSalmonColor = ColorDarkSalmon();
             Assert.Equal(233, RedOf(darkSalmonColor));
             Assert.Equal(150, GreenOf(darkSalmonColor));
@@ -347,8 +309,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkSalmonColor));
         }
         [Fact]
-        public void TestColorDarkSeaGreenIntegration()
-        {
+        public void TestColorDarkSeaGreenIntegration() {
             var darkSeaGreenColor = ColorDarkSeaGreen();
             Assert.Equal(143, RedOf(darkSeaGreenColor));
             Assert.Equal(188, GreenOf(darkSeaGreenColor));
@@ -356,8 +317,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkSeaGreenColor));
         }
         [Fact]
-        public void TestColorDarkSlateBlueIntegration()
-        {
+        public void TestColorDarkSlateBlueIntegration() {
             var darkSlateBlueColor = ColorDarkSlateBlue();
             Assert.Equal(72, RedOf(darkSlateBlueColor));
             Assert.Equal(61, GreenOf(darkSlateBlueColor));
@@ -365,8 +325,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkSlateBlueColor));
         }
         [Fact]
-        public void TestColorDarkSlateGrayIntegration()
-        {
+        public void TestColorDarkSlateGrayIntegration() {
             var darkSlateGrayColor = ColorDarkSlateGray();
             Assert.Equal(47, RedOf(darkSlateGrayColor));
             Assert.Equal(79, GreenOf(darkSlateGrayColor));
@@ -374,8 +333,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkSlateGrayColor));
         }
         [Fact]
-        public void TestColorDarkTurquoiseIntegration()
-        {
+        public void TestColorDarkTurquoiseIntegration() {
             var darkTurquoiseColor = ColorDarkTurquoise();
             Assert.Equal(0, RedOf(darkTurquoiseColor));
             Assert.Equal(206, GreenOf(darkTurquoiseColor));
@@ -383,8 +341,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkTurquoiseColor));
         }
         [Fact]
-        public void TestColorDarkVioletIntegration()
-        {
+        public void TestColorDarkVioletIntegration() {
             var darkVioletColor = ColorDarkViolet();
             Assert.Equal(148, RedOf(darkVioletColor));
             Assert.Equal(0, GreenOf(darkVioletColor));
@@ -392,8 +349,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(darkVioletColor));
         }
         [Fact]
-        public void TestColorDeepPinkIntegration()
-        {
+        public void TestColorDeepPinkIntegration() {
             var deepPinkColor = ColorDeepPink();
             Assert.Equal(255, RedOf(deepPinkColor));
             Assert.Equal(20, GreenOf(deepPinkColor));
@@ -401,8 +357,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(deepPinkColor));
         }
         [Fact]
-        public void TestColorDeepSkyBlueIntegration()
-        {
+        public void TestColorDeepSkyBlueIntegration() {
             var deepSkyBlueColor = ColorDeepSkyBlue();
             Assert.Equal(0, RedOf(deepSkyBlueColor));
             Assert.Equal(191, GreenOf(deepSkyBlueColor));
@@ -410,8 +365,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(deepSkyBlueColor));
         }
         [Fact]
-        public void TestColorDimGrayIntegration()
-        {
+        public void TestColorDimGrayIntegration() {
             var dimGrayColor = ColorDimGray();
             Assert.Equal(105, RedOf(dimGrayColor));
             Assert.Equal(105, GreenOf(dimGrayColor));
@@ -419,8 +373,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(dimGrayColor));
         }
         [Fact]
-        public void TestColorDodgerBlueIntegration()
-        {
+        public void TestColorDodgerBlueIntegration() {
             var dodgerBlueColor = ColorDodgerBlue();
             Assert.Equal(30, RedOf(dodgerBlueColor));
             Assert.Equal(144, GreenOf(dodgerBlueColor));
@@ -428,8 +381,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(dodgerBlueColor));
         }
         [Fact]
-        public void TestColorFirebrickIntegration()
-        {
+        public void TestColorFirebrickIntegration() {
             var firebrickColor = ColorFirebrick();
             Assert.Equal(178, RedOf(firebrickColor));
             Assert.Equal(34, GreenOf(firebrickColor));
@@ -437,8 +389,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(firebrickColor));
         }
         [Fact]
-        public void TestColorFloralWhiteIntegration()
-        {
+        public void TestColorFloralWhiteIntegration() {
             var floralWhiteColor = ColorFloralWhite();
             Assert.Equal(255, RedOf(floralWhiteColor));
             Assert.Equal(250, GreenOf(floralWhiteColor));
@@ -446,8 +397,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(floralWhiteColor));
         }
         [Fact]
-        public void TestColorForestGreenIntegration()
-        {
+        public void TestColorForestGreenIntegration() {
             var forestGreenColor = ColorForestGreen();
             Assert.Equal(34, RedOf(forestGreenColor));
             Assert.Equal(139, GreenOf(forestGreenColor));
@@ -455,8 +405,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(forestGreenColor));
         }
         [Fact]
-        public void TestColorFuchsiaIntegration()
-        {
+        public void TestColorFuchsiaIntegration() {
             var fuchsiaColor = ColorFuchsia();
             Assert.Equal(255, RedOf(fuchsiaColor));
             Assert.Equal(0, GreenOf(fuchsiaColor));
@@ -464,8 +413,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(fuchsiaColor));
         }
         [Fact]
-        public void TestColorGainsboroIntegration()
-        {
+        public void TestColorGainsboroIntegration() {
             var gainsboroColor = ColorGainsboro();
             Assert.Equal(220, RedOf(gainsboroColor));
             Assert.Equal(220, GreenOf(gainsboroColor));
@@ -473,8 +421,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(gainsboroColor));
         }
         [Fact]
-        public void TestColorGhostWhiteIntegration()
-        {
+        public void TestColorGhostWhiteIntegration() {
             var ghostWhiteColor = ColorGhostWhite();
             Assert.Equal(248, RedOf(ghostWhiteColor));
             Assert.Equal(248, GreenOf(ghostWhiteColor));
@@ -482,8 +429,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(ghostWhiteColor));
         }
         [Fact]
-        public void TestColorGoldIntegration()
-        {
+        public void TestColorGoldIntegration() {
             var goldColor = ColorGold();
             Assert.Equal(255, RedOf(goldColor));
             Assert.Equal(215, GreenOf(goldColor));
@@ -491,8 +437,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(goldColor));
         }
         [Fact]
-        public void TestColorGoldenrodIntegration()
-        {
+        public void TestColorGoldenrodIntegration() {
             var goldenrodColor = ColorGoldenrod();
             Assert.Equal(218, RedOf(goldenrodColor));
             Assert.Equal(165, GreenOf(goldenrodColor));
@@ -500,8 +445,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(goldenrodColor));
         }
         [Fact]
-        public void TestColorGrayIntegration()
-        {
+        public void TestColorGrayIntegration() {
             var grayColor = ColorGray();
             Assert.Equal(127, RedOf(grayColor));
             Assert.Equal(127, GreenOf(grayColor));
@@ -509,8 +453,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(grayColor));
         }
         [Fact]
-        public void TestColorGreenIntegration()
-        {
+        public void TestColorGreenIntegration() {
             var greenColor = ColorGreen();
             Assert.Equal(0, RedOf(greenColor));
             Assert.Equal(127, GreenOf(greenColor));
@@ -518,8 +461,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(greenColor));
         }
         [Fact]
-        public void TestColorGreenYellowIntegration()
-        {
+        public void TestColorGreenYellowIntegration() {
             var greenYellowColor = ColorGreenYellow();
             Assert.Equal(173, RedOf(greenYellowColor));
             Assert.Equal(255, GreenOf(greenYellowColor));
@@ -527,8 +469,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(greenYellowColor));
         }
         [Fact]
-        public void TestColorHoneydewIntegration()
-        {
+        public void TestColorHoneydewIntegration() {
             var honeydewColor = ColorHoneydew();
             Assert.Equal(240, RedOf(honeydewColor));
             Assert.Equal(255, GreenOf(honeydewColor));
@@ -536,8 +477,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(honeydewColor));
         }
         [Fact]
-        public void TestColorHotPinkIntegration()
-        {
+        public void TestColorHotPinkIntegration() {
             var hotPinkColor = ColorHotPink();
             Assert.Equal(255, RedOf(hotPinkColor));
             Assert.Equal(105, GreenOf(hotPinkColor));
@@ -545,8 +485,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(hotPinkColor));
         }
         [Fact]
-        public void TestColorIndianRedIntegration()
-        {
+        public void TestColorIndianRedIntegration() {
             var indianRedColor = ColorIndianRed();
             Assert.Equal(205, RedOf(indianRedColor));
             Assert.Equal(92, GreenOf(indianRedColor));
@@ -554,8 +493,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(indianRedColor));
         }
         [Fact]
-        public void TestColorIndigoIntegration()
-        {
+        public void TestColorIndigoIntegration() {
             var indigoColor = ColorIndigo();
             Assert.Equal(75, RedOf(indigoColor));
             Assert.Equal(0, GreenOf(indigoColor));
@@ -563,8 +501,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(indigoColor));
         }
         [Fact]
-        public void TestColorIvoryIntegration()
-        {
+        public void TestColorIvoryIntegration() {
             var ivoryColor = ColorIvory();
             Assert.Equal(255, RedOf(ivoryColor));
             Assert.Equal(255, GreenOf(ivoryColor));
@@ -572,8 +509,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(ivoryColor));
         }
         [Fact]
-        public void TestColorKhakiIntegration()
-        {
+        public void TestColorKhakiIntegration() {
             var khakiColor = ColorKhaki();
             Assert.Equal(240, RedOf(khakiColor));
             Assert.Equal(230, GreenOf(khakiColor));
@@ -581,8 +517,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(khakiColor));
         }
         [Fact]
-        public void TestColorLavenderIntegration()
-        {
+        public void TestColorLavenderIntegration() {
             var lavenderColor = ColorLavender();
             Assert.Equal(230, RedOf(lavenderColor));
             Assert.Equal(230, GreenOf(lavenderColor));
@@ -590,8 +525,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lavenderColor));
         }
         [Fact]
-        public void TestColorLavenderBlushIntegration()
-        {
+        public void TestColorLavenderBlushIntegration() {
             var lavenderBlushColor = ColorLavenderBlush();
             Assert.Equal(255, RedOf(lavenderBlushColor));
             Assert.Equal(240, GreenOf(lavenderBlushColor));
@@ -599,8 +533,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lavenderBlushColor));
         }
         [Fact]
-        public void TestColorLawnGreenIntegration()
-        {
+        public void TestColorLawnGreenIntegration() {
             var lawnGreenColor = ColorLawnGreen();
             Assert.Equal(124, RedOf(lawnGreenColor));
             Assert.Equal(252, GreenOf(lawnGreenColor));
@@ -608,8 +541,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lawnGreenColor));
         }
         [Fact]
-        public void TestColorLemonChiffonIntegration()
-        {
+        public void TestColorLemonChiffonIntegration() {
             var lemonChiffonColor = ColorLemonChiffon();
             Assert.Equal(255, RedOf(lemonChiffonColor));
             Assert.Equal(250, GreenOf(lemonChiffonColor));
@@ -617,8 +549,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lemonChiffonColor));
         }
         [Fact]
-        public void TestColorLightBlueIntegration()
-        {
+        public void TestColorLightBlueIntegration() {
             var lightBlueColor = ColorLightBlue();
             Assert.Equal(173, RedOf(lightBlueColor));
             Assert.Equal(216, GreenOf(lightBlueColor));
@@ -626,8 +557,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightBlueColor));
         }
         [Fact]
-        public void TestColorLightCoralIntegration()
-        {
+        public void TestColorLightCoralIntegration() {
             var lightCoralColor = ColorLightCoral();
             Assert.Equal(240, RedOf(lightCoralColor));
             Assert.Equal(127, GreenOf(lightCoralColor));
@@ -635,8 +565,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightCoralColor));
         }
         [Fact]
-        public void TestColorLightCyanIntegration()
-        {
+        public void TestColorLightCyanIntegration() {
             var lightCyanColor = ColorLightCyan();
             Assert.Equal(224, RedOf(lightCyanColor));
             Assert.Equal(255, GreenOf(lightCyanColor));
@@ -644,8 +573,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightCyanColor));
         }
         [Fact]
-        public void TestColorLightGoldenrodYellowIntegration()
-        {
+        public void TestColorLightGoldenrodYellowIntegration() {
             var lightGoldenrodYellowColor = ColorLightGoldenrodYellow();
             Assert.Equal(250, RedOf(lightGoldenrodYellowColor));
             Assert.Equal(250, GreenOf(lightGoldenrodYellowColor));
@@ -653,8 +581,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightGoldenrodYellowColor));
         }
         [Fact]
-        public void TestColorLightGrayIntegration()
-        {
+        public void TestColorLightGrayIntegration() {
             var lightGrayColor = ColorLightGray();
             Assert.Equal(211, RedOf(lightGrayColor));
             Assert.Equal(211, GreenOf(lightGrayColor));
@@ -662,8 +589,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightGrayColor));
         }
         [Fact]
-        public void TestColorLightGreenIntegration()
-        {
+        public void TestColorLightGreenIntegration() {
             var lightGreenColor = ColorLightGreen();
             Assert.Equal(144, RedOf(lightGreenColor));
             Assert.Equal(238, GreenOf(lightGreenColor));
@@ -671,8 +597,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightGreenColor));
         }
         [Fact]
-        public void TestColorLightPinkIntegration()
-        {
+        public void TestColorLightPinkIntegration() {
             var lightPinkColor = ColorLightPink();
             Assert.Equal(255, RedOf(lightPinkColor));
             Assert.Equal(182, GreenOf(lightPinkColor));
@@ -680,8 +605,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightPinkColor));
         }
         [Fact]
-        public void TestColorLightSalmonIntegration()
-        {
+        public void TestColorLightSalmonIntegration() {
             var lightSalmonColor = ColorLightSalmon();
             Assert.Equal(255, RedOf(lightSalmonColor));
             Assert.Equal(160, GreenOf(lightSalmonColor));
@@ -689,8 +613,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightSalmonColor));
         }
         [Fact]
-        public void TestColorLightSeaGreenIntegration()
-        {
+        public void TestColorLightSeaGreenIntegration() {
             var lightSeaGreenColor = ColorLightSeaGreen();
             Assert.Equal(32, RedOf(lightSeaGreenColor));
             Assert.Equal(178, GreenOf(lightSeaGreenColor));
@@ -698,8 +621,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightSeaGreenColor));
         }
         [Fact]
-        public void TestColorLightSkyBlueIntegration()
-        {
+        public void TestColorLightSkyBlueIntegration() {
             var lightSkyBlueColor = ColorLightSkyBlue();
             Assert.Equal(135, RedOf(lightSkyBlueColor));
             Assert.Equal(206, GreenOf(lightSkyBlueColor));
@@ -707,8 +629,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightSkyBlueColor));
         }
         [Fact]
-        public void TestColorLightSlateGrayIntegration()
-        {
+        public void TestColorLightSlateGrayIntegration() {
             var lightSlateGrayColor = ColorLightSlateGray();
             Assert.Equal(119, RedOf(lightSlateGrayColor));
             Assert.Equal(136, GreenOf(lightSlateGrayColor));
@@ -716,8 +637,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightSlateGrayColor));
         }
         [Fact]
-        public void TestColorLightSteelBlueIntegration()
-        {
+        public void TestColorLightSteelBlueIntegration() {
             var lightSteelBlueColor = ColorLightSteelBlue();
             Assert.Equal(176, RedOf(lightSteelBlueColor));
             Assert.Equal(196, GreenOf(lightSteelBlueColor));
@@ -725,8 +645,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightSteelBlueColor));
         }
         [Fact]
-        public void TestColorLightYellowIntegration()
-        {
+        public void TestColorLightYellowIntegration() {
             var lightYellowColor = ColorLightYellow();
             Assert.Equal(255, RedOf(lightYellowColor));
             Assert.Equal(255, GreenOf(lightYellowColor));
@@ -734,8 +653,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(lightYellowColor));
         }
         [Fact]
-        public void TestColorLimeIntegration()
-        {
+        public void TestColorLimeIntegration() {
             var limeColor = ColorLime();
             Assert.Equal(0, RedOf(limeColor));
             Assert.Equal(255, GreenOf(limeColor));
@@ -743,8 +661,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(limeColor));
         }
         [Fact]
-        public void TestColorLimeGreenIntegration()
-        {
+        public void TestColorLimeGreenIntegration() {
             var limeGreenColor = ColorLimeGreen();
             Assert.Equal(50, RedOf(limeGreenColor));
             Assert.Equal(205, GreenOf(limeGreenColor));
@@ -752,8 +669,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(limeGreenColor));
         }
         [Fact]
-        public void TestColorLinenIntegration()
-        {
+        public void TestColorLinenIntegration() {
             var linenColor = ColorLinen();
             Assert.Equal(250, RedOf(linenColor));
             Assert.Equal(240, GreenOf(linenColor));
@@ -761,8 +677,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(linenColor));
         }
         [Fact]
-        public void TestColorMagentaIntegration()
-        {
+        public void TestColorMagentaIntegration() {
             var magentaColor = ColorMagenta();
             Assert.Equal(255, RedOf(magentaColor));
             Assert.Equal(0, GreenOf(magentaColor));
@@ -770,8 +685,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(magentaColor));
         }
         [Fact]
-        public void TestColorMaroonIntegration()
-        {
+        public void TestColorMaroonIntegration() {
             var maroonColor = ColorMaroon();
             Assert.Equal(127, RedOf(maroonColor));
             Assert.Equal(0, GreenOf(maroonColor));
@@ -779,8 +693,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(maroonColor));
         }
         [Fact]
-        public void TestColorMediumAquamarineIntegration()
-        {
+        public void TestColorMediumAquamarineIntegration() {
             var mediumAquamarineColor = ColorMediumAquamarine();
             Assert.Equal(102, RedOf(mediumAquamarineColor));
             Assert.Equal(205, GreenOf(mediumAquamarineColor));
@@ -788,8 +701,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumAquamarineColor));
         }
         [Fact]
-        public void TestColorMediumBlueIntegration()
-        {
+        public void TestColorMediumBlueIntegration() {
             var mediumBlueColor = ColorMediumBlue();
             Assert.Equal(0, RedOf(mediumBlueColor));
             Assert.Equal(0, GreenOf(mediumBlueColor));
@@ -797,8 +709,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumBlueColor));
         }
         [Fact]
-        public void TestColorMediumOrchidIntegration()
-        {
+        public void TestColorMediumOrchidIntegration() {
             var mediumOrchidColor = ColorMediumOrchid();
             Assert.Equal(186, RedOf(mediumOrchidColor));
             Assert.Equal(85, GreenOf(mediumOrchidColor));
@@ -806,8 +717,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumOrchidColor));
         }
         [Fact]
-        public void TestColorMediumPurpleIntegration()
-        {
+        public void TestColorMediumPurpleIntegration() {
             var mediumPurpleColor = ColorMediumPurple();
             Assert.Equal(147, RedOf(mediumPurpleColor));
             Assert.Equal(112, GreenOf(mediumPurpleColor));
@@ -815,8 +725,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumPurpleColor));
         }
         [Fact]
-        public void TestColorMediumSeaGreenIntegration()
-        {
+        public void TestColorMediumSeaGreenIntegration() {
             var mediumSeaGreenColor = ColorMediumSeaGreen();
             Assert.Equal(60, RedOf(mediumSeaGreenColor));
             Assert.Equal(179, GreenOf(mediumSeaGreenColor));
@@ -824,8 +733,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumSeaGreenColor));
         }
         [Fact]
-        public void TestColorMediumSlateBlueIntegration()
-        {
+        public void TestColorMediumSlateBlueIntegration() {
             var mediumSlateBlueColor = ColorMediumSlateBlue();
             Assert.Equal(123, RedOf(mediumSlateBlueColor));
             Assert.Equal(104, GreenOf(mediumSlateBlueColor));
@@ -833,8 +741,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumSlateBlueColor));
         }
         [Fact]
-        public void TestColorMediumSpringGreenIntegration()
-        {
+        public void TestColorMediumSpringGreenIntegration() {
             var mediumSpringGreenColor = ColorMediumSpringGreen();
             Assert.Equal(0, RedOf(mediumSpringGreenColor));
             Assert.Equal(250, GreenOf(mediumSpringGreenColor));
@@ -842,8 +749,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumSpringGreenColor));
         }
         [Fact]
-        public void TestColorMediumTurquoiseIntegration()
-        {
+        public void TestColorMediumTurquoiseIntegration() {
             var mediumTurquoiseColor = ColorMediumTurquoise();
             Assert.Equal(72, RedOf(mediumTurquoiseColor));
             Assert.Equal(209, GreenOf(mediumTurquoiseColor));
@@ -851,8 +757,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumTurquoiseColor));
         }
         [Fact]
-        public void TestColorMediumVioletRedIntegration()
-        {
+        public void TestColorMediumVioletRedIntegration() {
             var mediumVioletRedColor = ColorMediumVioletRed();
             Assert.Equal(199, RedOf(mediumVioletRedColor));
             Assert.Equal(21, GreenOf(mediumVioletRedColor));
@@ -860,8 +765,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mediumVioletRedColor));
         }
         [Fact]
-        public void TestColorMidnightBlueIntegration()
-        {
+        public void TestColorMidnightBlueIntegration() {
             var midnightBlueColor = ColorMidnightBlue();
             Assert.Equal(25, RedOf(midnightBlueColor));
             Assert.Equal(25, GreenOf(midnightBlueColor));
@@ -869,8 +773,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(midnightBlueColor));
         }
         [Fact]
-        public void TestColorMintCreamIntegration()
-        {
+        public void TestColorMintCreamIntegration() {
             var mintCreamColor = ColorMintCream();
             Assert.Equal(245, RedOf(mintCreamColor));
             Assert.Equal(255, GreenOf(mintCreamColor));
@@ -878,8 +781,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mintCreamColor));
         }
         [Fact]
-        public void TestColorMistyRoseIntegration()
-        {
+        public void TestColorMistyRoseIntegration() {
             var mistyRoseColor = ColorMistyRose();
             Assert.Equal(255, RedOf(mistyRoseColor));
             Assert.Equal(228, GreenOf(mistyRoseColor));
@@ -887,8 +789,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(mistyRoseColor));
         }
         [Fact]
-        public void TestColorMoccasinIntegration()
-        {
+        public void TestColorMoccasinIntegration() {
             var moccasinColor = ColorMoccasin();
             Assert.Equal(255, RedOf(moccasinColor));
             Assert.Equal(228, GreenOf(moccasinColor));
@@ -896,8 +797,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(moccasinColor));
         }
         [Fact]
-        public void TestColorNavajoWhiteIntegration()
-        {
+        public void TestColorNavajoWhiteIntegration() {
             var navajoWhiteColor = ColorNavajoWhite();
             Assert.Equal(255, RedOf(navajoWhiteColor));
             Assert.Equal(222, GreenOf(navajoWhiteColor));
@@ -905,8 +805,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(navajoWhiteColor));
         }
         [Fact]
-        public void TestColorNavyIntegration()
-        {
+        public void TestColorNavyIntegration() {
             var navyColor = ColorNavy();
             Assert.Equal(0, RedOf(navyColor));
             Assert.Equal(0, GreenOf(navyColor));
@@ -914,8 +813,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(navyColor));
         }
         [Fact]
-        public void TestColorOldLaceIntegration()
-        {
+        public void TestColorOldLaceIntegration() {
             var oldLaceColor = ColorOldLace();
             Assert.Equal(253, RedOf(oldLaceColor));
             Assert.Equal(245, GreenOf(oldLaceColor));
@@ -923,8 +821,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(oldLaceColor));
         }
         [Fact]
-        public void TestColorOliveIntegration()
-        {
+        public void TestColorOliveIntegration() {
             var oliveColor = ColorOlive();
             Assert.Equal(127, RedOf(oliveColor));
             Assert.Equal(127, GreenOf(oliveColor));
@@ -932,8 +829,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(oliveColor));
         }
         [Fact]
-        public void TestColorOliveDrabIntegration()
-        {
+        public void TestColorOliveDrabIntegration() {
             var oliveDrabColor = ColorOliveDrab();
             Assert.Equal(107, RedOf(oliveDrabColor));
             Assert.Equal(142, GreenOf(oliveDrabColor));
@@ -941,8 +837,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(oliveDrabColor));
         }
         [Fact]
-        public void TestColorOrangeIntegration()
-        {
+        public void TestColorOrangeIntegration() {
             var orangeColor = ColorOrange();
             Assert.Equal(255, RedOf(orangeColor));
             Assert.Equal(165, GreenOf(orangeColor));
@@ -950,8 +845,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(orangeColor));
         }
         [Fact]
-        public void TestColorOrangeRedIntegration()
-        {
+        public void TestColorOrangeRedIntegration() {
             var orangeRedColor = ColorOrangeRed();
             Assert.Equal(255, RedOf(orangeRedColor));
             Assert.Equal(69, GreenOf(orangeRedColor));
@@ -959,8 +853,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(orangeRedColor));
         }
         [Fact]
-        public void TestColorOrchidIntegration()
-        {
+        public void TestColorOrchidIntegration() {
             var orchidColor = ColorOrchid();
             Assert.Equal(218, RedOf(orchidColor));
             Assert.Equal(112, GreenOf(orchidColor));
@@ -968,8 +861,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(orchidColor));
         }
         [Fact]
-        public void TestColorPaleGoldenrodIntegration()
-        {
+        public void TestColorPaleGoldenrodIntegration() {
             var paleGoldenrodColor = ColorPaleGoldenrod();
             Assert.Equal(238, RedOf(paleGoldenrodColor));
             Assert.Equal(232, GreenOf(paleGoldenrodColor));
@@ -977,8 +869,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(paleGoldenrodColor));
         }
         [Fact]
-        public void TestColorPaleGreenIntegration()
-        {
+        public void TestColorPaleGreenIntegration() {
             var paleGreenColor = ColorPaleGreen();
             Assert.Equal(152, RedOf(paleGreenColor));
             Assert.Equal(251, GreenOf(paleGreenColor));
@@ -986,8 +877,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(paleGreenColor));
         }
         [Fact]
-        public void TestColorPaleTurquoiseIntegration()
-        {
+        public void TestColorPaleTurquoiseIntegration() {
             var paleTurquoiseColor = ColorPaleTurquoise();
             Assert.Equal(175, RedOf(paleTurquoiseColor));
             Assert.Equal(238, GreenOf(paleTurquoiseColor));
@@ -995,8 +885,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(paleTurquoiseColor));
         }
         [Fact]
-        public void TestColorPaleVioletRedIntegration()
-        {
+        public void TestColorPaleVioletRedIntegration() {
             var paleVioletRedColor = ColorPaleVioletRed();
             Assert.Equal(219, RedOf(paleVioletRedColor));
             Assert.Equal(112, GreenOf(paleVioletRedColor));
@@ -1004,8 +893,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(paleVioletRedColor));
         }
         [Fact]
-        public void TestColorPapayaWhipIntegration()
-        {
+        public void TestColorPapayaWhipIntegration() {
             var papayaWhipColor = ColorPapayaWhip();
             Assert.Equal(255, RedOf(papayaWhipColor));
             Assert.Equal(239, GreenOf(papayaWhipColor));
@@ -1013,8 +901,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(papayaWhipColor));
         }
         [Fact]
-        public void TestColorPeachPuffIntegration()
-        {
+        public void TestColorPeachPuffIntegration() {
             var peachPuffColor = ColorPeachPuff();
             Assert.Equal(255, RedOf(peachPuffColor));
             Assert.Equal(218, GreenOf(peachPuffColor));
@@ -1022,8 +909,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(peachPuffColor));
         }
         [Fact]
-        public void TestColorPeruIntegration()
-        {
+        public void TestColorPeruIntegration() {
             var peruColor = ColorPeru();
             Assert.Equal(205, RedOf(peruColor));
             Assert.Equal(133, GreenOf(peruColor));
@@ -1031,8 +917,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(peruColor));
         }
         [Fact]
-        public void TestColorPinkIntegration()
-        {
+        public void TestColorPinkIntegration() {
             var pinkColor = ColorPink();
             Assert.Equal(255, RedOf(pinkColor));
             Assert.Equal(192, GreenOf(pinkColor));
@@ -1040,8 +925,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(pinkColor));
         }
         [Fact]
-        public void TestColorPlumIntegration()
-        {
+        public void TestColorPlumIntegration() {
             var plumColor = ColorPlum();
             Assert.Equal(221, RedOf(plumColor));
             Assert.Equal(160, GreenOf(plumColor));
@@ -1049,8 +933,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(plumColor));
         }
         [Fact]
-        public void TestColorPowderBlueIntegration()
-        {
+        public void TestColorPowderBlueIntegration() {
             var powderBlueColor = ColorPowderBlue();
             Assert.Equal(176, RedOf(powderBlueColor));
             Assert.Equal(224, GreenOf(powderBlueColor));
@@ -1058,8 +941,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(powderBlueColor));
         }
         [Fact]
-        public void TestColorPurpleIntegration()
-        {
+        public void TestColorPurpleIntegration() {
             var purpleColor = ColorPurple();
             Assert.Equal(127, RedOf(purpleColor));
             Assert.Equal(0, GreenOf(purpleColor));
@@ -1067,8 +949,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(purpleColor));
         }
         [Fact]
-        public void TestColorRedIntegration()
-        {
+        public void TestColorRedIntegration() {
             var redColor = ColorRed();
             Assert.Equal(255, RedOf(redColor));
             Assert.Equal(0, GreenOf(redColor));
@@ -1076,8 +957,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(redColor));
         }
         [Fact]
-        public void TestColorRosyBrownIntegration()
-        {
+        public void TestColorRosyBrownIntegration() {
             var rosyBrownColor = ColorRosyBrown();
             Assert.Equal(188, RedOf(rosyBrownColor));
             Assert.Equal(143, GreenOf(rosyBrownColor));
@@ -1085,8 +965,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(rosyBrownColor));
         }
         [Fact]
-        public void TestColorRoyalBlueIntegration()
-        {
+        public void TestColorRoyalBlueIntegration() {
             var royalBlueColor = ColorRoyalBlue();
             Assert.Equal(65, RedOf(royalBlueColor));
             Assert.Equal(105, GreenOf(royalBlueColor));
@@ -1094,8 +973,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(royalBlueColor));
         }
         [Fact]
-        public void TestColorSaddleBrownIntegration()
-        {
+        public void TestColorSaddleBrownIntegration() {
             var saddleBrownColor = ColorSaddleBrown();
             Assert.Equal(139, RedOf(saddleBrownColor));
             Assert.Equal(69, GreenOf(saddleBrownColor));
@@ -1103,8 +981,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(saddleBrownColor));
         }
         [Fact]
-        public void TestColorSalmonIntegration()
-        {
+        public void TestColorSalmonIntegration() {
             var salmonColor = ColorSalmon();
             Assert.Equal(250, RedOf(salmonColor));
             Assert.Equal(127, GreenOf(salmonColor));
@@ -1112,8 +989,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(salmonColor));
         }
         [Fact]
-        public void TestColorSandyBrownIntegration()
-        {
+        public void TestColorSandyBrownIntegration() {
             var sandyBrownColor = ColorSandyBrown();
             Assert.Equal(244, RedOf(sandyBrownColor));
             Assert.Equal(164, GreenOf(sandyBrownColor));
@@ -1121,8 +997,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(sandyBrownColor));
         }
         [Fact]
-        public void TestColorSeaGreenIntegration()
-        {
+        public void TestColorSeaGreenIntegration() {
             var seaGreenColor = ColorSeaGreen();
             Assert.Equal(46, RedOf(seaGreenColor));
             Assert.Equal(139, GreenOf(seaGreenColor));
@@ -1130,8 +1005,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(seaGreenColor));
         }
         [Fact]
-        public void TestColorSeaShellIntegration()
-        {
+        public void TestColorSeaShellIntegration() {
             var seaShellColor = ColorSeaShell();
             Assert.Equal(255, RedOf(seaShellColor));
             Assert.Equal(245, GreenOf(seaShellColor));
@@ -1139,8 +1013,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(seaShellColor));
         }
         [Fact]
-        public void TestColorSiennaIntegration()
-        {
+        public void TestColorSiennaIntegration() {
             var siennaColor = ColorSienna();
             Assert.Equal(160, RedOf(siennaColor));
             Assert.Equal(82, GreenOf(siennaColor));
@@ -1148,8 +1021,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(siennaColor));
         }
         [Fact]
-        public void TestColorSilverIntegration()
-        {
+        public void TestColorSilverIntegration() {
             var silverColor = ColorSilver();
             Assert.Equal(192, RedOf(silverColor));
             Assert.Equal(192, GreenOf(silverColor));
@@ -1157,8 +1029,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(silverColor));
         }
         [Fact]
-        public void TestColorSkyBlueIntegration()
-        {
+        public void TestColorSkyBlueIntegration() {
             var skyBlueColor = ColorSkyBlue();
             Assert.Equal(135, RedOf(skyBlueColor));
             Assert.Equal(206, GreenOf(skyBlueColor));
@@ -1166,8 +1037,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(skyBlueColor));
         }
         [Fact]
-        public void TestColorSlateBlueIntegration()
-        {
+        public void TestColorSlateBlueIntegration() {
             var slateBlueColor = ColorSlateBlue();
             Assert.Equal(106, RedOf(slateBlueColor));
             Assert.Equal(90, GreenOf(slateBlueColor));
@@ -1175,8 +1045,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(slateBlueColor));
         }
         [Fact]
-        public void TestColorSlateGrayIntegration()
-        {
+        public void TestColorSlateGrayIntegration() {
             var slateGrayColor = ColorSlateGray();
             Assert.Equal(112, RedOf(slateGrayColor));
             Assert.Equal(127, GreenOf(slateGrayColor));
@@ -1184,8 +1053,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(slateGrayColor));
         }
         [Fact]
-        public void TestColorSnowIntegration()
-        {
+        public void TestColorSnowIntegration() {
             var snowColor = ColorSnow();
             Assert.Equal(255, RedOf(snowColor));
             Assert.Equal(250, GreenOf(snowColor));
@@ -1193,8 +1061,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(snowColor));
         }
         [Fact]
-        public void TestColorSpringGreenIntegration()
-        {
+        public void TestColorSpringGreenIntegration() {
             var springGreenColor = ColorSpringGreen();
             Assert.Equal(0, RedOf(springGreenColor));
             Assert.Equal(255, GreenOf(springGreenColor));
@@ -1202,8 +1069,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(springGreenColor));
         }
         [Fact]
-        public void TestColorSteelBlueIntegration()
-        {
+        public void TestColorSteelBlueIntegration() {
             var steelBlueColor = ColorSteelBlue();
             Assert.Equal(70, RedOf(steelBlueColor));
             Assert.Equal(130, GreenOf(steelBlueColor));
@@ -1211,8 +1077,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(steelBlueColor));
         }
         [Fact]
-        public void TestColorSwinburneRedIntegration()
-        {
+        public void TestColorSwinburneRedIntegration() {
             var swinburneRedColor = ColorSwinburneRed();
             Assert.Equal(237, RedOf(swinburneRedColor));
             Assert.Equal(36, GreenOf(swinburneRedColor));
@@ -1220,8 +1085,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(swinburneRedColor));
         }
         [Fact]
-        public void TestColorTanIntegration()
-        {
+        public void TestColorTanIntegration() {
             var tanColor = ColorTan();
             Assert.Equal(210, RedOf(tanColor));
             Assert.Equal(180, GreenOf(tanColor));
@@ -1229,8 +1093,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(tanColor));
         }
         [Fact]
-        public void TestColorTealIntegration()
-        {
+        public void TestColorTealIntegration() {
             var tealColor = ColorTeal();
             Assert.Equal(0, RedOf(tealColor));
             Assert.Equal(127, GreenOf(tealColor));
@@ -1238,8 +1101,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(tealColor));
         }
         [Fact]
-        public void TestColorThistleIntegration()
-        {
+        public void TestColorThistleIntegration() {
             var thistleColor = ColorThistle();
             Assert.Equal(216, RedOf(thistleColor));
             Assert.Equal(191, GreenOf(thistleColor));
@@ -1247,8 +1109,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(thistleColor));
         }
         [Fact]
-        public void TestColorToStringIntegration()
-        {
+        public void TestColorToStringIntegration() {
             var redColor = ColorRed();
             var redColorString = ColorToString(redColor);
             Assert.Equal("#ff0000ff", redColorString);
@@ -1257,8 +1118,7 @@ namespace SplashKitTests
             Assert.Equal("#ffffffff", transparentColorString);
         }
         [Fact]
-        public void TestColorTomatoIntegration()
-        {
+        public void TestColorTomatoIntegration() {
             var tomatoColor = ColorTomato();
             Assert.Equal(255, RedOf(tomatoColor));
             Assert.Equal(99, GreenOf(tomatoColor));
@@ -1266,8 +1126,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(tomatoColor));
         }
         [Fact]
-        public void TestColorTransparentIntegration()
-        {
+        public void TestColorTransparentIntegration() {
             var transparentColor = ColorTransparent();
             Assert.Equal(255, AlphaOf(transparentColor));
             Assert.Equal(255, RedOf(transparentColor));
@@ -1275,8 +1134,7 @@ namespace SplashKitTests
             Assert.Equal(255, BlueOf(transparentColor));
         }
         [Fact]
-        public void TestColorTurquoiseIntegration()
-        {
+        public void TestColorTurquoiseIntegration() {
             var turquoiseColor = ColorTurquoise();
             Assert.Equal(64, RedOf(turquoiseColor));
             Assert.Equal(224, GreenOf(turquoiseColor));
@@ -1284,8 +1142,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(turquoiseColor));
         }
         [Fact]
-        public void TestColorVioletIntegration()
-        {
+        public void TestColorVioletIntegration() {
             var violetColor = ColorViolet();
             Assert.Equal(238, RedOf(violetColor));
             Assert.Equal(130, GreenOf(violetColor));
@@ -1293,8 +1150,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(violetColor));
         }
         [Fact]
-        public void TestColorWheatIntegration()
-        {
+        public void TestColorWheatIntegration() {
             var wheatColor = ColorWheat();
             Assert.Equal(245, RedOf(wheatColor));
             Assert.Equal(222, GreenOf(wheatColor));
@@ -1302,8 +1158,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(wheatColor));
         }
         [Fact]
-        public void TestColorWhiteIntegration()
-        {
+        public void TestColorWhiteIntegration() {
             var whiteColor = ColorWhite();
             Assert.Equal(255, RedOf(whiteColor));
             Assert.Equal(255, GreenOf(whiteColor));
@@ -1311,8 +1166,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(whiteColor));
         }
         [Fact]
-        public void TestColorWhiteSmokeIntegration()
-        {
+        public void TestColorWhiteSmokeIntegration() {
             var whiteSmokeColor = ColorWhiteSmoke();
             Assert.Equal(245, RedOf(whiteSmokeColor));
             Assert.Equal(245, GreenOf(whiteSmokeColor));
@@ -1320,8 +1174,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(whiteSmokeColor));
         }
         [Fact]
-        public void TestColorYellowIntegration()
-        {
+        public void TestColorYellowIntegration() {
             var yellowColor = ColorYellow();
             Assert.Equal(255, RedOf(yellowColor));
             Assert.Equal(255, GreenOf(yellowColor));
@@ -1329,8 +1182,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(yellowColor));
         }
         [Fact]
-        public void TestColorYellowGreenIntegration()
-        {
+        public void TestColorYellowGreenIntegration() {
             var yellowGreenColor = ColorYellowGreen();
             Assert.Equal(154, RedOf(yellowGreenColor));
             Assert.Equal(205, GreenOf(yellowGreenColor));
@@ -1338,8 +1190,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(yellowGreenColor));
         }
         [Fact]
-        public void TestGreenOfIntegration()
-        {
+        public void TestGreenOfIntegration() {
             var greenColor = ColorGreen();
             var greenValue = GreenOf(greenColor);
             Assert.Equal(127, greenValue);
@@ -1348,8 +1199,7 @@ namespace SplashKitTests
             Assert.Equal(0, blackGreenValue);
         }
         [Fact]
-        public void TestHSBColorIntegration()
-        {
+        public void TestHSBColorIntegration() {
             var redColor = HSBColor(0.0, 1.0, 1.0);
             Assert.Equal(0.0, HueOf(redColor));
             Assert.Equal(1.0, SaturationOf(redColor));
@@ -1358,8 +1208,7 @@ namespace SplashKitTests
             Assert.Equal(0.0, SaturationOf(grayColor));
         }
         [Fact]
-        public void TestHueOfIntegration()
-        {
+        public void TestHueOfIntegration() {
             var redColor = ColorRed();
             var hueValue = HueOf(redColor);
             Assert.Equal(0.0, hueValue);
@@ -1368,15 +1217,13 @@ namespace SplashKitTests
             Assert.Equal(0.6666666666666666, hueValueBlue);
         }
         [Fact]
-        public void TestRandomColorIntegration()
-        {
+        public void TestRandomColorIntegration() {
             var randomColorResult = RandomColor();
             Assert.NotEqual("#000000FF", ColorToString(randomColorResult));
             Assert.InRange(AlphaOf(randomColorResult), 0, 255);
         }
         [Fact]
-        public void TestRandomRGBColorIntegration()
-        {
+        public void TestRandomRGBColorIntegration() {
             var randomColor = RandomRGBColor(255);
             Assert.InRange(RedOf(randomColor), 0, 255);
             Assert.InRange(GreenOf(randomColor), 0, 255);
@@ -1384,8 +1231,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(randomColor));
         }
         [Fact]
-        public void TestRedOfIntegration()
-        {
+        public void TestRedOfIntegration() {
             var redColor = ColorRed();
             var redValue = RedOf(redColor);
             Assert.Equal(255, redValue);
@@ -1394,8 +1240,7 @@ namespace SplashKitTests
             Assert.Equal(0, blueRedValue);
         }
         [Fact]
-        public void TestRGBColorFromDoubleIntegration()
-        {
+        public void TestRGBColorFromDoubleIntegration() {
             var redColor = RGBColor(1.0, 0.0, 0.0);
             Assert.Equal(255, RedOf(redColor));
             Assert.Equal(0, GreenOf(redColor));
@@ -1406,8 +1251,7 @@ namespace SplashKitTests
             Assert.Equal(0, BlueOf(greenColor));
         }
         [Fact]
-        public void TestRGBColorIntegration()
-        {
+        public void TestRGBColorIntegration() {
             var redColor = RGBColor(255, 0, 0);
             Assert.Equal(255, RedOf(redColor));
             Assert.Equal(0, GreenOf(redColor));
@@ -1415,8 +1259,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(redColor));
         }
         [Fact]
-        public void TestRGBAColorFromDoubleIntegration()
-        {
+        public void TestRGBAColorFromDoubleIntegration() {
             var testColor = RGBAColor(1.0, 0.5, 0.0, 0.75);
             Assert.Equal(255, RedOf(testColor));
             Assert.Equal(127, GreenOf(testColor));
@@ -1424,8 +1267,7 @@ namespace SplashKitTests
             Assert.Equal(191, AlphaOf(testColor));
         }
         [Fact]
-        public void TestRGBAColorIntegration()
-        {
+        public void TestRGBAColorIntegration() {
             var redColor = RGBAColor(255, 0, 0, 255);
             Assert.Equal(255, RedOf(redColor));
             Assert.Equal(0, GreenOf(redColor));
@@ -1433,8 +1275,7 @@ namespace SplashKitTests
             Assert.Equal(255, AlphaOf(redColor));
         }
         [Fact]
-        public void TestSaturationOfIntegration()
-        {
+        public void TestSaturationOfIntegration() {
             var redColor = ColorRed();
             var saturationValue = SaturationOf(redColor);
             Assert.Equal(1.0, saturationValue);
@@ -1443,8 +1284,7 @@ namespace SplashKitTests
             Assert.Equal(0.0, saturationValueGray);
         }
         [Fact]
-        public void TestStringToColorIntegration()
-        {
+        public void TestStringToColorIntegration() {
             var redColor = StringToColor("#FF0000FF");
             Assert.Equal(255, RedOf(redColor));
             Assert.Equal(0, GreenOf(redColor));

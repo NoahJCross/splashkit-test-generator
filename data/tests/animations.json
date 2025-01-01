@@ -12,6 +12,24 @@
       ]
     }
   ],
+  "cleanup": [
+    {
+      "cleanup_type": "animation_script",
+      "function_name": "free_all_animation_scripts",
+      "args": []
+    },
+    {
+      "cleanup_type": "animation",
+      "function_name": "free_animation",
+      "args": [
+        {
+          "value_type": "object",
+          "object_type": "animation",
+          "variable_name": "animation"
+        }
+      ]
+    }
+  ],
   "tests": [
     {
       "name": "animation_count",
@@ -29,7 +47,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -37,7 +60,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "script"
+              "variable_name": "test_script"
             }
           ],
           "store_result": "count"
@@ -55,16 +78,6 @@
               "value": 0
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "script"
-            }
-          ]
         }
       ]
     },
@@ -84,7 +97,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -92,14 +110,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -107,7 +136,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "current_cell"
@@ -125,26 +154,6 @@
               "value": -1
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -164,7 +173,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -172,14 +186,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -187,7 +212,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "current_vector"
@@ -221,26 +246,6 @@
               "variable_field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -260,7 +265,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -268,14 +278,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -287,7 +308,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
@@ -303,39 +324,13 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 },
                 {
                   "value_type": "float",
                   "value": 100.0
                 }
               ]
-            }
-          ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "animation_ended",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "anim"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "update_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
             }
           ]
         },
@@ -349,31 +344,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -393,7 +368,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -401,14 +381,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "walkfront"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -416,7 +407,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "float",
@@ -434,7 +425,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
@@ -446,7 +437,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ]
         },
@@ -460,31 +451,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -504,7 +475,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -512,14 +488,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "walkfront"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -527,7 +514,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ]
         },
@@ -537,7 +524,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "frame_time"
@@ -555,26 +542,6 @@
               "value": 0.0
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -594,7 +561,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -602,7 +574,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -631,7 +603,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -653,16 +625,6 @@
               "variable_name": "non_existent_index"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "script"
-            }
-          ]
         }
       ]
     },
@@ -682,7 +644,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -690,14 +657,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -705,7 +683,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "anim_name"
@@ -723,26 +701,6 @@
               "variable_name": "anim_name"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -762,7 +720,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -770,7 +733,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             }
           ],
           "store_result": "script_name"
@@ -788,16 +751,6 @@
               "variable_name": "script_name"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -817,7 +770,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -827,8 +785,7 @@
               "value_type": "string",
               "value": "kermit"
             }
-          ],
-          "store_result": "loaded_script"
+          ]
         },
         {
           "step_type": "assertion",
@@ -836,7 +793,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "loaded_script"
+              "variable_name": "test_script"
             }
           }
         },
@@ -846,23 +803,13 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "loaded_script"
+              "variable_name": "test_script"
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "loaded_script"
+              "variable_name": "test_script"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -882,7 +829,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -890,14 +842,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -905,11 +868,11 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -931,31 +894,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
         }
       ]
     },
@@ -975,7 +918,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -983,14 +931,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "walkfront"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -998,11 +957,11 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -1028,31 +987,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -1072,7 +1011,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1080,14 +1024,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1095,11 +1050,11 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "int",
@@ -1121,31 +1076,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
         }
       ]
     },
@@ -1165,7 +1100,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1173,14 +1113,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1188,11 +1139,11 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "int",
@@ -1218,31 +1169,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
         }
       ]
     },
@@ -1262,7 +1193,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1270,14 +1206,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1285,7 +1232,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "string",
@@ -1311,31 +1258,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
         }
       ]
     },
@@ -1355,7 +1282,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1363,14 +1295,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "walkfront"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1378,7 +1321,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "string",
@@ -1408,31 +1351,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -1452,7 +1375,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1460,14 +1388,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1475,7 +1414,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "int",
@@ -1497,31 +1436,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -1541,7 +1460,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1549,7 +1473,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -1560,7 +1484,18 @@
               "value": false
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1568,7 +1503,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "int",
@@ -1590,31 +1525,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
         }
       ]
     },
@@ -1634,7 +1549,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1642,14 +1562,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1657,7 +1588,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "string",
@@ -1679,31 +1610,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -1723,7 +1634,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1731,14 +1647,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -1746,7 +1673,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "string",
@@ -1772,31 +1699,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
         }
       ]
     },
@@ -1816,7 +1723,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1824,7 +1736,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "int",
@@ -1835,7 +1747,18 @@
               "value": true
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -1843,7 +1766,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           }
         },
@@ -1853,7 +1776,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "anim_name"
@@ -1871,26 +1794,6 @@
               "variable_name": "anim_name"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -1910,7 +1813,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -1918,14 +1826,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -1933,7 +1852,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           }
         },
@@ -1943,7 +1862,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "anim_name"
@@ -1961,26 +1880,6 @@
               "variable_name": "anim_name"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -2000,7 +1899,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -2008,7 +1912,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -2019,7 +1923,18 @@
               "value": true
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -2027,7 +1942,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           }
         },
@@ -2037,7 +1952,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "anim_name"
@@ -2055,26 +1970,6 @@
               "variable_name": "anim_name"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
         }
       ]
     },
@@ -2093,8 +1988,12 @@
               "value_type": "string",
               "value": "kermit.txt"
             }
-          ],
-          "store_result": "kermit_script"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -2109,7 +2008,18 @@
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -2117,7 +2027,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           }
         },
@@ -2127,7 +2037,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "anim_name"
@@ -2145,26 +2055,6 @@
               "variable_name": "anim_name"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -2177,14 +2067,18 @@
           "args": [
             {
               "value_type": "string",
-              "value": "kermit"
+              "value": "test_script"
             },
             {
               "value_type": "string",
               "value": "kermit.txt"
             }
-          ],
-          "store_result": "kermit_script"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -2192,7 +2086,7 @@
           "args": [
             {
               "value_type": "string",
-              "variable_name": "kermit_script"
+              "value": "test_script"
             },
             {
               "value_type": "string",
@@ -2203,7 +2097,18 @@
               "value": true
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -2211,7 +2116,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           }
         },
@@ -2221,7 +2126,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "anim_name"
@@ -2239,26 +2144,6 @@
               "variable_name": "anim_name"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
         }
       ]
     },
@@ -2271,7 +2156,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "kermitq"
+              "value": "free_all_kermit1"
             },
             {
               "value_type": "string",
@@ -2280,12 +2165,17 @@
           ]
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
+        },
+        {
           "step_type": "function",
           "function_name": "load_animation_script",
           "args": [
             {
               "value_type": "string",
-              "value": "kermit2"
+              "value": "free_all_kermit2"
             },
             {
               "value_type": "string",
@@ -2303,7 +2193,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "kermit1"
+                  "value": "free_all_kermit1"
                 }
               ]
             }
@@ -2319,7 +2209,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "kermit2"
+                  "value": "free_all_kermit2"
                 }
               ]
             }
@@ -2340,7 +2230,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "kermit1"
+                  "value": "free_all_kermit1"
                 }
               ]
             }
@@ -2356,7 +2246,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "kermit2"
+                  "value": "free_all_kermit2"
                 }
               ]
             }
@@ -2380,7 +2270,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -2388,14 +2283,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -2403,7 +2309,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ]
         },
@@ -2421,7 +2327,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
@@ -2437,21 +2343,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -2471,7 +2367,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "assertion",
@@ -2479,7 +2380,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "script"
+              "variable_name": "test_script"
             }
           }
         },
@@ -2489,7 +2390,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "script"
+              "variable_name": "test_script"
             }
           ]
         },
@@ -2499,7 +2400,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "kermit"
+              "value": "has_kermit"
             }
           ],
           "store_result": "script_exists"
@@ -2525,13 +2426,18 @@
           "args": [
             {
               "value_type": "string",
-              "value": "kermit"
+              "value": "free_kermit"
             },
             {
               "value_type": "string",
               "value": "kermit.txt"
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "assertion",
@@ -2543,7 +2449,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "kermit"
+                  "value": "free_kermit"
                 }
               ]
             }
@@ -2555,7 +2461,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "kermit"
+              "value": "free_kermit"
             }
           ]
         },
@@ -2569,7 +2475,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "kermit"
+                  "value": "free_kermit"
                 }
               ]
             }
@@ -2593,7 +2499,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -2601,7 +2512,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -2626,7 +2537,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -2644,16 +2555,6 @@
               "variable_name": "has_nonexistent"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -2666,14 +2567,19 @@
           "args": [
             {
               "value_type": "string",
-              "value": "kermit"
+              "value": "has_kermit"
             },
             {
               "value_type": "string",
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "assertion",
@@ -2685,7 +2591,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "kermit"
+                  "value": "has_kermit"
                 }
               ]
             }
@@ -2697,7 +2603,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             }
           ]
         },
@@ -2711,7 +2617,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "kermit"
+                  "value": "has_kermit"
                 }
               ]
             }
@@ -2728,14 +2634,19 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_animation"
+              "value": "test_animation_name"
             },
             {
               "value_type": "string",
               "value": "kermit.txt"
             }
           ],
-          "store_result": "loaded_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "assertion",
@@ -2743,7 +2654,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "loaded_script"
+              "variable_name": "test_script"
             }
           }
         },
@@ -2753,7 +2664,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "loaded_script"
+              "variable_name": "test_script"
             }
           ],
           "store_result": "script_name"
@@ -2764,7 +2675,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "string",
-              "value": "test_animation"
+              "value": "test_animation_name"
             },
             "value2": {
               "value_type": "variable",
@@ -2778,7 +2689,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "loaded_script"
+              "variable_name": "test_script"
             }
           ]
         },
@@ -2788,7 +2699,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_animation"
+              "value": "test_animation_name"
             }
           ],
           "store_result": "script_exists"
@@ -2821,7 +2732,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -2829,14 +2745,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "loop",
@@ -2848,7 +2775,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 },
                 {
                   "value_type": "float",
@@ -2864,7 +2791,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "anim_ended"
@@ -2885,7 +2812,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ]
         },
@@ -2895,7 +2822,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ],
           "store_result": "anim_ended_after_restart"
@@ -2909,26 +2836,6 @@
               "variable_name": "anim_ended_after_restart"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -2948,7 +2855,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -2956,7 +2868,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
@@ -2967,7 +2879,18 @@
               "value": true
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -2975,7 +2898,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ]
         },
@@ -2985,7 +2908,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "bool",
@@ -3007,31 +2930,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -3051,7 +2954,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -3059,14 +2967,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -3074,7 +2993,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "float",
@@ -3096,7 +3015,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             },
@@ -3105,26 +3024,6 @@
               "value": 0.0
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -3144,7 +3043,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -3152,14 +3056,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "moonwalkback"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -3167,7 +3082,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             }
           ]
         },
@@ -3185,31 +3100,11 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     },
@@ -3229,7 +3124,12 @@
               "value": "kermit.txt"
             }
           ],
-          "store_result": "kermit_script"
+          "store_result": "test_script"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation_script",
+          "store_result": "cleanup_animation_script"
         },
         {
           "step_type": "function",
@@ -3237,14 +3137,25 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "test_script"
             },
             {
               "value_type": "string",
               "value": "walkfront"
             }
           ],
-          "store_result": "anim"
+          "store_result": "test_animation"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "animation",
+          "store_result": "cleanup_animation",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_animation"
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -3252,7 +3163,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "anim"
+              "variable_name": "test_animation"
             },
             {
               "value_type": "float",
@@ -3270,7 +3181,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "anim"
+                  "variable_name": "test_animation"
                 }
               ]
             },
@@ -3279,26 +3190,6 @@
               "value": 0.0
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "anim"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_animation_script",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "kermit_script"
-            }
-          ]
         }
       ]
     }

@@ -1,5 +1,12 @@
 {
   "group": "timers",
+  "cleanup": [
+    {
+      "cleanup_type": "timer",
+      "function_name": "free_all_timers",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "create_timer",
@@ -14,6 +21,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "assertion",
@@ -42,16 +54,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -67,6 +69,11 @@
               "value": "test_timer_1"
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -168,6 +175,11 @@
           "store_result": "test_timer"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
@@ -228,6 +240,11 @@
           "store_result": "test_timer"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
@@ -286,6 +303,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -354,16 +376,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -380,6 +392,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -441,16 +458,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -467,6 +474,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -528,16 +540,6 @@
               "variable_name": "initial_ticks"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -554,6 +556,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -615,16 +622,6 @@
               "variable_name": "initial_ticks"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -641,6 +638,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -712,16 +714,6 @@
               "variable_name": "initial_ticks"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -738,6 +730,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -809,16 +806,6 @@
               "variable_name": "initial_ticks"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -835,6 +822,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -862,16 +854,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -888,6 +870,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -915,16 +902,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -941,6 +918,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -978,7 +960,7 @@
             },
             "value2": {
               "value_type": "unsigned_int",
-              "value": 100
+              "value": 40
             }
           }
         },
@@ -1011,16 +993,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -1037,6 +1009,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -1091,16 +1068,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -1117,6 +1084,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -1142,16 +1114,6 @@
               "variable_name": "named_timer"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -1168,6 +1130,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -1222,16 +1189,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -1248,6 +1205,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "function",
@@ -1302,16 +1264,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -1328,6 +1280,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "assertion",
@@ -1372,16 +1329,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -1398,6 +1345,11 @@
             }
           ],
           "store_result": "test_timer"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
         },
         {
           "step_type": "assertion",
@@ -1442,16 +1394,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -1470,6 +1412,11 @@
           "store_result": "test_timer"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
+        },
+        {
           "step_type": "function",
           "function_name": "start_timer",
           "args": [
@@ -1524,16 +1471,6 @@
               "variable_name": "initial_ticks"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     },
@@ -1552,6 +1489,11 @@
           "store_result": "test_timer"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "timer",
+          "store_result": "cleanup_timer"
+        },
+        {
           "step_type": "function",
           "function_name": "start_timer",
           "args": [
@@ -1606,16 +1548,6 @@
               "variable_name": "initial_ticks"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_timer",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_timer"
-            }
-          ]
         }
       ]
     }

@@ -11,7 +11,6 @@ module TestGenerator
     # @raise [Error] If global function is not found
     def self.determine_function_name(step, config, functions)
       function = get_function_by_unique_global_name(step[:function_name], functions)
-      MessageHandler.log_info("Found function: #{function.name}")
       config.supports_overloading ? function.name : function.unique_global_name
     rescue NoMethodError => e
       raise HandlerError, "Error processing function '#{step[:function_name]}': #{e.message}"
@@ -23,8 +22,10 @@ module TestGenerator
     # @return [Hash, nil] The matching test or nil if not found
     def self.get_test_by_function_name(function, group_tests)
       group = function.group || 'ungrouped'
-      tests = group_tests[group]
-      tests.find { |t| t[:name] == function.unique_global_name }
+      group_data = group_tests[group]
+      return nil unless group_data && group_data[:tests]
+
+      group_data[:tests].find { |t| t[:name] == function.unique_global_name }
     end
 
     # Finds a function by its unique global name

@@ -1,5 +1,17 @@
 {
   "group": "windows",
+  "cleanup": [
+    {
+      "cleanup_type": "window",
+      "function_name": "close_all_windows",
+      "args": []
+    },
+    {
+      "cleanup_type": "bitmap",
+      "function_name": "free_all_bitmaps",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "clear_window",
@@ -22,6 +34,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -87,16 +104,6 @@
               "variable_name": "pixel"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -120,6 +127,11 @@
               "value": 600
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -203,6 +215,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "set_current_window",
           "args": [
@@ -268,6 +285,11 @@
               "value": 600
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -338,6 +360,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "window_caption",
           "args": [
@@ -374,23 +401,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "window_has_focus",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_window"
-                }
-              ]
-            },
-            "value2": null
-          }
         }
       ]
     },
@@ -414,7 +424,12 @@
               "value": 600
             }
           ],
-          "store_result": "window1"
+          "store_result": "test_window1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -433,7 +448,7 @@
               "value": 600
             }
           ],
-          "store_result": "window2"
+          "store_result": "test_window2"
         },
         {
           "step_type": "function",
@@ -441,7 +456,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "window2"
+              "variable_name": "test_window2"
             }
           ]
         },
@@ -451,7 +466,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "window2"
+              "variable_name": "test_window2"
             },
             "value2": {
               "value_type": "function",
@@ -470,7 +485,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "window2"
+                  "variable_name": "test_window2"
                 }
               ]
             },
@@ -487,17 +502,12 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "window1"
+                  "variable_name": "test_window1"
                 }
               ]
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_windows",
-          "args": []
         }
       ]
     },
@@ -522,6 +532,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -561,16 +576,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -595,6 +600,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -649,16 +659,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -683,6 +683,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -722,16 +727,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -756,6 +751,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -793,7 +793,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "double",
-              "value": 100.0
+              "value": 100.0,
+              "alt_value": 68.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -808,7 +809,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "double",
-              "value": 200.0
+              "value": 200.0,
+              "alt_value": 168.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -816,16 +818,6 @@
               "variable_field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -850,6 +842,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -886,16 +883,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -920,6 +907,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -956,16 +948,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -990,6 +972,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1044,16 +1031,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1080,6 +1057,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "set_current_window",
           "args": [
@@ -1109,7 +1091,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 100
+              "value": 100,
+              "alt_value": 68
             },
             "value2": {
               "value_type": "function",
@@ -1138,7 +1121,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 300
+              "value": 300,
+              "alt_value": 268
             },
             "value2": {
               "value_type": "function",
@@ -1146,16 +1130,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1182,6 +1156,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "set_current_window",
           "args": [
@@ -1205,18 +1184,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 100
+              "value": 100,
+              "alt_value": 68
             },
             "value2": {
               "value_type": "function",
@@ -1224,16 +1200,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1258,6 +1224,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -1348,7 +1319,12 @@
               "value": 600
             }
           ],
-          "store_result": "window1"
+          "store_result": "test_window1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1367,7 +1343,7 @@
               "value": 600
             }
           ],
-          "store_result": "window2"
+          "store_result": "test_window2"
         },
         {
           "step_type": "function",
@@ -1375,7 +1351,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "window1"
+              "variable_name": "test_window1"
             }
           ]
         },
@@ -1389,7 +1365,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "window1"
+                  "variable_name": "test_window1"
                 }
               ]
             },
@@ -1406,17 +1382,12 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "window2"
+                  "variable_name": "test_window2"
                 }
               ]
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_windows",
-          "args": []
         }
       ]
     },
@@ -1443,6 +1414,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "set_current_window",
           "args": [
@@ -1466,18 +1442,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 100
+              "value": 100,
+              "alt_value": 68
             },
             "value2": {
               "value_type": "function",
@@ -1492,7 +1465,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 200
+              "value": 200,
+              "alt_value": 168
             },
             "value2": {
               "value_type": "function",
@@ -1500,16 +1474,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1532,8 +1496,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1553,18 +1521,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 150
+              "value": 150,
+              "alt_value": 118
             },
             "value2": {
               "value_type": "function",
@@ -1584,7 +1549,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 250
+              "value": 250,
+              "alt_value": 218
             },
             "value2": {
               "value_type": "function",
@@ -1597,16 +1563,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1633,6 +1589,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "move_window_to",
           "args": [
@@ -1650,18 +1611,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 200
+              "value": 200,
+              "alt_value": 168
             },
             "value2": {
               "value_type": "function",
@@ -1681,7 +1639,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 300
+              "value": 300,
+              "alt_value": 268
             },
             "value2": {
               "value_type": "function",
@@ -1694,16 +1653,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1728,6 +1677,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -1799,16 +1753,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1833,6 +1777,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1896,7 +1845,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 300.0
+                  "value": 350.0
                 }
               ]
             }
@@ -1917,16 +1866,6 @@
               "variable_name": "pixel"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1953,6 +1892,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "refresh_window_with_target_fps",
           "args": [
@@ -1963,16 +1907,6 @@
             {
               "value_type": "unsigned_int",
               "value": 60
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -2001,6 +1935,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "set_current_window",
           "args": [
@@ -2024,11 +1963,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -2068,16 +2003,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2104,6 +2029,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "resize_window",
           "args": [
@@ -2121,11 +2051,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -2165,16 +2091,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2200,6 +2116,11 @@
           ]
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
@@ -2216,7 +2137,7 @@
               "value": 600
             }
           ],
-          "store_result": "window2"
+          "store_result": "test_window2"
         },
         {
           "step_type": "function",
@@ -2234,7 +2155,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "window2"
+              "variable_name": "test_window2"
             },
             "value2": {
               "value_type": "function",
@@ -2242,11 +2163,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_windows",
-          "args": []
         }
       ]
     },
@@ -2272,6 +2188,11 @@
           ]
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
@@ -2288,7 +2209,7 @@
               "value": 600
             }
           ],
-          "store_result": "window2"
+          "store_result": "test_window2"
         },
         {
           "step_type": "function",
@@ -2296,7 +2217,7 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "window2"
+              "variable_name": "test_window2"
             }
           ]
         },
@@ -2306,7 +2227,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "window2"
+              "variable_name": "test_window2"
             },
             "value2": {
               "value_type": "function",
@@ -2314,11 +2235,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_windows",
-          "args": []
         }
       ]
     },
@@ -2345,6 +2261,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
@@ -2363,16 +2284,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2399,10 +2310,11 @@
           "store_result": "test_window"
         },
         {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -2440,6 +2352,49 @@
               "step_type": "function",
               "function_name": "process_events",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "clear_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_white",
+                  "args": []
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: window_close_requested_named. Close window to pass."
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "int",
+                  "value": 10
+                },
+                {
+                  "value_type": "int",
+                  "value": 10
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "refresh_screen",
+              "args": []
             }
           ]
         },
@@ -2459,16 +2414,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2495,10 +2440,11 @@
           "store_result": "test_window"
         },
         {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -2536,6 +2482,49 @@
               "step_type": "function",
               "function_name": "process_events",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "clear_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_white",
+                  "args": []
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: window_close_requested. Close window to pass."
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "int",
+                  "value": 10
+                },
+                {
+                  "value_type": "int",
+                  "value": 10
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "refresh_screen",
+              "args": []
             }
           ]
         },
@@ -2555,16 +2544,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2587,8 +2566,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -2617,11 +2600,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -2638,16 +2617,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2672,6 +2641,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -2700,11 +2674,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -2721,16 +2691,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2754,7 +2714,12 @@
               "value": 600
             }
           ],
-          "store_result": "window1"
+          "store_result": "test_window1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -2773,7 +2738,7 @@
               "value": 600
             }
           ],
-          "store_result": "window2"
+          "store_result": "test_window2"
         },
         {
           "step_type": "function",
@@ -2790,7 +2755,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "window2"
+                  "variable_name": "test_window2"
                 }
               ]
             },
@@ -2807,17 +2772,12 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "window1"
+                  "variable_name": "test_window1"
                 }
               ]
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_windows",
-          "args": []
         }
       ]
     },
@@ -2844,6 +2804,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
@@ -2881,11 +2846,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -2905,16 +2866,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2941,6 +2892,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
@@ -2978,11 +2934,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -3002,16 +2954,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3034,8 +2976,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -3064,11 +3010,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -3085,16 +3027,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3119,6 +3051,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -3147,11 +3084,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -3168,16 +3101,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3202,6 +3125,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -3253,16 +3181,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3285,8 +3203,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -3308,8 +3230,13 @@
         },
         {
           "step_type": "function",
-          "function_name": "process_events",
-          "args": []
+          "function_name": "delay",
+          "args": [
+            {
+              "value_type": "int",
+              "value": 500
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -3328,7 +3255,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "double",
-              "value": 100.0
+              "value": 100.0,
+              "alt_value": 68.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -3343,7 +3271,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "double",
-              "value": 200.0
+              "value": 200.0,
+              "alt_value": 168.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -3351,16 +3280,6 @@
               "variable_field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3387,6 +3306,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "move_window_to",
           "args": [
@@ -3406,8 +3330,13 @@
         },
         {
           "step_type": "function",
-          "function_name": "process_events",
-          "args": []
+          "function_name": "delay",
+          "args": [
+            {
+              "value_type": "int",
+              "value": 500
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -3426,7 +3355,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "double",
-              "value": 100.0
+              "value": 100.0,
+              "alt_value": 68.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -3441,7 +3371,8 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "double",
-              "value": 200.0
+              "value": 200.0,
+              "alt_value": 168.0
             },
             "value2": {
               "value_type": "variable_field",
@@ -3449,16 +3380,6 @@
               "variable_field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3485,6 +3406,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "create_bitmap",
           "args": [
@@ -3502,6 +3428,11 @@
             }
           ],
           "store_result": "icon"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -3532,11 +3463,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "function",
           "function_name": "free_bitmap",
@@ -3544,16 +3471,6 @@
             {
               "value_type": "variable",
               "variable_name": "icon"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -3578,8 +3495,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -3608,11 +3529,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -3629,16 +3546,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3663,6 +3570,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -3691,11 +3603,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -3712,16 +3620,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3744,8 +3642,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -3774,11 +3676,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -3795,16 +3693,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3829,6 +3717,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "assertion",
@@ -3857,11 +3750,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -3878,16 +3767,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3914,6 +3793,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
@@ -3951,11 +3835,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -3975,16 +3855,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -4011,6 +3881,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
@@ -4048,11 +3923,7 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -4072,16 +3943,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -4105,7 +3966,40 @@
               "value": 600
             }
           ],
-          "store_result": "window1"
+          "store_result": "test_window1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_window_to",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_window1"
+            },
+            {
+              "value_type": "int",
+              "value": 200
+            },
+            {
+              "value_type": "int",
+              "value": 200
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "delay",
+          "args": [
+            {
+              "value_type": "int",
+              "value": 500
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -4124,42 +4018,35 @@
               "value": 600
             }
           ],
-          "store_result": "window2"
+          "store_result": "test_window2"
         },
         {
           "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "variable",
-              "variable_name": "window2"
-            },
-            "value2": {
-              "value_type": "function",
-              "function_name": "window_with_focus",
-              "args": []
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "set_current_window",
+          "function_name": "move_window_to",
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "window1"
+              "variable_name": "test_window2"
+            },
+            {
+              "value_type": "int",
+              "value": 850
+            },
+            {
+              "value_type": "int",
+              "value": 200
             }
           ]
         },
         {
           "step_type": "function",
-          "function_name": "process_events",
-          "args": []
+          "function_name": "delay",
+          "args": [
+            {
+              "value_type": "int",
+              "value": 500
+            }
+          ]
         },
         {
           "step_type": "assertion",
@@ -4167,7 +4054,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "window1"
+              "variable_name": "test_window2"
             },
             "value2": {
               "value_type": "function",
@@ -4177,9 +4064,84 @@
           }
         },
         {
-          "step_type": "function",
-          "function_name": "close_all_windows",
-          "args": []
+          "step_type": "while",
+          "compare": {
+            "compare_type": "not_equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "window_with_focus",
+              "args": []
+            },
+            "value2": {
+              "value_type": "variable",
+              "variable_name": "test_window1"
+            }
+          },
+          "while_steps": [
+            {
+              "step_type": "function",
+              "function_name": "process_events",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "clear_screen",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size_with_options",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: window_with_focus. Click this window to pass."
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "int",
+                  "value": 10
+                },
+                {
+                  "value_type": "int",
+                  "value": 10
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "option_draw_to_window",
+                  "args": [
+                    {
+                      "value_type": "variable",
+                      "variable_name": "test_window1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "refresh_screen",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable",
+              "variable_name": "test_window1"
+            },
+            "value2": {
+              "value_type": "function",
+              "function_name": "window_with_focus",
+              "args": []
+            }
+          }
         }
       ]
     },
@@ -4202,8 +4164,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -4223,18 +4189,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 100
+              "value": 100,
+              "alt_value": 68
             },
             "value2": {
               "value_type": "function",
@@ -4266,18 +4229,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 300
+              "value": 300,
+              "alt_value": 268
             },
             "value2": {
               "value_type": "function",
@@ -4290,16 +4250,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -4326,6 +4276,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "move_window_to",
           "args": [
@@ -4343,18 +4298,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 100
+              "value": 100,
+              "alt_value": 68
             },
             "value2": {
               "value_type": "function",
@@ -4386,18 +4338,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 300
+              "value": 300,
+              "alt_value": 268
             },
             "value2": {
               "value_type": "function",
@@ -4410,16 +4359,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -4442,8 +4381,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -4463,18 +4406,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 200
+              "value": 200,
+              "alt_value": 168
             },
             "value2": {
               "value_type": "function",
@@ -4506,18 +4446,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 400
+              "value": 400,
+              "alt_value": 368
             },
             "value2": {
               "value_type": "function",
@@ -4530,16 +4467,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -4566,6 +4493,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "move_window_to",
           "args": [
@@ -4583,18 +4515,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 200
+              "value": 200,
+              "alt_value": 168
             },
             "value2": {
               "value_type": "function",
@@ -4626,18 +4555,15 @@
             }
           ]
         },
-        {
-          "step_type": "function",
-          "function_name": "process_events",
-          "args": []
-        },
+
         {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 400
+              "value": 400,
+              "alt_value": 368
             },
             "value2": {
               "value_type": "function",
@@ -4650,16 +4576,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     }

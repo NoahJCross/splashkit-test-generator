@@ -15,9 +15,8 @@ module TestGenerator
     config = LanguageConfig.for_language(language)
     ConfigValidator.validate!(config)
     group_tests = TestLoader.new.load_all
-    language_dir, tests_dir = DirectoryManager.setup(config.language)
+    _, tests_dir = DirectoryManager.setup(config.language)
     write_group_files(functions, tests_dir, config, group_tests)
-    write_readme(language_dir, config)
   rescue StandardError => e
     MessageHandler.log_error('Test generation failed', e.message)
     raise
@@ -29,10 +28,6 @@ module TestGenerator
       .each do |group, group_funcs|
         TestWriter.new(group, group_funcs, functions, config, group_tests).write_to(tests_dir)
       end
-  end
-
-  def self.write_readme(language_dir, config)
-    ReadmeWriter.new(config).write_to(language_dir)
   end
 end
 

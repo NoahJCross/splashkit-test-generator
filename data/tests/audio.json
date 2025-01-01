@@ -12,6 +12,23 @@
       ]
     }
   ],
+  "cleanup": [
+    {
+      "cleanup_type": "audio",
+      "function_name": "close_audio",
+      "args": []
+    },
+    {
+      "cleanup_type": "music",
+      "function_name": "free_all_music",
+      "args": []
+    },
+    {
+      "cleanup_type": "sound_effect",
+      "function_name": "free_all_sound_effects",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "audio_ready",
@@ -32,6 +49,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "assertion",
@@ -73,6 +95,11 @@
           "args": []
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
@@ -110,6 +137,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "assertion",
@@ -151,6 +183,11 @@
           "args": []
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
+        },
+        {
           "step_type": "function",
           "function_name": "load_music",
           "args": [
@@ -162,8 +199,12 @@
               "value_type": "string",
               "value": "magical_night.ogg"
             }
-          ],
-          "store_result": "test_music"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -190,21 +231,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -215,6 +241,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -228,8 +259,12 @@
               "value_type": "string",
               "value": "magical_night.ogg"
             }
-          ],
-          "store_result": "test_music"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -260,21 +295,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -285,6 +305,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -300,6 +325,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -326,21 +356,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -351,6 +366,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -366,6 +386,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -396,21 +421,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -421,6 +431,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -436,6 +451,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -478,21 +498,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -503,6 +508,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -517,6 +527,11 @@
               "value": "magical_night.ogg"
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -570,11 +585,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -585,6 +595,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -600,6 +615,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -637,11 +657,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -652,6 +667,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -667,6 +687,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "assertion",
@@ -711,11 +736,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -726,6 +746,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -741,6 +766,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "assertion",
@@ -769,21 +799,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -794,6 +809,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -809,6 +829,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "assertion",
@@ -840,21 +865,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -865,6 +875,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -880,6 +895,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "assertion",
@@ -900,21 +920,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -925,6 +930,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -940,6 +950,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -965,21 +980,6 @@
               "variable_name": "named_music"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -990,6 +990,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1005,6 +1010,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "assertion",
@@ -1039,21 +1049,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1064,6 +1059,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1079,6 +1079,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "assertion",
@@ -1123,11 +1128,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1138,6 +1138,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1153,6 +1158,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1188,21 +1198,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1213,6 +1208,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1228,6 +1228,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1255,21 +1260,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1280,6 +1270,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1293,8 +1288,12 @@
               "value_type": "string",
               "value": "magical_night.ogg"
             }
-          ],
-          "store_result": "test_music"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1317,21 +1316,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1342,6 +1326,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1355,8 +1344,12 @@
               "value_type": "string",
               "value": "magical_night.ogg"
             }
-          ],
-          "store_result": "test_music"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1383,21 +1376,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1408,6 +1386,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1423,6 +1406,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1445,21 +1433,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1470,6 +1443,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1485,6 +1463,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1511,21 +1494,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1536,6 +1504,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1551,6 +1524,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1596,21 +1574,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1621,6 +1584,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1636,6 +1604,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1680,21 +1653,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1705,6 +1663,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1720,6 +1683,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1755,21 +1723,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1780,6 +1733,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1795,6 +1753,11 @@
             }
           ],
           "store_result": "test_music"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "music",
+          "store_result": "cleanup_music"
         },
         {
           "step_type": "function",
@@ -1822,21 +1785,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1849,6 +1797,11 @@
           "args": []
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
+        },
+        {
           "step_type": "function",
           "function_name": "load_sound_effect",
           "args": [
@@ -1858,10 +1811,15 @@
             },
             {
               "value_type": "string",
-              "value": "breakdance.wav"
+              "value": "comedy_boing.wav"
             }
           ],
           "store_result": "test_sound1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -1909,6 +1867,16 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "delay",
+          "args": [
+            {
+              "value_type": "int",
+              "value": 1100
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
@@ -1941,16 +1909,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_sound_effects",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -1961,6 +1919,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -1976,6 +1939,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2027,21 +1995,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2052,6 +2005,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2066,6 +2024,11 @@
               "value": "breakdance.wav"
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2119,11 +2082,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2134,6 +2092,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2149,6 +2112,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2186,11 +2154,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2201,6 +2164,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2216,6 +2184,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "assertion",
@@ -2260,11 +2233,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2275,6 +2243,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2290,6 +2263,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "assertion",
@@ -2318,21 +2296,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2343,6 +2306,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2358,6 +2326,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2385,21 +2358,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2410,6 +2368,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2425,6 +2388,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2456,21 +2424,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2481,6 +2434,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2496,6 +2454,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2527,21 +2490,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2552,6 +2500,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2567,6 +2520,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2602,21 +2560,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2627,6 +2570,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2642,6 +2590,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2669,21 +2622,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2694,6 +2632,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2709,6 +2652,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2740,21 +2688,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2765,6 +2698,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2780,6 +2718,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2811,21 +2754,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2836,6 +2764,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2851,6 +2784,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -2886,21 +2824,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2911,6 +2834,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2926,6 +2854,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "assertion",
@@ -2957,21 +2890,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -2982,6 +2900,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -2997,6 +2920,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "assertion",
@@ -3017,21 +2945,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -3042,6 +2955,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -3057,6 +2975,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -3082,21 +3005,6 @@
               "variable_name": "named_sound"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -3107,6 +3015,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -3120,8 +3033,12 @@
               "value_type": "string",
               "value": "SwinGameStart.wav"
             }
-          ],
-          "store_result": "test_sound"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -3176,21 +3093,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -3201,6 +3103,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -3216,6 +3123,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -3270,21 +3182,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -3295,6 +3192,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -3310,6 +3212,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "assertion",
@@ -3338,21 +3245,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -3363,6 +3255,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -3376,8 +3273,12 @@
               "value_type": "string",
               "value": "SwinGameStart.wav"
             }
-          ],
-          "store_result": "test_sound"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -3415,21 +3316,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     },
@@ -3440,6 +3326,11 @@
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "audio",
+          "store_result": "cleanup_audio"
         },
         {
           "step_type": "function",
@@ -3455,6 +3346,11 @@
             }
           ],
           "store_result": "test_sound"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sound_effect",
+          "store_result": "cleanup_sound_effect"
         },
         {
           "step_type": "function",
@@ -3492,21 +3388,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
         }
       ]
     }

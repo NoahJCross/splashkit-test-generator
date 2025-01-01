@@ -14,11 +14,12 @@ module TestGenerator
       numeric_constants
       imports
       file_extension
-      runtime_requirement
-      installation_steps
-      run_command
       class_wrapper
       supports_overloading
+      comment_syntax
+      cleanup_handlers
+      indentation
+      literal_cast
     ].freeze
 
     # Creates a new validator instance
@@ -66,12 +67,16 @@ module TestGenerator
       validate_assert_conditions
       validate_if_conditions
       validate_class_wrapper
+      validate_comment_syntax
+      validate_indentation
+      validate_cleanup_handlers
+      validate_literal_cast
     end
 
     # Validates required variable handler methods
     # @return [void]
     def validate_variable_handlers
-      required = %i[declaration reference field_access array_access matrix_access array_size reference_operator]
+      required = %i[declaration identifier field_access array_access matrix_access array_size reference_operator]
       validate_methods(@config[:variable_handlers], required, 'variable_handlers')
     end
 
@@ -99,14 +104,14 @@ module TestGenerator
     # Validates required type handler methods
     # @return [void]
     def validate_type_handlers
-      required = %i[list class enum mapping unsigned_int float]
+      required = %i[list class_instance enum mapping object]
       validate_methods(@config[:type_handlers], required, 'type_handlers')
     end
 
     # Validates required assert condition methods
     # @return [void]
     def validate_assert_conditions
-      required = %w[equal not_equal greater_than less_than null not_null range true false 
+      required = %w[equal not_equal greater_than less_than null not_null range true false
                     greater_than_or_equal less_than_or_equal throws not_empty contains empty]
       validate_methods(@config[:assert_conditions], required, 'assert_conditions')
     end
@@ -125,6 +130,36 @@ module TestGenerator
       validate_methods(@config[:class_wrapper], required, 'class_wrapper')
     end
 
+    # Validates required comment syntax methods
+    # @return [void]
+    def validate_comment_syntax
+      required = %i[single multi_start multi_end]
+      validate_methods(@config[:comment_syntax], required, 'comment_syntax')
+    end
+
+    # Validates required indentation rules
+    # @return [void]
+    def validate_indentation
+      required = %i[indent_after unindent_before]
+      validate_methods(@config[:indentation], required, 'indentation')
+    end
+
+    # Validates required cleanup handler methods
+    # @return [void]
+    def validate_cleanup_handlers
+      return unless @config[:cleanup_handlers]
+
+      required = %i[setup]
+      validate_methods(@config[:cleanup_handlers], required, 'cleanup_handlers')
+    end
+
+    # Validates required literal cast methods
+    # @return [void]
+    def validate_literal_cast
+      required = %i[unsigned_int float double]
+      validate_methods(@config[:literal_cast], required, 'literal_cast')
+    end
+
     # Validates that a handler has all required methods
     # @param handler [Object] The handler to validate
     # @param required_methods [Array<Symbol>] List of required method names
@@ -136,7 +171,7 @@ module TestGenerator
       missing = required_methods - handler.keys
       return unless missing.any?
 
-      error_msg = "Missing required methods in #{handler_name}: #{missing.join(', ')}"
+      error_msg = "Missing required methods in #{handler_name} for #{@config[:language]}: #{missing.join(', ')}"
       MessageHandler.log_error(error_msg)
       raise error_msg
     end

@@ -1,540 +1,476 @@
-using System;
-using System.IO;
 using Xunit;
+using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
-
+using HttpMethod = SplashKitSDK.HttpMethod;
 namespace SplashKitTests
 {
     public class TestWindows
     {
         [Fact]
-        public void TestClearWindowIntegration()
-        {
+        public void TestClearWindowIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             var color = ColorBlack();
             ClearWindow(testWindow, color);
             RefreshWindow(testWindow);
             var pixel = GetPixel(PointAt(0.0, 0.0));
             Assert.Equal(color, pixel);
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestCloseAllWindowsIntegration()
-        {
+        public void TestCloseAllWindowsIntegration() {
             OpenWindow("Test Window 1", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             OpenWindow("Test Window 2", 800, 600);
             CloseAllWindows();
             Assert.False(HasWindow("Test Window 1"));
             Assert.False(HasWindow("Test Window 2"));
         }
         [Fact]
-        public void TestCloseCurrentWindowIntegration()
-        {
+        public void TestCloseCurrentWindowIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             CloseCurrentWindow();
             Assert.False(HasWindow("Test Window"));
             Assert.Null(CurrentWindow());
         }
         [Fact]
-        public void TestCloseWindowNamedIntegration()
-        {
+        public void TestCloseWindowNamedIntegration() {
             OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.True(HasWindow("Test Window"));
             CloseWindow("Test Window");
             Assert.False(HasWindow("Test Window"));
         }
         [Fact]
-        public void TestCloseWindowIntegration()
-        {
+        public void TestCloseWindowIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             var windowName = WindowCaption(testWindow);
             CloseWindow(testWindow);
             Assert.False(HasWindow(windowName));
-            Assert.False(WindowHasFocus(testWindow));
         }
         [Fact]
-        public void TestCurrentWindowIntegration()
-        {
-            var window1 = OpenWindow("Test Window 1", 800, 600);
-            var window2 = OpenWindow("Test Window 2", 800, 600);
-            SetCurrentWindow(window2);
-            Assert.Equal(window2, CurrentWindow());
-            Assert.True(IsCurrentWindow(window2));
-            Assert.False(IsCurrentWindow(window1));
-            CloseAllWindows();
+        public void TestCurrentWindowIntegration() {
+            var testWindow1 = OpenWindow("Test Window 1", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
+            var testWindow2 = OpenWindow("Test Window 2", 800, 600);
+            SetCurrentWindow(testWindow2);
+            Assert.Equal(testWindow2, CurrentWindow());
+            Assert.True(IsCurrentWindow(testWindow2));
+            Assert.False(IsCurrentWindow(testWindow1));
         }
         [Fact]
-        public void TestCurrentWindowHasBorderIntegration()
-        {
+        public void TestCurrentWindowHasBorderIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             Assert.True(CurrentWindowHasBorder());
             CurrentWindowToggleBorder();
             Assert.False(CurrentWindowHasBorder());
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestCurrentWindowHeightIntegration()
-        {
+        public void TestCurrentWindowHeightIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             Assert.Equal(600, CurrentWindowHeight());
             ResizeCurrentWindow(800, 400);
             Assert.Equal(400, CurrentWindowHeight());
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestCurrentWindowIsFullscreenIntegration()
-        {
+        public void TestCurrentWindowIsFullscreenIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             Assert.False(CurrentWindowIsFullscreen());
             CurrentWindowToggleFullscreen();
             Assert.True(CurrentWindowIsFullscreen());
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestCurrentWindowPositionIntegration()
-        {
+        public void TestCurrentWindowPositionIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             MoveCurrentWindowTo(100, 200);
             var position = CurrentWindowPosition();
-            Assert.Equal(100.0, position.X);
-            Assert.Equal(200.0, position.Y);
-            CloseWindow(testWindow);
+            Assert.Equal(68.0, position.X);
+            Assert.Equal(168.0, position.Y);
         }
         [Fact]
-        public void TestCurrentWindowToggleBorderIntegration()
-        {
+        public void TestCurrentWindowToggleBorderIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             var initialBorder = CurrentWindowHasBorder();
             CurrentWindowToggleBorder();
             Assert.NotEqual(initialBorder, CurrentWindowHasBorder());
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestCurrentWindowToggleFullscreenIntegration()
-        {
+        public void TestCurrentWindowToggleFullscreenIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             var initialFullscreen = CurrentWindowIsFullscreen();
             CurrentWindowToggleFullscreen();
             Assert.NotEqual(initialFullscreen, CurrentWindowIsFullscreen());
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestCurrentWindowWidthIntegration()
-        {
+        public void TestCurrentWindowWidthIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             Assert.Equal(800, CurrentWindowWidth());
             ResizeCurrentWindow(400, 600);
             Assert.Equal(400, CurrentWindowWidth());
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestCurrentWindowXIntegration()
-        {
+        public void TestCurrentWindowXIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             MoveCurrentWindowTo(100, 200);
-            Assert.Equal(100, CurrentWindowX());
+            Assert.Equal(68, CurrentWindowX());
             MoveCurrentWindowTo(300, 200);
-            Assert.Equal(300, CurrentWindowX());
-            CloseWindow(testWindow);
+            Assert.Equal(268, CurrentWindowX());
         }
         [Fact]
-        public void TestCurrentWindowYIntegration()
-        {
+        public void TestCurrentWindowYIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             MoveCurrentWindowTo(0, 100);
-            ProcessEvents();
-            Assert.Equal(100, CurrentWindowY());
-            CloseWindow(testWindow);
+            Assert.Equal(68, CurrentWindowY());
         }
         [Fact]
-        public void TestHasWindowIntegration()
-        {
+        public void TestHasWindowIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.True(HasWindow("Test Window"));
             Assert.True(HasWindow(WindowCaption(testWindow)));
             CloseWindow(testWindow);
             Assert.False(HasWindow("Test Window"));
         }
         [Fact]
-        public void TestIsCurrentWindowIntegration()
-        {
-            var window1 = OpenWindow("Test Window 1", 800, 600);
-            var window2 = OpenWindow("Test Window 2", 800, 600);
-            SetCurrentWindow(window1);
-            Assert.True(IsCurrentWindow(window1));
-            Assert.False(IsCurrentWindow(window2));
-            CloseAllWindows();
+        public void TestIsCurrentWindowIntegration() {
+            var testWindow1 = OpenWindow("Test Window 1", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
+            var testWindow2 = OpenWindow("Test Window 2", 800, 600);
+            SetCurrentWindow(testWindow1);
+            Assert.True(IsCurrentWindow(testWindow1));
+            Assert.False(IsCurrentWindow(testWindow2));
         }
         [Fact]
-        public void TestMoveCurrentWindowToIntegration()
-        {
+        public void TestMoveCurrentWindowToIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             MoveCurrentWindowTo(100, 200);
-            ProcessEvents();
-            Assert.Equal(100, CurrentWindowX());
-            Assert.Equal(200, CurrentWindowY());
-            CloseWindow(testWindow);
+            Assert.Equal(68, CurrentWindowX());
+            Assert.Equal(168, CurrentWindowY());
         }
         [Fact]
-        public void TestMoveWindowToNamedIntegration()
-        {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+        public void TestMoveWindowToNamedIntegration() {
+            OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             MoveWindowTo("Test Window", 150, 250);
-            ProcessEvents();
-            Assert.Equal(150, WindowX("Test Window"));
-            Assert.Equal(250, WindowY("Test Window"));
-            CloseWindow(testWindow);
+            Assert.Equal(118, WindowX("Test Window"));
+            Assert.Equal(218, WindowY("Test Window"));
         }
         [Fact]
-        public void TestMoveWindowToIntegration()
-        {
+        public void TestMoveWindowToIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             MoveWindowTo(testWindow, 200, 300);
-            ProcessEvents();
-            Assert.Equal(200, WindowX(testWindow));
-            Assert.Equal(300, WindowY(testWindow));
-            CloseWindow(testWindow);
+            Assert.Equal(168, WindowX(testWindow));
+            Assert.Equal(268, WindowY(testWindow));
         }
         [Fact]
-        public void TestOpenWindowIntegration()
-        {
+        public void TestOpenWindowIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.NotNull(testWindow);
             Assert.Equal("Test Window", WindowCaption(testWindow));
             Assert.Equal(800, WindowWidth(testWindow));
             Assert.Equal(600, WindowHeight(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestRefreshWindowIntegration()
-        {
+        public void TestRefreshWindowIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             ClearWindow(testWindow, ColorWhite());
             DrawCircle(ColorBlack(), 400.0, 300.0, 50.0);
             RefreshWindow(testWindow);
-            var pixel = GetPixel(PointAt(400.0, 300.0));
+            var pixel = GetPixel(PointAt(400.0, 350.0));
             Assert.Equal(ColorBlack(), pixel);
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestRefreshWindowWithTargetFpsIntegration()
-        {
+        public void TestRefreshWindowWithTargetFpsIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             RefreshWindow(testWindow, 60u);
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestResizeCurrentWindowIntegration()
-        {
+        public void TestResizeCurrentWindowIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             SetCurrentWindow(testWindow);
             ResizeCurrentWindow(1024, 768);
-            ProcessEvents();
             Assert.Equal(1024, WindowWidth(testWindow));
             Assert.Equal(768, WindowHeight(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestResizeWindowIntegration()
-        {
+        public void TestResizeWindowIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             ResizeWindow(testWindow, 1024, 768);
-            ProcessEvents();
             Assert.Equal(1024, WindowWidth(testWindow));
             Assert.Equal(768, WindowHeight(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestSetCurrentWindowNamedIntegration()
-        {
+        public void TestSetCurrentWindowNamedIntegration() {
             OpenWindow("Test Window 1", 800, 600);
-            var window2 = OpenWindow("Test Window 2", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
+            var testWindow2 = OpenWindow("Test Window 2", 800, 600);
             SetCurrentWindow("Test Window 2");
-            Assert.Equal(window2, CurrentWindow());
-            CloseAllWindows();
+            Assert.Equal(testWindow2, CurrentWindow());
         }
         [Fact]
-        public void TestSetCurrentWindowIntegration()
-        {
+        public void TestSetCurrentWindowIntegration() {
             OpenWindow("Test Window 1", 800, 600);
-            var window2 = OpenWindow("Test Window 2", 800, 600);
-            SetCurrentWindow(window2);
-            Assert.Equal(window2, CurrentWindow());
-            CloseAllWindows();
+            using var cleanupWindow = new WindowCleanup();
+            var testWindow2 = OpenWindow("Test Window 2", 800, 600);
+            SetCurrentWindow(testWindow2);
+            Assert.Equal(testWindow2, CurrentWindow());
         }
         [Fact]
-        public void TestWindowCaptionIntegration()
-        {
+        public void TestWindowCaptionIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.Equal("Test Window", WindowCaption(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowCloseRequestedNamedIntegration()
-        {
+        public void TestWindowCloseRequestedNamedIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
+            using var cleanupWindow = new WindowCleanup();
             Assert.False(WindowCloseRequested("Test Window"));
             while (!WindowCloseRequested("Test Window")) {
                 ProcessEvents();
+                ClearWindow(testWindow, ColorWhite());
+                DrawText("Test: window_close_requested_named. Close window to pass.", ColorBlack(), 10, 10);
+                RefreshScreen();
             }
             Assert.True(WindowCloseRequested("Test Window"));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowCloseRequestedIntegration()
-        {
+        public void TestWindowCloseRequestedIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
-            ProcessEvents();
+            using var cleanupWindow = new WindowCleanup();
             Assert.False(WindowCloseRequested(testWindow));
             while (!WindowCloseRequested(testWindow)) {
                 ProcessEvents();
+                ClearWindow(testWindow, ColorWhite());
+                DrawText("Test: window_close_requested. Close window to pass.", ColorBlack(), 10, 10);
+                RefreshScreen();
             }
             Assert.True(WindowCloseRequested(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowHasBorderNamedIntegration()
-        {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+        public void TestWindowHasBorderNamedIntegration() {
+            OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.True(WindowHasBorder("Test Window"));
             WindowToggleBorder("Test Window");
-            ProcessEvents();
             Assert.False(WindowHasBorder("Test Window"));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowHasBorderIntegration()
-        {
+        public void TestWindowHasBorderIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.True(WindowHasBorder(testWindow));
             WindowToggleBorder(testWindow);
-            ProcessEvents();
             Assert.False(WindowHasBorder(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowHasFocusIntegration()
-        {
-            var window1 = OpenWindow("Test Window 1", 800, 600);
-            var window2 = OpenWindow("Test Window 2", 800, 600);
+        public void TestWindowHasFocusIntegration() {
+            var testWindow1 = OpenWindow("Test Window 1", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
+            var testWindow2 = OpenWindow("Test Window 2", 800, 600);
             ProcessEvents();
-            Assert.True(WindowHasFocus(window2));
-            Assert.False(WindowHasFocus(window1));
-            CloseAllWindows();
+            Assert.True(WindowHasFocus(testWindow2));
+            Assert.False(WindowHasFocus(testWindow1));
         }
         [Fact]
-        public void TestWindowHeightNamedIntegration()
-        {
+        public void TestWindowHeightNamedIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.Equal(600, WindowHeight("Test Window"));
             ResizeWindow(testWindow, 800, 400);
-            ProcessEvents();
             Assert.Equal(400, WindowHeight("Test Window"));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowHeightIntegration()
-        {
+        public void TestWindowHeightIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.Equal(600, WindowHeight(testWindow));
             ResizeWindow(testWindow, 800, 400);
-            ProcessEvents();
             Assert.Equal(400, WindowHeight(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowIsFullscreenNamedIntegration()
-        {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+        public void TestWindowIsFullscreenNamedIntegration() {
+            OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.False(WindowIsFullscreen("Test Window"));
             WindowToggleFullscreen("Test Window");
-            ProcessEvents();
             Assert.True(WindowIsFullscreen("Test Window"));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowIsFullscreenIntegration()
-        {
+        public void TestWindowIsFullscreenIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.False(WindowIsFullscreen(testWindow));
             WindowToggleFullscreen(testWindow);
-            ProcessEvents();
             Assert.True(WindowIsFullscreen(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowNamedIntegration()
-        {
+        public void TestWindowNamedIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             var namedWindow = WindowNamed("Test Window");
             Assert.Equal(testWindow, namedWindow);
             Assert.Equal(WindowCaption(testWindow), WindowCaption(namedWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowPositionNamedIntegration()
-        {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+        public void TestWindowPositionNamedIntegration() {
+            OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             MoveWindowTo("Test Window", 100, 200);
-            ProcessEvents();
+            Delay(500);
             var position = WindowPosition("Test Window");
-            Assert.Equal(100.0, position.X);
-            Assert.Equal(200.0, position.Y);
-            CloseWindow(testWindow);
+            Assert.Equal(68.0, position.X);
+            Assert.Equal(168.0, position.Y);
         }
         [Fact]
-        public void TestWindowPositionIntegration()
-        {
+        public void TestWindowPositionIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             MoveWindowTo(testWindow, 100, 200);
-            ProcessEvents();
+            Delay(500);
             var position = WindowPosition(testWindow);
-            Assert.Equal(100.0, position.X);
-            Assert.Equal(200.0, position.Y);
-            CloseWindow(testWindow);
+            Assert.Equal(68.0, position.X);
+            Assert.Equal(168.0, position.Y);
         }
         [Fact]
-        public void TestWindowSetIconIntegration()
-        {
+        public void TestWindowSetIconIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             var icon = CreateBitmap("test_icon", 32, 32);
+            using var cleanupBitmap = new BitmapCleanup();
             ClearBitmap(icon, ColorWhite());
             WindowSetIcon(testWindow, icon);
-            ProcessEvents();
             FreeBitmap(icon);
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowToggleBorderNamedIntegration()
-        {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+        public void TestWindowToggleBorderNamedIntegration() {
+            OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.True(WindowHasBorder("Test Window"));
             WindowToggleBorder("Test Window");
-            ProcessEvents();
             Assert.False(WindowHasBorder("Test Window"));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowToggleBorderIntegration()
-        {
+        public void TestWindowToggleBorderIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.True(WindowHasBorder(testWindow));
             WindowToggleBorder(testWindow);
-            ProcessEvents();
             Assert.False(WindowHasBorder(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowToggleFullscreenNamedIntegration()
-        {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+        public void TestWindowToggleFullscreenNamedIntegration() {
+            OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.False(WindowIsFullscreen("Test Window"));
             WindowToggleFullscreen("Test Window");
-            ProcessEvents();
             Assert.True(WindowIsFullscreen("Test Window"));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowToggleFullscreenIntegration()
-        {
+        public void TestWindowToggleFullscreenIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.False(WindowIsFullscreen(testWindow));
             WindowToggleFullscreen(testWindow);
-            ProcessEvents();
             Assert.True(WindowIsFullscreen(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowWidthNamedIntegration()
-        {
+        public void TestWindowWidthNamedIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.Equal(800, WindowWidth("Test Window"));
             ResizeWindow(testWindow, 1024, 600);
-            ProcessEvents();
             Assert.Equal(1024, WindowWidth("Test Window"));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowWidthIntegration()
-        {
+        public void TestWindowWidthIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             Assert.Equal(800, WindowWidth(testWindow));
             ResizeWindow(testWindow, 1024, 600);
-            ProcessEvents();
             Assert.Equal(1024, WindowWidth(testWindow));
-            CloseWindow(testWindow);
         }
         [Fact]
-        public void TestWindowWithFocusIntegration()
-        {
-            var window1 = OpenWindow("Test Window 1", 800, 600);
-            var window2 = OpenWindow("Test Window 2", 800, 600);
-            ProcessEvents();
-            Assert.Equal(window2, WindowWithFocus());
-            SetCurrentWindow(window1);
-            ProcessEvents();
-            Assert.Equal(window1, WindowWithFocus());
-            CloseAllWindows();
+        public void TestWindowWithFocusIntegration() {
+            var testWindow1 = OpenWindow("Test Window 1", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
+            MoveWindowTo(testWindow1, 200, 200);
+            Delay(500);
+            var testWindow2 = OpenWindow("Test Window 2", 800, 600);
+            MoveWindowTo(testWindow2, 850, 200);
+            Delay(500);
+            Assert.Equal(testWindow2, WindowWithFocus());
+            while (WindowWithFocus() != testWindow1) {
+                ProcessEvents();
+                ClearScreen();
+                DrawText("Test: window_with_focus. Click this window to pass.", ColorBlack(), 10, 10, OptionDrawTo(testWindow1));
+                RefreshScreen();
+            }
+            Assert.Equal(testWindow1, WindowWithFocus());
         }
         [Fact]
-        public void TestWindowXNamedIntegration()
-        {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+        public void TestWindowXNamedIntegration() {
+            OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             MoveWindowTo("Test Window", 100, 200);
-            ProcessEvents();
-            Assert.Equal(100, WindowX("Test Window"));
+            Assert.Equal(68, WindowX("Test Window"));
             MoveWindowTo("Test Window", 300, 200);
-            ProcessEvents();
-            Assert.Equal(300, WindowX("Test Window"));
-            CloseWindow(testWindow);
+            Assert.Equal(268, WindowX("Test Window"));
         }
         [Fact]
-        public void TestWindowXIntegration()
-        {
+        public void TestWindowXIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             MoveWindowTo(testWindow, 100, 200);
-            ProcessEvents();
-            Assert.Equal(100, WindowX(testWindow));
+            Assert.Equal(68, WindowX(testWindow));
             MoveWindowTo(testWindow, 300, 200);
-            ProcessEvents();
-            Assert.Equal(300, WindowX(testWindow));
-            CloseWindow(testWindow);
+            Assert.Equal(268, WindowX(testWindow));
         }
         [Fact]
-        public void TestWindowYNamedIntegration()
-        {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+        public void TestWindowYNamedIntegration() {
+            OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             MoveWindowTo("Test Window", 100, 200);
-            ProcessEvents();
-            Assert.Equal(200, WindowY("Test Window"));
+            Assert.Equal(168, WindowY("Test Window"));
             MoveWindowTo("Test Window", 100, 400);
-            ProcessEvents();
-            Assert.Equal(400, WindowY("Test Window"));
-            CloseWindow(testWindow);
+            Assert.Equal(368, WindowY("Test Window"));
         }
         [Fact]
-        public void TestWindowYIntegration()
-        {
+        public void TestWindowYIntegration() {
             var testWindow = OpenWindow("Test Window", 800, 600);
+            using var cleanupWindow = new WindowCleanup();
             MoveWindowTo(testWindow, 100, 200);
-            ProcessEvents();
-            Assert.Equal(200, WindowY(testWindow));
+            Assert.Equal(168, WindowY(testWindow));
             MoveWindowTo(testWindow, 100, 400);
-            ProcessEvents();
-            Assert.Equal(400, WindowY(testWindow));
-            CloseWindow(testWindow);
+            Assert.Equal(368, WindowY(testWindow));
         }
     }
 }

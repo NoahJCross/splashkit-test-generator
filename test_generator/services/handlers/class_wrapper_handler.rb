@@ -33,19 +33,5 @@ module TestGenerator
     def footer_lines
       @config[:footer]
     end
-
-    # Checks if indentation should increase after a line
-    # @param line [String] The line to check
-    # @return [Boolean] True if indentation should increase
-    def indent_after?(line)
-      @config[:indent_after]&.include?(line)
-    end
-
-    # Checks if indentation should decrease before a line
-    # @param line [String] The line to check
-    # @return [Boolean] True if indentation should decrease
-    def unindent_before?(line)
-      @config[:unindent_before]&.include?(line)
-    end
   end
 end

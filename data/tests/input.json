@@ -1,5 +1,29 @@
 {
   "group": "input",
+  "constructor": [
+    {
+      "step_type": "function",
+      "function_name": "set_resources_path",
+      "args": [
+        {
+          "value_type": "string",
+          "value": "set this value before running tests, use an absolute path"
+        }
+      ]
+    }
+  ],
+  "cleanup": [
+    {
+      "cleanup_type": "window",
+      "function_name": "close_all_windows",
+      "args": []
+    },
+    {
+      "cleanup_type": "font",
+      "function_name": "free_all_fonts",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "process_events",
@@ -24,9 +48,14 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "false",
             "value1": {
               "value_type": "function",
               "function_name": "key_typed",
@@ -37,10 +66,6 @@
                   "value": "a_key"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "int",
-              "value": false
             }
           },
           "while_steps": [
@@ -53,6 +78,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: process_events"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -73,7 +121,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -115,7 +163,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -142,7 +190,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -163,7 +211,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Click left mouse button to test events"
+                  "value": "Test: process_events"
                 },
                 {
                   "value_type": "function",
@@ -177,6 +225,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Click left mouse button to test events"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -218,7 +289,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -226,16 +297,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -264,6 +325,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -273,7 +339,7 @@
               "args": []
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -294,7 +360,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press Escape to test quit"
+                  "value": "Test: quit_requested"
                 },
                 {
                   "value_type": "function",
@@ -308,6 +374,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Close window to test quit requested"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -343,7 +432,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -351,16 +440,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -389,6 +468,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -398,7 +482,7 @@
               "args": []
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -419,7 +503,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press Escape to test quit"
+                  "value": "Test: reset_quit"
                 },
                 {
                   "value_type": "function",
@@ -433,6 +517,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Close window to test reset quit"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -468,7 +575,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -476,13 +583,13 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "reset_quit",
-              "args": []
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "reset_quit",
+          "args": []
         },
         {
           "step_type": "while",
@@ -495,12 +602,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "a_key"
+                  "value": "space_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -521,7 +628,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press A to continue after reset"
+                  "value": "Test: reset_quit"
                 },
                 {
                   "value_type": "function",
@@ -535,6 +642,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test after reset quit"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -576,7 +706,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -584,16 +714,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -622,6 +742,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -631,7 +756,7 @@
               "args": []
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -652,7 +777,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press any key to test"
+                  "value": "Test: any_key_pressed"
                 },
                 {
                   "value_type": "function",
@@ -666,6 +791,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press any key to test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -701,7 +849,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -713,14 +861,15 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "any_key_pressed",
+              "args": []
             }
-          ]
+          }
         }
       ]
     },
@@ -754,6 +903,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "register_callback_on_key_down",
           "args": [
@@ -767,21 +921,16 @@
         {
           "step_type": "while",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "not_equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "key_down",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "a_key"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "get_key_down"
             },
             "value2": {
-              "value_type": "int",
-              "value": false
+              "value_type": "enum",
+              "enum_type": "key_code",
+              "value": "a_key"
             }
           },
           "while_steps": [
@@ -794,6 +943,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: deregister_callback_on_key_down"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -814,7 +986,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -856,7 +1028,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -874,9 +1046,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_down"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_down"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -892,7 +1070,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -900,17 +1078,17 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            },
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_down",
+          "args": [
             {
-              "step_type": "function",
-              "function_name": "deregister_callback_on_key_down",
-              "args": [
-                {
-                  "value_type": "variable_field",
-                  "variable_name": "callbacks",
-                  "variable_field": "on_key_down"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "on_key_down"
             }
           ]
         },
@@ -925,12 +1103,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "b_key"
+                  "value": "space_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -951,7 +1129,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press B to test deregistered callback"
+                  "value": "Test: deregister_callback_on_key_down"
                 },
                 {
                   "value_type": "function",
@@ -965,6 +1143,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press B to test deregistered callback on key down"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -1006,7 +1207,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -1024,9 +1225,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_down"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_down"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -1042,7 +1249,30 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 90.0
                 }
               ]
             },
@@ -1050,16 +1280,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -1095,6 +1315,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "register_callback_on_key_typed",
           "args": [
@@ -1108,21 +1333,16 @@
         {
           "step_type": "while",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "not_equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "key_typed",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "a_key"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "get_key_typed"
             },
             "value2": {
-              "value_type": "int",
-              "value": false
+              "value_type": "enum",
+              "enum_type": "key_code",
+              "value": "a_key"
             }
           },
           "while_steps": [
@@ -1135,6 +1355,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: deregister_callback_on_key_typed"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -1155,7 +1398,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -1197,7 +1440,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -1215,9 +1458,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_typed"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_typed"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -1233,7 +1482,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -1241,17 +1490,17 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            },
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_typed",
+          "args": [
             {
-              "step_type": "function",
-              "function_name": "deregister_callback_on_key_typed",
-              "args": [
-                {
-                  "value_type": "variable_field",
-                  "variable_name": "callbacks",
-                  "variable_field": "on_key_typed"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "on_key_typed"
             }
           ]
         },
@@ -1261,17 +1510,17 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "b_key"
+                  "value": "space_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -1292,7 +1541,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press B to test deregistered callback"
+                  "value": "Test: deregister_callback_on_key_typed"
                 },
                 {
                   "value_type": "function",
@@ -1306,6 +1555,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press B to test deregistered callback on key typed"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -1347,7 +1619,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -1365,9 +1637,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_typed"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_typed"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -1383,7 +1661,30 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 90.0
                 }
               ]
             },
@@ -1391,16 +1692,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -1436,6 +1727,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "register_callback_on_key_up",
           "args": [
@@ -1449,21 +1745,16 @@
         {
           "step_type": "while",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "not_equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "key_up",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "a_key"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "get_key_up"
             },
             "value2": {
-              "value_type": "int",
-              "value": false
+              "value_type": "enum",
+              "enum_type": "key_code",
+              "value": "a_key"
             }
           },
           "while_steps": [
@@ -1476,6 +1767,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: deregister_callback_on_key_up"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -1496,7 +1810,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -1538,7 +1852,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -1556,9 +1870,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_up"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_up"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -1574,7 +1894,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -1582,17 +1902,17 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            },
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_up",
+          "args": [
             {
-              "step_type": "function",
-              "function_name": "deregister_callback_on_key_up",
-              "args": [
-                {
-                  "value_type": "variable_field",
-                  "variable_name": "callbacks",
-                  "variable_field": "on_key_up"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "on_key_up"
             }
           ]
         },
@@ -1602,17 +1922,17 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "function",
-              "function_name": "key_up",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "b_key"
+                  "value": "space_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -1633,7 +1953,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press and release B to test deregistered callback"
+                  "value": "Test: deregister_callback_on_key_up"
                 },
                 {
                   "value_type": "function",
@@ -1647,6 +1967,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press and release B to test deregistered callback on key up"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -1688,7 +2031,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -1706,9 +2049,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_up"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_up"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -1724,7 +2073,30 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 90.0
                 }
               ]
             },
@@ -1732,16 +2104,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -1770,6 +2132,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -1785,7 +2152,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -1806,7 +2173,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press and hold A"
+                  "value": "Test: key_down"
                 },
                 {
                   "value_type": "function",
@@ -1820,6 +2187,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press and hold A"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -1861,7 +2251,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -1888,7 +2278,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -1909,7 +2299,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Release A"
+                  "value": "Test: key_down"
                 },
                 {
                   "value_type": "function",
@@ -1923,6 +2313,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Release A"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -1964,7 +2377,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -1974,22 +2387,19 @@
               "args": []
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "key_name",
       "steps": [
+        {
+          "step_type": "variable",
+          "variable_name": "callbacks",
+          "value_type": "class_instance",
+          "class_name": "key_callbacks",
+          "args": []
+        },
         {
           "step_type": "function",
           "function_name": "open_window",
@@ -2010,6 +2420,22 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "register_callback_on_key_typed",
+          "args": [
+            {
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "on_key_typed"
+            }
+          ]
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -2025,7 +2451,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -2039,6 +2465,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: key_name"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -2059,7 +2508,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -2081,9 +2530,9 @@
                         "function_name": "key_name",
                         "args": [
                           {
-                            "value_type": "enum",
-                            "enum_type": "key_code",
-                            "value": "a_key"
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_typed"
                           }
                         ]
                       }
@@ -2101,7 +2550,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -2123,12 +2572,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -2149,7 +2598,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press Enter to test key name"
+                  "value": "Test: key_name"
                 },
                 {
                   "value_type": "function",
@@ -2163,6 +2612,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Enter to test key name"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -2184,9 +2656,9 @@
                         "function_name": "key_name",
                         "args": [
                           {
-                            "value_type": "enum",
-                            "enum_type": "key_code",
-                            "value": "keypad_enter"
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_typed"
                           }
                         ]
                       }
@@ -2204,7 +2676,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -2212,16 +2684,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -2250,6 +2712,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -2265,7 +2732,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -2286,7 +2753,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press and release A"
+                  "value": "Test: key_released"
                 },
                 {
                   "value_type": "function",
@@ -2300,6 +2767,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press and release A"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -2341,7 +2831,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -2349,16 +2839,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -2387,9 +2867,14 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "false",
             "value1": {
               "value_type": "function",
               "function_name": "key_typed",
@@ -2400,10 +2885,6 @@
                   "value": "a_key"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "int",
-              "value": false
             }
           },
           "while_steps": [
@@ -2416,6 +2897,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: key_typed"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -2436,7 +2940,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -2478,7 +2982,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -2486,16 +2990,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -2524,6 +3018,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -2539,7 +3038,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -2560,7 +3059,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press and release A"
+                  "value": "Test: key_up"
                 },
                 {
                   "value_type": "function",
@@ -2574,6 +3073,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press and release A"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -2615,7 +3137,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -2623,16 +3145,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -2668,6 +3180,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "register_callback_on_key_down",
           "args": [
@@ -2681,21 +3198,16 @@
         {
           "step_type": "while",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "not_equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "key_down",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "a_key"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "get_key_down"
             },
             "value2": {
-              "value_type": "int",
-              "value": false
+              "value_type": "enum",
+              "enum_type": "key_code",
+              "value": "a_key"
             }
           },
           "while_steps": [
@@ -2715,7 +3227,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press A to test callback"
+                  "value": "Test: register_callback_on_key_down"
                 },
                 {
                   "value_type": "function",
@@ -2729,6 +3241,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press A to test callback on key down"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -2770,7 +3305,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -2788,9 +3323,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_down"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_down"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -2806,7 +3347,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -2825,16 +3366,6 @@
               "value_type": "variable_field",
               "variable_name": "callbacks",
               "variable_field": "on_key_down"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -2870,6 +3401,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "register_callback_on_key_typed",
           "args": [
@@ -2883,21 +3419,16 @@
         {
           "step_type": "while",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "not_equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "key_typed",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "a_key"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "get_key_typed"
             },
             "value2": {
-              "value_type": "int",
-              "value": false
+              "value_type": "enum",
+              "enum_type": "key_code",
+              "value": "a_key"
             }
           },
           "while_steps": [
@@ -2917,7 +3448,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press A to test callback"
+                  "value": "Test: register_callback_on_key_typed"
                 },
                 {
                   "value_type": "function",
@@ -2931,6 +3462,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press A to test callback on key typed"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -2972,7 +3526,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -2990,9 +3544,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_typed"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_typed"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -3008,7 +3568,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -3027,16 +3587,6 @@
               "value_type": "variable_field",
               "variable_name": "callbacks",
               "variable_field": "on_key_typed"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -3072,6 +3622,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "register_callback_on_key_up",
           "args": [
@@ -3085,21 +3640,16 @@
         {
           "step_type": "while",
           "compare": {
-            "compare_type": "equal",
+            "compare_type": "not_equal",
             "value1": {
-              "value_type": "function",
-              "function_name": "key_up",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "a_key"
-                }
-              ]
+              "value_type": "variable_field",
+              "variable_name": "callbacks",
+              "variable_field": "get_key_up"
             },
             "value2": {
-              "value_type": "int",
-              "value": false
+              "value_type": "enum",
+              "enum_type": "key_code",
+              "value": "a_key"
             }
           },
           "while_steps": [
@@ -3119,7 +3669,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press and release A to test callback"
+                  "value": "Test: register_callback_on_key_up"
                 },
                 {
                   "value_type": "function",
@@ -3133,6 +3683,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press and release A to test callback on key up"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -3174,7 +3747,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -3192,9 +3765,15 @@
                     {
                       "type": "interpolation",
                       "expression": {
-                        "value_type": "variable_field",
-                        "variable_name": "callbacks",
-                        "variable_field": "get_key_up"
+                        "value_type": "function",
+                        "function_name": "key_name",
+                        "args": [
+                          {
+                            "value_type": "variable_field",
+                            "variable_name": "callbacks",
+                            "variable_field": "get_key_up"
+                          }
+                        ]
                       }
                     }
                   ]
@@ -3210,7 +3789,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -3229,16 +3808,6 @@
               "value_type": "variable_field",
               "variable_name": "callbacks",
               "variable_field": "on_key_up"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -3267,6 +3836,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -3282,7 +3856,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -3296,6 +3870,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: hide_mouse"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -3316,7 +3913,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -3352,7 +3949,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -3360,13 +3957,13 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "hide_mouse",
-              "args": []
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "hide_mouse",
+          "args": []
         },
         {
           "step_type": "while",
@@ -3379,12 +3976,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "s_key"
+                  "value": "space_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -3405,7 +4002,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press S to show mouse"
+                  "value": "Test: hide_mouse"
                 },
                 {
                   "value_type": "function",
@@ -3460,6 +4057,30 @@
             },
             {
               "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 50.0
+                }
+              ]
+            },
+
+            {
+              "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
             }
@@ -3469,16 +4090,6 @@
           "step_type": "function",
           "function_name": "show_mouse",
           "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -3505,6 +4116,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -3520,7 +4136,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -3541,7 +4157,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Click left mouse button"
+                  "value": "Test: mouse_clicked"
                 },
                 {
                   "value_type": "function",
@@ -3555,6 +4171,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Click left mouse button"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -3596,7 +4235,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -3604,16 +4243,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -3642,6 +4271,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -3657,7 +4291,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -3678,7 +4312,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press and hold left mouse button"
+                  "value": "Test: mouse_down"
                 },
                 {
                   "value_type": "function",
@@ -3692,6 +4326,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press and hold left mouse button"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -3733,7 +4390,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -3760,7 +4417,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -3781,7 +4438,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Release left mouse button"
+                  "value": "Test: mouse_down"
                 },
                 {
                   "value_type": "function",
@@ -3795,6 +4452,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Release left mouse button"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -3836,7 +4516,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -3844,16 +4524,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -3882,6 +4552,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -3897,7 +4572,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -3924,7 +4599,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Move mouse to test movement"
+                  "value": "Test: mouse_movement"
                 },
                 {
                   "value_type": "function",
@@ -3938,6 +4613,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Move mouse to test movement"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -3985,7 +4683,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -4008,7 +4706,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -4016,16 +4714,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -4054,6 +4742,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -4069,7 +4762,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -4096,7 +4789,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Move mouse to test position"
+                  "value": "Test: mouse_position"
                 },
                 {
                   "value_type": "function",
@@ -4110,6 +4803,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Move mouse to test position"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -4157,7 +4873,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -4180,7 +4896,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -4188,16 +4904,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -4226,6 +4932,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -4241,7 +4952,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -4268,7 +4979,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Move mouse to test position"
+                  "value": "Test: mouse_position_vector"
                 },
                 {
                   "value_type": "function",
@@ -4282,6 +4993,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Move mouse to test position"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -4329,7 +5063,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -4352,7 +5086,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -4360,16 +5094,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -4398,6 +5122,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -4413,7 +5142,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -4427,6 +5156,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: mouse_shown"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -4447,7 +5199,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -4483,7 +5235,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -4491,13 +5243,24 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "hide_mouse",
-              "args": []
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "hide_mouse",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
         },
         {
           "step_type": "while",
@@ -4515,7 +5278,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -4536,7 +5299,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press S to show mouse"
+                  "value": "Test: mouse_shown"
                 },
                 {
                   "value_type": "function",
@@ -4550,6 +5313,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press S to show mouse"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -4585,7 +5371,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -4602,14 +5388,15 @@
           "args": []
         },
         {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
             }
-          ]
+          }
         }
       ]
     },
@@ -4636,6 +5423,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -4651,7 +5443,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -4672,7 +5464,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Click and release left mouse button"
+                  "value": "Test: mouse_up"
                 },
                 {
                   "value_type": "function",
@@ -4686,6 +5478,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Click and release left mouse button"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -4727,7 +5542,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -4735,16 +5550,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -4773,6 +5578,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -4788,7 +5598,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -4815,7 +5625,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Scroll mouse wheel to test"
+                  "value": "Test: mouse_wheel_scroll"
                 },
                 {
                   "value_type": "function",
@@ -4829,6 +5639,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Scroll mouse wheel to test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -4876,7 +5709,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -4899,7 +5732,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -4907,16 +5740,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -4945,6 +5768,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -4960,7 +5788,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -4981,7 +5809,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Move mouse to test X position"
+                  "value": "Test: mouse_x"
                 },
                 {
                   "value_type": "function",
@@ -4995,6 +5823,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Move mouse to test X position"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -5042,7 +5893,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -5065,7 +5916,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -5073,16 +5924,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -5111,6 +5952,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -5126,7 +5972,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -5147,7 +5993,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Move mouse to test Y position"
+                  "value": "Test: mouse_y"
                 },
                 {
                   "value_type": "function",
@@ -5161,6 +6007,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Move mouse to test Y position"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -5208,7 +6077,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -5231,7 +6100,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 70.0
                 }
               ]
             },
@@ -5239,16 +6108,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -5277,6 +6136,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -5292,7 +6156,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -5306,6 +6170,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: move_mouse"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -5326,7 +6213,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -5362,152 +6249,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 30.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "refresh_screen",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "move_mouse",
-              "args": [
-                {
-                  "value_type": "double",
-                  "value": 400.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 300.0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "step_type": "while",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "function",
-              "function_name": "key_down",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "space_key"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "int",
-              "value": false
-            }
-          },
-          "while_steps": [
-            {
-              "step_type": "function",
-              "function_name": "process_events",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "clear_screen_to_white",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "Mouse moved to center"
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "interpolated_string",
-                  "parts": [
-                    {
-                      "type": "text",
-                      "value": "Mouse Position: X="
-                    },
-                    {
-                      "type": "interpolation",
-                      "expression": {
-                        "value_type": "function",
-                        "function_name": "mouse_x",
-                        "args": []
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "value": ", Y="
-                    },
-                    {
-                      "type": "interpolation",
-                      "expression": {
-                        "value_type": "function",
-                        "function_name": "mouse_y",
-                        "args": []
-                      }
-                    }
-                  ]
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 30.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "Press Space to end test"
                 },
                 {
                   "value_type": "function",
@@ -5532,12 +6273,171 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
+          "step_type": "while",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "key_code",
+                  "value": "space_key"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "bool",
+              "value": false
+            }
+          },
+          "while_steps": [
             {
-              "value_type": "variable",
-              "variable_name": "test_window"
+              "step_type": "function",
+              "function_name": "process_events",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "clear_screen_to_white",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: move_mouse"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Mouse moved to center"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "interpolated_string",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "value": "Mouse Position: X="
+                    },
+                    {
+                      "type": "interpolation",
+                      "expression": {
+                        "value_type": "function",
+                        "function_name": "mouse_x",
+                        "args": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", Y="
+                    },
+                    {
+                      "type": "interpolation",
+                      "expression": {
+                        "value_type": "function",
+                        "function_name": "mouse_y",
+                        "args": []
+                      }
+                    }
+                  ]
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 50.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 70.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "move_mouse",
+              "args": [
+                {
+                  "value_type": "double",
+                  "value": 400.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 300.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "refresh_screen",
+              "args": []
             }
           ]
         }
@@ -5566,6 +6466,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -5581,7 +6486,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -5595,6 +6500,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: move_mouse_to_point"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -5615,7 +6543,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -5663,7 +6591,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -5671,26 +6599,6 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "move_mouse_to_point",
-              "args": [
-                {
-                  "value_type": "function",
-                  "function_name": "point_at",
-                  "args": [
-                    {
-                      "value_type": "double",
-                      "value": 400.0
-                    },
-                    {
-                      "value_type": "double",
-                      "value": 300.0
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -5710,7 +6618,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -5731,7 +6639,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Mouse moved to center"
+                  "value": "Test: move_mouse_to_point"
                 },
                 {
                   "value_type": "function",
@@ -5745,6 +6653,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Mouse moved to center"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -5776,6 +6707,305 @@
                       "expression": {
                         "value_type": "function",
                         "function_name": "mouse_y",
+                        "args": []
+                      }
+                    }
+                  ]
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 50.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 70.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "move_mouse_to_point",
+              "args": [
+                {
+                  "value_type": "function",
+                  "function_name": "point_at",
+                  "args": [
+                    {
+                      "value_type": "double",
+                      "value": 400.0
+                    },
+                    {
+                      "value_type": "double",
+                      "value": 300.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "refresh_screen",
+              "args": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "show_mouse",
+      "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "int",
+              "value": 800
+            },
+            {
+              "value_type": "int",
+              "value": 600
+            }
+          ],
+          "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "hide_mouse",
+          "args": []
+        },
+        {
+          "step_type": "while",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "key_code",
+                  "value": "s_key"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "bool",
+              "value": false
+            }
+          },
+          "while_steps": [
+            {
+              "step_type": "function",
+              "function_name": "process_events",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "clear_screen_to_white",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: show_mouse"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press S to show mouse"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "interpolated_string",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "value": "Mouse Shown: "
+                    },
+                    {
+                      "type": "interpolation",
+                      "expression": {
+                        "value_type": "function",
+                        "function_name": "mouse_shown",
+                        "args": []
+                      }
+                    }
+                  ]
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 50.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "refresh_screen",
+              "args": []
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "show_mouse",
+          "args": []
+        },
+        {
+          "step_type": "while",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "key_code",
+                  "value": "space_key"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "bool",
+              "value": false
+            }
+          },
+          "while_steps": [
+            {
+              "step_type": "function",
+              "function_name": "process_events",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "clear_screen_to_white",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: show_mouse"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "interpolated_string",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "value": "Mouse Shown: "
+                    },
+                    {
+                      "type": "interpolation",
+                      "expression": {
+                        "value_type": "function",
+                        "function_name": "mouse_shown",
                         "args": []
                       }
                     }
@@ -5819,258 +7049,11 @@
                 }
               ]
             },
+
             {
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "show_mouse",
-      "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
-        {
-          "step_type": "while",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "function",
-              "function_name": "key_down",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "h_key"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "int",
-              "value": false
-            }
-          },
-          "while_steps": [
-            {
-              "step_type": "function",
-              "function_name": "process_events",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "clear_screen_to_white",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "Press H to hide mouse"
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "interpolated_string",
-                  "parts": [
-                    {
-                      "type": "text",
-                      "value": "Mouse Shown: "
-                    },
-                    {
-                      "type": "interpolation",
-                      "expression": {
-                        "value_type": "function",
-                        "function_name": "mouse_shown",
-                        "args": []
-                      }
-                    }
-                  ]
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 30.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "refresh_screen",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "hide_mouse",
-              "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "while",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "function",
-              "function_name": "key_down",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "s_key"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "int",
-              "value": false
-            }
-          },
-          "while_steps": [
-            {
-              "step_type": "function",
-              "function_name": "process_events",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "clear_screen_to_white",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "Press S to show mouse"
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "interpolated_string",
-                  "parts": [
-                    {
-                      "type": "text",
-                      "value": "Mouse Shown: "
-                    },
-                    {
-                      "type": "interpolation",
-                      "expression": {
-                        "value_type": "function",
-                        "function_name": "mouse_shown",
-                        "args": []
-                      }
-                    }
-                  ]
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 30.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "refresh_screen",
-              "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "show_mouse",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
             }
           ]
         }
@@ -6099,6 +7082,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -6114,7 +7102,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -6128,6 +7116,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: show_mouse_with_boolean"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -6148,7 +7159,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -6184,7 +7195,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -6192,18 +7203,29 @@
               "step_type": "function",
               "function_name": "refresh_screen",
               "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "show_mouse_with_boolean",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "false"
-                }
-              ]
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "show_mouse_with_boolean",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "false"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
+            }
+          }
         },
         {
           "step_type": "while",
@@ -6221,7 +7243,7 @@
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -6242,7 +7264,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press S to show mouse"
+                  "value": "Test: show_mouse_with_boolean"
                 },
                 {
                   "value_type": "function",
@@ -6256,6 +7278,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press S to show mouse"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -6291,7 +7336,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -6313,14 +7358,15 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "mouse_shown",
+              "args": []
             }
-          ]
+          }
         }
       ]
     },
@@ -6347,6 +7393,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "load_font",
           "args": [
@@ -6360,6 +7411,11 @@
             }
           ],
           "store_result": "test_font"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "font",
+          "store_result": "cleanup_font"
         },
         {
           "step_type": "function",
@@ -6400,12 +7456,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -6426,7 +7482,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: draw_collected_text"
                 },
                 {
                   "value_type": "function",
@@ -6440,6 +7496,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -6476,22 +7555,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "end_reading_text",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_font",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_font"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
+          "function_name": "end_reading_text_in_window",
           "args": [
             {
               "value_type": "variable",
@@ -6524,6 +7588,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "start_reading_text",
           "args": [
@@ -6552,6 +7621,17 @@
           ]
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -6562,12 +7642,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -6581,6 +7661,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: end_reading_text"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -6601,7 +7704,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -6625,131 +7728,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 30.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "refresh_screen",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "end_reading_text",
-              "args": []
-            }
-          ]
-        },
-        {
-          "step_type": "while",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "function",
-              "function_name": "key_down",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "space_key"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "int",
-              "value": false
-            }
-          },
-          "while_steps": [
-            {
-              "step_type": "function",
-              "function_name": "process_events",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "clear_screen_to_white",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "Text input ended"
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "interpolated_string",
-                  "parts": [
-                    {
-                      "type": "text",
-                      "value": "Reading Text: "
-                    },
-                    {
-                      "type": "interpolation",
-                      "expression": {
-                        "value_type": "function",
-                        "function_name": "reading_text",
-                        "args": []
-                      }
-                    }
-                  ]
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 30.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "Press Space to end test"
                 },
                 {
                   "value_type": "function",
@@ -6775,11 +7753,160 @@
         },
         {
           "step_type": "function",
-          "function_name": "close_window",
-          "args": [
+          "function_name": "end_reading_text",
+          "args": []
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "while",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "key_code",
+                  "value": "space_key"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "bool",
+              "value": false
+            }
+          },
+          "while_steps": [
             {
-              "value_type": "variable",
-              "variable_name": "test_window"
+              "step_type": "function",
+              "function_name": "process_events",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "clear_screen_to_white",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: end_reading_text"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Text input ended"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "interpolated_string",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "value": "Reading Text: "
+                    },
+                    {
+                      "type": "interpolation",
+                      "expression": {
+                        "value_type": "function",
+                        "function_name": "reading_text",
+                        "args": []
+                      }
+                    }
+                  ]
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 50.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 70.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "refresh_screen",
+              "args": []
             }
           ]
         }
@@ -6808,6 +7935,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "rectangle_from",
           "args": [
@@ -6845,6 +7977,17 @@
           ]
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -6855,12 +7998,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -6874,6 +8017,29 @@
               "step_type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: end_reading_text_in_window"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
             },
             {
               "step_type": "function",
@@ -6894,7 +8060,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 10.0
+                  "value": 30.0
                 }
               ]
             },
@@ -6923,141 +8089,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 30.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "refresh_screen",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "end_reading_text_in_window",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_window"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "step_type": "while",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "function",
-              "function_name": "key_down",
-              "args": [
-                {
-                  "value_type": "enum",
-                  "enum_type": "key_code",
-                  "value": "space_key"
-                }
-              ]
-            },
-            "value2": {
-              "value_type": "int",
-              "value": false
-            }
-          },
-          "while_steps": [
-            {
-              "step_type": "function",
-              "function_name": "process_events",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "clear_screen_to_white",
-              "args": []
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "Text input ended"
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "interpolated_string",
-                  "parts": [
-                    {
-                      "type": "text",
-                      "value": "Reading Text: "
-                    },
-                    {
-                      "type": "interpolation",
-                      "expression": {
-                        "value_type": "function",
-                        "function_name": "reading_text_in_window",
-                        "args": [
-                          {
-                            "value_type": "variable",
-                            "variable_name": "test_window"
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "value_type": "function",
-                  "function_name": "color_black",
-                  "args": []
-                },
-                {
-                  "value_type": "double",
-                  "value": 10.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 30.0
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "draw_text_no_font_no_size",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "Press Space to end test"
                 },
                 {
                   "value_type": "function",
@@ -7083,11 +8114,170 @@
         },
         {
           "step_type": "function",
-          "function_name": "close_window",
+          "function_name": "end_reading_text_in_window",
           "args": [
             {
               "value_type": "variable",
               "variable_name": "test_window"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
+          "step_type": "while",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "key_down",
+              "args": [
+                {
+                  "value_type": "enum",
+                  "enum_type": "key_code",
+                  "value": "space_key"
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "bool",
+              "value": false
+            }
+          },
+          "while_steps": [
+            {
+              "step_type": "function",
+              "function_name": "process_events",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "clear_screen_to_white",
+              "args": []
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Test: end_reading_text_in_window"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Text input ended"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "interpolated_string",
+                  "parts": [
+                    {
+                      "type": "text",
+                      "value": "Reading Text: "
+                    },
+                    {
+                      "type": "interpolation",
+                      "expression": {
+                        "value_type": "function",
+                        "function_name": "reading_text_in_window",
+                        "args": [
+                          {
+                            "value_type": "variable",
+                            "variable_name": "test_window"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 50.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 70.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "refresh_screen",
+              "args": []
             }
           ]
         }
@@ -7114,6 +8304,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -7144,6 +8339,17 @@
           ]
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -7154,12 +8360,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -7180,7 +8386,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: reading_text"
                 },
                 {
                   "value_type": "function",
@@ -7194,6 +8400,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -7229,7 +8458,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -7242,18 +8471,24 @@
         },
         {
           "step_type": "function",
-          "function_name": "end_reading_text",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
+          "function_name": "end_reading_text_in_window",
           "args": [
             {
               "value_type": "variable",
               "variable_name": "test_window"
             }
           ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
         }
       ]
     },
@@ -7278,6 +8513,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -7317,6 +8557,22 @@
           ]
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
+            }
+          }
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -7327,12 +8583,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -7353,7 +8609,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: reading_text_in_window"
                 },
                 {
                   "value_type": "function",
@@ -7367,6 +8623,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -7407,7 +8686,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -7429,14 +8708,20 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
             }
-          ]
+          }
         }
       ]
     },
@@ -7461,6 +8746,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -7496,6 +8786,17 @@
           ]
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -7506,12 +8807,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -7532,7 +8833,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: start_reading_text"
                 },
                 {
                   "value_type": "function",
@@ -7546,6 +8847,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -7581,7 +8905,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -7594,18 +8918,24 @@
         },
         {
           "step_type": "function",
-          "function_name": "end_reading_text",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
+          "function_name": "end_reading_text_in_window",
           "args": [
             {
               "value_type": "variable",
               "variable_name": "test_window"
             }
           ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
         }
       ]
     },
@@ -7630,6 +8960,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -7669,6 +9004,17 @@
           ]
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -7679,12 +9025,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -7705,7 +9051,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: start_reading_text_with_initial_text"
                 },
                 {
                   "value_type": "function",
@@ -7719,6 +9065,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -7754,7 +9123,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -7767,18 +9136,24 @@
         },
         {
           "step_type": "function",
-          "function_name": "end_reading_text",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
+          "function_name": "end_reading_text_in_window",
           "args": [
             {
               "value_type": "variable",
               "variable_name": "test_window"
             }
           ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
         }
       ]
     },
@@ -7803,6 +9178,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -7842,6 +9222,17 @@
           ]
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -7852,12 +9243,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -7878,7 +9269,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: start_reading_text_in_window"
                 },
                 {
                   "value_type": "function",
@@ -7892,6 +9283,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -7932,7 +9346,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -7954,14 +9368,15 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
             }
-          ]
+          }
         }
       ]
     },
@@ -7986,6 +9401,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -8029,6 +9449,17 @@
           ]
         },
         {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
+            }
+          }
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "equal",
@@ -8039,12 +9470,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -8065,7 +9496,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: start_reading_text_in_window_with_initial_text"
                 },
                 {
                   "value_type": "function",
@@ -8079,6 +9510,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -8119,7 +9573,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -8141,14 +9595,15 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "reading_text",
+              "args": []
             }
-          ]
+          }
         }
       ]
     },
@@ -8173,6 +9628,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -8213,12 +9673,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "escape_key"
+                  "value": "space_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -8239,7 +9699,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press Escape to cancel text entry"
+                  "value": "Test: text_entry_cancelled"
                 },
                 {
                   "value_type": "function",
@@ -8256,6 +9716,30 @@
                 }
               ]
             },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Escape to cancel text entry"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
+                }
+              ]
+            },
+
             {
               "step_type": "function",
               "function_name": "draw_text_no_font_no_size",
@@ -8288,7 +9772,30 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 70.0
                 }
               ]
             },
@@ -8299,14 +9806,21 @@
             }
           ]
         },
+
         {
-          "step_type": "function",
-          "function_name": "end_reading_text",
-          "args": []
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "text_entry_cancelled",
+              "args": []
+            }
+          }
         },
         {
           "step_type": "function",
-          "function_name": "close_window",
+          "function_name": "end_reading_text_in_window",
           "args": [
             {
               "value_type": "variable",
@@ -8337,6 +9851,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -8386,12 +9905,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "escape_key"
+                  "value": "space_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -8412,7 +9931,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press Escape to cancel text entry"
+                  "value": "Test: text_entry_cancelled_in_window"
                 },
                 {
                   "value_type": "function",
@@ -8426,6 +9945,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press Escape to cancel text entry"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -8466,7 +10008,30 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Press space to end test"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 70.0
                 }
               ]
             },
@@ -8478,18 +10043,24 @@
           ]
         },
         {
-          "step_type": "function",
-          "function_name": "end_reading_text_in_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "function",
+              "function_name": "text_entry_cancelled_in_window",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_window"
+                }
+              ]
             }
-          ]
+          }
         },
         {
           "step_type": "function",
-          "function_name": "close_window",
+          "function_name": "end_reading_text_in_window",
           "args": [
             {
               "value_type": "variable",
@@ -8520,6 +10091,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -8560,12 +10136,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -8586,7 +10162,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: text_input"
                 },
                 {
                   "value_type": "function",
@@ -8600,6 +10176,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -8635,7 +10234,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -8648,12 +10247,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "end_reading_text",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
+          "function_name": "end_reading_text_in_window",
           "args": [
             {
               "value_type": "variable",
@@ -8684,6 +10278,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -8733,12 +10332,12 @@
                 {
                   "value_type": "enum",
                   "enum_type": "key_code",
-                  "value": "keypad_enter"
+                  "value": "return_key"
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "value_type": "bool",
               "value": false
             }
           },
@@ -8759,7 +10358,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Type some text, press Enter when done"
+                  "value": "Test: text_input_in_window"
                 },
                 {
                   "value_type": "function",
@@ -8773,6 +10372,29 @@
                 {
                   "value_type": "double",
                   "value": 10.0
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "draw_text_no_font_no_size",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "Type some text, press Enter when done"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "color_black",
+                  "args": []
+                },
+                {
+                  "value_type": "double",
+                  "value": 10.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 30.0
                 }
               ]
             },
@@ -8813,7 +10435,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 30.0
+                  "value": 50.0
                 }
               ]
             },
@@ -8827,16 +10449,6 @@
         {
           "step_type": "function",
           "function_name": "end_reading_text_in_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
           "args": [
             {
               "value_type": "variable",

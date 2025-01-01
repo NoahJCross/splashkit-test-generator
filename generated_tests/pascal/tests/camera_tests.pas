@@ -1,232 +1,246 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestCamera = class(TTestCase)
-protected
-procedure TIntegrationTests.TestCameraPositionIntegration;
+    TTestCamera = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
+    procedure TestCameraPositionIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testCameraPosition := CameraPosition();
     AssertEquals(0.0, testCameraPosition.x);
     AssertEquals(0.0, testCameraPosition.y);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCameraXIntegration;
+procedure TestCameraXIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     AssertEquals(100.0, CameraX());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCameraYIntegration;
+procedure TestCameraYIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 200.0));
     AssertEquals(200.0, CameraY());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCenterCameraOnVectorIntegration;
+procedure TestCenterCameraOnVectorIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
-    testSprite := CreateSprite('test_sprite');
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    CleanupBitmap := TBitmapCleanup.Create;
+    testSprite := CreateSprite(testBitmap);
+    CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     CenterCameraOn(testSprite, VectorFromAngle(50.0, 50.0));
     AssertEquals(PointAt(-267.8606182336807, -161.69777810573578), CameraPosition());
-    FreeSprite(testSprite);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCenterCameraOnIntegration;
+procedure TestCenterCameraOnIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
-    testSprite := CreateSprite('test_sprite');
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    CleanupBitmap := TBitmapCleanup.Create;
+    testSprite := CreateSprite(testBitmap);
+    CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     CenterCameraOn(testSprite, 0.0, 0.0);
     AssertEquals(PointAt(-300.0, -200.0), CameraPosition());
-    FreeSprite(testSprite);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestMoveCameraByVectorIntegration;
+procedure TestMoveCameraByVectorIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testVector := VectorFromAngle(0.0, 100.0);
+    MoveCameraTo(0.0, 0.0);
     MoveCameraBy(testVector);
     AssertEquals(100.0, CameraX());
     AssertEquals(0.0, CameraY());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestMoveCameraByIntegration;
+procedure TestMoveCameraByIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    MoveCameraTo(0.0, 0.0);
     MoveCameraBy(100.0, 100.0);
     AssertEquals(100.0, CameraX());
     AssertEquals(100.0, CameraY());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestMoveCameraToPointIntegration;
+procedure TestMoveCameraToPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveCameraTo(PointAt(100.0, 100.0));
     AssertEquals(PointAt(100.0, 100.0), CameraPosition());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestMoveCameraToIntegration;
+procedure TestMoveCameraToIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveCameraTo(100.0, 100.0);
     AssertEquals(100.0, CameraX());
     AssertEquals(100.0, CameraY());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestPointInWindowIntegration;
+procedure TestPointInWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testPoint := PointAt(400.0, 300.0);
     AssertTrue(PointInWindow(testWindow, testPoint));
     testPointOutside := PointAt(1000.0, 1000.0);
     AssertFalse(PointInWindow(testWindow, testPointOutside));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestPointOnScreenIntegration;
+procedure TestPointOnScreenIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testPoint := PointAt(400.0, 300.0);
     AssertTrue(PointOnScreen(testPoint));
     testPointOutside := PointAt(1000.0, 1000.0);
     AssertFalse(PointOnScreen(testPointOutside));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestRectInWindowIntegration;
+procedure TestRectInWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraX(0.0);
     SetCameraY(0.0);
     testRectangle := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     AssertTrue(RectInWindow(testWindow, testRectangle));
     testRectangleOutside := RectangleFrom(1000.0, 1000.0, 100.0, 100.0);
     AssertFalse(RectInWindow(testWindow, testRectangleOutside));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestRectOnScreenIntegration;
+procedure TestRectOnScreenIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     AssertTrue(RectOnScreen(testRectangle));
     MoveCameraTo(1000.0, 1000.0);
     AssertFalse(RectOnScreen(testRectangle));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestScreenCenterIntegration;
+procedure TestScreenCenterIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraX(0.0);
     SetCameraY(0.0);
     testCenter := ScreenCenter();
     AssertEquals(400.0, testCenter.x);
     AssertEquals(300.0, testCenter.y);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestScreenRectangleIntegration;
+procedure TestScreenRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testRectangle := ScreenRectangle();
     AssertEquals(800.0, testRectangle.width);
     AssertEquals(600.0, testRectangle.height);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestSetCameraPositionIntegration;
+procedure TestSetCameraPositionIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     AssertEquals(PointAt(100.0, 100.0), CameraPosition());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestSetCameraXIntegration;
+procedure TestSetCameraXIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraX(100.0);
     AssertEquals(100.0, CameraX());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestSetCameraYIntegration;
+procedure TestSetCameraYIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraY(100.0);
     AssertEquals(100.0, CameraY());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestToScreenPointIntegration;
+procedure TestToScreenPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     testScreenPoint := ToScreen(PointAt(150.0, 150.0));
     AssertEquals(50.0, testScreenPoint.x);
     AssertEquals(50.0, testScreenPoint.y);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestToScreenRectangleIntegration;
+procedure TestToScreenRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     screenRectangle := ToScreen(testRectangle);
     AssertEquals(ToScreenX(100.0), RectangleLeft(screenRectangle));
     AssertEquals(ToScreenY(100.0), RectangleTop(screenRectangle));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestToScreenXIntegration;
+procedure TestToScreenXIntegration;
 begin
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraX(100.0);
     testScreenX := ToScreenX(150.0);
     AssertEquals(50.0, testScreenX);
 end;
-procedure TIntegrationTests.TestToScreenYIntegration;
+procedure TestToScreenYIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
-    SetCameraPosition(PointAt(100.0, 100.0));
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    SetCameraY(100.0);
     testScreenY := ToScreenY(150.0);
     AssertEquals(50.0, testScreenY);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestToWorldIntegration;
+procedure TestToWorldIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     testWorldPoint := ToWorld(PointAt(400.0, 300.0));
     AssertEquals(500.0, testWorldPoint.x);
     AssertEquals(400.0, testWorldPoint.y);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestToWorldXIntegration;
+procedure TestToWorldXIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     testWorldX := ToWorldX(400.0);
     AssertEquals(500.0, testWorldX);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestToWorldYIntegration;
+procedure TestToWorldYIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     testWorldY := ToWorldY(300.0);
     AssertEquals(400.0, testWorldY);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestVectorWorldToScreenIntegration;
+procedure TestVectorWorldToScreenIntegration;
 begin
-    testVector := VectorWorldToScreen();
-    AssertNotEquals(VectorFromAngle(0.0, 0.0), testVector);
+    testVector1 := VectorWorldToScreen();
+    AssertEquals(VectorFromAngle(0.0, 0.0), testVector1);
+    MoveCameraTo(100.0, 100.0);
+    testVector2 := VectorWorldToScreen();
+    testVectorTo := VectorTo(-100.0, -100.0);
+    AssertEquals(testVectorTo.x, testVector2.x);
+    AssertEquals(testVectorTo.y, testVector2.y);
 end;
-procedure TIntegrationTests.TestWindowAreaIntegration;
+procedure TestWindowAreaIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testArea := WindowArea(testWindow);
     AssertEquals(800.0, testArea.width);
     AssertEquals(600.0, testArea.height);
-    CloseWindow(testWindow);
 end;
 end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

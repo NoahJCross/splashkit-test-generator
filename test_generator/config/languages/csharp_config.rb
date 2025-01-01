@@ -8,34 +8,34 @@ module LanguageConfig
     DEFAULT_CONFIG = {
       supports_overloading: true,
       imports: [
-        "using System;\n",
-        "using System.IO;\n",
-        "using Xunit;\n",
-        "using static SplashKitSDK.SplashKit;\n\n"
+        'using Xunit;',
+        'using SplashKitSDK;',
+        'using static SplashKitSDK.SplashKit;',
+        'using HttpMethod = SplashKitSDK.HttpMethod;'
       ],
       naming_convention: ->(name) { name.to_pascal_case },
 
       assert_conditions: {
-        'equal'                   => ->(v1, v2, _)    { "Assert.Equal(#{v1}, #{v2});\n" },
-        'not_equal'               => ->(v1, v2, _)    { "Assert.NotEqual(#{v1}, #{v2});\n" },
-        'greater_than'            => ->(v1, v2, _)    { "Assert.True(#{v1} > #{v2});\n" },
-        'less_than'               => ->(v1, v2, _)    { "Assert.True(#{v1} < #{v2});\n" },
-        'null'                    => ->(v1, _, _)     { "Assert.Null(#{v1});\n" },
-        'not_null'                => ->(v1, _, _)     { "Assert.NotNull(#{v1});\n" },
-        'range'                   => ->(v1, v2, v3)   { "Assert.InRange(#{v1}, #{v2}, #{v3});\n" },
-        'true'                    => ->(v1, _, _)     { "Assert.True(#{v1});\n" },
-        'false'                   => ->(v1, _, _)     { "Assert.False(#{v1});\n" },
-        'greater_than_or_equal'   => ->(v1, v2, _)    { "Assert.True(#{v1} >= #{v2});\n" },
-        'less_than_or_equal'      => ->(v1, v2, _)    { "Assert.True(#{v1} <= #{v2});\n" },
-        'throws'                  => ->(v1, _, _)     { "Assert.Throws<Exception>(() => { #{v1} });\n" },
-        'not_empty'               => ->(v1, _, _)     { "Assert.NotEmpty(#{v1});\n" },
-        'contains'                => ->(v1, v2, _)    { "Assert.Contains(#{v1}, #{v2});\n" },
-        'empty'                   => ->(v1, _, _)     { "Assert.Empty(#{v1});\n" }
+        'equal'                   => ->(v1, v2, precision = nil)    { "Assert.Equal(#{v1}, #{v2}#{precision ? ", #{precision}" : ''});" },
+        'not_equal'               => ->(v1, v2, _)    { "Assert.NotEqual(#{v1}, #{v2});" },
+        'greater_than'            => ->(v1, v2, _)    { "Assert.True(#{v1} > #{v2});" },
+        'less_than'               => ->(v1, v2, _)    { "Assert.True(#{v1} < #{v2});" },
+        'null'                    => ->(v1, _, _)     { "Assert.Null(#{v1});" },
+        'not_null'                => ->(v1, _, _)     { "Assert.NotNull(#{v1});" },
+        'range'                   => ->(v1, v2, v3)   { "Assert.InRange(#{v1}, #{v2}, #{v3});" },
+        'true'                    => ->(v1, _, _)     { "Assert.True(#{v1});" },
+        'false'                   => ->(v1, _, _)     { "Assert.False(#{v1});" },
+        'greater_than_or_equal'   => ->(v1, v2, _)    { "Assert.True(#{v1} >= #{v2});" },
+        'less_than_or_equal'      => ->(v1, v2, _)    { "Assert.True(#{v1} <= #{v2});" },
+        'throws'                  => ->(v1, _, _)     { "Assert.Throws<Exception>(() => { #{v1} });" },
+        'not_empty'               => ->(v1, _, _)     { "Assert.NotEmpty(#{v1});" },
+        'contains'                => ->(v1, v2, _)    { "Assert.Contains(#{v1}, #{v2});" },
+        'empty'                   => ->(v1, _, _)     { "Assert.Empty(#{v1});" }
       }.freeze,
 
       if_conditions: {
         'greater_than' => ->(v1, v2) { "#{v1} > #{v2}" },
-        'true'         => ->(v1, _)  { "#{v1} == true" },
+        'true'         => ->(v1, _)  { "#{v1}" },
         'false'        => ->(v1, _)  { "!#{v1}" },
         'equal'        => ->(v1, v2) { "#{v1} == #{v2}" },
         'not_equal'    => ->(v1, v2) { "#{v1} != #{v2}" }
@@ -48,12 +48,12 @@ module LanguageConfig
       }.freeze,
 
       control_flow: {
-        loop:      ->(iterations) { "for (int i = 0; i < #{iterations}; i++) {\n" },
-        while:     ->(condition) { "while (#{condition}) {\n" },
-        if:        ->(condition) { "if (#{condition}) {\n" },
-        else:      -> { "else\n{\n" },
-        break:     -> { "break;\n" },
-        end:       -> { "}\n" },
+        loop:      ->(iterations) { "for (int i = 0; i < #{iterations}; i++) {" },
+        while:     ->(condition) { "while (#{condition}) {" },
+        if:        ->(condition) { "if (#{condition}) {" },
+        else:      -> { 'else {' },
+        break:     -> { 'break;' },
+        end:       -> { '}' },
         new_line: 'Environment.NewLine'
       }.freeze,
 
@@ -68,20 +68,27 @@ module LanguageConfig
       type_handlers: {
         list:      ->(values, target_type = nil) { 
           mapped_type = DEFAULT_CONFIG[:type_handlers][:mapping][target_type] || target_type || 'dynamic'
-          "new List<#{mapped_type}> { #{values} }" 
+          "new List<#{mapped_type}> { #{values} }"
         },
-        class:     ->(name, args) { "new #{name}(#{args})" },
+        class_instance:     ->(name, args) { "new #{name}(#{args})" },
         mapping:   {
           'json' => 'Json',
           'line' => 'Line'
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
+          "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ';' : ''}"
         },
+        string: ->(value) { "\"#{value}\"" },
+        object: ->(object_type, variable_name) { {
+          object_type: object_type.to_pascal_case,
+          variable_name: variable_name.to_camel_case
+        } },
+      }.freeze,
+
+      literal_cast: {
         unsigned_int: ->(value) { "#{value}u" },
         float: ->(value) { "#{value}f" },
-        double: ->(value) { "#{value}d" },
-        string: ->(value) { "\"#{value}\"" }
+        double: ->(value) { value },
       }.freeze,
 
       variable_handlers: {
@@ -89,11 +96,12 @@ module LanguageConfig
           regular: ->(name) { "var #{name.to_camel_case} = " },
           mutable: ->(name) { "var #{name.to_camel_case} = " }
         },
-        reference:     ->(name) { name.to_camel_case.to_s },
+        identifier:     ->(name) { name.to_camel_case.to_s },
         field_access: ->(var, field) { 
           formatted_field = field.split('.').map(&:to_pascal_case).join('.')
           "#{var}.#{formatted_field}"
         },
+        delegate_call: ->(var, field) { "#{var}.#{field.to_pascal_case}();" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
         array_size:    ->(arr) { "#{arr}.Count" },
@@ -102,46 +110,48 @@ module LanguageConfig
 
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_pascal_case}(#{params})#{semicolon ? ';' : ''}" },
-        pointer:   ->(_) { "null;\n" },
-        test:      ->(name) { "[Fact]\npublic void Test#{name.to_pascal_case}Integration()\n{\n" }
+        pointer:   ->(_) { 'null;' },
+        test:      ->(name) { ["[Fact]", "public void Test#{name.to_pascal_case}Integration() {"] }
       }.freeze,
 
       comment_syntax: {
-        single: "//",
-        multi_start: "/*",
-        multi_end: "*/",
+        single: '//',
+        multi_start: '/*',
+        multi_end: '*/'
       }.freeze,
 
       class_wrapper: {
         header: [
-          "namespace SplashKitTests\n",
-          "{\n",
-          ->(group) { "public class Test#{group.to_pascal_case}\n" },
-          "{\n"
+          'namespace SplashKitTests',
+          '{',
+          ->(group) { "public class Test#{group.to_pascal_case}" },
+          '{'
         ],
         constructor_wrapper: {
-          header: "private TextWriter oldOut;\nprivate TextReader oldIn;\n\n[TestInitialize]\npublic void Setup()\n{\n",
-          footer: "}\n\n[TestCleanup]\npublic void Cleanup()\n{\n    if (oldOut != null) Console.SetOut(oldOut);\n    if (oldIn != null) Console.SetIn(oldIn);\n}\n"
+          header: ->(group) { ["public Test#{group.to_pascal_case}()", '{' ]},
+          footer: ['}']
         },
         footer: [
-          "}\n",
-          "}\n"
-        ],
-        indent_after: ["{\n"],
-        unindent_before: ["}\n"]
+          '}',
+          '}'
+        ]
       }.freeze,
-      file_extension: 'cs',
-      runtime_requirement: '.NET',
-      installation_steps: [
-        '1. Install SplashKit SDK following instructions at https://splashkit.io/installation/',
-        '2. Create new test project: dotnet new xunit',
-        '3. Install Xunit: dotnet add package Xunit',
-        '4. Add SplashKit: dotnet add package SplashKit'
-      ].join("\n"),
-      run_command: 'dotnet test',
 
-      prompt_handlers: {
-        message: ->(text) { "Console.WriteLine(\"#{text}\");\n" }
+      cleanup_handlers: {
+        setup: ->(name, type, args = nil) {
+          "using var #{name.to_camel_case} = new #{type.to_pascal_case}Cleanup#{args ? "(#{args})" : '()'};"
+        }
+      }.freeze,
+
+      indentation: {
+        indent_after: ['{'],
+        unindent_before: ['}']
+      }.freeze,
+
+      file_extension: 'cs',
+
+      terminal_handlers: {
+        message: ->(text) { "Console.WriteLine(\"#{text}\");" }
       }.freeze
     }.freeze
   end

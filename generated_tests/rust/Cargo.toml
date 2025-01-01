@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 splashkit = { path = "../../data/generated/rust" }
+ctor = "0.2"

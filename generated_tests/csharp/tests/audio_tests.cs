@@ -1,517 +1,482 @@
-using System;
-using System.IO;
 using Xunit;
+using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
-
+using HttpMethod = SplashKitSDK.HttpMethod;
 namespace SplashKitTests
 {
     public class TestAudio
     {
-        [Fact]
-        public void TestAudioReadyIntegration()
+        public TestAudio()
         {
+            SetResourcesPath("/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/resources");
+        }
+        [Fact]
+        public void TestAudioReadyIntegration() {
             Assert.False(AudioReady());
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             Assert.True(AudioReady());
             CloseAudio();
             Assert.False(AudioReady());
         }
         [Fact]
-        public void TestCloseAudioIntegration()
-        {
+        public void TestCloseAudioIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             Assert.True(AudioReady());
             CloseAudio();
             Assert.False(AudioReady());
         }
         [Fact]
-        public void TestOpenAudioIntegration()
-        {
+        public void TestOpenAudioIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             Assert.True(AudioReady());
             CloseAudio();
             Assert.False(AudioReady());
         }
         [Fact]
-        public void TestFadeMusicInNamedIntegration()
-        {
+        public void TestFadeMusicInNamedIntegration() {
             OpenAudio();
-            var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupAudio = new AudioCleanup();
+            LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             FadeMusicIn("test_music", 1000);
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestFadeMusicInNamedWithTimesIntegration()
-        {
+        public void TestFadeMusicInNamedWithTimesIntegration() {
             OpenAudio();
-            var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupAudio = new AudioCleanup();
+            LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             FadeMusicIn("test_music", 2, 1000);
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestFadeMusicInIntegration()
-        {
+        public void TestFadeMusicInIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             FadeMusicIn(testMusic, 1000);
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestFadeMusicInWithTimesIntegration()
-        {
+        public void TestFadeMusicInWithTimesIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             FadeMusicIn(testMusic, 2, 1000);
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestFadeMusicOutIntegration()
-        {
+        public void TestFadeMusicOutIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic);
             FadeMusicOut(1000);
             Delay(3000);
             Assert.False(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestFreeAllMusicIntegration()
-        {
+        public void TestFreeAllMusicIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             LoadMusic("test_music1", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             LoadMusic("test_music2", "dancingFrog.wav");
             FreeAllMusic();
             Assert.False(HasMusic("test_music1"));
             Assert.False(HasMusic("test_music2"));
-            CloseAudio();
         }
         [Fact]
-        public void TestFreeMusicIntegration()
-        {
+        public void TestFreeMusicIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic);
             FreeMusic(testMusic);
             Assert.False(HasMusic("test_music"));
-            CloseAudio();
         }
         [Fact]
-        public void TestHasMusicIntegration()
-        {
+        public void TestHasMusicIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             Assert.True(HasMusic("test_music"));
             FreeMusic(testMusic);
             Assert.False(HasMusic("test_music"));
-            CloseAudio();
         }
         [Fact]
-        public void TestLoadMusicIntegration()
-        {
+        public void TestLoadMusicIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             Assert.NotNull(testMusic);
             Assert.True(MusicValid(testMusic));
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestMusicFilenameIntegration()
-        {
+        public void TestMusicFilenameIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             Assert.Equal(PathToResource("magical_night.ogg", ResourceKind.SoundResource), MusicFilename(testMusic));
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestMusicNameIntegration()
-        {
+        public void TestMusicNameIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             Assert.Equal("test_music", MusicName(testMusic));
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestMusicNamedIntegration()
-        {
+        public void TestMusicNamedIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             var namedMusic = MusicNamed("test_music");
             Assert.Equal(testMusic, namedMusic);
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestMusicPlayingIntegration()
-        {
+        public void TestMusicPlayingIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             Assert.False(MusicPlaying());
             PlayMusic(testMusic);
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestMusicValidIntegration()
-        {
+        public void TestMusicValidIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             Assert.True(MusicValid(testMusic));
             FreeMusic(testMusic);
             Assert.False(MusicValid(testMusic));
-            CloseAudio();
         }
         [Fact]
-        public void TestMusicVolumeIntegration()
-        {
+        public void TestMusicVolumeIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic);
             SetMusicVolume(0.5);
             Assert.Equal(0.5, MusicVolume());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestPauseMusicIntegration()
-        {
+        public void TestPauseMusicIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic);
             PauseMusic();
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlayMusicNamedIntegration()
-        {
+        public void TestPlayMusicNamedIntegration() {
             OpenAudio();
-            var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupAudio = new AudioCleanup();
+            LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic("test_music");
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlayMusicNamedWithTimesIntegration()
-        {
+        public void TestPlayMusicNamedWithTimesIntegration() {
             OpenAudio();
-            var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupAudio = new AudioCleanup();
+            LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic("test_music", 2);
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlayMusicIntegration()
-        {
+        public void TestPlayMusicIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic);
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlayMusicWithTimesIntegration()
-        {
+        public void TestPlayMusicWithTimesIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic, 2);
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlayMusicWithTimesAndVolumeIntegration()
-        {
+        public void TestPlayMusicWithTimesAndVolumeIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic, 2, 0.75);
             Assert.True(MusicPlaying());
             Assert.Equal(0.75, MusicVolume());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestResumeMusicIntegration()
-        {
+        public void TestResumeMusicIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic);
             PauseMusic();
             Assert.True(MusicPlaying());
             ResumeMusic();
             Assert.True(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestSetMusicVolumeIntegration()
-        {
+        public void TestSetMusicVolumeIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic);
             SetMusicVolume(0.5);
             Assert.Equal(0.5, MusicVolume());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestStopMusicIntegration()
-        {
+        public void TestStopMusicIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testMusic = LoadMusic("test_music", "magical_night.ogg");
+            using var cleanupMusic = new MusicCleanup();
             PlayMusic(testMusic);
             StopMusic();
             Assert.False(MusicPlaying());
-            FreeMusic(testMusic);
-            CloseAudio();
         }
         [Fact]
-        public void TestFadeAllSoundEffectsOutIntegration()
-        {
+        public void TestFadeAllSoundEffectsOutIntegration() {
             OpenAudio();
-            var testSound1 = LoadSoundEffect("test_sound1", "breakdance.wav");
+            using var cleanupAudio = new AudioCleanup();
+            var testSound1 = LoadSoundEffect("test_sound1", "comedy_boing.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             var testSound2 = LoadSoundEffect("test_sound2", "comedy_boing.ogg");
             PlaySoundEffect(testSound1);
             PlaySoundEffect(testSound2);
             FadeAllSoundEffectsOut(1000);
+            Delay(1100);
             Assert.False(SoundEffectPlaying(testSound1));
             Assert.False(SoundEffectPlaying(testSound2));
-            FreeAllSoundEffects();
-            CloseAudio();
         }
         [Fact]
-        public void TestFadeSoundEffectOutIntegration()
-        {
+        public void TestFadeSoundEffectOutIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect(testSound);
             FadeSoundEffectOut(testSound, 1000);
             Delay(3000);
             Assert.False(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestFreeAllSoundEffectsIntegration()
-        {
+        public void TestFreeAllSoundEffectsIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             LoadSoundEffect("test_sound1", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             LoadSoundEffect("test_sound2", "comedy_boing.ogg");
             FreeAllSoundEffects();
             Assert.False(HasSoundEffect("test_sound1"));
             Assert.False(HasSoundEffect("test_sound2"));
-            CloseAudio();
         }
         [Fact]
-        public void TestFreeSoundEffectIntegration()
-        {
+        public void TestFreeSoundEffectIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect(testSound);
             FreeSoundEffect(testSound);
             Assert.False(HasSoundEffect("test_sound"));
-            CloseAudio();
         }
         [Fact]
-        public void TestHasSoundEffectIntegration()
-        {
+        public void TestHasSoundEffectIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             Assert.True(HasSoundEffect("test_sound"));
             FreeSoundEffect(testSound);
             Assert.False(HasSoundEffect("test_sound"));
-            CloseAudio();
         }
         [Fact]
-        public void TestLoadSoundEffectIntegration()
-        {
+        public void TestLoadSoundEffectIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             Assert.NotNull(testSound);
             Assert.True(HasSoundEffect("test_sound"));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlaySoundEffectNamedIntegration()
-        {
+        public void TestPlaySoundEffectNamedIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect("test_sound");
             Assert.True(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlaySoundEffectNamedWithVolumeIntegration()
-        {
+        public void TestPlaySoundEffectNamedWithVolumeIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect("test_sound", 0.75);
             Assert.True(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlaySoundEffectNamedWithTimesIntegration()
-        {
+        public void TestPlaySoundEffectNamedWithTimesIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect("test_sound", 3);
             Assert.True(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlaySoundEffectNamedWithTimesAndVolumeIntegration()
-        {
+        public void TestPlaySoundEffectNamedWithTimesAndVolumeIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect("test_sound", 2, 0.75);
             Assert.True(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlaySoundEffectIntegration()
-        {
+        public void TestPlaySoundEffectIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect(testSound);
             Assert.True(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlaySoundEffectWithVolumeIntegration()
-        {
+        public void TestPlaySoundEffectWithVolumeIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "breakdance.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect(testSound, 0.75);
             Assert.True(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlaySoundEffectWithTimesIntegration()
-        {
+        public void TestPlaySoundEffectWithTimesIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect(testSound, 3);
             Assert.True(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestPlaySoundEffectWithTimesAndVolumeIntegration()
-        {
+        public void TestPlaySoundEffectWithTimesAndVolumeIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect(testSound, 2, 0.75);
             Assert.True(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestSoundEffectFilenameIntegration()
-        {
+        public void TestSoundEffectFilenameIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             Assert.Equal(PathToResource("SwinGameStart.wav", ResourceKind.SoundResource), SoundEffectFilename(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestSoundEffectNameIntegration()
-        {
+        public void TestSoundEffectNameIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             Assert.Equal("test_sound", SoundEffectName(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestSoundEffectNamedIntegration()
-        {
+        public void TestSoundEffectNamedIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             var namedSound = SoundEffectNamed("test_sound");
             Assert.Equal(testSound, namedSound);
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestSoundEffectPlayingNamedIntegration()
-        {
+        public void TestSoundEffectPlayingNamedIntegration() {
             OpenAudio();
-            var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupAudio = new AudioCleanup();
+            LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect("test_sound");
             Assert.True(SoundEffectPlaying("test_sound"));
             StopSoundEffect("test_sound");
             Assert.False(SoundEffectPlaying("test_sound"));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestSoundEffectPlayingIntegration()
-        {
+        public void TestSoundEffectPlayingIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect(testSound);
             Assert.True(SoundEffectPlaying(testSound));
             StopSoundEffect(testSound);
             Assert.False(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestSoundEffectValidIntegration()
-        {
+        public void TestSoundEffectValidIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             Assert.NotNull(testSound);
             Assert.True(HasSoundEffect("test_sound"));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestStopSoundEffectNamedIntegration()
-        {
+        public void TestStopSoundEffectNamedIntegration() {
             OpenAudio();
-            var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupAudio = new AudioCleanup();
+            LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect("test_sound");
             StopSoundEffect("test_sound");
             Assert.False(SoundEffectPlaying("test_sound"));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
         [Fact]
-        public void TestStopSoundEffectIntegration()
-        {
+        public void TestStopSoundEffectIntegration() {
             OpenAudio();
+            using var cleanupAudio = new AudioCleanup();
             var testSound = LoadSoundEffect("test_sound", "SwinGameStart.wav");
+            using var cleanupSoundEffect = new SoundEffectCleanup();
             PlaySoundEffect(testSound);
             StopSoundEffect(testSound);
             Assert.False(SoundEffectPlaying(testSound));
-            FreeSoundEffect(testSound);
-            CloseAudio();
         }
     }
 }

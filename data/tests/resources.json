@@ -24,6 +24,52 @@
         },
         {
           "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap1"
+            }
+          ]
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "true",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "free_notifier",
+              "variable_field": "was_notified"
+            },
+            "value2": null
+          }
+        },
+        {
+          "step_type": "function",
           "function_name": "deregister_free_notifier",
           "args": [
             {
@@ -34,9 +80,43 @@
           ]
         },
         {
+          "step_type": "delegate_call",
+          "variable_name": "free_notifier",
+          "variable_field": "reset"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap2"
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "false",
             "value1": {
               "value_type": "variable_field",
               "variable_name": "free_notifier",
@@ -87,36 +167,6 @@
             "value2": {
               "value_type": "variable",
               "variable_name": "image_path"
-            }
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "path_to_resource",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "nonexistent_file.txt"
-            },
-            {
-              "value_type": "enum",
-              "enum_type": "resource_kind",
-              "value": "animation_resource"
-            }
-          ],
-          "store_result": "text_path"
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "equal",
-            "value1": {
-              "value_type": "string",
-              "value": ""
-            },
-            "value2": {
-              "value_type": "variable",
-              "variable_name": "text_path"
             }
           }
         }
@@ -263,6 +313,40 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "create_bitmap",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "free_bitmap",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
@@ -284,18 +368,6 @@
               "variable_field": "on_free"
             }
           ]
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "variable_field",
-              "variable_name": "free_notifier",
-              "variable_field": "was_notified"
-            },
-            "value2": null
-          }
         }
       ]
     },

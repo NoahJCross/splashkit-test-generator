@@ -27,19 +27,32 @@ module TestGenerator
     # @param all_tests [Hash] Hash to store the processed tests
     # @return [void]
     def process_single_file(file, all_tests)
-      content = JSON.parse(File.read(file), symbolize_names: true)
-      unless content.is_a?(Hash) && content[:group] && content[:tests].is_a?(Array)
-        raise ValidationError, "Invalid test file structure in #{file}. Required keys: 'group' and 'tests' array"
-      end
-
+      content = parse_and_validate_file(file)
       group = content[:group]
-      all_tests[group] ||= []
-      all_tests[group].concat(content[:tests])
+      all_tests[group] ||= {
+        tests: [],
+        constructor: content[:constructor],
+        cleanup: content[:cleanup]
+      }
+      all_tests[group][:tests].concat(content[:tests])
       MessageHandler.log_info("Added #{content[:tests].count} tests to group '#{group}' from #{file}")
     rescue JSON::ParserError => e
       raise ValidationError, "Invalid JSON in test file #{file}: #{e.message}"
     rescue StandardError => e
       raise TestGeneratorError, "Error processing test file #{file}: #{e.message}"
+    end
+
+    # Parses and validates a test file
+    # @param file [String] Path to the file
+    # @return [Hash] Parsed and validated content
+    # @raise [ValidationError] If content structure is invalid
+    def parse_and_validate_file(file)
+      content = JSON.parse(File.read(file), symbolize_names: true)
+      unless content.is_a?(Hash) && content[:group] && content[:tests].is_a?(Array)
+        raise ValidationError, "Invalid test file structure in #{file}. Required keys: 'group' and 'tests' array"
+      end
+
+      content
     end
 
     # Logs the groups found after processing all files

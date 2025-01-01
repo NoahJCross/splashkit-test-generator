@@ -8,27 +8,27 @@ module LanguageConfig
     DEFAULT_CONFIG = {
       supports_overloading: true,
       imports: [
-        "uses SplashKit, TestFramework\n\n"
+        'uses SplashKit, TestFramework, ../Helpers;'
       ],
 
       naming_convention: ->(name) { name.to_pascal_case },
 
       assert_conditions: {
-        'equal'                   => ->(v1, v2, _)    { "AssertEquals(#{v1}, #{v2});\n" },
-        'not_equal'               => ->(v1, v2, _)    { "AssertNotEquals(#{v1}, #{v2});\n" },
-        'greater_than'            => ->(v1, v2, _)    { "AssertTrue(#{v1} > #{v2});\n" },
-        'less_than'               => ->(v1, v2, _)    { "AssertTrue(#{v1} < #{v2});\n" },
-        'null'                    => ->(v1, _, _)     { "AssertNull(#{v1});\n" },
-        'not_null'                => ->(v1, _, _)     { "AssertNotNull(#{v1});\n" },
-        'range'                   => ->(v1, v2, v3)   { "AssertTrue((#{v1} >= #{v2}) and (#{v1} <= #{v3}));\n" },
-        'true'                    => ->(v1, _, _)     { "AssertTrue(#{v1});\n" },
-        'false'                   => ->(v1, _, _)     { "AssertFalse(#{v1});\n" },
-        'greater_than_or_equal'   => ->(v1, v2, _)    { "AssertTrue(#{v1} >= #{v2});\n" },
-        'less_than_or_equal'      => ->(v1, v2, _)    { "AssertTrue(#{v1} <= #{v2});\n" },
-        'throws'                  => ->(v1, _, _)     { "try\n#{v1}\nexcept\nend;\n" },
-        'not_empty'               => ->(v1, _, _)     { "AssertTrue(Length(#{v1}) > 0);\n" },
-        'contains'                => ->(v1, v2, _)    { "AssertTrue(Pos(#{v1}, #{v2}) > 0);\n" },
-        'empty'                   => ->(v1, _, _)     { "AssertTrue(Length(#{v1}) = 0);\n" }
+        'equal'                   => ->(v1, v2, precision = nil) { precision ? "AssertTrue(Abs(#{v1} - #{v2}) <= #{precision});" : "AssertEquals(#{v1}, #{v2});" },
+        'not_equal'               => ->(v1, v2, _)    { "AssertNotEquals(#{v1}, #{v2});" },
+        'greater_than'            => ->(v1, v2, _)    { "AssertTrue(#{v1} > #{v2});" },
+        'less_than'               => ->(v1, v2, _)    { "AssertTrue(#{v1} < #{v2});" },
+        'null'                    => ->(v1, _, _)     { "AssertNull(#{v1});" },
+        'not_null'                => ->(v1, _, _)     { "AssertNotNull(#{v1});" },
+        'range'                   => ->(v1, v2, v3)   { "AssertTrue((#{v1} >= #{v2}) and (#{v1} <= #{v3}));" },
+        'true'                    => ->(v1, _, _)     { "AssertTrue(#{v1});" },
+        'false'                   => ->(v1, _, _)     { "AssertFalse(#{v1});" },
+        'greater_than_or_equal'   => ->(v1, v2, _)    { "AssertTrue(#{v1} >= #{v2});" },
+        'less_than_or_equal'      => ->(v1, v2, _)    { "AssertTrue(#{v1} <= #{v2});" },
+        'throws'                  => ->(v1, _, _)     { "try#{v1}exceptend;" },
+        'not_empty'               => ->(v1, _, _)     { "AssertTrue(Length(#{v1}) > 0);" },
+        'contains'                => ->(v1, v2, _)    { "AssertTrue(Pos(#{v1}, #{v2}) > 0);" },
+        'empty'                   => ->(v1, _, _)     { "AssertTrue(Length(#{v1}) = 0);" }
       }.freeze,
 
       if_conditions: {
@@ -46,12 +46,12 @@ module LanguageConfig
       }.freeze,
 
       control_flow: {
-        loop:      ->(iterations) { "for i := 0 to #{iterations - 1} do\n" },
-        while:     ->(condition) { "while #{condition} do\n" },
-        if:        ->(condition) { "if #{condition} then\n" },
-        else:      -> { "else\n" },
-        break:     -> { "break;\n" },
-        end:       -> { "end;\n" },
+        loop:      ->(iterations) { "for i := 0 to #{iterations - 1} do" },
+        while:     ->(condition) { "while #{condition} do" },
+        if:        ->(condition) { "if #{condition} then" },
+        else:      -> { 'else' },
+        break:     -> { 'break;' },
+        end:       -> { 'end;' },
         new_line: 'LineEnding'
       }.freeze,
 
@@ -68,7 +68,7 @@ module LanguageConfig
           mapped_type = DEFAULT_CONFIG[:type_handlers][:mapping][target_type] || target_type || 'Integer'
           "TArray<#{mapped_type}>.Create(#{values})" 
         },
-        class:     ->(name, args) { "#{name}.Create(#{args})" },
+        class_instance:     ->(name, args) { "#{name}.Create(#{args})" },
         mapping:   {
           'bool'   => 'Boolean',
           'double' => 'Double',
@@ -77,12 +77,19 @@ module LanguageConfig
           'line'   => 'Line'
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}.#{value.to_upper_case}#{semicolon ? ";\n" : ''}" 
+          "#{type.to_pascal_case}.#{value.to_upper_case}#{semicolon ? ';' : ''}" 
         },
+        string: ->(value) { "'#{value}'" },
+        object: ->(object_type, variable_name) { {
+          object_type: object_type.to_pascal_case,
+          variable_name: variable_name.to_camel_case
+        } }
+      }.freeze,
+
+      literal_cast: {
         unsigned_int: ->(value) { "Cardinal(#{value})" },
         float: ->(value) { value },
         double: ->(value) { value },
-        string: ->(value) { "'#{value}'" }
       }.freeze,
 
       variable_handlers: {
@@ -90,8 +97,9 @@ module LanguageConfig
           regular: ->(name) { "#{name.to_camel_case} := " },
           mutable: ->(name) { "#{name.to_camel_case} := " }
         },
-        reference:     ->(name) { name.to_camel_case.to_s },
+        identifier:     ->(name) { name.to_camel_case.to_s },
         field_access:  ->(var, field) { "#{var}.#{field}" },
+        delegate_call: ->(var, field) { "#{var}.#{field};" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
         array_size:    ->(arr) { "Length(#{arr})" },
@@ -100,47 +108,53 @@ module LanguageConfig
 
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_pascal_case}(#{params})#{semicolon ? ';' : ''}" },
-        pointer:   ->(_) { "nil;\n" },
-        test:      ->(name) { "procedure TIntegrationTests.Test#{name.to_pascal_case}Integration;\nbegin\n" }
+        pointer:   ->(_) { 'nil;' },
+        test:      ->(name) { ["procedure Test#{name.to_pascal_case}Integration;", 'begin'] }
       }.freeze,
 
       comment_syntax: {
-        single: "//",
-        multi_start: "{",
-        multi_end: "}",
+        single: '//',
+        multi_start: '{',
+        multi_end: '}',
       }.freeze,
 
       class_wrapper: {
         header: [
-          "type\n",
-          ->(group) { "TTest#{group.to_pascal_case} = class(TTestCase)\n" },
-          "protected\n"
+          'type',
+          ->(group) { "TTest#{group.to_pascal_case} = class(TTestCase)" },
+          'protected',
+          'procedure Setup; override;',
+          'end;'
         ],
         constructor_wrapper: {
-          header: "procedure Setup; override;\nbegin\n  inherited;\n",
-          footer: "end;\n\npublished\n"
+          header: ['begin', 'inherited;'],
+          footer: ['end;']
         },
         footer: [
-          "end;\n",
-          "\n",
-          "procedure RegisterTests;\n",
-          "begin\n",
-          ->(group) { "TestFramework.RegisterTest(TTest#{group.to_pascal_case}.Suite);\n" },
-          "end;\n"
+          'end;',
+          '',
+          'procedure RegisterTests;',
+          'begin',
+          ->(group) { "TestFramework.RegisterTest(TTest#{group.to_pascal_case}.Suite);" },
+          'end;'
         ]
       }.freeze,
 
+      cleanup_handlers: {
+        setup: ->(name, type, arg = nil) {
+          "#{name.to_pascal_case} := T#{type.to_pascal_case}Cleanup.Create#{arg ? "(#{arg})" : ';'}"
+        }
+      }.freeze,
+
+      indentation: {
+        indent_after: ['begin', 'type', 'protected', 'published', 'do', 'class(TTestCase)', 'Create(Name: string);', 'constructor Create;'],
+        unindent_before: ['end;', 'end.', 'protected', 'published', 'inherited', 'begin']
+      }.freeze,
+
       file_extension: 'pas',
-      runtime_requirement: 'Free Pascal Compiler',
-      installation_steps: [
-        '1. Install SplashKit SDK following instructions at https://splashkit.io/installation/',
-        '2. Install FPTest unit testing framework:',
-        '   fppkg install fptest',
-        '3. Compile: fpc integration_tests.pas'
-      ].join("\n"),
-      run_command: './integration_tests',
-      prompt_handlers: {
-        message: ->(text) { "Write('#{text}');\n" }
+
+      terminal_handlers: {
+        message: ->(text) { "Write('#{text}');" }
       }.freeze
     }.freeze
   end

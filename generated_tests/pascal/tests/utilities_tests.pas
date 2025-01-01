@@ -1,9 +1,14 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestUtilities = class(TTestCase)
-protected
-procedure TIntegrationTests.TestContainsIntegration;
+    TTestUtilities = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
+begin
+    inherited;
+    SetResourcesPath('/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/resources');
+end;
+procedure TestContainsIntegration;
 begin
     AssertTrue(Contains('splashkit library', 'splashkit'));
     AssertTrue(Contains('splashkit library', 'library'));
@@ -12,7 +17,7 @@ begin
     AssertFalse(Contains('splashkit library', 'unreal'));
     AssertFalse(Contains('', 'splashkit'));
 end;
-procedure TIntegrationTests.TestConvertToDoubleIntegration;
+procedure TestConvertToDoubleIntegration;
 begin
     AssertEquals(123.0, ConvertToDouble('123'));
     AssertEquals(123.456, ConvertToDouble('123.456'));
@@ -26,7 +31,7 @@ begin
     AssertEquals(-MaxDouble, ConvertToDouble('-inf'));
     AssertEquals(123.0, ConvertToDouble('1.23e2'));
 end;
-procedure TIntegrationTests.TestConvertToIntegerIntegration;
+procedure TestConvertToIntegerIntegration;
 begin
     AssertEquals(123, ConvertToInteger('123'));
     AssertEquals(123, ConvertToInteger('123.456'));
@@ -36,7 +41,7 @@ begin
     AssertEquals(123, ConvertToInteger('000123.456'));
     AssertEquals(123, ConvertToInteger('123.456000'));
 end;
-procedure TIntegrationTests.TestIndexOfIntegration;
+procedure TestIndexOfIntegration;
 begin
     AssertEquals(0, IndexOf('splashkit library', 'splashkit'));
     AssertEquals(10, IndexOf('splashkit library', 'library'));
@@ -48,7 +53,7 @@ begin
     AssertEquals(-1, IndexOf('', 'splashkit'));
     AssertEquals(0, IndexOf('', ''));
 end;
-procedure TIntegrationTests.TestIsDoubleIntegration;
+procedure TestIsDoubleIntegration;
 begin
     AssertTrue(IsDouble('123.456'));
     AssertTrue(IsDouble('123'));
@@ -61,7 +66,7 @@ begin
     AssertFalse(IsDouble('SplashKit'));
     AssertFalse(IsDouble(''));
 end;
-procedure TIntegrationTests.TestIsIntegerIntegration;
+procedure TestIsIntegerIntegration;
 begin
     AssertTrue(IsInteger('123'));
     AssertTrue(IsInteger('-123'));
@@ -71,7 +76,7 @@ begin
     AssertFalse(IsInteger('SplashKit'));
     AssertFalse(IsInteger(''));
 end;
-procedure TIntegrationTests.TestIsNumberIntegration;
+procedure TestIsNumberIntegration;
 begin
     AssertTrue(IsNumber('123'));
     AssertTrue(IsNumber('123.456'));
@@ -80,12 +85,12 @@ begin
     AssertFalse(IsNumber('SplashKit'));
     AssertFalse(IsNumber(''));
 end;
-procedure TIntegrationTests.TestLengthOfIntegration;
+procedure TestLengthOfIntegration;
 begin
     AssertEquals(9, LengthOf('splashkit'));
     AssertEquals(0, LengthOf(''));
 end;
-procedure TIntegrationTests.TestReplaceAllIntegration;
+procedure TestReplaceAllIntegration;
 begin
     AssertEquals('SK library', ReplaceAll('splashkit library', 'splashkit', 'SK'));
     AssertEquals('splashkit lib', ReplaceAll('splashkit library', 'library', 'lib'));
@@ -96,7 +101,7 @@ begin
     AssertEquals('splashkit library', ReplaceAll('splashkit library', '', 'SK'));
     AssertEquals('', ReplaceAll('', '', 'SK'));
 end;
-procedure TIntegrationTests.TestSplitIntegration;
+procedure TestSplitIntegration;
 begin
     result := Split('splashkit library', ' ');
     AssertEquals(TArray<String>.Create('splashkit', 'library'), result);
@@ -107,21 +112,21 @@ begin
     AssertEquals(TArray<String>.Create('', 'splashkit library', ''), Split(',splashkit library,', ','));
     AssertEquals(TArray<String>.Create('splashkit', '', 'library'), Split('splashkit,,library', ','));
 end;
-procedure TIntegrationTests.TestToLowercaseIntegration;
+procedure TestToLowercaseIntegration;
 begin
     AssertEquals('splashkit', ToLowercase('SPLASHKIT'));
     AssertEquals('', ToLowercase(''));
     AssertEquals('splashkit', ToLowercase('splashkit'));
     AssertEquals('splashkit', ToLowercase('SpLaShKiT'));
 end;
-procedure TIntegrationTests.TestToUppercaseIntegration;
+procedure TestToUppercaseIntegration;
 begin
     AssertEquals('SPLASHKIT', ToUppercase('splashkit'));
     AssertEquals('', ToUppercase(''));
     AssertEquals('SPLASHKIT', ToUppercase('SPLASHKIT'));
     AssertEquals('SPLASHKIT', ToUppercase('SpLaShKiT'));
 end;
-procedure TIntegrationTests.TestTrimIntegration;
+procedure TestTrimIntegration;
 begin
     AssertEquals('splashkit', Trim('  splashkit'));
     AssertEquals('splashkit', Trim('splashkit  '));
@@ -129,48 +134,49 @@ begin
     AssertEquals('splashkit', Trim('splashkit'));
     AssertEquals('', Trim(''));
 end;
-procedure TIntegrationTests.TestRndRangeIntegration;
+procedure TestRndRangeIntegration;
 begin
     AssertTrue((Rnd(-1, 5) >= -1) and (Rnd(-1, 5) <= 5));
     AssertEquals(1, Rnd(1, 1));
     AssertTrue((Rnd(5, 1) >= 1) and (Rnd(5, 1) <= 5));
 end;
-procedure TIntegrationTests.TestRndIntegration;
+procedure TestRndIntegration;
 begin
     AssertTrue((Rnd() >= 0.0) and (Rnd() <= MaxSingle));
 end;
-procedure TIntegrationTests.TestRndIntIntegration;
+procedure TestRndIntIntegration;
 begin
     AssertTrue((Rnd(1) >= 0) and (Rnd(1) <= 1));
     AssertTrue((Rnd(10) >= 0) and (Rnd(10) <= 10));
     AssertEquals(0, Rnd(-1));
     AssertEquals(0, Rnd(0));
 end;
-procedure TIntegrationTests.TestCurrentTicksIntegration;
+procedure TestCurrentTicksIntegration;
 begin
     testTicks := CurrentTicks();
     AssertTrue(testTicks > 0);
 end;
-procedure TIntegrationTests.TestDelayIntegration;
+procedure TestDelayIntegration;
 begin
     testTimer := CreateTimer('test_timer');
+    CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     initialTicks := TimerTicks(testTimer);
     Delay(200);
     AssertTrue(initialTicks + 200 < TimerTicks(testTimer));
 end;
-procedure TIntegrationTests.TestDisplayDialogIntegration;
+procedure TestDisplayDialogIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     testFont := LoadFont('test_font', 'hara.ttf');
+    CleanupFont := TFontCleanup.Create;
     DisplayDialog('Test Dialog', 'This is a test message', testFont, 20);
     FreeFont(testFont);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestFileAsStringIntegration;
+procedure TestFileAsStringIntegration;
 begin
-    AssertEquals('BITMAP,ufo,ufo.png
-    ', FileAsString('blah.txt', ResourceKind.BUNDLE_RESOURCE));
+    AssertEquals('BITMAP,ufo,ufo.png\n', FileAsString('blah.txt', ResourceKind.BUNDLE_RESOURCE));
     AssertEquals('', FileAsString('', ResourceKind.BUNDLE_RESOURCE));
     AssertEquals('', FileAsString('invalid.txt', ResourceKind.BUNDLE_RESOURCE));
 end;
@@ -178,5 +184,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

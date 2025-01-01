@@ -8,28 +8,29 @@ module LanguageConfig
     DEFAULT_CONFIG = {
       supports_overloading: true,
       imports: [
-        "#include \"splashkit.h\"\n",
-        "#include <catch2/catch.hpp>\n\n"
+        '#include "splashkit.h"',
+        '#include <catch2/catch.hpp>',
+        '#include "../helpers.hpp"'
       ],
 
       naming_convention: ->(name) { name.to_snake_case },
 
       assert_conditions: {
-        'equal'                   => ->(v1, v2, _)    { "REQUIRE(#{v1} == #{v2});\n" },
-        'not_equal'               => ->(v1, v2, _)    { "REQUIRE(#{v1} != #{v2});\n" },
-        'greater_than'            => ->(v1, v2, _)    { "REQUIRE(#{v1} > #{v2});\n" },
-        'less_than'               => ->(v1, v2, _)    { "REQUIRE(#{v1} < #{v2});\n" },
-        'null'                    => ->(v1, _, _)     { "REQUIRE(#{v1} == nullptr);\n" },
-        'not_null'                => ->(v1, _, _)     { "REQUIRE(#{v1} != nullptr);\n" },
-        'range'                   => ->(v1, v2, v3)   { "REQUIRE(#{v1} >= #{v2} && #{v1} <= #{v3});\n" },
-        'true'                    => ->(v1, _, _)     { "REQUIRE(#{v1});\n" },
-        'false'                   => ->(v1, _, _)     { "REQUIRE_FALSE(#{v1});\n" },
-        'greater_than_or_equal'   => ->(v1, v2, _)    { "REQUIRE(#{v1} >= #{v2});\n" },
-        'less_than_or_equal'      => ->(v1, v2, _)    { "REQUIRE(#{v1} <= #{v2});\n" },
-        'throws'                  => ->(v1, _, _)     { "REQUIRE_THROWS_AS(#{v1}, exception);\n" },
-        'not_empty'               => ->(v1, _, _)     { "REQUIRE(!#{v1}.empty());\n" },
-        'contains'                => ->(v1, v2, _)    { "REQUIRE(#{v2}.find(#{v1}) != string::npos);\n" },
-        'empty'                   => ->(v1, _, _)     { "REQUIRE(#{v1}.empty());\n" }
+        'equal'                   => ->(v1, v2, precision = nil) { precision ? "REQUIRE(abs(#{v1} - #{v2}) <= #{precision});" : "REQUIRE(#{v1} == #{v2});" },
+        'not_equal'               => ->(v1, v2, _)    { "REQUIRE(#{v1} != #{v2});" },
+        'greater_than'            => ->(v1, v2, _)    { "REQUIRE(#{v1} > #{v2});" },
+        'less_than'               => ->(v1, v2, _)    { "REQUIRE(#{v1} < #{v2});" },
+        'null'                    => ->(v1, _, _)     { "REQUIRE(#{v1} == nullptr);" },
+        'not_null'                => ->(v1, _, _)     { "REQUIRE(#{v1} != nullptr);" },
+        'range'                   => ->(v1, v2, v3)   { "REQUIRE(#{v1} >= #{v2} && #{v1} <= #{v3});" },
+        'true'                    => ->(v1, _, _)     { "REQUIRE(#{v1});" },
+        'false'                   => ->(v1, _, _)     { "REQUIRE_FALSE(#{v1});" },
+        'greater_than_or_equal'   => ->(v1, v2, _)    { "REQUIRE(#{v1} >= #{v2});" },
+        'less_than_or_equal'      => ->(v1, v2, _)    { "REQUIRE(#{v1} <= #{v2});" },
+        'throws'                  => ->(v1, _, _)     { "REQUIRE_THROWS_AS(#{v1}, exception);" },
+        'not_empty'               => ->(v1, _, _)     { "REQUIRE(!#{v1}.empty());" },
+        'contains'                => ->(v1, v2, _)    { "REQUIRE(#{v2}.find(#{v1}) != string::npos);" },
+        'empty'                   => ->(v1, _, _)     { "REQUIRE(#{v1}.empty());" }
       }.freeze,
 
       if_conditions: {
@@ -47,12 +48,12 @@ module LanguageConfig
       }.freeze,
 
       control_flow: {
-        loop:      ->(iterations) { "for (int i = 0; i < #{iterations}; ++i) {\n" },
-        while:     ->(condition) { "while (#{condition}) {\n" },
-        if:        ->(condition) { "if (#{condition}) {\n" },
-        else:      -> { "else {\n" },
-        break:     -> { "break;\n" },
-        end:       -> { "}\n" },
+        loop:      ->(iterations) { "for (int i = 0; i < #{iterations}; ++i) {" },
+        while:     ->(condition) { "while (#{condition}) {" },
+        if:        ->(condition) { "if (#{condition}) {" },
+        else:      -> { 'else {' },
+        break:     -> { 'break;' },
+        end:       -> { '}' },
         new_line: 'endl'
       }.freeze,
 
@@ -67,20 +68,27 @@ module LanguageConfig
       type_handlers: {
         list:      ->(values, target_type = nil) { 
           mapped_type = DEFAULT_CONFIG[:type_handlers][:mapping][target_type] || target_type || 'auto'
-          "vector<#{mapped_type}> { #{values} }" 
+          "vector<#{mapped_type}> { #{values} }"
         },
-        class:     ->(name, args) { "#{name}(#{args})" },
+        class_instance:     ->(name, args) { "#{name}(#{args})" },
         mapping:   {
           'json' => 'Json',
           'line' => 'Line'
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}::#{value.to_upper_case}#{semicolon ? ";\n" : ''}"
+          "#{type.to_pascal_case}::#{value.to_upper_case}#{semicolon ? ';' : ''}"
         },
+        string: ->(value) { "string(\"#{value}\")" },
+        object: ->(object_type, variable_name) { {
+          object_type: object_type.to_pascal_case,
+          variable_name: variable_name.to_snake_case
+        } },
+      }.freeze,
+
+      literal_cast: {
         unsigned_int: ->(value) { "#{value}u" },
         float: ->(value) { "#{value}f" },
         double: ->(value) { "#{value}d" },
-        string: ->(value) { "string(\"#{value}\")" }
       }.freeze,
 
       variable_handlers: {
@@ -88,8 +96,9 @@ module LanguageConfig
           regular: ->(name) { "auto #{name.to_snake_case} = " },
           mutable: ->(name) { "auto #{name.to_snake_case} = " }
         },
-        reference:     ->(name) { name.to_snake_case.to_s },
-        field_access:  ->(var, field) { "#{var}->#{field}" },
+        identifier:     ->(name) { name.to_snake_case.to_s },
+        field_access:  ->(var, field) { "#{var}.#{field}" },
+        delegate_call: ->(var, field) { "#{var}.#{field}();" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:    ->(arr) { "#{arr}.size()" },
@@ -98,40 +107,42 @@ module LanguageConfig
 
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
-        pointer:   ->(_) { "nullptr;\n" },
-        test:      ->(name) { "TEST_CASE(\"#{name.to_snake_case}_integration\") {\n" }
+        pointer:   ->(_) { 'nullptr;' },
+        test:      ->(name) { ["TEST_CASE(\"#{name.to_snake_case}_integration\") {"] }
       }.freeze,
 
       comment_syntax: {
-        single: "//",
-        multi_start: "/*",
-        multi_end: "*/",
+        single: '//',
+        multi_start: '/*',
+        multi_end: '*/',
       }.freeze,
 
       class_wrapper: {
         header: [
-          ->(group) { "class Test#{group.to_pascal_case} {\n" },
-          "public:\n"
+          ->(group) { "class Test#{group.to_pascal_case} {" },
+          'public:'
         ],
         constructor_wrapper: {
-          header: ->(group) { "Test#{group.to_pascal_case}() {\n" },
-          footer: "}\n\n"
+          header: ->(group) { ["Test#{group.to_pascal_case}()", '{' ]},
+          footer: ['}']
         },
-        footer: ["};\n"],
-        indent_after: ["public:\n"],
-        unindent_before: ["};\n"]
+        footer: ['};']
+      }.freeze,
+
+      cleanup_handlers: {
+        setup: ->(name, type, arg = nil) {
+          "#{type.to_pascal_case}Cleanup #{name.to_snake_case}#{arg ? "(#{arg})" : '' };"
+        }
+      }.freeze,
+
+      indentation: {
+        indent_after: ['{', 'public:', 'private:'],
+        unindent_before: ['};', '};', '}', 'public:', 'private:']
       }.freeze,
 
       file_extension: 'cpp',
-      runtime_requirement: 'g++',
-      installation_steps: [
-        '1. Install SplashKit SDK following instructions at https://splashkit.io/installation/',
-        '2. Install Catch2: sudo apt-get install catch2 (Ubuntu) or brew install catch2 (macOS)',
-        '3. Compile: g++ integration_tests.cpp -l SplashKit -o integration_tests'
-      ].join("\n"),
-      run_command: './integration_tests',
-      prompt_handlers: {
-        message: ->(text) { "cout << \"#{text}\";\n" }
+      terminal_handlers: {
+        message: ->(text) { "cout << \"#{text}\";" }
       }.freeze
     }.freeze
   end

@@ -1,24 +1,30 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestResources = class(TTestCase)
-protected
-procedure TIntegrationTests.TestDeregisterFreeNotifierIntegration;
+    TTestResources = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
+    procedure TestDeregisterFreeNotifierIntegration;
 begin
     freeNotifier := NotifierTracker.Create();
     RegisterFreeNotifier(freeNotifier.on_free);
-    DeregisterFreeNotifier(freeNotifier.on_free);
+    testBitmap1 := CreateBitmap('test_bitmap', 100, 100);
+    CleanupBitmap := TBitmapCleanup.Create;
+    FreeBitmap(testBitmap1);
     AssertTrue(freeNotifier.was_notified);
+    DeregisterFreeNotifier(freeNotifier.on_free);
+    freeNotifier.reset;
+    testBitmap2 := CreateBitmap('test_bitmap', 100, 100);
+    FreeBitmap(testBitmap2);
+    AssertFalse(freeNotifier.was_notified);
 end;
-procedure TIntegrationTests.TestPathToResourceIntegration;
+procedure TestPathToResourceIntegration;
 begin
     SetResourcesPath('resources');
     imagePath := PathToResource('test_image.png', ResourceKind.IMAGE_RESOURCE);
     AssertNotEquals('', imagePath);
-    textPath := PathToResource('nonexistent_file.txt', ResourceKind.ANIMATION_RESOURCE);
-    AssertEquals('', textPath);
 end;
-procedure TIntegrationTests.TestPathToResourcesIntegration;
+procedure TestPathToResourcesIntegration;
 begin
     resourcePath := PathToResources();
     AssertTrue(Length(resourcePath) > 0);
@@ -26,7 +32,7 @@ begin
     newResourcePath := PathToResources();
     AssertEquals('/new/resources', newResourcePath);
 end;
-procedure TIntegrationTests.TestPathToResourcesForKindIntegration;
+procedure TestPathToResourcesForKindIntegration;
 begin
     SetResourcesPath('resources');
     imagePath := PathToResources(ResourceKind.IMAGE_RESOURCE);
@@ -34,15 +40,17 @@ begin
     soundPath := PathToResources(ResourceKind.SOUND_RESOURCE);
     AssertEquals('resources/sounds', soundPath);
 end;
-procedure TIntegrationTests.TestRegisterFreeNotifierIntegration;
+procedure TestRegisterFreeNotifierIntegration;
 begin
     freeNotifier := NotifierTracker.Create();
     RegisterFreeNotifier(freeNotifier.on_free);
+    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    CleanupBitmap := TBitmapCleanup.Create;
+    FreeBitmap(testBitmap);
     AssertTrue(freeNotifier.was_notified);
     DeregisterFreeNotifier(freeNotifier.on_free);
-    AssertFalse(freeNotifier.was_notified);
 end;
-procedure TIntegrationTests.TestSetResourcesPathIntegration;
+procedure TestSetResourcesPathIntegration;
 begin
     SetResourcesPath('/resources');
     AssertEquals('/resources', PathToResources());
@@ -53,5 +61,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

@@ -1,28 +1,26 @@
 {
   "group": "physics",
+  "cleanup": [
+    {
+      "cleanup_type": "window",
+      "function_name": "close_all_windows",
+      "args": []
+    },
+    {
+      "cleanup_type": "bitmap",
+      "function_name": "free_all_bitmaps",
+      "args": []
+    },
+    {
+      "cleanup_type": "sprite",
+      "function_name": "free_all_sprites",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "bitmap_circle_collision_at_point",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -41,6 +39,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -125,51 +128,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_circle_collision",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -188,6 +152,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -261,51 +230,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_circle_collision_for_cell_with_translation",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -324,6 +254,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -412,51 +347,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_circle_collision_for_cell_at_point",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -475,6 +371,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -563,51 +464,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_circle_collision_for_cell",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -626,6 +488,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -703,51 +570,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_collision",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -766,6 +594,11 @@
             }
           ],
           "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -925,46 +758,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_bitmaps",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_collision_at_points",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -983,6 +782,11 @@
             }
           ],
           "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -1111,46 +915,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_bitmaps",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_collision_for_cells_with_translations",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -1169,6 +939,11 @@
             }
           ],
           "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -1305,46 +1080,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_bitmaps",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_collision_for_cells_at_points",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -1363,6 +1104,11 @@
             }
           ],
           "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -1499,46 +1245,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_bitmaps",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_collision_for_cells",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -1557,6 +1269,11 @@
             }
           ],
           "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -1716,46 +1433,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_bitmaps",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_point_collision_with_translation",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -1774,6 +1457,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -1821,14 +1509,29 @@
           "args": [
             {
               "value_type": "double",
-              "value": 150.0
+              "value": 151.0
             },
             {
               "value_type": "double",
               "value": 150.0
             }
           ],
-          "store_result": "test_point"
+          "store_result": "test_point1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "double",
+              "value": 201.0
+            },
+            {
+              "value_type": "double",
+              "value": 200.0
+            }
+          ],
+          "store_result": "test_point2"
         },
         {
           "step_type": "assertion",
@@ -1848,7 +1551,7 @@
                 },
                 {
                   "value_type": "variable",
-                  "variable_name": "test_point"
+                  "variable_name": "test_point1"
                 }
               ]
             },
@@ -1856,49 +1559,35 @@
           }
         },
         {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_point_collision_with_translation",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_translation"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_point2"
+                }
+              ]
+            },
+            "value2": null
+          }
         }
       ]
     },
     {
       "name": "bitmap_point_collision_at_point",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -1917,6 +1606,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -1964,11 +1658,11 @@
           "args": [
             {
               "value_type": "double",
-              "value": 75.0
+              "value": 101.0
             },
             {
               "value_type": "double",
-              "value": 75.0
+              "value": 100.0
             }
           ],
           "store_result": "test_point"
@@ -1999,49 +1693,45 @@
           }
         },
         {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_point_collision_at_point",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bmp_point"
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "point_at",
+                  "args": [
+                    {
+                      "value_type": "double",
+                      "value": 201.0
+                    },
+                    {
+                      "value_type": "double",
+                      "value": 200.0
+                    }
+                  ]
+                }
+              ]
+            },
+            "value2": null
+          }
         }
       ]
     },
     {
       "name": "bitmap_point_collision",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -2060,6 +1750,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -2108,7 +1803,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 51.0
                 },
                 {
                   "value_type": "double",
@@ -2141,7 +1836,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 150.0
+                  "value": 151.0
                 },
                 {
                   "value_type": "double",
@@ -2151,51 +1846,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_point_collision_for_cell_with_translation",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -2214,6 +1870,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -2261,14 +1922,29 @@
           "args": [
             {
               "value_type": "double",
-              "value": 150.0
+              "value": 151.0
             },
             {
               "value_type": "double",
               "value": 150.0
             }
           ],
-          "store_result": "test_point"
+          "store_result": "test_point1"
+        },
+        {
+          "step_type": "function",
+          "function_name": "point_at",
+          "args": [
+            {
+              "value_type": "double",
+              "value": 201.0
+            },
+            {
+              "value_type": "double",
+              "value": 200.0
+            }
+          ],
+          "store_result": "test_point2"
         },
         {
           "step_type": "assertion",
@@ -2292,7 +1968,7 @@
                 },
                 {
                   "value_type": "variable",
-                  "variable_name": "test_point"
+                  "variable_name": "test_point1"
                 }
               ]
             },
@@ -2300,49 +1976,39 @@
           }
         },
         {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_point_collision_for_cell_with_translation",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                },
+                {
+                  "value_type": "int",
+                  "value": 0
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_translation"
+                },
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_point2"
+                }
+              ]
+            },
+            "value2": null
+          }
         }
       ]
     },
     {
       "name": "bitmap_point_collision_for_cell_at_point",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -2361,6 +2027,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -2423,11 +2094,11 @@
                   "args": [
                     {
                       "value_type": "double",
-                      "value": 50.0
+                      "value": 101.0
                     },
                     {
                       "value_type": "double",
-                      "value": 50.0
+                      "value": 100.0
                     }
                   ]
                 }
@@ -2437,49 +2108,59 @@
           }
         },
         {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_point_collision_for_cell_at_point",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                },
+                {
+                  "value_type": "int",
+                  "value": 0
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "point_at",
+                  "args": [
+                    {
+                      "value_type": "double",
+                      "value": 51.0
+                    },
+                    {
+                      "value_type": "double",
+                      "value": 50.0
+                    }
+                  ]
+                },
+                {
+                  "value_type": "function",
+                  "function_name": "point_at",
+                  "args": [
+                    {
+                      "value_type": "double",
+                      "value": 201.0
+                    },
+                    {
+                      "value_type": "double",
+                      "value": 200.0
+                    }
+                  ]
+                }
+              ]
+            },
+            "value2": null
+          }
         }
       ]
     },
     {
       "name": "bitmap_point_collision_for_cell",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -2498,6 +2179,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -2525,7 +2211,7 @@
             },
             {
               "value_type": "double",
-              "value": 50.0
+              "value": 51.0
             },
             {
               "value_type": "double",
@@ -2579,7 +2265,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 51.0
                 },
                 {
                   "value_type": "double",
@@ -2591,49 +2277,47 @@
           }
         },
         {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "function",
+              "function_name": "bitmap_point_collision_for_cell",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "test_bitmap"
+                },
+                {
+                  "value_type": "int",
+                  "value": 0
+                },
+                {
+                  "value_type": "double",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 50.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 50.0
+                }
+              ]
+            },
+            "value2": null
+          }
         }
       ]
     },
     {
       "name": "bitmap_rectangle_collision_at_point",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -2652,6 +2336,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -2740,51 +2429,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_rectangle_collision",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -2803,6 +2453,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -2880,51 +2535,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_rectangle_collision_for_cell_with_translation",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -2943,6 +2559,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -3035,51 +2656,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_rectangle_collision_for_cell_at_point",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -3098,6 +2680,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -3190,51 +2777,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "bitmap_rectangle_collision_for_cell",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -3253,6 +2801,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -3334,51 +2887,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "sprite_bitmap_collision",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -3397,6 +2911,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -3433,6 +2952,11 @@
             }
           ],
           "store_result": "test_sprite"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sprite",
+          "store_result": "cleanup_sprite"
         },
         {
           "step_type": "function",
@@ -3530,51 +3054,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_sprites",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_bitmaps",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "sprite_bitmap_collision_with_cell_at_point",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -3593,6 +3078,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -3629,6 +3119,11 @@
             }
           ],
           "store_result": "test_sprite"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sprite",
+          "store_result": "cleanup_sprite"
         },
         {
           "step_type": "function",
@@ -3707,56 +3202,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_sprites",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "sprite_bitmap_collision_with_cell",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -3775,6 +3226,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -3811,6 +3267,11 @@
             }
           ],
           "store_result": "test_sprite"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sprite",
+          "store_result": "cleanup_sprite"
         },
         {
           "step_type": "function",
@@ -3883,51 +3344,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_sprites",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_bitmaps",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "sprite_collision",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -3946,6 +3368,11 @@
             }
           ],
           "store_result": "test_bitmap1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -4026,6 +3453,11 @@
             }
           ],
           "store_result": "test_sprite1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sprite",
+          "store_result": "cleanup_sprite"
         },
         {
           "step_type": "function",
@@ -4181,51 +3613,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_sprites",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_bitmaps",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "sprite_point_collision",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -4244,6 +3637,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -4282,6 +3680,11 @@
           "store_result": "test_sprite"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "sprite",
+          "store_result": "cleanup_sprite"
+        },
+        {
           "step_type": "function",
           "function_name": "sprite_set_collision_kind",
           "args": [
@@ -4314,7 +3717,7 @@
                   "args": [
                     {
                       "value_type": "double",
-                      "value": 75.0
+                      "value": 76.0
                     },
                     {
                       "value_type": "double",
@@ -4357,56 +3760,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_sprites",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "sprite_rectangle_collision",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "create_bitmap",
@@ -4425,6 +3784,11 @@
             }
           ],
           "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
         },
         {
           "step_type": "function",
@@ -4461,6 +3825,11 @@
             }
           ],
           "store_result": "test_sprite"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sprite",
+          "store_result": "cleanup_sprite"
         },
         {
           "step_type": "function",
@@ -4520,56 +3889,12 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_all_sprites",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "apply_matrix_to_quad",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ],
-          "store_result": "test_window"
-        },
         {
           "step_type": "function",
           "function_name": "identity_matrix",
@@ -4687,16 +4012,6 @@
               "field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -4980,7 +4295,10 @@
               "row": 0,
               "col": 0
             },
-            "precision": 3
+            "value3": {
+              "value_type": "int",
+              "value": 2
+            }
           }
         },
         {
@@ -4998,7 +4316,10 @@
               "row": 1,
               "col": 1
             },
-            "precision": 3
+            "value3": {
+              "value_type": "int",
+              "value": 2
+            }
           }
         }
       ]
@@ -5327,7 +4648,10 @@
               "variable_name": "result_point",
               "variable_field": "x"
             },
-            "precision": 2
+            "value3": {
+              "value_type": "precision",
+              "value": 2.0
+            }
           }
         },
         {
@@ -5343,7 +4667,10 @@
               "variable_name": "result_point",
               "variable_field": "y"
             },
-            "precision": 2
+            "value3": {
+              "value_type": "precision",
+              "value": 2.0
+            }
           }
         }
       ]
@@ -6356,7 +5683,10 @@
               "variable_name": "test_unit_vector",
               "variable_field": "x"
             },
-            "precision": 2
+            "value3": {
+              "value_type": "precision",
+              "value": 2.0
+            }
           }
         },
         {
@@ -6922,7 +6252,10 @@
               "variable_name": "limited_vector",
               "variable_field": "x"
             },
-            "precision": 4
+            "value3": {
+              "value_type": "int",
+              "value": 2
+            }
           }
         },
         {
@@ -7129,7 +6462,10 @@
               "variable_name": "normal_vector",
               "variable_field": "x"
             },
-            "precision": 2
+            "value3": {
+              "value_type": "precision",
+              "value": 2.0
+            }
           }
         },
         {
@@ -7145,7 +6481,10 @@
               "variable_name": "normal_vector",
               "variable_field": "y"
             },
-            "precision": 2
+            "value3": {
+              "value_type": "precision",
+              "value": 2.0
+            }
           }
         }
       ]
@@ -7238,7 +6577,10 @@
               "variable_name": "result_vector",
               "variable_field": "x"
             },
-            "precision": 2
+            "value3": {
+              "value_type": "precision",
+              "value": 2.0
+            }
           }
         },
         {
@@ -7342,7 +6684,10 @@
               "variable_name": "result_vector",
               "variable_field": "x"
             },
-            "precision": 2
+            "value3": {
+              "value_type": "precision",
+              "value": 2.0
+            }
           }
         },
         {
@@ -7561,7 +6906,10 @@
               "variable_name": "result_vector",
               "variable_field": "x"
             },
-            "precision": 2
+            "value3": {
+              "value_type": "precision",
+              "value": 2.0
+            }
           }
         },
         {
@@ -7972,7 +7320,7 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "vector_from_angle",
+          "function_name": "vector_to",
           "args": [
             {
               "value_type": "double",

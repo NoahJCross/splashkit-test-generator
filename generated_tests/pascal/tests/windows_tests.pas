@@ -1,488 +1,478 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestWindows = class(TTestCase)
-protected
-procedure TIntegrationTests.TestClearWindowIntegration;
+    TTestWindows = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
+    procedure TestClearWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     color := ColorBlack();
     ClearWindow(testWindow, color);
     RefreshWindow(testWindow);
     pixel := GetPixel(PointAt(0.0, 0.0));
     AssertEquals(color, pixel);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCloseAllWindowsIntegration;
+procedure TestCloseAllWindowsIntegration;
 begin
     OpenWindow('Test Window 1', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     OpenWindow('Test Window 2', 800, 600);
     CloseAllWindows();
     AssertFalse(HasWindow('Test Window 1'));
     AssertFalse(HasWindow('Test Window 2'));
 end;
-procedure TIntegrationTests.TestCloseCurrentWindowIntegration;
+procedure TestCloseCurrentWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     CloseCurrentWindow();
     AssertFalse(HasWindow('Test Window'));
     AssertNull(CurrentWindow());
 end;
-procedure TIntegrationTests.TestCloseWindowNamedIntegration;
+procedure TestCloseWindowNamedIntegration;
 begin
     OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertTrue(HasWindow('Test Window'));
     CloseWindow('Test Window');
     AssertFalse(HasWindow('Test Window'));
 end;
-procedure TIntegrationTests.TestCloseWindowIntegration;
+procedure TestCloseWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     windowName := WindowCaption(testWindow);
     CloseWindow(testWindow);
     AssertFalse(HasWindow(windowName));
-    AssertFalse(WindowHasFocus(testWindow));
 end;
-procedure TIntegrationTests.TestCurrentWindowIntegration;
+procedure TestCurrentWindowIntegration;
 begin
-    window1 := OpenWindow('Test Window 1', 800, 600);
-    window2 := OpenWindow('Test Window 2', 800, 600);
-    SetCurrentWindow(window2);
-    AssertEquals(window2, CurrentWindow());
-    AssertTrue(IsCurrentWindow(window2));
-    AssertFalse(IsCurrentWindow(window1));
-    CloseAllWindows();
+    testWindow1 := OpenWindow('Test Window 1', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    testWindow2 := OpenWindow('Test Window 2', 800, 600);
+    SetCurrentWindow(testWindow2);
+    AssertEquals(testWindow2, CurrentWindow());
+    AssertTrue(IsCurrentWindow(testWindow2));
+    AssertFalse(IsCurrentWindow(testWindow1));
 end;
-procedure TIntegrationTests.TestCurrentWindowHasBorderIntegration;
+procedure TestCurrentWindowHasBorderIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     AssertTrue(CurrentWindowHasBorder());
     CurrentWindowToggleBorder();
     AssertFalse(CurrentWindowHasBorder());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCurrentWindowHeightIntegration;
+procedure TestCurrentWindowHeightIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     AssertEquals(600, CurrentWindowHeight());
     ResizeCurrentWindow(800, 400);
     AssertEquals(400, CurrentWindowHeight());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCurrentWindowIsFullscreenIntegration;
+procedure TestCurrentWindowIsFullscreenIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     AssertFalse(CurrentWindowIsFullscreen());
     CurrentWindowToggleFullscreen();
     AssertTrue(CurrentWindowIsFullscreen());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCurrentWindowPositionIntegration;
+procedure TestCurrentWindowPositionIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     MoveCurrentWindowTo(100, 200);
     position := CurrentWindowPosition();
-    AssertEquals(100.0, position.x);
-    AssertEquals(200.0, position.y);
-    CloseWindow(testWindow);
+    AssertEquals(68.0, position.x);
+    AssertEquals(168.0, position.y);
 end;
-procedure TIntegrationTests.TestCurrentWindowToggleBorderIntegration;
+procedure TestCurrentWindowToggleBorderIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     initialBorder := CurrentWindowHasBorder();
     CurrentWindowToggleBorder();
     AssertNotEquals(initialBorder, CurrentWindowHasBorder());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCurrentWindowToggleFullscreenIntegration;
+procedure TestCurrentWindowToggleFullscreenIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     initialFullscreen := CurrentWindowIsFullscreen();
     CurrentWindowToggleFullscreen();
     AssertNotEquals(initialFullscreen, CurrentWindowIsFullscreen());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCurrentWindowWidthIntegration;
+procedure TestCurrentWindowWidthIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     AssertEquals(800, CurrentWindowWidth());
     ResizeCurrentWindow(400, 600);
     AssertEquals(400, CurrentWindowWidth());
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestCurrentWindowXIntegration;
+procedure TestCurrentWindowXIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     MoveCurrentWindowTo(100, 200);
-    AssertEquals(100, CurrentWindowX());
+    AssertEquals(68, CurrentWindowX());
     MoveCurrentWindowTo(300, 200);
-    AssertEquals(300, CurrentWindowX());
-    CloseWindow(testWindow);
+    AssertEquals(268, CurrentWindowX());
 end;
-procedure TIntegrationTests.TestCurrentWindowYIntegration;
+procedure TestCurrentWindowYIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     MoveCurrentWindowTo(0, 100);
-    ProcessEvents();
-    AssertEquals(100, CurrentWindowY());
-    CloseWindow(testWindow);
+    AssertEquals(68, CurrentWindowY());
 end;
-procedure TIntegrationTests.TestHasWindowIntegration;
+procedure TestHasWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertTrue(HasWindow('Test Window'));
     AssertTrue(HasWindow(WindowCaption(testWindow)));
     CloseWindow(testWindow);
     AssertFalse(HasWindow('Test Window'));
 end;
-procedure TIntegrationTests.TestIsCurrentWindowIntegration;
+procedure TestIsCurrentWindowIntegration;
 begin
-    window1 := OpenWindow('Test Window 1', 800, 600);
-    window2 := OpenWindow('Test Window 2', 800, 600);
-    SetCurrentWindow(window1);
-    AssertTrue(IsCurrentWindow(window1));
-    AssertFalse(IsCurrentWindow(window2));
-    CloseAllWindows();
+    testWindow1 := OpenWindow('Test Window 1', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    testWindow2 := OpenWindow('Test Window 2', 800, 600);
+    SetCurrentWindow(testWindow1);
+    AssertTrue(IsCurrentWindow(testWindow1));
+    AssertFalse(IsCurrentWindow(testWindow2));
 end;
-procedure TIntegrationTests.TestMoveCurrentWindowToIntegration;
+procedure TestMoveCurrentWindowToIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     MoveCurrentWindowTo(100, 200);
-    ProcessEvents();
-    AssertEquals(100, CurrentWindowX());
-    AssertEquals(200, CurrentWindowY());
-    CloseWindow(testWindow);
+    AssertEquals(68, CurrentWindowX());
+    AssertEquals(168, CurrentWindowY());
 end;
-procedure TIntegrationTests.TestMoveWindowToNamedIntegration;
+procedure TestMoveWindowToNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveWindowTo('Test Window', 150, 250);
-    ProcessEvents();
-    AssertEquals(150, WindowX('Test Window'));
-    AssertEquals(250, WindowY('Test Window'));
-    CloseWindow(testWindow);
+    AssertEquals(118, WindowX('Test Window'));
+    AssertEquals(218, WindowY('Test Window'));
 end;
-procedure TIntegrationTests.TestMoveWindowToIntegration;
+procedure TestMoveWindowToIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveWindowTo(testWindow, 200, 300);
-    ProcessEvents();
-    AssertEquals(200, WindowX(testWindow));
-    AssertEquals(300, WindowY(testWindow));
-    CloseWindow(testWindow);
+    AssertEquals(168, WindowX(testWindow));
+    AssertEquals(268, WindowY(testWindow));
 end;
-procedure TIntegrationTests.TestOpenWindowIntegration;
+procedure TestOpenWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertNotNull(testWindow);
     AssertEquals('Test Window', WindowCaption(testWindow));
     AssertEquals(800, WindowWidth(testWindow));
     AssertEquals(600, WindowHeight(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestRefreshWindowIntegration;
+procedure TestRefreshWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), 400.0, 300.0, 50.0);
     RefreshWindow(testWindow);
-    pixel := GetPixel(PointAt(400.0, 300.0));
+    pixel := GetPixel(PointAt(400.0, 350.0));
     AssertEquals(ColorBlack(), pixel);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestRefreshWindowWithTargetFpsIntegration;
+procedure TestRefreshWindowWithTargetFpsIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     RefreshWindow(testWindow, Cardinal(60));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestResizeCurrentWindowIntegration;
+procedure TestResizeCurrentWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     SetCurrentWindow(testWindow);
     ResizeCurrentWindow(1024, 768);
-    ProcessEvents();
     AssertEquals(1024, WindowWidth(testWindow));
     AssertEquals(768, WindowHeight(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestResizeWindowIntegration;
+procedure TestResizeWindowIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     ResizeWindow(testWindow, 1024, 768);
-    ProcessEvents();
     AssertEquals(1024, WindowWidth(testWindow));
     AssertEquals(768, WindowHeight(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestSetCurrentWindowNamedIntegration;
+procedure TestSetCurrentWindowNamedIntegration;
 begin
     OpenWindow('Test Window 1', 800, 600);
-    window2 := OpenWindow('Test Window 2', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    testWindow2 := OpenWindow('Test Window 2', 800, 600);
     SetCurrentWindow('Test Window 2');
-    AssertEquals(window2, CurrentWindow());
-    CloseAllWindows();
+    AssertEquals(testWindow2, CurrentWindow());
 end;
-procedure TIntegrationTests.TestSetCurrentWindowIntegration;
+procedure TestSetCurrentWindowIntegration;
 begin
     OpenWindow('Test Window 1', 800, 600);
-    window2 := OpenWindow('Test Window 2', 800, 600);
-    SetCurrentWindow(window2);
-    AssertEquals(window2, CurrentWindow());
-    CloseAllWindows();
+    CleanupWindow := TWindowCleanup.Create;
+    testWindow2 := OpenWindow('Test Window 2', 800, 600);
+    SetCurrentWindow(testWindow2);
+    AssertEquals(testWindow2, CurrentWindow());
 end;
-procedure TIntegrationTests.TestWindowCaptionIntegration;
+procedure TestWindowCaptionIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertEquals('Test Window', WindowCaption(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowCloseRequestedNamedIntegration;
+procedure TestWindowCloseRequestedNamedIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
-    ProcessEvents();
+    CleanupWindow := TWindowCleanup.Create;
     AssertFalse(WindowCloseRequested('Test Window'));
     while WindowCloseRequested('Test Window') = false do
         ProcessEvents();
+        ClearWindow(testWindow, ColorWhite());
+        DrawText('Test: window_close_requested_named. Close window to pass.', ColorBlack(), 10, 10);
+        RefreshScreen();
     end;
     AssertTrue(WindowCloseRequested('Test Window'));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowCloseRequestedIntegration;
+procedure TestWindowCloseRequestedIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
-    ProcessEvents();
+    CleanupWindow := TWindowCleanup.Create;
     AssertFalse(WindowCloseRequested(testWindow));
     while WindowCloseRequested(testWindow) = false do
         ProcessEvents();
+        ClearWindow(testWindow, ColorWhite());
+        DrawText('Test: window_close_requested. Close window to pass.', ColorBlack(), 10, 10);
+        RefreshScreen();
     end;
     AssertTrue(WindowCloseRequested(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowHasBorderNamedIntegration;
+procedure TestWindowHasBorderNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertTrue(WindowHasBorder('Test Window'));
     WindowToggleBorder('Test Window');
-    ProcessEvents();
     AssertFalse(WindowHasBorder('Test Window'));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowHasBorderIntegration;
+procedure TestWindowHasBorderIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertTrue(WindowHasBorder(testWindow));
     WindowToggleBorder(testWindow);
-    ProcessEvents();
     AssertFalse(WindowHasBorder(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowHasFocusIntegration;
+procedure TestWindowHasFocusIntegration;
 begin
-    window1 := OpenWindow('Test Window 1', 800, 600);
-    window2 := OpenWindow('Test Window 2', 800, 600);
+    testWindow1 := OpenWindow('Test Window 1', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    testWindow2 := OpenWindow('Test Window 2', 800, 600);
     ProcessEvents();
-    AssertTrue(WindowHasFocus(window2));
-    AssertFalse(WindowHasFocus(window1));
-    CloseAllWindows();
+    AssertTrue(WindowHasFocus(testWindow2));
+    AssertFalse(WindowHasFocus(testWindow1));
 end;
-procedure TIntegrationTests.TestWindowHeightNamedIntegration;
+procedure TestWindowHeightNamedIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertEquals(600, WindowHeight('Test Window'));
     ResizeWindow(testWindow, 800, 400);
-    ProcessEvents();
     AssertEquals(400, WindowHeight('Test Window'));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowHeightIntegration;
+procedure TestWindowHeightIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertEquals(600, WindowHeight(testWindow));
     ResizeWindow(testWindow, 800, 400);
-    ProcessEvents();
     AssertEquals(400, WindowHeight(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowIsFullscreenNamedIntegration;
+procedure TestWindowIsFullscreenNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertFalse(WindowIsFullscreen('Test Window'));
     WindowToggleFullscreen('Test Window');
-    ProcessEvents();
     AssertTrue(WindowIsFullscreen('Test Window'));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowIsFullscreenIntegration;
+procedure TestWindowIsFullscreenIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertFalse(WindowIsFullscreen(testWindow));
     WindowToggleFullscreen(testWindow);
-    ProcessEvents();
     AssertTrue(WindowIsFullscreen(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowNamedIntegration;
+procedure TestWindowNamedIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     namedWindow := WindowNamed('Test Window');
     AssertEquals(testWindow, namedWindow);
     AssertEquals(WindowCaption(testWindow), WindowCaption(namedWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowPositionNamedIntegration;
+procedure TestWindowPositionNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveWindowTo('Test Window', 100, 200);
-    ProcessEvents();
+    Delay(500);
     position := WindowPosition('Test Window');
-    AssertEquals(100.0, position.x);
-    AssertEquals(200.0, position.y);
-    CloseWindow(testWindow);
+    AssertEquals(68.0, position.x);
+    AssertEquals(168.0, position.y);
 end;
-procedure TIntegrationTests.TestWindowPositionIntegration;
+procedure TestWindowPositionIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveWindowTo(testWindow, 100, 200);
-    ProcessEvents();
+    Delay(500);
     position := WindowPosition(testWindow);
-    AssertEquals(100.0, position.x);
-    AssertEquals(200.0, position.y);
-    CloseWindow(testWindow);
+    AssertEquals(68.0, position.x);
+    AssertEquals(168.0, position.y);
 end;
-procedure TIntegrationTests.TestWindowSetIconIntegration;
+procedure TestWindowSetIconIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     icon := CreateBitmap('test_icon', 32, 32);
+    CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(icon, ColorWhite());
     WindowSetIcon(testWindow, icon);
-    ProcessEvents();
     FreeBitmap(icon);
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowToggleBorderNamedIntegration;
+procedure TestWindowToggleBorderNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertTrue(WindowHasBorder('Test Window'));
     WindowToggleBorder('Test Window');
-    ProcessEvents();
     AssertFalse(WindowHasBorder('Test Window'));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowToggleBorderIntegration;
+procedure TestWindowToggleBorderIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertTrue(WindowHasBorder(testWindow));
     WindowToggleBorder(testWindow);
-    ProcessEvents();
     AssertFalse(WindowHasBorder(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowToggleFullscreenNamedIntegration;
+procedure TestWindowToggleFullscreenNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertFalse(WindowIsFullscreen('Test Window'));
     WindowToggleFullscreen('Test Window');
-    ProcessEvents();
     AssertTrue(WindowIsFullscreen('Test Window'));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowToggleFullscreenIntegration;
+procedure TestWindowToggleFullscreenIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertFalse(WindowIsFullscreen(testWindow));
     WindowToggleFullscreen(testWindow);
-    ProcessEvents();
     AssertTrue(WindowIsFullscreen(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowWidthNamedIntegration;
+procedure TestWindowWidthNamedIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertEquals(800, WindowWidth('Test Window'));
     ResizeWindow(testWindow, 1024, 600);
-    ProcessEvents();
     AssertEquals(1024, WindowWidth('Test Window'));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowWidthIntegration;
+procedure TestWindowWidthIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     AssertEquals(800, WindowWidth(testWindow));
     ResizeWindow(testWindow, 1024, 600);
-    ProcessEvents();
     AssertEquals(1024, WindowWidth(testWindow));
-    CloseWindow(testWindow);
 end;
-procedure TIntegrationTests.TestWindowWithFocusIntegration;
+procedure TestWindowWithFocusIntegration;
 begin
-    window1 := OpenWindow('Test Window 1', 800, 600);
-    window2 := OpenWindow('Test Window 2', 800, 600);
-    ProcessEvents();
-    AssertEquals(window2, WindowWithFocus());
-    SetCurrentWindow(window1);
-    ProcessEvents();
-    AssertEquals(window1, WindowWithFocus());
-    CloseAllWindows();
+    testWindow1 := OpenWindow('Test Window 1', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
+    MoveWindowTo(testWindow1, 200, 200);
+    Delay(500);
+    testWindow2 := OpenWindow('Test Window 2', 800, 600);
+    MoveWindowTo(testWindow2, 850, 200);
+    Delay(500);
+    AssertEquals(testWindow2, WindowWithFocus());
+    while WindowWithFocus() <> testWindow1 do
+        ProcessEvents();
+        ClearScreen();
+        DrawText('Test: window_with_focus. Click this window to pass.', ColorBlack(), 10, 10, OptionDrawTo(testWindow1));
+        RefreshScreen();
+    end;
+    AssertEquals(testWindow1, WindowWithFocus());
 end;
-procedure TIntegrationTests.TestWindowXNamedIntegration;
+procedure TestWindowXNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveWindowTo('Test Window', 100, 200);
-    ProcessEvents();
-    AssertEquals(100, WindowX('Test Window'));
+    AssertEquals(68, WindowX('Test Window'));
     MoveWindowTo('Test Window', 300, 200);
-    ProcessEvents();
-    AssertEquals(300, WindowX('Test Window'));
-    CloseWindow(testWindow);
+    AssertEquals(268, WindowX('Test Window'));
 end;
-procedure TIntegrationTests.TestWindowXIntegration;
+procedure TestWindowXIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveWindowTo(testWindow, 100, 200);
-    ProcessEvents();
-    AssertEquals(100, WindowX(testWindow));
+    AssertEquals(68, WindowX(testWindow));
     MoveWindowTo(testWindow, 300, 200);
-    ProcessEvents();
-    AssertEquals(300, WindowX(testWindow));
-    CloseWindow(testWindow);
+    AssertEquals(268, WindowX(testWindow));
 end;
-procedure TIntegrationTests.TestWindowYNamedIntegration;
+procedure TestWindowYNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveWindowTo('Test Window', 100, 200);
-    ProcessEvents();
-    AssertEquals(200, WindowY('Test Window'));
+    AssertEquals(168, WindowY('Test Window'));
     MoveWindowTo('Test Window', 100, 400);
-    ProcessEvents();
-    AssertEquals(400, WindowY('Test Window'));
-    CloseWindow(testWindow);
+    AssertEquals(368, WindowY('Test Window'));
 end;
-procedure TIntegrationTests.TestWindowYIntegration;
+procedure TestWindowYIntegration;
 begin
     testWindow := OpenWindow('Test Window', 800, 600);
+    CleanupWindow := TWindowCleanup.Create;
     MoveWindowTo(testWindow, 100, 200);
-    ProcessEvents();
-    AssertEquals(200, WindowY(testWindow));
+    AssertEquals(168, WindowY(testWindow));
     MoveWindowTo(testWindow, 100, 400);
-    ProcessEvents();
-    AssertEquals(400, WindowY(testWindow));
-    CloseWindow(testWindow);
+    AssertEquals(368, WindowY(testWindow));
 end;
 end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

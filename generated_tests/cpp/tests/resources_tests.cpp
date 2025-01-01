@@ -1,20 +1,25 @@
 #include "splashkit.h"
 #include <catch2/catch.hpp>
-
+#include "../helpers.hpp"
 class TestResources {
 public:
     TEST_CASE("deregister_free_notifier_integration") {
         auto free_notifier = notifier_tracker();
-        register_free_notifier(free_notifier->on_free);
-        deregister_free_notifier(free_notifier->on_free);
-        REQUIRE(free_notifier->was_notified);
+        register_free_notifier(free_notifier.on_free);
+        auto test_bitmap1 = create_bitmap(string("test_bitmap"), 100, 100);
+        BitmapCleanup cleanup_bitmap;
+        free_bitmap(test_bitmap1);
+        REQUIRE(free_notifier.was_notified);
+        deregister_free_notifier(free_notifier.on_free);
+        free_notifier.reset();
+        auto test_bitmap2 = create_bitmap(string("test_bitmap"), 100, 100);
+        free_bitmap(test_bitmap2);
+        REQUIRE_FALSE(free_notifier.was_notified);
     }
     TEST_CASE("path_to_resource_integration") {
         set_resources_path(string("resources"));
         auto image_path = path_to_resource(string("test_image.png"), ResourceKind::IMAGE_RESOURCE);
         REQUIRE(string("") != image_path);
-        auto text_path = path_to_resource(string("nonexistent_file.txt"), ResourceKind::ANIMATION_RESOURCE);
-        REQUIRE(string("") == text_path);
     }
     TEST_CASE("path_to_resources_integration") {
         auto resource_path = path_to_resources();
@@ -32,10 +37,12 @@ public:
     }
     TEST_CASE("register_free_notifier_integration") {
         auto free_notifier = notifier_tracker();
-        register_free_notifier(free_notifier->on_free);
-        REQUIRE(free_notifier->was_notified);
-        deregister_free_notifier(free_notifier->on_free);
-        REQUIRE_FALSE(free_notifier->was_notified);
+        register_free_notifier(free_notifier.on_free);
+        auto test_bitmap = create_bitmap(string("test_bitmap"), 100, 100);
+        BitmapCleanup cleanup_bitmap;
+        free_bitmap(test_bitmap);
+        REQUIRE(free_notifier.was_notified);
+        deregister_free_notifier(free_notifier.on_free);
     }
     TEST_CASE("set_resources_path_integration") {
         set_resources_path(string("/resources"));

@@ -88,6 +88,10 @@
       "name": "write",
       "steps": [
         {
+          "step_type": "prompt",
+          "message": "Should print Test String:"
+        },
+        {
           "step_type": "function",
           "function_name": "write",
           "args": [
@@ -96,12 +100,21 @@
               "value": "Test String"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
         }
       ]
     },
     {
       "name": "write_int",
       "steps": [
+        {
+          "step_type": "prompt",
+          "message": "Should print 42:"
+        },
         {
           "step_type": "function",
           "function_name": "write_int",
@@ -111,12 +124,21 @@
               "value": 42
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
         }
       ]
     },
     {
       "name": "write_double",
       "steps": [
+        {
+          "step_type": "prompt",
+          "message": "Should print 3.14:"
+        },
         {
           "step_type": "function",
           "function_name": "write_double",
@@ -126,12 +148,21 @@
               "value": 3.14
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
         }
       ]
     },
     {
       "name": "write_char",
       "steps": [
+        {
+          "step_type": "prompt",
+          "message": "Should print A:"
+        },
         {
           "step_type": "function",
           "function_name": "write_char",
@@ -141,12 +172,21 @@
               "value": "A"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
         }
       ]
     },
     {
       "name": "write_line",
       "steps": [
+        {
+          "step_type": "prompt",
+          "message": "Should print Test Line:"
+        },
         {
           "step_type": "function",
           "function_name": "write_line",
@@ -163,6 +203,10 @@
       "name": "write_line_empty",
       "steps": [
         {
+          "step_type": "prompt",
+          "message": "Should print empty line:"
+        },
+        {
           "step_type": "function",
           "function_name": "write_line_empty",
           "args": []
@@ -172,6 +216,10 @@
     {
       "name": "write_line_int",
       "steps": [
+        {
+          "step_type": "prompt",
+          "message": "Should print 42:"
+        },
         {
           "step_type": "function",
           "function_name": "write_line_int",
@@ -188,6 +236,10 @@
       "name": "write_line_double",
       "steps": [
         {
+          "step_type": "prompt",
+          "message": "Should print 3.14:"
+        },
+        {
           "step_type": "function",
           "function_name": "write_line_double",
           "args": [
@@ -202,6 +254,10 @@
     {
       "name": "write_line_char",
       "steps": [
+        {
+          "step_type": "prompt",
+          "message": "Should print A:"
+        },
         {
           "step_type": "function",
           "function_name": "write_line_char",

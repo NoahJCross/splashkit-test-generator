@@ -8,29 +8,31 @@ module LanguageConfig
     DEFAULT_CONFIG = {
       supports_overloading: false,
       imports: [
-        "import pytest\n",
-        "from splashkit import *\n\n",
+        'import pytest',
+        'from splashkit import *',
+        'from ..helpers import *',
+        'import contextlib'
       ],
 
       naming_convention: ->(name) { name.to_snake_case },
 
 
       assert_conditions: {
-        'equal'                   => ->(v1, v2, _)    { "assert #{v1} == #{v2}\n" },
-        'not_equal'               => ->(v1, v2, _)    { "assert #{v1} != #{v2}\n" },
-        'greater_than'            => ->(v1, v2, _)    { "assert #{v1} > #{v2}\n" },
-        'less_than'               => ->(v1, v2, _)    { "assert #{v1} < #{v2}\n" },
-        'null'                    => ->(v1, _, _)     { "assert #{v1} is None\n" },
-        'not_null'                => ->(v1, _, _)     { "assert #{v1} is not None\n" },
-        'range'                   => ->(v1, v2, v3)   { "assert #{v2} <= #{v1} <= #{v3}\n" },
-        'true'                    => ->(v1, _, _)     { "assert #{v1}\n" },
-        'false'                   => ->(v1, _, _)     { "assert not #{v1}\n" },
-        'greater_than_or_equal'   => ->(v1, v2, _)    { "assert #{v1} >= #{v2}\n" },
-        'less_than_or_equal'      => ->(v1, v2, _)    { "assert #{v1} <= #{v2}\n" },
-        'throws'                  => ->(v1, _, _)     { "with pytest.raises(Exception):\n    #{v1}\n" },
-        'not_empty'               => ->(v1, _, _)     { "assert len(#{v1}) > 0\n" },
-        'contains'                => ->(v1, v2, _)    { "assert #{v1} in #{v2}\n" },
-        'empty'                   => ->(v1, _, _)     { "assert len(#{v1}) == 0\n" }
+        'equal'                   => ->(v1, v2, precision = nil) { precision ? "assert abs(#{v1} - #{v2}) <= #{precision}" : "assert #{v1} == #{v2}" },
+        'not_equal'               => ->(v1, v2, _)    { "assert #{v1} != #{v2}" },
+        'greater_than'            => ->(v1, v2, _)    { "assert #{v1} > #{v2}" },
+        'less_than'               => ->(v1, v2, _)    { "assert #{v1} < #{v2}" },
+        'null'                    => ->(v1, _, _)     { "assert #{v1} is None" },
+        'not_null'                => ->(v1, _, _)     { "assert #{v1} is not None" },
+        'range'                   => ->(v1, v2, v3)   { "assert #{v2} <= #{v1} <= #{v3}" },
+        'true'                    => ->(v1, _, _)     { "assert #{v1}" },
+        'false'                   => ->(v1, _, _)     { "assert not #{v1}" },
+        'greater_than_or_equal'   => ->(v1, v2, _)    { "assert #{v1} >= #{v2}" },
+        'less_than_or_equal'      => ->(v1, v2, _)    { "assert #{v1} <= #{v2}" },
+        'throws'                  => ->(v1, _, _)     { "with pytest.raises(Exception):    #{v1}" },
+        'not_empty'               => ->(v1, _, _)     { "assert len(#{v1}) > 0" },
+        'contains'                => ->(v1, v2, _)    { "assert #{v1} in #{v2}" },
+        'empty'                   => ->(v1, _, _)     { "assert len(#{v1}) == 0" }
       }.freeze,
 
       if_conditions: {
@@ -48,13 +50,13 @@ module LanguageConfig
       }.freeze,
 
       control_flow: {
-        loop:      ->(iterations) { "for _ in range(#{iterations}):\n" },
-        while:     ->(condition) { "while #{condition}:\n" },
-        if:        ->(condition) { "if #{condition}:\n" },
-        else:      -> { "else:\n" },
-        break:     -> { "break\n" },
-        end:       -> { "\n" },
-        new_line: "'\\n'"
+        loop:      ->(iterations) { "for _ in range(#{iterations}):" },
+        while:     ->(condition) { "while #{condition}:" },
+        if:        ->(condition) { "if #{condition}:" },
+        else:      -> { 'else:' },
+        break:     -> { 'break' },
+        end:       -> { '' },
+        new_line: "'\'"
       }.freeze,
 
       string_handlers: {
@@ -68,7 +70,7 @@ module LanguageConfig
 
       type_handlers: {
         list:      ->(values, _) { "[#{values}]" },
-        class:     ->(name, args) { "#{name}(#{args})" },
+        class_instance:     ->(name, args) { "#{name}(#{args})" },
         mapping:   {
           'double' => 'float',
           'string' => 'str',
@@ -76,12 +78,19 @@ module LanguageConfig
           'line' => 'Line'
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ";\n" : ''}" 
+          "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ';' : ''}" 
         },
+        string: ->(value) { "\"#{value}\"" },
+        object: ->(object_type, variable_name) { {
+          object_type: object_type.to_pascal_case,
+          variable_name: variable_name.to_snake_case
+        } }
+      }.freeze,
+
+      literal_cast: {
         unsigned_int: ->(value) { value },
         float: ->(value) { value },
         double: ->(value) { value },
-        string: ->(value) { "\"#{value}\"" }
       }.freeze,
 
       variable_handlers: {
@@ -89,8 +98,9 @@ module LanguageConfig
           regular: ->(name) { "#{name.to_snake_case} = " },
           mutable: ->(name) { "#{name.to_snake_case} = " }
         },
-        reference:     ->(name) { name.to_snake_case },
+        identifier:     ->(name) { name.to_snake_case },
         field_access:  ->(var, field) { "#{var}.#{field}" },
+        delegate_call: ->(var, field) { "#{var}.#{field}()" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:    ->(arr) { "len(#{arr})" },
@@ -99,36 +109,45 @@ module LanguageConfig
 
       function_handlers: {
         call:      ->(name, params, _ = true) { "#{name.to_snake_case}(#{params})" },
-        pointer:   ->(_) { "None\n" },
-        test:      ->(name) { "\ndef test_#{name.to_snake_case}_integration():\n" }
+        pointer:   ->(_) { 'None' },
+        test:      ->(name) { ["def test_#{name.to_snake_case}_integration():"] }
       }.freeze,
 
       comment_syntax: {
-        single: "#",
+        single: '#',
         multi_start: "'''",
         multi_end: "'''",
       }.freeze,
 
       class_wrapper: {
-        header: [->(group) { "class Test#{group.to_pascal_case}:\n" }],
+        header: [->(group) { "class Test#{group.to_pascal_case}:" }],
         constructor_wrapper: {
-          header: "def setup_method(self):\n",
-          footer: "\n"
+          header: ['def setup_method(self):'],
+          footer: ['']
         },
-        footer: [],
-        indent_after: [->(group) { "class Test#{group.to_pascal_case}:\n" }],
-        unindent_before: []
+        footer: []
+      }.freeze,
+
+      cleanup_handlers: {
+        setup: ->(_, type, args = nil) {
+          "with #{type}_cleanup(#{args}):"
+        }
+      }.freeze,
+
+      indentation: {
+        indent_after: [':'],
+        unindent_before: ['finally:', 'except:', 'else:', 'elif:'],
+        reset_on: {
+          '@contextlib.contextmanager' => 1,
+          'def' => 1,
+          'while' => 2
+        }
       }.freeze,
 
       file_extension: 'py',
-      runtime_requirement: 'Python 3',
-      installation_steps: [
-        '1. Install SplashKit SDK following instructions at https://splashkit.io/installation/',
-        '2. Install pytest: pip install pytest'
-      ].join("\n"),
-      run_command: 'skm python3 integration_tests.py',
-      prompt_handlers: {
-        message: ->(text) { "print(\"#{text}\", end=\"\")\n" }
+
+      terminal_handlers: {
+        message: ->(text) { "print(\"#{text}\", end=\"\")" }
       }.freeze
     }.freeze
   end

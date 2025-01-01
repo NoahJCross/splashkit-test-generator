@@ -1,5 +1,17 @@
 {
   "group": "camera",
+  "cleanup": [
+    {
+      "cleanup_type": "window",
+      "function_name": "close_all_windows",
+      "args": []
+    },
+    {
+      "cleanup_type": "sprite",
+      "function_name": "free_all_sprites",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "camera_position",
@@ -20,8 +32,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -58,16 +74,6 @@
               "variable_field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -90,8 +96,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -127,16 +137,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -159,8 +159,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -196,16 +200,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -228,19 +222,52 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
-          "function_name": "create_sprite_with_bitmap_named",
+          "function_name": "create_bitmap",
           "args": [
             {
               "value_type": "string",
-              "value": "test_sprite"
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
             }
           ],
           "store_result": "test_sprite"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sprite",
+          "store_result": "cleanup_sprite"
         },
         {
           "step_type": "function",
@@ -314,26 +341,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sprite",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sprite"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -356,19 +363,52 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
-          "function_name": "create_sprite_with_bitmap_named",
+          "function_name": "create_bitmap",
           "args": [
             {
               "value_type": "string",
-              "value": "test_sprite"
+              "value": "test_bitmap"
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            },
+            {
+              "value_type": "int",
+              "value": 100
+            }
+          ],
+          "store_result": "test_bitmap"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "bitmap",
+          "store_result": "cleanup_bitmap"
+        },
+        {
+          "step_type": "function",
+          "function_name": "create_sprite",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
             }
           ],
           "store_result": "test_sprite"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "sprite",
+          "store_result": "cleanup_sprite"
         },
         {
           "step_type": "function",
@@ -436,26 +476,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sprite",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sprite"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -478,8 +498,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -495,6 +519,20 @@
             }
           ],
           "store_result": "test_vector"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_camera_to",
+          "args": [
+            {
+              "value_type": "double",
+              "value": 0.0
+            },
+            {
+              "value_type": "double",
+              "value": 0.0
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -535,16 +573,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -567,8 +595,26 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_camera_to",
+          "args": [
+            {
+              "value_type": "double",
+              "value": 0.0
+            },
+            {
+              "value_type": "double",
+              "value": 0.0
+            }
+          ]
         },
         {
           "step_type": "function",
@@ -613,16 +659,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -645,8 +681,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -692,16 +732,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -724,8 +754,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -770,16 +804,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -806,6 +830,11 @@
           "store_result": "test_window"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
+        {
           "step_type": "function",
           "function_name": "point_at",
           "args": [
@@ -874,16 +903,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -906,8 +925,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -970,16 +993,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1004,6 +1017,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1110,16 +1128,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1142,8 +1150,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1213,16 +1225,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1245,8 +1247,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1303,16 +1309,6 @@
               "variable_field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1335,8 +1331,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1373,16 +1373,6 @@
               "variable_field": "height"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1405,8 +1395,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1452,16 +1446,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1484,8 +1468,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1511,16 +1499,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1543,8 +1521,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1570,16 +1552,6 @@
               "args": []
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1602,8 +1574,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1675,16 +1651,6 @@
               "variable_field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1707,8 +1673,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -1797,22 +1767,35 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
     {
       "name": "to_screen_x",
       "steps": [
+        {
+          "step_type": "function",
+          "function_name": "open_window",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "Test Window"
+            },
+            {
+              "value_type": "int",
+              "value": 800
+            },
+            {
+              "value_type": "int",
+              "value": 600
+            }
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
+        },
         {
           "step_type": "function",
           "function_name": "set_camera_x",
@@ -1823,6 +1806,7 @@
             }
           ]
         },
+
         {
           "step_type": "function",
           "function_name": "to_screen_x",
@@ -1869,26 +1853,20 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
-          "function_name": "set_camera_position",
+          "function_name": "set_camera_y",
           "args": [
             {
-              "value_type": "function",
-              "function_name": "point_at",
-              "args": [
-                {
-                  "value_type": "double",
-                  "value": 100.0
-                },
-                {
-                  "value_type": "double",
-                  "value": 100.0
-                }
-              ]
+              "value_type": "double",
+              "value": 100.0
             }
           ]
         },
@@ -1916,16 +1894,6 @@
               "variable_name": "test_screen_y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -1948,8 +1916,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -2021,16 +1993,6 @@
               "variable_field": "y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2053,8 +2015,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -2100,16 +2066,6 @@
               "variable_name": "test_world_x"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2132,8 +2088,12 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -2179,16 +2139,6 @@
               "variable_name": "test_world_y"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     },
@@ -2199,12 +2149,12 @@
           "step_type": "function",
           "function_name": "vector_world_to_screen",
           "args": [],
-          "store_result": "test_vector"
+          "store_result": "test_vector1"
         },
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_equal",
+            "compare_type": "equal",
             "value1": {
               "value_type": "function",
               "function_name": "vector_from_angle",
@@ -2221,7 +2171,74 @@
             },
             "value2": {
               "value_type": "variable",
-              "variable_name": "test_vector"
+              "variable_name": "test_vector1"
+            }
+          }
+        },
+        {
+          "step_type": "function",
+          "function_name": "move_camera_to",
+          "args": [
+            {
+              "value_type": "double",
+              "value": 100.0
+            },
+            {
+              "value_type": "double",
+              "value": 100.0
+            }
+          ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_world_to_screen",
+          "args": [],
+          "store_result": "test_vector2"
+        },
+        {
+          "step_type": "function",
+          "function_name": "vector_to",
+          "args": [
+            {
+              "value_type": "double",
+              "value": -100.0
+            },
+            {
+              "value_type": "double",
+              "value": -100.0
+            }
+          ],
+          "store_result": "test_vector_to"
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_vector_to",
+              "variable_field": "x"
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_vector2",
+              "variable_field": "x"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_vector_to",
+              "variable_field": "y"
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_vector2",
+              "variable_field": "y"
             }
           }
         }
@@ -2248,6 +2265,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -2289,16 +2311,6 @@
               "variable_field": "height"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
         }
       ]
     }

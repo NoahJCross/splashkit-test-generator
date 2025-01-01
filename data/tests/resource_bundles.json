@@ -12,6 +12,19 @@
       ]
     }
   ],
+  "cleanup": [
+    {
+      "cleanup_type": "resource",
+      "function_name": "free_resource_bundle",
+      "args": [
+        {
+          "value_type": "object",
+          "object_type": "string",
+          "variable_name": "bundle_name"
+        }
+      ]
+    }
+  ],
   "tests": [
     {
       "name": "free_resource_bundle",
@@ -22,11 +35,22 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test"
+              "value": "test_resource_bundle"
             },
             {
               "value_type": "string",
               "value": "test.txt"
+            }
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "resource",
+          "store_result": "cleanup_resource",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "test_resource_bundle"
             }
           ]
         },
@@ -40,7 +64,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test"
+                  "value": "test_resource_bundle"
                 }
               ]
             },
@@ -87,7 +111,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test"
+              "value": "test_resource_bundle"
             }
           ]
         },
@@ -101,7 +125,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test"
+                  "value": "test_resource_bundle"
                 }
               ]
             },
@@ -119,11 +143,22 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test"
+              "value": "test_resource_bundle"
             },
             {
               "value_type": "string",
               "value": "test.txt"
+            }
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "resource",
+          "store_result": "cleanup_resource",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "test_resource_bundle"
             }
           ]
         },
@@ -137,7 +172,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test"
+                  "value": "test_resource_bundle"
                 }
               ]
             },
@@ -150,7 +185,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test"
+              "value": "test_resource_bundle"
             }
           ]
         },
@@ -164,7 +199,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test"
+                  "value": "test_resource_bundle"
                 }
               ]
             },
@@ -199,11 +234,22 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test"
+              "value": "test_resource_bundle"
             },
             {
               "value_type": "string",
               "value": "test.txt"
+            }
+          ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "resource",
+          "store_result": "cleanup_resource",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "test_resource_bundle"
             }
           ]
         },
@@ -217,7 +263,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test"
+                  "value": "test_resource_bundle"
                 }
               ]
             },
@@ -332,7 +378,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test"
+              "value": "test_resource_bundle"
             }
           ]
         },

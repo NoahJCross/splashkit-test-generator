@@ -1,9 +1,10 @@
-uses SplashKit, TestFramework
-
+uses SplashKit, TestFramework, ../Helpers;
 type
-TTestColor = class(TTestCase)
-protected
-procedure TIntegrationTests.TestAlphaOfIntegration;
+    TTestColor = class(TTestCase)
+    protected
+        procedure Setup; override;
+    end;
+    procedure TestAlphaOfIntegration;
 begin
     redColor := ColorRed();
     alphaValue := AlphaOf(redColor);
@@ -12,7 +13,7 @@ begin
     alphaValueTransparent := AlphaOf(transparentColor);
     AssertEquals(255, alphaValueTransparent);
 end;
-procedure TIntegrationTests.TestBlueOfIntegration;
+procedure TestBlueOfIntegration;
 begin
     blueColor := ColorBlue();
     blueValue := BlueOf(blueColor);
@@ -21,7 +22,7 @@ begin
     blueValueRed := BlueOf(redColor);
     AssertEquals(0, blueValueRed);
 end;
-procedure TIntegrationTests.TestBrightnessOfIntegration;
+procedure TestBrightnessOfIntegration;
 begin
     whiteColor := ColorWhite();
     whiteBrightness := BrightnessOf(whiteColor);
@@ -33,7 +34,7 @@ begin
     grayBrightness := BrightnessOf(grayColor);
     AssertTrue((grayBrightness >= 0.4) and (grayBrightness <= 0.6));
 end;
-procedure TIntegrationTests.TestColorAliceBlueIntegration;
+procedure TestColorAliceBlueIntegration;
 begin
     aliceBlueColor := ColorAliceBlue();
     AssertEquals(240, RedOf(aliceBlueColor));
@@ -41,7 +42,7 @@ begin
     AssertEquals(255, BlueOf(aliceBlueColor));
     AssertEquals(255, AlphaOf(aliceBlueColor));
 end;
-procedure TIntegrationTests.TestColorAntiqueWhiteIntegration;
+procedure TestColorAntiqueWhiteIntegration;
 begin
     antiqueWhiteColor := ColorAntiqueWhite();
     AssertEquals(250, RedOf(antiqueWhiteColor));
@@ -49,7 +50,7 @@ begin
     AssertEquals(215, BlueOf(antiqueWhiteColor));
     AssertEquals(255, AlphaOf(antiqueWhiteColor));
 end;
-procedure TIntegrationTests.TestColorAquaIntegration;
+procedure TestColorAquaIntegration;
 begin
     aquaColor := ColorAqua();
     AssertEquals(0, RedOf(aquaColor));
@@ -57,7 +58,7 @@ begin
     AssertEquals(255, BlueOf(aquaColor));
     AssertEquals(255, AlphaOf(aquaColor));
 end;
-procedure TIntegrationTests.TestColorAquamarineIntegration;
+procedure TestColorAquamarineIntegration;
 begin
     aquamarineColor := ColorAquamarine();
     AssertEquals(127, RedOf(aquamarineColor));
@@ -65,7 +66,7 @@ begin
     AssertEquals(212, BlueOf(aquamarineColor));
     AssertEquals(255, AlphaOf(aquamarineColor));
 end;
-procedure TIntegrationTests.TestColorAzureIntegration;
+procedure TestColorAzureIntegration;
 begin
     azureColor := ColorAzure();
     AssertEquals(240, RedOf(azureColor));
@@ -73,7 +74,7 @@ begin
     AssertEquals(255, BlueOf(azureColor));
     AssertEquals(255, AlphaOf(azureColor));
 end;
-procedure TIntegrationTests.TestColorBeigeIntegration;
+procedure TestColorBeigeIntegration;
 begin
     beigeColor := ColorBeige();
     AssertEquals(245, RedOf(beigeColor));
@@ -81,7 +82,7 @@ begin
     AssertEquals(220, BlueOf(beigeColor));
     AssertEquals(255, AlphaOf(beigeColor));
 end;
-procedure TIntegrationTests.TestColorBisqueIntegration;
+procedure TestColorBisqueIntegration;
 begin
     bisqueColor := ColorBisque();
     AssertEquals(255, RedOf(bisqueColor));
@@ -89,7 +90,7 @@ begin
     AssertEquals(196, BlueOf(bisqueColor));
     AssertEquals(255, AlphaOf(bisqueColor));
 end;
-procedure TIntegrationTests.TestColorBlackIntegration;
+procedure TestColorBlackIntegration;
 begin
     blackColor := ColorBlack();
     AssertEquals(0, RedOf(blackColor));
@@ -97,7 +98,7 @@ begin
     AssertEquals(0, BlueOf(blackColor));
     AssertEquals(255, AlphaOf(blackColor));
 end;
-procedure TIntegrationTests.TestColorBlanchedAlmondIntegration;
+procedure TestColorBlanchedAlmondIntegration;
 begin
     blanchedAlmondColor := ColorBlanchedAlmond();
     AssertEquals(255, RedOf(blanchedAlmondColor));
@@ -105,7 +106,7 @@ begin
     AssertEquals(205, BlueOf(blanchedAlmondColor));
     AssertEquals(255, AlphaOf(blanchedAlmondColor));
 end;
-procedure TIntegrationTests.TestColorBlueIntegration;
+procedure TestColorBlueIntegration;
 begin
     blueColor := ColorBlue();
     AssertEquals(0, RedOf(blueColor));
@@ -113,7 +114,7 @@ begin
     AssertEquals(255, BlueOf(blueColor));
     AssertEquals(255, AlphaOf(blueColor));
 end;
-procedure TIntegrationTests.TestColorBlueVioletIntegration;
+procedure TestColorBlueVioletIntegration;
 begin
     blueVioletColor := ColorBlueViolet();
     AssertEquals(138, RedOf(blueVioletColor));
@@ -121,7 +122,7 @@ begin
     AssertEquals(226, BlueOf(blueVioletColor));
     AssertEquals(255, AlphaOf(blueVioletColor));
 end;
-procedure TIntegrationTests.TestColorBrightGreenIntegration;
+procedure TestColorBrightGreenIntegration;
 begin
     brightGreenColor := ColorBrightGreen();
     AssertEquals(0, RedOf(brightGreenColor));
@@ -129,7 +130,7 @@ begin
     AssertEquals(0, BlueOf(brightGreenColor));
     AssertEquals(255, AlphaOf(brightGreenColor));
 end;
-procedure TIntegrationTests.TestColorBrownIntegration;
+procedure TestColorBrownIntegration;
 begin
     brownColor := ColorBrown();
     AssertEquals(165, RedOf(brownColor));
@@ -137,7 +138,7 @@ begin
     AssertEquals(42, BlueOf(brownColor));
     AssertEquals(255, AlphaOf(brownColor));
 end;
-procedure TIntegrationTests.TestColorBurlyWoodIntegration;
+procedure TestColorBurlyWoodIntegration;
 begin
     burlyWoodColor := ColorBurlyWood();
     AssertEquals(222, RedOf(burlyWoodColor));
@@ -145,7 +146,7 @@ begin
     AssertEquals(135, BlueOf(burlyWoodColor));
     AssertEquals(255, AlphaOf(burlyWoodColor));
 end;
-procedure TIntegrationTests.TestColorCadetBlueIntegration;
+procedure TestColorCadetBlueIntegration;
 begin
     cadetBlueColor := ColorCadetBlue();
     AssertEquals(95, RedOf(cadetBlueColor));
@@ -153,7 +154,7 @@ begin
     AssertEquals(160, BlueOf(cadetBlueColor));
     AssertEquals(255, AlphaOf(cadetBlueColor));
 end;
-procedure TIntegrationTests.TestColorChartreuseIntegration;
+procedure TestColorChartreuseIntegration;
 begin
     chartreuseColor := ColorChartreuse();
     AssertEquals(127, RedOf(chartreuseColor));
@@ -161,7 +162,7 @@ begin
     AssertEquals(0, BlueOf(chartreuseColor));
     AssertEquals(255, AlphaOf(chartreuseColor));
 end;
-procedure TIntegrationTests.TestColorChocolateIntegration;
+procedure TestColorChocolateIntegration;
 begin
     chocolateColor := ColorChocolate();
     AssertEquals(210, RedOf(chocolateColor));
@@ -169,7 +170,7 @@ begin
     AssertEquals(30, BlueOf(chocolateColor));
     AssertEquals(255, AlphaOf(chocolateColor));
 end;
-procedure TIntegrationTests.TestColorCoralIntegration;
+procedure TestColorCoralIntegration;
 begin
     coralColor := ColorCoral();
     AssertEquals(255, RedOf(coralColor));
@@ -177,7 +178,7 @@ begin
     AssertEquals(80, BlueOf(coralColor));
     AssertEquals(255, AlphaOf(coralColor));
 end;
-procedure TIntegrationTests.TestColorCornflowerBlueIntegration;
+procedure TestColorCornflowerBlueIntegration;
 begin
     cornflowerBlueColor := ColorCornflowerBlue();
     AssertEquals(100, RedOf(cornflowerBlueColor));
@@ -185,7 +186,7 @@ begin
     AssertEquals(237, BlueOf(cornflowerBlueColor));
     AssertEquals(255, AlphaOf(cornflowerBlueColor));
 end;
-procedure TIntegrationTests.TestColorCornsilkIntegration;
+procedure TestColorCornsilkIntegration;
 begin
     cornsilkColor := ColorCornsilk();
     AssertEquals(255, RedOf(cornsilkColor));
@@ -193,7 +194,7 @@ begin
     AssertEquals(220, BlueOf(cornsilkColor));
     AssertEquals(255, AlphaOf(cornsilkColor));
 end;
-procedure TIntegrationTests.TestColorCrimsonIntegration;
+procedure TestColorCrimsonIntegration;
 begin
     crimsonColor := ColorCrimson();
     AssertEquals(220, RedOf(crimsonColor));
@@ -201,7 +202,7 @@ begin
     AssertEquals(60, BlueOf(crimsonColor));
     AssertEquals(255, AlphaOf(crimsonColor));
 end;
-procedure TIntegrationTests.TestColorCyanIntegration;
+procedure TestColorCyanIntegration;
 begin
     cyanColor := ColorCyan();
     AssertEquals(0, RedOf(cyanColor));
@@ -209,7 +210,7 @@ begin
     AssertEquals(255, BlueOf(cyanColor));
     AssertEquals(255, AlphaOf(cyanColor));
 end;
-procedure TIntegrationTests.TestColorDarkBlueIntegration;
+procedure TestColorDarkBlueIntegration;
 begin
     darkBlueColor := ColorDarkBlue();
     AssertEquals(0, RedOf(darkBlueColor));
@@ -217,7 +218,7 @@ begin
     AssertEquals(139, BlueOf(darkBlueColor));
     AssertEquals(255, AlphaOf(darkBlueColor));
 end;
-procedure TIntegrationTests.TestColorDarkCyanIntegration;
+procedure TestColorDarkCyanIntegration;
 begin
     darkCyanColor := ColorDarkCyan();
     AssertEquals(0, RedOf(darkCyanColor));
@@ -225,7 +226,7 @@ begin
     AssertEquals(139, BlueOf(darkCyanColor));
     AssertEquals(255, AlphaOf(darkCyanColor));
 end;
-procedure TIntegrationTests.TestColorDarkGoldenrodIntegration;
+procedure TestColorDarkGoldenrodIntegration;
 begin
     darkGoldenrodColor := ColorDarkGoldenrod();
     AssertEquals(184, RedOf(darkGoldenrodColor));
@@ -233,7 +234,7 @@ begin
     AssertEquals(11, BlueOf(darkGoldenrodColor));
     AssertEquals(255, AlphaOf(darkGoldenrodColor));
 end;
-procedure TIntegrationTests.TestColorDarkGrayIntegration;
+procedure TestColorDarkGrayIntegration;
 begin
     darkGrayColor := ColorDarkGray();
     AssertEquals(169, RedOf(darkGrayColor));
@@ -241,7 +242,7 @@ begin
     AssertEquals(169, BlueOf(darkGrayColor));
     AssertEquals(255, AlphaOf(darkGrayColor));
 end;
-procedure TIntegrationTests.TestColorDarkGreenIntegration;
+procedure TestColorDarkGreenIntegration;
 begin
     darkGreenColor := ColorDarkGreen();
     AssertEquals(0, RedOf(darkGreenColor));
@@ -249,7 +250,7 @@ begin
     AssertEquals(0, BlueOf(darkGreenColor));
     AssertEquals(255, AlphaOf(darkGreenColor));
 end;
-procedure TIntegrationTests.TestColorDarkKhakiIntegration;
+procedure TestColorDarkKhakiIntegration;
 begin
     darkKhakiColor := ColorDarkKhaki();
     AssertEquals(189, RedOf(darkKhakiColor));
@@ -257,7 +258,7 @@ begin
     AssertEquals(107, BlueOf(darkKhakiColor));
     AssertEquals(255, AlphaOf(darkKhakiColor));
 end;
-procedure TIntegrationTests.TestColorDarkMagentaIntegration;
+procedure TestColorDarkMagentaIntegration;
 begin
     darkMagentaColor := ColorDarkMagenta();
     AssertEquals(139, RedOf(darkMagentaColor));
@@ -265,7 +266,7 @@ begin
     AssertEquals(139, BlueOf(darkMagentaColor));
     AssertEquals(255, AlphaOf(darkMagentaColor));
 end;
-procedure TIntegrationTests.TestColorDarkOliveGreenIntegration;
+procedure TestColorDarkOliveGreenIntegration;
 begin
     darkOliveGreenColor := ColorDarkOliveGreen();
     AssertEquals(85, RedOf(darkOliveGreenColor));
@@ -273,7 +274,7 @@ begin
     AssertEquals(47, BlueOf(darkOliveGreenColor));
     AssertEquals(255, AlphaOf(darkOliveGreenColor));
 end;
-procedure TIntegrationTests.TestColorDarkOrangeIntegration;
+procedure TestColorDarkOrangeIntegration;
 begin
     darkOrangeColor := ColorDarkOrange();
     AssertEquals(255, RedOf(darkOrangeColor));
@@ -281,7 +282,7 @@ begin
     AssertEquals(0, BlueOf(darkOrangeColor));
     AssertEquals(255, AlphaOf(darkOrangeColor));
 end;
-procedure TIntegrationTests.TestColorDarkOrchidIntegration;
+procedure TestColorDarkOrchidIntegration;
 begin
     darkOrchidColor := ColorDarkOrchid();
     AssertEquals(153, RedOf(darkOrchidColor));
@@ -289,7 +290,7 @@ begin
     AssertEquals(204, BlueOf(darkOrchidColor));
     AssertEquals(255, AlphaOf(darkOrchidColor));
 end;
-procedure TIntegrationTests.TestColorDarkRedIntegration;
+procedure TestColorDarkRedIntegration;
 begin
     darkRedColor := ColorDarkRed();
     AssertEquals(139, RedOf(darkRedColor));
@@ -297,7 +298,7 @@ begin
     AssertEquals(0, BlueOf(darkRedColor));
     AssertEquals(255, AlphaOf(darkRedColor));
 end;
-procedure TIntegrationTests.TestColorDarkSalmonIntegration;
+procedure TestColorDarkSalmonIntegration;
 begin
     darkSalmonColor := ColorDarkSalmon();
     AssertEquals(233, RedOf(darkSalmonColor));
@@ -305,7 +306,7 @@ begin
     AssertEquals(122, BlueOf(darkSalmonColor));
     AssertEquals(255, AlphaOf(darkSalmonColor));
 end;
-procedure TIntegrationTests.TestColorDarkSeaGreenIntegration;
+procedure TestColorDarkSeaGreenIntegration;
 begin
     darkSeaGreenColor := ColorDarkSeaGreen();
     AssertEquals(143, RedOf(darkSeaGreenColor));
@@ -313,7 +314,7 @@ begin
     AssertEquals(139, BlueOf(darkSeaGreenColor));
     AssertEquals(255, AlphaOf(darkSeaGreenColor));
 end;
-procedure TIntegrationTests.TestColorDarkSlateBlueIntegration;
+procedure TestColorDarkSlateBlueIntegration;
 begin
     darkSlateBlueColor := ColorDarkSlateBlue();
     AssertEquals(72, RedOf(darkSlateBlueColor));
@@ -321,7 +322,7 @@ begin
     AssertEquals(139, BlueOf(darkSlateBlueColor));
     AssertEquals(255, AlphaOf(darkSlateBlueColor));
 end;
-procedure TIntegrationTests.TestColorDarkSlateGrayIntegration;
+procedure TestColorDarkSlateGrayIntegration;
 begin
     darkSlateGrayColor := ColorDarkSlateGray();
     AssertEquals(47, RedOf(darkSlateGrayColor));
@@ -329,7 +330,7 @@ begin
     AssertEquals(79, BlueOf(darkSlateGrayColor));
     AssertEquals(255, AlphaOf(darkSlateGrayColor));
 end;
-procedure TIntegrationTests.TestColorDarkTurquoiseIntegration;
+procedure TestColorDarkTurquoiseIntegration;
 begin
     darkTurquoiseColor := ColorDarkTurquoise();
     AssertEquals(0, RedOf(darkTurquoiseColor));
@@ -337,7 +338,7 @@ begin
     AssertEquals(209, BlueOf(darkTurquoiseColor));
     AssertEquals(255, AlphaOf(darkTurquoiseColor));
 end;
-procedure TIntegrationTests.TestColorDarkVioletIntegration;
+procedure TestColorDarkVioletIntegration;
 begin
     darkVioletColor := ColorDarkViolet();
     AssertEquals(148, RedOf(darkVioletColor));
@@ -345,7 +346,7 @@ begin
     AssertEquals(211, BlueOf(darkVioletColor));
     AssertEquals(255, AlphaOf(darkVioletColor));
 end;
-procedure TIntegrationTests.TestColorDeepPinkIntegration;
+procedure TestColorDeepPinkIntegration;
 begin
     deepPinkColor := ColorDeepPink();
     AssertEquals(255, RedOf(deepPinkColor));
@@ -353,7 +354,7 @@ begin
     AssertEquals(147, BlueOf(deepPinkColor));
     AssertEquals(255, AlphaOf(deepPinkColor));
 end;
-procedure TIntegrationTests.TestColorDeepSkyBlueIntegration;
+procedure TestColorDeepSkyBlueIntegration;
 begin
     deepSkyBlueColor := ColorDeepSkyBlue();
     AssertEquals(0, RedOf(deepSkyBlueColor));
@@ -361,7 +362,7 @@ begin
     AssertEquals(255, BlueOf(deepSkyBlueColor));
     AssertEquals(255, AlphaOf(deepSkyBlueColor));
 end;
-procedure TIntegrationTests.TestColorDimGrayIntegration;
+procedure TestColorDimGrayIntegration;
 begin
     dimGrayColor := ColorDimGray();
     AssertEquals(105, RedOf(dimGrayColor));
@@ -369,7 +370,7 @@ begin
     AssertEquals(105, BlueOf(dimGrayColor));
     AssertEquals(255, AlphaOf(dimGrayColor));
 end;
-procedure TIntegrationTests.TestColorDodgerBlueIntegration;
+procedure TestColorDodgerBlueIntegration;
 begin
     dodgerBlueColor := ColorDodgerBlue();
     AssertEquals(30, RedOf(dodgerBlueColor));
@@ -377,7 +378,7 @@ begin
     AssertEquals(255, BlueOf(dodgerBlueColor));
     AssertEquals(255, AlphaOf(dodgerBlueColor));
 end;
-procedure TIntegrationTests.TestColorFirebrickIntegration;
+procedure TestColorFirebrickIntegration;
 begin
     firebrickColor := ColorFirebrick();
     AssertEquals(178, RedOf(firebrickColor));
@@ -385,7 +386,7 @@ begin
     AssertEquals(34, BlueOf(firebrickColor));
     AssertEquals(255, AlphaOf(firebrickColor));
 end;
-procedure TIntegrationTests.TestColorFloralWhiteIntegration;
+procedure TestColorFloralWhiteIntegration;
 begin
     floralWhiteColor := ColorFloralWhite();
     AssertEquals(255, RedOf(floralWhiteColor));
@@ -393,7 +394,7 @@ begin
     AssertEquals(240, BlueOf(floralWhiteColor));
     AssertEquals(255, AlphaOf(floralWhiteColor));
 end;
-procedure TIntegrationTests.TestColorForestGreenIntegration;
+procedure TestColorForestGreenIntegration;
 begin
     forestGreenColor := ColorForestGreen();
     AssertEquals(34, RedOf(forestGreenColor));
@@ -401,7 +402,7 @@ begin
     AssertEquals(34, BlueOf(forestGreenColor));
     AssertEquals(255, AlphaOf(forestGreenColor));
 end;
-procedure TIntegrationTests.TestColorFuchsiaIntegration;
+procedure TestColorFuchsiaIntegration;
 begin
     fuchsiaColor := ColorFuchsia();
     AssertEquals(255, RedOf(fuchsiaColor));
@@ -409,7 +410,7 @@ begin
     AssertEquals(255, BlueOf(fuchsiaColor));
     AssertEquals(255, AlphaOf(fuchsiaColor));
 end;
-procedure TIntegrationTests.TestColorGainsboroIntegration;
+procedure TestColorGainsboroIntegration;
 begin
     gainsboroColor := ColorGainsboro();
     AssertEquals(220, RedOf(gainsboroColor));
@@ -417,7 +418,7 @@ begin
     AssertEquals(220, BlueOf(gainsboroColor));
     AssertEquals(255, AlphaOf(gainsboroColor));
 end;
-procedure TIntegrationTests.TestColorGhostWhiteIntegration;
+procedure TestColorGhostWhiteIntegration;
 begin
     ghostWhiteColor := ColorGhostWhite();
     AssertEquals(248, RedOf(ghostWhiteColor));
@@ -425,7 +426,7 @@ begin
     AssertEquals(255, BlueOf(ghostWhiteColor));
     AssertEquals(255, AlphaOf(ghostWhiteColor));
 end;
-procedure TIntegrationTests.TestColorGoldIntegration;
+procedure TestColorGoldIntegration;
 begin
     goldColor := ColorGold();
     AssertEquals(255, RedOf(goldColor));
@@ -433,7 +434,7 @@ begin
     AssertEquals(0, BlueOf(goldColor));
     AssertEquals(255, AlphaOf(goldColor));
 end;
-procedure TIntegrationTests.TestColorGoldenrodIntegration;
+procedure TestColorGoldenrodIntegration;
 begin
     goldenrodColor := ColorGoldenrod();
     AssertEquals(218, RedOf(goldenrodColor));
@@ -441,7 +442,7 @@ begin
     AssertEquals(32, BlueOf(goldenrodColor));
     AssertEquals(255, AlphaOf(goldenrodColor));
 end;
-procedure TIntegrationTests.TestColorGrayIntegration;
+procedure TestColorGrayIntegration;
 begin
     grayColor := ColorGray();
     AssertEquals(127, RedOf(grayColor));
@@ -449,7 +450,7 @@ begin
     AssertEquals(127, BlueOf(grayColor));
     AssertEquals(255, AlphaOf(grayColor));
 end;
-procedure TIntegrationTests.TestColorGreenIntegration;
+procedure TestColorGreenIntegration;
 begin
     greenColor := ColorGreen();
     AssertEquals(0, RedOf(greenColor));
@@ -457,7 +458,7 @@ begin
     AssertEquals(0, BlueOf(greenColor));
     AssertEquals(255, AlphaOf(greenColor));
 end;
-procedure TIntegrationTests.TestColorGreenYellowIntegration;
+procedure TestColorGreenYellowIntegration;
 begin
     greenYellowColor := ColorGreenYellow();
     AssertEquals(173, RedOf(greenYellowColor));
@@ -465,7 +466,7 @@ begin
     AssertEquals(47, BlueOf(greenYellowColor));
     AssertEquals(255, AlphaOf(greenYellowColor));
 end;
-procedure TIntegrationTests.TestColorHoneydewIntegration;
+procedure TestColorHoneydewIntegration;
 begin
     honeydewColor := ColorHoneydew();
     AssertEquals(240, RedOf(honeydewColor));
@@ -473,7 +474,7 @@ begin
     AssertEquals(240, BlueOf(honeydewColor));
     AssertEquals(255, AlphaOf(honeydewColor));
 end;
-procedure TIntegrationTests.TestColorHotPinkIntegration;
+procedure TestColorHotPinkIntegration;
 begin
     hotPinkColor := ColorHotPink();
     AssertEquals(255, RedOf(hotPinkColor));
@@ -481,7 +482,7 @@ begin
     AssertEquals(180, BlueOf(hotPinkColor));
     AssertEquals(255, AlphaOf(hotPinkColor));
 end;
-procedure TIntegrationTests.TestColorIndianRedIntegration;
+procedure TestColorIndianRedIntegration;
 begin
     indianRedColor := ColorIndianRed();
     AssertEquals(205, RedOf(indianRedColor));
@@ -489,7 +490,7 @@ begin
     AssertEquals(92, BlueOf(indianRedColor));
     AssertEquals(255, AlphaOf(indianRedColor));
 end;
-procedure TIntegrationTests.TestColorIndigoIntegration;
+procedure TestColorIndigoIntegration;
 begin
     indigoColor := ColorIndigo();
     AssertEquals(75, RedOf(indigoColor));
@@ -497,7 +498,7 @@ begin
     AssertEquals(130, BlueOf(indigoColor));
     AssertEquals(255, AlphaOf(indigoColor));
 end;
-procedure TIntegrationTests.TestColorIvoryIntegration;
+procedure TestColorIvoryIntegration;
 begin
     ivoryColor := ColorIvory();
     AssertEquals(255, RedOf(ivoryColor));
@@ -505,7 +506,7 @@ begin
     AssertEquals(240, BlueOf(ivoryColor));
     AssertEquals(255, AlphaOf(ivoryColor));
 end;
-procedure TIntegrationTests.TestColorKhakiIntegration;
+procedure TestColorKhakiIntegration;
 begin
     khakiColor := ColorKhaki();
     AssertEquals(240, RedOf(khakiColor));
@@ -513,7 +514,7 @@ begin
     AssertEquals(140, BlueOf(khakiColor));
     AssertEquals(255, AlphaOf(khakiColor));
 end;
-procedure TIntegrationTests.TestColorLavenderIntegration;
+procedure TestColorLavenderIntegration;
 begin
     lavenderColor := ColorLavender();
     AssertEquals(230, RedOf(lavenderColor));
@@ -521,7 +522,7 @@ begin
     AssertEquals(250, BlueOf(lavenderColor));
     AssertEquals(255, AlphaOf(lavenderColor));
 end;
-procedure TIntegrationTests.TestColorLavenderBlushIntegration;
+procedure TestColorLavenderBlushIntegration;
 begin
     lavenderBlushColor := ColorLavenderBlush();
     AssertEquals(255, RedOf(lavenderBlushColor));
@@ -529,7 +530,7 @@ begin
     AssertEquals(245, BlueOf(lavenderBlushColor));
     AssertEquals(255, AlphaOf(lavenderBlushColor));
 end;
-procedure TIntegrationTests.TestColorLawnGreenIntegration;
+procedure TestColorLawnGreenIntegration;
 begin
     lawnGreenColor := ColorLawnGreen();
     AssertEquals(124, RedOf(lawnGreenColor));
@@ -537,7 +538,7 @@ begin
     AssertEquals(0, BlueOf(lawnGreenColor));
     AssertEquals(255, AlphaOf(lawnGreenColor));
 end;
-procedure TIntegrationTests.TestColorLemonChiffonIntegration;
+procedure TestColorLemonChiffonIntegration;
 begin
     lemonChiffonColor := ColorLemonChiffon();
     AssertEquals(255, RedOf(lemonChiffonColor));
@@ -545,7 +546,7 @@ begin
     AssertEquals(205, BlueOf(lemonChiffonColor));
     AssertEquals(255, AlphaOf(lemonChiffonColor));
 end;
-procedure TIntegrationTests.TestColorLightBlueIntegration;
+procedure TestColorLightBlueIntegration;
 begin
     lightBlueColor := ColorLightBlue();
     AssertEquals(173, RedOf(lightBlueColor));
@@ -553,7 +554,7 @@ begin
     AssertEquals(230, BlueOf(lightBlueColor));
     AssertEquals(255, AlphaOf(lightBlueColor));
 end;
-procedure TIntegrationTests.TestColorLightCoralIntegration;
+procedure TestColorLightCoralIntegration;
 begin
     lightCoralColor := ColorLightCoral();
     AssertEquals(240, RedOf(lightCoralColor));
@@ -561,7 +562,7 @@ begin
     AssertEquals(127, BlueOf(lightCoralColor));
     AssertEquals(255, AlphaOf(lightCoralColor));
 end;
-procedure TIntegrationTests.TestColorLightCyanIntegration;
+procedure TestColorLightCyanIntegration;
 begin
     lightCyanColor := ColorLightCyan();
     AssertEquals(224, RedOf(lightCyanColor));
@@ -569,7 +570,7 @@ begin
     AssertEquals(255, BlueOf(lightCyanColor));
     AssertEquals(255, AlphaOf(lightCyanColor));
 end;
-procedure TIntegrationTests.TestColorLightGoldenrodYellowIntegration;
+procedure TestColorLightGoldenrodYellowIntegration;
 begin
     lightGoldenrodYellowColor := ColorLightGoldenrodYellow();
     AssertEquals(250, RedOf(lightGoldenrodYellowColor));
@@ -577,7 +578,7 @@ begin
     AssertEquals(210, BlueOf(lightGoldenrodYellowColor));
     AssertEquals(255, AlphaOf(lightGoldenrodYellowColor));
 end;
-procedure TIntegrationTests.TestColorLightGrayIntegration;
+procedure TestColorLightGrayIntegration;
 begin
     lightGrayColor := ColorLightGray();
     AssertEquals(211, RedOf(lightGrayColor));
@@ -585,7 +586,7 @@ begin
     AssertEquals(211, BlueOf(lightGrayColor));
     AssertEquals(255, AlphaOf(lightGrayColor));
 end;
-procedure TIntegrationTests.TestColorLightGreenIntegration;
+procedure TestColorLightGreenIntegration;
 begin
     lightGreenColor := ColorLightGreen();
     AssertEquals(144, RedOf(lightGreenColor));
@@ -593,7 +594,7 @@ begin
     AssertEquals(144, BlueOf(lightGreenColor));
     AssertEquals(255, AlphaOf(lightGreenColor));
 end;
-procedure TIntegrationTests.TestColorLightPinkIntegration;
+procedure TestColorLightPinkIntegration;
 begin
     lightPinkColor := ColorLightPink();
     AssertEquals(255, RedOf(lightPinkColor));
@@ -601,7 +602,7 @@ begin
     AssertEquals(193, BlueOf(lightPinkColor));
     AssertEquals(255, AlphaOf(lightPinkColor));
 end;
-procedure TIntegrationTests.TestColorLightSalmonIntegration;
+procedure TestColorLightSalmonIntegration;
 begin
     lightSalmonColor := ColorLightSalmon();
     AssertEquals(255, RedOf(lightSalmonColor));
@@ -609,7 +610,7 @@ begin
     AssertEquals(122, BlueOf(lightSalmonColor));
     AssertEquals(255, AlphaOf(lightSalmonColor));
 end;
-procedure TIntegrationTests.TestColorLightSeaGreenIntegration;
+procedure TestColorLightSeaGreenIntegration;
 begin
     lightSeaGreenColor := ColorLightSeaGreen();
     AssertEquals(32, RedOf(lightSeaGreenColor));
@@ -617,7 +618,7 @@ begin
     AssertEquals(170, BlueOf(lightSeaGreenColor));
     AssertEquals(255, AlphaOf(lightSeaGreenColor));
 end;
-procedure TIntegrationTests.TestColorLightSkyBlueIntegration;
+procedure TestColorLightSkyBlueIntegration;
 begin
     lightSkyBlueColor := ColorLightSkyBlue();
     AssertEquals(135, RedOf(lightSkyBlueColor));
@@ -625,7 +626,7 @@ begin
     AssertEquals(250, BlueOf(lightSkyBlueColor));
     AssertEquals(255, AlphaOf(lightSkyBlueColor));
 end;
-procedure TIntegrationTests.TestColorLightSlateGrayIntegration;
+procedure TestColorLightSlateGrayIntegration;
 begin
     lightSlateGrayColor := ColorLightSlateGray();
     AssertEquals(119, RedOf(lightSlateGrayColor));
@@ -633,7 +634,7 @@ begin
     AssertEquals(153, BlueOf(lightSlateGrayColor));
     AssertEquals(255, AlphaOf(lightSlateGrayColor));
 end;
-procedure TIntegrationTests.TestColorLightSteelBlueIntegration;
+procedure TestColorLightSteelBlueIntegration;
 begin
     lightSteelBlueColor := ColorLightSteelBlue();
     AssertEquals(176, RedOf(lightSteelBlueColor));
@@ -641,7 +642,7 @@ begin
     AssertEquals(222, BlueOf(lightSteelBlueColor));
     AssertEquals(255, AlphaOf(lightSteelBlueColor));
 end;
-procedure TIntegrationTests.TestColorLightYellowIntegration;
+procedure TestColorLightYellowIntegration;
 begin
     lightYellowColor := ColorLightYellow();
     AssertEquals(255, RedOf(lightYellowColor));
@@ -649,7 +650,7 @@ begin
     AssertEquals(224, BlueOf(lightYellowColor));
     AssertEquals(255, AlphaOf(lightYellowColor));
 end;
-procedure TIntegrationTests.TestColorLimeIntegration;
+procedure TestColorLimeIntegration;
 begin
     limeColor := ColorLime();
     AssertEquals(0, RedOf(limeColor));
@@ -657,7 +658,7 @@ begin
     AssertEquals(0, BlueOf(limeColor));
     AssertEquals(255, AlphaOf(limeColor));
 end;
-procedure TIntegrationTests.TestColorLimeGreenIntegration;
+procedure TestColorLimeGreenIntegration;
 begin
     limeGreenColor := ColorLimeGreen();
     AssertEquals(50, RedOf(limeGreenColor));
@@ -665,7 +666,7 @@ begin
     AssertEquals(50, BlueOf(limeGreenColor));
     AssertEquals(255, AlphaOf(limeGreenColor));
 end;
-procedure TIntegrationTests.TestColorLinenIntegration;
+procedure TestColorLinenIntegration;
 begin
     linenColor := ColorLinen();
     AssertEquals(250, RedOf(linenColor));
@@ -673,7 +674,7 @@ begin
     AssertEquals(230, BlueOf(linenColor));
     AssertEquals(255, AlphaOf(linenColor));
 end;
-procedure TIntegrationTests.TestColorMagentaIntegration;
+procedure TestColorMagentaIntegration;
 begin
     magentaColor := ColorMagenta();
     AssertEquals(255, RedOf(magentaColor));
@@ -681,7 +682,7 @@ begin
     AssertEquals(255, BlueOf(magentaColor));
     AssertEquals(255, AlphaOf(magentaColor));
 end;
-procedure TIntegrationTests.TestColorMaroonIntegration;
+procedure TestColorMaroonIntegration;
 begin
     maroonColor := ColorMaroon();
     AssertEquals(127, RedOf(maroonColor));
@@ -689,7 +690,7 @@ begin
     AssertEquals(0, BlueOf(maroonColor));
     AssertEquals(255, AlphaOf(maroonColor));
 end;
-procedure TIntegrationTests.TestColorMediumAquamarineIntegration;
+procedure TestColorMediumAquamarineIntegration;
 begin
     mediumAquamarineColor := ColorMediumAquamarine();
     AssertEquals(102, RedOf(mediumAquamarineColor));
@@ -697,7 +698,7 @@ begin
     AssertEquals(170, BlueOf(mediumAquamarineColor));
     AssertEquals(255, AlphaOf(mediumAquamarineColor));
 end;
-procedure TIntegrationTests.TestColorMediumBlueIntegration;
+procedure TestColorMediumBlueIntegration;
 begin
     mediumBlueColor := ColorMediumBlue();
     AssertEquals(0, RedOf(mediumBlueColor));
@@ -705,7 +706,7 @@ begin
     AssertEquals(205, BlueOf(mediumBlueColor));
     AssertEquals(255, AlphaOf(mediumBlueColor));
 end;
-procedure TIntegrationTests.TestColorMediumOrchidIntegration;
+procedure TestColorMediumOrchidIntegration;
 begin
     mediumOrchidColor := ColorMediumOrchid();
     AssertEquals(186, RedOf(mediumOrchidColor));
@@ -713,7 +714,7 @@ begin
     AssertEquals(211, BlueOf(mediumOrchidColor));
     AssertEquals(255, AlphaOf(mediumOrchidColor));
 end;
-procedure TIntegrationTests.TestColorMediumPurpleIntegration;
+procedure TestColorMediumPurpleIntegration;
 begin
     mediumPurpleColor := ColorMediumPurple();
     AssertEquals(147, RedOf(mediumPurpleColor));
@@ -721,7 +722,7 @@ begin
     AssertEquals(219, BlueOf(mediumPurpleColor));
     AssertEquals(255, AlphaOf(mediumPurpleColor));
 end;
-procedure TIntegrationTests.TestColorMediumSeaGreenIntegration;
+procedure TestColorMediumSeaGreenIntegration;
 begin
     mediumSeaGreenColor := ColorMediumSeaGreen();
     AssertEquals(60, RedOf(mediumSeaGreenColor));
@@ -729,7 +730,7 @@ begin
     AssertEquals(113, BlueOf(mediumSeaGreenColor));
     AssertEquals(255, AlphaOf(mediumSeaGreenColor));
 end;
-procedure TIntegrationTests.TestColorMediumSlateBlueIntegration;
+procedure TestColorMediumSlateBlueIntegration;
 begin
     mediumSlateBlueColor := ColorMediumSlateBlue();
     AssertEquals(123, RedOf(mediumSlateBlueColor));
@@ -737,7 +738,7 @@ begin
     AssertEquals(238, BlueOf(mediumSlateBlueColor));
     AssertEquals(255, AlphaOf(mediumSlateBlueColor));
 end;
-procedure TIntegrationTests.TestColorMediumSpringGreenIntegration;
+procedure TestColorMediumSpringGreenIntegration;
 begin
     mediumSpringGreenColor := ColorMediumSpringGreen();
     AssertEquals(0, RedOf(mediumSpringGreenColor));
@@ -745,7 +746,7 @@ begin
     AssertEquals(154, BlueOf(mediumSpringGreenColor));
     AssertEquals(255, AlphaOf(mediumSpringGreenColor));
 end;
-procedure TIntegrationTests.TestColorMediumTurquoiseIntegration;
+procedure TestColorMediumTurquoiseIntegration;
 begin
     mediumTurquoiseColor := ColorMediumTurquoise();
     AssertEquals(72, RedOf(mediumTurquoiseColor));
@@ -753,7 +754,7 @@ begin
     AssertEquals(204, BlueOf(mediumTurquoiseColor));
     AssertEquals(255, AlphaOf(mediumTurquoiseColor));
 end;
-procedure TIntegrationTests.TestColorMediumVioletRedIntegration;
+procedure TestColorMediumVioletRedIntegration;
 begin
     mediumVioletRedColor := ColorMediumVioletRed();
     AssertEquals(199, RedOf(mediumVioletRedColor));
@@ -761,7 +762,7 @@ begin
     AssertEquals(133, BlueOf(mediumVioletRedColor));
     AssertEquals(255, AlphaOf(mediumVioletRedColor));
 end;
-procedure TIntegrationTests.TestColorMidnightBlueIntegration;
+procedure TestColorMidnightBlueIntegration;
 begin
     midnightBlueColor := ColorMidnightBlue();
     AssertEquals(25, RedOf(midnightBlueColor));
@@ -769,7 +770,7 @@ begin
     AssertEquals(112, BlueOf(midnightBlueColor));
     AssertEquals(255, AlphaOf(midnightBlueColor));
 end;
-procedure TIntegrationTests.TestColorMintCreamIntegration;
+procedure TestColorMintCreamIntegration;
 begin
     mintCreamColor := ColorMintCream();
     AssertEquals(245, RedOf(mintCreamColor));
@@ -777,7 +778,7 @@ begin
     AssertEquals(250, BlueOf(mintCreamColor));
     AssertEquals(255, AlphaOf(mintCreamColor));
 end;
-procedure TIntegrationTests.TestColorMistyRoseIntegration;
+procedure TestColorMistyRoseIntegration;
 begin
     mistyRoseColor := ColorMistyRose();
     AssertEquals(255, RedOf(mistyRoseColor));
@@ -785,7 +786,7 @@ begin
     AssertEquals(225, BlueOf(mistyRoseColor));
     AssertEquals(255, AlphaOf(mistyRoseColor));
 end;
-procedure TIntegrationTests.TestColorMoccasinIntegration;
+procedure TestColorMoccasinIntegration;
 begin
     moccasinColor := ColorMoccasin();
     AssertEquals(255, RedOf(moccasinColor));
@@ -793,7 +794,7 @@ begin
     AssertEquals(181, BlueOf(moccasinColor));
     AssertEquals(255, AlphaOf(moccasinColor));
 end;
-procedure TIntegrationTests.TestColorNavajoWhiteIntegration;
+procedure TestColorNavajoWhiteIntegration;
 begin
     navajoWhiteColor := ColorNavajoWhite();
     AssertEquals(255, RedOf(navajoWhiteColor));
@@ -801,7 +802,7 @@ begin
     AssertEquals(173, BlueOf(navajoWhiteColor));
     AssertEquals(255, AlphaOf(navajoWhiteColor));
 end;
-procedure TIntegrationTests.TestColorNavyIntegration;
+procedure TestColorNavyIntegration;
 begin
     navyColor := ColorNavy();
     AssertEquals(0, RedOf(navyColor));
@@ -809,7 +810,7 @@ begin
     AssertEquals(127, BlueOf(navyColor));
     AssertEquals(255, AlphaOf(navyColor));
 end;
-procedure TIntegrationTests.TestColorOldLaceIntegration;
+procedure TestColorOldLaceIntegration;
 begin
     oldLaceColor := ColorOldLace();
     AssertEquals(253, RedOf(oldLaceColor));
@@ -817,7 +818,7 @@ begin
     AssertEquals(230, BlueOf(oldLaceColor));
     AssertEquals(255, AlphaOf(oldLaceColor));
 end;
-procedure TIntegrationTests.TestColorOliveIntegration;
+procedure TestColorOliveIntegration;
 begin
     oliveColor := ColorOlive();
     AssertEquals(127, RedOf(oliveColor));
@@ -825,7 +826,7 @@ begin
     AssertEquals(0, BlueOf(oliveColor));
     AssertEquals(255, AlphaOf(oliveColor));
 end;
-procedure TIntegrationTests.TestColorOliveDrabIntegration;
+procedure TestColorOliveDrabIntegration;
 begin
     oliveDrabColor := ColorOliveDrab();
     AssertEquals(107, RedOf(oliveDrabColor));
@@ -833,7 +834,7 @@ begin
     AssertEquals(35, BlueOf(oliveDrabColor));
     AssertEquals(255, AlphaOf(oliveDrabColor));
 end;
-procedure TIntegrationTests.TestColorOrangeIntegration;
+procedure TestColorOrangeIntegration;
 begin
     orangeColor := ColorOrange();
     AssertEquals(255, RedOf(orangeColor));
@@ -841,7 +842,7 @@ begin
     AssertEquals(0, BlueOf(orangeColor));
     AssertEquals(255, AlphaOf(orangeColor));
 end;
-procedure TIntegrationTests.TestColorOrangeRedIntegration;
+procedure TestColorOrangeRedIntegration;
 begin
     orangeRedColor := ColorOrangeRed();
     AssertEquals(255, RedOf(orangeRedColor));
@@ -849,7 +850,7 @@ begin
     AssertEquals(0, BlueOf(orangeRedColor));
     AssertEquals(255, AlphaOf(orangeRedColor));
 end;
-procedure TIntegrationTests.TestColorOrchidIntegration;
+procedure TestColorOrchidIntegration;
 begin
     orchidColor := ColorOrchid();
     AssertEquals(218, RedOf(orchidColor));
@@ -857,7 +858,7 @@ begin
     AssertEquals(214, BlueOf(orchidColor));
     AssertEquals(255, AlphaOf(orchidColor));
 end;
-procedure TIntegrationTests.TestColorPaleGoldenrodIntegration;
+procedure TestColorPaleGoldenrodIntegration;
 begin
     paleGoldenrodColor := ColorPaleGoldenrod();
     AssertEquals(238, RedOf(paleGoldenrodColor));
@@ -865,7 +866,7 @@ begin
     AssertEquals(170, BlueOf(paleGoldenrodColor));
     AssertEquals(255, AlphaOf(paleGoldenrodColor));
 end;
-procedure TIntegrationTests.TestColorPaleGreenIntegration;
+procedure TestColorPaleGreenIntegration;
 begin
     paleGreenColor := ColorPaleGreen();
     AssertEquals(152, RedOf(paleGreenColor));
@@ -873,7 +874,7 @@ begin
     AssertEquals(152, BlueOf(paleGreenColor));
     AssertEquals(255, AlphaOf(paleGreenColor));
 end;
-procedure TIntegrationTests.TestColorPaleTurquoiseIntegration;
+procedure TestColorPaleTurquoiseIntegration;
 begin
     paleTurquoiseColor := ColorPaleTurquoise();
     AssertEquals(175, RedOf(paleTurquoiseColor));
@@ -881,7 +882,7 @@ begin
     AssertEquals(238, BlueOf(paleTurquoiseColor));
     AssertEquals(255, AlphaOf(paleTurquoiseColor));
 end;
-procedure TIntegrationTests.TestColorPaleVioletRedIntegration;
+procedure TestColorPaleVioletRedIntegration;
 begin
     paleVioletRedColor := ColorPaleVioletRed();
     AssertEquals(219, RedOf(paleVioletRedColor));
@@ -889,7 +890,7 @@ begin
     AssertEquals(147, BlueOf(paleVioletRedColor));
     AssertEquals(255, AlphaOf(paleVioletRedColor));
 end;
-procedure TIntegrationTests.TestColorPapayaWhipIntegration;
+procedure TestColorPapayaWhipIntegration;
 begin
     papayaWhipColor := ColorPapayaWhip();
     AssertEquals(255, RedOf(papayaWhipColor));
@@ -897,7 +898,7 @@ begin
     AssertEquals(213, BlueOf(papayaWhipColor));
     AssertEquals(255, AlphaOf(papayaWhipColor));
 end;
-procedure TIntegrationTests.TestColorPeachPuffIntegration;
+procedure TestColorPeachPuffIntegration;
 begin
     peachPuffColor := ColorPeachPuff();
     AssertEquals(255, RedOf(peachPuffColor));
@@ -905,7 +906,7 @@ begin
     AssertEquals(185, BlueOf(peachPuffColor));
     AssertEquals(255, AlphaOf(peachPuffColor));
 end;
-procedure TIntegrationTests.TestColorPeruIntegration;
+procedure TestColorPeruIntegration;
 begin
     peruColor := ColorPeru();
     AssertEquals(205, RedOf(peruColor));
@@ -913,7 +914,7 @@ begin
     AssertEquals(63, BlueOf(peruColor));
     AssertEquals(255, AlphaOf(peruColor));
 end;
-procedure TIntegrationTests.TestColorPinkIntegration;
+procedure TestColorPinkIntegration;
 begin
     pinkColor := ColorPink();
     AssertEquals(255, RedOf(pinkColor));
@@ -921,7 +922,7 @@ begin
     AssertEquals(203, BlueOf(pinkColor));
     AssertEquals(255, AlphaOf(pinkColor));
 end;
-procedure TIntegrationTests.TestColorPlumIntegration;
+procedure TestColorPlumIntegration;
 begin
     plumColor := ColorPlum();
     AssertEquals(221, RedOf(plumColor));
@@ -929,7 +930,7 @@ begin
     AssertEquals(221, BlueOf(plumColor));
     AssertEquals(255, AlphaOf(plumColor));
 end;
-procedure TIntegrationTests.TestColorPowderBlueIntegration;
+procedure TestColorPowderBlueIntegration;
 begin
     powderBlueColor := ColorPowderBlue();
     AssertEquals(176, RedOf(powderBlueColor));
@@ -937,7 +938,7 @@ begin
     AssertEquals(230, BlueOf(powderBlueColor));
     AssertEquals(255, AlphaOf(powderBlueColor));
 end;
-procedure TIntegrationTests.TestColorPurpleIntegration;
+procedure TestColorPurpleIntegration;
 begin
     purpleColor := ColorPurple();
     AssertEquals(127, RedOf(purpleColor));
@@ -945,7 +946,7 @@ begin
     AssertEquals(127, BlueOf(purpleColor));
     AssertEquals(255, AlphaOf(purpleColor));
 end;
-procedure TIntegrationTests.TestColorRedIntegration;
+procedure TestColorRedIntegration;
 begin
     redColor := ColorRed();
     AssertEquals(255, RedOf(redColor));
@@ -953,7 +954,7 @@ begin
     AssertEquals(0, BlueOf(redColor));
     AssertEquals(255, AlphaOf(redColor));
 end;
-procedure TIntegrationTests.TestColorRosyBrownIntegration;
+procedure TestColorRosyBrownIntegration;
 begin
     rosyBrownColor := ColorRosyBrown();
     AssertEquals(188, RedOf(rosyBrownColor));
@@ -961,7 +962,7 @@ begin
     AssertEquals(143, BlueOf(rosyBrownColor));
     AssertEquals(255, AlphaOf(rosyBrownColor));
 end;
-procedure TIntegrationTests.TestColorRoyalBlueIntegration;
+procedure TestColorRoyalBlueIntegration;
 begin
     royalBlueColor := ColorRoyalBlue();
     AssertEquals(65, RedOf(royalBlueColor));
@@ -969,7 +970,7 @@ begin
     AssertEquals(225, BlueOf(royalBlueColor));
     AssertEquals(255, AlphaOf(royalBlueColor));
 end;
-procedure TIntegrationTests.TestColorSaddleBrownIntegration;
+procedure TestColorSaddleBrownIntegration;
 begin
     saddleBrownColor := ColorSaddleBrown();
     AssertEquals(139, RedOf(saddleBrownColor));
@@ -977,7 +978,7 @@ begin
     AssertEquals(19, BlueOf(saddleBrownColor));
     AssertEquals(255, AlphaOf(saddleBrownColor));
 end;
-procedure TIntegrationTests.TestColorSalmonIntegration;
+procedure TestColorSalmonIntegration;
 begin
     salmonColor := ColorSalmon();
     AssertEquals(250, RedOf(salmonColor));
@@ -985,7 +986,7 @@ begin
     AssertEquals(114, BlueOf(salmonColor));
     AssertEquals(255, AlphaOf(salmonColor));
 end;
-procedure TIntegrationTests.TestColorSandyBrownIntegration;
+procedure TestColorSandyBrownIntegration;
 begin
     sandyBrownColor := ColorSandyBrown();
     AssertEquals(244, RedOf(sandyBrownColor));
@@ -993,7 +994,7 @@ begin
     AssertEquals(96, BlueOf(sandyBrownColor));
     AssertEquals(255, AlphaOf(sandyBrownColor));
 end;
-procedure TIntegrationTests.TestColorSeaGreenIntegration;
+procedure TestColorSeaGreenIntegration;
 begin
     seaGreenColor := ColorSeaGreen();
     AssertEquals(46, RedOf(seaGreenColor));
@@ -1001,7 +1002,7 @@ begin
     AssertEquals(87, BlueOf(seaGreenColor));
     AssertEquals(255, AlphaOf(seaGreenColor));
 end;
-procedure TIntegrationTests.TestColorSeaShellIntegration;
+procedure TestColorSeaShellIntegration;
 begin
     seaShellColor := ColorSeaShell();
     AssertEquals(255, RedOf(seaShellColor));
@@ -1009,7 +1010,7 @@ begin
     AssertEquals(238, BlueOf(seaShellColor));
     AssertEquals(255, AlphaOf(seaShellColor));
 end;
-procedure TIntegrationTests.TestColorSiennaIntegration;
+procedure TestColorSiennaIntegration;
 begin
     siennaColor := ColorSienna();
     AssertEquals(160, RedOf(siennaColor));
@@ -1017,7 +1018,7 @@ begin
     AssertEquals(45, BlueOf(siennaColor));
     AssertEquals(255, AlphaOf(siennaColor));
 end;
-procedure TIntegrationTests.TestColorSilverIntegration;
+procedure TestColorSilverIntegration;
 begin
     silverColor := ColorSilver();
     AssertEquals(192, RedOf(silverColor));
@@ -1025,7 +1026,7 @@ begin
     AssertEquals(192, BlueOf(silverColor));
     AssertEquals(255, AlphaOf(silverColor));
 end;
-procedure TIntegrationTests.TestColorSkyBlueIntegration;
+procedure TestColorSkyBlueIntegration;
 begin
     skyBlueColor := ColorSkyBlue();
     AssertEquals(135, RedOf(skyBlueColor));
@@ -1033,7 +1034,7 @@ begin
     AssertEquals(235, BlueOf(skyBlueColor));
     AssertEquals(255, AlphaOf(skyBlueColor));
 end;
-procedure TIntegrationTests.TestColorSlateBlueIntegration;
+procedure TestColorSlateBlueIntegration;
 begin
     slateBlueColor := ColorSlateBlue();
     AssertEquals(106, RedOf(slateBlueColor));
@@ -1041,7 +1042,7 @@ begin
     AssertEquals(205, BlueOf(slateBlueColor));
     AssertEquals(255, AlphaOf(slateBlueColor));
 end;
-procedure TIntegrationTests.TestColorSlateGrayIntegration;
+procedure TestColorSlateGrayIntegration;
 begin
     slateGrayColor := ColorSlateGray();
     AssertEquals(112, RedOf(slateGrayColor));
@@ -1049,7 +1050,7 @@ begin
     AssertEquals(144, BlueOf(slateGrayColor));
     AssertEquals(255, AlphaOf(slateGrayColor));
 end;
-procedure TIntegrationTests.TestColorSnowIntegration;
+procedure TestColorSnowIntegration;
 begin
     snowColor := ColorSnow();
     AssertEquals(255, RedOf(snowColor));
@@ -1057,7 +1058,7 @@ begin
     AssertEquals(250, BlueOf(snowColor));
     AssertEquals(255, AlphaOf(snowColor));
 end;
-procedure TIntegrationTests.TestColorSpringGreenIntegration;
+procedure TestColorSpringGreenIntegration;
 begin
     springGreenColor := ColorSpringGreen();
     AssertEquals(0, RedOf(springGreenColor));
@@ -1065,7 +1066,7 @@ begin
     AssertEquals(127, BlueOf(springGreenColor));
     AssertEquals(255, AlphaOf(springGreenColor));
 end;
-procedure TIntegrationTests.TestColorSteelBlueIntegration;
+procedure TestColorSteelBlueIntegration;
 begin
     steelBlueColor := ColorSteelBlue();
     AssertEquals(70, RedOf(steelBlueColor));
@@ -1073,7 +1074,7 @@ begin
     AssertEquals(180, BlueOf(steelBlueColor));
     AssertEquals(255, AlphaOf(steelBlueColor));
 end;
-procedure TIntegrationTests.TestColorSwinburneRedIntegration;
+procedure TestColorSwinburneRedIntegration;
 begin
     swinburneRedColor := ColorSwinburneRed();
     AssertEquals(237, RedOf(swinburneRedColor));
@@ -1081,7 +1082,7 @@ begin
     AssertEquals(25, BlueOf(swinburneRedColor));
     AssertEquals(255, AlphaOf(swinburneRedColor));
 end;
-procedure TIntegrationTests.TestColorTanIntegration;
+procedure TestColorTanIntegration;
 begin
     tanColor := ColorTan();
     AssertEquals(210, RedOf(tanColor));
@@ -1089,7 +1090,7 @@ begin
     AssertEquals(140, BlueOf(tanColor));
     AssertEquals(255, AlphaOf(tanColor));
 end;
-procedure TIntegrationTests.TestColorTealIntegration;
+procedure TestColorTealIntegration;
 begin
     tealColor := ColorTeal();
     AssertEquals(0, RedOf(tealColor));
@@ -1097,7 +1098,7 @@ begin
     AssertEquals(127, BlueOf(tealColor));
     AssertEquals(255, AlphaOf(tealColor));
 end;
-procedure TIntegrationTests.TestColorThistleIntegration;
+procedure TestColorThistleIntegration;
 begin
     thistleColor := ColorThistle();
     AssertEquals(216, RedOf(thistleColor));
@@ -1105,7 +1106,7 @@ begin
     AssertEquals(216, BlueOf(thistleColor));
     AssertEquals(255, AlphaOf(thistleColor));
 end;
-procedure TIntegrationTests.TestColorToStringIntegration;
+procedure TestColorToStringIntegration;
 begin
     redColor := ColorRed();
     redColorString := ColorToString(redColor);
@@ -1114,7 +1115,7 @@ begin
     transparentColorString := ColorToString(transparentColor);
     AssertEquals('#ffffffff', transparentColorString);
 end;
-procedure TIntegrationTests.TestColorTomatoIntegration;
+procedure TestColorTomatoIntegration;
 begin
     tomatoColor := ColorTomato();
     AssertEquals(255, RedOf(tomatoColor));
@@ -1122,7 +1123,7 @@ begin
     AssertEquals(71, BlueOf(tomatoColor));
     AssertEquals(255, AlphaOf(tomatoColor));
 end;
-procedure TIntegrationTests.TestColorTransparentIntegration;
+procedure TestColorTransparentIntegration;
 begin
     transparentColor := ColorTransparent();
     AssertEquals(255, AlphaOf(transparentColor));
@@ -1130,7 +1131,7 @@ begin
     AssertEquals(255, GreenOf(transparentColor));
     AssertEquals(255, BlueOf(transparentColor));
 end;
-procedure TIntegrationTests.TestColorTurquoiseIntegration;
+procedure TestColorTurquoiseIntegration;
 begin
     turquoiseColor := ColorTurquoise();
     AssertEquals(64, RedOf(turquoiseColor));
@@ -1138,7 +1139,7 @@ begin
     AssertEquals(208, BlueOf(turquoiseColor));
     AssertEquals(255, AlphaOf(turquoiseColor));
 end;
-procedure TIntegrationTests.TestColorVioletIntegration;
+procedure TestColorVioletIntegration;
 begin
     violetColor := ColorViolet();
     AssertEquals(238, RedOf(violetColor));
@@ -1146,7 +1147,7 @@ begin
     AssertEquals(238, BlueOf(violetColor));
     AssertEquals(255, AlphaOf(violetColor));
 end;
-procedure TIntegrationTests.TestColorWheatIntegration;
+procedure TestColorWheatIntegration;
 begin
     wheatColor := ColorWheat();
     AssertEquals(245, RedOf(wheatColor));
@@ -1154,7 +1155,7 @@ begin
     AssertEquals(179, BlueOf(wheatColor));
     AssertEquals(255, AlphaOf(wheatColor));
 end;
-procedure TIntegrationTests.TestColorWhiteIntegration;
+procedure TestColorWhiteIntegration;
 begin
     whiteColor := ColorWhite();
     AssertEquals(255, RedOf(whiteColor));
@@ -1162,7 +1163,7 @@ begin
     AssertEquals(255, BlueOf(whiteColor));
     AssertEquals(255, AlphaOf(whiteColor));
 end;
-procedure TIntegrationTests.TestColorWhiteSmokeIntegration;
+procedure TestColorWhiteSmokeIntegration;
 begin
     whiteSmokeColor := ColorWhiteSmoke();
     AssertEquals(245, RedOf(whiteSmokeColor));
@@ -1170,7 +1171,7 @@ begin
     AssertEquals(245, BlueOf(whiteSmokeColor));
     AssertEquals(255, AlphaOf(whiteSmokeColor));
 end;
-procedure TIntegrationTests.TestColorYellowIntegration;
+procedure TestColorYellowIntegration;
 begin
     yellowColor := ColorYellow();
     AssertEquals(255, RedOf(yellowColor));
@@ -1178,7 +1179,7 @@ begin
     AssertEquals(0, BlueOf(yellowColor));
     AssertEquals(255, AlphaOf(yellowColor));
 end;
-procedure TIntegrationTests.TestColorYellowGreenIntegration;
+procedure TestColorYellowGreenIntegration;
 begin
     yellowGreenColor := ColorYellowGreen();
     AssertEquals(154, RedOf(yellowGreenColor));
@@ -1186,7 +1187,7 @@ begin
     AssertEquals(50, BlueOf(yellowGreenColor));
     AssertEquals(255, AlphaOf(yellowGreenColor));
 end;
-procedure TIntegrationTests.TestGreenOfIntegration;
+procedure TestGreenOfIntegration;
 begin
     greenColor := ColorGreen();
     greenValue := GreenOf(greenColor);
@@ -1195,7 +1196,7 @@ begin
     blackGreenValue := GreenOf(blackColor);
     AssertEquals(0, blackGreenValue);
 end;
-procedure TIntegrationTests.TestHSBColorIntegration;
+procedure TestHSBColorIntegration;
 begin
     redColor := HSBColor(0.0, 1.0, 1.0);
     AssertEquals(0.0, HueOf(redColor));
@@ -1204,7 +1205,7 @@ begin
     grayColor := HSBColor(0.5, 0.0, 0.5);
     AssertEquals(0.0, SaturationOf(grayColor));
 end;
-procedure TIntegrationTests.TestHueOfIntegration;
+procedure TestHueOfIntegration;
 begin
     redColor := ColorRed();
     hueValue := HueOf(redColor);
@@ -1213,13 +1214,13 @@ begin
     hueValueBlue := HueOf(blueColor);
     AssertEquals(0.6666666666666666, hueValueBlue);
 end;
-procedure TIntegrationTests.TestRandomColorIntegration;
+procedure TestRandomColorIntegration;
 begin
     randomColorResult := RandomColor();
     AssertNotEquals('#000000FF', ColorToString(randomColorResult));
     AssertTrue((AlphaOf(randomColorResult) >= 0) and (AlphaOf(randomColorResult) <= 255));
 end;
-procedure TIntegrationTests.TestRandomRGBColorIntegration;
+procedure TestRandomRGBColorIntegration;
 begin
     randomColor := RandomRGBColor(255);
     AssertTrue((RedOf(randomColor) >= 0) and (RedOf(randomColor) <= 255));
@@ -1227,7 +1228,7 @@ begin
     AssertTrue((BlueOf(randomColor) >= 0) and (BlueOf(randomColor) <= 255));
     AssertEquals(255, AlphaOf(randomColor));
 end;
-procedure TIntegrationTests.TestRedOfIntegration;
+procedure TestRedOfIntegration;
 begin
     redColor := ColorRed();
     redValue := RedOf(redColor);
@@ -1236,7 +1237,7 @@ begin
     blueRedValue := RedOf(blueColor);
     AssertEquals(0, blueRedValue);
 end;
-procedure TIntegrationTests.TestRGBColorFromDoubleIntegration;
+procedure TestRGBColorFromDoubleIntegration;
 begin
     redColor := RGBColor(1.0, 0.0, 0.0);
     AssertEquals(255, RedOf(redColor));
@@ -1247,7 +1248,7 @@ begin
     AssertEquals(255, GreenOf(greenColor));
     AssertEquals(0, BlueOf(greenColor));
 end;
-procedure TIntegrationTests.TestRGBColorIntegration;
+procedure TestRGBColorIntegration;
 begin
     redColor := RGBColor(255, 0, 0);
     AssertEquals(255, RedOf(redColor));
@@ -1255,7 +1256,7 @@ begin
     AssertEquals(0, BlueOf(redColor));
     AssertEquals(255, AlphaOf(redColor));
 end;
-procedure TIntegrationTests.TestRGBAColorFromDoubleIntegration;
+procedure TestRGBAColorFromDoubleIntegration;
 begin
     testColor := RGBAColor(1.0, 0.5, 0.0, 0.75);
     AssertEquals(255, RedOf(testColor));
@@ -1263,7 +1264,7 @@ begin
     AssertEquals(0, BlueOf(testColor));
     AssertEquals(191, AlphaOf(testColor));
 end;
-procedure TIntegrationTests.TestRGBAColorIntegration;
+procedure TestRGBAColorIntegration;
 begin
     redColor := RGBAColor(255, 0, 0, 255);
     AssertEquals(255, RedOf(redColor));
@@ -1271,7 +1272,7 @@ begin
     AssertEquals(0, BlueOf(redColor));
     AssertEquals(255, AlphaOf(redColor));
 end;
-procedure TIntegrationTests.TestSaturationOfIntegration;
+procedure TestSaturationOfIntegration;
 begin
     redColor := ColorRed();
     saturationValue := SaturationOf(redColor);
@@ -1280,7 +1281,7 @@ begin
     saturationValueGray := SaturationOf(grayColor);
     AssertEquals(0.0, saturationValueGray);
 end;
-procedure TIntegrationTests.TestStringToColorIntegration;
+procedure TestStringToColorIntegration;
 begin
     redColor := StringToColor('#FF0000FF');
     AssertEquals(255, RedOf(redColor));
@@ -1297,5 +1298,5 @@ end;
 
 procedure RegisterTests;
 begin
-#<Proc:0x00007f20a9d04780 /mnt/c/Users/Noahc/Documents/.Year 2 Semester 3/Team Project (A)/Github Repo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:128 (lambda)>
+    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

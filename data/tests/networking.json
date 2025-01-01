@@ -1,5 +1,27 @@
 {
   "group": "networking",
+  "cleanup": [
+    {
+      "cleanup_type": "window",
+      "function_name": "close_all_windows",
+      "args": []
+    },
+    {
+      "cleanup_type": "server",
+      "function_name": "close_all_servers",
+      "args": []
+    },
+    {
+      "cleanup_type": "connection",
+      "function_name": "close_all_connections",
+      "args": []
+    },
+    {
+      "cleanup_type": "json",
+      "function_name": "free_all_json",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "accept_all_new_connections",
@@ -20,6 +42,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -37,6 +64,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -59,26 +91,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -101,6 +113,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -118,6 +135,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -145,26 +167,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -187,6 +189,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -204,6 +211,11 @@
             }
           ],
           "store_result": "test_connection1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -281,21 +293,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_connections",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -318,6 +315,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -335,6 +337,11 @@
             }
           ],
           "store_result": "test_connection1"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -408,21 +415,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_connections",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -445,6 +437,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -462,6 +459,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -503,26 +505,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -545,6 +527,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -564,6 +551,11 @@
           "store_result": "test_connection"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
+        },
+        {
           "step_type": "function",
           "function_name": "check_network_activity",
           "args": []
@@ -579,26 +571,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -621,6 +593,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -638,6 +615,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -711,26 +693,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -753,6 +715,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -770,6 +737,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -838,26 +810,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -880,6 +832,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -897,6 +854,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -970,16 +932,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1002,6 +954,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -1018,6 +975,11 @@
               "value": 5000
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -1067,16 +1029,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1096,6 +1048,11 @@
               "value": 5000
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -1205,6 +1162,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -1222,6 +1184,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -1266,16 +1233,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1298,6 +1255,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -1315,6 +1277,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -1376,16 +1343,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1408,6 +1365,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -1425,6 +1387,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -1500,26 +1467,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1539,6 +1486,11 @@
               "value": 5000
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -1600,6 +1552,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "close_server",
           "args": [
@@ -1659,6 +1616,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -1677,6 +1639,11 @@
           ]
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
+        },
+        {
           "step_type": "function",
           "function_name": "check_network_activity",
           "args": []
@@ -1686,7 +1653,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "value_type": "unsigned_int",
               "value": 1
             },
             "value2": {
@@ -1700,21 +1667,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_connections",
-          "args": []
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1737,6 +1689,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -1756,6 +1713,11 @@
           "store_result": "test_connection"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
+        },
+        {
           "step_type": "function",
           "function_name": "check_network_activity",
           "args": []
@@ -1765,7 +1727,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "value_type": "unsigned_int",
               "value": 1
             },
             "value2": {
@@ -1779,26 +1741,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1821,6 +1763,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -1838,6 +1785,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -1860,7 +1812,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "value_type": "unsigned_int",
               "value": 2130706433
             },
             "value2": {
@@ -1868,26 +1820,6 @@
               "variable_name": "test_ip"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1910,6 +1842,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -1927,6 +1864,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -1949,7 +1891,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "value_type": "unsigned_int",
               "value": 2130706433
             },
             "value2": {
@@ -1957,26 +1899,6 @@
               "variable_name": "test_ip"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -1999,6 +1921,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2016,6 +1943,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2043,26 +1975,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2085,6 +1997,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2102,6 +2019,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2132,26 +2054,6 @@
               "variable_name": "test_port"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2174,6 +2076,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2191,6 +2098,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2221,26 +2133,6 @@
               "variable_name": "test_port"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2261,6 +2153,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "assertion",
@@ -2289,16 +2186,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2326,6 +2213,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "not_null",
@@ -2352,16 +2244,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2414,6 +2296,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2430,6 +2317,11 @@
               "value": 5000
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2457,26 +2349,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "new_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2499,6 +2371,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2516,6 +2393,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2565,16 +2447,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2597,6 +2469,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2614,6 +2491,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2662,26 +2544,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2704,6 +2566,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2721,6 +2588,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2762,26 +2634,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2804,6 +2656,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2821,6 +2678,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2862,26 +2724,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2904,6 +2746,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -2921,6 +2768,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -2957,26 +2809,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -2999,6 +2831,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -3018,6 +2855,11 @@
           "store_result": "test_connection"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
+        },
+        {
           "step_type": "function",
           "function_name": "check_network_activity",
           "args": []
@@ -3033,26 +2875,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -3073,6 +2895,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "assertion",
@@ -3249,7 +3076,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "value_type": "unsigned_int",
               "value": 2130706433
             },
             "value2": {
@@ -3364,6 +3191,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -3381,6 +3213,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -3430,16 +3267,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -3462,6 +3289,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -3479,6 +3311,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -3528,16 +3365,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -3560,6 +3387,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -3577,6 +3409,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -3607,26 +3444,6 @@
               "variable_name": "last_connection"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -3649,6 +3466,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -3666,6 +3488,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -3696,26 +3523,6 @@
               "variable_name": "last_connection"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -3738,6 +3545,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -3755,6 +3567,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -3820,26 +3637,6 @@
               "variable_name": "test_message"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -3862,6 +3659,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -3879,6 +3681,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -3909,7 +3716,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "value_type": "unsigned_int",
               "value": 1
             },
             "value2": {
@@ -3923,26 +3730,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -3965,6 +3752,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -3982,6 +3774,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -4026,26 +3823,6 @@
               "value": 0
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -4068,6 +3845,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -4085,6 +3867,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -4115,7 +3902,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "value_type": "unsigned_int",
               "value": 1
             },
             "value2": {
@@ -4129,26 +3916,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -4171,6 +3938,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -4188,6 +3960,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -4253,26 +4030,6 @@
               "variable_name": "test_message"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -4295,6 +4052,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -4312,6 +4074,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -4379,26 +4146,6 @@
               "variable_name": "test_message"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -4421,6 +4168,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -4438,6 +4190,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -4503,26 +4260,6 @@
               "variable_name": "test_message"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -4545,6 +4282,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -4562,6 +4304,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -4627,26 +4374,6 @@
               "variable_name": "test_message"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -4674,6 +4401,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection_with_protocol",
           "args": [
@@ -4696,6 +4428,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -4760,26 +4497,6 @@
             {
               "value_type": "variable",
               "variable_name": "test_message"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
             }
           ]
         }
@@ -4863,6 +4580,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -4880,6 +4602,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -4905,26 +4632,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -4947,6 +4654,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -4964,6 +4676,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -5024,16 +4741,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -5061,6 +4768,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection_with_protocol",
           "args": [
@@ -5085,6 +4797,11 @@
           "store_result": "test_connection"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
+        },
+        {
           "step_type": "function",
           "function_name": "check_network_activity",
           "args": []
@@ -5099,26 +4816,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -5141,6 +4838,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -5158,6 +4860,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -5218,26 +4925,6 @@
               "variable_name": "test_message"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -5260,6 +4947,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -5277,6 +4969,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -5342,26 +5039,6 @@
               "variable_name": "test_message"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -5384,6 +5061,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -5401,6 +5083,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -5466,26 +5153,6 @@
               "variable_name": "test_message"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -5508,6 +5175,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -5525,6 +5197,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -5632,6 +5309,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -5649,6 +5331,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -5693,26 +5380,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -5735,6 +5402,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -5752,6 +5424,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -5796,26 +5473,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -5838,6 +5495,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -5855,6 +5517,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -5899,26 +5566,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -5941,6 +5588,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -5958,6 +5610,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6027,26 +5684,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -6069,6 +5706,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6086,6 +5728,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6155,26 +5802,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -6196,6 +5823,11 @@
           ]
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6212,6 +5844,11 @@
               "value": 8080
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6347,6 +5984,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6364,6 +6006,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6419,26 +6066,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -6461,6 +6088,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6478,6 +6110,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6512,26 +6149,6 @@
               "variable_name": "retrieved_connection"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -6554,6 +6171,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6571,6 +6193,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6605,26 +6232,6 @@
               "variable_name": "retrieved_connection"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -6647,6 +6254,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6664,6 +6276,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6700,26 +6317,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -6742,6 +6339,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6759,6 +6361,11 @@
             }
           ],
           "store_result": "test_connection"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6795,26 +6402,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_connection",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_connection"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -6837,6 +6424,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6853,6 +6445,11 @@
               "value": 5000
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6875,21 +6472,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_connections",
-          "args": []
         }
       ]
     },
@@ -6912,6 +6494,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_connection",
           "args": [
@@ -6928,6 +6515,11 @@
               "value": 5000
             }
           ]
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "connection",
+          "store_result": "cleanup_connection"
         },
         {
           "step_type": "function",
@@ -6950,21 +6542,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_all_connections",
-          "args": []
         }
       ]
     },
@@ -6985,6 +6562,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7010,16 +6592,6 @@
               "variable_name": "retrieved_server"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7041,7 +6613,7 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "value_type": "unsigned_int",
               "value": 1024
             },
             "value2": {
@@ -7097,6 +6669,11 @@
           "store_result": "test_server"
         },
         {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
@@ -7114,6 +6691,11 @@
             }
           ],
           "store_result": "test_window"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "window",
+          "store_result": "cleanup_window"
         },
         {
           "step_type": "function",
@@ -7154,26 +6736,6 @@
               "variable_name": "test_bitmap"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_window",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_window"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7194,6 +6756,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7224,26 +6791,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_font",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_font"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7264,6 +6811,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7294,26 +6846,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_music",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_music"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7334,6 +6866,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7364,26 +6901,6 @@
             },
             "value2": null
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_sound_effect",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_sound_effect"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7404,6 +6921,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7450,16 +6972,6 @@
               "variable_name": "test_response"
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7480,6 +6992,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7538,16 +7055,6 @@
               "variable_name": "test_response"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7568,6 +7075,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "variable",
@@ -7659,16 +7171,6 @@
               "variable_name": "test_response"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7689,6 +7191,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7760,16 +7267,6 @@
               "variable_name": "test_response"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7790,6 +7287,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7837,16 +7339,6 @@
               "variable_name": "test_response"
             }
           ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
-            }
-          ]
         }
       ]
     },
@@ -7867,6 +7359,11 @@
             }
           ],
           "store_result": "test_server"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "server",
+          "store_result": "cleanup_server"
         },
         {
           "step_type": "function",
@@ -7910,16 +7407,6 @@
             {
               "value_type": "variable",
               "variable_name": "test_response"
-            }
-          ]
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_server",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_server"
             }
           ]
         }
@@ -10449,6 +9936,11 @@
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
+        },
+        {
+          "step_type": "cleanup",
+          "cleanup_type": "json",
+          "store_result": "cleanup_json"
         },
         {
           "step_type": "function",

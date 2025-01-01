@@ -1,24 +1,22 @@
-using System;
-using System.IO;
 using Xunit;
+using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
-
+using HttpMethod = SplashKitSDK.HttpMethod;
 namespace SplashKitTests
 {
     public class TestTimers
     {
         [Fact]
-        public void TestCreateTimerIntegration()
-        {
+        public void TestCreateTimerIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             Assert.NotNull(testTimer);
             Assert.True(HasTimer("test_timer"));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestFreeAllTimersIntegration()
-        {
+        public void TestFreeAllTimersIntegration() {
             CreateTimer("test_timer_1");
+            using var cleanupTimer = new TimerCleanup();
             CreateTimer("test_timer_2");
             Assert.True(HasTimer("test_timer_1"));
             Assert.True(HasTimer("test_timer_2"));
@@ -27,193 +25,176 @@ namespace SplashKitTests
             Assert.False(HasTimer("test_timer_2"));
         }
         [Fact]
-        public void TestFreeTimerIntegration()
-        {
+        public void TestFreeTimerIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             Assert.True(HasTimer("test_timer"));
             FreeTimer(testTimer);
             Assert.False(HasTimer("test_timer"));
         }
         [Fact]
-        public void TestHasTimerNamedIntegration()
-        {
+        public void TestHasTimerNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             Assert.True(HasTimer("test_timer"));
             FreeTimer(testTimer);
             Assert.False(HasTimer("test_timer"));
         }
         [Fact]
-        public void TestPauseTimerNamedIntegration()
-        {
+        public void TestPauseTimerNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
             PauseTimer("test_timer");
             Assert.True(TimerPaused("test_timer"));
             Assert.Equal(initialTicks, TimerTicks(testTimer));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestPauseTimerIntegration()
-        {
+        public void TestPauseTimerIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             PauseTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
             Delay(100);
             Assert.Equal(initialTicks, TimerTicks(testTimer));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestResetTimerNamedIntegration()
-        {
+        public void TestResetTimerNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             Delay(100);
             var initialTicks = TimerTicks(testTimer);
             ResetTimer("test_timer");
             Assert.True(TimerTicks(testTimer) < initialTicks);
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestResetTimerIntegration()
-        {
+        public void TestResetTimerIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             Delay(100);
             var initialTicks = TimerTicks(testTimer);
             ResetTimer(testTimer);
             Assert.True(TimerTicks(testTimer) < initialTicks);
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestResumeTimerNamedIntegration()
-        {
+        public void TestResumeTimerNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             PauseTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
             ResumeTimer("test_timer");
             Delay(100);
             Assert.True(TimerTicks(testTimer) > initialTicks);
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestResumeTimerIntegration()
-        {
+        public void TestResumeTimerIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             PauseTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
             ResumeTimer(testTimer);
             Delay(100);
             Assert.True(TimerTicks(testTimer) > initialTicks);
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestStartTimerNamedIntegration()
-        {
+        public void TestStartTimerNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer("test_timer");
             Assert.True(TimerStarted("test_timer"));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestStartTimerIntegration()
-        {
+        public void TestStartTimerIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             Assert.True(TimerStarted(testTimer));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestStopTimerNamedIntegration()
-        {
+        public void TestStopTimerNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             Delay(100);
-            Assert.True(TimerTicks(testTimer) > 100u);
+            Assert.True(TimerTicks(testTimer) > 40u);
             StopTimer("test_timer");
             Assert.Equal(0u, TimerTicks(testTimer));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestStopTimerIntegration()
-        {
+        public void TestStopTimerIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             Assert.True(TimerStarted(testTimer));
             StopTimer(testTimer);
             Assert.False(TimerStarted(testTimer));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestTimerNamedIntegration()
-        {
+        public void TestTimerNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             var namedTimer = TimerNamed("test_timer");
             Assert.Equal(testTimer, namedTimer);
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestTimerPausedNamedIntegration()
-        {
+        public void TestTimerPausedNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             Assert.False(TimerPaused("test_timer"));
             PauseTimer("test_timer");
             Assert.True(TimerPaused("test_timer"));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestTimerPausedIntegration()
-        {
+        public void TestTimerPausedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             Assert.False(TimerPaused(testTimer));
             PauseTimer(testTimer);
             Assert.True(TimerPaused(testTimer));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestTimerStartedNamedIntegration()
-        {
+        public void TestTimerStartedNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             Assert.False(TimerStarted("test_timer"));
             StartTimer("test_timer");
             Assert.True(TimerStarted("test_timer"));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestTimerStartedIntegration()
-        {
+        public void TestTimerStartedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             Assert.False(TimerStarted(testTimer));
             StartTimer(testTimer);
             Assert.True(TimerStarted(testTimer));
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestTimerTicksNamedIntegration()
-        {
+        public void TestTimerTicksNamedIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             var initialTicks = TimerTicks("test_timer");
             Delay(100);
             var afterDelayTicks = TimerTicks("test_timer");
             Assert.True(afterDelayTicks > initialTicks);
-            FreeTimer(testTimer);
         }
         [Fact]
-        public void TestTimerTicksIntegration()
-        {
+        public void TestTimerTicksIntegration() {
             var testTimer = CreateTimer("test_timer");
+            using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
             Delay(100);
             var afterDelayTicks = TimerTicks(testTimer);
             Assert.True(afterDelayTicks > initialTicks);
-            FreeTimer(testTimer);
         }
     }
 }

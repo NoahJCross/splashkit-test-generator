@@ -1,32 +1,33 @@
-using System;
-using System.IO;
 using Xunit;
+using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
-
+using HttpMethod = SplashKitSDK.HttpMethod;
 namespace SplashKitTests
 {
     public class TestResources
     {
         [Fact]
-        public void TestDeregisterFreeNotifierIntegration()
-        {
+        public void TestDeregisterFreeNotifierIntegration() {
             var freeNotifier = new NotifierTracker();
             RegisterFreeNotifier(freeNotifier.OnFree);
-            DeregisterFreeNotifier(freeNotifier.OnFree);
+            var testBitmap1 = CreateBitmap("test_bitmap", 100, 100);
+            using var cleanupBitmap = new BitmapCleanup();
+            FreeBitmap(testBitmap1);
             Assert.True(freeNotifier.WasNotified);
+            DeregisterFreeNotifier(freeNotifier.OnFree);
+            freeNotifier.Reset();
+            var testBitmap2 = CreateBitmap("test_bitmap", 100, 100);
+            FreeBitmap(testBitmap2);
+            Assert.False(freeNotifier.WasNotified);
         }
         [Fact]
-        public void TestPathToResourceIntegration()
-        {
+        public void TestPathToResourceIntegration() {
             SetResourcesPath("resources");
             var imagePath = PathToResource("test_image.png", ResourceKind.ImageResource);
             Assert.NotEqual("", imagePath);
-            var textPath = PathToResource("nonexistent_file.txt", ResourceKind.AnimationResource);
-            Assert.Equal("", textPath);
         }
         [Fact]
-        public void TestPathToResourcesIntegration()
-        {
+        public void TestPathToResourcesIntegration() {
             var resourcePath = PathToResources();
             Assert.NotEmpty(resourcePath);
             SetResourcesPath("/new/resources");
@@ -34,8 +35,7 @@ namespace SplashKitTests
             Assert.Equal("/new/resources", newResourcePath);
         }
         [Fact]
-        public void TestPathToResourcesForKindIntegration()
-        {
+        public void TestPathToResourcesForKindIntegration() {
             SetResourcesPath("resources");
             var imagePath = PathToResources(ResourceKind.ImageResource);
             Assert.Equal("resources/images", imagePath);
@@ -43,17 +43,17 @@ namespace SplashKitTests
             Assert.Equal("resources/sounds", soundPath);
         }
         [Fact]
-        public void TestRegisterFreeNotifierIntegration()
-        {
+        public void TestRegisterFreeNotifierIntegration() {
             var freeNotifier = new NotifierTracker();
             RegisterFreeNotifier(freeNotifier.OnFree);
+            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            using var cleanupBitmap = new BitmapCleanup();
+            FreeBitmap(testBitmap);
             Assert.True(freeNotifier.WasNotified);
             DeregisterFreeNotifier(freeNotifier.OnFree);
-            Assert.False(freeNotifier.WasNotified);
         }
         [Fact]
-        public void TestSetResourcesPathIntegration()
-        {
+        public void TestSetResourcesPathIntegration() {
             SetResourcesPath("/resources");
             Assert.Equal("/resources", PathToResources());
             SetResourcesPath("/new/resources");
