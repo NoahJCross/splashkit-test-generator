@@ -28,12 +28,12 @@ namespace SplashKitTests
             var testJson1 = CreateJson();
             using var cleanupJson = new JsonCleanup();
             var testJson2 = CreateJson();
-            var count1 = JsonCountKeys(testJson1);
             JsonSetString(testJson1, "key", "value");
             JsonSetString(testJson2, "key", "value");
+            var count1 = JsonCountKeys(testJson1);
             var count2 = JsonCountKeys(testJson2);
-            Assert.Equal(0, count1);
-            Assert.True(0 > count2);
+            Assert.Equal(1, count1);
+            Assert.Equal(1, count2);
             FreeAllJson();
             var count1AfterFree = JsonCountKeys(testJson1);
             var count2AfterFree = JsonCountKeys(testJson2);
@@ -168,7 +168,9 @@ namespace SplashKitTests
         public void TestJsonReadObjectIntegration() {
             var testJson = CreateJson();
             using var cleanupJson = new JsonCleanup();
-            JsonSetObject(testJson, "nestedObject", CreateJson());
+            var nestedJson = CreateJson();
+            JsonSetString(nestedJson, "test", "value");
+            JsonSetObject(testJson, "nestedObject", nestedJson);
             var readJson = JsonReadObject(testJson, "nestedObject");
             Assert.NotNull(readJson);
         }

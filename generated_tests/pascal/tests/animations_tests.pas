@@ -10,23 +10,21 @@ begin
 end;
 procedure TestAnimationCountIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 1', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    count := AnimationCount(testScript);
-    AssertTrue(count > 0);
+    AssertTrue(AnimationCount(testScript) > 0);
 end;
 procedure TestAnimationCurrentCellIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 2', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
-    currentCell := AnimationCurrentCell(testAnimation);
-    AssertTrue(currentCell > -1);
+    AssertTrue(AnimationCurrentCell(testAnimation) > -1);
 end;
 procedure TestAnimationCurrentVectorIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 3', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -36,7 +34,7 @@ begin
 end;
 procedure TestAnimationEndedIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 4', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -48,18 +46,18 @@ begin
 end;
 procedure TestAnimationEnteredFrameIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 5', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'walkfront');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
-    UpdateAnimation(testAnimation, 20);
+    UpdateAnimation(testAnimation, 20.0);
     AssertTrue(AnimationEnteredFrame(testAnimation));
     UpdateAnimation(testAnimation);
     AssertFalse(AnimationEnteredFrame(testAnimation));
 end;
 procedure TestAnimationFrameTimeIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 6', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'walkfront');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -69,16 +67,14 @@ begin
 end;
 procedure TestAnimationIndexIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 7', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    index := AnimationIndex(testScript, 'walkfront');
-    AssertTrue(index > -1);
-    nonExistentIndex := AnimationIndex(testScript, 'NonExistentAnimation');
-    AssertEquals(-1, nonExistentIndex);
+    AssertTrue(AnimationIndex(testScript, 'walkfront') > -1);
+    AssertEquals(-1, AnimationIndex(testScript, 'NonExistentAnimation'));
 end;
 procedure TestAnimationNameIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 8', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -87,22 +83,21 @@ begin
 end;
 procedure TestAnimationScriptNameIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 9', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    scriptName := AnimationScriptName(testScript);
-    AssertEquals('kermit', scriptName);
+    AssertEquals('Test Script 9', AnimationScriptName(testScript));
 end;
 procedure TestAnimationScriptNamedIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 10', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    AnimationScriptNamed('kermit');
+    AnimationScriptNamed('Test Script 10');
     AssertNotNull(testScript);
     AssertEquals(testScript, testScript);
 end;
 procedure TestAssignAnimationWithScriptIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 11', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -111,7 +106,7 @@ begin
 end;
 procedure TestAssignAnimationWithScriptAndSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 12', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'walkfront');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -120,7 +115,7 @@ begin
 end;
 procedure TestAssignAnimationIndexWithScriptIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 13', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -129,7 +124,7 @@ begin
 end;
 procedure TestAssignAnimationIndexWithScriptAndSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 14', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -138,25 +133,25 @@ begin
 end;
 procedure TestAssignAnimationWithScriptNamedIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 15', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
-    AssignAnimation(testAnimation, 'kermit', 'walkfront');
+    AssignAnimation(testAnimation, 'Test Script 15', 'walkfront');
     AssertEquals('walkfront', AnimationName(testAnimation));
 end;
 procedure TestAssignAnimationWithScriptNamedAndSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 16', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'walkfront');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
-    AssignAnimation(testAnimation, 'kermit', 'walkfront', true);
+    AssignAnimation(testAnimation, 'Test Script 16', 'walkfront', true);
     AssertEquals('walkfront', AnimationName(testAnimation));
 end;
 procedure TestAssignAnimationIndexIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 17', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -165,7 +160,7 @@ begin
 end;
 procedure TestAssignAnimationIndexWithSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 18', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback', false);
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -174,7 +169,7 @@ begin
 end;
 procedure TestAssignAnimationIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 19', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -183,7 +178,7 @@ begin
 end;
 procedure TestAssignAnimationWithSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 20', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -192,68 +187,63 @@ begin
 end;
 procedure TestCreateAnimationFromIndexWithSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 21', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 0, true);
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
     AssertNotNull(testAnimation);
-    animName := AnimationName(testAnimation);
-    AssertEquals('walkfront', animName);
+    AssertEquals('walkfront', AnimationName(testAnimation));
 end;
 procedure TestCreateAnimationIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 22', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
     AssertNotNull(testAnimation);
-    animName := AnimationName(testAnimation);
-    AssertEquals('moonwalkback', animName);
+    AssertEquals('moonwalkback', AnimationName(testAnimation));
 end;
 procedure TestCreateAnimationWithSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 23', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback', true);
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
     AssertNotNull(testAnimation);
-    animName := AnimationName(testAnimation);
-    AssertEquals('moonwalkback', animName);
+    AssertEquals('moonwalkback', AnimationName(testAnimation));
 end;
 procedure TestCreateAnimationFromScriptNamedIntegration;
 begin
-    LoadAnimationScript('kermit', 'kermit.txt');
+    LoadAnimationScript('Test Script 24', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testAnimation := CreateAnimation('kermit', 'moonwalkback');
+    testAnimation := CreateAnimation('Test Script 24', 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
     AssertNotNull(testAnimation);
-    animName := AnimationName(testAnimation);
-    AssertEquals('moonwalkback', animName);
+    AssertEquals('moonwalkback', AnimationName(testAnimation));
 end;
 procedure TestCreateAnimationFromScriptNamedWithSoundIntegration;
 begin
-    LoadAnimationScript('test_script', 'kermit.txt');
+    LoadAnimationScript('Test Script 25', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testAnimation := CreateAnimation('test_script', 'moonwalkback', true);
+    testAnimation := CreateAnimation('Test Script 25', 'moonwalkback', true);
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
     AssertNotNull(testAnimation);
-    animName := AnimationName(testAnimation);
-    AssertEquals('moonwalkback', animName);
+    AssertEquals('moonwalkback', AnimationName(testAnimation));
 end;
 procedure TestFreeAllAnimationScriptsIntegration;
 begin
-    LoadAnimationScript('free_all_kermit1', 'kermit.txt');
+    LoadAnimationScript('Test Script 26', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    LoadAnimationScript('free_all_kermit2', 'kermit.txt');
-    AssertTrue(HasAnimationScript('free_all_kermit1'));
-    AssertTrue(HasAnimationScript('free_all_kermit2'));
+    LoadAnimationScript('Test Script 27', 'kermit.txt');
+    AssertTrue(HasAnimationScript('Test Script 26'));
+    AssertTrue(HasAnimationScript('Test Script 27'));
     FreeAllAnimationScripts();
-    AssertFalse(HasAnimationScript('free_all_kermit1'));
-    AssertFalse(HasAnimationScript('free_all_kermit2'));
+    AssertFalse(HasAnimationScript('Test Script 26'));
+    AssertFalse(HasAnimationScript('Test Script 27'));
 end;
 procedure TestFreeAnimationIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 28', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -263,52 +253,48 @@ begin
 end;
 procedure TestFreeAnimationScriptIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 29', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     AssertNotNull(testScript);
     FreeAnimationScript(testScript);
-    scriptExists := HasAnimationScript('has_kermit');
-    AssertFalse(scriptExists);
+    AssertFalse(HasAnimationScript('Test Script 29'));
 end;
 procedure TestFreeAnimationScriptWithNameIntegration;
 begin
-    LoadAnimationScript('free_kermit', 'kermit.txt');
+    LoadAnimationScript('Test Script 30', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    AssertTrue(HasAnimationScript('free_kermit'));
-    FreeAnimationScript('free_kermit');
-    AssertFalse(HasAnimationScript('free_kermit'));
+    AssertTrue(HasAnimationScript('Test Script 30'));
+    FreeAnimationScript('Test Script 30');
+    AssertFalse(HasAnimationScript('Test Script 30'));
 end;
 procedure TestHasAnimationNamedIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 31', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    hasWalkfront := HasAnimationNamed(testScript, 'walkfront');
-    AssertTrue(hasWalkfront);
-    hasNonexistent := HasAnimationNamed(testScript, 'NonExistentAnimation');
-    AssertFalse(hasNonexistent);
+    AssertTrue(HasAnimationNamed(testScript, 'walkfront'));
+    AssertFalse(HasAnimationNamed(testScript, 'NonExistentAnimation'));
 end;
 procedure TestHasAnimationScriptIntegration;
 begin
-    testScript := LoadAnimationScript('has_kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 32', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    AssertTrue(HasAnimationScript('has_kermit'));
+    AssertTrue(HasAnimationScript('Test Script 32'));
     FreeAnimationScript(testScript);
-    AssertFalse(HasAnimationScript('has_kermit'));
+    AssertFalse(HasAnimationScript('Test Script 32'));
 end;
 procedure TestLoadAnimationScriptIntegration;
 begin
-    testScript := LoadAnimationScript('test_animation_name', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 33', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     AssertNotNull(testScript);
     scriptName := AnimationScriptName(testScript);
-    AssertEquals('test_animation_name', scriptName);
+    AssertEquals('Test Script 33', scriptName);
     FreeAnimationScript(testScript);
-    scriptExists := HasAnimationScript('test_animation_name');
-    AssertFalse(scriptExists);
+    AssertFalse(HasAnimationScript('Test Script 33'));
 end;
 procedure TestRestartAnimationIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 34', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -318,12 +304,11 @@ begin
     animEnded := AnimationEnded(testAnimation);
     AssertTrue(animEnded);
     RestartAnimation(testAnimation);
-    animEndedAfterRestart := AnimationEnded(testAnimation);
-    AssertFalse(animEndedAfterRestart);
+    AssertFalse(AnimationEnded(testAnimation));
 end;
 procedure TestRestartAnimationWithSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 35', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback', true);
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -333,7 +318,7 @@ begin
 end;
 procedure TestUpdateAnimationPercentWithSoundIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 36', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -342,7 +327,7 @@ begin
 end;
 procedure TestUpdateAnimationIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 37', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -351,7 +336,7 @@ begin
 end;
 procedure TestUpdateAnimationPercentIntegration;
 begin
-    testScript := LoadAnimationScript('kermit', 'kermit.txt');
+    testScript := LoadAnimationScript('Test Script 38', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(testScript, 'walkfront');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
@@ -362,5 +347,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

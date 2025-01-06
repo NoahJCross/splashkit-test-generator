@@ -10,40 +10,40 @@ begin
 end;
 procedure TestFreeResourceBundleIntegration;
 begin
-    LoadResourceBundle('test_resource_bundle', 'test.txt');
-    CleanupResource := TResourceCleanup.Create('test_resource_bundle')
-    AssertTrue(HasResourceBundle('test_resource_bundle'));
+    LoadResourceBundle('Test Resource Bundle', 'test.txt');
+    CleanupResource := TResourceCleanup.Create('Test Resource Bundle')
+    AssertTrue(HasResourceBundle('Test Resource Bundle'));
     AssertTrue(HasBitmap('FrogBmp'));
     AssertTrue(HasFont('hara'));
-    FreeResourceBundle('test_resource_bundle');
-    AssertFalse(HasResourceBundle('test_resource_bundle'));
+    FreeResourceBundle('Test Resource Bundle');
+    AssertFalse(HasResourceBundle('Test Resource Bundle'));
 end;
 procedure TestHasResourceBundleIntegration;
 begin
-    LoadResourceBundle('test_resource_bundle', 'test.txt');
-    CleanupResource := TResourceCleanup.Create('test_resource_bundle')
-    AssertTrue(HasResourceBundle('test_resource_bundle'));
-    FreeResourceBundle('test_resource_bundle');
-    AssertFalse(HasResourceBundle('test_resource_bundle'));
+    LoadResourceBundle('Test Resource Bundle', 'test.txt');
+    CleanupResource := TResourceCleanup.Create('Test Resource Bundle')
+    AssertTrue(HasResourceBundle('Test Resource Bundle'));
+    FreeResourceBundle('Test Resource Bundle');
+    AssertFalse(HasResourceBundle('Test Resource Bundle'));
     AssertFalse(HasResourceBundle('nonexistent'));
 end;
 procedure TestLoadResourceBundleIntegration;
 begin
-    LoadResourceBundle('test_resource_bundle', 'test.txt');
-    CleanupResource := TResourceCleanup.Create('test_resource_bundle')
-    AssertTrue(HasResourceBundle('test_resource_bundle'));
+    LoadResourceBundle('Test Resource Bundle', 'test.txt');
+    CleanupResource := TResourceCleanup.Create('Test Resource Bundle')
+    AssertTrue(HasResourceBundle('Test Resource Bundle'));
     AssertTrue(HasAnimationScript('WalkingScript'));
     AssertTrue(HasBitmap('FrogBmp'));
     AssertTrue(HasFont('hara'));
     AssertTrue(HasSoundEffect('error'));
     AssertTrue(HasTimer('my timer'));
     AssertTrue(HasResourceBundle('blah'));
-    FreeResourceBundle('test_resource_bundle');
+    FreeResourceBundle('Test Resource Bundle');
     AssertFalse(HasResourceBundle('test_bundle'));
 end;
 end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

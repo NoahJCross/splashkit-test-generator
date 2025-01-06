@@ -12,35 +12,35 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestFreeResourceBundleIntegration() {
-            LoadResourceBundle("test_resource_bundle", "test.txt");
-            using var cleanupResource = new ResourceCleanup("test_resource_bundle");
-            Assert.True(HasResourceBundle("test_resource_bundle"));
+            LoadResourceBundle("Test Resource Bundle", "test.txt");
+            using var cleanupResource = new ResourceCleanup("Test Resource Bundle");
+            Assert.True(HasResourceBundle("Test Resource Bundle"));
             Assert.True(HasBitmap("FrogBmp"));
             Assert.True(HasFont("hara"));
-            FreeResourceBundle("test_resource_bundle");
-            Assert.False(HasResourceBundle("test_resource_bundle"));
+            FreeResourceBundle("Test Resource Bundle");
+            Assert.False(HasResourceBundle("Test Resource Bundle"));
         }
         [Fact]
         public void TestHasResourceBundleIntegration() {
-            LoadResourceBundle("test_resource_bundle", "test.txt");
-            using var cleanupResource = new ResourceCleanup("test_resource_bundle");
-            Assert.True(HasResourceBundle("test_resource_bundle"));
-            FreeResourceBundle("test_resource_bundle");
-            Assert.False(HasResourceBundle("test_resource_bundle"));
+            LoadResourceBundle("Test Resource Bundle", "test.txt");
+            using var cleanupResource = new ResourceCleanup("Test Resource Bundle");
+            Assert.True(HasResourceBundle("Test Resource Bundle"));
+            FreeResourceBundle("Test Resource Bundle");
+            Assert.False(HasResourceBundle("Test Resource Bundle"));
             Assert.False(HasResourceBundle("nonexistent"));
         }
         [Fact]
         public void TestLoadResourceBundleIntegration() {
-            LoadResourceBundle("test_resource_bundle", "test.txt");
-            using var cleanupResource = new ResourceCleanup("test_resource_bundle");
-            Assert.True(HasResourceBundle("test_resource_bundle"));
+            LoadResourceBundle("Test Resource Bundle", "test.txt");
+            using var cleanupResource = new ResourceCleanup("Test Resource Bundle");
+            Assert.True(HasResourceBundle("Test Resource Bundle"));
             Assert.True(HasAnimationScript("WalkingScript"));
             Assert.True(HasBitmap("FrogBmp"));
             Assert.True(HasFont("hara"));
             Assert.True(HasSoundEffect("error"));
             Assert.True(HasTimer("my timer"));
             Assert.True(HasResourceBundle("blah"));
-            FreeResourceBundle("test_resource_bundle");
+            FreeResourceBundle("Test Resource Bundle");
             Assert.False(HasResourceBundle("test_bundle"));
         }
     }

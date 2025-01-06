@@ -3,8 +3,9 @@ module TestGenerator
   class TestCase
     attr_reader :name, :steps
 
-    def initialize(name, steps, config, functions)
+    def initialize(name, group, steps, config, functions)
       @name = name
+      @group = group
       @steps = steps
       @config = config
       @functions = functions
@@ -25,7 +26,7 @@ module TestGenerator
     # Writes the test case header with the test name
     # @return [String] The formatted test header
     def write_header(formatter)
-      @config.function_handlers[:test].call(@name).map do |line|
+      @config.function_handlers[:test].call(@group, @name).map do |line|
         formatter.indent(line, @config)
       end.join
     end

@@ -7,7 +7,7 @@ mod test_windows {
     use super::*;
     #[test]
     fn test_clear_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 1".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let color = color_black();
         clear_window(test_window, color);
@@ -17,33 +17,33 @@ mod test_windows {
     }
     #[test]
     fn test_close_all_windows_integration() {
-        open_window("Test Window 1".to_string(), 800, 600);
-        let _cleanup_window = WindowCleanup::new();
         open_window("Test Window 2".to_string(), 800, 600);
+        let _cleanup_window = WindowCleanup::new();
+        open_window("Test Window 3".to_string(), 800, 600);
         close_all_windows();
-        assert!(!has_window("Test Window 1".to_string()));
-        assert!(!has_window("Test Window 2".to_string()));
+        assert!(!has_window("Test Window 3".to_string()));
+        assert!(!has_window("Test Window 3".to_string()));
     }
     #[test]
     fn test_close_current_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 4".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         close_current_window();
-        assert!(!has_window("Test Window".to_string()));
+        assert!(!has_window("Test Window 4".to_string()));
         assert!(current_window().is_null());
     }
     #[test]
     fn test_close_window_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 5".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert!(has_window("Test Window".to_string()));
-        close_window_named("Test Window".to_string());
-        assert!(!has_window("Test Window".to_string()));
+        assert!(has_window("Test Window 5".to_string()));
+        close_window_named("Test Window 5".to_string());
+        assert!(!has_window("Test Window 5".to_string()));
     }
     #[test]
     fn test_close_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 6".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let window_name = window_caption(test_window);
         close_window(test_window);
@@ -51,9 +51,9 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_integration() {
-        let test_window1 = open_window("Test Window 1".to_string(), 800, 600);
+        let test_window1 = open_window("Test Window 7".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let test_window2 = open_window("Test Window 2".to_string(), 800, 600);
+        let test_window2 = open_window("Test Window 8".to_string(), 800, 600);
         set_current_window(test_window2);
         assert_eq!(test_window2, current_window());
         assert!(is_current_window(test_window2));
@@ -61,7 +61,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_has_border_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 9".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         assert!(current_window_has_border());
@@ -70,7 +70,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_height_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 10".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         assert_eq!(600, current_window_height());
@@ -79,7 +79,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_is_fullscreen_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 11".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         assert!(!current_window_is_fullscreen());
@@ -88,7 +88,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_position_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 12".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         move_current_window_to(100, 200);
@@ -98,7 +98,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_toggle_border_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 13".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         let initial_border = current_window_has_border();
@@ -107,7 +107,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_toggle_fullscreen_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 14".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         let initial_fullscreen = current_window_is_fullscreen();
@@ -116,7 +116,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_width_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 15".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         assert_eq!(800, current_window_width());
@@ -125,7 +125,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_x_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 16".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         move_current_window_to(100, 200);
@@ -135,7 +135,7 @@ mod test_windows {
     }
     #[test]
     fn test_current_window_y_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 17".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         move_current_window_to(0, 100);
@@ -143,25 +143,25 @@ mod test_windows {
     }
     #[test]
     fn test_has_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 18".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert!(has_window("Test Window".to_string()));
+        assert!(has_window("Test Window 18".to_string()));
         assert!(has_window(window_caption(test_window)));
         close_window(test_window);
-        assert!(!has_window("Test Window".to_string()));
+        assert!(!has_window("Test Window 18".to_string()));
     }
     #[test]
     fn test_is_current_window_integration() {
-        let test_window1 = open_window("Test Window 1".to_string(), 800, 600);
+        let test_window1 = open_window("Test Window 19".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let test_window2 = open_window("Test Window 2".to_string(), 800, 600);
+        let test_window2 = open_window("Test Window 20".to_string(), 800, 600);
         set_current_window(test_window1);
         assert!(is_current_window(test_window1));
         assert!(!is_current_window(test_window2));
     }
     #[test]
     fn test_move_current_window_to_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 21".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         move_current_window_to(100, 200);
@@ -170,15 +170,15 @@ mod test_windows {
     }
     #[test]
     fn test_move_window_to_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 22".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        move_window_to_named("Test Window".to_string(), 150, 250);
-        assert_eq!(118, window_x_named("Test Window".to_string()));
-        assert_eq!(218, window_y_named("Test Window".to_string()));
+        move_window_to_named("Test Window 22".to_string(), 150, 250);
+        assert_eq!(118, window_x_named("Test Window 22".to_string()));
+        assert_eq!(218, window_y_named("Test Window 22".to_string()));
     }
     #[test]
     fn test_move_window_to_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 23".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         move_window_to(test_window, 200, 300);
         assert_eq!(168, window_x(test_window));
@@ -186,16 +186,16 @@ mod test_windows {
     }
     #[test]
     fn test_open_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 24".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         assert!(!test_window.is_null());
-        assert_eq!("Test Window".to_string(), window_caption(test_window));
+        assert_eq!("Test Window 24".to_string(), window_caption(test_window));
         assert_eq!(800, window_width(test_window));
         assert_eq!(600, window_height(test_window));
     }
     #[test]
     fn test_refresh_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 25".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         clear_window(test_window, color_white());
         draw_circle(color_black(), 400.0, 300.0, 50.0);
@@ -205,13 +205,13 @@ mod test_windows {
     }
     #[test]
     fn test_refresh_window_with_target_fps_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 26".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         refresh_window_with_target_fps(test_window, 60 as u32);
     }
     #[test]
     fn test_resize_current_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 27".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_current_window(test_window);
         resize_current_window(1024, 768);
@@ -220,7 +220,7 @@ mod test_windows {
     }
     #[test]
     fn test_resize_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 28".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         resize_window(test_window, 1024, 768);
         assert_eq!(1024, window_width(test_window));
@@ -228,63 +228,63 @@ mod test_windows {
     }
     #[test]
     fn test_set_current_window_named_integration() {
-        open_window("Test Window 1".to_string(), 800, 600);
+        open_window("Test Window 29".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let test_window2 = open_window("Test Window 2".to_string(), 800, 600);
-        set_current_window_named("Test Window 2".to_string());
+        let test_window2 = open_window("Test Window 30".to_string(), 800, 600);
+        set_current_window_named("Test Window 30".to_string());
         assert_eq!(test_window2, current_window());
     }
     #[test]
     fn test_set_current_window_integration() {
-        open_window("Test Window 1".to_string(), 800, 600);
+        open_window("Test Window 31".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let test_window2 = open_window("Test Window 2".to_string(), 800, 600);
+        let test_window2 = open_window("Test Window 32".to_string(), 800, 600);
         set_current_window(test_window2);
         assert_eq!(test_window2, current_window());
     }
     #[test]
     fn test_window_caption_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 33".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert_eq!("Test Window".to_string(), window_caption(test_window));
+        assert_eq!("Test Window 33".to_string(), window_caption(test_window));
     }
     #[test]
     fn test_window_close_requested_named_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 34".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert!(!window_close_requested_named("Test Window".to_string()));
-        while window_close_requested_named("Test Window".to_string()) == false {
+        assert!(!window_close_requested_named("Test Window 34".to_string()));
+        while window_close_requested_named("Test Window 34".to_string()) == false {
             process_events();
             clear_window(test_window, color_white());
-            draw_text_no_font_no_size("Test: window_close_requested_named. Close window to pass.".to_string(), color_black(), 10, 10);
+            draw_text_no_font_no_size("Test: window_close_requested_named. Close window to pass.".to_string(), color_black(), 10.0, 10.0);
             refresh_screen();
         }
-        assert!(window_close_requested_named("Test Window".to_string()));
+        assert!(window_close_requested_named("Test Window 34".to_string()));
     }
     #[test]
     fn test_window_close_requested_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 35".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         assert!(!window_close_requested(test_window));
         while window_close_requested(test_window) == false {
             process_events();
             clear_window(test_window, color_white());
-            draw_text_no_font_no_size("Test: window_close_requested. Close window to pass.".to_string(), color_black(), 10, 10);
+            draw_text_no_font_no_size("Test: window_close_requested. Close window to pass.".to_string(), color_black(), 10.0, 10.0);
             refresh_screen();
         }
         assert!(window_close_requested(test_window));
     }
     #[test]
     fn test_window_has_border_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 36".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert!(window_has_border_named("Test Window".to_string()));
-        window_toggle_border_named("Test Window".to_string());
-        assert!(!window_has_border_named("Test Window".to_string()));
+        assert!(window_has_border_named("Test Window 36".to_string()));
+        window_toggle_border_named("Test Window 36".to_string());
+        assert!(!window_has_border_named("Test Window 36".to_string()));
     }
     #[test]
     fn test_window_has_border_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 37".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         assert!(window_has_border(test_window));
         window_toggle_border(test_window);
@@ -292,24 +292,24 @@ mod test_windows {
     }
     #[test]
     fn test_window_has_focus_integration() {
-        let test_window1 = open_window("Test Window 1".to_string(), 800, 600);
+        let test_window1 = open_window("Test Window 38".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let test_window2 = open_window("Test Window 2".to_string(), 800, 600);
+        let test_window2 = open_window("Test Window 39".to_string(), 800, 600);
         process_events();
         assert!(window_has_focus(test_window2));
         assert!(!window_has_focus(test_window1));
     }
     #[test]
     fn test_window_height_named_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 40".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert_eq!(600, window_height_named("Test Window".to_string()));
+        assert_eq!(600, window_height_named("Test Window 40".to_string()));
         resize_window(test_window, 800, 400);
-        assert_eq!(400, window_height_named("Test Window".to_string()));
+        assert_eq!(400, window_height_named("Test Window 40".to_string()));
     }
     #[test]
     fn test_window_height_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 41".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         assert_eq!(600, window_height(test_window));
         resize_window(test_window, 800, 400);
@@ -317,15 +317,15 @@ mod test_windows {
     }
     #[test]
     fn test_window_is_fullscreen_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 42".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert!(!window_is_fullscreen_named("Test Window".to_string()));
-        window_toggle_fullscreen_named("Test Window".to_string());
-        assert!(window_is_fullscreen_named("Test Window".to_string()));
+        assert!(!window_is_fullscreen_named("Test Window 42".to_string()));
+        window_toggle_fullscreen_named("Test Window 42".to_string());
+        assert!(window_is_fullscreen_named("Test Window 42".to_string()));
     }
     #[test]
     fn test_window_is_fullscreen_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 43".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         assert!(!window_is_fullscreen(test_window));
         window_toggle_fullscreen(test_window);
@@ -333,25 +333,25 @@ mod test_windows {
     }
     #[test]
     fn test_window_named_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 44".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let named_window = window_named("Test Window".to_string());
+        let named_window = window_named("Test Window 44".to_string());
         assert_eq!(test_window, named_window);
         assert_eq!(window_caption(test_window), window_caption(named_window));
     }
     #[test]
     fn test_window_position_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 45".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        move_window_to_named("Test Window".to_string(), 100, 200);
+        move_window_to_named("Test Window 45".to_string(), 100, 200);
         delay(500);
-        let position = window_position_named("Test Window".to_string());
+        let position = window_position_named("Test Window 45".to_string());
         assert_eq!(68.0, position.x);
         assert_eq!(168.0, position.y);
     }
     #[test]
     fn test_window_position_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 46".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         move_window_to(test_window, 100, 200);
         delay(500);
@@ -361,9 +361,9 @@ mod test_windows {
     }
     #[test]
     fn test_window_set_icon_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 47".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let icon = create_bitmap("test_icon".to_string(), 32, 32);
+        let icon = create_bitmap("Test Bitmap 1".to_string(), 32, 32);
         let _cleanup_bitmap = BitmapCleanup::new();
         clear_bitmap(icon, color_white());
         window_set_icon(test_window, icon);
@@ -371,15 +371,15 @@ mod test_windows {
     }
     #[test]
     fn test_window_toggle_border_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 48".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert!(window_has_border_named("Test Window".to_string()));
-        window_toggle_border_named("Test Window".to_string());
-        assert!(!window_has_border_named("Test Window".to_string()));
+        assert!(window_has_border_named("Test Window 48".to_string()));
+        window_toggle_border_named("Test Window 48".to_string());
+        assert!(!window_has_border_named("Test Window 48".to_string()));
     }
     #[test]
     fn test_window_toggle_border_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 49".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         assert!(window_has_border(test_window));
         window_toggle_border(test_window);
@@ -387,15 +387,15 @@ mod test_windows {
     }
     #[test]
     fn test_window_toggle_fullscreen_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 50".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert!(!window_is_fullscreen_named("Test Window".to_string()));
-        window_toggle_fullscreen_named("Test Window".to_string());
-        assert!(window_is_fullscreen_named("Test Window".to_string()));
+        assert!(!window_is_fullscreen_named("Test Window 50".to_string()));
+        window_toggle_fullscreen_named("Test Window 50".to_string());
+        assert!(window_is_fullscreen_named("Test Window 50".to_string()));
     }
     #[test]
     fn test_window_toggle_fullscreen_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 51".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         assert!(!window_is_fullscreen(test_window));
         window_toggle_fullscreen(test_window);
@@ -403,15 +403,15 @@ mod test_windows {
     }
     #[test]
     fn test_window_width_named_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 52".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        assert_eq!(800, window_width_named("Test Window".to_string()));
+        assert_eq!(800, window_width_named("Test Window 52".to_string()));
         resize_window(test_window, 1024, 600);
-        assert_eq!(1024, window_width_named("Test Window".to_string()));
+        assert_eq!(1024, window_width_named("Test Window 52".to_string()));
     }
     #[test]
     fn test_window_width_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 53".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         assert_eq!(800, window_width(test_window));
         resize_window(test_window, 1024, 600);
@@ -419,34 +419,34 @@ mod test_windows {
     }
     #[test]
     fn test_window_with_focus_integration() {
-        let test_window1 = open_window("Test Window 1".to_string(), 800, 600);
+        let test_window1 = open_window("Test Window 54".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         move_window_to(test_window1, 200, 200);
         delay(500);
-        let test_window2 = open_window("Test Window 2".to_string(), 800, 600);
+        let test_window2 = open_window("Test Window 55".to_string(), 800, 600);
         move_window_to(test_window2, 850, 200);
         delay(500);
         assert_eq!(test_window2, window_with_focus());
         while window_with_focus() != test_window1 {
             process_events();
-            clear_screen();
-            draw_text_no_font_no_size_with_options("Test: window_with_focus. Click this window to pass.".to_string(), color_black(), 10, 10, option_draw_to_window(test_window1));
+            clear_screen_to_white();
+            draw_text_no_font_no_size_with_options("Test: window_with_focus. Click this window to pass.".to_string(), color_black(), 10.0, 10.0, option_draw_to_window(test_window1));
             refresh_screen();
         }
         assert_eq!(test_window1, window_with_focus());
     }
     #[test]
     fn test_window_x_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 56".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        move_window_to_named("Test Window".to_string(), 100, 200);
-        assert_eq!(68, window_x_named("Test Window".to_string()));
-        move_window_to_named("Test Window".to_string(), 300, 200);
-        assert_eq!(268, window_x_named("Test Window".to_string()));
+        move_window_to_named("Test Window 56".to_string(), 100, 200);
+        assert_eq!(68, window_x_named("Test Window 56".to_string()));
+        move_window_to_named("Test Window 56".to_string(), 300, 200);
+        assert_eq!(268, window_x_named("Test Window 56".to_string()));
     }
     #[test]
     fn test_window_x_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 57".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         move_window_to(test_window, 100, 200);
         assert_eq!(68, window_x(test_window));
@@ -455,16 +455,16 @@ mod test_windows {
     }
     #[test]
     fn test_window_y_named_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 58".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        move_window_to_named("Test Window".to_string(), 100, 200);
-        assert_eq!(168, window_y_named("Test Window".to_string()));
-        move_window_to_named("Test Window".to_string(), 100, 400);
-        assert_eq!(368, window_y_named("Test Window".to_string()));
+        move_window_to_named("Test Window 58".to_string(), 100, 200);
+        assert_eq!(168, window_y_named("Test Window 58".to_string()));
+        move_window_to_named("Test Window 58".to_string(), 100, 400);
+        assert_eq!(368, window_y_named("Test Window 58".to_string()));
     }
     #[test]
     fn test_window_y_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 59".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         move_window_to(test_window, 100, 200);
         assert_eq!(168, window_y(test_window));

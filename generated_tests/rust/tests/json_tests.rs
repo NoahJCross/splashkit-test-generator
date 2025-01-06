@@ -28,12 +28,12 @@ mod test_json {
         let test_json1 = create_json();
         let _cleanup_json = JsonCleanup::new();
         let test_json2 = create_json();
-        let count1 = json_count_keys(test_json1);
         json_set_string(test_json1, "key".to_string(), "value".to_string());
         json_set_string(test_json2, "key".to_string(), "value".to_string());
+        let count1 = json_count_keys(test_json1);
         let count2 = json_count_keys(test_json2);
-        assert_eq!(0, count1);
-        assert!(0 > count2);
+        assert_eq!(1, count1);
+        assert_eq!(1, count2);
         free_all_json();
         let count1_after_free = json_count_keys(test_json1);
         let count2_after_free = json_count_keys(test_json2);
@@ -168,7 +168,9 @@ mod test_json {
     fn test_json_read_object_integration() {
         let test_json = create_json();
         let _cleanup_json = JsonCleanup::new();
-        json_set_object(test_json, "nestedObject".to_string(), create_json());
+        let nested_json = create_json();
+        json_set_string(nested_json, "test".to_string(), "value".to_string());
+        json_set_object(test_json, "nestedObject".to_string(), nested_json);
         let read_json = json_read_object(test_json, "nestedObject".to_string());
         assert!(!read_json.is_null());
     }

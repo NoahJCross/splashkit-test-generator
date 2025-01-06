@@ -26,12 +26,12 @@ begin
     testJson1 := CreateJson();
     CleanupJson := TJsonCleanup.Create;
     testJson2 := CreateJson();
-    count1 := JsonCountKeys(testJson1);
     JsonSetString(testJson1, 'key', 'value');
     JsonSetString(testJson2, 'key', 'value');
+    count1 := JsonCountKeys(testJson1);
     count2 := JsonCountKeys(testJson2);
-    AssertEquals(0, count1);
-    AssertTrue(0 > count2);
+    AssertEquals(1, count1);
+    AssertEquals(1, count2);
     FreeAllJson();
     count1AfterFree := JsonCountKeys(testJson1);
     count2AfterFree := JsonCountKeys(testJson2);
@@ -166,7 +166,9 @@ procedure TestJsonReadObjectIntegration;
 begin
     testJson := CreateJson();
     CleanupJson := TJsonCleanup.Create;
-    JsonSetObject(testJson, 'nestedObject', CreateJson());
+    nestedJson := CreateJson();
+    JsonSetString(nestedJson, 'test', 'value');
+    JsonSetObject(testJson, 'nestedObject', nestedJson);
     readJson := JsonReadObject(testJson, 'nestedObject');
     AssertNotNull(readJson);
 end;
@@ -293,5 +295,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

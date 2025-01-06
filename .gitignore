@@ -1,12 +1,22 @@
+# Generated and build directories
 data/generated
-test_runner
-python.py
-pyth.py
-run_tests.rb
-.vscode
-splashkit_test_generator.sln
 generated_tests/csharp/bin
 generated_tests/csharp/obj
-generated_tests/csharp/TestRunner.csproj
 generated_tests/rust/target
 generated_tests/csharp/TestResults
+generated_tests/cpp/test
+generated_tests/cpp/logs
+generated_tests/cpp/test_main.cpp
+generated_tests/python/.pytest_cache
+generated_tests/rust/logs
+generated_tests/rust/.cargo
+
+# Log files
+*.log
+console.log
+myeasylog.log
+test_loging[1-4].log
+
+# IDE and project files
+.vscode
+splashkit_test_generator.sln

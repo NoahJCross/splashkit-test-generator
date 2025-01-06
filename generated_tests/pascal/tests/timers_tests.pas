@@ -6,51 +6,51 @@ type
     end;
     procedure TestCreateTimerIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 1');
     CleanupTimer := TTimerCleanup.Create;
     AssertNotNull(testTimer);
-    AssertTrue(HasTimer('test_timer'));
+    AssertTrue(HasTimer('Test Timer 1'));
 end;
 procedure TestFreeAllTimersIntegration;
 begin
-    CreateTimer('test_timer_1');
+    CreateTimer('Test Timer 2');
     CleanupTimer := TTimerCleanup.Create;
-    CreateTimer('test_timer_2');
-    AssertTrue(HasTimer('test_timer_1'));
-    AssertTrue(HasTimer('test_timer_2'));
+    CreateTimer('Test Timer 3');
+    AssertTrue(HasTimer('Test Timer 2'));
+    AssertTrue(HasTimer('Test Timer 3'));
     FreeAllTimers();
-    AssertFalse(HasTimer('test_timer_1'));
-    AssertFalse(HasTimer('test_timer_2'));
+    AssertFalse(HasTimer('Test Timer 2'));
+    AssertFalse(HasTimer('Test Timer 3'));
 end;
 procedure TestFreeTimerIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 4');
     CleanupTimer := TTimerCleanup.Create;
-    AssertTrue(HasTimer('test_timer'));
+    AssertTrue(HasTimer('Test Timer 4'));
     FreeTimer(testTimer);
-    AssertFalse(HasTimer('test_timer'));
+    AssertFalse(HasTimer('Test Timer 4'));
 end;
 procedure TestHasTimerNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 5');
     CleanupTimer := TTimerCleanup.Create;
-    AssertTrue(HasTimer('test_timer'));
+    AssertTrue(HasTimer('Test Timer 5'));
     FreeTimer(testTimer);
-    AssertFalse(HasTimer('test_timer'));
+    AssertFalse(HasTimer('Test Timer 5'));
 end;
 procedure TestPauseTimerNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 6');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     initialTicks := TimerTicks(testTimer);
-    PauseTimer('test_timer');
-    AssertTrue(TimerPaused('test_timer'));
+    PauseTimer('Test Timer 6');
+    AssertTrue(TimerPaused('Test Timer 6'));
     AssertEquals(initialTicks, TimerTicks(testTimer));
 end;
 procedure TestPauseTimerIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 7');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     PauseTimer(testTimer);
@@ -60,17 +60,17 @@ begin
 end;
 procedure TestResetTimerNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 8');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     Delay(100);
     initialTicks := TimerTicks(testTimer);
-    ResetTimer('test_timer');
+    ResetTimer('Test Timer 8');
     AssertTrue(TimerTicks(testTimer) < initialTicks);
 end;
 procedure TestResetTimerIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 9');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     Delay(100);
@@ -80,18 +80,18 @@ begin
 end;
 procedure TestResumeTimerNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 10');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     PauseTimer(testTimer);
     initialTicks := TimerTicks(testTimer);
-    ResumeTimer('test_timer');
+    ResumeTimer('Test Timer 10');
     Delay(100);
     AssertTrue(TimerTicks(testTimer) > initialTicks);
 end;
 procedure TestResumeTimerIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 11');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     PauseTimer(testTimer);
@@ -102,31 +102,31 @@ begin
 end;
 procedure TestStartTimerNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 12');
     CleanupTimer := TTimerCleanup.Create;
-    StartTimer('test_timer');
-    AssertTrue(TimerStarted('test_timer'));
+    StartTimer('Test Timer 12');
+    AssertTrue(TimerStarted('Test Timer 12'));
 end;
 procedure TestStartTimerIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 13');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     AssertTrue(TimerStarted(testTimer));
 end;
 procedure TestStopTimerNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 14');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     Delay(100);
     AssertTrue(TimerTicks(testTimer) > Cardinal(40));
-    StopTimer('test_timer');
+    StopTimer('Test Timer 14');
     AssertEquals(Cardinal(0), TimerTicks(testTimer));
 end;
 procedure TestStopTimerIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 15');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     AssertTrue(TimerStarted(testTimer));
@@ -135,23 +135,23 @@ begin
 end;
 procedure TestTimerNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 16');
     CleanupTimer := TTimerCleanup.Create;
-    namedTimer := TimerNamed('test_timer');
+    namedTimer := TimerNamed('Test Timer 16');
     AssertEquals(testTimer, namedTimer);
 end;
 procedure TestTimerPausedNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 17');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
-    AssertFalse(TimerPaused('test_timer'));
-    PauseTimer('test_timer');
-    AssertTrue(TimerPaused('test_timer'));
+    AssertFalse(TimerPaused('Test Timer 17'));
+    PauseTimer('Test Timer 17');
+    AssertTrue(TimerPaused('Test Timer 17'));
 end;
 procedure TestTimerPausedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 18');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     AssertFalse(TimerPaused(testTimer));
@@ -160,15 +160,15 @@ begin
 end;
 procedure TestTimerStartedNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 19');
     CleanupTimer := TTimerCleanup.Create;
-    AssertFalse(TimerStarted('test_timer'));
-    StartTimer('test_timer');
-    AssertTrue(TimerStarted('test_timer'));
+    AssertFalse(TimerStarted('Test Timer 19'));
+    StartTimer('Test Timer 19');
+    AssertTrue(TimerStarted('Test Timer 19'));
 end;
 procedure TestTimerStartedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 20');
     CleanupTimer := TTimerCleanup.Create;
     AssertFalse(TimerStarted(testTimer));
     StartTimer(testTimer);
@@ -176,17 +176,17 @@ begin
 end;
 procedure TestTimerTicksNamedIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 21');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
-    initialTicks := TimerTicks('test_timer');
+    initialTicks := TimerTicks('Test Timer 21');
     Delay(100);
-    afterDelayTicks := TimerTicks('test_timer');
+    afterDelayTicks := TimerTicks('Test Timer 21');
     AssertTrue(afterDelayTicks > initialTicks);
 end;
 procedure TestTimerTicksIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 22');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     initialTicks := TimerTicks(testTimer);
@@ -198,5 +198,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

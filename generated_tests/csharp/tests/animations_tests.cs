@@ -12,23 +12,21 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAnimationCountIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 1", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var count = AnimationCount(testScript);
-            Assert.True(count > 0);
+            Assert.True(AnimationCount(testScript) > 0);
         }
         [Fact]
         public void TestAnimationCurrentCellIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 2", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
-            var currentCell = AnimationCurrentCell(testAnimation);
-            Assert.True(currentCell > -1);
+            Assert.True(AnimationCurrentCell(testAnimation) > -1);
         }
         [Fact]
         public void TestAnimationCurrentVectorIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 3", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -38,7 +36,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAnimationEndedIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 4", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -50,18 +48,18 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAnimationEnteredFrameIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 5", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "walkfront");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
-            UpdateAnimation(testAnimation, 20f);
+            UpdateAnimation(testAnimation, 20.0f);
             Assert.True(AnimationEnteredFrame(testAnimation));
             UpdateAnimation(testAnimation);
             Assert.False(AnimationEnteredFrame(testAnimation));
         }
         [Fact]
         public void TestAnimationFrameTimeIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 6", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "walkfront");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -71,16 +69,14 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAnimationIndexIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 7", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var index = AnimationIndex(testScript, "walkfront");
-            Assert.True(index > -1);
-            var nonExistentIndex = AnimationIndex(testScript, "NonExistentAnimation");
-            Assert.Equal(-1, nonExistentIndex);
+            Assert.True(AnimationIndex(testScript, "walkfront") > -1);
+            Assert.Equal(-1, AnimationIndex(testScript, "NonExistentAnimation"));
         }
         [Fact]
         public void TestAnimationNameIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 8", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -89,22 +85,21 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAnimationScriptNameIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 9", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var scriptName = AnimationScriptName(testScript);
-            Assert.Equal("kermit", scriptName);
+            Assert.Equal("Test Script 9", AnimationScriptName(testScript));
         }
         [Fact]
         public void TestAnimationScriptNamedIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 10", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            AnimationScriptNamed("kermit");
+            AnimationScriptNamed("Test Script 10");
             Assert.NotNull(testScript);
             Assert.Equal(testScript, testScript);
         }
         [Fact]
         public void TestAssignAnimationWithScriptIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 11", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -113,7 +108,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAssignAnimationWithScriptAndSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 12", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "walkfront");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -122,7 +117,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAssignAnimationIndexWithScriptIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 13", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -131,7 +126,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAssignAnimationIndexWithScriptAndSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 14", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -140,25 +135,25 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAssignAnimationWithScriptNamedIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 15", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
-            AssignAnimation(testAnimation, "kermit", "walkfront");
+            AssignAnimation(testAnimation, "Test Script 15", "walkfront");
             Assert.Equal("walkfront", AnimationName(testAnimation));
         }
         [Fact]
         public void TestAssignAnimationWithScriptNamedAndSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 16", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "walkfront");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
-            AssignAnimation(testAnimation, "kermit", "walkfront", true);
+            AssignAnimation(testAnimation, "Test Script 16", "walkfront", true);
             Assert.Equal("walkfront", AnimationName(testAnimation));
         }
         [Fact]
         public void TestAssignAnimationIndexIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 17", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -167,7 +162,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAssignAnimationIndexWithSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 18", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback", false);
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -176,7 +171,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAssignAnimationIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 19", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -185,7 +180,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAssignAnimationWithSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 20", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -194,68 +189,63 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCreateAnimationFromIndexWithSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 21", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, 0, true);
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
             Assert.NotNull(testAnimation);
-            var animName = AnimationName(testAnimation);
-            Assert.Equal("walkfront", animName);
+            Assert.Equal("walkfront", AnimationName(testAnimation));
         }
         [Fact]
         public void TestCreateAnimationIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 22", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
             Assert.NotNull(testAnimation);
-            var animName = AnimationName(testAnimation);
-            Assert.Equal("moonwalkback", animName);
+            Assert.Equal("moonwalkback", AnimationName(testAnimation));
         }
         [Fact]
         public void TestCreateAnimationWithSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 23", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback", true);
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
             Assert.NotNull(testAnimation);
-            var animName = AnimationName(testAnimation);
-            Assert.Equal("moonwalkback", animName);
+            Assert.Equal("moonwalkback", AnimationName(testAnimation));
         }
         [Fact]
         public void TestCreateAnimationFromScriptNamedIntegration() {
-            LoadAnimationScript("kermit", "kermit.txt");
+            LoadAnimationScript("Test Script 24", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testAnimation = CreateAnimation("kermit", "moonwalkback");
+            var testAnimation = CreateAnimation("Test Script 24", "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
             Assert.NotNull(testAnimation);
-            var animName = AnimationName(testAnimation);
-            Assert.Equal("moonwalkback", animName);
+            Assert.Equal("moonwalkback", AnimationName(testAnimation));
         }
         [Fact]
         public void TestCreateAnimationFromScriptNamedWithSoundIntegration() {
-            LoadAnimationScript("test_script", "kermit.txt");
+            LoadAnimationScript("Test Script 25", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testAnimation = CreateAnimation("test_script", "moonwalkback", true);
+            var testAnimation = CreateAnimation("Test Script 25", "moonwalkback", true);
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
             Assert.NotNull(testAnimation);
-            var animName = AnimationName(testAnimation);
-            Assert.Equal("moonwalkback", animName);
+            Assert.Equal("moonwalkback", AnimationName(testAnimation));
         }
         [Fact]
         public void TestFreeAllAnimationScriptsIntegration() {
-            LoadAnimationScript("free_all_kermit1", "kermit.txt");
+            LoadAnimationScript("Test Script 26", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            LoadAnimationScript("free_all_kermit2", "kermit.txt");
-            Assert.True(HasAnimationScript("free_all_kermit1"));
-            Assert.True(HasAnimationScript("free_all_kermit2"));
+            LoadAnimationScript("Test Script 27", "kermit.txt");
+            Assert.True(HasAnimationScript("Test Script 26"));
+            Assert.True(HasAnimationScript("Test Script 27"));
             FreeAllAnimationScripts();
-            Assert.False(HasAnimationScript("free_all_kermit1"));
-            Assert.False(HasAnimationScript("free_all_kermit2"));
+            Assert.False(HasAnimationScript("Test Script 26"));
+            Assert.False(HasAnimationScript("Test Script 27"));
         }
         [Fact]
         public void TestFreeAnimationIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 28", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -265,52 +255,48 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestFreeAnimationScriptIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 29", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             Assert.NotNull(testScript);
             FreeAnimationScript(testScript);
-            var scriptExists = HasAnimationScript("has_kermit");
-            Assert.False(scriptExists);
+            Assert.False(HasAnimationScript("Test Script 29"));
         }
         [Fact]
         public void TestFreeAnimationScriptWithNameIntegration() {
-            LoadAnimationScript("free_kermit", "kermit.txt");
+            LoadAnimationScript("Test Script 30", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            Assert.True(HasAnimationScript("free_kermit"));
-            FreeAnimationScript("free_kermit");
-            Assert.False(HasAnimationScript("free_kermit"));
+            Assert.True(HasAnimationScript("Test Script 30"));
+            FreeAnimationScript("Test Script 30");
+            Assert.False(HasAnimationScript("Test Script 30"));
         }
         [Fact]
         public void TestHasAnimationNamedIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 31", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var hasWalkfront = HasAnimationNamed(testScript, "walkfront");
-            Assert.True(hasWalkfront);
-            var hasNonexistent = HasAnimationNamed(testScript, "NonExistentAnimation");
-            Assert.False(hasNonexistent);
+            Assert.True(HasAnimationNamed(testScript, "walkfront"));
+            Assert.False(HasAnimationNamed(testScript, "NonExistentAnimation"));
         }
         [Fact]
         public void TestHasAnimationScriptIntegration() {
-            var testScript = LoadAnimationScript("has_kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 32", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            Assert.True(HasAnimationScript("has_kermit"));
+            Assert.True(HasAnimationScript("Test Script 32"));
             FreeAnimationScript(testScript);
-            Assert.False(HasAnimationScript("has_kermit"));
+            Assert.False(HasAnimationScript("Test Script 32"));
         }
         [Fact]
         public void TestLoadAnimationScriptIntegration() {
-            var testScript = LoadAnimationScript("test_animation_name", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 33", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             Assert.NotNull(testScript);
             var scriptName = AnimationScriptName(testScript);
-            Assert.Equal("test_animation_name", scriptName);
+            Assert.Equal("Test Script 33", scriptName);
             FreeAnimationScript(testScript);
-            var scriptExists = HasAnimationScript("test_animation_name");
-            Assert.False(scriptExists);
+            Assert.False(HasAnimationScript("Test Script 33"));
         }
         [Fact]
         public void TestRestartAnimationIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 34", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -320,12 +306,11 @@ namespace SplashKitTests
             var animEnded = AnimationEnded(testAnimation);
             Assert.True(animEnded);
             RestartAnimation(testAnimation);
-            var animEndedAfterRestart = AnimationEnded(testAnimation);
-            Assert.False(animEndedAfterRestart);
+            Assert.False(AnimationEnded(testAnimation));
         }
         [Fact]
         public void TestRestartAnimationWithSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 35", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback", true);
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -335,7 +320,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateAnimationPercentWithSoundIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 36", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -344,7 +329,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateAnimationIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 37", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "moonwalkback");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);
@@ -353,7 +338,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateAnimationPercentIntegration() {
-            var testScript = LoadAnimationScript("kermit", "kermit.txt");
+            var testScript = LoadAnimationScript("Test Script 38", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testAnimation = CreateAnimation(testScript, "walkfront");
             using var cleanupAnimation = new AnimationCleanup(testAnimation);

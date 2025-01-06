@@ -4,121 +4,121 @@ from ..helpers import *
 import contextlib
 class TestPhysics:
     def test_bitmap_circle_collision_at_point_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 1", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_circle = circle_at_from_points(150.0, 150.0, 50.0)
             test_point = point_at(100.0, 100.0)
             assert bitmap_circle_collision_at_point(test_bitmap, test_point, test_circle)
             
     def test_bitmap_circle_collision_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 2", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_circle = circle_at_from_points(150.0, 150.0, 50.0)
             assert bitmap_circle_collision(test_bitmap, 100.0, 100.0, test_circle)
             
     def test_bitmap_circle_collision_for_cell_with_translation_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 3", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_circle = circle_at_from_points(150.0, 150.0, 50.0)
             test_translation = translation_matrix(100.0, 100.0)
             assert bitmap_circle_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_circle)
             
     def test_bitmap_circle_collision_for_cell_at_point_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 4", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_circle = circle_at_from_points(150.0, 150.0, 50.0)
             test_point = point_at(100.0, 100.0)
             assert bitmap_circle_collision_for_cell_at_point(test_bitmap, 0, test_point, test_circle)
             
     def test_bitmap_circle_collision_for_cell_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 5", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_circle = circle_at_from_points(150.0, 150.0, 50.0)
             assert bitmap_circle_collision_for_cell(test_bitmap, 0, 100.0, 100.0, test_circle)
             
     def test_bitmap_collision_integration():
-        test_bitmap1 = create_bitmap("test_bitmap1", 100, 100)
+        test_bitmap1 = create_bitmap("Test Bitmap 6", 100, 100)
         with bitmap_cleanup():
-            test_bitmap2 = create_bitmap("test_bitmap2", 100, 100)
-            clear_bitmap(test_bitmap1, color_black())
+            test_bitmap2 = create_bitmap("Test Bitmap 7", 100, 100)
+            clear_bitmap(test_bitmap1, color_white())
             setup_collision_mask(test_bitmap1)
-            clear_bitmap(test_bitmap2, color_black())
+            clear_bitmap(test_bitmap2, color_white())
             setup_collision_mask(test_bitmap2)
             assert bitmap_collision_for_cells(test_bitmap1, 0, 0.0, 0.0, test_bitmap2, 0, 50.0, 50.0)
             assert not bitmap_collision_for_cells(test_bitmap1, 0, 0.0, 0.0, test_bitmap2, 0, 200.0, 200.0)
             
     def test_bitmap_collision_at_points_integration():
-        test_bitmap1 = create_bitmap("test_bitmap1", 100, 100)
+        test_bitmap1 = create_bitmap("Test Bitmap 8", 100, 100)
         with bitmap_cleanup():
-            test_bitmap2 = create_bitmap("test_bitmap2", 100, 100)
-            clear_bitmap(test_bitmap1, color_black())
+            test_bitmap2 = create_bitmap("Test Bitmap 9", 100, 100)
+            clear_bitmap(test_bitmap1, color_white())
             setup_collision_mask(test_bitmap1)
-            clear_bitmap(test_bitmap2, color_black())
+            clear_bitmap(test_bitmap2, color_white())
             setup_collision_mask(test_bitmap2)
             test_point1 = point_at(0.0, 0.0)
             test_point2 = point_at(50.0, 50.0)
             assert bitmap_collision_at_points(test_bitmap1, test_point1, test_bitmap2, test_point2)
             
     def test_bitmap_collision_for_cells_with_translations_integration():
-        test_bitmap1 = create_bitmap("test_bitmap1", 100, 100)
+        test_bitmap1 = create_bitmap("Test Bitmap 10", 100, 100)
         with bitmap_cleanup():
-            test_bitmap2 = create_bitmap("test_bitmap2", 100, 100)
-            clear_bitmap(test_bitmap1, color_black())
+            test_bitmap2 = create_bitmap("Test Bitmap 11", 100, 100)
+            clear_bitmap(test_bitmap1, color_white())
             setup_collision_mask(test_bitmap1)
-            clear_bitmap(test_bitmap2, color_black())
+            clear_bitmap(test_bitmap2, color_white())
             setup_collision_mask(test_bitmap2)
             matrix1 = translation_matrix(0.0, 0.0)
             matrix2 = translation_matrix(50.0, 50.0)
             assert bitmap_collision_for_cells_with_translations(test_bitmap1, 0, matrix1, test_bitmap2, 0, matrix2)
             
     def test_bitmap_collision_for_cells_at_points_integration():
-        test_bitmap1 = create_bitmap("test_bitmap1", 50, 50)
+        test_bitmap1 = create_bitmap("Test Bitmap 12", 50, 50)
         with bitmap_cleanup():
-            test_bitmap2 = create_bitmap("test_bitmap2", 50, 50)
-            clear_bitmap(test_bitmap1, color_black())
+            test_bitmap2 = create_bitmap("Test Bitmap 13", 50, 50)
+            clear_bitmap(test_bitmap1, color_white())
             setup_collision_mask(test_bitmap1)
-            clear_bitmap(test_bitmap2, color_black())
+            clear_bitmap(test_bitmap2, color_white())
             setup_collision_mask(test_bitmap2)
             test_point1 = point_at(100.0, 100.0)
             test_point2 = point_at(125.0, 125.0)
             assert bitmap_collision_for_cells_at_points(test_bitmap1, 0, test_point1, test_bitmap2, 0, test_point2)
             
     def test_bitmap_collision_for_cells_integration():
-        test_bitmap1 = create_bitmap("test_bitmap1", 100, 100)
+        test_bitmap1 = create_bitmap("Test Bitmap 14", 100, 100)
         with bitmap_cleanup():
-            test_bitmap2 = create_bitmap("test_bitmap2", 100, 100)
-            clear_bitmap(test_bitmap1, color_black())
-            clear_bitmap(test_bitmap2, color_black())
+            test_bitmap2 = create_bitmap("Test Bitmap 15", 100, 100)
+            clear_bitmap(test_bitmap1, color_white())
+            clear_bitmap(test_bitmap2, color_white())
             setup_collision_mask(test_bitmap1)
             setup_collision_mask(test_bitmap2)
             assert not bitmap_collision_for_cells(test_bitmap1, 0, 100.0, 100.0, test_bitmap2, 0, 200.0, 100.0)
             assert bitmap_collision_for_cells(test_bitmap1, 0, 100.0, 100.0, test_bitmap2, 0, 150.0, 100.0)
             
     def test_bitmap_point_collision_with_translation_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 16", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_translation = translation_matrix(100.0, 100.0)
-            test_point1 = point_at(151.0, 150.0)
-            test_point2 = point_at(201.0, 200.0)
+            test_point1 = point_at(150.0, 150.0)
+            test_point2 = point_at(200.0, 200.0)
             assert bitmap_point_collision_with_translation(test_bitmap, test_translation, test_point1)
             assert not bitmap_point_collision_with_translation(test_bitmap, test_translation, test_point2)
             
     def test_bitmap_point_collision_at_point_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 17", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_bmp_point = point_at(50.0, 50.0)
             test_point = point_at(101.0, 100.0)
@@ -126,88 +126,88 @@ class TestPhysics:
             assert not bitmap_point_collision_at_point(test_bitmap, test_bmp_point, point_at(201.0, 200.0))
             
     def test_bitmap_point_collision_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 18", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
-            assert bitmap_point_collision(test_bitmap, 0.0, 0.0, 51.0, 50.0)
-            assert not bitmap_point_collision(test_bitmap, 0.0, 0.0, 151.0, 150.0)
+            assert bitmap_point_collision(test_bitmap, 0.0, 0.0, 50.0, 50.0)
+            assert not bitmap_point_collision(test_bitmap, 0.0, 0.0, 150.0, 150.0)
             
     def test_bitmap_point_collision_for_cell_with_translation_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 19", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_translation = translation_matrix(100.0, 100.0)
-            test_point1 = point_at(151.0, 150.0)
-            test_point2 = point_at(201.0, 200.0)
+            test_point1 = point_at(150.0, 150.0)
+            test_point2 = point_at(200.0, 200.0)
             assert bitmap_point_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_point1)
             assert not bitmap_point_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_point2)
             
     def test_bitmap_point_collision_for_cell_at_point_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 20", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
-            assert bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(50.0, 50.0), point_at(101.0, 100.0))
-            assert not bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(51.0, 50.0), point_at(201.0, 200.0))
+            assert bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(50.0, 50.0), point_at(100.0, 100.0))
+            assert not bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(50.0, 50.0), point_at(200.0, 200.0))
             
     def test_bitmap_point_collision_for_cell_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 21", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
-            draw_pixel_with_options(color_white(), 51.0, 50.0, option_draw_to_bitmap(test_bitmap))
+            clear_bitmap(test_bitmap, rgba_color(0, 0, 0, 0))
+            draw_pixel_on_bitmap(test_bitmap, color_black(), 50.0, 50.0)
             setup_collision_mask(test_bitmap)
-            assert bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 51.0, 50.0)
-            assert not bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 50.0, 50.0)
+            assert bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 50.0, 50.0)
+            assert not bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 51.0, 50.0)
             
     def test_bitmap_rectangle_collision_at_point_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 22", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0)
             test_point = point_at(100.0, 100.0)
             assert bitmap_rectangle_collision_at_point(test_bitmap, test_point, test_rectangle)
             
     def test_bitmap_rectangle_collision_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 23", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0)
             assert bitmap_rectangle_collision(test_bitmap, 0.0, 0.0, test_rectangle)
             
     def test_bitmap_rectangle_collision_for_cell_with_translation_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 24", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_rectangle = rectangle_from(150.0, 150.0, 50.0, 50.0)
             test_translation = translation_matrix(100.0, 100.0)
             assert bitmap_rectangle_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_rectangle)
             
     def test_bitmap_rectangle_collision_for_cell_at_point_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 25", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_rectangle = rectangle_from(100.0, 100.0, 50.0, 50.0)
             test_point = point_at(100.0, 100.0)
             assert bitmap_rectangle_collision_for_cell_at_point(test_bitmap, 0, test_point, test_rectangle)
             
     def test_bitmap_rectangle_collision_for_cell_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 26", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0)
             assert bitmap_rectangle_collision_for_cell(test_bitmap, 0, 50.0, 50.0, test_rectangle)
             
     def test_sprite_bitmap_collision_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 27", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_sprite = create_sprite(test_bitmap)
             with sprite_cleanup():
@@ -217,9 +217,9 @@ class TestPhysics:
                 assert not sprite_bitmap_collision(test_sprite, test_bitmap, 200.0, 200.0)
                 
     def test_sprite_bitmap_collision_with_cell_at_point_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 28", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_sprite = create_sprite(test_bitmap)
             with sprite_cleanup():
@@ -228,9 +228,9 @@ class TestPhysics:
                 assert sprite_bitmap_collision_with_cell_at_point(test_sprite, test_bitmap, 0, point_at(50.0, 50.0))
                 
     def test_sprite_bitmap_collision_with_cell_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 29", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_sprite = create_sprite(test_bitmap)
             with sprite_cleanup():
@@ -239,12 +239,12 @@ class TestPhysics:
                 assert sprite_bitmap_collision_with_cell(test_sprite, test_bitmap, 0, 50.0, 50.0)
                 
     def test_sprite_collision_integration():
-        test_bitmap1 = create_bitmap("test_bitmap_1", 50, 50)
+        test_bitmap1 = create_bitmap("Test Bitmap 30", 50, 50)
         with bitmap_cleanup():
-            test_bitmap2 = create_bitmap("test_bitmap_2", 50, 50)
-            clear_bitmap(test_bitmap1, color_black())
+            test_bitmap2 = create_bitmap("Test Bitmap 31", 50, 50)
+            clear_bitmap(test_bitmap1, color_white())
             setup_collision_mask(test_bitmap1)
-            clear_bitmap(test_bitmap2, color_black())
+            clear_bitmap(test_bitmap2, color_white())
             setup_collision_mask(test_bitmap2)
             test_sprite1 = create_sprite(test_bitmap1)
             with sprite_cleanup():
@@ -258,9 +258,9 @@ class TestPhysics:
                 assert not sprite_collision(test_sprite1, test_sprite2)
                 
     def test_sprite_point_collision_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 32", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_sprite = create_sprite(test_bitmap)
             with sprite_cleanup():
@@ -269,9 +269,9 @@ class TestPhysics:
                 assert not sprite_point_collision(test_sprite, point_at(200.0, 200.0))
                 
     def test_sprite_rectangle_collision_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 33", 100, 100)
         with bitmap_cleanup():
-            clear_bitmap(test_bitmap, color_black())
+            clear_bitmap(test_bitmap, color_white())
             setup_collision_mask(test_bitmap)
             test_sprite = create_sprite(test_bitmap)
             with sprite_cleanup():
@@ -304,8 +304,8 @@ class TestPhysics:
         test_matrix = scale_rotate_translate_matrix(point_at(2.0, 2.0), 45.0, point_at(10.0, 10.0))
         inverse_matrix = matrix_inverse(test_matrix)
         result_matrix = matrix_multiply_matrix(test_matrix, inverse_matrix)
-        assert abs(1.0 - result_matrix.elements[0][0]) <= 2
-        assert abs(1.0 - result_matrix.elements[1][1]) <= 2
+        assert abs(1.0 - result_matrix.elements[0][0]) <= 2.0
+        assert abs(1.0 - result_matrix.elements[1][1]) <= 2.0
         
     def test_matrix_multiply_point_integration():
         test_matrix = translation_matrix(10.0, 10.0)
@@ -470,7 +470,7 @@ class TestPhysics:
     def test_vector_limit_integration():
         test_vector = vector_to(6.0, 8.0)
         limited_vector = vector_limit(test_vector, 5.0)
-        assert abs(3.0 - limited_vector.x) <= 2
+        assert abs(3.0 - limited_vector.x) <= 2.0
         assert 4.0 == limited_vector.y
         
     def test_vector_magnitude_integration():

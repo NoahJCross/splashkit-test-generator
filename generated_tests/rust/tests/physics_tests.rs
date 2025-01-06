@@ -7,9 +7,9 @@ mod test_physics {
     use super::*;
     #[test]
     fn test_bitmap_circle_collision_at_point_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 1".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_circle = circle_at_from_points(150.0, 150.0, 50.0);
         let test_point = point_at(100.0, 100.0);
@@ -17,18 +17,18 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_circle_collision_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 2".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_circle = circle_at_from_points(150.0, 150.0, 50.0);
         assert!(bitmap_circle_collision(test_bitmap, 100.0, 100.0, test_circle));
     }
     #[test]
     fn test_bitmap_circle_collision_for_cell_with_translation_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 3".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_circle = circle_at_from_points(150.0, 150.0, 50.0);
         let test_translation = translation_matrix(100.0, 100.0);
@@ -36,9 +36,9 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_circle_collision_for_cell_at_point_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 4".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_circle = circle_at_from_points(150.0, 150.0, 50.0);
         let test_point = point_at(100.0, 100.0);
@@ -46,33 +46,33 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_circle_collision_for_cell_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 5".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_circle = circle_at_from_points(150.0, 150.0, 50.0);
         assert!(bitmap_circle_collision_for_cell(test_bitmap, 0, 100.0, 100.0, test_circle));
     }
     #[test]
     fn test_bitmap_collision_integration() {
-        let test_bitmap1 = create_bitmap("test_bitmap1".to_string(), 100, 100);
+        let test_bitmap1 = create_bitmap("Test Bitmap 6".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        let test_bitmap2 = create_bitmap("test_bitmap2".to_string(), 100, 100);
-        clear_bitmap(test_bitmap1, color_black());
+        let test_bitmap2 = create_bitmap("Test Bitmap 7".to_string(), 100, 100);
+        clear_bitmap(test_bitmap1, color_white());
         setup_collision_mask(test_bitmap1);
-        clear_bitmap(test_bitmap2, color_black());
+        clear_bitmap(test_bitmap2, color_white());
         setup_collision_mask(test_bitmap2);
         assert!(bitmap_collision_for_cells(test_bitmap1, 0, 0.0, 0.0, test_bitmap2, 0, 50.0, 50.0));
         assert!(!bitmap_collision_for_cells(test_bitmap1, 0, 0.0, 0.0, test_bitmap2, 0, 200.0, 200.0));
     }
     #[test]
     fn test_bitmap_collision_at_points_integration() {
-        let test_bitmap1 = create_bitmap("test_bitmap1".to_string(), 100, 100);
+        let test_bitmap1 = create_bitmap("Test Bitmap 8".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        let test_bitmap2 = create_bitmap("test_bitmap2".to_string(), 100, 100);
-        clear_bitmap(test_bitmap1, color_black());
+        let test_bitmap2 = create_bitmap("Test Bitmap 9".to_string(), 100, 100);
+        clear_bitmap(test_bitmap1, color_white());
         setup_collision_mask(test_bitmap1);
-        clear_bitmap(test_bitmap2, color_black());
+        clear_bitmap(test_bitmap2, color_white());
         setup_collision_mask(test_bitmap2);
         let test_point1 = point_at(0.0, 0.0);
         let test_point2 = point_at(50.0, 50.0);
@@ -80,12 +80,12 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_collision_for_cells_with_translations_integration() {
-        let test_bitmap1 = create_bitmap("test_bitmap1".to_string(), 100, 100);
+        let test_bitmap1 = create_bitmap("Test Bitmap 10".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        let test_bitmap2 = create_bitmap("test_bitmap2".to_string(), 100, 100);
-        clear_bitmap(test_bitmap1, color_black());
+        let test_bitmap2 = create_bitmap("Test Bitmap 11".to_string(), 100, 100);
+        clear_bitmap(test_bitmap1, color_white());
         setup_collision_mask(test_bitmap1);
-        clear_bitmap(test_bitmap2, color_black());
+        clear_bitmap(test_bitmap2, color_white());
         setup_collision_mask(test_bitmap2);
         let matrix1 = translation_matrix(0.0, 0.0);
         let matrix2 = translation_matrix(50.0, 50.0);
@@ -93,12 +93,12 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_collision_for_cells_at_points_integration() {
-        let test_bitmap1 = create_bitmap("test_bitmap1".to_string(), 50, 50);
+        let test_bitmap1 = create_bitmap("Test Bitmap 12".to_string(), 50, 50);
         let _cleanup_bitmap = BitmapCleanup::new();
-        let test_bitmap2 = create_bitmap("test_bitmap2".to_string(), 50, 50);
-        clear_bitmap(test_bitmap1, color_black());
+        let test_bitmap2 = create_bitmap("Test Bitmap 13".to_string(), 50, 50);
+        clear_bitmap(test_bitmap1, color_white());
         setup_collision_mask(test_bitmap1);
-        clear_bitmap(test_bitmap2, color_black());
+        clear_bitmap(test_bitmap2, color_white());
         setup_collision_mask(test_bitmap2);
         let test_point1 = point_at(100.0, 100.0);
         let test_point2 = point_at(125.0, 125.0);
@@ -106,11 +106,11 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_collision_for_cells_integration() {
-        let test_bitmap1 = create_bitmap("test_bitmap1".to_string(), 100, 100);
+        let test_bitmap1 = create_bitmap("Test Bitmap 14".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        let test_bitmap2 = create_bitmap("test_bitmap2".to_string(), 100, 100);
-        clear_bitmap(test_bitmap1, color_black());
-        clear_bitmap(test_bitmap2, color_black());
+        let test_bitmap2 = create_bitmap("Test Bitmap 15".to_string(), 100, 100);
+        clear_bitmap(test_bitmap1, color_white());
+        clear_bitmap(test_bitmap2, color_white());
         setup_collision_mask(test_bitmap1);
         setup_collision_mask(test_bitmap2);
         assert!(!bitmap_collision_for_cells(test_bitmap1, 0, 100.0, 100.0, test_bitmap2, 0, 200.0, 100.0));
@@ -118,21 +118,21 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_point_collision_with_translation_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 16".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_translation = translation_matrix(100.0, 100.0);
-        let test_point1 = point_at(151.0, 150.0);
-        let test_point2 = point_at(201.0, 200.0);
+        let test_point1 = point_at(150.0, 150.0);
+        let test_point2 = point_at(200.0, 200.0);
         assert!(bitmap_point_collision_with_translation(test_bitmap, test_translation, test_point1));
         assert!(!bitmap_point_collision_with_translation(test_bitmap, test_translation, test_point2));
     }
     #[test]
     fn test_bitmap_point_collision_at_point_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 17".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_bmp_point = point_at(50.0, 50.0);
         let test_point = point_at(101.0, 100.0);
@@ -141,49 +141,49 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_point_collision_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 18".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
-        assert!(bitmap_point_collision(test_bitmap, 0.0, 0.0, 51.0, 50.0));
-        assert!(!bitmap_point_collision(test_bitmap, 0.0, 0.0, 151.0, 150.0));
+        assert!(bitmap_point_collision(test_bitmap, 0.0, 0.0, 50.0, 50.0));
+        assert!(!bitmap_point_collision(test_bitmap, 0.0, 0.0, 150.0, 150.0));
     }
     #[test]
     fn test_bitmap_point_collision_for_cell_with_translation_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 19".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_translation = translation_matrix(100.0, 100.0);
-        let test_point1 = point_at(151.0, 150.0);
-        let test_point2 = point_at(201.0, 200.0);
+        let test_point1 = point_at(150.0, 150.0);
+        let test_point2 = point_at(200.0, 200.0);
         assert!(bitmap_point_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_point1));
         assert!(!bitmap_point_collision_for_cell_with_translation(test_bitmap, 0, test_translation, test_point2));
     }
     #[test]
     fn test_bitmap_point_collision_for_cell_at_point_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 20".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
-        assert!(bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(50.0, 50.0), point_at(101.0, 100.0)));
-        assert!(!bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(51.0, 50.0), point_at(201.0, 200.0)));
+        assert!(bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(50.0, 50.0), point_at(100.0, 100.0)));
+        assert!(!bitmap_point_collision_for_cell_at_point(test_bitmap, 0, point_at(50.0, 50.0), point_at(200.0, 200.0)));
     }
     #[test]
     fn test_bitmap_point_collision_for_cell_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 21".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
-        draw_pixel_with_options(color_white(), 51.0, 50.0, option_draw_to_bitmap(test_bitmap));
+        clear_bitmap(test_bitmap, rgba_color(0, 0, 0, 0));
+        draw_pixel_on_bitmap(test_bitmap, color_black(), 50.0, 50.0);
         setup_collision_mask(test_bitmap);
-        assert!(bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 51.0, 50.0));
-        assert!(!bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 50.0, 50.0));
+        assert!(bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 50.0, 50.0));
+        assert!(!bitmap_point_collision_for_cell(test_bitmap, 0, 0.0, 0.0, 51.0, 50.0));
     }
     #[test]
     fn test_bitmap_rectangle_collision_at_point_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 22".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0);
         let test_point = point_at(100.0, 100.0);
@@ -191,18 +191,18 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_rectangle_collision_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 23".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0);
         assert!(bitmap_rectangle_collision(test_bitmap, 0.0, 0.0, test_rectangle));
     }
     #[test]
     fn test_bitmap_rectangle_collision_for_cell_with_translation_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 24".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_rectangle = rectangle_from(150.0, 150.0, 50.0, 50.0);
         let test_translation = translation_matrix(100.0, 100.0);
@@ -210,9 +210,9 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_rectangle_collision_for_cell_at_point_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 25".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_rectangle = rectangle_from(100.0, 100.0, 50.0, 50.0);
         let test_point = point_at(100.0, 100.0);
@@ -220,18 +220,18 @@ mod test_physics {
     }
     #[test]
     fn test_bitmap_rectangle_collision_for_cell_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 26".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_rectangle = rectangle_from(50.0, 50.0, 100.0, 100.0);
         assert!(bitmap_rectangle_collision_for_cell(test_bitmap, 0, 50.0, 50.0, test_rectangle));
     }
     #[test]
     fn test_sprite_bitmap_collision_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 27".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_sprite = create_sprite(test_bitmap);
         let _cleanup_sprite = SpriteCleanup::new();
@@ -242,9 +242,9 @@ mod test_physics {
     }
     #[test]
     fn test_sprite_bitmap_collision_with_cell_at_point_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 28".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_sprite = create_sprite(test_bitmap);
         let _cleanup_sprite = SpriteCleanup::new();
@@ -254,9 +254,9 @@ mod test_physics {
     }
     #[test]
     fn test_sprite_bitmap_collision_with_cell_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 29".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_sprite = create_sprite(test_bitmap);
         let _cleanup_sprite = SpriteCleanup::new();
@@ -266,12 +266,12 @@ mod test_physics {
     }
     #[test]
     fn test_sprite_collision_integration() {
-        let test_bitmap1 = create_bitmap("test_bitmap_1".to_string(), 50, 50);
+        let test_bitmap1 = create_bitmap("Test Bitmap 30".to_string(), 50, 50);
         let _cleanup_bitmap = BitmapCleanup::new();
-        let test_bitmap2 = create_bitmap("test_bitmap_2".to_string(), 50, 50);
-        clear_bitmap(test_bitmap1, color_black());
+        let test_bitmap2 = create_bitmap("Test Bitmap 31".to_string(), 50, 50);
+        clear_bitmap(test_bitmap1, color_white());
         setup_collision_mask(test_bitmap1);
-        clear_bitmap(test_bitmap2, color_black());
+        clear_bitmap(test_bitmap2, color_white());
         setup_collision_mask(test_bitmap2);
         let test_sprite1 = create_sprite(test_bitmap1);
         let _cleanup_sprite = SpriteCleanup::new();
@@ -286,9 +286,9 @@ mod test_physics {
     }
     #[test]
     fn test_sprite_point_collision_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 32".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_sprite = create_sprite(test_bitmap);
         let _cleanup_sprite = SpriteCleanup::new();
@@ -298,9 +298,9 @@ mod test_physics {
     }
     #[test]
     fn test_sprite_rectangle_collision_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 33".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
-        clear_bitmap(test_bitmap, color_black());
+        clear_bitmap(test_bitmap, color_white());
         setup_collision_mask(test_bitmap);
         let test_sprite = create_sprite(test_bitmap);
         let _cleanup_sprite = SpriteCleanup::new();
@@ -337,8 +337,8 @@ mod test_physics {
         let test_matrix = scale_rotate_translate_matrix(point_at(2.0, 2.0), 45.0, point_at(10.0, 10.0));
         let inverse_matrix = matrix_inverse(test_matrix);
         let result_matrix = matrix_multiply_matrix(test_matrix, inverse_matrix);
-        assert!((1.0 - result_matrix.elements[0][0]).abs() <= 2);
-        assert!((1.0 - result_matrix.elements[1][1]).abs() <= 2);
+        assert!((1.0 - result_matrix.elements[0][0]).abs() <= 2.0);
+        assert!((1.0 - result_matrix.elements[1][1]).abs() <= 2.0);
     }
     #[test]
     fn test_matrix_multiply_point_integration() {
@@ -528,7 +528,7 @@ mod test_physics {
     fn test_vector_limit_integration() {
         let test_vector = vector_to(6.0, 8.0);
         let limited_vector = vector_limit(test_vector, 5.0);
-        assert!((3.0 - limited_vector.x).abs() <= 2);
+        assert!((3.0 - limited_vector.x).abs() <= 2.0);
         assert_eq!(4.0, limited_vector.y);
     }
     #[test]

@@ -4,10 +4,6 @@ require 'fileutils'
 
 require_relative 'test_generator/config/language_config'
 
-
-require_relative 'test_generator/core/parser'
-
-
 require_relative 'test_generator/extensions/string_extensions'
 
 
@@ -36,6 +32,7 @@ require_relative 'test_generator/validators/config_validator'
 
 require_relative 'test_generator/utils/directory_manager'
 require_relative 'test_generator/utils/function_lookup'
+require_relative 'test_generator/utils/parser'
 
 
 require_relative 'test_generator/errors/test_generator_errors'

@@ -22,7 +22,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 1"
             },
             {
               "value_type": "int",
@@ -86,7 +86,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 2"
             },
             {
               "value_type": "int",
@@ -149,7 +149,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 3"
             },
             {
               "value_type": "int",
@@ -212,7 +212,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 4"
             },
             {
               "value_type": "int",
@@ -235,7 +235,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 1"
             },
             {
               "value_type": "int",
@@ -259,7 +259,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "test_bitmap",
+              "value": "Test Sprite 1"
             }
           ],
           "store_result": "test_sprite"
@@ -353,7 +354,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 5"
             },
             {
               "value_type": "int",
@@ -376,7 +377,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 2"
             },
             {
               "value_type": "int",
@@ -400,7 +401,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "test_bitmap",
+              "value": "Test Sprite 2"
             }
           ],
           "store_result": "test_sprite"
@@ -488,7 +490,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 6"
             },
             {
               "value_type": "int",
@@ -585,7 +587,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 7"
             },
             {
               "value_type": "int",
@@ -671,7 +673,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 8"
             },
             {
               "value_type": "int",
@@ -744,7 +746,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 9"
             },
             {
               "value_type": "int",
@@ -816,7 +818,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 10"
             },
             {
               "value_type": "int",
@@ -915,7 +917,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 11"
             },
             {
               "value_type": "int",
@@ -1005,7 +1007,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 12"
             },
             {
               "value_type": "int",
@@ -1140,7 +1142,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 13"
             },
             {
               "value_type": "int",
@@ -1237,7 +1239,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 14"
             },
             {
               "value_type": "int",
@@ -1321,7 +1323,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 15"
             },
             {
               "value_type": "int",
@@ -1385,7 +1387,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 16"
             },
             {
               "value_type": "int",
@@ -1458,7 +1460,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 17"
             },
             {
               "value_type": "int",
@@ -1511,7 +1513,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 18"
             },
             {
               "value_type": "int",
@@ -1564,7 +1566,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 19"
             },
             {
               "value_type": "int",
@@ -1663,7 +1665,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 20"
             },
             {
               "value_type": "int",
@@ -1779,7 +1781,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 21"
             },
             {
               "value_type": "int",
@@ -1806,7 +1808,6 @@
             }
           ]
         },
-
         {
           "step_type": "function",
           "function_name": "to_screen_x",
@@ -1843,7 +1844,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 22"
             },
             {
               "value_type": "int",
@@ -1906,7 +1907,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 23"
             },
             {
               "value_type": "int",
@@ -2005,7 +2006,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 24"
             },
             {
               "value_type": "int",
@@ -2078,7 +2079,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 25"
             },
             {
               "value_type": "int",
@@ -2253,7 +2254,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 26"
             },
             {
               "value_type": "int",

@@ -9,22 +9,22 @@ namespace SplashKitTests
         [Fact]
         public void TestDeregisterFreeNotifierIntegration() {
             var freeNotifier = new NotifierTracker();
-            RegisterFreeNotifier(freeNotifier.OnFree);
-            var testBitmap1 = CreateBitmap("test_bitmap", 100, 100);
+            RegisterFreeNotifier(free_notifier.OnFree());
+            var testBitmap1 = CreateBitmap("Test Bitmap 1", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             FreeBitmap(testBitmap1);
-            Assert.True(freeNotifier.WasNotified);
-            DeregisterFreeNotifier(freeNotifier.OnFree);
-            freeNotifier.Reset();
-            var testBitmap2 = CreateBitmap("test_bitmap", 100, 100);
+            Assert.True(free_notifier.WasNotified());
+            DeregisterFreeNotifier(free_notifier.OnFree());
+            freeNotifier.Reset()
+;            var testBitmap2 = CreateBitmap("Test Bitmap 2", 100, 100);
             FreeBitmap(testBitmap2);
-            Assert.False(freeNotifier.WasNotified);
+            Assert.False(free_notifier.WasNotified());
         }
         [Fact]
         public void TestPathToResourceIntegration() {
             SetResourcesPath("resources");
             var imagePath = PathToResource("test_image.png", ResourceKind.ImageResource);
-            Assert.NotEqual("", imagePath);
+            Assert.Equal("resources/images/test_image.png", imagePath);
         }
         [Fact]
         public void TestPathToResourcesIntegration() {
@@ -38,19 +38,19 @@ namespace SplashKitTests
         public void TestPathToResourcesForKindIntegration() {
             SetResourcesPath("resources");
             var imagePath = PathToResources(ResourceKind.ImageResource);
-            Assert.Equal("resources/images", imagePath);
+            Assert.Equal("resources/images/", imagePath);
             var soundPath = PathToResources(ResourceKind.SoundResource);
-            Assert.Equal("resources/sounds", soundPath);
+            Assert.Equal("resources/sounds/", soundPath);
         }
         [Fact]
         public void TestRegisterFreeNotifierIntegration() {
             var freeNotifier = new NotifierTracker();
-            RegisterFreeNotifier(freeNotifier.OnFree);
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            RegisterFreeNotifier(free_notifier.OnFree());
+            var testBitmap = CreateBitmap("Test Bitmap 3", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             FreeBitmap(testBitmap);
-            Assert.True(freeNotifier.WasNotified);
-            DeregisterFreeNotifier(freeNotifier.OnFree);
+            Assert.True(free_notifier.WasNotified());
+            DeregisterFreeNotifier(free_notifier.OnFree());
         }
         [Fact]
         public void TestSetResourcesPathIntegration() {

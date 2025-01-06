@@ -10,7 +10,7 @@ begin
 end;
 procedure TestDrawCircleRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 1', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     testCircle := CircleAt(400.0, 300.0, 50.0);
@@ -21,7 +21,7 @@ begin
 end;
 procedure TestDrawCircleRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 2', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     testCircle := CircleAt(400.0, 300.0, 50.0);
@@ -32,7 +32,7 @@ begin
 end;
 procedure TestDrawCircleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 3', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), 400.0, 300.0, 50.0);
@@ -43,7 +43,7 @@ begin
 end;
 procedure TestDrawCircleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 4', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), 400.0, 300.0, 50.0, OptionDefaults());
@@ -53,7 +53,7 @@ begin
 end;
 procedure TestDrawCircleOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 1', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawCircleOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0);
@@ -63,7 +63,7 @@ begin
 end;
 procedure TestDrawCircleOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 2', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawCircleOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, OptionDefaults());
@@ -73,7 +73,7 @@ begin
 end;
 procedure TestDrawCircleOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 5', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircleOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 50.0);
@@ -83,7 +83,7 @@ begin
 end;
 procedure TestDrawCircleOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 6', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircleOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 50.0, OptionDefaults());
@@ -93,7 +93,7 @@ begin
 end;
 procedure TestFillCircleRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 7', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     testCircle := CircleAt(400.0, 300.0, 50.0);
@@ -104,7 +104,7 @@ begin
 end;
 procedure TestFillCircleRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 8', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     testCircle := CircleAt(400.0, 300.0, 50.0);
@@ -115,7 +115,7 @@ begin
 end;
 procedure TestFillCircleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 9', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillCircle(ColorBlack(), 400.0, 300.0, 50.0);
@@ -125,7 +125,7 @@ begin
 end;
 procedure TestFillCircleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 10', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillCircle(ColorBlack(), 400.0, 300.0, 50.0, OptionDefaults());
@@ -135,7 +135,7 @@ begin
 end;
 procedure TestFillCircleOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 3', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillCircleOnBitmap(testBitmap, ColorRed(), 100.0, 100.0, 50.0);
@@ -145,7 +145,7 @@ begin
 end;
 procedure TestFillCircleOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 4', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillCircleOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, OptionDefaults());
@@ -155,7 +155,7 @@ begin
 end;
 procedure TestFillCircleOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 11', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillCircleOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 50.0);
@@ -165,7 +165,7 @@ begin
 end;
 procedure TestFillCircleOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 12', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillCircleOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 50.0, OptionDefaults());
@@ -175,7 +175,7 @@ begin
 end;
 procedure TestCurrentClipIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 13', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testClip := CurrentClip();
     AssertEquals(0.0, RectangleLeft(testClip));
@@ -185,7 +185,7 @@ begin
 end;
 procedure TestCurrentClipForBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 5', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testRectangle := RectangleFrom(10.0, 10.0, 50.0, 50.0);
     PushClip(testBitmap, testRectangle);
@@ -197,7 +197,7 @@ begin
 end;
 procedure TestCurrentClipForWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 14', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testClip := CurrentClip(testWindow);
     AssertEquals(0.0, RectangleLeft(testClip));
@@ -207,7 +207,7 @@ begin
 end;
 procedure TestPopClipForWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 15', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(0.0, 0.0, 250.0, 250.0);
     PushClip(testWindow, testRectangle);
@@ -225,7 +225,7 @@ begin
 end;
 procedure TestPopClipIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 16', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     PushClip(RectangleFrom(0.0, 0.0, 250.0, 250.0));
@@ -246,7 +246,7 @@ begin
 end;
 procedure TestPopClipForBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 6', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     PushClip(testBitmap, RectangleFrom(0.0, 0.0, 50.0, 50.0));
@@ -262,7 +262,7 @@ begin
 end;
 procedure TestPushClipForWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 17', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     PushClip(testWindow, testRectangle);
@@ -275,7 +275,7 @@ begin
 end;
 procedure TestPushClipForBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 7', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     testRectangle := RectangleFrom(50.0, 50.0, 100.0, 100.0);
     PushClip(testBitmap, testRectangle);
@@ -287,7 +287,7 @@ begin
 end;
 procedure TestPushClipIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 18', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     PushClip(testRectangle);
@@ -299,7 +299,7 @@ begin
 end;
 procedure TestResetClipForBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 8', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     PushClip(testBitmap, RectangleFrom(10.0, 10.0, 50.0, 50.0));
     ResetClip(testBitmap);
@@ -311,7 +311,7 @@ begin
 end;
 procedure TestResetClipIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 19', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     PushClip(RectangleFrom(100.0, 100.0, 200.0, 200.0));
     ResetClip();
@@ -323,7 +323,7 @@ begin
 end;
 procedure TestResetClipForWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 20', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     PushClip(testWindow, RectangleFrom(100.0, 100.0, 200.0, 200.0));
     ResetClip(testWindow);
@@ -335,7 +335,7 @@ begin
 end;
 procedure TestSetClipIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 21', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     SetClip(testRectangle);
@@ -347,7 +347,7 @@ begin
 end;
 procedure TestSetClipForBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 9', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     testRectangle := RectangleFrom(50.0, 50.0, 100.0, 100.0);
     SetClip(testBitmap, testRectangle);
@@ -359,7 +359,7 @@ begin
 end;
 procedure TestSetClipForWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 22', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     SetClip(testWindow, testRectangle);
@@ -376,7 +376,7 @@ begin
 end;
 procedure TestOptionDrawToBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 10', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     testOptions := OptionDrawTo(testBitmap);
@@ -386,7 +386,7 @@ begin
 end;
 procedure TestOptionDrawToBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 11', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     testOptions := OptionDefaults();
@@ -397,7 +397,7 @@ begin
 end;
 procedure TestOptionDrawToWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 23', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionDrawTo(testWindow));
@@ -407,7 +407,7 @@ begin
 end;
 procedure TestOptionDrawToWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 24', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     testOptions := OptionDefaults();
@@ -418,10 +418,10 @@ begin
 end;
 procedure TestOptionFlipXIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 25', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 12', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
@@ -433,10 +433,10 @@ begin
 end;
 procedure TestOptionFlipXWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 26', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 13', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
@@ -448,10 +448,10 @@ begin
 end;
 procedure TestOptionFlipXyIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 27', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 14', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 50.0);
@@ -463,10 +463,10 @@ begin
 end;
 procedure TestOptionFlipXyWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 28', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 15', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 50.0);
@@ -478,10 +478,10 @@ begin
 end;
 procedure TestOptionFlipYIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 29', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 16', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 100.0, 50.0);
@@ -493,10 +493,10 @@ begin
 end;
 procedure TestOptionFlipYWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 30', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 17', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 100.0, 50.0);
@@ -508,7 +508,7 @@ begin
 end;
 procedure TestOptionLineWidthIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 31', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionLineWidth(5));
@@ -518,7 +518,7 @@ begin
 end;
 procedure TestOptionLineWidthWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 32', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionLineWidth(5, OptionDefaults()));
@@ -528,10 +528,10 @@ begin
 end;
 procedure TestOptionPartBmpIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 33', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 18', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     DrawBitmap(testBitmap, 100.0, 100.0, OptionPartBmp(0.0, 0.0, 50.0, 50.0));
@@ -542,10 +542,10 @@ begin
 end;
 procedure TestOptionPartBmpWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 34', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 19', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     DrawBitmap(testBitmap, 100.0, 100.0, OptionPartBmp(0.0, 0.0, 50.0, 50.0, OptionDefaults()));
@@ -556,10 +556,10 @@ begin
 end;
 procedure TestOptionPartBmpFromRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 35', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 20', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     DrawBitmap(testBitmap, 0.0, 0.0, OptionPartBmp(RectangleFrom(0.0, 0.0, 50.0, 50.0)));
@@ -570,10 +570,10 @@ begin
 end;
 procedure TestOptionPartBmpFromRectangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 36', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 21', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     DrawBitmap(testBitmap, 0.0, 0.0, OptionPartBmp(RectangleFrom(0.0, 0.0, 50.0, 50.0), OptionDefaults()));
@@ -584,10 +584,10 @@ begin
 end;
 procedure TestOptionRotateBmpIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 37', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 22', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
@@ -599,10 +599,10 @@ begin
 end;
 procedure TestOptionRotateBmpWithAnchorIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 38', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 23', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
@@ -614,10 +614,10 @@ begin
 end;
 procedure TestOptionRotateBmpWithAnchorAndOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 39', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 24', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
@@ -629,10 +629,10 @@ begin
 end;
 procedure TestOptionRotateBmpWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 40', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 25', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 0.0, 0.0, 50.0, 100.0);
@@ -644,10 +644,10 @@ begin
 end;
 procedure TestOptionScaleBmpIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 41', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 50, 50);
+    testBitmap := CreateBitmap('Test Bitmap 26', 50, 50);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     DrawBitmap(testBitmap, 400.0, 300.0, OptionScaleBmp(2.0, 2.0));
@@ -658,10 +658,10 @@ begin
 end;
 procedure TestOptionScaleBmpWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 42', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 50, 50);
+    testBitmap := CreateBitmap('Test Bitmap 27', 50, 50);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     DrawBitmap(testBitmap, 400.0, 300.0, OptionScaleBmp(2.0, 2.0, OptionDefaults()));
@@ -672,7 +672,7 @@ begin
 end;
 procedure TestOptionToScreenIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 43', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionToScreen());
@@ -682,7 +682,7 @@ begin
 end;
 procedure TestOptionToScreenWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 44', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0), OptionToScreen(OptionDefaults()));
@@ -692,7 +692,7 @@ begin
 end;
 procedure TestOptionToWorldIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 45', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     MoveCameraTo(100.0, 100.0);
@@ -703,7 +703,7 @@ begin
 end;
 procedure TestOptionToWorldWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 46', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     MoveCameraTo(100.0, 100.0);
@@ -714,13 +714,13 @@ begin
 end;
 procedure TestOptionWithAnimationIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 47', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
+    kermitScript := LoadAnimationScript('Test Script 1', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(kermitScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
-    testBitmap := LoadBitmap('frog', 'frog.png');
+    testBitmap := LoadBitmap('Test Bitmap 28', 'frog.png');
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 73, 105, 4, 4, 16);
     while WindowCloseRequested(testWindow) = false do
@@ -734,13 +734,13 @@ begin
 end;
 procedure TestOptionWithAnimationWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 48', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    kermitScript := LoadAnimationScript('kermit', 'kermit.txt');
+    kermitScript := LoadAnimationScript('Test Script 2', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testAnimation := CreateAnimation(kermitScript, 'moonwalkback');
     CleanupAnimation := TAnimationCleanup.Create(testAnimation)
-    testBitmap := LoadBitmap('frog', 'frog.png');
+    testBitmap := LoadBitmap('Test Bitmap 29', 'frog.png');
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 73, 105, 4, 4, 16);
     while WindowCloseRequested(testWindow) = false do
@@ -754,10 +754,10 @@ begin
 end;
 procedure TestOptionWithBitmapCellIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 49', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 64, 64);
+    testBitmap := CreateBitmap('Test Bitmap 30', 64, 64);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     BitmapSetCellDetails(testBitmap, 32, 32, 2, 2, 4);
@@ -769,10 +769,10 @@ begin
 end;
 procedure TestOptionWithBitmapCellWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 50', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testBitmap := CreateBitmap('test_bitmap', 64, 64);
+    testBitmap := CreateBitmap('Test Bitmap 31', 64, 64);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     BitmapSetCellDetails(testBitmap, 32, 32, 2, 2, 4);
@@ -784,7 +784,7 @@ begin
 end;
 procedure TestDrawEllipseWithinRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 51', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawEllipse(ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 150.0));
@@ -795,7 +795,7 @@ begin
 end;
 procedure TestDrawEllipseWithinRectangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 52', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawEllipse(ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 100.0), OptionDefaults());
@@ -806,7 +806,7 @@ begin
 end;
 procedure TestDrawEllipseIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 53', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawEllipse(ColorBlack(), 400.0, 300.0, 100.0, 50.0);
@@ -817,7 +817,7 @@ begin
 end;
 procedure TestDrawEllipseWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 54', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawEllipse(ColorBlack(), 400.0, 300.0, 100.0, 50.0, OptionDefaults());
@@ -828,7 +828,7 @@ begin
 end;
 procedure TestDrawEllipseOnBitmapWithinRectangleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 32', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     rect := RectangleFrom(50.0, 50.0, 100.0, 100.0);
@@ -839,7 +839,7 @@ begin
 end;
 procedure TestDrawEllipseOnBitmapWithinRectangleWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 33', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawEllipseOnBitmap(testBitmap, ColorBlack(), RectangleFrom(50.0, 50.0, 100.0, 100.0), OptionDefaults());
@@ -849,7 +849,7 @@ begin
 end;
 procedure TestDrawEllipseOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 34', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawEllipseOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, 30.0);
@@ -859,7 +859,7 @@ begin
 end;
 procedure TestDrawEllipseOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 35', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawEllipseOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, 30.0, OptionDefaults());
@@ -869,7 +869,7 @@ begin
 end;
 procedure TestDrawEllipseOnWindowWithinRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 55', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rect := RectangleFrom(100.0, 100.0, 200.0, 100.0);
@@ -881,7 +881,7 @@ begin
 end;
 procedure TestDrawEllipseOnWindowWithinRectangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 56', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rect := RectangleFrom(100.0, 100.0, 200.0, 100.0);
@@ -893,7 +893,7 @@ begin
 end;
 procedure TestDrawEllipseOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 57', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawEllipseOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 100.0, 50.0);
@@ -904,7 +904,7 @@ begin
 end;
 procedure TestDrawEllipseOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 58', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawEllipseOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 100.0, 50.0, OptionDefaults());
@@ -915,7 +915,7 @@ begin
 end;
 procedure TestFillEllipseWithinRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 59', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillEllipse(ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 100.0));
@@ -926,7 +926,7 @@ begin
 end;
 procedure TestFillEllipseWithinRectangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 60', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillEllipse(ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 100.0), OptionDefaults());
@@ -937,7 +937,7 @@ begin
 end;
 procedure TestFillEllipseIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 61', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillEllipse(ColorBlack(), 400.0, 300.0, 100.0, 50.0);
@@ -948,7 +948,7 @@ begin
 end;
 procedure TestFillEllipseWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 62', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillEllipse(ColorBlack(), 400.0, 300.0, 100.0, 50.0, OptionDefaults());
@@ -959,7 +959,7 @@ begin
 end;
 procedure TestFillEllipseOnBitmapWithinRectangleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 36', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillEllipseOnBitmap(testBitmap, ColorBlack(), RectangleFrom(50.0, 50.0, 100.0, 100.0));
@@ -969,7 +969,7 @@ begin
 end;
 procedure TestFillEllipseOnBitmapWithinRectangleWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 37', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillEllipseOnBitmap(testBitmap, ColorBlack(), RectangleFrom(50.0, 50.0, 100.0, 100.0), OptionDefaults());
@@ -979,7 +979,7 @@ begin
 end;
 procedure TestFillEllipseOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 38', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillEllipseOnBitmap(testBitmap, ColorBlack(), 100.0, 100.0, 50.0, 30.0);
@@ -989,7 +989,7 @@ begin
 end;
 procedure TestFillEllipseOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 39', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillEllipseOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0, 100.0, 50.0, OptionDefaults());
@@ -999,7 +999,7 @@ begin
 end;
 procedure TestFillEllipseOnWindowWithinRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 63', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillEllipseOnWindow(testWindow, ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 150.0));
@@ -1010,7 +1010,7 @@ begin
 end;
 procedure TestFillEllipseOnWindowWithinRectangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 64', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillEllipseOnWindow(testWindow, ColorBlack(), RectangleFrom(100.0, 100.0, 200.0, 150.0), OptionDefaults());
@@ -1021,7 +1021,7 @@ begin
 end;
 procedure TestFillEllipseOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 65', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillEllipseOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 100.0, 50.0);
@@ -1032,7 +1032,7 @@ begin
 end;
 procedure TestFillEllipseOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 66', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillEllipseOnWindow(testWindow, ColorBlack(), 400.0, 300.0, 100.0, 50.0, OptionDefaults());
@@ -1043,7 +1043,7 @@ begin
 end;
 procedure TestClearScreenToWhiteIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 67', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     DrawPixel(ColorBlack(), 100.0, 100.0);
     RefreshScreen();
@@ -1054,7 +1054,7 @@ begin
 end;
 procedure TestClearScreenIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 68', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     DrawPixel(ColorBlack(), 100.0, 100.0);
     RefreshScreen();
@@ -1105,7 +1105,7 @@ begin
 end;
 procedure TestRefreshScreenIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 69', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0));
@@ -1113,7 +1113,7 @@ begin
 end;
 procedure TestRefreshScreenWithTargetFpsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 70', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0));
@@ -1121,27 +1121,27 @@ begin
 end;
 procedure TestSaveBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 40', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
-    SaveBitmap(testBitmap, 'test_bitmap');
+    SaveBitmap(testBitmap, 'Test Bitmap 40');
 end;
 procedure TestScreenHeightIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 71', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     AssertEquals(600, ScreenHeight());
 end;
 procedure TestScreenWidthIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 72', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     AssertEquals(800, ScreenWidth());
 end;
 procedure TestTakeScreenshotIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 73', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0));
@@ -1150,7 +1150,7 @@ begin
 end;
 procedure TestTakeScreenshotOfWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 74', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawCircle(ColorBlack(), CircleAt(400.0, 300.0, 50.0));
@@ -1159,7 +1159,7 @@ begin
 end;
 procedure TestBitmapBoundingCircleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 41', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testPoint := PointAt(50.0, 50.0);
     boundingCircle := BitmapBoundingCircle(testBitmap, testPoint);
@@ -1168,7 +1168,7 @@ begin
 end;
 procedure TestBitmapBoundingRectangleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 42', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     boundingRect := BitmapBoundingRectangle(testBitmap);
     AssertEquals(0.0, boundingRect.x);
@@ -1178,7 +1178,7 @@ begin
 end;
 procedure TestBitmapBoundingRectangleAtLocationIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 43', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     boundingRect := BitmapBoundingRectangle(testBitmap, 50.0, 50.0);
     AssertEquals(50.0, boundingRect.x);
@@ -1188,7 +1188,7 @@ begin
 end;
 procedure TestBitmapCellCenterIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 44', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     center := BitmapCellCenter(testBitmap);
     AssertEquals(50.0, center.x);
@@ -1196,7 +1196,7 @@ begin
 end;
 procedure TestBitmapCellCircleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 45', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
     circle := BitmapCellCircle(testBitmap, 50.0, 50.0);
@@ -1206,7 +1206,7 @@ begin
 end;
 procedure TestBitmapCellCircleAtPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 46', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
     circle := BitmapCellCircle(testBitmap, PointAt(100.0, 100.0));
@@ -1216,7 +1216,7 @@ begin
 end;
 procedure TestBitmapCellCircleAtPointWithScaleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 47', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 50, 50, 2, 2, 4);
     circle := BitmapCellCircle(testBitmap, PointAt(100.0, 100.0), 2.0);
@@ -1226,28 +1226,28 @@ begin
 end;
 procedure TestBitmapCellColumnsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 48', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
     AssertEquals(5, BitmapCellColumns(testBitmap));
 end;
 procedure TestBitmapCellCountIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 49', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
     AssertEquals(25, BitmapCellCount(testBitmap));
 end;
 procedure TestBitmapCellHeightIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 50', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
     AssertEquals(20, BitmapCellHeight(testBitmap));
 end;
 procedure TestBitmapCellOffsetIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 51', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     offset := BitmapCellOffset(testBitmap, 5);
@@ -1256,7 +1256,7 @@ begin
 end;
 procedure TestBitmapCellRectangleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 52', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     rect := BitmapCellRectangle(testBitmap);
@@ -1267,7 +1267,7 @@ begin
 end;
 procedure TestBitmapCellRectangleAtPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 53', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     rect := BitmapCellRectangle(testBitmap, PointAt(50.0, 50.0));
@@ -1278,21 +1278,21 @@ begin
 end;
 procedure TestBitmapCellRowsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 54', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
     AssertEquals(5, BitmapCellRows(testBitmap));
 end;
 procedure TestBitmapCellWidthIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 55', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     AssertEquals(25, BitmapCellWidth(testBitmap));
 end;
 procedure TestBitmapCenterIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 56', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testCenter := BitmapCenter(testBitmap);
     AssertEquals(50.0, testCenter.x);
@@ -1300,38 +1300,38 @@ begin
 end;
 procedure TestBitmapFilenameIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 57', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     AssertEquals('', BitmapFilename(testBitmap));
 end;
 procedure TestBitmapHeightIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 58', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     AssertEquals(100, BitmapHeight(testBitmap));
 end;
 procedure TestBitmapHeightOfBitmapNamedIntegration;
 begin
-    CreateBitmap('bitmap_height', 100, 100);
+    CreateBitmap('Test Bitmap 59', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    AssertEquals(100, BitmapHeight('bitmap_height'));
+    AssertEquals(100, BitmapHeight('Test Bitmap 59'));
 end;
 procedure TestBitmapNameIntegration;
 begin
-    testBitmap := CreateBitmap('bitmap_name', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 60', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    AssertEquals('bitmap_name', BitmapName(testBitmap));
+    AssertEquals('Test Bitmap 60', BitmapName(testBitmap));
 end;
 procedure TestBitmapNamedIntegration;
 begin
-    CreateBitmap('test_bitmap', 100, 100);
+    CreateBitmap('Test Bitmap 61', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    AssertNotNull(BitmapNamed('test_bitmap'));
+    AssertNotNull(BitmapNamed('Test Bitmap 61'));
     AssertNull(BitmapNamed('nonexistent_bitmap'));
 end;
 procedure TestBitmapRectangleOfCellIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 62', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 25, 25, 4, 4, 16);
     rect := BitmapRectangleOfCell(testBitmap, 5);
@@ -1342,7 +1342,7 @@ begin
 end;
 procedure TestBitmapSetCellDetailsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 63', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     BitmapSetCellDetails(testBitmap, 20, 20, 5, 5, 25);
     AssertEquals(20, BitmapCellWidth(testBitmap));
@@ -1353,7 +1353,7 @@ begin
 end;
 procedure TestBitmapValidIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 64', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     AssertTrue(BitmapValid(testBitmap));
     FreeBitmap(testBitmap);
@@ -1361,19 +1361,19 @@ begin
 end;
 procedure TestBitmapWidthIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 65', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     AssertEquals(100, BitmapWidth(testBitmap));
 end;
 procedure TestBitmapWidthOfBitmapNamedIntegration;
 begin
-    CreateBitmap('bitmap_width', 100, 100);
+    CreateBitmap('Test Bitmap 66', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    AssertEquals(100, BitmapWidth('bitmap_width'));
+    AssertEquals(100, BitmapWidth('Test Bitmap 66'));
 end;
 procedure TestClearBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 67', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
     AssertEquals(ColorBlack(), GetPixel(testBitmap, 50.0, 50.0));
@@ -1382,27 +1382,27 @@ begin
 end;
 procedure TestClearBitmapNamedIntegration;
 begin
-    testBitmap := CreateBitmap('bitmap_named', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 68', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
     AssertEquals(ColorRed(), GetPixel(testBitmap, 50.0, 50.0));
-    ClearBitmap('bitmap_named', ColorWhite());
+    ClearBitmap('Test Bitmap 68', ColorWhite());
     AssertEquals(ColorWhite(), GetPixel(testBitmap, 50.0, 50.0));
 end;
 procedure TestCreateBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('bitmap_name1', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 69', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     AssertNotNull(testBitmap);
     AssertEquals(100, BitmapWidth(testBitmap));
     AssertEquals(100, BitmapHeight(testBitmap));
-    AssertEquals('bitmap_name1', BitmapName(testBitmap));
+    AssertEquals('Test Bitmap 69', BitmapName(testBitmap));
 end;
 procedure TestDrawBitmapIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 75', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 70', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 50.0, 50.0);
@@ -1414,9 +1414,9 @@ begin
 end;
 procedure TestDrawBitmapWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 76', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 71', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
@@ -1428,13 +1428,13 @@ begin
 end;
 procedure TestDrawBitmapNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 77', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 72', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
-    DrawBitmap('test_bitmap', 100.0, 100.0);
+    DrawBitmap('Test Bitmap 72', 100.0, 100.0);
     RefreshScreen();
     AssertEquals(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
     AssertEquals(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
@@ -1442,13 +1442,13 @@ begin
 end;
 procedure TestDrawBitmapNamedWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 78', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 73', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
-    DrawBitmap('test_bitmap', 100.0, 100.0, OptionDefaults());
+    DrawBitmap('Test Bitmap 73', 100.0, 100.0, OptionDefaults());
     RefreshScreen();
     AssertEquals(ColorRed(), GetPixel(testWindow, 125.0, 125.0));
     AssertEquals(ColorWhite(), GetPixel(testWindow, 50.0, 50.0));
@@ -1456,9 +1456,9 @@ begin
 end;
 procedure TestDrawBitmapOnBitmapOnBitmapIntegration;
 begin
-    destBitmap := CreateBitmap('test_destination', 100, 100);
+    destBitmap := CreateBitmap('Test Bitmap 74', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    sourceBitmap := CreateBitmap('test_source', 50, 50);
+    sourceBitmap := CreateBitmap('Test Bitmap 75', 50, 50);
     ClearBitmap(destBitmap, ColorWhite());
     FillRectangleOnBitmap(sourceBitmap, ColorRed(), 0.0, 0.0, 50.0, 50.0);
     DrawBitmapOnBitmap(destBitmap, sourceBitmap, 25.0, 25.0);
@@ -1467,9 +1467,9 @@ begin
 end;
 procedure TestDrawBitmapOnBitmapOnBitmapWithOptionsIntegration;
 begin
-    destBitmap := CreateBitmap('test_destination', 100, 100);
+    destBitmap := CreateBitmap('Test Bitmap 76', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    sourceBitmap := CreateBitmap('test_source', 50, 50);
+    sourceBitmap := CreateBitmap('Test Bitmap 77', 50, 50);
     ClearBitmap(destBitmap, ColorWhite());
     FillRectangleOnBitmap(sourceBitmap, ColorRed(), 0.0, 0.0, 50.0, 50.0);
     DrawBitmapOnBitmap(destBitmap, sourceBitmap, 25.0, 25.0, OptionDefaults());
@@ -1478,9 +1478,9 @@ begin
 end;
 procedure TestDrawBitmapOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 79', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 78', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
@@ -1492,9 +1492,9 @@ begin
 end;
 procedure TestDrawBitmapOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 80', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 79', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorRed(), 0.0, 0.0, 100.0, 100.0);
@@ -1506,9 +1506,9 @@ begin
 end;
 procedure TestFreeAllBitmapsIntegration;
 begin
-    bitmap1 := CreateBitmap('test_bitmap_1', 100, 100);
+    bitmap1 := CreateBitmap('Test Bitmap 80', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    bitmap2 := CreateBitmap('test_bitmap_2', 100, 100);
+    bitmap2 := CreateBitmap('Test Bitmap 81', 100, 100);
     AssertTrue(BitmapValid(bitmap1));
     AssertTrue(BitmapValid(bitmap2));
     FreeAllBitmaps();
@@ -1517,7 +1517,7 @@ begin
 end;
 procedure TestFreeBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 82', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     AssertTrue(BitmapValid(testBitmap));
     FreeBitmap(testBitmap);
@@ -1525,21 +1525,21 @@ begin
 end;
 procedure TestHasBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 83', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    AssertTrue(HasBitmap('test_bitmap'));
+    AssertTrue(HasBitmap('Test Bitmap 83'));
     FreeBitmap(testBitmap);
-    AssertFalse(HasBitmap('test_bitmap'));
+    AssertFalse(HasBitmap('Test Bitmap 83'));
 end;
 procedure TestLoadBitmapIntegration;
 begin
-    loadedBitmap := LoadBitmap('loaded_bitmap', 'frog.png');
+    loadedBitmap := LoadBitmap('Test Bitmap 84', 'frog.png');
     CleanupBitmap := TBitmapCleanup.Create;
     AssertNotEquals(ColorWhite(), GetPixel(loadedBitmap, 50.0, 50.0));
 end;
 procedure TestPixelDrawnAtPointPtIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 85', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
@@ -1548,7 +1548,7 @@ begin
 end;
 procedure TestPixelDrawnAtPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 86', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
@@ -1557,7 +1557,7 @@ begin
 end;
 procedure TestPixelDrawnAtPointInCellPtIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 87', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
@@ -1567,7 +1567,7 @@ begin
 end;
 procedure TestPixelDrawnAtPointInCellIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 88', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
@@ -1577,9 +1577,9 @@ begin
 end;
 procedure TestSetupCollisionMaskIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 81', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 89', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     testCircle := CircleAt(120.0, 120.0, 30.0);
@@ -1591,7 +1591,7 @@ begin
 end;
 procedure TestDrawLineRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 82', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLine(ColorBlack(), LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0)));
@@ -1601,7 +1601,7 @@ begin
 end;
 procedure TestDrawLineRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 83', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLine(ColorBlack(), LineFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0)), OptionLineWidth(3, OptionDefaults()));
@@ -1611,7 +1611,7 @@ begin
 end;
 procedure TestDrawLinePointToPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 84', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLine(ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0));
@@ -1621,7 +1621,7 @@ begin
 end;
 procedure TestDrawLinePointToPointWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 85', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLine(ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0), OptionDefaults());
@@ -1631,7 +1631,7 @@ begin
 end;
 procedure TestDrawLineIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 86', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0);
@@ -1641,7 +1641,7 @@ begin
 end;
 procedure TestDrawLineWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 87', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLine(ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionDefaults());
@@ -1651,7 +1651,7 @@ begin
 end;
 procedure TestDrawLineOnBitmapRecordIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 90', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawLineOnBitmap(testBitmap, ColorBlack(), LineFrom(PointAt(10.0, 10.0), PointAt(90.0, 90.0)));
@@ -1660,7 +1660,7 @@ begin
 end;
 procedure TestDrawLineOnBitmapRecordWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 91', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawLineOnBitmap(testBitmap, ColorBlack(), LineFrom(PointAt(10.0, 10.0), PointAt(90.0, 90.0)), OptionDefaults());
@@ -1669,7 +1669,7 @@ begin
 end;
 procedure TestDrawLineOnBitmapPointToPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 92', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawLineOnBitmap(testBitmap, ColorBlack(), PointAt(10.0, 10.0), PointAt(90.0, 90.0));
@@ -1678,7 +1678,7 @@ begin
 end;
 procedure TestDrawLineOnBitmapPointToPointWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 93', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawLineOnBitmap(testBitmap, ColorBlack(), PointAt(10.0, 10.0), PointAt(90.0, 90.0), OptionDefaults());
@@ -1688,7 +1688,7 @@ begin
 end;
 procedure TestDrawLineOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 94', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawLineOnBitmap(testBitmap, ColorBlack(), 10.0, 10.0, 90.0, 90.0);
@@ -1697,7 +1697,7 @@ begin
 end;
 procedure TestDrawLineOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 95', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawLineOnBitmap(testBitmap, ColorBlack(), 10.0, 10.0, 90.0, 90.0, OptionDefaults());
@@ -1706,7 +1706,7 @@ begin
 end;
 procedure TestDrawLineOnWindowRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 88', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     testLine := LineFrom(PointAt(100.0, 100.0), PointAt(150.0, 150.0));
@@ -1717,7 +1717,7 @@ begin
 end;
 procedure TestDrawLineOnWindowRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 89', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     testLine := LineFrom(PointAt(100.0, 100.0), PointAt(150.0, 150.0));
@@ -1728,7 +1728,7 @@ begin
 end;
 procedure TestDrawLineOnWindowPointToPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 90', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLineOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0));
@@ -1738,7 +1738,7 @@ begin
 end;
 procedure TestDrawLineOnWindowPointToPointWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 91', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLineOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), PointAt(200.0, 200.0), OptionDefaults());
@@ -1748,7 +1748,7 @@ begin
 end;
 procedure TestDrawLineOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 92', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLineOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0);
@@ -1758,7 +1758,7 @@ begin
 end;
 procedure TestDrawLineOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 93', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawLineOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0, OptionDefaults());
@@ -1768,7 +1768,7 @@ begin
 end;
 procedure TestDrawPixelAtPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 94', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
@@ -1778,7 +1778,7 @@ begin
 end;
 procedure TestDrawPixelAtPointWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 95', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0), OptionDefaults());
@@ -1788,7 +1788,7 @@ begin
 end;
 procedure TestDrawPixelIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 96', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), 100.0, 100.0);
@@ -1798,7 +1798,7 @@ begin
 end;
 procedure TestDrawPixelWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 97', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), 100.0, 100.0, OptionDefaults());
@@ -1808,7 +1808,7 @@ begin
 end;
 procedure TestDrawPixelOnBitmapAtPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 96', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
@@ -1817,7 +1817,7 @@ begin
 end;
 procedure TestDrawPixelOnBitmapAtPointWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 97', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0), OptionDefaults());
@@ -1826,7 +1826,7 @@ begin
 end;
 procedure TestDrawPixelOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 98', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
@@ -1835,7 +1835,7 @@ begin
 end;
 procedure TestDrawPixelOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 99', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0, OptionDefaults());
@@ -1844,7 +1844,7 @@ begin
 end;
 procedure TestDrawPixelOnWindowAtPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 98', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixelOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0));
@@ -1854,7 +1854,7 @@ begin
 end;
 procedure TestDrawPixelOnWindowAtPointWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 99', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixelOnWindow(testWindow, ColorBlack(), PointAt(100.0, 100.0), OptionDefaults());
@@ -1864,7 +1864,7 @@ begin
 end;
 procedure TestDrawPixelOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 100', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixelOnWindow(testWindow, ColorBlack(), 100.0, 100.0);
@@ -1874,7 +1874,7 @@ begin
 end;
 procedure TestDrawPixelOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 101', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixelOnWindow(testWindow, ColorBlack(), 100.0, 100.0, OptionDefaults());
@@ -1884,7 +1884,7 @@ begin
 end;
 procedure TestGetPixelFromBitmapAtPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 100', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), PointAt(50.0, 50.0));
@@ -1893,7 +1893,7 @@ begin
 end;
 procedure TestGetPixelFromBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 101', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
@@ -1902,7 +1902,7 @@ begin
 end;
 procedure TestGetPixelAtPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 102', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
@@ -1912,7 +1912,7 @@ begin
 end;
 procedure TestGetPixelIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 103', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), 100.0, 100.0);
@@ -1922,7 +1922,7 @@ begin
 end;
 procedure TestGetPixelFromWindowAtPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 104', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
@@ -1932,7 +1932,7 @@ begin
 end;
 procedure TestGetPixelFromWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 105', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), 100.0, 100.0);
@@ -1942,7 +1942,7 @@ begin
 end;
 procedure TestGetPixelFromWindowAtPointFromWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 106', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), PointAt(100.0, 100.0));
@@ -1952,7 +1952,7 @@ begin
 end;
 procedure TestGetPixelFromWindowFromWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 107', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawPixel(ColorBlack(), 100.0, 100.0);
@@ -1962,7 +1962,7 @@ begin
 end;
 procedure TestDrawQuadIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 108', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     quad := QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
@@ -1974,7 +1974,7 @@ begin
 end;
 procedure TestDrawQuadWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 109', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     quad := QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
@@ -1986,7 +1986,7 @@ begin
 end;
 procedure TestDrawQuadOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 102', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     quad := QuadFrom(PointAt(10.0, 10.0), PointAt(90.0, 10.0), PointAt(10.0, 90.0), PointAt(90.0, 90.0));
@@ -1997,7 +1997,7 @@ begin
 end;
 procedure TestDrawQuadOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 103', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     quad := QuadFrom(PointAt(10.0, 10.0), PointAt(90.0, 10.0), PointAt(90.0, 90.0), PointAt(10.0, 90.0));
@@ -2008,7 +2008,7 @@ begin
 end;
 procedure TestDrawQuadOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 110', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     quad := QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
@@ -2020,7 +2020,7 @@ begin
 end;
 procedure TestDrawQuadOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 111', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     quad := QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
@@ -2032,7 +2032,7 @@ begin
 end;
 procedure TestDrawRectangleRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 112', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rectangle := RectangleFrom(100.0, 100.0, 200.0, 150.0);
@@ -2044,7 +2044,7 @@ begin
 end;
 procedure TestDrawRectangleRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 113', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rectangle := RectangleFrom(100.0, 100.0, 200.0, 150.0);
@@ -2056,7 +2056,7 @@ begin
 end;
 procedure TestDrawRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 114', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawRectangle(ColorBlack(), 100.0, 100.0, 200.0, 150.0);
@@ -2066,7 +2066,7 @@ begin
 end;
 procedure TestDrawRectangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 115', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawRectangle(ColorBlack(), 100.0, 100.0, 200.0, 150.0, OptionLineWidth(3, OptionDefaults()));
@@ -2078,7 +2078,7 @@ begin
 end;
 procedure TestDrawRectangleOnBitmapRecordIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 104', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     rectangle := RectangleFrom(50.0, 50.0, 20.0, 30.0);
@@ -2088,7 +2088,7 @@ begin
 end;
 procedure TestDrawRectangleOnBitmapRecordWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 105', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     rectangle := RectangleFrom(50.0, 50.0, 20.0, 20.0);
@@ -2098,7 +2098,7 @@ begin
 end;
 procedure TestDrawRectangleOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 106', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawRectangleOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0, 20.0, 20.0);
@@ -2107,7 +2107,7 @@ begin
 end;
 procedure TestDrawRectangleOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 107', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawRectangleOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0, 20.0, 20.0, OptionDefaults());
@@ -2116,7 +2116,7 @@ begin
 end;
 procedure TestDrawRectangleOnWindowRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 116', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rectangle := RectangleFrom(100.0, 100.0, 50.0, 50.0);
@@ -2128,7 +2128,7 @@ begin
 end;
 procedure TestDrawRectangleOnWindowRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 117', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rectangle := RectangleFrom(100.0, 100.0, 50.0, 50.0);
@@ -2140,7 +2140,7 @@ begin
 end;
 procedure TestDrawRectangleOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 118', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawRectangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 50.0, 50.0);
@@ -2150,7 +2150,7 @@ begin
 end;
 procedure TestDrawRectangleOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 119', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawRectangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 50.0, 50.0, OptionDefaults());
@@ -2160,7 +2160,7 @@ begin
 end;
 procedure TestFillQuadIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 120', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     quad := QuadFrom(PointAt(100.0, 100.0), PointAt(300.0, 100.0), PointAt(100.0, 300.0), PointAt(300.0, 300.0));
@@ -2171,7 +2171,7 @@ begin
 end;
 procedure TestFillQuadWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 121', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     quad := QuadFrom(PointAt(100.0, 100.0), PointAt(300.0, 100.0), PointAt(100.0, 300.0), PointAt(300.0, 300.0));
@@ -2182,7 +2182,7 @@ begin
 end;
 procedure TestFillQuadOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 108', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     quad := QuadFrom(PointAt(10.0, 10.0), PointAt(90.0, 10.0), PointAt(10.0, 90.0), PointAt(90.0, 90.0));
@@ -2192,7 +2192,7 @@ begin
 end;
 procedure TestFillQuadOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 109', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     quad := QuadFrom(PointAt(10.0, 10.0), PointAt(90.0, 10.0), PointAt(90.0, 90.0), PointAt(10.0, 90.0));
@@ -2202,7 +2202,7 @@ begin
 end;
 procedure TestFillQuadOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 122', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     quad := QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(100.0, 200.0), PointAt(200.0, 200.0));
@@ -2213,7 +2213,7 @@ begin
 end;
 procedure TestFillQuadOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 123', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     quad := QuadFrom(PointAt(100.0, 100.0), PointAt(200.0, 100.0), PointAt(200.0, 200.0), PointAt(100.0, 200.0));
@@ -2224,7 +2224,7 @@ begin
 end;
 procedure TestFillRectangleRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 124', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rectangle := RectangleFrom(100.0, 100.0, 200.0, 150.0);
@@ -2235,7 +2235,7 @@ begin
 end;
 procedure TestFillRectangleRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 125', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rectangle := RectangleFrom(100.0, 100.0, 200.0, 150.0);
@@ -2246,7 +2246,7 @@ begin
 end;
 procedure TestFillRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 126', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangle(ColorBlack(), 100.0, 100.0, 200.0, 150.0);
@@ -2256,7 +2256,7 @@ begin
 end;
 procedure TestFillRectangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 127', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangle(ColorBlack(), 100.0, 100.0, 200.0, 150.0, OptionDefaults());
@@ -2266,7 +2266,7 @@ begin
 end;
 procedure TestFillRectangleOnBitmapRecordIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 110', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     rectangle := RectangleFrom(25.0, 25.0, 50.0, 50.0);
@@ -2276,7 +2276,7 @@ begin
 end;
 procedure TestFillRectangleOnBitmapRecordWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 111', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     rectangle := RectangleFrom(25.0, 25.0, 50.0, 50.0);
@@ -2286,7 +2286,7 @@ begin
 end;
 procedure TestFillRectangleOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 112', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 50.0, 50.0);
@@ -2295,7 +2295,7 @@ begin
 end;
 procedure TestFillRectangleOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 113', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillRectangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 50.0, 50.0, OptionDefaults());
@@ -2304,7 +2304,7 @@ begin
 end;
 procedure TestFillRectangleOnWindowRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 128', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rectangle := RectangleFrom(100.0, 100.0, 200.0, 150.0);
@@ -2315,7 +2315,7 @@ begin
 end;
 procedure TestFillRectangleOnWindowRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 129', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     rectangle := RectangleFrom(100.0, 100.0, 200.0, 150.0);
@@ -2326,7 +2326,7 @@ begin
 end;
 procedure TestFillRectangleOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 130', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 50.0, 50.0);
@@ -2336,7 +2336,7 @@ begin
 end;
 procedure TestFillRectangleOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 131', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillRectangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 50.0, 50.0, OptionDefaults());
@@ -2346,7 +2346,7 @@ begin
 end;
 procedure TestDrawTextFontAsStringIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 132', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     RefreshScreen();
@@ -2359,7 +2359,7 @@ begin
 end;
 procedure TestDrawTextWithOptionsFontAsStringIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 133', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2371,7 +2371,7 @@ begin
 end;
 procedure TestDrawTextNoFontNoSizeIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 134', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawText('Test Text', ColorBlack(), 100.0, 100.0);
@@ -2381,7 +2381,7 @@ begin
 end;
 procedure TestDrawTextNoFontNoSizeWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 135', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawText('Test Text', ColorBlack(), 100.0, 100.0, OptionDefaults());
@@ -2391,7 +2391,7 @@ begin
 end;
 procedure TestDrawTextIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 136', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2403,7 +2403,7 @@ begin
 end;
 procedure TestDrawTextWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 137', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2415,7 +2415,7 @@ begin
 end;
 procedure TestDrawTextOnBitmapFontAsStringIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 114', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2426,7 +2426,7 @@ begin
 end;
 procedure TestDrawTextOnBitmapWithOptionsFontAsStringIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 115', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2437,7 +2437,7 @@ begin
 end;
 procedure TestDrawTextOnBitmapNoFontNoSizeIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 116', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawTextOnBitmap(testBitmap, 'Test Text', ColorBlack(), 100.0, 100.0);
@@ -2446,7 +2446,7 @@ begin
 end;
 procedure TestDrawTextOnBitmapNoFontNoSizeWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 117', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawTextOnBitmap(testBitmap, 'Test Text', ColorBlack(), 100.0, 100.0, OptionDefaults());
@@ -2455,7 +2455,7 @@ begin
 end;
 procedure TestDrawTextOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 118', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2466,7 +2466,7 @@ begin
 end;
 procedure TestDrawTextOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 200, 200);
+    testBitmap := CreateBitmap('Test Bitmap 119', 200, 200);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2477,7 +2477,7 @@ begin
 end;
 procedure TestDrawTextOnWindowFontAsStringIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 138', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2489,7 +2489,7 @@ begin
 end;
 procedure TestDrawTextOnWindowWithOptionsFontAsStringIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 139', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2501,7 +2501,7 @@ begin
 end;
 procedure TestDrawTextOnWindowNoFontNoSizeIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 140', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawTextOnWindow(testWindow, 'Test Text', ColorBlack(), 100.0, 100.0);
@@ -2511,7 +2511,7 @@ begin
 end;
 procedure TestDrawTextOnWindowNoFontNoSizeWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 141', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawTextOnWindow(testWindow, 'Test Text', ColorBlack(), 100.0, 100.0, OptionDefaults());
@@ -2521,7 +2521,7 @@ begin
 end;
 procedure TestDrawTextOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 142', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2535,10 +2535,10 @@ begin
 end;
 procedure TestDrawTextOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 143', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     DrawTextOnWindow(testWindow, 'Test Text', ColorBlack(), testFont, 24, 100.0, 100.0, OptionDefaults());
     RefreshScreen();
@@ -2555,7 +2555,7 @@ begin
 end;
 procedure TestFontHasSizeIntegration;
 begin
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     FontLoadSize(testFont, 12);
     AssertTrue(FontHasSize(testFont, 12));
@@ -2563,21 +2563,21 @@ begin
 end;
 procedure TestFontLoadSizeNameAsStringIntegration;
 begin
-    LoadFont('test_font', 'hara.ttf');
+    LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
-    FontLoadSize('test_font', 12);
-    AssertTrue(FontHasSize('test_font', 12));
+    FontLoadSize('Test Font', 12);
+    AssertTrue(FontHasSize('Test Font', 12));
 end;
 procedure TestFontLoadSizeIntegration;
 begin
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     FontLoadSize(testFont, 12);
     AssertTrue(FontHasSize(testFont, 12));
 end;
 procedure TestFontNamedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 144', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     LoadFont('hara', 'hara.ttf');
@@ -2591,15 +2591,15 @@ begin
 end;
 procedure TestFreeAllFontsIntegration;
 begin
-    LoadFont('test_font', 'hara.ttf');
+    LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
-    AssertTrue(HasFont('test_font'));
+    AssertTrue(HasFont('Test Font'));
     FreeAllFonts();
-    AssertFalse(HasFont('test_font'));
+    AssertFalse(HasFont('Test Font'));
 end;
 procedure TestFreeFontIntegration;
 begin
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     AssertTrue(HasFont(testFont));
     FreeFont(testFont);
@@ -2607,14 +2607,14 @@ begin
 end;
 procedure TestGetFontStyleNameAsStringIntegration;
 begin
-    LoadFont('test_font', 'hara.ttf');
+    LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
-    style := GetFontStyle('test_font');
+    style := GetFontStyle('Test Font');
     AssertEquals(FontStyle.BOLD_FONT, style);
 end;
 procedure TestGetFontStyleIntegration;
 begin
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     style := GetFontStyle(testFont);
     AssertEquals(FontStyle.BOLD_FONT, style);
@@ -2626,7 +2626,7 @@ begin
 end;
 procedure TestHasFontIntegration;
 begin
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     AssertTrue(HasFont(testFont));
     FreeFont(testFont);
@@ -2634,49 +2634,49 @@ begin
 end;
 procedure TestHasFontNameAsStringIntegration;
 begin
-    LoadFont('test_font', 'hara.ttf');
+    LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
-    AssertTrue(HasFont('test_font'));
+    AssertTrue(HasFont('Test Font'));
     AssertFalse(HasFont('nonexistent_font'));
 end;
 procedure TestLoadFontIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 145', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     DrawText('Test Text', ColorBlack(), testFont, 24, 100.0, 100.0, OptionDefaults());
     RefreshScreen();
-    AssertTrue(HasFont('test_font'));
+    AssertTrue(HasFont('Test Font'));
     AssertEquals(ColorBlack(), GetPixel(testWindow, 105.0, 105.0));
 end;
 procedure TestSetFontStyleNameAsStringIntegration;
 begin
-    LoadFont('test_font', 'hara.ttf');
+    LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
-    SetFontStyle('test_font', FontStyle.BOLD_FONT);
-    AssertEquals(FontStyle.BOLD_FONT, GetFontStyle('test_font'));
+    SetFontStyle('Test Font', FontStyle.BOLD_FONT);
+    AssertEquals(FontStyle.BOLD_FONT, GetFontStyle('Test Font'));
 end;
 procedure TestSetFontStyleIntegration;
 begin
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     SetFontStyle(testFont, FontStyle.BOLD_FONT);
     AssertEquals(FontStyle.BOLD_FONT, GetFontStyle(testFont));
 end;
 procedure TestTextHeightFontNamedIntegration;
 begin
-    LoadFont('test_font', 'hara.ttf');
+    LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
-    FontLoadSize('test_font', 24);
-    height := TextHeight('Test Text', 'test_font', 24);
+    FontLoadSize('Test Font', 24);
+    height := TextHeight('Test Text', 'Test Font', 24);
     AssertTrue(height > 0);
     AssertTrue(height >= 24);
 end;
 procedure TestTextHeightIntegration;
 begin
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     FontLoadSize(testFont, 24);
     height := TextHeight('Test Text', testFont, 24);
@@ -2694,7 +2694,7 @@ begin
 end;
 procedure TestTextWidthIntegration;
 begin
-    testFont := LoadFont('test_font', 'hara.ttf');
+    testFont := LoadFont('Test Font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
     FontLoadSize(testFont, 12);
     width := TextWidth('Test Text', testFont, 24);
@@ -2703,7 +2703,7 @@ begin
 end;
 procedure TestDrawTriangleRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 146', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     triangle := TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0), PointAt(150.0, 300.0));
@@ -2714,7 +2714,7 @@ begin
 end;
 procedure TestDrawTriangleRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 147', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     triangle := TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0), PointAt(150.0, 300.0));
@@ -2725,7 +2725,7 @@ begin
 end;
 procedure TestDrawTriangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 148', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawTriangle(ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
@@ -2735,7 +2735,7 @@ begin
 end;
 procedure TestDrawTriangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 149', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawTriangle(ColorBlack(), 100.0, 100.0, 200.0, 200.0, 150.0, 300.0, OptionDefaults());
@@ -2745,7 +2745,7 @@ begin
 end;
 procedure TestDrawTriangleOnBitmapRecordIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 120', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     triangle := TriangleFrom(PointAt(25.0, 25.0), PointAt(75.0, 25.0), PointAt(50.0, 75.0));
@@ -2755,7 +2755,7 @@ begin
 end;
 procedure TestDrawTriangleOnBitmapRecordWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 121', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     triangle := TriangleFrom(PointAt(25.0, 25.0), PointAt(75.0, 25.0), PointAt(50.0, 75.0));
@@ -2765,7 +2765,7 @@ begin
 end;
 procedure TestDrawTriangleOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 122', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawTriangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0);
@@ -2774,7 +2774,7 @@ begin
 end;
 procedure TestDrawTriangleOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 123', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     DrawTriangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0, OptionDefaults());
@@ -2783,7 +2783,7 @@ begin
 end;
 procedure TestDrawTriangleOnWindowRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 150', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     triangle := TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0), PointAt(150.0, 300.0));
@@ -2794,7 +2794,7 @@ begin
 end;
 procedure TestDrawTriangleOnWindowRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 151', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     triangle := TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 200.0), PointAt(150.0, 250.0));
@@ -2805,7 +2805,7 @@ begin
 end;
 procedure TestDrawTriangleOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 152', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawTriangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
@@ -2815,7 +2815,7 @@ begin
 end;
 procedure TestDrawTriangleOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 153', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     DrawTriangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 200.0, 150.0, 300.0, OptionDefaults());
@@ -2825,7 +2825,7 @@ begin
 end;
 procedure TestFillTriangleRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 154', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     triangle := TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 300.0), PointAt(300.0, 100.0));
@@ -2836,7 +2836,7 @@ begin
 end;
 procedure TestFillTriangleRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 155', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     triangle := TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 300.0), PointAt(300.0, 100.0));
@@ -2847,7 +2847,7 @@ begin
 end;
 procedure TestFillTriangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 156', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillTriangle(ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
@@ -2857,7 +2857,7 @@ begin
 end;
 procedure TestFillTriangleWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 157', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillTriangle(ColorRed(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0, OptionDefaults());
@@ -2867,7 +2867,7 @@ begin
 end;
 procedure TestFillTriangleOnBitmapRecordIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 124', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     triangle := TriangleFrom(PointAt(25.0, 25.0), PointAt(75.0, 25.0), PointAt(50.0, 75.0));
@@ -2877,7 +2877,7 @@ begin
 end;
 procedure TestFillTriangleOnBitmapRecordWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 125', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     triangle := TriangleFrom(PointAt(25.0, 25.0), PointAt(75.0, 25.0), PointAt(50.0, 75.0));
@@ -2887,7 +2887,7 @@ begin
 end;
 procedure TestFillTriangleOnBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 126', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillTriangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0);
@@ -2896,7 +2896,7 @@ begin
 end;
 procedure TestFillTriangleOnBitmapWithOptionsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 127', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     FillTriangleOnBitmap(testBitmap, ColorBlack(), 25.0, 25.0, 75.0, 25.0, 50.0, 75.0, OptionDefaults());
@@ -2905,7 +2905,7 @@ begin
 end;
 procedure TestFillTriangleOnWindowRecordIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 158', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     triangle := TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 300.0), PointAt(300.0, 100.0));
@@ -2916,7 +2916,7 @@ begin
 end;
 procedure TestFillTriangleOnWindowRecordWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 159', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     triangle := TriangleFrom(PointAt(100.0, 100.0), PointAt(200.0, 300.0), PointAt(300.0, 100.0));
@@ -2927,7 +2927,7 @@ begin
 end;
 procedure TestFillTriangleOnWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 160', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillTriangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0);
@@ -2937,7 +2937,7 @@ begin
 end;
 procedure TestFillTriangleOnWindowWithOptionsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 161', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     ClearWindow(testWindow, ColorWhite());
     FillTriangleOnWindow(testWindow, ColorBlack(), 100.0, 100.0, 200.0, 300.0, 300.0, 100.0, OptionDefaults());
@@ -2949,5 +2949,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

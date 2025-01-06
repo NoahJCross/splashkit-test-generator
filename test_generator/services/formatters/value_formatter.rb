@@ -2,13 +2,19 @@ module TestGenerator
   # Formats values for test generation based on their type and language configuration
   module ValueFormatter
     class << self
+      # Checks if running in Windows Subsystem for Linux (WSL)
+      # WSL uses a different graphics and window manager than Windows,
+      # which can lead to different window/element sizes when created.
+      # this is because it reserves space for borders and title bars
+      # The alt_value is used for WSL environments, while the normal
+      # value is used for native Windows environments.
       def is_wsl
         @is_wsl ||= system('uname -r | grep -q "WSL"')
       end
       # Maps value types to their corresponding formatting methods
       # @return [Hash<String, Symbol>] Map of value types to formatter method names
       def formatter_map
-        {
+        @formatter_map ||= {
           'function'                  => :format_function_value,
           'variable'                  => :format_variable_value,
           'variable_field'            => :format_variable_field_value,
@@ -34,8 +40,9 @@ module TestGenerator
           'ref'                       => :format_ref_value,
           'size'                      => :format_array_size_value,
           'object'                    => :format_object_value,
-          'precision'                 => :format_primitive_value
-        }
+          'precision'                 => :format_primitive_value,
+          'method_call'               => :format_method_call_value
+        }.freeze
       end
 
       # Formats the value based on its type
@@ -44,8 +51,18 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted value
       def format_value(value, functions, config)
+        return value.to_s if value.nil? || !value.is_a?(Hash)
+
         formatter = formatter_map[value[:value_type]]
-        formatter ? send(formatter, value, functions, config) : value.to_s
+        if formatter
+          send(formatter, value, functions, config)
+        else
+          MessageHandler.log_warning("Unknown value type: #{value[:value_type]}")
+          value.to_s
+        end
+      rescue StandardError => e
+        MessageHandler.log_error('Value formatting error', e.message)
+        raise HandlerError, "Failed to format value: #{e.message}"
       end
 
       # Formats function values with arguments
@@ -267,6 +284,14 @@ module TestGenerator
       # @return [String] The formatted object
       def format_object_value(value, _, config)
         config.type_handlers[:object].call(value[:object_type], value[:variable_name])
+      end
+
+      # Formats method call values
+      # @param value [Hash] The method call value to format
+      # @param config [Hash] Language configuration
+      # @return [String] The formatted method call
+      def format_method_call_value(value, _, config)
+        config.variable_handlers[:method_call].call(value[:variable_name], value[:method_name])
       end
     end
   end

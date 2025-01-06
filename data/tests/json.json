@@ -131,17 +131,7 @@
           "args": [],
           "store_result": "test_json2"
         },
-        {
-          "step_type": "function",
-          "function_name": "json_count_keys",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_json1"
-            }
-          ],
-          "store_result": "count1"
-        },
+
         {
           "step_type": "function",
           "function_name": "json_set_string",
@@ -177,6 +167,17 @@
               "value": "value"
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "json_count_keys",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "test_json1"
+            }
+          ],
+          "store_result": "count1"
         },
         {
           "step_type": "function",
@@ -195,7 +196,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 0
+              "value": 1
             },
             "value2": {
               "value_type": "variable",
@@ -206,10 +207,10 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "greater_than",
+            "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 0
+              "value": 1
             },
             "value2": {
               "value_type": "variable",
@@ -1450,6 +1451,30 @@
         },
         {
           "step_type": "function",
+          "function_name": "create_json",
+          "args": [],
+          "store_result": "nested_json"
+        },
+        {
+          "step_type": "function",
+          "function_name": "json_set_string",
+          "args": [
+            {
+              "value_type": "variable",
+              "variable_name": "nested_json"
+            },
+            {
+              "value_type": "string",
+              "value": "test"
+            },
+            {
+              "value_type": "string",
+              "value": "value"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "json_set_object",
           "args": [
             {
@@ -1461,9 +1486,8 @@
               "value": "nestedObject"
             },
             {
-              "value_type": "function",
-              "function_name": "create_json",
-              "args": []
+              "value_type": "variable",
+              "variable_name": "nested_json"
             }
           ]
         },

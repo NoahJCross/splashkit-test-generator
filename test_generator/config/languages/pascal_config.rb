@@ -99,7 +99,7 @@ module LanguageConfig
         },
         identifier:     ->(name) { name.to_camel_case.to_s },
         field_access:  ->(var, field) { "#{var}.#{field}" },
-        delegate_call: ->(var, field) { "#{var}.#{field};" },
+        method_call: ->(var, field) { "#{var}.#{field}" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
         array_size:    ->(arr) { "Length(#{arr})" },
@@ -109,7 +109,7 @@ module LanguageConfig
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_pascal_case}(#{params})#{semicolon ? ';' : ''}" },
         pointer:   ->(_) { 'nil;' },
-        test:      ->(name) { ["procedure Test#{name.to_pascal_case}Integration;", 'begin'] }
+        test:      ->(_, name) { ["procedure Test#{name.to_pascal_case}Integration;", 'begin'] }
       }.freeze,
 
       comment_syntax: {
@@ -151,11 +151,11 @@ module LanguageConfig
         unindent_before: ['end;', 'end.', 'protected', 'published', 'inherited', 'begin']
       }.freeze,
 
-      file_extension: 'pas',
-
       terminal_handlers: {
         message: ->(text) { "Write('#{text}');" }
-      }.freeze
+      }.freeze,
+
+      file_extension: 'pas'
     }.freeze
   end
 end

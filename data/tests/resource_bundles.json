@@ -35,7 +35,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             },
             {
               "value_type": "string",
@@ -50,7 +50,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             }
           ]
         },
@@ -64,7 +64,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_resource_bundle"
+                  "value": "Test Resource Bundle"
                 }
               ]
             },
@@ -111,7 +111,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             }
           ]
         },
@@ -125,7 +125,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_resource_bundle"
+                  "value": "Test Resource Bundle"
                 }
               ]
             },
@@ -143,7 +143,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             },
             {
               "value_type": "string",
@@ -158,7 +158,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             }
           ]
         },
@@ -172,7 +172,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_resource_bundle"
+                  "value": "Test Resource Bundle"
                 }
               ]
             },
@@ -185,7 +185,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             }
           ]
         },
@@ -199,7 +199,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_resource_bundle"
+                  "value": "Test Resource Bundle"
                 }
               ]
             },
@@ -234,7 +234,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             },
             {
               "value_type": "string",
@@ -249,7 +249,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             }
           ]
         },
@@ -263,7 +263,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_resource_bundle"
+                  "value": "Test Resource Bundle"
                 }
               ]
             },
@@ -378,7 +378,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_resource_bundle"
+              "value": "Test Resource Bundle"
             }
           ]
         },

@@ -100,7 +100,7 @@ module LanguageConfig
         },
         identifier:     ->(name) { name.to_snake_case },
         field_access:  ->(var, field) { "#{var}.#{field}" },
-        delegate_call: ->(var, field) { "#{var}.#{field}()" },
+        method_call: ->(var, field) { "#{var}.#{field}()" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:    ->(arr) { "len(#{arr})" },
@@ -110,7 +110,7 @@ module LanguageConfig
       function_handlers: {
         call:      ->(name, params, _ = true) { "#{name.to_snake_case}(#{params})" },
         pointer:   ->(_) { 'None' },
-        test:      ->(name) { ["def test_#{name.to_snake_case}_integration():"] }
+        test:      ->(_, name) { ["def test_#{name.to_snake_case}_integration():"] }
       }.freeze,
 
       comment_syntax: {
@@ -144,11 +144,11 @@ module LanguageConfig
         }
       }.freeze,
 
-      file_extension: 'py',
-
       terminal_handlers: {
         message: ->(text) { "print(\"#{text}\", end=\"\")" }
-      }.freeze
+      }.freeze,
+
+      file_extension: 'py'
     }.freeze
   end
 end

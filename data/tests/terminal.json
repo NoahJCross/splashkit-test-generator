@@ -5,7 +5,12 @@
       "name": "read_char",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Enter the letter A"
         },
         {
@@ -34,7 +39,12 @@
       "name": "read_line",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Enter the text: Test Input"
         },
         {
@@ -63,7 +73,12 @@
       "name": "terminal_has_input",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Enter some text: Some Input"
         },
         {
@@ -88,7 +103,12 @@
       "name": "write",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print Test String:"
         },
         {
@@ -112,7 +132,12 @@
       "name": "write_int",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print 42:"
         },
         {
@@ -136,7 +161,12 @@
       "name": "write_double",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print 3.14:"
         },
         {
@@ -160,7 +190,12 @@
       "name": "write_char",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print A:"
         },
         {
@@ -184,7 +219,12 @@
       "name": "write_line",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print Test Line:"
         },
         {
@@ -203,7 +243,12 @@
       "name": "write_line_empty",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print empty line:"
         },
         {
@@ -217,7 +262,12 @@
       "name": "write_line_int",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print 42:"
         },
         {
@@ -236,7 +286,12 @@
       "name": "write_line_double",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print 3.14:"
         },
         {
@@ -255,7 +310,12 @@
       "name": "write_line_char",
       "steps": [
         {
-          "step_type": "prompt",
+          "step_type": "function",
+          "function_name": "write_line_empty",
+          "args": []
+        },
+        {
+          "step_type": "message",
           "message": "Should print A:"
         },
         {

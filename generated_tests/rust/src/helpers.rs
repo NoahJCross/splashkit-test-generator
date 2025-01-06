@@ -1,83 +1,154 @@
 use splashkit::*;
+use std::sync::{Arc, Mutex};
 
 pub struct SpriteDelegates {
-  pub event_called: bool,
-  pub float_function_call_count: i32,
-  pub function_call_count: i32,
+  event_called: Arc<Mutex<bool>>,
+  float_function_call_count: Arc<Mutex<i32>>,
+  function_call_count: Arc<Mutex<i32>>,
 }
 
 impl SpriteDelegates {
-  pub fn new() -> Self {
-      SpriteDelegates {
-          event_called: false,
-          float_function_call_count: 0,
-          function_call_count: 0,
-      }
-  }
-   pub fn sprite_float_callback(&mut self, _ptr: usize, _value: f32) {
-      self.float_function_call_count += 1;
-      self.event_called = true;
-  }
-   pub fn sprite_callback(&mut self, _ptr: usize) {
-      self.function_call_count += 1;
-      self.event_called = true;
-  }
-   pub fn sprite_event_callback(&mut self, _ptr: usize, _evt: i32) {
-      self.event_called = true;
-  }
-   pub fn reset(&mut self) {
-      self.float_function_call_count = 0;
-      self.function_call_count = 0;
-      self.event_called = false;
-  }
+    pub fn new() -> Self {
+        SpriteDelegates {
+            event_called: Arc::new(Mutex::new(false)),
+            float_function_call_count: Arc::new(Mutex::new(0)),
+            function_call_count: Arc::new(Mutex::new(0)),
+        }
+    }
+
+    pub fn sprite_float_function(&self) -> SpriteFloatFunction {
+        let event_called = self.event_called.clone();
+        let count = self.float_function_call_count.clone();
+        Box::new(move |_ptr, _value| {
+            *count.lock().unwrap() += 1;
+            *event_called.lock().unwrap() = true;
+        })
+    }
+
+    pub fn sprite_function(&self) -> SpriteFunction {
+        let event_called = self.event_called.clone();
+        let count = self.function_call_count.clone();
+        Box::new(move |_ptr| {
+            *count.lock().unwrap() += 1;
+            *event_called.lock().unwrap() = true;
+        })
+    }
+
+    pub fn sprite_event_handler(&self) -> SpriteEventHandler {
+        let event_called = self.event_called.clone();
+        Box::new(move |_ptr, _evt| {
+            *event_called.lock().unwrap() = true;
+        })
+    }
+
+    pub fn reset(&self) {
+        *self.float_function_call_count.lock().unwrap() = 0;
+        *self.function_call_count.lock().unwrap() = 0;
+        *self.event_called.lock().unwrap() = false;
+    }
+
+    pub fn event_called(&self) -> bool {
+        *self.event_called.lock().unwrap()
+    }
+
+    pub fn float_function_call_count(&self) -> i32 {
+        *self.float_function_call_count.lock().unwrap()
+    }
+
+    pub fn function_call_count(&self) -> i32 {
+        *self.function_call_count.lock().unwrap()
+    }
+}
+
+struct KeyState {
+    typed: KeyCode,
+    down: KeyCode,
+    up: KeyCode,
 }
 
 pub struct KeyCallbacks {
-  pub get_key_typed: KeyCode,
-  pub get_key_down: KeyCode,
-  pub get_key_up: KeyCode,
+    state: Arc<Mutex<KeyState>>,
 }
 
 impl KeyCallbacks {
-  pub fn new() -> Self {
-      KeyCallbacks {
-          get_key_typed: KeyCode::UnknownKey,
-          get_key_down: KeyCode::UnknownKey,
-          get_key_up: KeyCode::UnknownKey,
-      }
-  }
-  pub fn on_key_typed(&mut self, key: i32) {
-      self.get_key_typed = KeyCode::from(key);
-  }
-   pub fn on_key_down(&mut self, key: i32) {
-      self.get_key_down = KeyCode::from(key);
-  }
-   pub fn on_key_up(&mut self, key: i32) {
-      self.get_key_up = KeyCode::from(key);
-  }
-   pub fn reset(&mut self) {
-      self.get_key_typed = KeyCode::UnknownKey;
-      self.get_key_down = KeyCode::UnknownKey;
-      self.get_key_up = KeyCode::UnknownKey;
-  }
+    pub fn new() -> Self {
+        let state = Arc::new(Mutex::new(KeyState {
+            typed: KeyCode::UnknownKey,
+            down: KeyCode::UnknownKey,
+            up: KeyCode::UnknownKey,
+        }));
+
+        KeyCallbacks {
+            state,
+        }
+    }
+
+    pub fn on_key_typed(&self) -> KeyCallback {
+        let state = self.state.clone();
+        Box::new(move |key| {
+            state.lock().unwrap().typed = KeyCode::from(key);
+        })
+    }
+
+    pub fn on_key_down(&self) -> KeyCallback {
+        let state = self.state.clone();
+        Box::new(move |key| {
+            state.lock().unwrap().down = KeyCode::from(key);
+        })
+    }
+
+    pub fn on_key_up(&self) -> KeyCallback {
+        let state = self.state.clone();
+        Box::new(move |key| {
+            state.lock().unwrap().up = KeyCode::from(key);
+        })
+    }
+
+    pub fn get_key_typed(&self) -> KeyCode {
+        self.state.lock().unwrap().typed
+    }
+
+    pub fn get_key_down(&self) -> KeyCode {
+        self.state.lock().unwrap().down
+    }
+
+    pub fn get_key_up(&self) -> KeyCode {
+        self.state.lock().unwrap().up
+    }
+
+    pub fn reset(&self) {
+        let mut state = self.state.lock().unwrap();
+        state.typed = KeyCode::UnknownKey;
+        state.down = KeyCode::UnknownKey;
+        state.up = KeyCode::UnknownKey;
+    }
 }
 
 pub struct NotifierTracker {
-  pub was_notified: bool,
+    was_notified: Arc<Mutex<bool>>,
 }
 
 impl NotifierTracker {
-  pub fn new() -> Self {
-      NotifierTracker {
-          was_notified: false,
-      }
-  }
-   pub fn on_free(&mut self, _resource: usize) {
-      self.was_notified = true;
-  }
-   pub fn reset(&mut self) {
-      self.was_notified = false;
-  }
+    pub fn new() -> Self {
+        NotifierTracker {
+            was_notified: Arc::new(Mutex::new(false)),
+        }
+    }
+
+    pub fn on_free(&self) -> FreeNotifier {
+        let was_notified = self.was_notified.clone();
+        Box::new(move |_ptr| {
+            *was_notified.lock().unwrap() = true;
+        })
+    }
+
+    pub fn reset(&self) {
+        *self.was_notified.lock().unwrap() = false;
+    }
+
+    pub fn was_notified(&self) -> bool {
+        *self.was_notified.lock().unwrap()
+    }
 }
 
 pub struct AnimationScriptCleanup;
@@ -151,6 +222,7 @@ impl BitmapCleanup {
 }
 impl Drop for BitmapCleanup {
     fn drop(&mut self) {
+        close_all_windows();
         free_all_bitmaps();
     }
 }
@@ -225,7 +297,9 @@ impl ResourceCleanup {
 }
 impl Drop for ResourceCleanup {
     fn drop(&mut self) {
-        free_resource_bundle(self.bundle_name.clone());
+        if has_resource_bundle(self.bundle_name.clone()) {  
+            free_resource_bundle(self.bundle_name.clone());
+        }
     }
 }
 
@@ -260,5 +334,28 @@ impl LoggerCleanup {
 impl Drop for LoggerCleanup {
     fn drop(&mut self) {
         close_log_process();
+    }
+}
+
+pub struct LayoutCleanup;
+impl LayoutCleanup {
+    pub fn new() -> Self { Self }
+}
+impl Drop for LayoutCleanup {
+    fn drop(&mut self) {
+        process_events();
+        reset_layout();
+        set_interface_style(InterfaceStyle::ShadedDarkStyle);
+        process_events();
+    }
+}
+
+pub struct InterfaceFontCleanup;
+impl InterfaceFontCleanup {
+    pub fn new() -> Self { Self }
+}
+impl Drop for InterfaceFontCleanup {
+    fn drop(&mut self) {
+        set_interface_font(get_system_font());
     }
 }

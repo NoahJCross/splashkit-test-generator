@@ -55,7 +55,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 1"
             },
             {
               "value_type": "int",
@@ -220,7 +220,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 2"
             },
             {
               "value_type": "int",
@@ -390,7 +390,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 3"
             },
             {
               "value_type": "int",
@@ -549,7 +549,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 4"
             },
             {
               "value_type": "int",
@@ -708,7 +708,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 1"
             },
             {
               "value_type": "int",
@@ -866,7 +866,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 2"
             },
             {
               "value_type": "int",
@@ -1029,7 +1029,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 5"
             },
             {
               "value_type": "int",
@@ -1187,7 +1187,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 6"
             },
             {
               "value_type": "int",
@@ -1350,7 +1350,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 7"
             },
             {
               "value_type": "int",
@@ -1515,7 +1515,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 8"
             },
             {
               "value_type": "int",
@@ -1685,7 +1685,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 9"
             },
             {
               "value_type": "int",
@@ -1839,7 +1839,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 10"
             },
             {
               "value_type": "int",
@@ -1998,7 +1998,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 3"
             },
             {
               "value_type": "int",
@@ -2156,7 +2156,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 4"
             },
             {
               "value_type": "int",
@@ -2319,7 +2319,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 11"
             },
             {
               "value_type": "int",
@@ -2477,7 +2477,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 12"
             },
             {
               "value_type": "int",
@@ -2640,7 +2640,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 13"
             },
             {
               "value_type": "int",
@@ -2744,7 +2744,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 5"
             },
             {
               "value_type": "int",
@@ -2891,7 +2891,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 14"
             },
             {
               "value_type": "int",
@@ -3001,7 +3001,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 15"
             },
             {
               "value_type": "int",
@@ -3239,7 +3239,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 16"
             },
             {
               "value_type": "int",
@@ -3481,7 +3481,6 @@
           ],
           "store_result": "test_pixel"
         },
-
         {
           "step_type": "assertion",
           "compare": {
@@ -3597,7 +3596,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 6"
             },
             {
               "value_type": "int",
@@ -3855,7 +3854,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 17"
             },
             {
               "value_type": "int",
@@ -4007,7 +4006,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 7"
             },
             {
               "value_type": "int",
@@ -4154,7 +4153,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 18"
             },
             {
               "value_type": "int",
@@ -4291,7 +4290,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 8"
             },
             {
               "value_type": "int",
@@ -4443,7 +4442,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 19"
             },
             {
               "value_type": "int",
@@ -4580,7 +4579,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 20"
             },
             {
               "value_type": "int",
@@ -4732,7 +4731,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 21"
             },
             {
               "value_type": "int",
@@ -4869,7 +4868,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 9"
             },
             {
               "value_type": "int",
@@ -5016,7 +5015,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 22"
             },
             {
               "value_type": "int",
@@ -5185,7 +5184,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 10"
             },
             {
               "value_type": "int",
@@ -5331,7 +5330,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 11"
             },
             {
               "value_type": "int",
@@ -5487,7 +5486,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 23"
             },
             {
               "value_type": "int",
@@ -5633,7 +5632,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 24"
             },
             {
               "value_type": "int",
@@ -5789,7 +5788,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 25"
             },
             {
               "value_type": "int",
@@ -5828,7 +5827,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 12"
             },
             {
               "value_type": "int",
@@ -5999,7 +5998,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 26"
             },
             {
               "value_type": "int",
@@ -6038,7 +6037,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 13"
             },
             {
               "value_type": "int",
@@ -6215,7 +6214,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 27"
             },
             {
               "value_type": "int",
@@ -6254,7 +6253,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 14"
             },
             {
               "value_type": "int",
@@ -6425,7 +6424,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 28"
             },
             {
               "value_type": "int",
@@ -6464,7 +6463,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 15"
             },
             {
               "value_type": "int",
@@ -6641,7 +6640,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 29"
             },
             {
               "value_type": "int",
@@ -6680,7 +6679,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 16"
             },
             {
               "value_type": "int",
@@ -6851,7 +6850,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 30"
             },
             {
               "value_type": "int",
@@ -6890,7 +6889,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 17"
             },
             {
               "value_type": "int",
@@ -7067,7 +7066,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 31"
             },
             {
               "value_type": "int",
@@ -7211,7 +7210,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 32"
             },
             {
               "value_type": "int",
@@ -7360,7 +7359,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 33"
             },
             {
               "value_type": "int",
@@ -7399,7 +7398,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 18"
             },
             {
               "value_type": "int",
@@ -7556,7 +7555,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 34"
             },
             {
               "value_type": "int",
@@ -7595,7 +7594,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 19"
             },
             {
               "value_type": "int",
@@ -7757,7 +7756,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 35"
             },
             {
               "value_type": "int",
@@ -7796,7 +7795,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 20"
             },
             {
               "value_type": "int",
@@ -7959,7 +7958,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 36"
             },
             {
               "value_type": "int",
@@ -7998,7 +7997,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 21"
             },
             {
               "value_type": "int",
@@ -8166,7 +8165,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 37"
             },
             {
               "value_type": "int",
@@ -8205,7 +8204,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 22"
             },
             {
               "value_type": "int",
@@ -8381,7 +8380,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 38"
             },
             {
               "value_type": "int",
@@ -8420,7 +8419,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 23"
             },
             {
               "value_type": "int",
@@ -8604,7 +8603,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 39"
             },
             {
               "value_type": "int",
@@ -8643,7 +8642,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 24"
             },
             {
               "value_type": "int",
@@ -8832,7 +8831,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 40"
             },
             {
               "value_type": "int",
@@ -8871,7 +8870,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 25"
             },
             {
               "value_type": "int",
@@ -9052,7 +9051,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 41"
             },
             {
               "value_type": "int",
@@ -9091,7 +9090,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 26"
             },
             {
               "value_type": "int",
@@ -9240,7 +9239,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 42"
             },
             {
               "value_type": "int",
@@ -9279,7 +9278,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 27"
             },
             {
               "value_type": "int",
@@ -9433,7 +9432,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 43"
             },
             {
               "value_type": "int",
@@ -9574,7 +9573,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 44"
             },
             {
               "value_type": "int",
@@ -9721,7 +9720,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 45"
             },
             {
               "value_type": "int",
@@ -9876,7 +9875,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 46"
             },
             {
               "value_type": "int",
@@ -10037,7 +10036,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 47"
             },
             {
               "value_type": "int",
@@ -10061,7 +10060,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "kermit"
+              "value": "Test Script 1"
             },
             {
               "value_type": "string",
@@ -10081,7 +10080,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "kermit_script",
+              "value": "Test Animation 1"
             },
             {
               "value_type": "string",
@@ -10107,7 +10107,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "frog"
+              "value": "Test Bitmap 28"
             },
             {
               "value_type": "string",
@@ -10261,7 +10261,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 48"
             },
             {
               "value_type": "int",
@@ -10285,7 +10285,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "kermit"
+              "value": "Test Script 2"
             },
             {
               "value_type": "string",
@@ -10305,7 +10305,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "kermit_script"
+              "variable_name": "kermit_script",
+              "value": "Test Animation 2"
             },
             {
               "value_type": "string",
@@ -10331,7 +10332,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "frog"
+              "value": "Test Bitmap 29"
             },
             {
               "value_type": "string",
@@ -10490,7 +10491,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 49"
             },
             {
               "value_type": "int",
@@ -10529,7 +10530,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 30"
             },
             {
               "value_type": "int",
@@ -10704,7 +10705,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 50"
             },
             {
               "value_type": "int",
@@ -10743,7 +10744,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 31"
             },
             {
               "value_type": "int",
@@ -10923,7 +10924,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 51"
             },
             {
               "value_type": "int",
@@ -11092,7 +11093,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 52"
             },
             {
               "value_type": "int",
@@ -11266,7 +11267,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 53"
             },
             {
               "value_type": "int",
@@ -11429,7 +11430,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 54"
             },
             {
               "value_type": "int",
@@ -11597,7 +11598,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 32"
             },
             {
               "value_type": "int",
@@ -11770,7 +11771,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 33"
             },
             {
               "value_type": "int",
@@ -11943,7 +11944,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 34"
             },
             {
               "value_type": "int",
@@ -12105,7 +12106,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 35"
             },
             {
               "value_type": "int",
@@ -12272,7 +12273,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 55"
             },
             {
               "value_type": "int",
@@ -12450,7 +12451,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 56"
             },
             {
               "value_type": "int",
@@ -12633,7 +12634,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 57"
             },
             {
               "value_type": "int",
@@ -12800,7 +12801,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 58"
             },
             {
               "value_type": "int",
@@ -12972,7 +12973,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 59"
             },
             {
               "value_type": "int",
@@ -13141,7 +13142,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 60"
             },
             {
               "value_type": "int",
@@ -13315,7 +13316,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 61"
             },
             {
               "value_type": "int",
@@ -13478,7 +13479,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 62"
             },
             {
               "value_type": "int",
@@ -13646,7 +13647,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 36"
             },
             {
               "value_type": "int",
@@ -13814,7 +13815,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 37"
             },
             {
               "value_type": "int",
@@ -13987,7 +13988,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 38"
             },
             {
               "value_type": "int",
@@ -14149,7 +14150,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 39"
             },
             {
               "value_type": "int",
@@ -14316,7 +14317,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 63"
             },
             {
               "value_type": "int",
@@ -14489,7 +14490,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 64"
             },
             {
               "value_type": "int",
@@ -14667,7 +14668,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 65"
             },
             {
               "value_type": "int",
@@ -14834,7 +14835,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 66"
             },
             {
               "value_type": "int",
@@ -15006,7 +15007,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 67"
             },
             {
               "value_type": "int",
@@ -15127,7 +15128,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 68"
             },
             {
               "value_type": "int",
@@ -15572,7 +15573,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 69"
             },
             {
               "value_type": "int",
@@ -15650,7 +15651,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 70"
             },
             {
               "value_type": "int",
@@ -15733,7 +15734,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 40"
             },
             {
               "value_type": "int",
@@ -15799,7 +15800,7 @@
             },
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 40"
             }
           ]
         }
@@ -15814,7 +15815,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 71"
             },
             {
               "value_type": "int",
@@ -15857,7 +15858,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 72"
             },
             {
               "value_type": "int",
@@ -15900,7 +15901,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 73"
             },
             {
               "value_type": "int",
@@ -15988,7 +15989,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 74"
             },
             {
               "value_type": "int",
@@ -16080,7 +16081,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 41"
             },
             {
               "value_type": "int",
@@ -16179,7 +16180,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 42"
             },
             {
               "value_type": "int",
@@ -16279,7 +16280,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 43"
             },
             {
               "value_type": "int",
@@ -16387,7 +16388,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 44"
             },
             {
               "value_type": "int",
@@ -16457,7 +16458,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 45"
             },
             {
               "value_type": "int",
@@ -16580,7 +16581,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 46"
             },
             {
               "value_type": "int",
@@ -16709,7 +16710,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 47"
             },
             {
               "value_type": "int",
@@ -16842,7 +16843,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 48"
             },
             {
               "value_type": "int",
@@ -16921,7 +16922,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 49"
             },
             {
               "value_type": "int",
@@ -17000,7 +17001,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 50"
             },
             {
               "value_type": "int",
@@ -17079,7 +17080,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 51"
             },
             {
               "value_type": "int",
@@ -17183,7 +17184,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 52"
             },
             {
               "value_type": "int",
@@ -17313,7 +17314,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 53"
             },
             {
               "value_type": "int",
@@ -17457,7 +17458,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 54"
             },
             {
               "value_type": "int",
@@ -17536,7 +17537,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 55"
             },
             {
               "value_type": "int",
@@ -17615,7 +17616,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 56"
             },
             {
               "value_type": "int",
@@ -17685,7 +17686,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 57"
             },
             {
               "value_type": "int",
@@ -17734,7 +17735,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 58"
             },
             {
               "value_type": "int",
@@ -17783,7 +17784,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "bitmap_height"
+              "value": "Test Bitmap 59"
             },
             {
               "value_type": "int",
@@ -17814,7 +17815,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "bitmap_height"
+                  "value": "Test Bitmap 59"
                 }
               ]
             }
@@ -17831,7 +17832,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "bitmap_name"
+              "value": "Test Bitmap 60"
             },
             {
               "value_type": "int",
@@ -17855,7 +17856,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "string",
-              "value": "bitmap_name"
+              "value": "Test Bitmap 60"
             },
             "value2": {
               "value_type": "function",
@@ -17880,7 +17881,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 61"
             },
             {
               "value_type": "int",
@@ -17907,7 +17908,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_bitmap"
+                  "value": "Test Bitmap 61"
                 }
               ]
             },
@@ -17942,7 +17943,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 62"
             },
             {
               "value_type": "int",
@@ -18076,7 +18077,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 63"
             },
             {
               "value_type": "int",
@@ -18235,7 +18236,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 64"
             },
             {
               "value_type": "int",
@@ -18308,7 +18309,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 65"
             },
             {
               "value_type": "int",
@@ -18357,7 +18358,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "bitmap_width"
+              "value": "Test Bitmap 66"
             },
             {
               "value_type": "int",
@@ -18388,7 +18389,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "bitmap_width"
+                  "value": "Test Bitmap 66"
                 }
               ]
             }
@@ -18405,7 +18406,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 67"
             },
             {
               "value_type": "int",
@@ -18530,7 +18531,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "bitmap_named"
+              "value": "Test Bitmap 68"
             },
             {
               "value_type": "int",
@@ -18614,7 +18615,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "bitmap_named"
+              "value": "Test Bitmap 68"
             },
             {
               "value_type": "function",
@@ -18663,7 +18664,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "bitmap_name1"
+              "value": "Test Bitmap 69"
             },
             {
               "value_type": "int",
@@ -18738,7 +18739,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "string",
-              "value": "bitmap_name1"
+              "value": "Test Bitmap 69"
             },
             "value2": {
               "value_type": "function",
@@ -18763,7 +18764,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 75"
             },
             {
               "value_type": "int",
@@ -18787,7 +18788,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 70"
             },
             {
               "value_type": "int",
@@ -18953,7 +18954,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 76"
             },
             {
               "value_type": "int",
@@ -18977,7 +18978,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 71"
             },
             {
               "value_type": "int",
@@ -19148,7 +19149,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 77"
             },
             {
               "value_type": "int",
@@ -19172,7 +19173,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 72"
             },
             {
               "value_type": "int",
@@ -19242,7 +19243,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 72"
             },
             {
               "value_type": "double",
@@ -19338,7 +19339,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 78"
             },
             {
               "value_type": "int",
@@ -19362,7 +19363,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 73"
             },
             {
               "value_type": "int",
@@ -19432,7 +19433,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 73"
             },
             {
               "value_type": "double",
@@ -19533,7 +19534,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_destination"
+              "value": "Test Bitmap 74"
             },
             {
               "value_type": "int",
@@ -19557,7 +19558,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_source"
+              "value": "Test Bitmap 75"
             },
             {
               "value_type": "int",
@@ -19707,7 +19708,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_destination"
+              "value": "Test Bitmap 76"
             },
             {
               "value_type": "int",
@@ -19731,7 +19732,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_source"
+              "value": "Test Bitmap 77"
             },
             {
               "value_type": "int",
@@ -19886,7 +19887,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 79"
             },
             {
               "value_type": "int",
@@ -19910,7 +19911,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 78"
             },
             {
               "value_type": "int",
@@ -20080,7 +20081,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 80"
             },
             {
               "value_type": "int",
@@ -20104,7 +20105,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 79"
             },
             {
               "value_type": "int",
@@ -20279,7 +20280,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap_1"
+              "value": "Test Bitmap 80"
             },
             {
               "value_type": "int",
@@ -20303,7 +20304,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap_2"
+              "value": "Test Bitmap 81"
             },
             {
               "value_type": "int",
@@ -20400,7 +20401,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 82"
             },
             {
               "value_type": "int",
@@ -20473,7 +20474,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 83"
             },
             {
               "value_type": "int",
@@ -20501,7 +20502,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_bitmap"
+                  "value": "Test Bitmap 83"
                 }
               ]
             },
@@ -20528,7 +20529,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_bitmap"
+                  "value": "Test Bitmap 83"
                 }
               ]
             },
@@ -20546,7 +20547,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "loaded_bitmap"
+              "value": "Test Bitmap 84"
             },
             {
               "value_type": "string",
@@ -20600,7 +20601,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 85"
             },
             {
               "value_type": "int",
@@ -20731,7 +20732,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 86"
             },
             {
               "value_type": "int",
@@ -20856,7 +20857,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 87"
             },
             {
               "value_type": "int",
@@ -21017,7 +21018,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 88"
             },
             {
               "value_type": "int",
@@ -21178,7 +21179,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 81"
             },
             {
               "value_type": "int",
@@ -21201,7 +21202,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 89"
             },
             {
               "value_type": "int",
@@ -21340,7 +21341,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 82"
             },
             {
               "value_type": "int",
@@ -21492,7 +21493,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 83"
             },
             {
               "value_type": "int",
@@ -21659,7 +21660,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 84"
             },
             {
               "value_type": "int",
@@ -21805,7 +21806,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 85"
             },
             {
               "value_type": "int",
@@ -21956,7 +21957,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 86"
             },
             {
               "value_type": "int",
@@ -22090,7 +22091,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 87"
             },
             {
               "value_type": "int",
@@ -22229,7 +22230,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 90"
             },
             {
               "value_type": "int",
@@ -22380,7 +22381,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 91"
             },
             {
               "value_type": "int",
@@ -22536,7 +22537,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 92"
             },
             {
               "value_type": "int",
@@ -22681,7 +22682,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 93"
             },
             {
               "value_type": "int",
@@ -22860,7 +22861,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 94"
             },
             {
               "value_type": "int",
@@ -22993,7 +22994,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 95"
             },
             {
               "value_type": "int",
@@ -23131,7 +23132,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 88"
             },
             {
               "value_type": "int",
@@ -23292,7 +23293,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 89"
             },
             {
               "value_type": "int",
@@ -23458,7 +23459,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 90"
             },
             {
               "value_type": "int",
@@ -23608,7 +23609,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 91"
             },
             {
               "value_type": "int",
@@ -23763,7 +23764,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 92"
             },
             {
               "value_type": "int",
@@ -23901,7 +23902,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 93"
             },
             {
               "value_type": "int",
@@ -24044,7 +24045,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 94"
             },
             {
               "value_type": "int",
@@ -24176,7 +24177,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 95"
             },
             {
               "value_type": "int",
@@ -24313,7 +24314,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 96"
             },
             {
               "value_type": "int",
@@ -24439,7 +24440,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 97"
             },
             {
               "value_type": "int",
@@ -24570,7 +24571,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 96"
             },
             {
               "value_type": "int",
@@ -24701,7 +24702,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 97"
             },
             {
               "value_type": "int",
@@ -24837,7 +24838,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 98"
             },
             {
               "value_type": "int",
@@ -24962,7 +24963,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 99"
             },
             {
               "value_type": "int",
@@ -25092,7 +25093,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 98"
             },
             {
               "value_type": "int",
@@ -25228,7 +25229,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 99"
             },
             {
               "value_type": "int",
@@ -25369,7 +25370,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 100"
             },
             {
               "value_type": "int",
@@ -25499,7 +25500,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 101"
             },
             {
               "value_type": "int",
@@ -25634,7 +25635,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 100"
             },
             {
               "value_type": "int",
@@ -25777,7 +25778,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 101"
             },
             {
               "value_type": "int",
@@ -25902,7 +25903,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 102"
             },
             {
               "value_type": "int",
@@ -26034,7 +26035,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 103"
             },
             {
               "value_type": "int",
@@ -26160,7 +26161,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 104"
             },
             {
               "value_type": "int",
@@ -26304,7 +26305,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 105"
             },
             {
               "value_type": "int",
@@ -26430,7 +26431,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 106"
             },
             {
               "value_type": "int",
@@ -26574,7 +26575,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 107"
             },
             {
               "value_type": "int",
@@ -26700,7 +26701,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 108"
             },
             {
               "value_type": "int",
@@ -26914,7 +26915,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 109"
             },
             {
               "value_type": "int",
@@ -27133,7 +27134,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 102"
             },
             {
               "value_type": "int",
@@ -27346,7 +27347,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 103"
             },
             {
               "value_type": "int",
@@ -27564,7 +27565,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 110"
             },
             {
               "value_type": "int",
@@ -27782,7 +27783,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 111"
             },
             {
               "value_type": "int",
@@ -28005,7 +28006,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 112"
             },
             {
               "value_type": "int",
@@ -28179,7 +28180,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 113"
             },
             {
               "value_type": "int",
@@ -28358,7 +28359,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 114"
             },
             {
               "value_type": "int",
@@ -28492,7 +28493,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 115"
             },
             {
               "value_type": "int",
@@ -28699,7 +28700,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 104"
             },
             {
               "value_type": "int",
@@ -28843,7 +28844,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 105"
             },
             {
               "value_type": "int",
@@ -28992,7 +28993,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 106"
             },
             {
               "value_type": "int",
@@ -29125,7 +29126,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 107"
             },
             {
               "value_type": "int",
@@ -29263,7 +29264,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 116"
             },
             {
               "value_type": "int",
@@ -29441,7 +29442,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 117"
             },
             {
               "value_type": "int",
@@ -29624,7 +29625,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 118"
             },
             {
               "value_type": "int",
@@ -29762,7 +29763,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 119"
             },
             {
               "value_type": "int",
@@ -29905,7 +29906,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 120"
             },
             {
               "value_type": "int",
@@ -30090,7 +30091,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 121"
             },
             {
               "value_type": "int",
@@ -30280,7 +30281,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 108"
             },
             {
               "value_type": "int",
@@ -30464,7 +30465,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 109"
             },
             {
               "value_type": "int",
@@ -30653,7 +30654,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 122"
             },
             {
               "value_type": "int",
@@ -30842,7 +30843,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 123"
             },
             {
               "value_type": "int",
@@ -31036,7 +31037,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 124"
             },
             {
               "value_type": "int",
@@ -31181,7 +31182,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 125"
             },
             {
               "value_type": "int",
@@ -31331,7 +31332,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 126"
             },
             {
               "value_type": "int",
@@ -31465,7 +31466,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 127"
             },
             {
               "value_type": "int",
@@ -31604,7 +31605,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 110"
             },
             {
               "value_type": "int",
@@ -31748,7 +31749,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 111"
             },
             {
               "value_type": "int",
@@ -31897,7 +31898,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 112"
             },
             {
               "value_type": "int",
@@ -32030,7 +32031,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 113"
             },
             {
               "value_type": "int",
@@ -32168,7 +32169,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 128"
             },
             {
               "value_type": "int",
@@ -32317,7 +32318,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 129"
             },
             {
               "value_type": "int",
@@ -32471,7 +32472,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 130"
             },
             {
               "value_type": "int",
@@ -32609,7 +32610,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 131"
             },
             {
               "value_type": "int",
@@ -32752,7 +32753,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 132"
             },
             {
               "value_type": "int",
@@ -32914,7 +32915,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 133"
             },
             {
               "value_type": "int",
@@ -33076,7 +33077,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 134"
             },
             {
               "value_type": "int",
@@ -33206,7 +33207,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 135"
             },
             {
               "value_type": "int",
@@ -33341,7 +33342,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 136"
             },
             {
               "value_type": "int",
@@ -33504,7 +33505,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 137"
             },
             {
               "value_type": "int",
@@ -33672,7 +33673,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 114"
             },
             {
               "value_type": "int",
@@ -33828,7 +33829,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 115"
             },
             {
               "value_type": "int",
@@ -33989,7 +33990,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 116"
             },
             {
               "value_type": "int",
@@ -34118,7 +34119,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 117"
             },
             {
               "value_type": "int",
@@ -34252,7 +34253,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 118"
             },
             {
               "value_type": "int",
@@ -34414,7 +34415,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 119"
             },
             {
               "value_type": "int",
@@ -34581,7 +34582,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 138"
             },
             {
               "value_type": "int",
@@ -34742,7 +34743,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 139"
             },
             {
               "value_type": "int",
@@ -34908,7 +34909,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 140"
             },
             {
               "value_type": "int",
@@ -35042,7 +35043,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 141"
             },
             {
               "value_type": "int",
@@ -35181,7 +35182,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 142"
             },
             {
               "value_type": "int",
@@ -35367,7 +35368,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 143"
             },
             {
               "value_type": "int",
@@ -35406,7 +35407,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -35614,7 +35615,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -35695,7 +35696,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -35714,7 +35715,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "int",
@@ -35732,7 +35733,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_font"
+                  "value": "Test Font"
                 },
                 {
                   "value_type": "int",
@@ -35754,7 +35755,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -35814,7 +35815,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 144"
             },
             {
               "value_type": "int",
@@ -35993,7 +35994,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36016,7 +36017,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_font"
+                  "value": "Test Font"
                 }
               ]
             },
@@ -36038,7 +36039,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_font"
+                  "value": "Test Font"
                 }
               ]
             },
@@ -36056,7 +36057,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36125,7 +36126,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36144,7 +36145,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             }
           ],
           "store_result": "style"
@@ -36175,7 +36176,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36248,7 +36249,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36317,7 +36318,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36340,7 +36341,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_font"
+                  "value": "Test Font"
                 }
               ]
             },
@@ -36375,7 +36376,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 145"
             },
             {
               "value_type": "int",
@@ -36414,7 +36415,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36479,7 +36480,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_font"
+                  "value": "Test Font"
                 }
               ]
             },
@@ -36526,7 +36527,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36545,7 +36546,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "enum",
@@ -36569,7 +36570,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_font"
+                  "value": "Test Font"
                 }
               ]
             }
@@ -36586,7 +36587,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36647,7 +36648,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36666,7 +36667,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "int",
@@ -36684,7 +36685,7 @@
             },
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "int",
@@ -36732,7 +36733,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -36918,7 +36919,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_font"
+              "value": "Test Font"
             },
             {
               "value_type": "string",
@@ -37018,7 +37019,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 146"
             },
             {
               "value_type": "int",
@@ -37189,7 +37190,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 147"
             },
             {
               "value_type": "int",
@@ -37365,7 +37366,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 148"
             },
             {
               "value_type": "int",
@@ -37507,7 +37508,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 149"
             },
             {
               "value_type": "int",
@@ -37654,7 +37655,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 120"
             },
             {
               "value_type": "int",
@@ -37824,7 +37825,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 121"
             },
             {
               "value_type": "int",
@@ -37999,7 +38000,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 122"
             },
             {
               "value_type": "int",
@@ -38140,7 +38141,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 123"
             },
             {
               "value_type": "int",
@@ -38286,7 +38287,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 150"
             },
             {
               "value_type": "int",
@@ -38461,7 +38462,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 151"
             },
             {
               "value_type": "int",
@@ -38641,7 +38642,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 152"
             },
             {
               "value_type": "int",
@@ -38787,7 +38788,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 153"
             },
             {
               "value_type": "int",
@@ -38938,7 +38939,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 154"
             },
             {
               "value_type": "int",
@@ -39109,7 +39110,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 155"
             },
             {
               "value_type": "int",
@@ -39285,7 +39286,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 156"
             },
             {
               "value_type": "int",
@@ -39427,7 +39428,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 157"
             },
             {
               "value_type": "int",
@@ -39574,7 +39575,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 124"
             },
             {
               "value_type": "int",
@@ -39744,7 +39745,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 125"
             },
             {
               "value_type": "int",
@@ -39919,7 +39920,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 126"
             },
             {
               "value_type": "int",
@@ -40060,7 +40061,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 127"
             },
             {
               "value_type": "int",
@@ -40206,7 +40207,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 158"
             },
             {
               "value_type": "int",
@@ -40381,7 +40382,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 159"
             },
             {
               "value_type": "int",
@@ -40561,7 +40562,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 160"
             },
             {
               "value_type": "int",
@@ -40707,7 +40708,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 161"
             },
             {
               "value_type": "int",

@@ -1,40 +1,41 @@
+#include <catch2/catch_all.hpp>
+#include <limits>
 #include "splashkit.h"
-#include <catch2/catch.hpp>
 #include "../helpers.hpp"
-class TestResourceBundles {
-public:
-    TestResourceBundles()
+struct TestResourceBundlesFixture
+{
+    TestResourceBundlesFixture()
     {
-        set_resources_path(string("/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/resources"));
-    }
-    TEST_CASE("free_resource_bundle_integration") {
-        load_resource_bundle(string("test_resource_bundle"), string("test.txt"));
-        ResourceCleanup cleanup_resource(string("test_resource_bundle"));
-        REQUIRE(has_resource_bundle(string("test_resource_bundle")));
-        REQUIRE(has_bitmap(string("FrogBmp")));
-        REQUIRE(has_font(string("hara")));
-        free_resource_bundle(string("test_resource_bundle"));
-        REQUIRE_FALSE(has_resource_bundle(string("test_resource_bundle")));
-    }
-    TEST_CASE("has_resource_bundle_integration") {
-        load_resource_bundle(string("test_resource_bundle"), string("test.txt"));
-        ResourceCleanup cleanup_resource(string("test_resource_bundle"));
-        REQUIRE(has_resource_bundle(string("test_resource_bundle")));
-        free_resource_bundle(string("test_resource_bundle"));
-        REQUIRE_FALSE(has_resource_bundle(string("test_resource_bundle")));
-        REQUIRE_FALSE(has_resource_bundle(string("nonexistent")));
-    }
-    TEST_CASE("load_resource_bundle_integration") {
-        load_resource_bundle(string("test_resource_bundle"), string("test.txt"));
-        ResourceCleanup cleanup_resource(string("test_resource_bundle"));
-        REQUIRE(has_resource_bundle(string("test_resource_bundle")));
-        REQUIRE(has_animation_script(string("WalkingScript")));
-        REQUIRE(has_bitmap(string("FrogBmp")));
-        REQUIRE(has_font(string("hara")));
-        REQUIRE(has_sound_effect(string("error")));
-        REQUIRE(has_timer(string("my timer")));
-        REQUIRE(has_resource_bundle(string("blah")));
-        free_resource_bundle(string("test_resource_bundle"));
-        REQUIRE_FALSE(has_resource_bundle(string("test_bundle")));
+        set_resources_path("/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/resources");
     }
 };
+TEST_CASE_METHOD(TestResourceBundlesFixture, "free_resource_bundle_integration") {
+    load_resource_bundle("Test Resource Bundle", "test.txt");
+    resource_cleanup cleanup_resource("Test Resource Bundle");
+    REQUIRE(has_resource_bundle("Test Resource Bundle"));
+    REQUIRE(has_bitmap("FrogBmp"));
+    REQUIRE(has_font("hara"));
+    free_resource_bundle("Test Resource Bundle");
+    REQUIRE_FALSE(has_resource_bundle("Test Resource Bundle"));
+}
+TEST_CASE_METHOD(TestResourceBundlesFixture, "has_resource_bundle_integration") {
+    load_resource_bundle("Test Resource Bundle", "test.txt");
+    resource_cleanup cleanup_resource("Test Resource Bundle");
+    REQUIRE(has_resource_bundle("Test Resource Bundle"));
+    free_resource_bundle("Test Resource Bundle");
+    REQUIRE_FALSE(has_resource_bundle("Test Resource Bundle"));
+    REQUIRE_FALSE(has_resource_bundle("nonexistent"));
+}
+TEST_CASE_METHOD(TestResourceBundlesFixture, "load_resource_bundle_integration") {
+    load_resource_bundle("Test Resource Bundle", "test.txt");
+    resource_cleanup cleanup_resource("Test Resource Bundle");
+    REQUIRE(has_resource_bundle("Test Resource Bundle"));
+    REQUIRE(has_animation_script("WalkingScript"));
+    REQUIRE(has_bitmap("FrogBmp"));
+    REQUIRE(has_font("hara"));
+    REQUIRE(has_sound_effect("error"));
+    REQUIRE(has_timer("my timer"));
+    REQUIRE(has_resource_bundle("blah"));
+    free_resource_bundle("Test Resource Bundle");
+    REQUIRE_FALSE(has_resource_bundle("test_bundle"));
+}

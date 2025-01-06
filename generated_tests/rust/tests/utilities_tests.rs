@@ -155,12 +155,13 @@ mod test_utilities {
     }
     #[test]
     fn test_current_ticks_integration() {
+        open_window("Test Window 1".to_string(), 800, 600);
         let test_ticks = current_ticks();
         assert!(test_ticks > 0);
     }
     #[test]
     fn test_delay_integration() {
-        let test_timer = create_timer("test_timer".to_string());
+        let test_timer = create_timer("Test Timer 1".to_string());
         let _cleanup_timer = TimerCleanup::new();
         start_timer(test_timer);
         let initial_ticks = timer_ticks(test_timer);
@@ -169,7 +170,7 @@ mod test_utilities {
     }
     #[test]
     fn test_display_dialog_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 2".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_font = load_font("test_font".to_string(), "hara.ttf".to_string());
         let _cleanup_font = FontCleanup::new();

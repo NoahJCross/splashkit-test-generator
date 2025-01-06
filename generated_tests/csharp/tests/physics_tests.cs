@@ -8,9 +8,9 @@ namespace SplashKitTests
     {
         [Fact]
         public void TestBitmapCircleCollisionAtPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 1", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
             var testPoint = PointAt(100.0, 100.0);
@@ -18,18 +18,18 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapCircleCollisionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 2", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
             Assert.True(BitmapCircleCollision(testBitmap, 100.0, 100.0, testCircle));
         }
         [Fact]
         public void TestBitmapCircleCollisionForCellWithTranslationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 3", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
             var testTranslation = TranslationMatrix(100.0, 100.0);
@@ -37,9 +37,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapCircleCollisionForCellAtPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 4", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
             var testPoint = PointAt(100.0, 100.0);
@@ -47,33 +47,33 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapCircleCollisionForCellIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 5", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testCircle = CircleAt(150.0, 150.0, 50.0);
             Assert.True(BitmapCircleCollision(testBitmap, 0, 100.0, 100.0, testCircle));
         }
         [Fact]
         public void TestBitmapCollisionIntegration() {
-            var testBitmap1 = CreateBitmap("test_bitmap1", 100, 100);
+            var testBitmap1 = CreateBitmap("Test Bitmap 6", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testBitmap2 = CreateBitmap("test_bitmap2", 100, 100);
-            ClearBitmap(testBitmap1, ColorBlack());
+            var testBitmap2 = CreateBitmap("Test Bitmap 7", 100, 100);
+            ClearBitmap(testBitmap1, ColorWhite());
             SetupCollisionMask(testBitmap1);
-            ClearBitmap(testBitmap2, ColorBlack());
+            ClearBitmap(testBitmap2, ColorWhite());
             SetupCollisionMask(testBitmap2);
             Assert.True(BitmapCollision(testBitmap1, 0, 0.0, 0.0, testBitmap2, 0, 50.0, 50.0));
             Assert.False(BitmapCollision(testBitmap1, 0, 0.0, 0.0, testBitmap2, 0, 200.0, 200.0));
         }
         [Fact]
         public void TestBitmapCollisionAtPointsIntegration() {
-            var testBitmap1 = CreateBitmap("test_bitmap1", 100, 100);
+            var testBitmap1 = CreateBitmap("Test Bitmap 8", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testBitmap2 = CreateBitmap("test_bitmap2", 100, 100);
-            ClearBitmap(testBitmap1, ColorBlack());
+            var testBitmap2 = CreateBitmap("Test Bitmap 9", 100, 100);
+            ClearBitmap(testBitmap1, ColorWhite());
             SetupCollisionMask(testBitmap1);
-            ClearBitmap(testBitmap2, ColorBlack());
+            ClearBitmap(testBitmap2, ColorWhite());
             SetupCollisionMask(testBitmap2);
             var testPoint1 = PointAt(0.0, 0.0);
             var testPoint2 = PointAt(50.0, 50.0);
@@ -81,12 +81,12 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapCollisionForCellsWithTranslationsIntegration() {
-            var testBitmap1 = CreateBitmap("test_bitmap1", 100, 100);
+            var testBitmap1 = CreateBitmap("Test Bitmap 10", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testBitmap2 = CreateBitmap("test_bitmap2", 100, 100);
-            ClearBitmap(testBitmap1, ColorBlack());
+            var testBitmap2 = CreateBitmap("Test Bitmap 11", 100, 100);
+            ClearBitmap(testBitmap1, ColorWhite());
             SetupCollisionMask(testBitmap1);
-            ClearBitmap(testBitmap2, ColorBlack());
+            ClearBitmap(testBitmap2, ColorWhite());
             SetupCollisionMask(testBitmap2);
             var matrix1 = TranslationMatrix(0.0, 0.0);
             var matrix2 = TranslationMatrix(50.0, 50.0);
@@ -94,12 +94,12 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapCollisionForCellsAtPointsIntegration() {
-            var testBitmap1 = CreateBitmap("test_bitmap1", 50, 50);
+            var testBitmap1 = CreateBitmap("Test Bitmap 12", 50, 50);
             using var cleanupBitmap = new BitmapCleanup();
-            var testBitmap2 = CreateBitmap("test_bitmap2", 50, 50);
-            ClearBitmap(testBitmap1, ColorBlack());
+            var testBitmap2 = CreateBitmap("Test Bitmap 13", 50, 50);
+            ClearBitmap(testBitmap1, ColorWhite());
             SetupCollisionMask(testBitmap1);
-            ClearBitmap(testBitmap2, ColorBlack());
+            ClearBitmap(testBitmap2, ColorWhite());
             SetupCollisionMask(testBitmap2);
             var testPoint1 = PointAt(100.0, 100.0);
             var testPoint2 = PointAt(125.0, 125.0);
@@ -107,11 +107,11 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapCollisionForCellsIntegration() {
-            var testBitmap1 = CreateBitmap("test_bitmap1", 100, 100);
+            var testBitmap1 = CreateBitmap("Test Bitmap 14", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testBitmap2 = CreateBitmap("test_bitmap2", 100, 100);
-            ClearBitmap(testBitmap1, ColorBlack());
-            ClearBitmap(testBitmap2, ColorBlack());
+            var testBitmap2 = CreateBitmap("Test Bitmap 15", 100, 100);
+            ClearBitmap(testBitmap1, ColorWhite());
+            ClearBitmap(testBitmap2, ColorWhite());
             SetupCollisionMask(testBitmap1);
             SetupCollisionMask(testBitmap2);
             Assert.False(BitmapCollision(testBitmap1, 0, 100.0, 100.0, testBitmap2, 0, 200.0, 100.0));
@@ -119,21 +119,21 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapPointCollisionWithTranslationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 16", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testTranslation = TranslationMatrix(100.0, 100.0);
-            var testPoint1 = PointAt(151.0, 150.0);
-            var testPoint2 = PointAt(201.0, 200.0);
+            var testPoint1 = PointAt(150.0, 150.0);
+            var testPoint2 = PointAt(200.0, 200.0);
             Assert.True(BitmapPointCollision(testBitmap, testTranslation, testPoint1));
             Assert.False(BitmapPointCollision(testBitmap, testTranslation, testPoint2));
         }
         [Fact]
         public void TestBitmapPointCollisionAtPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 17", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testBmpPoint = PointAt(50.0, 50.0);
             var testPoint = PointAt(101.0, 100.0);
@@ -142,49 +142,49 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapPointCollisionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 18", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
-            Assert.True(BitmapPointCollision(testBitmap, 0.0, 0.0, 51.0, 50.0));
-            Assert.False(BitmapPointCollision(testBitmap, 0.0, 0.0, 151.0, 150.0));
+            Assert.True(BitmapPointCollision(testBitmap, 0.0, 0.0, 50.0, 50.0));
+            Assert.False(BitmapPointCollision(testBitmap, 0.0, 0.0, 150.0, 150.0));
         }
         [Fact]
         public void TestBitmapPointCollisionForCellWithTranslationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 19", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testTranslation = TranslationMatrix(100.0, 100.0);
-            var testPoint1 = PointAt(151.0, 150.0);
-            var testPoint2 = PointAt(201.0, 200.0);
+            var testPoint1 = PointAt(150.0, 150.0);
+            var testPoint2 = PointAt(200.0, 200.0);
             Assert.True(BitmapPointCollision(testBitmap, 0, testTranslation, testPoint1));
             Assert.False(BitmapPointCollision(testBitmap, 0, testTranslation, testPoint2));
         }
         [Fact]
         public void TestBitmapPointCollisionForCellAtPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 20", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
-            Assert.True(BitmapPointCollision(testBitmap, 0, PointAt(50.0, 50.0), PointAt(101.0, 100.0)));
-            Assert.False(BitmapPointCollision(testBitmap, 0, PointAt(51.0, 50.0), PointAt(201.0, 200.0)));
+            Assert.True(BitmapPointCollision(testBitmap, 0, PointAt(50.0, 50.0), PointAt(100.0, 100.0)));
+            Assert.False(BitmapPointCollision(testBitmap, 0, PointAt(50.0, 50.0), PointAt(200.0, 200.0)));
         }
         [Fact]
         public void TestBitmapPointCollisionForCellIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 21", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
-            DrawPixel(ColorWhite(), 51.0, 50.0, OptionDrawTo(testBitmap));
+            ClearBitmap(testBitmap, RGBAColor(0, 0, 0, 0));
+            DrawPixelOnBitmap(testBitmap, ColorBlack(), 50.0, 50.0);
             SetupCollisionMask(testBitmap);
-            Assert.True(BitmapPointCollision(testBitmap, 0, 0.0, 0.0, 51.0, 50.0));
-            Assert.False(BitmapPointCollision(testBitmap, 0, 0.0, 0.0, 50.0, 50.0));
+            Assert.True(BitmapPointCollision(testBitmap, 0, 0.0, 0.0, 50.0, 50.0));
+            Assert.False(BitmapPointCollision(testBitmap, 0, 0.0, 0.0, 51.0, 50.0));
         }
         [Fact]
         public void TestBitmapRectangleCollisionAtPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 22", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(50.0, 50.0, 100.0, 100.0);
             var testPoint = PointAt(100.0, 100.0);
@@ -192,18 +192,18 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapRectangleCollisionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 23", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(50.0, 50.0, 100.0, 100.0);
             Assert.True(BitmapRectangleCollision(testBitmap, 0.0, 0.0, testRectangle));
         }
         [Fact]
         public void TestBitmapRectangleCollisionForCellWithTranslationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 24", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(150.0, 150.0, 50.0, 50.0);
             var testTranslation = TranslationMatrix(100.0, 100.0);
@@ -211,9 +211,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapRectangleCollisionForCellAtPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 25", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(100.0, 100.0, 50.0, 50.0);
             var testPoint = PointAt(100.0, 100.0);
@@ -221,18 +221,18 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestBitmapRectangleCollisionForCellIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 26", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testRectangle = RectangleFrom(50.0, 50.0, 100.0, 100.0);
             Assert.True(BitmapRectangleCollision(testBitmap, 0, 50.0, 50.0, testRectangle));
         }
         [Fact]
         public void TestSpriteBitmapCollisionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 27", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
@@ -243,9 +243,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteBitmapCollisionWithCellAtPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 28", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
@@ -255,9 +255,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteBitmapCollisionWithCellIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 29", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
@@ -267,12 +267,12 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteCollisionIntegration() {
-            var testBitmap1 = CreateBitmap("test_bitmap_1", 50, 50);
+            var testBitmap1 = CreateBitmap("Test Bitmap 30", 50, 50);
             using var cleanupBitmap = new BitmapCleanup();
-            var testBitmap2 = CreateBitmap("test_bitmap_2", 50, 50);
-            ClearBitmap(testBitmap1, ColorBlack());
+            var testBitmap2 = CreateBitmap("Test Bitmap 31", 50, 50);
+            ClearBitmap(testBitmap1, ColorWhite());
             SetupCollisionMask(testBitmap1);
-            ClearBitmap(testBitmap2, ColorBlack());
+            ClearBitmap(testBitmap2, ColorWhite());
             SetupCollisionMask(testBitmap2);
             var testSprite1 = CreateSprite(testBitmap1);
             using var cleanupSprite = new SpriteCleanup();
@@ -287,9 +287,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpritePointCollisionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 32", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
@@ -299,9 +299,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteRectangleCollisionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 33", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            ClearBitmap(testBitmap, ColorBlack());
+            ClearBitmap(testBitmap, ColorWhite());
             SetupCollisionMask(testBitmap);
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
@@ -338,8 +338,8 @@ namespace SplashKitTests
             var testMatrix = ScaleRotateTranslateMatrix(PointAt(2.0, 2.0), 45.0, PointAt(10.0, 10.0));
             var inverseMatrix = MatrixInverse(testMatrix);
             var resultMatrix = MatrixMultiply(testMatrix, inverseMatrix);
-            Assert.Equal(1.0, resultMatrix.Elements[0, 0], 2);
-            Assert.Equal(1.0, resultMatrix.Elements[1, 1], 2);
+            Assert.Equal(1.0, resultMatrix.Elements[0, 0], 2.0);
+            Assert.Equal(1.0, resultMatrix.Elements[1, 1], 2.0);
         }
         [Fact]
         public void TestMatrixMultiplyPointIntegration() {
@@ -529,7 +529,7 @@ namespace SplashKitTests
         public void TestVectorLimitIntegration() {
             var testVector = VectorTo(6.0, 8.0);
             var limitedVector = VectorLimit(testVector, 5.0);
-            Assert.Equal(3.0, limitedVector.X, 2);
+            Assert.Equal(3.0, limitedVector.X, 2.0);
             Assert.Equal(4.0, limitedVector.Y);
         }
         [Fact]

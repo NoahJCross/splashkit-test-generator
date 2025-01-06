@@ -46,6 +46,9 @@ module TestGenerator
 
     private
 
+    # Checks if the text matches any reset patterns and sets the indentation level accordingly
+    # @param text_str [String] The text to check for reset patterns
+    # @param config [Hash] The language configuration containing reset patterns and their target levels
     def check_reset_patterns(text_str, config)
       config.indentation[:reset_on]&.each do |pattern, target_level|
         if text_str.strip.start_with?(pattern)

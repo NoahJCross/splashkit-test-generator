@@ -7,9 +7,23 @@ module LanguageConfig
     end
     DEFAULT_CONFIG = {
       supports_overloading: true,
+
+      test_main_file: {
+        path: 'test_main.cpp',
+        content: [
+          '#define CATCH_CONFIG_RUNNER',
+          '#include <catch2/catch_all.hpp>',
+          '',
+          'int main(int argc, char* argv[]) {',
+          'return Catch::Session().run(argc, argv);',
+          '}'
+        ]
+      },
+
       imports: [
+        '#include <catch2/catch_all.hpp>',
+        '#include <limits>',
         '#include "splashkit.h"',
-        '#include <catch2/catch.hpp>',
         '#include "../helpers.hpp"'
       ],
 
@@ -22,7 +36,7 @@ module LanguageConfig
         'less_than'               => ->(v1, v2, _)    { "REQUIRE(#{v1} < #{v2});" },
         'null'                    => ->(v1, _, _)     { "REQUIRE(#{v1} == nullptr);" },
         'not_null'                => ->(v1, _, _)     { "REQUIRE(#{v1} != nullptr);" },
-        'range'                   => ->(v1, v2, v3)   { "REQUIRE(#{v1} >= #{v2} && #{v1} <= #{v3});" },
+        'range'                   => ->(v1, v2, v3)   { "REQUIRE((#{v1} >= #{v2})); REQUIRE((#{v1} <= #{v3}));" },
         'true'                    => ->(v1, _, _)     { "REQUIRE(#{v1});" },
         'false'                   => ->(v1, _, _)     { "REQUIRE_FALSE(#{v1});" },
         'greater_than_or_equal'   => ->(v1, v2, _)    { "REQUIRE(#{v1} >= #{v2});" },
@@ -42,9 +56,9 @@ module LanguageConfig
       }.freeze,
 
       numeric_constants: {
-        infinity: 'numeric_limits<double>::infinity()',
-        negative_infinity: '-numeric_limits<double>::infinity()',
-        max_value: 'numeric_limits<float>::max()'
+        infinity: 'std::numeric_limits<double>::infinity()',
+        negative_infinity: '-std::numeric_limits<double>::infinity()',
+        max_value: 'std::numeric_limits<float>::max()'
       }.freeze,
 
       control_flow: {
@@ -72,15 +86,13 @@ module LanguageConfig
         },
         class_instance:     ->(name, args) { "#{name}(#{args})" },
         mapping:   {
-          'json' => 'Json',
-          'line' => 'Line'
         }.freeze,
         enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}::#{value.to_upper_case}#{semicolon ? ';' : ''}"
+          "#{type.to_snake_case}::#{value.to_upper_case}#{semicolon ? ';' : ''}"
         },
-        string: ->(value) { "string(\"#{value}\")" },
+        string: ->(value) { "\"#{value}\"" },
         object: ->(object_type, variable_name) { {
-          object_type: object_type.to_pascal_case,
+          object_type: object_type.to_snake_case,
           variable_name: variable_name.to_snake_case
         } },
       }.freeze,
@@ -98,17 +110,17 @@ module LanguageConfig
         },
         identifier:     ->(name) { name.to_snake_case.to_s },
         field_access:  ->(var, field) { "#{var}.#{field}" },
-        delegate_call: ->(var, field) { "#{var}.#{field}();" },
+        method_call: ->(var, field) { "#{var}.#{field}()" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:    ->(arr) { "#{arr}.size()" },
-        reference_operator: ->(var) { "&#{var}" }
+        reference_operator: ->(var) { "#{var}" }
       }.freeze,
 
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
         pointer:   ->(_) { 'nullptr;' },
-        test:      ->(name) { ["TEST_CASE(\"#{name.to_snake_case}_integration\") {"] }
+        test:      ->(group, name) { ["TEST_CASE_METHOD(Test#{group.to_pascal_case}Fixture, \"#{name.to_snake_case}_integration\") {"] }
       }.freeze,
 
       comment_syntax: {
@@ -119,11 +131,11 @@ module LanguageConfig
 
       class_wrapper: {
         header: [
-          ->(group) { "class Test#{group.to_pascal_case} {" },
-          'public:'
+          ->(group) { "struct Test#{group.to_pascal_case}Fixture" },
+          '{'
         ],
         constructor_wrapper: {
-          header: ->(group) { ["Test#{group.to_pascal_case}()", '{' ]},
+          header: ->(group) { ["Test#{group.to_pascal_case}Fixture()", '{'] },
           footer: ['}']
         },
         footer: ['};']
@@ -131,7 +143,7 @@ module LanguageConfig
 
       cleanup_handlers: {
         setup: ->(name, type, arg = nil) {
-          "#{type.to_pascal_case}Cleanup #{name.to_snake_case}#{arg ? "(#{arg})" : '' };"
+          "#{type.to_snake_case}_cleanup #{name.to_snake_case}#{arg ? "(#{arg})" : '' };"
         }
       }.freeze,
 
@@ -140,10 +152,11 @@ module LanguageConfig
         unindent_before: ['};', '};', '}', 'public:', 'private:']
       }.freeze,
 
-      file_extension: 'cpp',
       terminal_handlers: {
         message: ->(text) { "cout << \"#{text}\";" }
-      }.freeze
+      }.freeze,
+
+      file_extension: 'cpp'
     }.freeze
   end
 end

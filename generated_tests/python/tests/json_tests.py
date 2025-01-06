@@ -21,12 +21,12 @@ class TestJson:
         test_json1 = create_json()
         with json_cleanup():
             test_json2 = create_json()
-            count1 = json_count_keys(test_json1)
             json_set_string(test_json1, "key", "value")
             json_set_string(test_json2, "key", "value")
+            count1 = json_count_keys(test_json1)
             count2 = json_count_keys(test_json2)
-            assert 0 == count1
-            assert 0 > count2
+            assert 1 == count1
+            assert 1 == count2
             free_all_json()
             count1_after_free = json_count_keys(test_json1)
             count2_after_free = json_count_keys(test_json2)
@@ -146,7 +146,9 @@ class TestJson:
     def test_json_read_object_integration():
         test_json = create_json()
         with json_cleanup():
-            json_set_object(test_json, "nestedObject", create_json())
+            nested_json = create_json()
+            json_set_string(nested_json, "test", "value")
+            json_set_object(test_json, "nestedObject", nested_json)
             read_json = json_read_object(test_json, "nestedObject")
             assert read_json is not None
             

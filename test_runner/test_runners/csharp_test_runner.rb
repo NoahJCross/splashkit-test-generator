@@ -1,0 +1,25 @@
+require_relative 'base_test_runner'
+
+class CSharpTestRunner < BaseTestRunner
+  def run_sequential_group(group)
+    group_name = group.to_pascal_case
+    result = system("cd generated_tests/csharp && dotnet test --nologo --filter \"FullyQualifiedName~SplashKitTests.Test#{group_name}\" --logger \"console;verbosity=detailed\"")
+    raise "Test failed: #{group_name}" unless result
+  end
+
+  def run_parallel_group(group)
+    group_name = group.to_pascal_case
+    result = system("cd generated_tests/csharp && dotnet test --nologo --filter \"FullyQualifiedName~SplashKitTests.Test#{group_name}\" --blame-crash-dump-type full --logger \"console;verbosity=detailed\"")
+    raise "Test failed: #{group_name}" unless result
+  end
+
+  def run_specific_test(group, test_method)
+    group_name = group.to_pascal_case
+    result = system("cd generated_tests/csharp && dotnet test --nologo --filter \"FullyQualifiedName~SplashKitTests.Test#{group_name}.#{test_method}\" --logger \"console;verbosity=detailed\"")
+    raise "Test failed: #{group_name}.#{test_method}" unless result
+  end
+
+  def get_test_method_name(test_name)
+    "Test#{test_name.to_pascal_case}Integration"
+  end
+end

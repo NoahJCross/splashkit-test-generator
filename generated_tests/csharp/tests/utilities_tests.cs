@@ -155,12 +155,13 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCurrentTicksIntegration() {
+            OpenWindow("Test Window 1", 800, 600);
             var testTicks = CurrentTicks();
             Assert.True(testTicks > 0);
         }
         [Fact]
         public void TestDelayIntegration() {
-            var testTimer = CreateTimer("test_timer");
+            var testTimer = CreateTimer("Test Timer 1");
             using var cleanupTimer = new TimerCleanup();
             StartTimer(testTimer);
             var initialTicks = TimerTicks(testTimer);
@@ -169,7 +170,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestDisplayDialogIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 2", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testFont = LoadFont("test_font", "hara.ttf");
             using var cleanupFont = new FontCleanup();

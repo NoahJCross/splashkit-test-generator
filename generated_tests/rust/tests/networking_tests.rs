@@ -7,9 +7,9 @@ mod test_networking {
     use super::*;
     #[test]
     fn test_accept_all_new_connections_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         let connections_accepted = accept_all_new_connections();
@@ -17,9 +17,9 @@ mod test_networking {
     }
     #[test]
     fn test_accept_new_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         let connection_accepted = accept_new_connection(test_server);
@@ -27,7 +27,7 @@ mod test_networking {
     }
     #[test]
     fn test_broadcast_message_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection1 = open_connection("test_connection1".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -40,7 +40,7 @@ mod test_networking {
     }
     #[test]
     fn test_broadcast_message_to_all_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection1 = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -53,27 +53,27 @@ mod test_networking {
     }
     #[test]
     fn test_broadcast_message_to_server_named_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
-        broadcast_message_to_server_named("Test Message".to_string(), "test_server".to_string());
+        broadcast_message_to_server_named("Test Message".to_string(), "Test Server".to_string());
         check_network_activity();
         assert!(has_messages_on_connection(test_connection));
     }
     #[test]
     fn test_check_network_activity_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         assert!(has_new_connections());
     }
     #[test]
     fn test_clear_messages_from_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -87,7 +87,7 @@ mod test_networking {
     }
     #[test]
     fn test_clear_messages_from_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -100,7 +100,7 @@ mod test_networking {
     }
     #[test]
     fn test_clear_messages_from_server_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 8080);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -114,7 +114,7 @@ mod test_networking {
     }
     #[test]
     fn test_close_all_connections_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -126,18 +126,18 @@ mod test_networking {
     }
     #[test]
     fn test_close_all_servers_integration() {
-        create_server_with_port("test_server_1".to_string(), 5000);
+        create_server_with_port("Test Server 1".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        create_server_with_port("test_server_2".to_string(), 5001);
-        assert!(has_server("test_server_1".to_string()));
-        assert!(has_server("test_server_2".to_string()));
+        create_server_with_port("Test Server 2".to_string(), 5001);
+        assert!(has_server("Test Server 1".to_string()));
+        assert!(has_server("Test Server 2".to_string()));
         close_all_servers();
-        assert!(!has_server("test_server_1".to_string()));
-        assert!(!has_server("test_server_2".to_string()));
+        assert!(!has_server("Test Server 1".to_string()));
+        assert!(!has_server("Test Server 2".to_string()));
     }
     #[test]
     fn test_close_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 8080);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -148,7 +148,7 @@ mod test_networking {
     }
     #[test]
     fn test_close_connection_named_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 8080);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -160,7 +160,7 @@ mod test_networking {
     }
     #[test]
     fn test_close_message_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -175,41 +175,41 @@ mod test_networking {
     }
     #[test]
     fn test_close_server_named_integration() {
-        create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let close_result = close_server_named("test_server".to_string());
+        let close_result = close_server_named("Test Server".to_string());
         assert!(close_result);
-        assert!(!has_server("test_server".to_string()));
+        assert!(!has_server("Test Server".to_string()));
     }
     #[test]
     fn test_close_server_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let close_result = close_server(test_server);
         assert!(close_result);
-        assert!(!has_server("test_server".to_string()));
+        assert!(!has_server("Test Server".to_string()));
     }
     #[test]
     fn test_connection_count_named_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
-        assert_eq!(1 as u32, connection_count_named("test_server".to_string()));
+        assert_eq!(1 as u32, connection_count_named("Test Server".to_string()));
     }
     #[test]
     fn test_connection_count_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         assert_eq!(1 as u32, connection_count(test_server));
     }
     #[test]
     fn test_connection_ip_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -219,9 +219,9 @@ mod test_networking {
     }
     #[test]
     fn test_connection_ip_from_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 8080);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 8080);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         let test_ip = connection_ip_from_name("test_connection".to_string());
@@ -229,9 +229,9 @@ mod test_networking {
     }
     #[test]
     fn test_connection_named_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         let retrieved_connection = connection_named("test_connection".to_string());
@@ -239,7 +239,7 @@ mod test_networking {
     }
     #[test]
     fn test_connection_port_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -249,9 +249,9 @@ mod test_networking {
     }
     #[test]
     fn test_connection_port_from_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         let test_port = connection_port_from_name("test_connection".to_string());
@@ -259,17 +259,17 @@ mod test_networking {
     }
     #[test]
     fn test_create_server_with_port_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         assert!(!test_server.is_null());
-        assert!(has_server("test_server".to_string()));
+        assert!(has_server("Test Server".to_string()));
     }
     #[test]
     fn test_create_server_with_port_and_protocol_integration() {
-        let test_server = create_server_with_port_and_protocol("test_server".to_string(), 5000, ConnectionType::TCP);
+        let test_server = create_server_with_port_and_protocol("Test Server".to_string(), 5000, ConnectionType::TCP);
         let _cleanup_server = ServerCleanup::new();
         assert!(!test_server.is_null());
-        assert!(has_server("test_server".to_string()));
+        assert!(has_server("Test Server".to_string()));
     }
     #[test]
     fn test_dec_to_hex_integration() {
@@ -278,7 +278,7 @@ mod test_networking {
     }
     #[test]
     fn test_fetch_new_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -288,7 +288,7 @@ mod test_networking {
     }
     #[test]
     fn test_has_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 8080);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -299,7 +299,7 @@ mod test_networking {
     }
     #[test]
     fn test_has_messages_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -311,7 +311,7 @@ mod test_networking {
     }
     #[test]
     fn test_has_messages_on_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -322,18 +322,18 @@ mod test_networking {
     }
     #[test]
     fn test_has_messages_on_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         send_message_to_connection("Test Message".to_string(), test_connection);
         check_network_activity();
-        assert!(has_messages_on_name("test_server".to_string()));
+        assert!(has_messages_on_name("Test Server".to_string()));
     }
     #[test]
     fn test_has_messages_on_server_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -343,20 +343,20 @@ mod test_networking {
     }
     #[test]
     fn test_has_new_connections_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         assert!(has_new_connections());
     }
     #[test]
     fn test_has_server_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        assert!(has_server("test_server".to_string()));
+        assert!(has_server("Test Server".to_string()));
         close_server(test_server);
-        assert!(!has_server("test_server".to_string()));
+        assert!(!has_server("Test Server".to_string()));
     }
     #[test]
     fn test_hex_str_to_ipv4_integration() {
@@ -391,7 +391,7 @@ mod test_networking {
     }
     #[test]
     fn test_is_connection_open_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -402,7 +402,7 @@ mod test_networking {
     }
     #[test]
     fn test_is_connection_open_from_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -413,27 +413,27 @@ mod test_networking {
     }
     #[test]
     fn test_last_connection_named_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
-        let last_connection = last_connection_named("test_server".to_string());
-        assert_eq!(test_connection, last_connection);
+        let test_last_connection = last_connection_named("Test Server".to_string());
+        assert_eq!(test_connection, test_last_connection);
     }
     #[test]
     fn test_last_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
-        let last_connection = last_connection(test_server);
-        assert_eq!(test_connection, last_connection);
+        let test_last_connection = last_connection(test_server);
+        assert_eq!(test_connection, test_last_connection);
     }
     #[test]
     fn test_message_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -446,7 +446,7 @@ mod test_networking {
     }
     #[test]
     fn test_message_count_on_server_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -457,7 +457,7 @@ mod test_networking {
     }
     #[test]
     fn test_message_count_on_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -468,7 +468,7 @@ mod test_networking {
     }
     #[test]
     fn test_message_count_from_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -479,7 +479,7 @@ mod test_networking {
     }
     #[test]
     fn test_message_data_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -492,7 +492,7 @@ mod test_networking {
     }
     #[test]
     fn test_message_data_bytes_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -506,7 +506,7 @@ mod test_networking {
     }
     #[test]
     fn test_message_host_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -519,7 +519,7 @@ mod test_networking {
     }
     #[test]
     fn test_message_port_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -532,7 +532,7 @@ mod test_networking {
     }
     #[test]
     fn test_message_protocol_integration() {
-        let test_server = create_server_with_port_and_protocol("test_server".to_string(), 5000, ConnectionType::UDP);
+        let test_server = create_server_with_port_and_protocol("Test Server".to_string(), 5000, ConnectionType::UDP);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection_with_protocol("test_connection".to_string(), "127.0.0.1".to_string(), 5000, ConnectionType::UDP);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -555,16 +555,16 @@ mod test_networking {
     }
     #[test]
     fn test_new_connection_count_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         assert_eq!(1, new_connection_count(test_server));
     }
     #[test]
     fn test_open_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 8080);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -576,7 +576,7 @@ mod test_networking {
     }
     #[test]
     fn test_open_connection_with_protocol_integration() {
-        let test_server = create_server_with_port_and_protocol("test_server".to_string(), 5000, ConnectionType::TCP);
+        create_server_with_port_and_protocol("Test Server".to_string(), 5000, ConnectionType::TCP);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection_with_protocol("test_connection".to_string(), "127.0.0.1".to_string(), 5000, ConnectionType::TCP);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -585,7 +585,7 @@ mod test_networking {
     }
     #[test]
     fn test_read_message_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -598,7 +598,7 @@ mod test_networking {
     }
     #[test]
     fn test_read_message_from_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -611,20 +611,20 @@ mod test_networking {
     }
     #[test]
     fn test_read_message_from_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         send_message_to_connection("Test Message".to_string(), test_connection);
         check_network_activity();
-        let test_message = read_message_from_name("test_server".to_string());
+        let test_message = read_message_from_name("Test Server".to_string());
         assert_eq!("Test Message".to_string(), message_data(test_message));
         close_message(test_message);
     }
     #[test]
     fn test_read_message_from_server_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -639,18 +639,18 @@ mod test_networking {
     }
     #[test]
     fn test_read_message_data_from_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         send_message_to_connection("Test Message".to_string(), test_connection);
         check_network_activity();
-        assert_eq!("Test Message".to_string(), read_message_data_from_name("test_server".to_string()));
+        assert_eq!("Test Message".to_string(), read_message_data_from_name("Test Server".to_string()));
     }
     #[test]
     fn test_read_message_data_from_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -661,7 +661,7 @@ mod test_networking {
     }
     #[test]
     fn test_read_message_data_from_server_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -672,7 +672,7 @@ mod test_networking {
     }
     #[test]
     fn test_reconnect_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -686,7 +686,7 @@ mod test_networking {
     }
     #[test]
     fn test_reconnect_from_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -700,7 +700,7 @@ mod test_networking {
     }
     #[test]
     fn test_release_all_connections_integration() {
-        create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         open_connection("test_connection1".to_string(), "127.0.0.1".to_string(), 8080);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -711,13 +711,13 @@ mod test_networking {
         release_all_connections();
         assert!(!has_connection("test_connection1".to_string()));
         assert!(!has_connection("test_connection2".to_string()));
-        assert!(!has_server("test_server".to_string()));
+        assert!(!has_server("Test Server".to_string()));
     }
     #[test]
     fn test_reset_new_connection_count_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         assert_eq!(new_connection_count(test_server), 1);
@@ -726,7 +726,7 @@ mod test_networking {
     }
     #[test]
     fn test_retrieve_connection_named_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -736,7 +736,7 @@ mod test_networking {
     }
     #[test]
     fn test_retrieve_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -746,7 +746,7 @@ mod test_networking {
     }
     #[test]
     fn test_send_message_to_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -757,9 +757,9 @@ mod test_networking {
     }
     #[test]
     fn test_send_message_to_name_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let test_connection = open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
+        open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
         let send_result = send_message_to_name("Test Message".to_string(), "test_connection".to_string());
@@ -768,16 +768,16 @@ mod test_networking {
     }
     #[test]
     fn test_server_has_new_connection_named_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
         check_network_activity();
-        assert!(server_has_new_connection_named("test_server".to_string()));
+        assert!(server_has_new_connection_named("Test Server".to_string()));
     }
     #[test]
     fn test_server_has_new_connection_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
         open_connection("test_connection".to_string(), "127.0.0.1".to_string(), 5000);
         let _cleanup_connection = ConnectionCleanup::new();
@@ -786,9 +786,9 @@ mod test_networking {
     }
     #[test]
     fn test_server_named_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 5000);
+        let test_server = create_server_with_port("Test Server".to_string(), 5000);
         let _cleanup_server = ServerCleanup::new();
-        let retrieved_server = server_named("test_server".to_string());
+        let retrieved_server = server_named("Test Server".to_string());
         assert_eq!(test_server, retrieved_server);
     }
     #[test]
@@ -803,38 +803,35 @@ mod test_networking {
     }
     #[test]
     fn test_download_bitmap_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
-        let test_window = open_window("Test Window".to_string(), 800, 600);
-        let _cleanup_window = WindowCleanup::new();
         let test_bitmap = download_bitmap("test_image".to_string(), "http://localhost:8080/test/resources/images/frog.png".to_string(), 80);
         assert!(!test_bitmap.is_null());
-        free_bitmap(test_bitmap);
     }
     #[test]
     fn test_download_font_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_font = download_font("test_font".to_string(), "http://localhost:8080/test/resources/fonts/hara.ttf".to_string(), 80);
         assert!(!test_font.is_null());
     }
     #[test]
     fn test_download_music_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_music = download_music("test_music".to_string(), "http://localhost:8080/test/resources/music/280.mp3".to_string(), 80);
         assert!(!test_music.is_null());
     }
     #[test]
     fn test_download_sound_effect_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_sound_effect = download_sound_effect("test_sound".to_string(), "http://localhost:8080/test/resources/sounds/breakdance.wav".to_string(), 80);
         assert!(!test_sound_effect.is_null());
     }
     #[test]
     fn test_free_response_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_response = http_get("http://localhost:8080/test".to_string(), 80);
         assert!(!test_response.is_null());
@@ -843,7 +840,7 @@ mod test_networking {
     }
     #[test]
     fn test_http_get_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_response = http_get("http://localhost:8080/test".to_string(), 80);
         assert!(!test_response.is_null());
@@ -853,7 +850,7 @@ mod test_networking {
     }
     #[test]
     fn test_http_post_with_headers_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let headers = vec!["Content-Type: application/json".to_string(), "Accept: application/json".to_string()];
         let test_response = http_post_with_headers("http://localhost:8080/test".to_string(), 80, "Test Body".to_string(), headers);
@@ -864,7 +861,7 @@ mod test_networking {
     }
     #[test]
     fn test_http_post_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_response = http_post("http://localhost:8080/test".to_string(), 80, "Test Body".to_string());
         assert!(!test_response.is_null());
@@ -874,7 +871,7 @@ mod test_networking {
     }
     #[test]
     fn test_http_response_to_string_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_response = http_get("http://localhost:8080/test".to_string(), 80);
         let response_text = http_response_to_string(test_response);
@@ -883,7 +880,7 @@ mod test_networking {
     }
     #[test]
     fn test_save_response_to_file_integration() {
-        let test_server = create_server_with_port("test_server".to_string(), 8080);
+        create_server_with_port("Test Server".to_string(), 8080);
         let _cleanup_server = ServerCleanup::new();
         let test_response = http_get("http://localhost:8080/test".to_string(), 80);
         let test_file = "test_output.txt".to_string();
@@ -1158,7 +1155,6 @@ mod test_networking {
         json_set_string(test_json, "message".to_string(), "Test Message".to_string());
         send_response_json(test_request, test_json);
         free_response(test_response);
-        free_json(test_json);
         stop_web_server(test_server);
     }
     #[test]

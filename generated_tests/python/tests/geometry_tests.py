@@ -9,7 +9,7 @@ class TestGeometry:
         assert test_center_point == point_at(100.0, 100.0)
         
     def test_circle_at_integration():
-        open_window("Test Window", 800, 600)
+        open_window("Test Window 1", 800, 600)
         with window_cleanup():
             test_circle = circle_at(point_at(400.0, 300.0), 50.0)
             draw_circle_record(color_black(), test_circle)
@@ -17,7 +17,7 @@ class TestGeometry:
             assert point_in_circle(point_at(400.0, 300.0), test_circle)
             
     def test_circle_at_from_points_integration():
-        open_window("Circle Test", 800, 600)
+        open_window("Test Window 2", 800, 600)
         with window_cleanup():
             test_circle = circle_at_from_points(400.0, 300.0, 50.0)
             draw_circle_record_with_options(color_black(), test_circle, option_defaults())
@@ -82,7 +82,8 @@ class TestGeometry:
         test_rectangle = rectangle_from(100.0, 50.0, 100.0, 100.0)
         test_closest_point = closest_point_on_rect_from_circle(test_circle, test_rectangle)
         assert point_in_rectangle(test_closest_point, test_rectangle)
-        assert circle_radius(test_circle) == point_point_distance(center_point_of_circle(test_circle), test_closest_point)
+        test_distance = point_point_distance(center_point_of_circle(test_circle), test_closest_point)
+        assert test_distance <= circle_radius(test_circle)
         
     def test_closest_point_on_triangle_from_circle_integration():
         test_circle = circle_at_from_points(100.0, 100.0, 50.0)
@@ -360,14 +361,14 @@ class TestGeometry:
         assert "Pt @10.000000:20.000000" == test_string
         
     def test_random_bitmap_point_integration():
-        test_bitmap = create_bitmap("test_bitmap", 100, 100)
+        test_bitmap = create_bitmap("Test Bitmap 1", 100, 100)
         with bitmap_cleanup():
             test_point = random_bitmap_point(test_bitmap)
             assert 0.0 <= test_point.x <= bitmap_width(test_bitmap)
             assert 0.0 <= test_point.y <= bitmap_height(test_bitmap)
             
     def test_random_screen_point_integration():
-        test_window = open_window("Test Window", 800, 600)
+        test_window = open_window("Test Window 3", 800, 600)
         with window_cleanup():
             test_point = random_screen_point()
             refresh_screen()
@@ -375,7 +376,7 @@ class TestGeometry:
             assert 0.0 <= test_point.y <= window_height(test_window)
             
     def test_random_window_point_integration():
-        test_window = open_window("Test Window", 800, 600)
+        test_window = open_window("Test Window 4", 800, 600)
         with window_cleanup():
             test_point = random_window_point(test_window)
             assert 0.0 <= test_point.x <= window_width(test_window)

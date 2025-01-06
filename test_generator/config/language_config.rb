@@ -1,4 +1,3 @@
-require_relative 'base_config'
 Dir[File.join(__dir__, 'languages', '*_config.rb')].sort.each { |file| require file }
 
 module TestGenerator
@@ -28,7 +27,8 @@ module TestGenerator
                 :comment_syntax,
                 :indentation,
                 :literal_cast,
-                :comparison_cast
+                :comparison_cast,
+                :test_main_file
 
     def initialize(config)
       validate_config(config)
@@ -54,6 +54,7 @@ module TestGenerator
       @literal_cast = config[:literal_cast]
       @comparison_cast = config[:comparison_cast]
       @class_wrapper_handler = ClassWrapperHandler.new(config[:class_wrapper])
+      @test_main_file = config[:test_main_file]
     end
 
     # Creates a configuration instance for a specific language

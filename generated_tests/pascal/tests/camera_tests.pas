@@ -6,7 +6,7 @@ type
     end;
     procedure TestCameraPositionIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 1', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testCameraPosition := CameraPosition();
     AssertEquals(0.0, testCameraPosition.x);
@@ -14,23 +14,23 @@ begin
 end;
 procedure TestCameraXIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 2', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     AssertEquals(100.0, CameraX());
 end;
 procedure TestCameraYIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 3', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 200.0));
     AssertEquals(200.0, CameraY());
 end;
 procedure TestCenterCameraOnVectorIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 4', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 1', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
@@ -40,9 +40,9 @@ begin
 end;
 procedure TestCenterCameraOnIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 5', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 2', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
@@ -52,7 +52,7 @@ begin
 end;
 procedure TestMoveCameraByVectorIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 6', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testVector := VectorFromAngle(0.0, 100.0);
     MoveCameraTo(0.0, 0.0);
@@ -62,7 +62,7 @@ begin
 end;
 procedure TestMoveCameraByIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 7', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     MoveCameraTo(0.0, 0.0);
     MoveCameraBy(100.0, 100.0);
@@ -71,14 +71,14 @@ begin
 end;
 procedure TestMoveCameraToPointIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 8', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     MoveCameraTo(PointAt(100.0, 100.0));
     AssertEquals(PointAt(100.0, 100.0), CameraPosition());
 end;
 procedure TestMoveCameraToIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 9', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     MoveCameraTo(100.0, 100.0);
     AssertEquals(100.0, CameraX());
@@ -86,7 +86,7 @@ begin
 end;
 procedure TestPointInWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 10', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testPoint := PointAt(400.0, 300.0);
     AssertTrue(PointInWindow(testWindow, testPoint));
@@ -95,7 +95,7 @@ begin
 end;
 procedure TestPointOnScreenIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 11', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testPoint := PointAt(400.0, 300.0);
     AssertTrue(PointOnScreen(testPoint));
@@ -104,7 +104,7 @@ begin
 end;
 procedure TestRectInWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 12', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraX(0.0);
     SetCameraY(0.0);
@@ -115,7 +115,7 @@ begin
 end;
 procedure TestRectOnScreenIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 13', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(0.0, 0.0, 100.0, 100.0);
     AssertTrue(RectOnScreen(testRectangle));
@@ -124,7 +124,7 @@ begin
 end;
 procedure TestScreenCenterIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 14', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraX(0.0);
     SetCameraY(0.0);
@@ -134,7 +134,7 @@ begin
 end;
 procedure TestScreenRectangleIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 15', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := ScreenRectangle();
     AssertEquals(800.0, testRectangle.width);
@@ -142,28 +142,28 @@ begin
 end;
 procedure TestSetCameraPositionIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 16', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     AssertEquals(PointAt(100.0, 100.0), CameraPosition());
 end;
 procedure TestSetCameraXIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 17', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraX(100.0);
     AssertEquals(100.0, CameraX());
 end;
 procedure TestSetCameraYIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 18', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraY(100.0);
     AssertEquals(100.0, CameraY());
 end;
 procedure TestToScreenPointIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 19', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     testScreenPoint := ToScreen(PointAt(150.0, 150.0));
@@ -172,7 +172,7 @@ begin
 end;
 procedure TestToScreenRectangleIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 20', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 200.0);
     screenRectangle := ToScreen(testRectangle);
@@ -181,7 +181,7 @@ begin
 end;
 procedure TestToScreenXIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 21', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraX(100.0);
     testScreenX := ToScreenX(150.0);
@@ -189,7 +189,7 @@ begin
 end;
 procedure TestToScreenYIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 22', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraY(100.0);
     testScreenY := ToScreenY(150.0);
@@ -197,7 +197,7 @@ begin
 end;
 procedure TestToWorldIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 23', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     testWorldPoint := ToWorld(PointAt(400.0, 300.0));
@@ -206,7 +206,7 @@ begin
 end;
 procedure TestToWorldXIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 24', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     testWorldX := ToWorldX(400.0);
@@ -214,7 +214,7 @@ begin
 end;
 procedure TestToWorldYIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 25', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     SetCameraPosition(PointAt(100.0, 100.0));
     testWorldY := ToWorldY(300.0);
@@ -232,7 +232,7 @@ begin
 end;
 procedure TestWindowAreaIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 26', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testArea := WindowArea(testWindow);
     AssertEquals(800.0, testArea.width);
@@ -242,5 +242,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

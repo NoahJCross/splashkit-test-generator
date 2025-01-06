@@ -7,7 +7,7 @@ mod test_camera {
     use super::*;
     #[test]
     fn test_camera_position_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 1".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_camera_position = camera_position();
         assert_eq!(0.0, test_camera_position.x);
@@ -15,23 +15,23 @@ mod test_camera {
     }
     #[test]
     fn test_camera_x_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 2".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_position(point_at(100.0, 100.0));
         assert_eq!(100.0, camera_x());
     }
     #[test]
     fn test_camera_y_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 3".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_position(point_at(100.0, 200.0));
         assert_eq!(200.0, camera_y());
     }
     #[test]
     fn test_center_camera_on_vector_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 4".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 1".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
         let test_sprite = create_sprite(test_bitmap);
         let _cleanup_sprite = SpriteCleanup::new();
@@ -41,9 +41,9 @@ mod test_camera {
     }
     #[test]
     fn test_center_camera_on_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 5".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 2".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
         let test_sprite = create_sprite(test_bitmap);
         let _cleanup_sprite = SpriteCleanup::new();
@@ -53,7 +53,7 @@ mod test_camera {
     }
     #[test]
     fn test_move_camera_by_vector_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 6".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_vector = vector_from_angle(0.0, 100.0);
         move_camera_to(0.0, 0.0);
@@ -63,7 +63,7 @@ mod test_camera {
     }
     #[test]
     fn test_move_camera_by_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 7".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         move_camera_to(0.0, 0.0);
         move_camera_by(100.0, 100.0);
@@ -72,14 +72,14 @@ mod test_camera {
     }
     #[test]
     fn test_move_camera_to_point_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 8".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         move_camera_to_point(point_at(100.0, 100.0));
         assert_eq!(point_at(100.0, 100.0), camera_position());
     }
     #[test]
     fn test_move_camera_to_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 9".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         move_camera_to(100.0, 100.0);
         assert_eq!(100.0, camera_x());
@@ -87,7 +87,7 @@ mod test_camera {
     }
     #[test]
     fn test_point_in_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 10".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_point = point_at(400.0, 300.0);
         assert!(point_in_window(test_window, test_point));
@@ -96,7 +96,7 @@ mod test_camera {
     }
     #[test]
     fn test_point_on_screen_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 11".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_point = point_at(400.0, 300.0);
         assert!(point_on_screen(test_point));
@@ -105,7 +105,7 @@ mod test_camera {
     }
     #[test]
     fn test_rect_in_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 12".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_x(0.0);
         set_camera_y(0.0);
@@ -116,7 +116,7 @@ mod test_camera {
     }
     #[test]
     fn test_rect_on_screen_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 13".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rectangle = rectangle_from(0.0, 0.0, 100.0, 100.0);
         assert!(rect_on_screen(test_rectangle));
@@ -125,7 +125,7 @@ mod test_camera {
     }
     #[test]
     fn test_screen_center_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 14".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_x(0.0);
         set_camera_y(0.0);
@@ -135,7 +135,7 @@ mod test_camera {
     }
     #[test]
     fn test_screen_rectangle_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 15".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rectangle = screen_rectangle();
         assert_eq!(800.0, test_rectangle.width);
@@ -143,28 +143,28 @@ mod test_camera {
     }
     #[test]
     fn test_set_camera_position_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 16".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_position(point_at(100.0, 100.0));
         assert_eq!(point_at(100.0, 100.0), camera_position());
     }
     #[test]
     fn test_set_camera_x_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 17".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_x(100.0);
         assert_eq!(100.0, camera_x());
     }
     #[test]
     fn test_set_camera_y_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 18".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_y(100.0);
         assert_eq!(100.0, camera_y());
     }
     #[test]
     fn test_to_screen_point_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 19".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_position(point_at(100.0, 100.0));
         let test_screen_point = to_screen_point(point_at(150.0, 150.0));
@@ -173,7 +173,7 @@ mod test_camera {
     }
     #[test]
     fn test_to_screen_rectangle_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 20".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 200.0);
         let screen_rectangle = to_screen_rectangle(test_rectangle);
@@ -182,7 +182,7 @@ mod test_camera {
     }
     #[test]
     fn test_to_screen_x_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 21".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_x(100.0);
         let test_screen_x = to_screen_x(150.0);
@@ -190,7 +190,7 @@ mod test_camera {
     }
     #[test]
     fn test_to_screen_y_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 22".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_y(100.0);
         let test_screen_y = to_screen_y(150.0);
@@ -198,7 +198,7 @@ mod test_camera {
     }
     #[test]
     fn test_to_world_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 23".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_position(point_at(100.0, 100.0));
         let test_world_point = to_world(point_at(400.0, 300.0));
@@ -207,7 +207,7 @@ mod test_camera {
     }
     #[test]
     fn test_to_world_x_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 24".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_position(point_at(100.0, 100.0));
         let test_world_x = to_world_x(400.0);
@@ -215,7 +215,7 @@ mod test_camera {
     }
     #[test]
     fn test_to_world_y_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 25".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         set_camera_position(point_at(100.0, 100.0));
         let test_world_y = to_world_y(300.0);
@@ -233,7 +233,7 @@ mod test_camera {
     }
     #[test]
     fn test_window_area_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 26".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_area = window_area(test_window);
         assert_eq!(800.0, test_area.width);

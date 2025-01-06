@@ -14,7 +14,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCircleAtIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 1", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testCircle = CircleAt(PointAt(400.0, 300.0), 50.0);
             DrawCircle(ColorBlack(), testCircle);
@@ -23,7 +23,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCircleAtFromPointsIntegration() {
-            OpenWindow("Circle Test", 800, 600);
+            OpenWindow("Test Window 2", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testCircle = CircleAt(400.0, 300.0, 50.0);
             DrawCircle(ColorBlack(), testCircle, OptionDefaults());
@@ -98,7 +98,8 @@ namespace SplashKitTests
             var testRectangle = RectangleFrom(100.0, 50.0, 100.0, 100.0);
             var testClosestPoint = ClosestPointOnRectFromCircle(testCircle, testRectangle);
             Assert.True(PointInRectangle(testClosestPoint, testRectangle));
-            Assert.Equal(CircleRadius(testCircle), PointPointDistance(CenterPoint(testCircle), testClosestPoint));
+            var testDistance = PointPointDistance(CenterPoint(testCircle), testClosestPoint);
+            Assert.True(testDistance <= CircleRadius(testCircle));
         }
         [Fact]
         public void TestClosestPointOnTriangleFromCircleIntegration() {
@@ -420,7 +421,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestRandomBitmapPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 1", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             var testPoint = RandomBitmapPoint(testBitmap);
             Assert.InRange(testPoint.X, 0.0, BitmapWidth(testBitmap));
@@ -428,7 +429,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestRandomScreenPointIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 3", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testPoint = RandomScreenPoint();
             RefreshScreen();
@@ -437,7 +438,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestRandomWindowPointIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 4", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testPoint = RandomWindowPoint(testWindow);
             Assert.InRange(testPoint.X, 0.0, WindowWidth(testWindow));

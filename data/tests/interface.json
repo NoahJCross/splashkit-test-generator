@@ -27,6 +27,16 @@
       "cleanup_type": "font",
       "function_name": "free_all_fonts",
       "args": []
+    },
+    {
+      "cleanup_type": "layout",
+      "function_name": "reset_layout",
+      "args": []
+    },
+    {
+      "cleanup_type": "interface_font",
+      "function_name": "set_interface_font",
+      "args": []
     }
   ],
   "tests": [
@@ -39,7 +49,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 1"
             },
             {
               "value_type": "int",
@@ -49,8 +59,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -58,12 +67,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -159,7 +173,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 1"
                 },
                 {
                   "value_type": "function",
@@ -236,7 +250,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 1"
                 }
               ]
             },
@@ -263,7 +277,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 2"
             },
             {
               "value_type": "int",
@@ -273,8 +287,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -282,12 +295,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -383,7 +401,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 2"
                 },
                 {
                   "value_type": "function",
@@ -424,7 +442,6 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "add_column_relative",
@@ -461,7 +478,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 2"
                 }
               ]
             },
@@ -488,7 +505,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 3"
             },
             {
               "value_type": "int",
@@ -498,8 +515,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -512,7 +528,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 1"
             },
             {
               "value_type": "int",
@@ -647,7 +663,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 3"
                 },
                 {
                   "value_type": "function",
@@ -701,7 +717,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 3"
                 }
               ]
             },
@@ -739,7 +755,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 4"
             },
             {
               "value_type": "int",
@@ -749,8 +765,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -763,7 +778,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 2"
             },
             {
               "value_type": "int",
@@ -965,7 +980,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 5"
             },
             {
               "value_type": "int",
@@ -975,8 +990,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -989,7 +1003,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 3"
             },
             {
               "value_type": "int",
@@ -1196,7 +1210,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 6"
             },
             {
               "value_type": "int",
@@ -1206,8 +1220,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -1220,7 +1233,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 4"
             },
             {
               "value_type": "int",
@@ -1380,7 +1393,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 4"
                 },
                 {
                   "value_type": "function",
@@ -1438,7 +1451,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 4"
                 }
               ]
             },
@@ -1476,7 +1489,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 7"
             },
             {
               "value_type": "int",
@@ -1486,8 +1499,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -1500,7 +1512,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 5"
             },
             {
               "value_type": "int",
@@ -1635,7 +1647,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 5"
                 },
                 {
                   "value_type": "function",
@@ -1683,7 +1695,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 5"
                 }
               ]
             },
@@ -1721,7 +1733,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 8"
             },
             {
               "value_type": "int",
@@ -1731,8 +1743,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -1745,7 +1756,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 6"
             },
             {
               "value_type": "int",
@@ -1905,7 +1916,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 6"
                 },
                 {
                   "value_type": "function",
@@ -1957,7 +1968,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 6"
                 }
               ]
             },
@@ -1995,7 +2006,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 9"
             },
             {
               "value_type": "int",
@@ -2005,8 +2016,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -2182,7 +2192,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 10"
             },
             {
               "value_type": "int",
@@ -2192,8 +2202,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -2302,7 +2311,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 7"
                 },
                 {
                   "value_type": "function",
@@ -2346,7 +2355,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 7"
                 }
               ]
             },
@@ -2384,7 +2393,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 11"
             },
             {
               "value_type": "int",
@@ -2394,8 +2403,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -2504,7 +2512,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 8"
                 },
                 {
                   "value_type": "function",
@@ -2552,7 +2560,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 8"
                 }
               ]
             },
@@ -2590,7 +2598,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 12"
             },
             {
               "value_type": "int",
@@ -2600,8 +2608,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -2787,7 +2794,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 13"
             },
             {
               "value_type": "int",
@@ -2797,8 +2804,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -2913,7 +2919,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 9"
                 },
                 {
                   "value_type": "function",
@@ -2961,7 +2967,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 9"
                 }
               ]
             },
@@ -2999,7 +3005,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 14"
             },
             {
               "value_type": "int",
@@ -3009,8 +3015,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -3125,7 +3130,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 10"
                 },
                 {
                   "value_type": "function",
@@ -3187,7 +3192,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 10"
                 }
               ]
             },
@@ -3225,7 +3230,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 15"
             },
             {
               "value_type": "int",
@@ -3235,8 +3240,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -3257,12 +3261,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -3423,7 +3432,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 16"
             },
             {
               "value_type": "int",
@@ -3433,8 +3442,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -3455,12 +3463,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -3556,7 +3569,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 11"
                 },
                 {
                   "value_type": "function",
@@ -3600,7 +3613,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 11"
                 }
               ]
             },
@@ -3638,7 +3651,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 17"
             },
             {
               "value_type": "int",
@@ -3648,8 +3661,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -3670,12 +3682,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -3781,7 +3798,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 12"
                 },
                 {
                   "value_type": "function",
@@ -3829,7 +3846,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 12"
                 }
               ]
             },
@@ -3870,7 +3887,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 18"
             },
             {
               "value_type": "int",
@@ -3880,8 +3897,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -3913,12 +3929,17 @@
           "args": []
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -4014,7 +4035,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 13"
                 },
                 {
                   "value_type": "function",
@@ -4044,7 +4065,7 @@
               "step_type": "reassignment",
               "value_type": "function",
               "variable_name": "button_clicked",
-              "function_name": "button_labeled",
+              "function_name": "button",
               "args": [
                 {
                   "value_type": "string",
@@ -4058,7 +4079,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 13"
                 }
               ]
             },
@@ -4096,6 +4117,11 @@
             },
             "value2": null
           }
+        },
+        {
+          "step_type": "function",
+          "function_name": "enable_interface",
+          "args": []
         }
       ]
     },
@@ -4108,7 +4134,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 19"
             },
             {
               "value_type": "int",
@@ -4118,8 +4144,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -4127,12 +4152,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -4228,7 +4258,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 14"
                 },
                 {
                   "value_type": "function",
@@ -4270,7 +4300,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 14"
                 }
               ]
             },
@@ -4297,7 +4327,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 20"
             },
             {
               "value_type": "int",
@@ -4307,8 +4337,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -4321,12 +4350,17 @@
           "args": []
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -4422,7 +4456,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 15"
                 },
                 {
                   "value_type": "function",
@@ -4464,7 +4498,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 15"
                 }
               ]
             },
@@ -4599,7 +4633,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 16"
                 },
                 {
                   "value_type": "function",
@@ -4643,7 +4677,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 16"
                 }
               ]
             },
@@ -4693,7 +4727,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 21"
             },
             {
               "value_type": "int",
@@ -4703,8 +4737,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -4712,12 +4745,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -4813,7 +4851,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 17"
                 },
                 {
                   "value_type": "function",
@@ -4879,7 +4917,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 17"
                 }
               ]
             },
@@ -4906,7 +4944,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 22"
             },
             {
               "value_type": "int",
@@ -4916,8 +4954,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -4925,12 +4962,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -5026,7 +5068,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 18"
                 },
                 {
                   "value_type": "function",
@@ -5068,7 +5110,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 18"
                 }
               ]
             },
@@ -5095,7 +5137,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 23"
             },
             {
               "value_type": "int",
@@ -5105,8 +5147,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -5114,12 +5155,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -5215,7 +5261,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 19"
                 },
                 {
                   "value_type": "function",
@@ -5322,14 +5368,13 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "end_panel",
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 19"
                 }
               ]
             },
@@ -5356,7 +5401,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 24"
             },
             {
               "value_type": "int",
@@ -5366,8 +5411,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -5375,12 +5419,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -5476,7 +5525,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 20"
                 },
                 {
                   "value_type": "function",
@@ -5540,14 +5589,13 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "end_panel",
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 20"
                 }
               ]
             },
@@ -5574,7 +5622,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 25"
             },
             {
               "value_type": "int",
@@ -5584,8 +5632,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -5593,12 +5640,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -5671,7 +5723,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Press space to end test"
+                  "value": "Test Button"
                 },
                 {
                   "value_type": "function",
@@ -5694,7 +5746,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 21"
                 },
                 {
                   "value_type": "function",
@@ -5741,7 +5793,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Click to end test"
+                  "value": "Test Button"
                 }
               ]
             },
@@ -5756,7 +5808,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 21"
                 }
               ]
             },
@@ -5779,6 +5831,21 @@
       "steps": [
         {
           "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_interface_label_width",
+          "args": [
+            {
+              "value_type": "int",
+              "value": 100
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "get_interface_label_width",
           "args": [],
           "store_result": "test_label_width"
@@ -5789,7 +5856,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "int",
-              "value": 60
+              "value": 100
             },
             "value2": {
               "value_type": "variable",
@@ -5808,7 +5875,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 26"
             },
             {
               "value_type": "int",
@@ -5818,8 +5885,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -5827,12 +5893,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -5928,7 +5999,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 22"
                 },
                 {
                   "value_type": "function",
@@ -5988,7 +6059,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 22"
                 }
               ]
             },
@@ -6015,7 +6086,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 27"
             },
             {
               "value_type": "int",
@@ -6025,8 +6096,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -6070,12 +6140,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -6218,7 +6293,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 28"
             },
             {
               "value_type": "int",
@@ -6228,8 +6303,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -6250,12 +6324,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -6351,7 +6430,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 23"
                 },
                 {
                   "value_type": "function",
@@ -6395,7 +6474,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 23"
                 }
               ]
             },
@@ -6436,7 +6515,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 29"
             },
             {
               "value_type": "int",
@@ -6446,8 +6525,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -6468,12 +6546,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -6569,7 +6652,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 24"
                 },
                 {
                   "value_type": "function",
@@ -6627,7 +6710,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 24"
                 }
               ]
             },
@@ -6662,24 +6745,6 @@
     {
       "name": "interface_enabled",
       "steps": [
-        {
-          "step_type": "function",
-          "function_name": "open_window",
-          "args": [
-            {
-              "value_type": "string",
-              "value": "Test Window"
-            },
-            {
-              "value_type": "int",
-              "value": 800
-            },
-            {
-              "value_type": "int",
-              "value": 600
-            }
-          ]
-        },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
@@ -6752,12 +6817,17 @@
       "name": "interface_style_panel",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 30"
             },
             {
               "value_type": "int",
@@ -6767,8 +6837,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -6799,12 +6868,17 @@
           "store_result": "panel_rectangle"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -6927,7 +7001,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 31"
             },
             {
               "value_type": "int",
@@ -6937,8 +7011,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -6946,12 +7019,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -7047,7 +7125,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 25"
                 },
                 {
                   "value_type": "function",
@@ -7089,7 +7167,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 25"
                 }
               ]
             },
@@ -7116,7 +7194,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 32"
             },
             {
               "value_type": "int",
@@ -7126,8 +7204,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -7158,12 +7235,17 @@
           "store_result": "test_rectangle"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -7267,7 +7349,6 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "draw_interface",
@@ -7291,7 +7372,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 33"
             },
             {
               "value_type": "int",
@@ -7301,8 +7382,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -7331,12 +7411,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -7432,7 +7517,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 26"
                 },
                 {
                   "value_type": "function",
@@ -7507,7 +7592,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 26"
                 }
               ]
             },
@@ -7559,7 +7644,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 34"
             },
             {
               "value_type": "int",
@@ -7569,8 +7654,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -7585,12 +7669,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -7686,7 +7775,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 27"
                 },
                 {
                   "value_type": "function",
@@ -7747,7 +7836,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 27"
                 }
               ]
             },
@@ -7785,7 +7874,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 35"
             },
             {
               "value_type": "int",
@@ -7795,8 +7884,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -7804,12 +7892,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -7827,7 +7920,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -7905,7 +7998,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 28"
                 },
                 {
                   "value_type": "function",
@@ -7982,7 +8075,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 28"
                 }
               ]
             },
@@ -8009,7 +8102,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 36"
             },
             {
               "value_type": "int",
@@ -8019,8 +8112,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -8058,12 +8150,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -8081,7 +8178,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8209,7 +8306,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Number Box Test"
+              "value": "Test Window 37"
             },
             {
               "value_type": "int",
@@ -8219,8 +8316,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -8235,12 +8331,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -8258,7 +8359,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8336,7 +8437,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 29"
                 },
                 {
                   "value_type": "function",
@@ -8383,7 +8484,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 29"
                 }
               ]
             },
@@ -8424,7 +8525,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 38"
             },
             {
               "value_type": "int",
@@ -8434,8 +8535,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -8450,12 +8550,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -8473,7 +8578,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -8551,7 +8656,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 30"
                 },
                 {
                   "value_type": "function",
@@ -8612,7 +8717,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 30"
                 }
               ]
             },
@@ -8653,7 +8758,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 39"
             },
             {
               "value_type": "int",
@@ -8663,8 +8768,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -8672,12 +8776,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -8773,7 +8882,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 31"
                 },
                 {
                   "value_type": "function",
@@ -8880,14 +8989,13 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "end_panel",
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 31"
                 }
               ]
             },
@@ -8909,12 +9017,17 @@
       "name": "paragraph",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 40"
             },
             {
               "value_type": "int",
@@ -8924,13 +9037,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -8954,6 +9071,11 @@
         },
         {
           "step_type": "cleanup",
+          "cleanup_type": "interface_font",
+          "store_result": "cleanup_interface_font"
+        },
+        {
+          "step_type": "cleanup",
           "cleanup_type": "font",
           "store_result": "cleanup_font"
         },
@@ -8973,7 +9095,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -8991,7 +9113,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -9069,7 +9191,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 32"
                 },
                 {
                   "value_type": "function",
@@ -9111,7 +9233,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 32"
                 }
               ]
             },
@@ -9126,6 +9248,16 @@
               "args": []
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_interface_font_size",
+          "args": [
+            {
+              "value_type": "int",
+              "value": 13
+            }
+          ]
         }
       ]
     },
@@ -9138,7 +9270,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 41"
             },
             {
               "value_type": "int",
@@ -9148,8 +9280,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -9180,12 +9311,17 @@
           "store_result": "test_rectangle"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -9203,7 +9339,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -9277,7 +9413,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "paragraph",
+              "function_name": "paragraph_at_position",
               "args": [
                 {
                   "value_type": "string",
@@ -9312,7 +9448,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 42"
             },
             {
               "value_type": "int",
@@ -9322,8 +9458,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -9331,12 +9466,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -9354,7 +9494,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -9432,7 +9572,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 33"
                 },
                 {
                   "value_type": "function",
@@ -9514,7 +9654,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 33"
                 }
               ]
             },
@@ -9536,12 +9676,17 @@
       "name": "set_interface_accent_color",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 43"
             },
             {
               "value_type": "int",
@@ -9551,13 +9696,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -9580,7 +9729,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -9598,7 +9747,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -9676,7 +9825,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 34"
                 },
                 {
                   "value_type": "function",
@@ -9718,7 +9867,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 34"
                 }
               ]
             },
@@ -9740,12 +9889,17 @@
       "name": "set_interface_border_color",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 44"
             },
             {
               "value_type": "int",
@@ -9755,13 +9909,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -9780,7 +9938,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -9798,7 +9956,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -9876,7 +10034,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 35"
                 },
                 {
                   "value_type": "function",
@@ -9918,7 +10076,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 35"
                 }
               ]
             },
@@ -9940,12 +10098,17 @@
       "name": "set_interface_colors_auto",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 45"
             },
             {
               "value_type": "int",
@@ -9955,13 +10118,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -9997,7 +10164,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -10015,7 +10182,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -10093,7 +10260,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 36"
                 },
                 {
                   "value_type": "function",
@@ -10135,7 +10302,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 36"
                 }
               ]
             },
@@ -10157,12 +10324,17 @@
       "name": "set_interface_element_color",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 46"
             },
             {
               "value_type": "int",
@@ -10172,13 +10344,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -10201,7 +10377,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -10219,7 +10395,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -10291,14 +10467,13 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "start_panel",
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 37"
                 },
                 {
                   "value_type": "function",
@@ -10340,7 +10515,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 37"
                 }
               ]
             },
@@ -10362,12 +10537,17 @@
       "name": "set_interface_element_shadows",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 47"
             },
             {
               "value_type": "int",
@@ -10377,13 +10557,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -10420,7 +10604,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -10438,7 +10622,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -10516,7 +10700,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 38"
                 },
                 {
                   "value_type": "function",
@@ -10558,7 +10742,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 38"
                 }
               ]
             },
@@ -10580,12 +10764,17 @@
       "name": "set_interface_font_font_as_string",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 48"
             },
             {
               "value_type": "int",
@@ -10595,8 +10784,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -10619,6 +10807,11 @@
         },
         {
           "step_type": "cleanup",
+          "cleanup_type": "interface_font",
+          "store_result": "cleanup_interface_font"
+        },
+        {
+          "step_type": "cleanup",
           "cleanup_type": "font",
           "store_result": "cleanup_font"
         },
@@ -10632,18 +10825,22 @@
             },
             {
               "value_type": "string",
-              "value": "demolition.ttf"
+              "value": "demolition.otf"
             }
           ]
         },
-
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
         {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -10661,7 +10858,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -10712,6 +10909,16 @@
             },
             {
               "step_type": "function",
+              "function_name": "set_interface_font_font_as_string",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "hara"
+                }
+              ]
+            },
+            {
+              "step_type": "function",
               "function_name": "start_panel",
               "args": [
                 {
@@ -10744,16 +10951,6 @@
             },
             {
               "step_type": "function",
-              "function_name": "set_interface_font_font_as_string",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "hara"
-                }
-              ]
-            },
-            {
-              "step_type": "function",
               "function_name": "label_element",
               "args": [
                 {
@@ -10769,6 +10966,16 @@
                 {
                   "value_type": "string",
                   "value": "Hara Font"
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "set_interface_font_font_as_string",
+              "args": [
+                {
+                  "value_type": "string",
+                  "value": "demolition"
                 }
               ]
             },
@@ -10801,16 +11008,6 @@
                       "value": 100.0
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "set_interface_font_font_as_string",
-              "args": [
-                {
-                  "value_type": "string",
-                  "value": "demolition"
                 }
               ]
             },
@@ -10852,12 +11049,17 @@
       "name": "set_interface_font",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 49"
             },
             {
               "value_type": "int",
@@ -10867,8 +11069,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -10892,6 +11093,11 @@
         },
         {
           "step_type": "cleanup",
+          "cleanup_type": "interface_font",
+          "store_result": "cleanup_interface_font"
+        },
+        {
+          "step_type": "cleanup",
           "cleanup_type": "font",
           "store_result": "cleanup_font"
         },
@@ -10905,19 +11111,23 @@
             },
             {
               "value_type": "string",
-              "value": "demolition.ttf"
+              "value": "demolition.otf"
             }
           ],
           "store_result": "demolition_font"
         },
-
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
         {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -10935,7 +11145,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -10986,6 +11196,16 @@
             },
             {
               "step_type": "function",
+              "function_name": "set_interface_font",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "hara_font"
+                }
+              ]
+            },
+            {
+              "step_type": "function",
               "function_name": "start_panel",
               "args": [
                 {
@@ -11018,16 +11238,6 @@
             },
             {
               "step_type": "function",
-              "function_name": "set_interface_font",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "hara_font"
-                }
-              ]
-            },
-            {
-              "step_type": "function",
               "function_name": "label_element",
               "args": [
                 {
@@ -11043,6 +11253,16 @@
                 {
                   "value_type": "string",
                   "value": "Hara Font"
+                }
+              ]
+            },
+            {
+              "step_type": "function",
+              "function_name": "set_interface_font",
+              "args": [
+                {
+                  "value_type": "variable",
+                  "variable_name": "demolition_font"
                 }
               ]
             },
@@ -11075,16 +11295,6 @@
                       "value": 100.0
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "step_type": "function",
-              "function_name": "set_interface_font",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "demolition_font"
                 }
               ]
             },
@@ -11126,12 +11336,17 @@
       "name": "set_interface_font_size",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 50"
             },
             {
               "value_type": "int",
@@ -11141,8 +11356,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -11150,12 +11364,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -11173,7 +11392,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -11264,7 +11483,6 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "label_element",
@@ -11327,7 +11545,6 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "label_element",
@@ -11390,7 +11607,6 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "label_element",
@@ -11422,6 +11638,16 @@
               "args": []
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_interface_font_size",
+          "args": [
+            {
+              "value_type": "int",
+              "value": 13
+            }
+          ]
         }
       ]
     },
@@ -11434,7 +11660,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 51"
             },
             {
               "value_type": "int",
@@ -11444,8 +11670,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -11483,12 +11708,17 @@
       "name": "set_interface_panel_shadows",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 52"
             },
             {
               "value_type": "int",
@@ -11498,13 +11728,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -11541,7 +11775,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -11559,7 +11793,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -11637,7 +11871,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 39"
                 },
                 {
                   "value_type": "function",
@@ -11679,7 +11913,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 39"
                 }
               ]
             },
@@ -11701,12 +11935,17 @@
       "name": "set_interface_root_text_color",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 53"
             },
             {
               "value_type": "int",
@@ -11716,13 +11955,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -11741,7 +11984,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -11759,7 +12002,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -11869,7 +12112,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 40"
                 },
                 {
                   "value_type": "function",
@@ -11911,7 +12154,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 40"
                 }
               ]
             },
@@ -11933,12 +12176,17 @@
       "name": "set_interface_shadows",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 54"
             },
             {
               "value_type": "int",
@@ -11948,13 +12196,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -11991,7 +12243,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -12009,7 +12261,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -12087,7 +12339,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 41"
                 },
                 {
                   "value_type": "function",
@@ -12129,7 +12381,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 41"
                 }
               ]
             },
@@ -12151,12 +12403,17 @@
       "name": "set_interface_spacing",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 55"
             },
             {
               "value_type": "int",
@@ -12166,8 +12423,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -12189,12 +12445,17 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -12212,7 +12473,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -12290,7 +12551,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 42"
                 },
                 {
                   "value_type": "function",
@@ -12342,7 +12603,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 42"
                 }
               ]
             },
@@ -12364,12 +12625,17 @@
       "name": "set_interface_style",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 56"
             },
             {
               "value_type": "int",
@@ -12379,13 +12645,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -12404,7 +12674,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -12422,7 +12692,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -12500,7 +12770,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 43"
                 },
                 {
                   "value_type": "function",
@@ -12542,7 +12812,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 43"
                 }
               ]
             },
@@ -12564,12 +12834,17 @@
       "name": "set_interface_style_with_color",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 57"
             },
             {
               "value_type": "int",
@@ -12579,8 +12854,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -12589,7 +12863,12 @@
         },
         {
           "step_type": "function",
-          "function_name": "set_interface_style",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
+          "step_type": "function",
+          "function_name": "set_interface_style_with_color",
           "args": [
             {
               "value_type": "enum",
@@ -12609,7 +12888,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -12627,7 +12906,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -12705,7 +12984,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 44"
                 },
                 {
                   "value_type": "function",
@@ -12747,7 +13026,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 44"
                 }
               ]
             },
@@ -12769,12 +13048,17 @@
       "name": "set_interface_text_color",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 58"
             },
             {
               "value_type": "int",
@@ -12784,13 +13068,17 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "function",
@@ -12809,7 +13097,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -12827,7 +13115,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -12905,7 +13193,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 45"
                 },
                 {
                   "value_type": "function",
@@ -12947,7 +13235,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 45"
                 }
               ]
             },
@@ -12969,12 +13257,17 @@
       "name": "set_layout_height",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 59"
             },
             {
               "value_type": "int",
@@ -12984,22 +13277,25 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
-
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
         {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -13017,7 +13313,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -13095,7 +13391,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 46"
                 },
                 {
                   "value_type": "function",
@@ -13147,7 +13443,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 46"
                 }
               ]
             },
@@ -13174,7 +13470,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 60"
             },
             {
               "value_type": "int",
@@ -13184,8 +13480,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -13193,12 +13488,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -13216,7 +13516,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -13294,7 +13594,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 47"
                 },
                 {
                   "value_type": "function",
@@ -13351,7 +13651,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 47"
                 }
               ]
             },
@@ -13378,7 +13678,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 61"
             },
             {
               "value_type": "int",
@@ -13388,8 +13688,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -13433,12 +13732,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -13456,7 +13760,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -13589,7 +13893,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 62"
             },
             {
               "value_type": "int",
@@ -13599,8 +13903,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -13621,12 +13924,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -13644,7 +13952,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -13722,7 +14030,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 48"
                 },
                 {
                   "value_type": "function",
@@ -13774,7 +14082,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 48"
                 }
               ]
             },
@@ -13815,7 +14123,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 63"
             },
             {
               "value_type": "int",
@@ -13825,8 +14133,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -13847,12 +14154,17 @@
           "is_mutable": true
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -13870,7 +14182,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -13948,7 +14260,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 49"
                 },
                 {
                   "value_type": "function",
@@ -13988,7 +14300,7 @@
               "step_type": "reassignment",
               "value_type": "function",
               "variable_name": "slider_result",
-              "function_name": "slider",
+              "function_name": "slider_labeled",
               "args": [
                 {
                   "value_type": "string",
@@ -14014,7 +14326,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 49"
                 }
               ]
             },
@@ -14055,7 +14367,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 64"
             },
             {
               "value_type": "int",
@@ -14065,8 +14377,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -14074,12 +14385,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -14097,7 +14413,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -14175,7 +14491,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 50"
                 },
                 {
                   "value_type": "function",
@@ -14252,7 +14568,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 50"
                 }
               ]
             },
@@ -14279,7 +14595,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 65"
             },
             {
               "value_type": "int",
@@ -14289,8 +14605,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -14298,12 +14613,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -14321,7 +14641,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -14399,7 +14719,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 51"
                 },
                 {
                   "value_type": "function",
@@ -14480,7 +14800,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 51"
                 }
               ]
             },
@@ -14507,7 +14827,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 66"
             },
             {
               "value_type": "int",
@@ -14517,8 +14837,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -14526,12 +14845,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -14549,7 +14873,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -14627,7 +14951,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 52"
                 },
                 {
                   "value_type": "function",
@@ -14713,7 +15037,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 52"
                 }
               ]
             },
@@ -14735,12 +15059,17 @@
       "name": "start_custom_layout",
       "steps": [
         {
+          "step_type": "cleanup",
+          "cleanup_type": "layout",
+          "store_result": "layout_cleanup"
+        },
+        {
           "step_type": "function",
           "function_name": "open_window",
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 67"
             },
             {
               "value_type": "int",
@@ -14750,8 +15079,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -14759,12 +15087,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -14782,7 +15115,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -14860,7 +15193,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 53"
                 },
                 {
                   "value_type": "function",
@@ -14917,7 +15250,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 53"
                 }
               ]
             },
@@ -14944,7 +15277,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 68"
             },
             {
               "value_type": "int",
@@ -14954,8 +15287,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -14986,12 +15318,17 @@
           "store_result": "test_rect"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -15009,7 +15346,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -15138,7 +15475,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 69"
             },
             {
               "value_type": "int",
@@ -15148,8 +15485,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -15157,12 +15493,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -15258,7 +15599,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 54"
                 },
                 {
                   "value_type": "function",
@@ -15324,7 +15665,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 54"
                 }
               ]
             },
@@ -15351,7 +15692,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 70"
             },
             {
               "value_type": "int",
@@ -15361,8 +15702,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -15393,12 +15733,17 @@
           "store_result": "test_rectangle"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -15416,7 +15761,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -15494,7 +15839,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 55"
                 },
                 {
                   "value_type": "variable",
@@ -15518,7 +15863,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 55"
                 }
               ]
             },
@@ -15545,7 +15890,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 71"
             },
             {
               "value_type": "int",
@@ -15555,8 +15900,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -15564,12 +15908,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -15665,7 +16014,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 56"
                 },
                 {
                   "value_type": "function",
@@ -15772,14 +16121,13 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "end_panel",
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 56"
                 }
               ]
             },
@@ -15806,7 +16154,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 72"
             },
             {
               "value_type": "int",
@@ -15816,8 +16164,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -15825,12 +16172,17 @@
           "store_result": "cleanup_window"
         },
         {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
+        },
+        {
           "step_type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -15926,7 +16278,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 57"
                 },
                 {
                   "value_type": "function",
@@ -15990,14 +16342,13 @@
                 }
               ]
             },
-
             {
               "step_type": "function",
               "function_name": "end_panel",
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 57"
                 }
               ]
             },
@@ -16024,7 +16375,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 73"
             },
             {
               "value_type": "int",
@@ -16034,8 +16385,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -16050,10 +16400,15 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "string_ref",
           "variable_name": "text_result",
           "value": "initial_text",
           "is_mutable": true
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "while",
@@ -16061,7 +16416,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -16079,7 +16434,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -16157,7 +16512,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 58"
                 },
                 {
                   "value_type": "function",
@@ -16201,7 +16556,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 58"
                 }
               ]
             },
@@ -16242,7 +16597,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 74"
             },
             {
               "value_type": "int",
@@ -16252,8 +16607,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -16291,10 +16645,15 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "string_ref",
           "variable_name": "text_result",
           "value": "initial_text",
           "is_mutable": true
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "while",
@@ -16302,7 +16661,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -16320,7 +16679,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -16445,7 +16804,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "Test Window"
+              "value": "Test Window 75"
             },
             {
               "value_type": "int",
@@ -16455,8 +16814,7 @@
               "value_type": "int",
               "value": 600
             }
-          ],
-          "store_result": "test_window"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -16471,10 +16829,15 @@
         },
         {
           "step_type": "variable",
-          "value_type": "reference",
+          "value_type": "string_ref",
           "variable_name": "text_result",
           "value": "initial_text",
           "is_mutable": true
+        },
+        {
+          "step_type": "function",
+          "function_name": "process_events",
+          "args": []
         },
         {
           "step_type": "while",
@@ -16482,7 +16845,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "key_typed",
+              "function_name": "key_down",
               "args": [
                 {
                   "value_type": "enum",
@@ -16500,7 +16863,7 @@
             },
             {
               "step_type": "function",
-              "function_name": "clear_screen",
+              "function_name": "clear_screen_to_white",
               "args": []
             },
             {
@@ -16578,7 +16941,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 59"
                 },
                 {
                   "value_type": "function",
@@ -16636,7 +16999,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Test Panel"
+                  "value": "Test Panel 59"
                 }
               ]
             },

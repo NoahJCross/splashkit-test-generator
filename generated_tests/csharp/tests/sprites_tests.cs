@@ -12,56 +12,56 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCallForAllSpritesWithValueIntegration() {
-            var spriteDelegates = new SpriteDelegates();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testSpriteDelegates = new SpriteDelegates();
+            var testBitmap = CreateBitmap("Test Bitmap 1", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite1 = CreateSprite(testBitmap);
+            CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            var testSprite2 = CreateSprite(testBitmap);
-            CallForAllSprites(spriteDelegates.SpriteFloatFunction, 300f);
-            Assert.Equal(2, spriteDelegates.FloatFunctionCallCount);
-            Assert.True(spriteDelegates.EventCalled);
+            CreateSprite(testBitmap);
+            CallForAllSprites(test_sprite_delegates.SpriteFloatFunction(), 300.0f);
+            Assert.Equal(2, test_sprite_delegates.FloatFunctionCallCount());
+            Assert.True(test_sprite_delegates.EventCalled());
         }
         [Fact]
         public void TestCallForAllSpritesIntegration() {
-            var spriteDelegates = new SpriteDelegates();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testSpriteDelegates = new SpriteDelegates();
+            var testBitmap = CreateBitmap("Test Bitmap 2", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite1 = CreateSprite(testBitmap);
+            CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            var testSprite2 = CreateSprite(testBitmap);
-            CallForAllSprites(spriteDelegates.SpriteFunction);
-            Assert.Equal(2, spriteDelegates.FunctionCallCount);
-            Assert.True(spriteDelegates.EventCalled);
+            CreateSprite(testBitmap);
+            CallForAllSprites(test_sprite_delegates.SpriteFunction());
+            Assert.Equal(2, test_sprite_delegates.FunctionCallCount());
+            Assert.True(test_sprite_delegates.EventCalled());
         }
         [Fact]
         public void TestCallOnSpriteEventIntegration() {
-            var spriteDelegates = new SpriteDelegates();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testSpriteDelegates = new SpriteDelegates();
+            var testBitmap = CreateBitmap("Test Bitmap 34", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 6", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
-            CallOnSpriteEvent(spriteDelegates.SpriteEventHandler);
+            CallOnSpriteEvent(test_sprite_delegates.SpriteEventHandler());
             UpdateSprite(testSprite);
-            StopCallingOnSpriteEvent(spriteDelegates.SpriteEventHandler);
-            Assert.True(spriteDelegates.EventCalled);
+            StopCallingOnSpriteEvent(test_sprite_delegates.SpriteEventHandler());
+            Assert.True(test_sprite_delegates.EventCalled());
         }
         [Fact]
         public void TestCenterPointOfSpriteIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 3", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-            var centerPoint = CenterPoint(testSprite);
-            Assert.Equal(150.0, centerPoint.X);
-            Assert.Equal(150.0, centerPoint.Y);
+            var testCenterPoint = CenterPoint(testSprite);
+            Assert.Equal(150.0, testCenterPoint.X);
+            Assert.Equal(150.0, testCenterPoint.Y);
         }
         [Fact]
         public void TestCreateSpriteIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 4", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
@@ -70,9 +70,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCreateSpriteWithAnimationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 5", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 1", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -81,64 +81,64 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCreateSpriteWithBitmapNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            CreateBitmap("Test Bitmap 6", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_bitmap");
+            var testSprite = CreateSprite("Test Bitmap 6");
             using var cleanupSprite = new SpriteCleanup();
             Assert.NotNull(testSprite);
             Assert.True(HasSprite(SpriteName(testSprite)));
         }
         [Fact]
         public void TestCreateSpriteNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 7", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite("Test Sprite 1", testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.NotNull(testSprite);
-            Assert.Equal("test_sprite", SpriteName(testSprite));
+            Assert.Equal("Test Sprite 1", SpriteName(testSprite));
         }
         [Fact]
         public void TestCreateSpriteNamedWithAnimationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 8", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 2", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            var testSprite = CreateSprite("Test Sprite 2", testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
             Assert.NotNull(testSprite);
-            Assert.Equal("test_sprite", SpriteName(testSprite));
+            Assert.Equal("Test Sprite 2", SpriteName(testSprite));
         }
         [Fact]
         public void TestCreateSpriteWithBitmapAndAnimationNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            CreateBitmap("Test Bitmap 9", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            LoadAnimationScript("Test Script 3", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testSprite = CreateSprite("test_bitmap", "test_animation");
+            var testSprite = CreateSprite("Test Bitmap 9", "test_animation");
             using var cleanupSprite = new SpriteCleanup();
             Assert.NotNull(testSprite);
             Assert.True(HasSprite(SpriteName(testSprite)));
         }
         [Fact]
         public void TestCreateSpritePackIntegration() {
-            Assert.False(HasSpritePack("test_pack"));
-            CreateSpritePack("test_pack");
-            using var cleanupSpritePack = new SpritePackCleanup("test_pack");
-            Assert.True(HasSpritePack("test_pack"));
+            Assert.False(HasSpritePack("Test Sprite Pack 1"));
+            CreateSpritePack("Test Sprite Pack 1");
+            using var cleanupSpritePack = new SpritePackCleanup("Test Sprite Pack 1");
+            Assert.True(HasSpritePack("Test Sprite Pack 1"));
         }
         [Fact]
         public void TestCurrentSpritePackIntegration() {
             Assert.Equal("default", CurrentSpritePack());
-            CreateSpritePack("test_pack");
-            using var cleanupSpritePack = new SpritePackCleanup("test_pack");
-            SelectSpritePack("test_pack");
-            Assert.Equal("test_pack", CurrentSpritePack());
+            CreateSpritePack("Test Sprite Pack 2");
+            using var cleanupSpritePack = new SpritePackCleanup("Test Sprite Pack 2");
+            SelectSpritePack("Test Sprite Pack 2");
+            Assert.Equal("Test Sprite Pack 2", CurrentSpritePack());
         }
         [Fact]
         public void TestDrawAllSpritesIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 1", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 10", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             ClearBitmap(testBitmap, ColorBlack());
             var testSprite1 = CreateSprite(testBitmap);
@@ -154,9 +154,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestDrawSpriteOffsetByIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 3", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 12", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             ClearBitmap(testBitmap, ColorBlack());
             var testSprite = CreateSprite(testBitmap);
@@ -169,12 +169,12 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestDrawSpriteIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 4", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 13", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             ClearBitmap(testBitmap, ColorBlack());
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
             ClearScreen(ColorWhite());
@@ -184,9 +184,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestDrawSpriteOffsetXYIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 2", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 11", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             ClearBitmap(testBitmap, ColorBlack());
             var testSprite = CreateSprite(testBitmap);
@@ -199,64 +199,64 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestFreeAllSpritesIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 14", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            CreateSprite("test_sprite1", testBitmap);
+            CreateSprite("Test Sprite 3", testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            CreateSprite("test_sprite2", testBitmap);
-            Assert.True(HasSprite("test_sprite1"));
-            Assert.True(HasSprite("test_sprite2"));
+            CreateSprite("Test Sprite 4", testBitmap);
+            Assert.True(HasSprite("Test Sprite 3"));
+            Assert.True(HasSprite("Test Sprite 4"));
             FreeAllSprites();
-            Assert.False(HasSprite("test_sprite1"));
-            Assert.False(HasSprite("test_sprite2"));
+            Assert.False(HasSprite("Test Sprite 3"));
+            Assert.False(HasSprite("Test Sprite 4"));
         }
         [Fact]
         public void TestFreeSpriteIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 15", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite("Test Sprite 5", testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            Assert.True(HasSprite("test_sprite"));
+            Assert.True(HasSprite("Test Sprite 5"));
             FreeSprite(testSprite);
-            Assert.False(HasSprite("test_sprite"));
+            Assert.False(HasSprite("Test Sprite 5"));
         }
         [Fact]
         public void TestFreeSpritePackIntegration() {
             Assert.Equal("default", CurrentSpritePack());
-            CreateSpritePack("test_pack");
-            using var cleanupSpritePack = new SpritePackCleanup("test_pack");
-            SelectSpritePack("test_pack");
-            Assert.True(HasSpritePack("test_pack"));
-            Assert.Equal("test_pack", CurrentSpritePack());
-            FreeSpritePack("test_pack");
-            Assert.False(HasSpritePack("test_pack"));
+            CreateSpritePack("Test Sprite Pack 3");
+            using var cleanupSpritePack = new SpritePackCleanup("Test Sprite Pack 3");
+            SelectSpritePack("Test Sprite Pack 3");
+            Assert.True(HasSpritePack("Test Sprite Pack 3"));
+            Assert.Equal("Test Sprite Pack 3", CurrentSpritePack());
+            FreeSpritePack("Test Sprite Pack 3");
+            Assert.False(HasSpritePack("Test Sprite Pack 3"));
             Assert.Equal("default", CurrentSpritePack());
         }
         [Fact]
         public void TestHasSpriteIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 16", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            Assert.False(HasSprite("test_sprite"));
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            Assert.False(HasSprite("Test Sprite 6"));
+            var testSprite = CreateSprite("Test Sprite 6", testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            Assert.True(HasSprite("test_sprite"));
+            Assert.True(HasSprite("Test Sprite 6"));
             FreeSprite(testSprite);
-            Assert.False(HasSprite("test_sprite"));
+            Assert.False(HasSprite("Test Sprite 6"));
         }
         [Fact]
         public void TestHasSpritePackIntegration() {
-            Assert.False(HasSpritePack("test_pack"));
-            CreateSpritePack("test_pack");
-            using var cleanupSpritePack = new SpritePackCleanup("test_pack");
-            Assert.True(HasSpritePack("test_pack"));
-            FreeSpritePack("test_pack");
-            Assert.False(HasSpritePack("test_pack"));
+            Assert.False(HasSpritePack("Test Sprite Pack 4"));
+            CreateSpritePack("Test Sprite Pack 4");
+            using var cleanupSpritePack = new SpritePackCleanup("Test Sprite Pack 4");
+            Assert.True(HasSpritePack("Test Sprite Pack 4"));
+            FreeSpritePack("Test Sprite Pack 4");
+            Assert.False(HasSpritePack("Test Sprite Pack 4"));
         }
         [Fact]
         public void TestMoveSpriteIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 17", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var startPosition = PointAt(100.0, 100.0);
             SpriteSetPosition(testSprite, startPosition);
@@ -267,20 +267,20 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMoveSpriteByVectorIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 18", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
             MoveSprite(testSprite, VectorTo(50.0, 50.0));
             Assert.Equal(150.0f, SpriteX(testSprite));
-            Assert.Equal(150f, SpriteY(testSprite));
+            Assert.Equal(150.0f, SpriteY(testSprite));
         }
         [Fact]
         public void TestMoveSpriteByVectorPercentIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 19", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
             MoveSprite(testSprite, VectorTo(50.0, 50.0), 0.5f);
@@ -289,9 +289,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMoveSpritePercentIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 20", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
             SpriteSetVelocity(testSprite, VectorTo(10.0, 10.0));
@@ -301,9 +301,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMoveSpriteToIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 21", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             MoveSpriteTo(testSprite, 400.0, 300.0);
             Assert.Equal(400.0f, SpriteX(testSprite));
@@ -311,28 +311,28 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSelectSpritePackIntegration() {
-            CreateSpritePack("test_pack");
-            using var cleanupSpritePack = new SpritePackCleanup("test_pack");
+            CreateSpritePack("Test Sprite Pack 5");
+            using var cleanupSpritePack = new SpritePackCleanup("Test Sprite Pack 5");
             Assert.Equal("default", CurrentSpritePack());
-            SelectSpritePack("test_pack");
-            Assert.Equal("test_pack", CurrentSpritePack());
+            SelectSpritePack("Test Sprite Pack 5");
+            Assert.Equal("Test Sprite Pack 5", CurrentSpritePack());
         }
         [Fact]
         public void TestSpriteAddLayerIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 22", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            var newLayerBitmap = CreateBitmap("new_layer", 50, 50);
-            var layerIndex = SpriteAddLayer(testSprite, newLayerBitmap, "new_layer");
+            var newLayerBitmap = CreateBitmap("Test Bitmap 23", 50, 50);
+            var layerIndex = SpriteAddLayer(testSprite, newLayerBitmap, "Test Bitmap 23");
             Assert.Equal(1, layerIndex);
             Assert.Equal(2, SpriteLayerCount(testSprite));
         }
         [Fact]
         public void TestSpriteAddToVelocityIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 24", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetVelocity(testSprite, VectorTo(0.0, 0.0));
             SpriteAddToVelocity(testSprite, VectorTo(10.0, 10.0));
@@ -342,9 +342,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteAddValueIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 25", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteAddValue(testSprite, "health", 100.0f);
             Assert.True(SpriteHasValue(testSprite, "health"));
@@ -352,9 +352,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteAddValueWithDefaultIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 26", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteAddValue(testSprite, "health", 100.0f);
             Assert.True(SpriteHasValue(testSprite, "health"));
@@ -362,9 +362,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteAnchorPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 27", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var anchorPoint = SpriteAnchorPoint(testSprite);
             Assert.Equal(50.0, anchorPoint.X);
@@ -372,9 +372,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteAnchorPositionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 28", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
             var anchorPosition = SpriteAnchorPosition(testSprite);
@@ -383,11 +383,11 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteAnimationHasEndedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 29", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 4", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
             SpriteStartAnimation(testSprite, "walkfront");
             Assert.False(SpriteAnimationHasEnded(testSprite));
@@ -398,33 +398,33 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteAnimationNameIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 30", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 5", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
             SpriteStartAnimation(testSprite, "walkfront");
             Assert.Equal("walkfront", SpriteAnimationName(testSprite));
         }
         [Fact]
         public void TestSpriteAtIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 31", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             ClearBitmap(testBitmap, ColorRed());
             SetupCollisionMask(testBitmap);
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            SpriteSetX(testSprite, 400f);
-            SpriteSetY(testSprite, 300f);
+            SpriteSetX(testSprite, 400.0f);
+            SpriteSetY(testSprite, 300.0f);
             Assert.True(SpriteAt(testSprite, PointAt(451.0, 350.0)));
             Assert.False(SpriteAt(testSprite, PointAt(600.0, 500.0)));
         }
         [Fact]
         public void TestSpriteBringLayerForwardIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 33", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, layerIndex);
@@ -434,9 +434,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteBringLayerToFrontIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 32", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layerIndex = SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, layerIndex);
@@ -446,21 +446,21 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteCallOnEventIntegration() {
-            var spriteDelegates = new SpriteDelegates();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testSpriteDelegates = new SpriteDelegates();
+            var testBitmap = CreateBitmap("Test Bitmap 35", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            SpriteCallOnEvent(testSprite, spriteDelegates.SpriteEventHandler);
+            SpriteCallOnEvent(testSprite, test_sprite_delegates.SpriteEventHandler());
             UpdateSprite(testSprite);
-            StopCallingOnSpriteEvent(spriteDelegates.SpriteEventHandler);
-            Assert.True(spriteDelegates.EventCalled);
+            StopCallingOnSpriteEvent(test_sprite_delegates.SpriteEventHandler());
+            Assert.True(test_sprite_delegates.EventCalled());
         }
         [Fact]
         public void TestSpriteCircleIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 36", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var circle = SpriteCircle(testSprite);
             Assert.Equal(50.0, circle.Center.X);
@@ -469,18 +469,18 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteCollisionBitmapIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 37", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var collisionBitmap = SpriteCollisionBitmap(testSprite);
             Assert.Equal(testBitmap, collisionBitmap);
         }
         [Fact]
         public void TestSpriteCollisionCircleIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 38", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var circle = SpriteCollisionCircle(testSprite);
             Assert.Equal(50.0, circle.Center.X);
@@ -489,9 +489,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteCollisionKindIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 39", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(CollisionTestKind.PixelCollisions, SpriteCollisionKind(testSprite));
             SpriteSetCollisionKind(testSprite, CollisionTestKind.AabbCollisions);
@@ -499,9 +499,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteCollisionRectangleIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 40", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var rect = SpriteCollisionRectangle(testSprite);
             Assert.Equal(0.0, rect.X);
@@ -511,11 +511,11 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteCurrentCellIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 41", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 7", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
             SpriteStartAnimation(testSprite, "walkfront");
             Assert.Equal(0, SpriteCurrentCell(testSprite));
@@ -524,9 +524,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteCurrentCellRectangleIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 42", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var rect = SpriteCurrentCellRectangle(testSprite);
             Assert.Equal(0.0, rect.X);
@@ -536,9 +536,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteDxIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 43", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0, SpriteDx(testSprite));
             SpriteSetDx(testSprite, 5.0f);
@@ -546,9 +546,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteDyIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 44", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0, SpriteDy(testSprite));
             SpriteSetDy(testSprite, 5.0f);
@@ -556,9 +556,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteHasValueIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 45", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.False(SpriteHasValue(testSprite, "health"));
             SpriteAddValue(testSprite, "health", 100.0f);
@@ -567,9 +567,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteHeadingIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 46", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(90.0, SpriteHeading(testSprite));
             SpriteSetVelocity(testSprite, VectorTo(1.0, 1.0));
@@ -577,17 +577,17 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteHeightIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 47", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(100, SpriteHeight(testSprite));
         }
         [Fact]
         public void TestSpriteHideLayerNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 48", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, "layer2");
@@ -597,9 +597,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteHideLayerIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 49", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, layerIdx);
@@ -609,27 +609,27 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 50", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteAddLayer(testSprite, testBitmap, "layer2");
             Assert.Equal(testBitmap, SpriteLayer(testSprite, "layer2"));
         }
         [Fact]
         public void TestSpriteLayerAtIndexIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 51", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
             Assert.Equal(testBitmap, SpriteLayer(testSprite, layerIdx));
         }
         [Fact]
         public void TestSpriteLayerCircleNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 52", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var circle = SpriteLayerCircle(testSprite, "base_layer");
             Assert.Equal(50.0, circle.Center.X);
@@ -638,9 +638,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerCircleAtIndexIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 53", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var circle = SpriteLayerCircle(testSprite, 0);
             Assert.Equal(50.0, circle.Center.X);
@@ -649,9 +649,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerCountIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 54", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(1, SpriteLayerCount(testSprite));
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -660,9 +660,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerHeightNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 55", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(100, SpriteLayerHeight(testSprite, "base_layer"));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -670,9 +670,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerHeightIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 56", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(100, SpriteLayerHeight(testSprite, 0));
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -680,9 +680,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerIndexIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 57", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0, SpriteLayerIndex(testSprite, "base_layer"));
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -690,18 +690,18 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerNameIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 58", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
             Assert.Equal("", SpriteLayerName(testSprite, layerIdx));
         }
         [Fact]
         public void TestSpriteLayerOffsetNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 59", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(VectorTo(0.0, 0.0), SpriteLayerOffset(testSprite, "base_layer"));
             SpriteSetLayerOffset(testSprite, "base_layer", VectorTo(10.0, 10.0));
@@ -709,9 +709,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerOffsetIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 60", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(VectorTo(0.0, 0.0), SpriteLayerOffset(testSprite, 0));
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -720,9 +720,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerRectangleNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 61", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var rect = SpriteLayerRectangle(testSprite, "base_layer");
             Assert.Equal(0.0, rect.X);
@@ -732,9 +732,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerRectangleAtIndexIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 62", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var rect = SpriteLayerRectangle(testSprite, 0);
             Assert.Equal(0.0, rect.X);
@@ -744,9 +744,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerWidthNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 63", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(100, SpriteLayerWidth(testSprite, "base_layer"));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -754,9 +754,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLayerWidthIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 64", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(100, SpriteLayerWidth(testSprite, 0));
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -764,21 +764,21 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteLocationMatrixIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 65", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-            SpriteSetRotation(testSprite, 45f);
+            SpriteSetRotation(testSprite, 45.0f);
             var matrix = SpriteLocationMatrix(testSprite);
             Assert.Equal(150.0, matrix.Elements[0, 2]);
             Assert.Equal(1.0, matrix.Elements[2, 2]);
         }
         [Fact]
         public void TestSpriteMassIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 66", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(1.0, SpriteMass(testSprite));
             SpriteSetMass(testSprite, 10.0f);
@@ -786,9 +786,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteMoveFromAnchorPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 67", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.False(SpriteMoveFromAnchorPoint(testSprite));
             SpriteSetMoveFromAnchorPoint(testSprite, true);
@@ -796,9 +796,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteMoveToTakingSecondsIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 68", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
             SpriteMoveTo(testSprite, PointAt(200.0, 200.0), 1.0f);
@@ -812,28 +812,28 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteNameIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 69", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite("Test Sprite 7", testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            Assert.Equal("test_sprite", SpriteName(testSprite));
+            Assert.Equal("Test Sprite 7", SpriteName(testSprite));
         }
         [Fact]
         public void TestSpriteNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 70", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite("Test Sprite 8", testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            Assert.Equal(testSprite, SpriteNamed("test_sprite"));
+            Assert.Equal(testSprite, SpriteNamed("Test Sprite 8"));
             Assert.Null(SpriteNamed("non_existent_sprite"));
         }
         [Fact]
         public void TestSpriteOffscreenIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 5", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 71", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
             Assert.False(SpriteOffscreen(testSprite));
@@ -842,13 +842,13 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteOnScreenAtPointIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 6", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 72", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             ClearBitmap(testBitmap, ColorRed());
             SetupCollisionMask(testBitmap);
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
             DrawSprite(testSprite);
@@ -858,13 +858,13 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteOnScreenAtIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 7", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 73", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             ClearBitmap(testBitmap, ColorRed());
             SetupCollisionMask(testBitmap);
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
             DrawSprite(testSprite);
@@ -874,9 +874,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpritePositionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 74", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(PointAt(0.0, 0.0), SpritePosition(testSprite));
             SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
@@ -884,9 +884,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteReplayAnimationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 75", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 8", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -901,9 +901,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteReplayAnimationWithSoundIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 76", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "startup.txt");
+            var testAnimation = LoadAnimationScript("Test Script 9", "startup.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -919,9 +919,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteRotationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 77", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0, SpriteRotation(testSprite));
             SpriteSetRotation(testSprite, 45.0f);
@@ -929,9 +929,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteScaleIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 78", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(1.0f, SpriteScale(testSprite));
             SpriteSetScale(testSprite, 2.0f);
@@ -939,11 +939,11 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteScreenRectangleIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 8", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 79", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 10", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             ClearBitmap(testBitmap, ColorWhite());
             var testSprite = CreateSprite(testBitmap, testAnimation);
@@ -958,9 +958,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSendLayerBackwardIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 80", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layer1 = SpriteAddLayer(testSprite, testBitmap, "layer1");
             SpriteShowLayer(testSprite, layer1);
@@ -972,9 +972,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSendLayerToBackIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 81", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layer1 = SpriteAddLayer(testSprite, testBitmap, "layer1");
             SpriteShowLayer(testSprite, layer1);
@@ -986,9 +986,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetAnchorPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 82", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(PointAt(50.0, 50.0), SpriteAnchorPoint(testSprite));
             SpriteSetAnchorPoint(testSprite, PointAt(25.0, 25.0));
@@ -996,20 +996,20 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetCollisionBitmapIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 83", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(testBitmap, SpriteCollisionBitmap(testSprite));
-            var newBitmap = CreateBitmap("new_bitmap", 200, 200);
+            var newBitmap = CreateBitmap("Test Bitmap 84", 200, 200);
             SpriteSetCollisionBitmap(testSprite, newBitmap);
             Assert.Equal(newBitmap, SpriteCollisionBitmap(testSprite));
         }
         [Fact]
         public void TestSpriteSetCollisionKindIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 85", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(CollisionTestKind.PixelCollisions, SpriteCollisionKind(testSprite));
             SpriteSetCollisionKind(testSprite, CollisionTestKind.AabbCollisions);
@@ -1017,9 +1017,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetDxIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 86", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0, SpriteDx(testSprite));
             SpriteSetDx(testSprite, 5.0f);
@@ -1027,9 +1027,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetDyIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 87", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0, SpriteDy(testSprite));
             SpriteSetDy(testSprite, 5.0f);
@@ -1037,9 +1037,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetHeadingIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 88", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetVelocity(testSprite, VectorFromAngle(90.0, 1.0));
             Assert.Equal(90.0, SpriteHeading(testSprite));
@@ -1048,9 +1048,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetLayerOffsetNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 89", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(VectorTo(0.0, 0.0), SpriteLayerOffset(testSprite, "base_layer"));
             SpriteSetLayerOffset(testSprite, "base_layer", VectorTo(10.0, 10.0));
@@ -1058,9 +1058,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetLayerOffsetAtIndexIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 90", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(VectorTo(0.0, 0.0), SpriteLayerOffset(testSprite, 0));
             SpriteSetLayerOffset(testSprite, 0, VectorTo(10.0, 10.0));
@@ -1068,9 +1068,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetMassIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 91", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(1.0, SpriteMass(testSprite));
             SpriteSetMass(testSprite, 10.0f);
@@ -1078,9 +1078,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetMoveFromAnchorPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 92", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.False(SpriteMoveFromAnchorPoint(testSprite));
             SpriteSetMoveFromAnchorPoint(testSprite, true);
@@ -1088,9 +1088,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetPositionIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 93", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(PointAt(0.0, 0.0), SpritePosition(testSprite));
             SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
@@ -1098,9 +1098,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetRotationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 94", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0, SpriteRotation(testSprite));
             SpriteSetRotation(testSprite, 45.0f);
@@ -1108,9 +1108,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetScaleIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 95", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(1.0f, SpriteScale(testSprite));
             SpriteSetScale(testSprite, 2.0f);
@@ -1118,9 +1118,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetSpeedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 96", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetVelocity(testSprite, VectorFromAngle(0.0, 1.0));
             SpriteSetSpeed(testSprite, 5.0f);
@@ -1128,9 +1128,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetValueNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 97", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.False(SpriteHasValue(testSprite, "test_value"));
             SpriteAddValue(testSprite, "test_value", 0.0f);
@@ -1139,9 +1139,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetVelocityIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 98", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(VectorTo(0.0, 0.0), SpriteVelocity(testSprite));
             SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
@@ -1149,9 +1149,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetXIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 99", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0f, SpriteX(testSprite));
             SpriteSetX(testSprite, 150.0f);
@@ -1159,9 +1159,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSetYIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 100", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0f, SpriteY(testSprite));
             SpriteSetY(testSprite, 300.0f);
@@ -1169,9 +1169,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteShowLayerNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 101", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteHideLayer(testSprite, "layer2");
@@ -1181,9 +1181,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteShowLayerIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 102", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteHideLayer(testSprite, layerIdx);
@@ -1193,9 +1193,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteSpeedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 103", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0, SpriteSpeed(testSprite));
             SpriteSetVelocity(testSprite, VectorTo(3.0, 4.0));
@@ -1203,9 +1203,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteStartAnimationNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 104", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 11", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1219,9 +1219,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteStartAnimationNamedWithSoundIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 105", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "startup.txt");
+            var testAnimation = LoadAnimationScript("Test Script 12", "startup.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1236,9 +1236,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteStartAnimationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 106", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 13", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1251,9 +1251,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteStartAnimationWithSoundIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 107", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "startup.txt");
+            var testAnimation = LoadAnimationScript("Test Script 14", "startup.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1267,24 +1267,24 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteStopCallingOnEventIntegration() {
-            var spriteDelegates = new SpriteDelegates();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testSpriteDelegates = new SpriteDelegates();
+            var testBitmap = CreateBitmap("Test Bitmap 109", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            SpriteCallOnEvent(testSprite, spriteDelegates.SpriteEventHandler);
+            SpriteCallOnEvent(testSprite, test_sprite_delegates.SpriteEventHandler());
             UpdateSprite(testSprite);
-            Assert.True(spriteDelegates.EventCalled);
-            SpriteStopCallingOnEvent(testSprite, spriteDelegates.SpriteEventHandler);
-            spriteDelegates.Reset();
-            UpdateSprite(testSprite);
-            Assert.False(spriteDelegates.EventCalled);
+            Assert.True(test_sprite_delegates.EventCalled());
+            SpriteStopCallingOnEvent(testSprite, test_sprite_delegates.SpriteEventHandler());
+            testSpriteDelegates.Reset()
+;            UpdateSprite(testSprite);
+            Assert.False(test_sprite_delegates.EventCalled());
         }
         [Fact]
         public void TestSpriteToggleLayerVisibleNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 110", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, "layer2");
@@ -1296,9 +1296,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteToggleLayerVisibleIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 111", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
             SpriteShowLayer(testSprite, layerIdx);
@@ -1308,9 +1308,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteValueIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 112", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(3, SpriteValueCount(testSprite));
             SpriteAddValue(testSprite, "test_value", 0.0f);
@@ -1318,9 +1318,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteValueCountIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 113", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(3, SpriteValueCount(testSprite));
             SpriteAddValue(testSprite, "health", 0.0f);
@@ -1329,9 +1329,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteVelocityIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 114", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(VectorTo(0.0, 0.0), SpriteVelocity(testSprite));
             SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
@@ -1339,9 +1339,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteVisibleIndexOfLayerNamedIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 115", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0, SpriteVisibleIndexOfLayer(testSprite, "base_layer"));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -1350,9 +1350,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteVisibleIndexOfLayerIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 116", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0, SpriteVisibleIndexOfLayer(testSprite, 0));
             var layerIdx = SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -1361,9 +1361,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteVisibleLayerIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 117", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0, SpriteVisibleLayer(testSprite, 0));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -1372,9 +1372,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteVisibleLayerCountIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 118", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(1, SpriteVisibleLayerCount(testSprite));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -1385,9 +1385,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteVisibleLayerIdIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 119", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0, SpriteVisibleLayerId(testSprite, 0));
             SpriteAddLayer(testSprite, testBitmap, "layer2");
@@ -1396,9 +1396,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteWidthIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 120", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(1.0f, SpriteScale(testSprite));
             SpriteSetScale(testSprite, 2.0f);
@@ -1406,9 +1406,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteXIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 121", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0f, SpriteX(testSprite));
             SpriteSetX(testSprite, 150.0f);
@@ -1416,9 +1416,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSpriteYIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 122", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             Assert.Equal(0.0f, SpriteY(testSprite));
             SpriteSetY(testSprite, 200.0f);
@@ -1426,26 +1426,26 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestStopCallingOnSpriteEventIntegration() {
-            var spriteDelegates = new SpriteDelegates();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testSpriteDelegates = new SpriteDelegates();
+            var testBitmap = CreateBitmap("Test Bitmap 108", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            CallOnSpriteEvent(spriteDelegates.SpriteEventHandler);
+            CallOnSpriteEvent(test_sprite_delegates.SpriteEventHandler());
             UpdateSprite(testSprite);
-            Assert.True(spriteDelegates.EventCalled);
-            StopCallingOnSpriteEvent(spriteDelegates.SpriteEventHandler);
-            spriteDelegates.Reset();
-            UpdateSprite(testSprite);
-            Assert.False(spriteDelegates.EventCalled);
+            Assert.True(test_sprite_delegates.EventCalled());
+            StopCallingOnSpriteEvent(test_sprite_delegates.SpriteEventHandler());
+            testSpriteDelegates.Reset()
+;            UpdateSprite(testSprite);
+            Assert.False(test_sprite_delegates.EventCalled());
         }
         [Fact]
         public void TestUpdateAllSpritesIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 123", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite1 = CreateSprite("test_sprite1", testBitmap);
+            var testSprite1 = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            var testSprite2 = CreateSprite("test_sprite2", testBitmap);
+            var testSprite2 = CreateSprite(testBitmap);
             SpriteSetVelocity(testSprite1, VectorTo(10.0, 10.0));
             SpriteSetVelocity(testSprite2, VectorTo(-10.0, -10.0));
             UpdateAllSprites();
@@ -1454,11 +1454,11 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateAllSpritesPercentIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 124", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite1 = CreateSprite("test_sprite1", testBitmap);
+            var testSprite1 = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            var testSprite2 = CreateSprite("test_sprite2", testBitmap);
+            var testSprite2 = CreateSprite(testBitmap);
             SpriteSetVelocity(testSprite1, VectorTo(100.0, 100.0));
             SpriteSetVelocity(testSprite2, VectorTo(-100.0, -100.0));
             UpdateAllSprites(0.5f);
@@ -1469,9 +1469,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateSpriteIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 125", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetVelocity(testSprite, VectorTo(10.0, 10.0));
             var initialPos = SpritePosition(testSprite);
@@ -1480,9 +1480,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateSpriteWithSoundIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 126", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "startup.txt");
+            var testAnimation = LoadAnimationScript("Test Script 15", "startup.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1495,9 +1495,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateSpritePercentIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 127", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetVelocity(testSprite, VectorTo(100.0, 100.0));
             UpdateSprite(testSprite, 0.5f);
@@ -1506,9 +1506,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateSpritePercentWithSoundIntegration() {
-            var testAnimation = LoadAnimationScript("startup", "startup.txt");
+            var testAnimation = LoadAnimationScript("Test Script 16", "startup.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 128", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1521,11 +1521,11 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateSpriteAnimationIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 129", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "kermit.txt");
+            var testAnimation = LoadAnimationScript("Test Script 17", "kermit.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap, testAnimation);
+            var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
             SpriteStartAnimation(testSprite, "walkfront");
             Assert.False(SpriteAnimationHasEnded(testSprite));
@@ -1536,9 +1536,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateSpriteAnimationWithSoundIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 130", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "startup.txt");
+            var testAnimation = LoadAnimationScript("Test Script 18", "startup.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1553,9 +1553,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateSpriteAnimationPercentIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 131", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "startup.txt");
+            var testAnimation = LoadAnimationScript("Test Script 19", "startup.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1568,9 +1568,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestUpdateSpriteAnimationPercentWithSoundIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 132", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testAnimation = LoadAnimationScript("test_animation", "startup.txt");
+            var testAnimation = LoadAnimationScript("Test Script 20", "startup.txt");
             using var cleanupAnimationScript = new AnimationScriptCleanup();
             var testSprite = CreateSprite(testBitmap, testAnimation);
             using var cleanupSprite = new SpriteCleanup();
@@ -1586,9 +1586,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestVectorFromCenterSpriteToPointPointIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 133", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite = CreateSprite("test_sprite", testBitmap);
+            var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
             SpriteSetPosition(testSprite, PointAt(0.0, 0.0));
             var targetPoint = PointAt(150.0, 150.0);
@@ -1598,11 +1598,11 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestVectorFromToIntegration() {
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 134", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
-            var testSprite1 = CreateSprite("test_sprite1", testBitmap);
+            var testSprite1 = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
-            var testSprite2 = CreateSprite("test_sprite2", testBitmap);
+            var testSprite2 = CreateSprite(testBitmap);
             SpriteSetPosition(testSprite1, PointAt(0.0, 0.0));
             SpriteSetPosition(testSprite2, PointAt(100.0, 100.0));
             var vector = VectorFromTo(testSprite1, testSprite2);

@@ -13,7 +13,7 @@ mod test_geometry {
     }
     #[test]
     fn test_circle_at_integration() {
-        open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 1".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_circle = circle_at(point_at(400.0, 300.0), 50.0);
         draw_circle_record(color_black(), test_circle);
@@ -22,7 +22,7 @@ mod test_geometry {
     }
     #[test]
     fn test_circle_at_from_points_integration() {
-        open_window("Circle Test".to_string(), 800, 600);
+        open_window("Test Window 2".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_circle = circle_at_from_points(400.0, 300.0, 50.0);
         draw_circle_record_with_options(color_black(), test_circle, option_defaults());
@@ -97,7 +97,8 @@ mod test_geometry {
         let test_rectangle = rectangle_from(100.0, 50.0, 100.0, 100.0);
         let test_closest_point = closest_point_on_rect_from_circle(test_circle, test_rectangle);
         assert!(point_in_rectangle(test_closest_point, test_rectangle));
-        assert_eq!(circle_radius(test_circle), point_point_distance(center_point_of_circle(test_circle), test_closest_point));
+        let test_distance = point_point_distance(center_point_of_circle(test_circle), test_closest_point);
+        assert!(test_distance <= circle_radius(test_circle));
     }
     #[test]
     fn test_closest_point_on_triangle_from_circle_integration() {
@@ -419,7 +420,7 @@ mod test_geometry {
     }
     #[test]
     fn test_random_bitmap_point_integration() {
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        let test_bitmap = create_bitmap("Test Bitmap 1".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
         let test_point = random_bitmap_point(test_bitmap);
         assert!((0.0..=bitmap_width(test_bitmap) as f64).contains(&test_point.x));
@@ -427,7 +428,7 @@ mod test_geometry {
     }
     #[test]
     fn test_random_screen_point_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 3".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_point = random_screen_point();
         refresh_screen();
@@ -436,7 +437,7 @@ mod test_geometry {
     }
     #[test]
     fn test_random_window_point_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 4".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_point = random_window_point(test_window);
         assert!((0.0..=window_width(test_window) as f64).contains(&test_point.x));

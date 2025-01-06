@@ -8,22 +8,22 @@ mod test_resources {
     #[test]
     fn test_deregister_free_notifier_integration() {
         let free_notifier = NotifierTracker::new();
-        register_free_notifier(free_notifier.on_free);
-        let test_bitmap1 = create_bitmap("test_bitmap".to_string(), 100, 100);
+        register_free_notifier(free_notifier.on_free());
+        let test_bitmap1 = create_bitmap("Test Bitmap 1".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
         free_bitmap(test_bitmap1);
-        assert!(free_notifier.was_notified);
-        deregister_free_notifier(free_notifier.on_free);
-        free_notifier.reset();
-        let test_bitmap2 = create_bitmap("test_bitmap".to_string(), 100, 100);
+        assert!(free_notifier.was_notified());
+        deregister_free_notifier(free_notifier.on_free());
+        free_notifier.reset()
+;        let test_bitmap2 = create_bitmap("Test Bitmap 2".to_string(), 100, 100);
         free_bitmap(test_bitmap2);
-        assert!(!free_notifier.was_notified);
+        assert!(!free_notifier.was_notified());
     }
     #[test]
     fn test_path_to_resource_integration() {
         set_resources_path("resources".to_string());
         let image_path = path_to_resource("test_image.png".to_string(), ResourceKind::ImageResource);
-        assert_ne!("".to_string(), image_path);
+        assert_eq!("resources/images/test_image.png".to_string(), image_path);
     }
     #[test]
     fn test_path_to_resources_integration() {
@@ -37,19 +37,19 @@ mod test_resources {
     fn test_path_to_resources_for_kind_integration() {
         set_resources_path("resources".to_string());
         let image_path = path_to_resources_for_kind(ResourceKind::ImageResource);
-        assert_eq!("resources/images".to_string(), image_path);
+        assert_eq!("resources/images/".to_string(), image_path);
         let sound_path = path_to_resources_for_kind(ResourceKind::SoundResource);
-        assert_eq!("resources/sounds".to_string(), sound_path);
+        assert_eq!("resources/sounds/".to_string(), sound_path);
     }
     #[test]
     fn test_register_free_notifier_integration() {
         let free_notifier = NotifierTracker::new();
-        register_free_notifier(free_notifier.on_free);
-        let test_bitmap = create_bitmap("test_bitmap".to_string(), 100, 100);
+        register_free_notifier(free_notifier.on_free());
+        let test_bitmap = create_bitmap("Test Bitmap 3".to_string(), 100, 100);
         let _cleanup_bitmap = BitmapCleanup::new();
         free_bitmap(test_bitmap);
-        assert!(free_notifier.was_notified);
-        deregister_free_notifier(free_notifier.on_free);
+        assert!(free_notifier.was_notified());
+        deregister_free_notifier(free_notifier.on_free());
     }
     #[test]
     fn test_set_resources_path_integration() {

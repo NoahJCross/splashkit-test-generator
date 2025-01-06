@@ -134,11 +134,12 @@ class TestUtilities:
         assert 0 == rnd_int(0)
         
     def test_current_ticks_integration():
+        open_window("Test Window 1", 800, 600)
         test_ticks = current_ticks()
         assert test_ticks > 0
         
     def test_delay_integration():
-        test_timer = create_timer("test_timer")
+        test_timer = create_timer("Test Timer 1")
         with timer_cleanup():
             start_timer(test_timer)
             initial_ticks = timer_ticks(test_timer)
@@ -146,7 +147,7 @@ class TestUtilities:
             assert initial_ticks + 200 < timer_ticks(test_timer)
             
     def test_display_dialog_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 2", 800, 600)
         with window_cleanup():
             test_font = load_font("test_font", "hara.ttf")
             with font_cleanup():

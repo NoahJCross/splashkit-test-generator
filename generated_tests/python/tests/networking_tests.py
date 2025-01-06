@@ -4,25 +4,25 @@ from ..helpers import *
 import contextlib
 class TestNetworking:
     def test_accept_all_new_connections_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 connections_accepted = accept_all_new_connections()
                 assert connections_accepted
                 
     def test_accept_new_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 connection_accepted = accept_new_connection(test_server)
                 assert connection_accepted
                 
     def test_broadcast_message_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection1 = open_connection("test_connection1", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -34,7 +34,7 @@ class TestNetworking:
                 assert has_messages_on_connection(test_connection2)
                 
     def test_broadcast_message_to_all_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection1 = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -46,25 +46,25 @@ class TestNetworking:
                 assert has_messages_on_connection(test_connection2)
                 
     def test_broadcast_message_to_server_named_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
-                broadcast_message_to_server_named("Test Message", "test_server")
+                broadcast_message_to_server_named("Test Message", "Test Server")
                 check_network_activity()
                 assert has_messages_on_connection(test_connection)
                 
     def test_check_network_activity_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 assert has_new_connections()
                 
     def test_clear_messages_from_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -77,7 +77,7 @@ class TestNetworking:
                 assert not has_messages_on_connection(test_connection)
                 
     def test_clear_messages_from_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -89,7 +89,7 @@ class TestNetworking:
                 assert not has_messages_on_connection(test_connection)
                 
     def test_clear_messages_from_server_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 8080)
             with connection_cleanup():
@@ -102,7 +102,7 @@ class TestNetworking:
                 assert not has_messages_on_server(test_server)
                 
     def test_close_all_connections_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -113,17 +113,17 @@ class TestNetworking:
                 assert not has_connection("test_connection")
                 
     def test_close_all_servers_integration():
-        create_server_with_port("test_server_1", 5000)
+        create_server_with_port("Test Server 1", 5000)
         with server_cleanup():
-            create_server_with_port("test_server_2", 5001)
-            assert has_server("test_server_1")
-            assert has_server("test_server_2")
+            create_server_with_port("Test Server 2", 5001)
+            assert has_server("Test Server 1")
+            assert has_server("Test Server 2")
             close_all_servers()
-            assert not has_server("test_server_1")
-            assert not has_server("test_server_2")
+            assert not has_server("Test Server 1")
+            assert not has_server("Test Server 2")
             
     def test_close_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 8080)
             with connection_cleanup():
@@ -133,7 +133,7 @@ class TestNetworking:
                 assert not is_connection_open(test_connection)
                 
     def test_close_connection_named_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 8080)
             with connection_cleanup():
@@ -144,7 +144,7 @@ class TestNetworking:
                 assert not is_connection_open(test_connection)
                 
     def test_close_message_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -158,37 +158,37 @@ class TestNetworking:
                 assert not has_messages()
                 
     def test_close_server_named_integration():
-        create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            close_result = close_server_named("test_server")
+            close_result = close_server_named("Test Server")
             assert close_result
-            assert not has_server("test_server")
+            assert not has_server("Test Server")
             
     def test_close_server_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             close_result = close_server(test_server)
             assert close_result
-            assert not has_server("test_server")
+            assert not has_server("Test Server")
             
     def test_connection_count_named_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
-                assert 1 == connection_count_named("test_server")
+                assert 1 == connection_count_named("Test Server")
                 
     def test_connection_count_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 assert 1 == connection_count(test_server)
                 
     def test_connection_ip_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -197,25 +197,25 @@ class TestNetworking:
                 assert 2130706433 == test_ip
                 
     def test_connection_ip_from_name_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 8080)
+            open_connection("test_connection", "127.0.0.1", 8080)
             with connection_cleanup():
                 check_network_activity()
                 test_ip = connection_ip_from_name("test_connection")
                 assert 2130706433 == test_ip
                 
     def test_connection_named_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 retrieved_connection = connection_named("test_connection")
                 assert retrieved_connection is not None
                 
     def test_connection_port_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -224,32 +224,32 @@ class TestNetworking:
                 assert 5000 == test_port
                 
     def test_connection_port_from_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 test_port = connection_port_from_name("test_connection")
                 assert 5000 == test_port
                 
     def test_create_server_with_port_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             assert test_server is not None
-            assert has_server("test_server")
+            assert has_server("Test Server")
             
     def test_create_server_with_port_and_protocol_integration():
-        test_server = create_server_with_port_and_protocol("test_server", 5000, ConnectionType.TCP)
+        test_server = create_server_with_port_and_protocol("Test Server", 5000, ConnectionType.TCP)
         with server_cleanup():
             assert test_server is not None
-            assert has_server("test_server")
+            assert has_server("Test Server")
             
     def test_dec_to_hex_integration():
         test_hex_result = dec_to_hex(2130706433)
         assert "0x7F000001" == test_hex_result
         
     def test_fetch_new_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -258,7 +258,7 @@ class TestNetworking:
                 assert new_connection is not None
                 
     def test_has_connection_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 8080)
             with connection_cleanup():
@@ -268,7 +268,7 @@ class TestNetworking:
                 assert not has_connection("test_connection")
                 
     def test_has_messages_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -279,7 +279,7 @@ class TestNetworking:
                 assert has_messages()
                 
     def test_has_messages_on_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -289,17 +289,17 @@ class TestNetworking:
                 assert has_messages_on_connection(test_connection)
                 
     def test_has_messages_on_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 send_message_to_connection("Test Message", test_connection)
                 check_network_activity()
-                assert has_messages_on_name("test_server")
+                assert has_messages_on_name("Test Server")
                 
     def test_has_messages_on_server_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -308,19 +308,19 @@ class TestNetworking:
                 assert has_messages_on_server(test_server)
                 
     def test_has_new_connections_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 assert has_new_connections()
                 
     def test_has_server_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            assert has_server("test_server")
+            assert has_server("Test Server")
             close_server(test_server)
-            assert not has_server("test_server")
+            assert not has_server("Test Server")
             
     def test_hex_str_to_ipv4_integration():
         test_ipv4 = hex_str_to_ipv4("0x7F000001")
@@ -349,7 +349,7 @@ class TestNetworking:
         assert "127.0.0.1" == test_ip_str
         
     def test_is_connection_open_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -359,7 +359,7 @@ class TestNetworking:
                 assert not is_connection_open(test_connection)
                 
     def test_is_connection_open_from_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -369,25 +369,25 @@ class TestNetworking:
                 assert not is_connection_open_from_name("test_connection")
                 
     def test_last_connection_named_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
-                last_connection = last_connection_named("test_server")
-                assert test_connection == last_connection
+                test_last_connection = last_connection_named("Test Server")
+                assert test_connection == test_last_connection
                 
     def test_last_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
-                last_connection = last_connection(test_server)
-                assert test_connection == last_connection
+                test_last_connection = last_connection(test_server)
+                assert test_connection == test_last_connection
                 
     def test_message_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -399,7 +399,7 @@ class TestNetworking:
                 close_message(test_message)
                 
     def test_message_count_on_server_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -409,7 +409,7 @@ class TestNetworking:
                 assert 1 == message_count_on_server(test_server)
                 
     def test_message_count_on_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -419,7 +419,7 @@ class TestNetworking:
                 assert message_count_on_connection(test_connection) > 0
                 
     def test_message_count_from_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -429,7 +429,7 @@ class TestNetworking:
                 assert 1 == message_count_on_server(test_server)
                 
     def test_message_data_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -441,7 +441,7 @@ class TestNetworking:
                 close_message(test_message)
                 
     def test_message_data_bytes_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -454,7 +454,7 @@ class TestNetworking:
                 close_message(test_message)
                 
     def test_message_host_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -466,7 +466,7 @@ class TestNetworking:
                 close_message(test_message)
                 
     def test_message_port_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -478,7 +478,7 @@ class TestNetworking:
                 close_message(test_message)
                 
     def test_message_protocol_integration():
-        test_server = create_server_with_port_and_protocol("test_server", 5000, ConnectionType.UDP)
+        test_server = create_server_with_port_and_protocol("Test Server", 5000, ConnectionType.UDP)
         with server_cleanup():
             test_connection = open_connection_with_protocol("test_connection", "127.0.0.1", 5000, ConnectionType.UDP)
             with connection_cleanup():
@@ -498,15 +498,15 @@ class TestNetworking:
         assert "localhost:8080" == test_connection_name
         
     def test_new_connection_count_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 assert 1 == new_connection_count(test_server)
                 
     def test_open_connection_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 8080)
             with connection_cleanup():
@@ -517,7 +517,7 @@ class TestNetworking:
                 assert not is_connection_open(test_connection)
                 
     def test_open_connection_with_protocol_integration():
-        test_server = create_server_with_port_and_protocol("test_server", 5000, ConnectionType.TCP)
+        create_server_with_port_and_protocol("Test Server", 5000, ConnectionType.TCP)
         with server_cleanup():
             test_connection = open_connection_with_protocol("test_connection", "127.0.0.1", 5000, ConnectionType.TCP)
             with connection_cleanup():
@@ -525,7 +525,7 @@ class TestNetworking:
                 assert test_connection is not None
                 
     def test_read_message_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -537,7 +537,7 @@ class TestNetworking:
                 close_message(test_message)
                 
     def test_read_message_from_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -549,19 +549,19 @@ class TestNetworking:
                 close_message(test_message)
                 
     def test_read_message_from_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 send_message_to_connection("Test Message", test_connection)
                 check_network_activity()
-                test_message = read_message_from_name("test_server")
+                test_message = read_message_from_name("Test Server")
                 assert "Test Message" == message_data(test_message)
                 close_message(test_message)
                 
     def test_read_message_from_server_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -575,17 +575,17 @@ class TestNetworking:
                 close_message(test_message)
                 
     def test_read_message_data_from_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 send_message_to_connection("Test Message", test_connection)
                 check_network_activity()
-                assert "Test Message" == read_message_data_from_name("test_server")
+                assert "Test Message" == read_message_data_from_name("Test Server")
                 
     def test_read_message_data_from_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -595,7 +595,7 @@ class TestNetworking:
                 assert "Test Message" == read_message_data_from_connection(test_connection)
                 
     def test_read_message_data_from_server_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -605,7 +605,7 @@ class TestNetworking:
                 assert "Test Message" == read_message_data_from_server(test_server)
                 
     def test_reconnect_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -618,7 +618,7 @@ class TestNetworking:
                 assert is_connection_open(test_connection)
                 
     def test_reconnect_from_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -631,7 +631,7 @@ class TestNetworking:
                 assert is_connection_open_from_name("test_connection")
                 
     def test_release_all_connections_integration():
-        create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             open_connection("test_connection1", "127.0.0.1", 8080)
             with connection_cleanup():
@@ -642,12 +642,12 @@ class TestNetworking:
                 release_all_connections()
                 assert not has_connection("test_connection1")
                 assert not has_connection("test_connection2")
-                assert not has_server("test_server")
+                assert not has_server("Test Server")
                 
     def test_reset_new_connection_count_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 assert new_connection_count(test_server) == 1
@@ -655,7 +655,7 @@ class TestNetworking:
                 assert 0 == new_connection_count(test_server)
                 
     def test_retrieve_connection_named_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -664,7 +664,7 @@ class TestNetworking:
                 assert test_connection == retrieved_connection
                 
     def test_retrieve_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -673,7 +673,7 @@ class TestNetworking:
                 assert test_connection == retrieved_connection
                 
     def test_send_message_to_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             test_connection = open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -683,9 +683,9 @@ class TestNetworking:
                 assert send_result
                 
     def test_send_message_to_name_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            test_connection = open_connection("test_connection", "127.0.0.1", 5000)
+            open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
                 send_result = send_message_to_name("Test Message", "test_connection")
@@ -693,15 +693,15 @@ class TestNetworking:
                 assert send_result
                 
     def test_server_has_new_connection_named_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        create_server_with_port("Test Server", 5000)
         with server_cleanup():
             open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
                 check_network_activity()
-                assert server_has_new_connection_named("test_server")
+                assert server_has_new_connection_named("Test Server")
                 
     def test_server_has_new_connection_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
             open_connection("test_connection", "127.0.0.1", 5000)
             with connection_cleanup():
@@ -709,9 +709,9 @@ class TestNetworking:
                 assert server_has_new_connection(test_server)
                 
     def test_server_named_integration():
-        test_server = create_server_with_port("test_server", 5000)
+        test_server = create_server_with_port("Test Server", 5000)
         with server_cleanup():
-            retrieved_server = server_named("test_server")
+            retrieved_server = server_named("Test Server")
             assert test_server == retrieved_server
             
     def test_set_udp_packet_size_integration():
@@ -723,34 +723,31 @@ class TestNetworking:
         assert test_packet_size > 0
         
     def test_download_bitmap_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
-            test_window = open_window("Test Window", 800, 600)
-            with window_cleanup():
-                test_bitmap = download_bitmap("test_image", "http://localhost:8080/test/resources/images/frog.png", 80)
-                assert test_bitmap is not None
-                free_bitmap(test_bitmap)
-                
+            test_bitmap = download_bitmap("test_image", "http://localhost:8080/test/resources/images/frog.png", 80)
+            assert test_bitmap is not None
+            
     def test_download_font_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_font = download_font("test_font", "http://localhost:8080/test/resources/fonts/hara.ttf", 80)
             assert test_font is not None
             
     def test_download_music_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_music = download_music("test_music", "http://localhost:8080/test/resources/music/280.mp3", 80)
             assert test_music is not None
             
     def test_download_sound_effect_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_sound_effect = download_sound_effect("test_sound", "http://localhost:8080/test/resources/sounds/breakdance.wav", 80)
             assert test_sound_effect is not None
             
     def test_free_response_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_response = http_get("http://localhost:8080/test", 80)
             assert test_response is not None
@@ -758,7 +755,7 @@ class TestNetworking:
             assert test_response is None
             
     def test_http_get_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_response = http_get("http://localhost:8080/test", 80)
             assert test_response is not None
@@ -767,7 +764,7 @@ class TestNetworking:
             free_response(test_response)
             
     def test_http_post_with_headers_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             headers = ["Content-Type: application/json", "Accept: application/json"];
             test_response = http_post_with_headers("http://localhost:8080/test", 80, "Test Body", headers)
@@ -777,7 +774,7 @@ class TestNetworking:
             free_response(test_response)
             
     def test_http_post_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_response = http_post("http://localhost:8080/test", 80, "Test Body")
             assert test_response is not None
@@ -786,7 +783,7 @@ class TestNetworking:
             free_response(test_response)
             
     def test_http_response_to_string_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_response = http_get("http://localhost:8080/test", 80)
             response_text = http_response_to_string(test_response)
@@ -794,7 +791,7 @@ class TestNetworking:
             free_response(test_response)
             
     def test_save_response_to_file_integration():
-        test_server = create_server_with_port("test_server", 8080)
+        create_server_with_port("Test Server", 8080)
         with server_cleanup():
             test_response = http_get("http://localhost:8080/test", 80)
             test_file = "test_output.txt";
@@ -1041,7 +1038,6 @@ class TestNetworking:
             json_set_string(test_json, "message", "Test Message")
             send_response_json(test_request, test_json)
             free_response(test_response)
-            free_json(test_json)
             stop_web_server(test_server)
             
     def test_split_uri_stubs_integration():

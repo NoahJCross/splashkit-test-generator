@@ -56,8 +56,9 @@ module TestGenerator
     def write_wrapped_tests(file)
       write_class_header(file)
       write_constructor(file)
+      write_class_footer(file) if @config.language == :cpp
       write_test_methods(file)
-      write_class_footer(file)
+      write_class_footer(file) if @config.language != :cpp
     end
 
     # Writes tests without class wrapping
@@ -123,7 +124,7 @@ module TestGenerator
     def write_test_methods(file)
       @group_functions.each do |function|
         test_case = find_test_case(function)
-        test = TestCase.new(test_case[:name], test_case[:steps], @config, @functions)
+        test = TestCase.new(test_case[:name], @group, test_case[:steps], @config, @functions)
         file.puts(test.to_code(@formatter))
       end
     end

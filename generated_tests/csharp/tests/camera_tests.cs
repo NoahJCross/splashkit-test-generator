@@ -8,7 +8,7 @@ namespace SplashKitTests
     {
         [Fact]
         public void TestCameraPositionIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 1", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testCameraPosition = CameraPosition();
             Assert.Equal(0.0, testCameraPosition.X);
@@ -16,23 +16,23 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCameraXIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 2", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraPosition(PointAt(100.0, 100.0));
             Assert.Equal(100.0, CameraX());
         }
         [Fact]
         public void TestCameraYIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 3", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraPosition(PointAt(100.0, 200.0));
             Assert.Equal(200.0, CameraY());
         }
         [Fact]
         public void TestCenterCameraOnVectorIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 4", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 1", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
@@ -42,9 +42,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestCenterCameraOnIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 5", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            var testBitmap = CreateBitmap("test_bitmap", 100, 100);
+            var testBitmap = CreateBitmap("Test Bitmap 2", 100, 100);
             using var cleanupBitmap = new BitmapCleanup();
             var testSprite = CreateSprite(testBitmap);
             using var cleanupSprite = new SpriteCleanup();
@@ -54,7 +54,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMoveCameraByVectorIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 6", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testVector = VectorFromAngle(0.0, 100.0);
             MoveCameraTo(0.0, 0.0);
@@ -64,7 +64,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMoveCameraByIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 7", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             MoveCameraTo(0.0, 0.0);
             MoveCameraBy(100.0, 100.0);
@@ -73,14 +73,14 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMoveCameraToPointIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 8", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             MoveCameraTo(PointAt(100.0, 100.0));
             Assert.Equal(PointAt(100.0, 100.0), CameraPosition());
         }
         [Fact]
         public void TestMoveCameraToIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 9", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             MoveCameraTo(100.0, 100.0);
             Assert.Equal(100.0, CameraX());
@@ -88,7 +88,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestPointInWindowIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 10", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testPoint = PointAt(400.0, 300.0);
             Assert.True(PointInWindow(testWindow, testPoint));
@@ -97,7 +97,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestPointOnScreenIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 11", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testPoint = PointAt(400.0, 300.0);
             Assert.True(PointOnScreen(testPoint));
@@ -106,7 +106,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestRectInWindowIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 12", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraX(0.0);
             SetCameraY(0.0);
@@ -117,7 +117,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestRectOnScreenIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 13", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRectangle = RectangleFrom(0.0, 0.0, 100.0, 100.0);
             Assert.True(RectOnScreen(testRectangle));
@@ -126,7 +126,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestScreenCenterIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 14", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraX(0.0);
             SetCameraY(0.0);
@@ -136,7 +136,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestScreenRectangleIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 15", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRectangle = ScreenRectangle();
             Assert.Equal(800.0, testRectangle.Width);
@@ -144,28 +144,28 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestSetCameraPositionIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 16", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraPosition(PointAt(100.0, 100.0));
             Assert.Equal(PointAt(100.0, 100.0), CameraPosition());
         }
         [Fact]
         public void TestSetCameraXIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 17", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraX(100.0);
             Assert.Equal(100.0, CameraX());
         }
         [Fact]
         public void TestSetCameraYIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 18", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraY(100.0);
             Assert.Equal(100.0, CameraY());
         }
         [Fact]
         public void TestToScreenPointIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 19", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraPosition(PointAt(100.0, 100.0));
             var testScreenPoint = ToScreen(PointAt(150.0, 150.0));
@@ -174,7 +174,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestToScreenRectangleIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 20", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 200.0);
             var screenRectangle = ToScreen(testRectangle);
@@ -183,7 +183,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestToScreenXIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 21", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraX(100.0);
             var testScreenX = ToScreenX(150.0);
@@ -191,7 +191,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestToScreenYIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 22", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraY(100.0);
             var testScreenY = ToScreenY(150.0);
@@ -199,7 +199,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestToWorldIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 23", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraPosition(PointAt(100.0, 100.0));
             var testWorldPoint = ToWorld(PointAt(400.0, 300.0));
@@ -208,7 +208,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestToWorldXIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 24", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraPosition(PointAt(100.0, 100.0));
             var testWorldX = ToWorldX(400.0);
@@ -216,7 +216,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestToWorldYIntegration() {
-            OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 25", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             SetCameraPosition(PointAt(100.0, 100.0));
             var testWorldY = ToWorldY(300.0);
@@ -234,7 +234,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestWindowAreaIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 26", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testArea = WindowArea(testWindow);
             Assert.Equal(800.0, testArea.Width);

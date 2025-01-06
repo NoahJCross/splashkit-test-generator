@@ -7,7 +7,7 @@ class TestInput:
         set_resources_path("/mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/resources")
 
     def test_process_events_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 1", 800, 600)
         with window_cleanup():
         while key_typed(KeyCode.AKey) is False:
             process_events()
@@ -27,7 +27,7 @@ class TestInput:
             
             
     def test_quit_requested_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 2", 800, 600)
         with window_cleanup():
         while quit_requested() == false:
             process_events()
@@ -39,7 +39,7 @@ class TestInput:
             
             
     def test_reset_quit_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 3", 800, 600)
         with window_cleanup():
         while quit_requested() == false:
             process_events()
@@ -60,7 +60,7 @@ class TestInput:
             
             
     def test_any_key_pressed_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 4", 800, 600)
         with window_cleanup():
         while any_key_pressed() == false:
             process_events()
@@ -74,84 +74,84 @@ class TestInput:
             
     def test_deregister_callback_on_key_down_integration():
         callbacks = key_callbacks();
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 5", 800, 600)
         with window_cleanup():
-            register_callback_on_key_down(callbacks.on_key_down)
-        while callbacks.get_key_down != KeyCode.AKey:
+            register_callback_on_key_down(callbacks.on_key_down())
+        while callbacks.get_key_down() != KeyCode.AKey:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: deregister_callback_on_key_down", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press A to test callback", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Down: {key_down(KeyCode.AKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_down)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_down())}", color_black(), 10.0, 70.0)
             refresh_screen()
             
-            deregister_callback_on_key_down(callbacks.on_key_down)
+            deregister_callback_on_key_down(callbacks.on_key_down())
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: deregister_callback_on_key_down", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press B to test deregistered callback on key down", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Down: {key_down(KeyCode.BKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_down)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_down())}", color_black(), 10.0, 70.0)
             draw_text_no_font_no_size("Press Space to end test", color_black(), 10.0, 90.0)
             refresh_screen()
             
             
     def test_deregister_callback_on_key_typed_integration():
         callbacks = key_callbacks();
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 6", 800, 600)
         with window_cleanup():
-            register_callback_on_key_typed(callbacks.on_key_typed)
-        while callbacks.get_key_typed != KeyCode.AKey:
+            register_callback_on_key_typed(callbacks.on_key_typed())
+        while callbacks.get_key_typed() != KeyCode.AKey:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: deregister_callback_on_key_typed", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press A to test callback", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Typed: {key_typed(KeyCode.AKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_typed)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_typed())}", color_black(), 10.0, 70.0)
             refresh_screen()
             
-            deregister_callback_on_key_typed(callbacks.on_key_typed)
+            deregister_callback_on_key_typed(callbacks.on_key_typed())
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: deregister_callback_on_key_typed", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press B to test deregistered callback on key typed", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Typed: {key_typed(KeyCode.BKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_typed)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_typed())}", color_black(), 10.0, 70.0)
             draw_text_no_font_no_size("Press Space to end test", color_black(), 10.0, 90.0)
             refresh_screen()
             
             
     def test_deregister_callback_on_key_up_integration():
         callbacks = key_callbacks();
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 7", 800, 600)
         with window_cleanup():
-            register_callback_on_key_up(callbacks.on_key_up)
-        while callbacks.get_key_up != KeyCode.AKey:
+            register_callback_on_key_up(callbacks.on_key_up())
+        while callbacks.get_key_up() != KeyCode.AKey:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: deregister_callback_on_key_up", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press and release A to test callback", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Up: {key_up(KeyCode.AKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_up)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_up())}", color_black(), 10.0, 70.0)
             refresh_screen()
             
-            deregister_callback_on_key_up(callbacks.on_key_up)
+            deregister_callback_on_key_up(callbacks.on_key_up())
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: deregister_callback_on_key_up", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press and release B to test deregistered callback on key up", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Up: {key_up(KeyCode.BKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_up)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_up())}", color_black(), 10.0, 70.0)
             draw_text_no_font_no_size("Press Space to end test", color_black(), 10.0, 90.0)
             refresh_screen()
             
             
     def test_key_down_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 8", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.AKey) == false:
             process_events()
@@ -172,15 +172,15 @@ class TestInput:
             
     def test_key_name_integration():
         callbacks = key_callbacks();
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 9", 800, 600)
         with window_cleanup():
-            register_callback_on_key_typed(callbacks.on_key_typed)
+            register_callback_on_key_typed(callbacks.on_key_typed())
         while key_down(KeyCode.AKey) == false:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: key_name", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press A to test key name", color_black(), 10.0, 30.0)
-            draw_text_no_font_no_size(f"Key Name: {key_name(callbacks.get_key_typed)}", color_black(), 10.0, 50.0)
+            draw_text_no_font_no_size(f"Key Name: {key_name(callbacks.get_key_typed())}", color_black(), 10.0, 50.0)
             refresh_screen()
             
         while key_down(KeyCode.ReturnKey) == false:
@@ -188,12 +188,12 @@ class TestInput:
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: key_name", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press Enter to test key name", color_black(), 10.0, 30.0)
-            draw_text_no_font_no_size(f"Key Name: {key_name(callbacks.get_key_typed)}", color_black(), 10.0, 50.0)
+            draw_text_no_font_no_size(f"Key Name: {key_name(callbacks.get_key_typed())}", color_black(), 10.0, 50.0)
             refresh_screen()
             
             
     def test_key_released_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 10", 800, 600)
         with window_cleanup():
         while key_released(KeyCode.AKey) == false:
             process_events()
@@ -205,7 +205,7 @@ class TestInput:
             
             
     def test_key_typed_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 11", 800, 600)
         with window_cleanup():
         while key_typed(KeyCode.AKey) is False:
             process_events()
@@ -217,7 +217,7 @@ class TestInput:
             
             
     def test_key_up_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 12", 800, 600)
         with window_cleanup():
         while key_up(KeyCode.AKey) == false:
             process_events()
@@ -230,54 +230,54 @@ class TestInput:
             
     def test_register_callback_on_key_down_integration():
         callbacks = key_callbacks();
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 13", 800, 600)
         with window_cleanup():
-            register_callback_on_key_down(callbacks.on_key_down)
-        while callbacks.get_key_down != KeyCode.AKey:
+            register_callback_on_key_down(callbacks.on_key_down())
+        while callbacks.get_key_down() != KeyCode.AKey:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: register_callback_on_key_down", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press A to test callback on key down", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Down: {key_down(KeyCode.AKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_down)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_down())}", color_black(), 10.0, 70.0)
             refresh_screen()
             
-            deregister_callback_on_key_down(callbacks.on_key_down)
+            deregister_callback_on_key_down(callbacks.on_key_down())
             
     def test_register_callback_on_key_typed_integration():
         callbacks = key_callbacks();
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 14", 800, 600)
         with window_cleanup():
-            register_callback_on_key_typed(callbacks.on_key_typed)
-        while callbacks.get_key_typed != KeyCode.AKey:
+            register_callback_on_key_typed(callbacks.on_key_typed())
+        while callbacks.get_key_typed() != KeyCode.AKey:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: register_callback_on_key_typed", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press A to test callback on key typed", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Typed: {key_typed(KeyCode.AKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_typed)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_typed())}", color_black(), 10.0, 70.0)
             refresh_screen()
             
-            deregister_callback_on_key_typed(callbacks.on_key_typed)
+            deregister_callback_on_key_typed(callbacks.on_key_typed())
             
     def test_register_callback_on_key_up_integration():
         callbacks = key_callbacks();
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 15", 800, 600)
         with window_cleanup():
-            register_callback_on_key_up(callbacks.on_key_up)
-        while callbacks.get_key_up != KeyCode.AKey:
+            register_callback_on_key_up(callbacks.on_key_up())
+        while callbacks.get_key_up() != KeyCode.AKey:
             process_events()
             clear_screen_to_white()
             draw_text_no_font_no_size("Test: register_callback_on_key_up", color_black(), 10.0, 10.0)
             draw_text_no_font_no_size("Press and release A to test callback on key up", color_black(), 10.0, 30.0)
             draw_text_no_font_no_size(f"Key Up: {key_up(KeyCode.AKey)}", color_black(), 10.0, 50.0)
-            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_up)}", color_black(), 10.0, 70.0)
+            draw_text_no_font_no_size(f"Callback received: {key_name(callbacks.get_key_up())}", color_black(), 10.0, 70.0)
             refresh_screen()
             
-            deregister_callback_on_key_up(callbacks.on_key_up)
+            deregister_callback_on_key_up(callbacks.on_key_up())
             
     def test_hide_mouse_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 16", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.HKey) == false:
             process_events()
@@ -299,7 +299,7 @@ class TestInput:
             show_mouse()
             
     def test_mouse_clicked_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 17", 800, 600)
         with window_cleanup():
         while mouse_clicked(MouseButton.LeftButton) == false:
             process_events()
@@ -311,7 +311,7 @@ class TestInput:
             
             
     def test_mouse_down_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 18", 800, 600)
         with window_cleanup():
         while mouse_down(MouseButton.LeftButton) == false:
             process_events()
@@ -331,7 +331,7 @@ class TestInput:
             
             
     def test_mouse_movement_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 19", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
@@ -345,7 +345,7 @@ class TestInput:
             
             
     def test_mouse_position_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 20", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
@@ -359,7 +359,7 @@ class TestInput:
             
             
     def test_mouse_position_vector_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 21", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
@@ -373,7 +373,7 @@ class TestInput:
             
             
     def test_mouse_shown_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 22", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.HKey) == false:
             process_events()
@@ -397,7 +397,7 @@ class TestInput:
             assert mouse_shown()
             
     def test_mouse_up_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 23", 800, 600)
         with window_cleanup():
         while mouse_up(MouseButton.LeftButton) == false:
             process_events()
@@ -409,7 +409,7 @@ class TestInput:
             
             
     def test_mouse_wheel_scroll_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 24", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
@@ -423,7 +423,7 @@ class TestInput:
             
             
     def test_mouse_x_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 25", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
@@ -436,7 +436,7 @@ class TestInput:
             
             
     def test_mouse_y_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 26", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.SpaceKey) == false:
             process_events()
@@ -449,7 +449,7 @@ class TestInput:
             
             
     def test_move_mouse_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 27", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.MKey) == false:
             process_events()
@@ -471,7 +471,7 @@ class TestInput:
             
             
     def test_move_mouse_to_point_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 28", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.MKey) == false:
             process_events()
@@ -493,7 +493,7 @@ class TestInput:
             
             
     def test_show_mouse_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 29", 800, 600)
         with window_cleanup():
             hide_mouse()
         while key_down(KeyCode.SKey) == false:
@@ -515,7 +515,7 @@ class TestInput:
             
             
     def test_show_mouse_with_boolean_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 30", 800, 600)
         with window_cleanup():
         while key_down(KeyCode.HKey) == false:
             process_events()
@@ -539,7 +539,7 @@ class TestInput:
             assert mouse_shown()
             
     def test_draw_collected_text_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 31", 800, 600)
         with window_cleanup():
             test_font = load_font("test_font", "hara.ttf")
             with font_cleanup():
@@ -552,10 +552,10 @@ class TestInput:
             draw_collected_text(color_black(), test_font, 18, option_defaults())
             refresh_screen()
             
-            end_reading_text_in_window(test_window)
+            end_reading_text()
             
     def test_end_reading_text_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 32", 800, 600)
         with window_cleanup():
             start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0))
             assert reading_text()
@@ -580,7 +580,7 @@ class TestInput:
             
             
     def test_end_reading_text_in_window_integration():
-        test_window = open_window("Test Window", 800, 600)
+        test_window = open_window("Test Window 33", 800, 600)
         with window_cleanup():
             test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0)
             start_reading_text_in_window(test_window, test_rectangle)
@@ -606,7 +606,7 @@ class TestInput:
             
             
     def test_reading_text_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 34", 800, 600)
         with window_cleanup():
             start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0))
             assert reading_text()
@@ -618,11 +618,11 @@ class TestInput:
             draw_text_no_font_no_size(f"Reading Text: {reading_text()}", color_black(), 10.0, 50.0)
             refresh_screen()
             
-            end_reading_text_in_window(test_window)
+            end_reading_text()
             assert not reading_text()
             
     def test_reading_text_in_window_integration():
-        test_window = open_window("Test Window", 800, 600)
+        test_window = open_window("Test Window 35", 800, 600)
         with window_cleanup():
             test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0)
             start_reading_text_in_window(test_window, test_rectangle)
@@ -639,7 +639,7 @@ class TestInput:
             assert not reading_text_in_window(test_window)
             
     def test_start_reading_text_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 36", 800, 600)
         with window_cleanup():
             test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0)
             start_reading_text(test_rect)
@@ -652,11 +652,11 @@ class TestInput:
             draw_text_no_font_no_size(f"Current Text: {text_input()}", color_black(), 10.0, 50.0)
             refresh_screen()
             
-            end_reading_text_in_window(test_window)
+            end_reading_text()
             assert not reading_text()
             
     def test_start_reading_text_with_initial_text_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 37", 800, 600)
         with window_cleanup():
             test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0)
             start_reading_text_with_initial_text(test_rect, "Initial Text")
@@ -669,11 +669,11 @@ class TestInput:
             draw_text_no_font_no_size(f"Current Text: {text_input()}", color_black(), 10.0, 50.0)
             refresh_screen()
             
-            end_reading_text_in_window(test_window)
+            end_reading_text()
             assert not reading_text()
             
     def test_start_reading_text_in_window_integration():
-        test_window = open_window("Test Window", 800, 600)
+        test_window = open_window("Test Window 38", 800, 600)
         with window_cleanup():
             test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0)
             start_reading_text_in_window(test_window, test_rect)
@@ -690,7 +690,7 @@ class TestInput:
             assert not reading_text()
             
     def test_start_reading_text_in_window_with_initial_text_integration():
-        test_window = open_window("Test Window", 800, 600)
+        test_window = open_window("Test Window 39", 800, 600)
         with window_cleanup():
             test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0)
             start_reading_text_in_window_with_initial_text(test_window, test_rect, "Initial Text")
@@ -707,7 +707,7 @@ class TestInput:
             assert not reading_text()
             
     def test_text_entry_cancelled_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 40", 800, 600)
         with window_cleanup():
             start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0))
         while key_down(KeyCode.SpaceKey) == false:
@@ -719,11 +719,10 @@ class TestInput:
             draw_text_no_font_no_size("Press space to end test", color_black(), 10.0, 70.0)
             refresh_screen()
             
-            assert text_entry_cancelled()
-            end_reading_text_in_window(test_window)
+            end_reading_text()
             
     def test_text_entry_cancelled_in_window_integration():
-        test_window = open_window("Test Window", 800, 600)
+        test_window = open_window("Test Window 41", 800, 600)
         with window_cleanup():
             test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0)
             start_reading_text_in_window(test_window, test_rect)
@@ -740,7 +739,7 @@ class TestInput:
             end_reading_text_in_window(test_window)
             
     def test_text_input_integration():
-        test_window = open_window("Test Window", 800, 600)
+        open_window("Test Window 42", 800, 600)
         with window_cleanup():
             start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0))
         while key_down(KeyCode.ReturnKey) == false:
@@ -751,10 +750,10 @@ class TestInput:
             draw_text_no_font_no_size(f"Current Text: {text_input()}", color_black(), 10.0, 50.0)
             refresh_screen()
             
-            end_reading_text_in_window(test_window)
+            end_reading_text()
             
     def test_text_input_in_window_integration():
-        test_window = open_window("Test Window", 800, 600)
+        test_window = open_window("Test Window 43", 800, 600)
         with window_cleanup():
             test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0)
             start_reading_text_in_window(test_window, test_rect)

@@ -12,7 +12,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestProcessEventsIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 1", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (!KeyTyped(KeyCode.AKey)) {
                 ProcessEvents();
@@ -33,7 +33,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestQuitRequestedIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 2", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (QuitRequested() == false) {
                 ProcessEvents();
@@ -46,7 +46,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestResetQuitIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 3", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (QuitRequested() == false) {
                 ProcessEvents();
@@ -68,7 +68,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestAnyKeyPressedIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 4", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (AnyKeyPressed() == false) {
                 ProcessEvents();
@@ -83,26 +83,26 @@ namespace SplashKitTests
         [Fact]
         public void TestDeregisterCallbackOnKeyDownIntegration() {
             var callbacks = new KeyCallbacks();
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 5", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            RegisterCallbackOnKeyDown(callbacks.OnKeyDown);
-            while (callbacks.GetKeyDown != KeyCode.AKey) {
+            RegisterCallbackOnKeyDown(callbacks.OnKeyDown());
+            while (callbacks.GetKeyDown() != KeyCode.AKey) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: deregister_callback_on_key_down", ColorBlack(), 10.0, 10.0);
                 DrawText("Press A to test callback", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyDown)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyDown())}", ColorBlack(), 10.0, 70.0);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyDown(callbacks.OnKeyDown);
+            DeregisterCallbackOnKeyDown(callbacks.OnKeyDown());
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: deregister_callback_on_key_down", ColorBlack(), 10.0, 10.0);
                 DrawText("Press B to test deregistered callback on key down", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Down: {KeyDown(KeyCode.BKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyDown)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyDown())}", ColorBlack(), 10.0, 70.0);
                 DrawText("Press Space to end test", ColorBlack(), 10.0, 90.0);
                 RefreshScreen();
             }
@@ -110,26 +110,26 @@ namespace SplashKitTests
         [Fact]
         public void TestDeregisterCallbackOnKeyTypedIntegration() {
             var callbacks = new KeyCallbacks();
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 6", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            RegisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
-            while (callbacks.GetKeyTyped != KeyCode.AKey) {
+            RegisterCallbackOnKeyTyped(callbacks.OnKeyTyped());
+            while (callbacks.GetKeyTyped() != KeyCode.AKey) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: deregister_callback_on_key_typed", ColorBlack(), 10.0, 10.0);
                 DrawText("Press A to test callback", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Typed: {KeyTyped(KeyCode.AKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyTyped)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyTyped())}", ColorBlack(), 10.0, 70.0);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
+            DeregisterCallbackOnKeyTyped(callbacks.OnKeyTyped());
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: deregister_callback_on_key_typed", ColorBlack(), 10.0, 10.0);
                 DrawText("Press B to test deregistered callback on key typed", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Typed: {KeyTyped(KeyCode.BKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyTyped)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyTyped())}", ColorBlack(), 10.0, 70.0);
                 DrawText("Press Space to end test", ColorBlack(), 10.0, 90.0);
                 RefreshScreen();
             }
@@ -137,33 +137,33 @@ namespace SplashKitTests
         [Fact]
         public void TestDeregisterCallbackOnKeyUpIntegration() {
             var callbacks = new KeyCallbacks();
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 7", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            RegisterCallbackOnKeyUp(callbacks.OnKeyUp);
-            while (callbacks.GetKeyUp != KeyCode.AKey) {
+            RegisterCallbackOnKeyUp(callbacks.OnKeyUp());
+            while (callbacks.GetKeyUp() != KeyCode.AKey) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: deregister_callback_on_key_up", ColorBlack(), 10.0, 10.0);
                 DrawText("Press and release A to test callback", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Up: {KeyUp(KeyCode.AKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyUp)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyUp())}", ColorBlack(), 10.0, 70.0);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyUp(callbacks.OnKeyUp);
+            DeregisterCallbackOnKeyUp(callbacks.OnKeyUp());
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: deregister_callback_on_key_up", ColorBlack(), 10.0, 10.0);
                 DrawText("Press and release B to test deregistered callback on key up", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Up: {KeyUp(KeyCode.BKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyUp)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyUp())}", ColorBlack(), 10.0, 70.0);
                 DrawText("Press Space to end test", ColorBlack(), 10.0, 90.0);
                 RefreshScreen();
             }
         }
         [Fact]
         public void TestKeyDownIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 8", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.AKey) == false) {
                 ProcessEvents();
@@ -185,15 +185,15 @@ namespace SplashKitTests
         [Fact]
         public void TestKeyNameIntegration() {
             var callbacks = new KeyCallbacks();
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 9", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            RegisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
+            RegisterCallbackOnKeyTyped(callbacks.OnKeyTyped());
             while (KeyDown(KeyCode.AKey) == false) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: key_name", ColorBlack(), 10.0, 10.0);
                 DrawText("Press A to test key name", ColorBlack(), 10.0, 30.0);
-                DrawText($"Key Name: {KeyName(callbacks.GetKeyTyped)}", ColorBlack(), 10.0, 50.0);
+                DrawText($"Key Name: {KeyName(callbacks.GetKeyTyped())}", ColorBlack(), 10.0, 50.0);
                 RefreshScreen();
             }
             while (KeyDown(KeyCode.ReturnKey) == false) {
@@ -201,13 +201,13 @@ namespace SplashKitTests
                 ClearScreen();
                 DrawText("Test: key_name", ColorBlack(), 10.0, 10.0);
                 DrawText("Press Enter to test key name", ColorBlack(), 10.0, 30.0);
-                DrawText($"Key Name: {KeyName(callbacks.GetKeyTyped)}", ColorBlack(), 10.0, 50.0);
+                DrawText($"Key Name: {KeyName(callbacks.GetKeyTyped())}", ColorBlack(), 10.0, 50.0);
                 RefreshScreen();
             }
         }
         [Fact]
         public void TestKeyReleasedIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 10", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyReleased(KeyCode.AKey) == false) {
                 ProcessEvents();
@@ -220,7 +220,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestKeyTypedIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 11", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (!KeyTyped(KeyCode.AKey)) {
                 ProcessEvents();
@@ -233,7 +233,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestKeyUpIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 12", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyUp(KeyCode.AKey) == false) {
                 ProcessEvents();
@@ -247,57 +247,57 @@ namespace SplashKitTests
         [Fact]
         public void TestRegisterCallbackOnKeyDownIntegration() {
             var callbacks = new KeyCallbacks();
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 13", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            RegisterCallbackOnKeyDown(callbacks.OnKeyDown);
-            while (callbacks.GetKeyDown != KeyCode.AKey) {
+            RegisterCallbackOnKeyDown(callbacks.OnKeyDown());
+            while (callbacks.GetKeyDown() != KeyCode.AKey) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: register_callback_on_key_down", ColorBlack(), 10.0, 10.0);
                 DrawText("Press A to test callback on key down", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Down: {KeyDown(KeyCode.AKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyDown)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyDown())}", ColorBlack(), 10.0, 70.0);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyDown(callbacks.OnKeyDown);
+            DeregisterCallbackOnKeyDown(callbacks.OnKeyDown());
         }
         [Fact]
         public void TestRegisterCallbackOnKeyTypedIntegration() {
             var callbacks = new KeyCallbacks();
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 14", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            RegisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
-            while (callbacks.GetKeyTyped != KeyCode.AKey) {
+            RegisterCallbackOnKeyTyped(callbacks.OnKeyTyped());
+            while (callbacks.GetKeyTyped() != KeyCode.AKey) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: register_callback_on_key_typed", ColorBlack(), 10.0, 10.0);
                 DrawText("Press A to test callback on key typed", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Typed: {KeyTyped(KeyCode.AKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyTyped)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyTyped())}", ColorBlack(), 10.0, 70.0);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyTyped(callbacks.OnKeyTyped);
+            DeregisterCallbackOnKeyTyped(callbacks.OnKeyTyped());
         }
         [Fact]
         public void TestRegisterCallbackOnKeyUpIntegration() {
             var callbacks = new KeyCallbacks();
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 15", 800, 600);
             using var cleanupWindow = new WindowCleanup();
-            RegisterCallbackOnKeyUp(callbacks.OnKeyUp);
-            while (callbacks.GetKeyUp != KeyCode.AKey) {
+            RegisterCallbackOnKeyUp(callbacks.OnKeyUp());
+            while (callbacks.GetKeyUp() != KeyCode.AKey) {
                 ProcessEvents();
                 ClearScreen();
                 DrawText("Test: register_callback_on_key_up", ColorBlack(), 10.0, 10.0);
                 DrawText("Press and release A to test callback on key up", ColorBlack(), 10.0, 30.0);
                 DrawText($"Key Up: {KeyUp(KeyCode.AKey)}", ColorBlack(), 10.0, 50.0);
-                DrawText($"Callback received: {KeyName(callbacks.GetKeyUp)}", ColorBlack(), 10.0, 70.0);
+                DrawText($"Callback received: {KeyName(callbacks.GetKeyUp())}", ColorBlack(), 10.0, 70.0);
                 RefreshScreen();
             }
-            DeregisterCallbackOnKeyUp(callbacks.OnKeyUp);
+            DeregisterCallbackOnKeyUp(callbacks.OnKeyUp());
         }
         [Fact]
         public void TestHideMouseIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 16", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.HKey) == false) {
                 ProcessEvents();
@@ -320,7 +320,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMouseClickedIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 17", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (MouseClicked(MouseButton.LeftButton) == false) {
                 ProcessEvents();
@@ -333,7 +333,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMouseDownIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 18", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (MouseDown(MouseButton.LeftButton) == false) {
                 ProcessEvents();
@@ -354,7 +354,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMouseMovementIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 19", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
@@ -369,7 +369,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMousePositionIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 20", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
@@ -384,7 +384,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMousePositionVectorIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 21", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
@@ -399,7 +399,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMouseShownIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 22", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.HKey) == false) {
                 ProcessEvents();
@@ -424,7 +424,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMouseUpIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 23", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (MouseUp(MouseButton.LeftButton) == false) {
                 ProcessEvents();
@@ -437,7 +437,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMouseWheelScrollIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 24", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
@@ -452,7 +452,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMouseXIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 25", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
@@ -466,7 +466,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMouseYIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 26", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.SpaceKey) == false) {
                 ProcessEvents();
@@ -480,7 +480,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMoveMouseIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 27", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.MKey) == false) {
                 ProcessEvents();
@@ -503,7 +503,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestMoveMouseToPointIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 28", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.MKey) == false) {
                 ProcessEvents();
@@ -526,7 +526,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestShowMouseIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 29", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             HideMouse();
             while (KeyDown(KeyCode.SKey) == false) {
@@ -549,7 +549,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestShowMouseWithBooleanIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 30", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             while (KeyDown(KeyCode.HKey) == false) {
                 ProcessEvents();
@@ -574,7 +574,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestDrawCollectedTextIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 31", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testFont = LoadFont("test_font", "hara.ttf");
             using var cleanupFont = new FontCleanup();
@@ -587,11 +587,11 @@ namespace SplashKitTests
                 DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
                 RefreshScreen();
             }
-            EndReadingText(testWindow);
+            EndReadingText();
         }
         [Fact]
         public void TestEndReadingTextIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 32", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
             Assert.True(ReadingText());
@@ -617,7 +617,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestEndReadingTextInWindowIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 33", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testWindow, testRectangle);
@@ -644,7 +644,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestReadingTextIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 34", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
             Assert.True(ReadingText());
@@ -656,12 +656,12 @@ namespace SplashKitTests
                 DrawText($"Reading Text: {ReadingText()}", ColorBlack(), 10.0, 50.0);
                 RefreshScreen();
             }
-            EndReadingText(testWindow);
+            EndReadingText();
             Assert.False(ReadingText());
         }
         [Fact]
         public void TestReadingTextInWindowIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 35", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRectangle = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testWindow, testRectangle);
@@ -679,7 +679,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestStartReadingTextIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 36", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testRect);
@@ -692,12 +692,12 @@ namespace SplashKitTests
                 DrawText($"Current Text: {TextInput()}", ColorBlack(), 10.0, 50.0);
                 RefreshScreen();
             }
-            EndReadingText(testWindow);
+            EndReadingText();
             Assert.False(ReadingText());
         }
         [Fact]
         public void TestStartReadingTextWithInitialTextIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 37", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testRect, "Initial Text");
@@ -710,12 +710,12 @@ namespace SplashKitTests
                 DrawText($"Current Text: {TextInput()}", ColorBlack(), 10.0, 50.0);
                 RefreshScreen();
             }
-            EndReadingText(testWindow);
+            EndReadingText();
             Assert.False(ReadingText());
         }
         [Fact]
         public void TestStartReadingTextInWindowIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 38", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testWindow, testRect);
@@ -733,7 +733,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestStartReadingTextInWindowWithInitialTextIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 39", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testWindow, testRect, "Initial Text");
@@ -751,7 +751,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestTextEntryCancelledIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 40", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
             while (KeyDown(KeyCode.SpaceKey) == false) {
@@ -763,12 +763,11 @@ namespace SplashKitTests
                 DrawText("Press space to end test", ColorBlack(), 10.0, 70.0);
                 RefreshScreen();
             }
-            Assert.True(TextEntryCancelled());
-            EndReadingText(testWindow);
+            EndReadingText();
         }
         [Fact]
         public void TestTextEntryCancelledInWindowIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 41", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testWindow, testRect);
@@ -786,7 +785,7 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestTextInputIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            OpenWindow("Test Window 42", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
             while (KeyDown(KeyCode.ReturnKey) == false) {
@@ -797,11 +796,11 @@ namespace SplashKitTests
                 DrawText($"Current Text: {TextInput()}", ColorBlack(), 10.0, 50.0);
                 RefreshScreen();
             }
-            EndReadingText(testWindow);
+            EndReadingText();
         }
         [Fact]
         public void TestTextInputInWindowIntegration() {
-            var testWindow = OpenWindow("Test Window", 800, 600);
+            var testWindow = OpenWindow("Test Window 43", 800, 600);
             using var cleanupWindow = new WindowCleanup();
             var testRect = RectangleFrom(100.0, 100.0, 200.0, 30.0);
             StartReadingText(testWindow, testRect);

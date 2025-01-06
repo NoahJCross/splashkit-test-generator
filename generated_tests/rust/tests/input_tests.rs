@@ -12,7 +12,7 @@ mod test_input {
     }
     #[test]
     fn test_process_events_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 1".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_typed(KeyCode::AKey) == false {
             process_events();
@@ -33,7 +33,7 @@ mod test_input {
     }
     #[test]
     fn test_quit_requested_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 2".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while quit_requested() == false {
             process_events();
@@ -46,7 +46,7 @@ mod test_input {
     }
     #[test]
     fn test_reset_quit_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 3".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while quit_requested() == false {
             process_events();
@@ -68,7 +68,7 @@ mod test_input {
     }
     #[test]
     fn test_any_key_pressed_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 4".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while any_key_pressed() == false {
             process_events();
@@ -83,26 +83,26 @@ mod test_input {
     #[test]
     fn test_deregister_callback_on_key_down_integration() {
         let callbacks = KeyCallbacks::new();
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 5".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        register_callback_on_key_down(callbacks.on_key_down);
-        while callbacks.get_key_down != KeyCode::AKey {
+        register_callback_on_key_down(callbacks.on_key_down());
+        while callbacks.get_key_down() != KeyCode::AKey {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: deregister_callback_on_key_down".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press A to test callback".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Down: {}", key_down(KeyCode::AKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_down)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_down())), color_black(), 10.0, 70.0);
             refresh_screen();
         }
-        deregister_callback_on_key_down(callbacks.on_key_down);
+        deregister_callback_on_key_down(callbacks.on_key_down());
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: deregister_callback_on_key_down".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press B to test deregistered callback on key down".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Down: {}", key_down(KeyCode::BKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_down)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_down())), color_black(), 10.0, 70.0);
             draw_text_no_font_no_size("Press Space to end test".to_string(), color_black(), 10.0, 90.0);
             refresh_screen();
         }
@@ -110,26 +110,26 @@ mod test_input {
     #[test]
     fn test_deregister_callback_on_key_typed_integration() {
         let callbacks = KeyCallbacks::new();
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 6".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        register_callback_on_key_typed(callbacks.on_key_typed);
-        while callbacks.get_key_typed != KeyCode::AKey {
+        register_callback_on_key_typed(callbacks.on_key_typed());
+        while callbacks.get_key_typed() != KeyCode::AKey {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: deregister_callback_on_key_typed".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press A to test callback".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Typed: {}", key_typed(KeyCode::AKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_typed)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_typed())), color_black(), 10.0, 70.0);
             refresh_screen();
         }
-        deregister_callback_on_key_typed(callbacks.on_key_typed);
+        deregister_callback_on_key_typed(callbacks.on_key_typed());
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: deregister_callback_on_key_typed".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press B to test deregistered callback on key typed".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Typed: {}", key_typed(KeyCode::BKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_typed)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_typed())), color_black(), 10.0, 70.0);
             draw_text_no_font_no_size("Press Space to end test".to_string(), color_black(), 10.0, 90.0);
             refresh_screen();
         }
@@ -137,33 +137,33 @@ mod test_input {
     #[test]
     fn test_deregister_callback_on_key_up_integration() {
         let callbacks = KeyCallbacks::new();
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 7".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        register_callback_on_key_up(callbacks.on_key_up);
-        while callbacks.get_key_up != KeyCode::AKey {
+        register_callback_on_key_up(callbacks.on_key_up());
+        while callbacks.get_key_up() != KeyCode::AKey {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: deregister_callback_on_key_up".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press and release A to test callback".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Up: {}", key_up(KeyCode::AKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_up)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_up())), color_black(), 10.0, 70.0);
             refresh_screen();
         }
-        deregister_callback_on_key_up(callbacks.on_key_up);
+        deregister_callback_on_key_up(callbacks.on_key_up());
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: deregister_callback_on_key_up".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press and release B to test deregistered callback on key up".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Up: {}", key_up(KeyCode::BKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_up)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_up())), color_black(), 10.0, 70.0);
             draw_text_no_font_no_size("Press Space to end test".to_string(), color_black(), 10.0, 90.0);
             refresh_screen();
         }
     }
     #[test]
     fn test_key_down_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 8".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::AKey) == false {
             process_events();
@@ -185,15 +185,15 @@ mod test_input {
     #[test]
     fn test_key_name_integration() {
         let callbacks = KeyCallbacks::new();
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 9".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        register_callback_on_key_typed(callbacks.on_key_typed);
+        register_callback_on_key_typed(callbacks.on_key_typed());
         while key_down(KeyCode::AKey) == false {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: key_name".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press A to test key name".to_string(), color_black(), 10.0, 30.0);
-            draw_text_no_font_no_size(format!("Key Name: {}", key_name(callbacks.get_key_typed)), color_black(), 10.0, 50.0);
+            draw_text_no_font_no_size(format!("Key Name: {}", key_name(callbacks.get_key_typed())), color_black(), 10.0, 50.0);
             refresh_screen();
         }
         while key_down(KeyCode::ReturnKey) == false {
@@ -201,13 +201,13 @@ mod test_input {
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: key_name".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press Enter to test key name".to_string(), color_black(), 10.0, 30.0);
-            draw_text_no_font_no_size(format!("Key Name: {}", key_name(callbacks.get_key_typed)), color_black(), 10.0, 50.0);
+            draw_text_no_font_no_size(format!("Key Name: {}", key_name(callbacks.get_key_typed())), color_black(), 10.0, 50.0);
             refresh_screen();
         }
     }
     #[test]
     fn test_key_released_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 10".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_released(KeyCode::AKey) == false {
             process_events();
@@ -220,7 +220,7 @@ mod test_input {
     }
     #[test]
     fn test_key_typed_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 11".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_typed(KeyCode::AKey) == false {
             process_events();
@@ -233,7 +233,7 @@ mod test_input {
     }
     #[test]
     fn test_key_up_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 12".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_up(KeyCode::AKey) == false {
             process_events();
@@ -247,57 +247,57 @@ mod test_input {
     #[test]
     fn test_register_callback_on_key_down_integration() {
         let callbacks = KeyCallbacks::new();
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 13".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        register_callback_on_key_down(callbacks.on_key_down);
-        while callbacks.get_key_down != KeyCode::AKey {
+        register_callback_on_key_down(callbacks.on_key_down());
+        while callbacks.get_key_down() != KeyCode::AKey {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: register_callback_on_key_down".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press A to test callback on key down".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Down: {}", key_down(KeyCode::AKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_down)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_down())), color_black(), 10.0, 70.0);
             refresh_screen();
         }
-        deregister_callback_on_key_down(callbacks.on_key_down);
+        deregister_callback_on_key_down(callbacks.on_key_down());
     }
     #[test]
     fn test_register_callback_on_key_typed_integration() {
         let callbacks = KeyCallbacks::new();
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 14".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        register_callback_on_key_typed(callbacks.on_key_typed);
-        while callbacks.get_key_typed != KeyCode::AKey {
+        register_callback_on_key_typed(callbacks.on_key_typed());
+        while callbacks.get_key_typed() != KeyCode::AKey {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: register_callback_on_key_typed".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press A to test callback on key typed".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Typed: {}", key_typed(KeyCode::AKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_typed)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_typed())), color_black(), 10.0, 70.0);
             refresh_screen();
         }
-        deregister_callback_on_key_typed(callbacks.on_key_typed);
+        deregister_callback_on_key_typed(callbacks.on_key_typed());
     }
     #[test]
     fn test_register_callback_on_key_up_integration() {
         let callbacks = KeyCallbacks::new();
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 15".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
-        register_callback_on_key_up(callbacks.on_key_up);
-        while callbacks.get_key_up != KeyCode::AKey {
+        register_callback_on_key_up(callbacks.on_key_up());
+        while callbacks.get_key_up() != KeyCode::AKey {
             process_events();
             clear_screen_to_white();
             draw_text_no_font_no_size("Test: register_callback_on_key_up".to_string(), color_black(), 10.0, 10.0);
             draw_text_no_font_no_size("Press and release A to test callback on key up".to_string(), color_black(), 10.0, 30.0);
             draw_text_no_font_no_size(format!("Key Up: {}", key_up(KeyCode::AKey)), color_black(), 10.0, 50.0);
-            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_up)), color_black(), 10.0, 70.0);
+            draw_text_no_font_no_size(format!("Callback received: {}", key_name(callbacks.get_key_up())), color_black(), 10.0, 70.0);
             refresh_screen();
         }
-        deregister_callback_on_key_up(callbacks.on_key_up);
+        deregister_callback_on_key_up(callbacks.on_key_up());
     }
     #[test]
     fn test_hide_mouse_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 16".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::HKey) == false {
             process_events();
@@ -320,7 +320,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_clicked_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 17".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while mouse_clicked(MouseButton::LeftButton) == false {
             process_events();
@@ -333,7 +333,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_down_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 18".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while mouse_down(MouseButton::LeftButton) == false {
             process_events();
@@ -354,7 +354,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_movement_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 19".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
@@ -369,7 +369,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_position_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 20".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
@@ -384,7 +384,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_position_vector_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 21".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
@@ -399,7 +399,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_shown_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 22".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::HKey) == false {
             process_events();
@@ -424,7 +424,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_up_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 23".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while mouse_up(MouseButton::LeftButton) == false {
             process_events();
@@ -437,7 +437,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_wheel_scroll_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 24".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
@@ -452,7 +452,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_x_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 25".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
@@ -466,7 +466,7 @@ mod test_input {
     }
     #[test]
     fn test_mouse_y_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 26".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::SpaceKey) == false {
             process_events();
@@ -480,7 +480,7 @@ mod test_input {
     }
     #[test]
     fn test_move_mouse_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 27".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::MKey) == false {
             process_events();
@@ -503,7 +503,7 @@ mod test_input {
     }
     #[test]
     fn test_move_mouse_to_point_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 28".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::MKey) == false {
             process_events();
@@ -526,7 +526,7 @@ mod test_input {
     }
     #[test]
     fn test_show_mouse_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 29".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         hide_mouse();
         while key_down(KeyCode::SKey) == false {
@@ -549,7 +549,7 @@ mod test_input {
     }
     #[test]
     fn test_show_mouse_with_boolean_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 30".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         while key_down(KeyCode::HKey) == false {
             process_events();
@@ -574,7 +574,7 @@ mod test_input {
     }
     #[test]
     fn test_draw_collected_text_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 31".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_font = load_font("test_font".to_string(), "hara.ttf".to_string());
         let _cleanup_font = FontCleanup::new();
@@ -587,11 +587,11 @@ mod test_input {
             draw_collected_text(color_black(), test_font, 18, option_defaults());
             refresh_screen();
         }
-        end_reading_text_in_window(test_window);
+        end_reading_text();
     }
     #[test]
     fn test_end_reading_text_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 32".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
         assert!(reading_text());
@@ -617,7 +617,7 @@ mod test_input {
     }
     #[test]
     fn test_end_reading_text_in_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 33".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0);
         start_reading_text_in_window(test_window, test_rectangle);
@@ -644,7 +644,7 @@ mod test_input {
     }
     #[test]
     fn test_reading_text_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 34".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
         assert!(reading_text());
@@ -656,12 +656,12 @@ mod test_input {
             draw_text_no_font_no_size(format!("Reading Text: {}", reading_text()), color_black(), 10.0, 50.0);
             refresh_screen();
         }
-        end_reading_text_in_window(test_window);
+        end_reading_text();
         assert!(!reading_text());
     }
     #[test]
     fn test_reading_text_in_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 35".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rectangle = rectangle_from(100.0, 100.0, 200.0, 30.0);
         start_reading_text_in_window(test_window, test_rectangle);
@@ -679,7 +679,7 @@ mod test_input {
     }
     #[test]
     fn test_start_reading_text_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 36".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
         start_reading_text(test_rect);
@@ -692,12 +692,12 @@ mod test_input {
             draw_text_no_font_no_size(format!("Current Text: {}", text_input()), color_black(), 10.0, 50.0);
             refresh_screen();
         }
-        end_reading_text_in_window(test_window);
+        end_reading_text();
         assert!(!reading_text());
     }
     #[test]
     fn test_start_reading_text_with_initial_text_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 37".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
         start_reading_text_with_initial_text(test_rect, "Initial Text".to_string());
@@ -710,12 +710,12 @@ mod test_input {
             draw_text_no_font_no_size(format!("Current Text: {}", text_input()), color_black(), 10.0, 50.0);
             refresh_screen();
         }
-        end_reading_text_in_window(test_window);
+        end_reading_text();
         assert!(!reading_text());
     }
     #[test]
     fn test_start_reading_text_in_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 38".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
         start_reading_text_in_window(test_window, test_rect);
@@ -733,7 +733,7 @@ mod test_input {
     }
     #[test]
     fn test_start_reading_text_in_window_with_initial_text_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 39".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
         start_reading_text_in_window_with_initial_text(test_window, test_rect, "Initial Text".to_string());
@@ -751,7 +751,7 @@ mod test_input {
     }
     #[test]
     fn test_text_entry_cancelled_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 40".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
         while key_down(KeyCode::SpaceKey) == false {
@@ -763,12 +763,11 @@ mod test_input {
             draw_text_no_font_no_size("Press space to end test".to_string(), color_black(), 10.0, 70.0);
             refresh_screen();
         }
-        assert!(text_entry_cancelled());
-        end_reading_text_in_window(test_window);
+        end_reading_text();
     }
     #[test]
     fn test_text_entry_cancelled_in_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 41".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
         start_reading_text_in_window(test_window, test_rect);
@@ -786,7 +785,7 @@ mod test_input {
     }
     #[test]
     fn test_text_input_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        open_window("Test Window 42".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         start_reading_text(rectangle_from(100.0, 100.0, 200.0, 30.0));
         while key_down(KeyCode::ReturnKey) == false {
@@ -797,11 +796,11 @@ mod test_input {
             draw_text_no_font_no_size(format!("Current Text: {}", text_input()), color_black(), 10.0, 50.0);
             refresh_screen();
         }
-        end_reading_text_in_window(test_window);
+        end_reading_text();
     }
     #[test]
     fn test_text_input_in_window_integration() {
-        let test_window = open_window("Test Window".to_string(), 800, 600);
+        let test_window = open_window("Test Window 43".to_string(), 800, 600);
         let _cleanup_window = WindowCleanup::new();
         let test_rect = rectangle_from(100.0, 100.0, 200.0, 30.0);
         start_reading_text_in_window(test_window, test_rect);

@@ -1,5 +1,4 @@
 using SplashKitSDK;
-using System.Runtime.InteropServices;
 using static SplashKitSDK.SplashKit;
 namespace SplashKitTests
 {
@@ -8,29 +7,29 @@ namespace SplashKitTests
         public bool EventCalled { get; set; }
         public int FloatFunctionCallCount { get; private set; }
         public int FunctionCallCount { get; private set; }
-        public SpriteFloatFunction SpriteFloatFunction { get; private set; }
-        public SpriteFunction SpriteFunction { get; private set; }
-        public SpriteEventHandler SpriteEventHandler { get; private set; }
-        public Action Reset { get; private set; }
-        public SpriteDelegates()
+
+        public void SpriteFloatFunction(nint ptr, float value)
         {
-            FloatFunctionCallCount = 0; 
+            FloatFunctionCallCount++;
+            EventCalled = true;
+        }
+
+        public void SpriteFunction(nint ptr)
+        {
+            FunctionCallCount++;
+            EventCalled = true;
+        }
+
+        public void SpriteEventHandler(nint ptr, int evt)
+        {
+            EventCalled = true;
+        }
+
+        public void Reset()
+        {
+            FloatFunctionCallCount = 0;
             FunctionCallCount = 0;
-            SpriteFloatFunction = (nint ptr, float value) => { 
-                FloatFunctionCallCount++; 
-                EventCalled = true; 
-            };
-            SpriteFunction = (nint ptr) => { 
-                FunctionCallCount++;
-                EventCalled = true; 
-            };
-            SpriteEventHandler = (nint ptr, int evt) => { EventCalled = true; };
-            Reset = () => 
-            {
-                FloatFunctionCallCount = 0;
-                FunctionCallCount = 0;
-                EventCalled = false;
-            };
+            EventCalled = false;
         }
     }
 
@@ -40,34 +39,41 @@ namespace SplashKitTests
         public KeyCode GetKeyDown { get; private set; }
         public KeyCode GetKeyUp { get; private set; }
 
-        public KeyCallback OnKeyTyped { get; private set; }
-        public KeyCallback OnKeyDown { get; private set; }
-        public KeyCallback OnKeyUp { get; private set; }
-        public Action Reset { get; private set; }
-
-        public KeyCallbacks()
+        public void OnKeyTyped(int key)
         {
-            OnKeyTyped = (int key) => { GetKeyTyped = (KeyCode)key; };
-            OnKeyDown = (int key) => { GetKeyDown = (KeyCode)key; };
-            OnKeyUp = (int key) => { GetKeyUp = (KeyCode)key; };
-            Reset = () => 
-            {
-                GetKeyTyped = 0;
-                GetKeyDown = 0;
-                GetKeyUp = 0;
-            };
+            GetKeyTyped = (KeyCode)key;
+        }
+
+        public void OnKeyDown(int key)
+        {
+            GetKeyDown = (KeyCode)key;
+        }
+
+        public void OnKeyUp(int key)
+        {
+            GetKeyUp = (KeyCode)key;
+        }
+
+        public void Reset()
+        {
+            GetKeyTyped = 0;
+            GetKeyDown = 0;
+            GetKeyUp = 0;
         }
     }
 
     public class NotifierTracker
     {
         public bool WasNotified { get; private set; }
-        public FreeNotifier OnFree { get; private set; }
-        public Action Reset { get; private set; }
-            public NotifierTracker()
+
+        public void OnFree(IntPtr resource)
         {
-            OnFree = (IntPtr resource) => { WasNotified = true; };
-            Reset = () => { WasNotified = false; };
+            WasNotified = true;
+        }
+
+        public void Reset()
+        {
+            WasNotified = false;
         }
     }
     public class AnimationScriptCleanup : IDisposable

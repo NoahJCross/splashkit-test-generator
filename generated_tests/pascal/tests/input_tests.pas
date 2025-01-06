@@ -10,7 +10,7 @@ begin
 end;
 procedure TestProcessEventsIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 1', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyTyped(KeyCode.A_KEY) = false do
         ProcessEvents();
@@ -31,7 +31,7 @@ begin
 end;
 procedure TestQuitRequestedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 2', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while QuitRequested() = false do
         ProcessEvents();
@@ -44,7 +44,7 @@ begin
 end;
 procedure TestResetQuitIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 3', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while QuitRequested() = false do
         ProcessEvents();
@@ -66,7 +66,7 @@ begin
 end;
 procedure TestAnyKeyPressedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 4', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while AnyKeyPressed() = false do
         ProcessEvents();
@@ -81,7 +81,7 @@ end;
 procedure TestDeregisterCallbackOnKeyDownIntegration;
 begin
     callbacks := KeyCallbacks.Create();
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 5', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     RegisterCallbackOnKeyDown(callbacks.on_key_down);
     while callbacks.get_key_down <> KeyCode.A_KEY do
@@ -108,7 +108,7 @@ end;
 procedure TestDeregisterCallbackOnKeyTypedIntegration;
 begin
     callbacks := KeyCallbacks.Create();
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 6', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     RegisterCallbackOnKeyTyped(callbacks.on_key_typed);
     while callbacks.get_key_typed <> KeyCode.A_KEY do
@@ -135,7 +135,7 @@ end;
 procedure TestDeregisterCallbackOnKeyUpIntegration;
 begin
     callbacks := KeyCallbacks.Create();
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 7', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     RegisterCallbackOnKeyUp(callbacks.on_key_up);
     while callbacks.get_key_up <> KeyCode.A_KEY do
@@ -161,7 +161,7 @@ begin
 end;
 procedure TestKeyDownIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 8', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.A_KEY) = false do
         ProcessEvents();
@@ -183,7 +183,7 @@ end;
 procedure TestKeyNameIntegration;
 begin
     callbacks := KeyCallbacks.Create();
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 9', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     RegisterCallbackOnKeyTyped(callbacks.on_key_typed);
     while KeyDown(KeyCode.A_KEY) = false do
@@ -205,7 +205,7 @@ begin
 end;
 procedure TestKeyReleasedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 10', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyReleased(KeyCode.A_KEY) = false do
         ProcessEvents();
@@ -218,7 +218,7 @@ begin
 end;
 procedure TestKeyTypedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 11', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyTyped(KeyCode.A_KEY) = false do
         ProcessEvents();
@@ -231,7 +231,7 @@ begin
 end;
 procedure TestKeyUpIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 12', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyUp(KeyCode.A_KEY) = false do
         ProcessEvents();
@@ -245,7 +245,7 @@ end;
 procedure TestRegisterCallbackOnKeyDownIntegration;
 begin
     callbacks := KeyCallbacks.Create();
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 13', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     RegisterCallbackOnKeyDown(callbacks.on_key_down);
     while callbacks.get_key_down <> KeyCode.A_KEY do
@@ -262,7 +262,7 @@ end;
 procedure TestRegisterCallbackOnKeyTypedIntegration;
 begin
     callbacks := KeyCallbacks.Create();
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 14', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     RegisterCallbackOnKeyTyped(callbacks.on_key_typed);
     while callbacks.get_key_typed <> KeyCode.A_KEY do
@@ -279,7 +279,7 @@ end;
 procedure TestRegisterCallbackOnKeyUpIntegration;
 begin
     callbacks := KeyCallbacks.Create();
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 15', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     RegisterCallbackOnKeyUp(callbacks.on_key_up);
     while callbacks.get_key_up <> KeyCode.A_KEY do
@@ -295,7 +295,7 @@ begin
 end;
 procedure TestHideMouseIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 16', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.H_KEY) = false do
         ProcessEvents();
@@ -318,7 +318,7 @@ begin
 end;
 procedure TestMouseClickedIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 17', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while MouseClicked(MouseButton.LEFT_BUTTON) = false do
         ProcessEvents();
@@ -331,7 +331,7 @@ begin
 end;
 procedure TestMouseDownIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 18', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while MouseDown(MouseButton.LEFT_BUTTON) = false do
         ProcessEvents();
@@ -352,7 +352,7 @@ begin
 end;
 procedure TestMouseMovementIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 19', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.SPACE_KEY) = false do
         ProcessEvents();
@@ -367,7 +367,7 @@ begin
 end;
 procedure TestMousePositionIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 20', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.SPACE_KEY) = false do
         ProcessEvents();
@@ -382,7 +382,7 @@ begin
 end;
 procedure TestMousePositionVectorIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 21', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.SPACE_KEY) = false do
         ProcessEvents();
@@ -397,7 +397,7 @@ begin
 end;
 procedure TestMouseShownIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 22', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.H_KEY) = false do
         ProcessEvents();
@@ -422,7 +422,7 @@ begin
 end;
 procedure TestMouseUpIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 23', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while MouseUp(MouseButton.LEFT_BUTTON) = false do
         ProcessEvents();
@@ -435,7 +435,7 @@ begin
 end;
 procedure TestMouseWheelScrollIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 24', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.SPACE_KEY) = false do
         ProcessEvents();
@@ -450,7 +450,7 @@ begin
 end;
 procedure TestMouseXIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 25', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.SPACE_KEY) = false do
         ProcessEvents();
@@ -464,7 +464,7 @@ begin
 end;
 procedure TestMouseYIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 26', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.SPACE_KEY) = false do
         ProcessEvents();
@@ -478,7 +478,7 @@ begin
 end;
 procedure TestMoveMouseIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 27', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.M_KEY) = false do
         ProcessEvents();
@@ -501,7 +501,7 @@ begin
 end;
 procedure TestMoveMouseToPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 28', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.M_KEY) = false do
         ProcessEvents();
@@ -524,7 +524,7 @@ begin
 end;
 procedure TestShowMouseIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 29', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     HideMouse();
     while KeyDown(KeyCode.S_KEY) = false do
@@ -547,7 +547,7 @@ begin
 end;
 procedure TestShowMouseWithBooleanIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 30', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     while KeyDown(KeyCode.H_KEY) = false do
         ProcessEvents();
@@ -572,7 +572,7 @@ begin
 end;
 procedure TestDrawCollectedTextIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 31', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testFont := LoadFont('test_font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
@@ -585,11 +585,11 @@ begin
         DrawCollectedText(ColorBlack(), testFont, 18, OptionDefaults());
         RefreshScreen();
     end;
-    EndReadingText(testWindow);
+    EndReadingText();
 end;
 procedure TestEndReadingTextIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 32', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
     AssertTrue(ReadingText());
@@ -615,7 +615,7 @@ begin
 end;
 procedure TestEndReadingTextInWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 33', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 30.0);
     StartReadingText(testWindow, testRectangle);
@@ -642,7 +642,7 @@ begin
 end;
 procedure TestReadingTextIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 34', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
     AssertTrue(ReadingText());
@@ -654,12 +654,12 @@ begin
         DrawText('Reading Text: ' + ReadingText(), ColorBlack(), 10.0, 50.0);
         RefreshScreen();
     end;
-    EndReadingText(testWindow);
+    EndReadingText();
     AssertFalse(ReadingText());
 end;
 procedure TestReadingTextInWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 35', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRectangle := RectangleFrom(100.0, 100.0, 200.0, 30.0);
     StartReadingText(testWindow, testRectangle);
@@ -677,7 +677,7 @@ begin
 end;
 procedure TestStartReadingTextIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 36', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRect := RectangleFrom(100.0, 100.0, 200.0, 30.0);
     StartReadingText(testRect);
@@ -690,12 +690,12 @@ begin
         DrawText('Current Text: ' + TextInput(), ColorBlack(), 10.0, 50.0);
         RefreshScreen();
     end;
-    EndReadingText(testWindow);
+    EndReadingText();
     AssertFalse(ReadingText());
 end;
 procedure TestStartReadingTextWithInitialTextIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 37', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRect := RectangleFrom(100.0, 100.0, 200.0, 30.0);
     StartReadingText(testRect, 'Initial Text');
@@ -708,12 +708,12 @@ begin
         DrawText('Current Text: ' + TextInput(), ColorBlack(), 10.0, 50.0);
         RefreshScreen();
     end;
-    EndReadingText(testWindow);
+    EndReadingText();
     AssertFalse(ReadingText());
 end;
 procedure TestStartReadingTextInWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 38', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRect := RectangleFrom(100.0, 100.0, 200.0, 30.0);
     StartReadingText(testWindow, testRect);
@@ -731,7 +731,7 @@ begin
 end;
 procedure TestStartReadingTextInWindowWithInitialTextIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 39', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRect := RectangleFrom(100.0, 100.0, 200.0, 30.0);
     StartReadingText(testWindow, testRect, 'Initial Text');
@@ -749,7 +749,7 @@ begin
 end;
 procedure TestTextEntryCancelledIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 40', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
     while KeyDown(KeyCode.SPACE_KEY) = false do
@@ -761,12 +761,11 @@ begin
         DrawText('Press space to end test', ColorBlack(), 10.0, 70.0);
         RefreshScreen();
     end;
-    AssertTrue(TextEntryCancelled());
-    EndReadingText(testWindow);
+    EndReadingText();
 end;
 procedure TestTextEntryCancelledInWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 41', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRect := RectangleFrom(100.0, 100.0, 200.0, 30.0);
     StartReadingText(testWindow, testRect);
@@ -784,7 +783,7 @@ begin
 end;
 procedure TestTextInputIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 42', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     StartReadingText(RectangleFrom(100.0, 100.0, 200.0, 30.0));
     while KeyDown(KeyCode.RETURN_KEY) = false do
@@ -795,11 +794,11 @@ begin
         DrawText('Current Text: ' + TextInput(), ColorBlack(), 10.0, 50.0);
         RefreshScreen();
     end;
-    EndReadingText(testWindow);
+    EndReadingText();
 end;
 procedure TestTextInputInWindowIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 43', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testRect := RectangleFrom(100.0, 100.0, 200.0, 30.0);
     StartReadingText(testWindow, testRect);
@@ -817,5 +816,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

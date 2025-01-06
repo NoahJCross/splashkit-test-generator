@@ -17,7 +17,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_logging"
+              "value": "test_logging1"
             },
             {
               "value_type": "variable",
@@ -158,7 +158,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_app"
+              "value": "test_logging2"
             },
             {
               "value_type": "variable",
@@ -197,7 +197,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_app"
+              "value": "test_logging3"
             },
             {
               "value_type": "variable",
@@ -236,7 +236,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_logging"
+              "value": "test_logging4"
             },
             {
               "value_type": "variable",

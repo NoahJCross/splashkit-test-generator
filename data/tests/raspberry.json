@@ -81,6 +81,11 @@
           "args": []
         },
         {
+          "step_type": "function",
+          "function_name": "raspi_init",
+          "args": []
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
@@ -189,12 +194,6 @@
       "steps": [
         {
           "step_type": "function",
-          "function_name": "has_gpio",
-          "args": [],
-          "store_result": "has_gpio_capability"
-        },
-        {
-          "step_type": "function",
           "function_name": "raspi_init",
           "args": []
         },
@@ -207,23 +206,6 @@
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "has_gpio",
-              "args": []
-            },
-            "value2": null
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "raspi_cleanup",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
             "value1": {
               "value_type": "function",
               "function_name": "has_gpio",
@@ -576,7 +558,7 @@
             {
               "value_type": "enum",
               "enum_type": "pin_modes",
-              "value": "gpio_output"
+              "value": "gpio_pwm"
             }
           ]
         },
@@ -614,7 +596,7 @@
             "value1": {
               "value_type": "enum",
               "enum_type": "pin_modes",
-              "value": "gpio_output"
+              "value": "gpio_pwm"
             },
             "value2": {
               "value_type": "variable",

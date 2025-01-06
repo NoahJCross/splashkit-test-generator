@@ -34,18 +34,6 @@
       "name": "audio_ready",
       "steps": [
         {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "audio_ready",
-              "args": []
-            },
-            "value2": null
-          }
-        },
-        {
           "step_type": "function",
           "function_name": "open_audio",
           "args": []
@@ -59,23 +47,6 @@
           "step_type": "assertion",
           "compare": {
             "compare_type": "true",
-            "value1": {
-              "value_type": "function",
-              "function_name": "audio_ready",
-              "args": []
-            },
-            "value2": null
-          }
-        },
-        {
-          "step_type": "function",
-          "function_name": "close_audio",
-          "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
             "value1": {
               "value_type": "function",
               "function_name": "audio_ready",
@@ -115,18 +86,6 @@
           "step_type": "function",
           "function_name": "close_audio",
           "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "audio_ready",
-              "args": []
-            },
-            "value2": null
-          }
         }
       ]
     },
@@ -159,18 +118,6 @@
           "step_type": "function",
           "function_name": "close_audio",
           "args": []
-        },
-        {
-          "step_type": "assertion",
-          "compare": {
-            "compare_type": "false",
-            "value1": {
-              "value_type": "function",
-              "function_name": "audio_ready",
-              "args": []
-            },
-            "value2": null
-          }
         }
       ]
     },
@@ -193,7 +140,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -212,7 +159,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "int",
@@ -253,7 +200,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -272,7 +219,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "int",
@@ -317,7 +264,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -378,7 +325,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -443,7 +390,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -483,7 +430,7 @@
           "args": [
             {
               "value_type": "int",
-              "value": 3000
+              "value": 1100
             }
           ]
         },
@@ -607,7 +554,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -651,7 +598,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_music"
+                  "value": "Test Music"
                 }
               ]
             },
@@ -679,7 +626,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -703,7 +650,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_music"
+                  "value": "Test Music"
                 }
               ]
             },
@@ -730,7 +677,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_music"
+                  "value": "Test Music"
                 }
               ]
             },
@@ -758,7 +705,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -821,7 +768,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -887,7 +834,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -907,7 +854,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             "value2": {
               "value_type": "function",
@@ -942,7 +889,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -962,7 +909,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             }
           ],
           "store_result": "named_music"
@@ -1002,7 +949,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1071,7 +1018,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1150,7 +1097,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1220,7 +1167,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1282,7 +1229,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1301,7 +1248,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             }
           ]
         },
@@ -1338,7 +1285,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1357,7 +1304,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "int",
@@ -1398,7 +1345,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1455,7 +1402,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1516,7 +1463,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1596,7 +1543,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1675,7 +1622,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1745,7 +1692,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_music"
+              "value": "Test Music"
             },
             {
               "value_type": "string",
@@ -1807,7 +1754,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound1"
+              "value": "Test Sound 1"
             },
             {
               "value_type": "string",
@@ -1827,7 +1774,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound2"
+              "value": "Test Sound 2"
             },
             {
               "value_type": "string",
@@ -1931,7 +1878,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -1975,7 +1922,7 @@
           "args": [
             {
               "value_type": "int",
-              "value": 3000
+              "value": 1100
             }
           ]
         },
@@ -2017,7 +1964,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound1"
+              "value": "Test Sound 1"
             },
             {
               "value_type": "string",
@@ -2036,7 +1983,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound2"
+              "value": "Test Sound 2"
             },
             {
               "value_type": "string",
@@ -2059,7 +2006,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound1"
+                  "value": "Test Sound 1"
                 }
               ]
             },
@@ -2076,7 +2023,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound2"
+                  "value": "Test Sound 2"
                 }
               ]
             },
@@ -2104,7 +2051,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2148,7 +2095,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound"
+                  "value": "Test Sound"
                 }
               ]
             },
@@ -2176,7 +2123,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2200,7 +2147,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound"
+                  "value": "Test Sound"
                 }
               ]
             },
@@ -2227,7 +2174,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound"
+                  "value": "Test Sound"
                 }
               ]
             },
@@ -2255,7 +2202,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2290,7 +2237,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound"
+                  "value": "Test Sound"
                 }
               ]
             },
@@ -2318,7 +2265,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2338,7 +2285,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             }
           ]
         },
@@ -2380,7 +2327,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2400,7 +2347,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "double",
@@ -2446,7 +2393,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2466,7 +2413,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "int",
@@ -2512,7 +2459,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2532,7 +2479,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "int",
@@ -2582,7 +2529,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2644,7 +2591,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2710,7 +2657,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2776,7 +2723,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2846,7 +2793,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2912,7 +2859,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2932,7 +2879,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             "value2": {
               "value_type": "function",
@@ -2967,7 +2914,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -2987,7 +2934,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             }
           ],
           "store_result": "named_sound"
@@ -3027,7 +2974,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -3046,7 +2993,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             }
           ]
         },
@@ -3060,7 +3007,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound"
+                  "value": "Test Sound"
                 }
               ]
             },
@@ -3073,7 +3020,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             }
           ]
         },
@@ -3087,7 +3034,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound"
+                  "value": "Test Sound"
                 }
               ]
             },
@@ -3115,7 +3062,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -3204,7 +3151,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -3239,7 +3186,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound"
+                  "value": "Test Sound"
                 }
               ]
             },
@@ -3267,7 +3214,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",
@@ -3286,7 +3233,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             }
           ]
         },
@@ -3296,7 +3243,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             }
           ]
         },
@@ -3310,7 +3257,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "test_sound"
+                  "value": "Test Sound"
                 }
               ]
             },
@@ -3338,7 +3285,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_sound"
+              "value": "Test Sound"
             },
             {
               "value_type": "string",

@@ -105,7 +105,7 @@ module LanguageConfig
         },
         identifier:    ->(name) { name.to_snake_case.to_s },
         field_access: ->(var, field) { "#{var}.#{field}" },
-        delegate_call: ->(var, field) { "#{var}.#{field}();" },
+        method_call: ->(var, field) { "#{var}.#{field}()" },
         array_access: ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:   ->(arr) { "#{arr}.len()" },
@@ -115,7 +115,7 @@ module LanguageConfig
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
         pointer:   ->(name) { "let callback = |_| (); #{name}Wrapper::new(callback);" },
-        test:      ->(name) { ["#[test]", "fn test_#{name.to_snake_case}_integration() {"] }
+        test:      ->(_, name) { ["#[test]", "fn test_#{name.to_snake_case}_integration() {"] }
       }.freeze,
 
       comment_syntax: {
@@ -147,11 +147,11 @@ module LanguageConfig
         unindent_before: ['}']
       }.freeze,
 
-      file_extension: 'rs',
-
       terminal_handlers: {
-        message: ->(text) { "print!(\"#{text}\");" }
-      }.freeze
+        message: ->(text) { "println!(\"#{text}\");" }
+      }.freeze,
+
+      file_extension: 'rs'
     }.freeze
   end
 end

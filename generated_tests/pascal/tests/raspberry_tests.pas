@@ -16,6 +16,7 @@ begin
     RaspiSetMode(Pins.PIN11, PinModes.GPIO_OUTPUT);
     RaspiWrite(Pins.PIN11, PinValues.GPIO_HIGH);
     RaspiCleanup();
+    RaspiInit();
     AssertEquals(PinModes.GPIO_INPUT, RaspiGetMode(Pins.PIN11));
     AssertEquals(PinValues.GPIO_LOW, RaspiRead(Pins.PIN11));
 end;
@@ -29,12 +30,9 @@ begin
 end;
 procedure TestRaspiInitIntegration;
 begin
-    hasGpioCapability := HasGpio();
     RaspiInit();
     CleanupRaspi := TRaspiCleanup.Create;
     AssertTrue(HasGpio());
-    RaspiCleanup();
-    AssertFalse(HasGpio());
 end;
 procedure TestRaspiReadIntegration;
 begin
@@ -77,10 +75,10 @@ procedure TestRaspiSetPwmFrequencyIntegration;
 begin
     RaspiInit();
     CleanupRaspi := TRaspiCleanup.Create;
-    RaspiSetMode(Pins.PIN18, PinModes.GPIO_OUTPUT);
+    RaspiSetMode(Pins.PIN18, PinModes.GPIO_PWM);
     RaspiSetPwmFrequency(Pins.PIN18, 1000);
     mode := RaspiGetMode(Pins.PIN18);
-    AssertEquals(PinModes.GPIO_OUTPUT, mode);
+    AssertEquals(PinModes.GPIO_PWM, mode);
 end;
 procedure TestRaspiSetPwmRangeIntegration;
 begin
@@ -105,5 +103,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

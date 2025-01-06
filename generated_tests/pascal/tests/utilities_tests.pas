@@ -153,12 +153,13 @@ begin
 end;
 procedure TestCurrentTicksIntegration;
 begin
+    OpenWindow('Test Window 1', 800, 600);
     testTicks := CurrentTicks();
     AssertTrue(testTicks > 0);
 end;
 procedure TestDelayIntegration;
 begin
-    testTimer := CreateTimer('test_timer');
+    testTimer := CreateTimer('Test Timer 1');
     CleanupTimer := TTimerCleanup.Create;
     StartTimer(testTimer);
     initialTicks := TimerTicks(testTimer);
@@ -167,7 +168,7 @@ begin
 end;
 procedure TestDisplayDialogIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 2', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testFont := LoadFont('test_font', 'hara.ttf');
     CleanupFont := TFontCleanup.Create;
@@ -184,5 +185,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

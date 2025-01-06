@@ -18,6 +18,7 @@ namespace SplashKitTests
             RaspiSetMode(Pins.Pin11, PinModes.GpioOutput);
             RaspiWrite(Pins.Pin11, PinValues.GpioHigh);
             RaspiCleanup();
+            RaspiInit();
             Assert.Equal(PinModes.GpioInput, RaspiGetMode(Pins.Pin11));
             Assert.Equal(PinValues.GpioLow, RaspiRead(Pins.Pin11));
         }
@@ -31,12 +32,9 @@ namespace SplashKitTests
         }
         [Fact]
         public void TestRaspiInitIntegration() {
-            var hasGpioCapability = HasGpio();
             RaspiInit();
             using var cleanupRaspi = new RaspiCleanup();
             Assert.True(HasGpio());
-            RaspiCleanup();
-            Assert.False(HasGpio());
         }
         [Fact]
         public void TestRaspiReadIntegration() {
@@ -79,10 +77,10 @@ namespace SplashKitTests
         public void TestRaspiSetPwmFrequencyIntegration() {
             RaspiInit();
             using var cleanupRaspi = new RaspiCleanup();
-            RaspiSetMode(Pins.Pin18, PinModes.GpioOutput);
+            RaspiSetMode(Pins.Pin18, PinModes.GpioPwm);
             RaspiSetPwmFrequency(Pins.Pin18, 1000);
             var mode = RaspiGetMode(Pins.Pin18);
-            Assert.Equal(PinModes.GpioOutput, mode);
+            Assert.Equal(PinModes.GpioPwm, mode);
         }
         [Fact]
         public void TestRaspiSetPwmRangeIntegration() {

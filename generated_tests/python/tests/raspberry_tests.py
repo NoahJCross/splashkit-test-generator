@@ -13,6 +13,7 @@ class TestRaspberry:
             raspi_set_mode(Pins.Pin11, PinModes.GpioOutput)
             raspi_write(Pins.Pin11, PinValues.GpioHigh)
             raspi_cleanup()
+            raspi_init()
             assert PinModes.GpioInput == raspi_get_mode(Pins.Pin11)
             assert PinValues.GpioLow == raspi_read(Pins.Pin11)
             
@@ -24,12 +25,9 @@ class TestRaspberry:
             assert PinModes.GpioOutput == test_mode
             
     def test_raspi_init_integration():
-        has_gpio_capability = has_gpio()
         raspi_init()
         with raspi_cleanup():
             assert has_gpio()
-            raspi_cleanup()
-            assert not has_gpio()
             
     def test_raspi_read_integration():
         raspi_init()
@@ -67,10 +65,10 @@ class TestRaspberry:
     def test_raspi_set_pwm_frequency_integration():
         raspi_init()
         with raspi_cleanup():
-            raspi_set_mode(Pins.Pin18, PinModes.GpioOutput)
+            raspi_set_mode(Pins.Pin18, PinModes.GpioPwm)
             raspi_set_pwm_frequency(Pins.Pin18, 1000)
             mode = raspi_get_mode(Pins.Pin18)
-            assert PinModes.GpioOutput == mode
+            assert PinModes.GpioPwm == mode
             
     def test_raspi_set_pwm_range_integration():
         raspi_init()

@@ -27,7 +27,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 1"
             },
             {
               "value_type": "int",
@@ -55,7 +55,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -140,7 +140,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 2"
             },
             {
               "value_type": "int",
@@ -168,7 +168,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -242,7 +242,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 3"
             },
             {
               "value_type": "int",
@@ -270,7 +270,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -359,7 +359,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 4"
             },
             {
               "value_type": "int",
@@ -387,7 +387,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -476,7 +476,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 5"
             },
             {
               "value_type": "int",
@@ -504,7 +504,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -582,7 +582,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap1"
+              "value": "Test Bitmap 6"
             },
             {
               "value_type": "int",
@@ -606,7 +606,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap2"
+              "value": "Test Bitmap 7"
             },
             {
               "value_type": "int",
@@ -629,7 +629,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -654,7 +654,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -770,7 +770,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap1"
+              "value": "Test Bitmap 8"
             },
             {
               "value_type": "int",
@@ -794,7 +794,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap2"
+              "value": "Test Bitmap 9"
             },
             {
               "value_type": "int",
@@ -817,7 +817,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -842,7 +842,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -927,7 +927,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap1"
+              "value": "Test Bitmap 10"
             },
             {
               "value_type": "int",
@@ -951,7 +951,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap2"
+              "value": "Test Bitmap 11"
             },
             {
               "value_type": "int",
@@ -974,7 +974,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -999,7 +999,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1092,7 +1092,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap1"
+              "value": "Test Bitmap 12"
             },
             {
               "value_type": "int",
@@ -1116,7 +1116,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap2"
+              "value": "Test Bitmap 13"
             },
             {
               "value_type": "int",
@@ -1139,7 +1139,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1164,7 +1164,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1257,7 +1257,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap1"
+              "value": "Test Bitmap 14"
             },
             {
               "value_type": "int",
@@ -1281,7 +1281,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap2"
+              "value": "Test Bitmap 15"
             },
             {
               "value_type": "int",
@@ -1304,7 +1304,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1319,7 +1319,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1445,7 +1445,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 16"
             },
             {
               "value_type": "int",
@@ -1473,7 +1473,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1509,7 +1509,7 @@
           "args": [
             {
               "value_type": "double",
-              "value": 151.0
+              "value": 150.0
             },
             {
               "value_type": "double",
@@ -1524,7 +1524,7 @@
           "args": [
             {
               "value_type": "double",
-              "value": 201.0
+              "value": 200.0
             },
             {
               "value_type": "double",
@@ -1594,7 +1594,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 17"
             },
             {
               "value_type": "int",
@@ -1622,7 +1622,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1738,7 +1738,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 18"
             },
             {
               "value_type": "int",
@@ -1766,7 +1766,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1803,7 +1803,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 51.0
+                  "value": 50.0
                 },
                 {
                   "value_type": "double",
@@ -1836,7 +1836,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 151.0
+                  "value": 150.0
                 },
                 {
                   "value_type": "double",
@@ -1858,7 +1858,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 19"
             },
             {
               "value_type": "int",
@@ -1886,7 +1886,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -1922,7 +1922,7 @@
           "args": [
             {
               "value_type": "double",
-              "value": 151.0
+              "value": 150.0
             },
             {
               "value_type": "double",
@@ -1937,7 +1937,7 @@
           "args": [
             {
               "value_type": "double",
-              "value": 201.0
+              "value": 200.0
             },
             {
               "value_type": "double",
@@ -2015,7 +2015,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 20"
             },
             {
               "value_type": "int",
@@ -2043,7 +2043,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -2094,7 +2094,7 @@
                   "args": [
                     {
                       "value_type": "double",
-                      "value": 101.0
+                      "value": 100.0
                     },
                     {
                       "value_type": "double",
@@ -2129,7 +2129,7 @@
                   "args": [
                     {
                       "value_type": "double",
-                      "value": 51.0
+                      "value": 50.0
                     },
                     {
                       "value_type": "double",
@@ -2143,7 +2143,7 @@
                   "args": [
                     {
                       "value_type": "double",
-                      "value": 201.0
+                      "value": 200.0
                     },
                     {
                       "value_type": "double",
@@ -2167,7 +2167,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 21"
             },
             {
               "value_type": "int",
@@ -2195,37 +2195,48 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
-              "args": []
+              "function_name": "rgba_color",
+              "args": [
+                {
+                  "value_type": "int",
+                  "value": 0
+                },
+                {
+                  "value_type": "int",
+                  "value": 0
+                },
+                {
+                  "value_type": "int",
+                  "value": 0
+                },
+                {
+                  "value_type": "int",
+                  "value": 0
+                }
+              ]
             }
           ]
         },
         {
           "step_type": "function",
-          "function_name": "draw_pixel_with_options",
+          "function_name": "draw_pixel_on_bitmap",
           "args": [
             {
-              "value_type": "function",
-              "function_name": "color_white",
-              "args": []
+              "value_type": "variable",
+              "variable_name": "test_bitmap"
             },
             {
-              "value_type": "double",
-              "value": 51.0
+              "value_type": "function",
+              "function_name": "color_black",
+              "args": []
             },
             {
               "value_type": "double",
               "value": 50.0
             },
             {
-              "value_type": "function",
-              "function_name": "option_draw_to_bitmap",
-              "args": [
-                {
-                  "value_type": "variable",
-                  "variable_name": "test_bitmap"
-                }
-              ]
+              "value_type": "double",
+              "value": 50.0
             }
           ]
         },
@@ -2239,6 +2250,7 @@
             }
           ]
         },
+
         {
           "step_type": "assertion",
           "compare": {
@@ -2265,7 +2277,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 51.0
+                  "value": 50.0
                 },
                 {
                   "value_type": "double",
@@ -2302,7 +2314,7 @@
                 },
                 {
                   "value_type": "double",
-                  "value": 50.0
+                  "value": 51.0
                 },
                 {
                   "value_type": "double",
@@ -2324,7 +2336,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 22"
             },
             {
               "value_type": "int",
@@ -2352,7 +2364,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -2441,7 +2453,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 23"
             },
             {
               "value_type": "int",
@@ -2469,7 +2481,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -2547,7 +2559,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 24"
             },
             {
               "value_type": "int",
@@ -2575,7 +2587,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -2668,7 +2680,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 25"
             },
             {
               "value_type": "int",
@@ -2696,7 +2708,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -2789,7 +2801,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 26"
             },
             {
               "value_type": "int",
@@ -2817,7 +2829,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -2899,7 +2911,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 27"
             },
             {
               "value_type": "int",
@@ -2927,7 +2939,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -2948,7 +2960,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "test_bitmap",
+              "value": "Test Sprite 1"
             }
           ],
           "store_result": "test_sprite"
@@ -3066,7 +3079,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 28"
             },
             {
               "value_type": "int",
@@ -3094,7 +3107,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -3115,7 +3128,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "test_bitmap",
+              "value": "Test Sprite 2"
             }
           ],
           "store_result": "test_sprite"
@@ -3214,7 +3228,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 29"
             },
             {
               "value_type": "int",
@@ -3242,7 +3256,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -3263,7 +3277,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "test_bitmap",
+              "value": "Test Sprite 3"
             }
           ],
           "store_result": "test_sprite"
@@ -3356,7 +3371,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap_1"
+              "value": "Test Bitmap 30"
             },
             {
               "value_type": "int",
@@ -3380,7 +3395,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap_2"
+              "value": "Test Bitmap 31"
             },
             {
               "value_type": "int",
@@ -3403,7 +3418,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -3428,7 +3443,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -3449,7 +3464,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap1"
+              "variable_name": "test_bitmap1",
+              "value": "Test Sprite 4"
             }
           ],
           "store_result": "test_sprite1"
@@ -3465,7 +3481,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap2"
+              "variable_name": "test_bitmap2",
+              "value": "Test Sprite 5"
             }
           ],
           "store_result": "test_sprite2"
@@ -3625,7 +3642,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 32"
             },
             {
               "value_type": "int",
@@ -3653,7 +3670,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -3674,7 +3691,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "test_bitmap",
+              "value": "Test Sprite 6"
             }
           ],
           "store_result": "test_sprite"
@@ -3772,7 +3790,7 @@
           "args": [
             {
               "value_type": "string",
-              "value": "test_bitmap"
+              "value": "Test Bitmap 33"
             },
             {
               "value_type": "int",
@@ -3800,7 +3818,7 @@
             },
             {
               "value_type": "function",
-              "function_name": "color_black",
+              "function_name": "color_white",
               "args": []
             }
           ]
@@ -3821,7 +3839,8 @@
           "args": [
             {
               "value_type": "variable",
-              "variable_name": "test_bitmap"
+              "variable_name": "test_bitmap",
+              "value": "Test Sprite 7"
             }
           ],
           "store_result": "test_sprite"
@@ -4296,8 +4315,8 @@
               "col": 0
             },
             "value3": {
-              "value_type": "int",
-              "value": 2
+              "value_type": "precision",
+              "value": 2.0
             }
           }
         },
@@ -4317,8 +4336,8 @@
               "col": 1
             },
             "value3": {
-              "value_type": "int",
-              "value": 2
+              "value_type": "precision",
+              "value": 2.0
             }
           }
         }
@@ -6253,8 +6272,8 @@
               "variable_field": "x"
             },
             "value3": {
-              "value_type": "int",
-              "value": 2
+              "value_type": "precision",
+              "value": 2.0
             }
           }
         },

@@ -1,233 +1,301 @@
 #include "splashkit.h"
-#include <functional>
-using sprite_float_function = std::function<void(void*, float)>;
-using sprite_function = std::function<void(void*)>;
-using sprite_event_handler = std::function<void(void*, int)>;
-using key_callback = std::function<void(int)>;
-using free_notifier = std::function<void(void*)>;
 
-class SpriteDelegates {
+class sprite_delegates {
 private:
-    int float_function_call_count = 0;
-    int function_call_count = 0;
-    bool event_called = false;
+    int _float_function_call_count = 0;
+    int _function_call_count = 0;
+    bool _event_called = false;
+    static sprite_delegates* current_instance;
 
 public:
-    sprite_float_function sprite_float_function;
-    sprite_function sprite_function;
-    sprite_event_handler sprite_event_handler;
-    std::function<void()> reset;
-
-    SpriteDelegates() {
-        sprite_float_function = [this](void* ptr, float value) {
-            float_function_call_count++;
-            event_called = true;
-        };
-
-        sprite_function = [this](void* ptr) {
-            function_call_count++;
-            event_called = true;
-        };
-
-        sprite_event_handler = [this](void* ptr, int evt) {
-            event_called = true;
-        };
-
-        reset = [this]() {
-            float_function_call_count = 0;
-            function_call_count = 0;
-            event_called = false;
-        };
+    sprite_delegates() {
+        current_instance = this;
     }
 
-    bool get_event_called() const { return event_called; }
-    int get_float_function_call_count() const { return float_function_call_count; }
-    int get_function_call_count() const { return function_call_count; }
-};
-
-class KeyCallbacks {
-private:
-    key_code get_key_typed = key_code(0);
-    key_code get_key_down = key_code(0);
-    key_code get_key_up = key_code(0);
-
-public:
-    key_callback on_key_typed;
-    key_callback on_key_down;
-    key_callback on_key_up;
-    std::function<void()> reset;
-
-    KeyCallbacks() {
-        on_key_typed = [this](int key) {
-            get_key_typed = key_code(key);
-        };
-
-        on_key_down = [this](int key) {
-            get_key_down = key_code(key);
-        };
-
-        on_key_up = [this](int key) {
-            get_key_up = key_code(key);
-        };
-
-        reset = [this]() {
-            get_key_typed = key_code(0);
-            get_key_down = key_code(0);
-            get_key_up = key_code(0);
-        };
+    static void event_handler_wrapper(void*, int evt) {
+        if (current_instance) {
+            current_instance->sprite_event_handler(nullptr, evt);
+        }
     }
 
-    key_code get_typed() const { return get_key_typed; }
-    key_code get_down() const { return get_key_down; }
-    key_code get_up() const { return get_key_up; }
-};
-
-class NotifierTracker {
-private:
-    bool was_notified = false;
-
-public:
-    free_notifier on_free;
-    std::function<void()> reset;
-
-    NotifierTracker() {
-        on_free = [this](void* resource) {
-            was_notified = true;
-        };
-
-        reset = [this]() {
-            was_notified = false;
-        };
+    static void float_function_wrapper(void*, float value) {
+        if (current_instance) {
+            current_instance->sprite_float_function(nullptr, value);
+        }
     }
 
-    bool get_was_notified() const { return was_notified; }
+    static void function_wrapper(void*) {
+        if (current_instance) {
+            current_instance->sprite_function(nullptr);
+        }
+    }
+
+    void (*sprite_event_handler())(void*, int) {
+        return &event_handler_wrapper;
+    }
+
+    void (*sprite_float_function())(void*, float) {
+        return &float_function_wrapper;
+    }
+
+    void (*sprite_function())(void*) {
+        return &function_wrapper;
+    }
+
+    void sprite_float_function(void* ptr, float value) {
+        _float_function_call_count++;
+        _event_called = true;
+    }
+
+    void sprite_function(void* ptr) {
+        _function_call_count++;
+        _event_called = true;
+    }
+
+    void sprite_event_handler(void* ptr, int evt) {
+        _event_called = true;
+    }
+
+    void reset() {
+        _float_function_call_count = 0;
+        _function_call_count = 0;
+        _event_called = false;
+    }
+
+    bool event_called() const { return _event_called; }
+    int float_function_call_count() const { return _float_function_call_count; }
+    int function_call_count() const { return _function_call_count; }
 };
 
-class AnimationScriptCleanup {
+class key_callbacks {
+private:
+    key_code _key_typed = key_code(0);
+    key_code _key_down = key_code(0);
+    key_code _key_up = key_code(0);
+    static key_callbacks* current_instance;
+
 public:
-    ~AnimationScriptCleanup() {
+    key_callbacks() {
+        current_instance = this;
+    }
+
+    static void key_typed_wrapper(void* ptr, key_code key) {
+        if (current_instance) {
+            current_instance->on_key_typed(key);
+        }
+    }
+
+    static void key_down_wrapper(void* ptr, key_code key) {
+        if (current_instance) {
+            current_instance->on_key_down(key);
+        }
+    }
+
+    static void key_up_wrapper(void* ptr, key_code key) {
+        if (current_instance) {
+            current_instance->on_key_up(key);
+        }
+    }
+
+    void (*key_typed())(void*, key_code) {
+        return &key_typed_wrapper;
+    }
+
+    void (*key_down())(void*, key_code) {
+        return &key_down_wrapper;
+    }
+
+    void (*key_up())(void*, key_code) {
+        return &key_up_wrapper;
+    }
+
+    void on_key_typed(int key) {
+        _key_typed = key_code(key);
+    }
+
+    void on_key_down(int key) {
+        _key_down = key_code(key);
+    }
+
+    void on_key_up(int key) {
+        _key_up = key_code(key);
+    }
+
+    void reset() {
+        _key_typed = key_code(0);
+        _key_down = key_code(0);
+        _key_up = key_code(0);
+    }
+
+    key_code get_key_typed() const { return _key_typed; }
+    key_code get_key_down() const { return _key_down; }
+    key_code get_key_up() const { return _key_up; }
+};
+
+// Define the static members
+sprite_delegates* sprite_delegates::current_instance = nullptr;
+key_callbacks* key_callbacks::current_instance = nullptr;
+
+class notifier_tracker {
+private:
+    bool _was_notified = false;
+    static notifier_tracker* current_instance;
+
+public:
+    notifier_tracker() {
+        current_instance = this;
+    }
+
+    static void free_notify_wrapper(void*) {
+        if (current_instance) {
+            current_instance->on_free_impl();
+        }
+    }
+
+    void (*on_free())(void*) {
+        return &free_notify_wrapper;
+    }
+
+    void on_free_impl() {
+        _was_notified = true;
+    }
+
+    void reset() {
+        _was_notified = false;
+    }
+
+    bool was_notified() const {
+        return _was_notified;
+    }
+};
+
+notifier_tracker* notifier_tracker::current_instance = nullptr;
+
+class animation_script_cleanup {
+public:
+    ~animation_script_cleanup() {
         free_all_animation_scripts();
     }
 };
 
-class AnimationCleanup {
+class animation_cleanup {
 private:
     animation _animation;
 public:
-    AnimationCleanup(animation anim) : _animation(anim) {}
-    ~AnimationCleanup() {
+    animation_cleanup(animation anim) : _animation(anim) {}
+    ~animation_cleanup() {
         free_animation(_animation);
     }
 };
 
-class AudioCleanup {
+class audio_cleanup {
 public:
-    ~AudioCleanup() {
+    ~audio_cleanup() {
         close_audio();
     }
 };
 
-class SoundEffectCleanup {
+class sound_effect_cleanup {
 public:
-    ~SoundEffectCleanup() {
+    ~sound_effect_cleanup() {
         free_all_sound_effects();
     }
 };
 
-class MusicCleanup {
+class music_cleanup {
 public:
-    ~MusicCleanup() {
+    ~music_cleanup() {
         free_all_music();
-    }
+    }   
 };
 
-class WindowCleanup {
+class window_cleanup {
 public:
-    ~WindowCleanup() {
+    ~window_cleanup() {
         close_all_windows();
         set_camera_position(point_at(0, 0));
     }
 };
 
-class BitmapCleanup {
+class bitmap_cleanup {
 public:
-    ~BitmapCleanup() {
+    ~bitmap_cleanup() {
         free_all_bitmaps();
     }
 };
 
-class SpriteCleanup {
+class sprite_cleanup {
 public:
-    ~SpriteCleanup() {
+    ~sprite_cleanup() {
         free_all_sprites();
     }
 };
 
-class FontCleanup {
+class font_cleanup {
 public:
-    ~FontCleanup() {
+    ~font_cleanup() {
         free_all_fonts();
     }
 };
 
-class RaspiCleanup {
+class raspi_cleanup {
 public:
-    ~RaspiCleanup() {
+    ~raspi_cleanup() {
         raspi_cleanup();
     }
 };
 
-class JsonCleanup {
+class json_cleanup {
 public:
-    ~JsonCleanup() {
+    ~json_cleanup() {
         free_all_json();
     }
 };
 
-class ServerCleanup {
+class server_cleanup {
 public:
-    ~ServerCleanup() {
+    ~server_cleanup() {
         close_all_servers();
     }
 };
 
-class ConnectionCleanup {
+class connection_cleanup {
 public:
-    ~ConnectionCleanup() {
+    ~connection_cleanup() {
         close_all_connections();
     }
 };
 
-class ResourceCleanup {
+class resource_cleanup {
 private:
     string _bundle_name;
 public:
-    ResourceCleanup(const string& bundle_name) : _bundle_name(bundle_name) {}
-    ~ResourceCleanup() {
+    resource_cleanup(const string& bundle_name) : _bundle_name(bundle_name) {}
+    ~resource_cleanup() {
         free_resource_bundle(_bundle_name);
     }
 };
 
-class SpritePackCleanup {
+class sprite_pack_cleanup {
 private:
     string _sprite_pack_name;
 public:
-    SpritePackCleanup(const string& pack_name) : _sprite_pack_name(pack_name) {}
-    ~SpritePackCleanup() {
+    sprite_pack_cleanup(const string& pack_name) : _sprite_pack_name(pack_name) {}
+    ~sprite_pack_cleanup() {
         free_sprite_pack(_sprite_pack_name);
     }
 };
 
-class TimerCleanup {
+class timer_cleanup {
 public:
-    ~TimerCleanup() {
+    ~timer_cleanup() {
         free_all_timers();
     }
 };
 
-class LoggerCleanup {
+class logger_cleanup {
 public:
-    ~LoggerCleanup() {
+    ~logger_cleanup() {
         close_log_process();
     }
 };

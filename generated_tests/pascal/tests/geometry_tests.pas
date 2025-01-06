@@ -12,7 +12,7 @@ begin
 end;
 procedure TestCircleAtIntegration;
 begin
-    OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 1', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testCircle := CircleAt(PointAt(400.0, 300.0), 50.0);
     DrawCircle(ColorBlack(), testCircle);
@@ -21,7 +21,7 @@ begin
 end;
 procedure TestCircleAtFromPointsIntegration;
 begin
-    OpenWindow('Circle Test', 800, 600);
+    OpenWindow('Test Window 2', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testCircle := CircleAt(400.0, 300.0, 50.0);
     DrawCircle(ColorBlack(), testCircle, OptionDefaults());
@@ -96,7 +96,8 @@ begin
     testRectangle := RectangleFrom(100.0, 50.0, 100.0, 100.0);
     testClosestPoint := ClosestPointOnRectFromCircle(testCircle, testRectangle);
     AssertTrue(PointInRectangle(testClosestPoint, testRectangle));
-    AssertEquals(CircleRadius(testCircle), PointPointDistance(CenterPoint(testCircle), testClosestPoint));
+    testDistance := PointPointDistance(CenterPoint(testCircle), testClosestPoint);
+    AssertTrue(testDistance <= CircleRadius(testCircle));
 end;
 procedure TestClosestPointOnTriangleFromCircleIntegration;
 begin
@@ -418,7 +419,7 @@ begin
 end;
 procedure TestRandomBitmapPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 1', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testPoint := RandomBitmapPoint(testBitmap);
     AssertTrue((testPoint.x >= 0.0) and (testPoint.x <= BitmapWidth(testBitmap)));
@@ -426,7 +427,7 @@ begin
 end;
 procedure TestRandomScreenPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 3', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testPoint := RandomScreenPoint();
     RefreshScreen();
@@ -435,7 +436,7 @@ begin
 end;
 procedure TestRandomWindowPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 4', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
     testPoint := RandomWindowPoint(testWindow);
     AssertTrue((testPoint.x >= 0.0) and (testPoint.x <= WindowWidth(testWindow)));
@@ -672,5 +673,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

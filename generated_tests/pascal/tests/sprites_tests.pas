@@ -10,56 +10,56 @@ begin
 end;
 procedure TestCallForAllSpritesWithValueIntegration;
 begin
-    spriteDelegates := SpriteDelegates.Create();
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testSpriteDelegates := SpriteDelegates.Create();
+    testBitmap := CreateBitmap('Test Bitmap 1', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite1 := CreateSprite(testBitmap);
+    CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    testSprite2 := CreateSprite(testBitmap);
-    CallForAllSprites(spriteDelegates.sprite_float_function, 300);
-    AssertEquals(2, spriteDelegates.float_function_call_count);
-    AssertTrue(spriteDelegates.event_called);
+    CreateSprite(testBitmap);
+    CallForAllSprites(test_sprite_delegates.sprite_float_function, 300.0);
+    AssertEquals(2, test_sprite_delegates.float_function_call_count);
+    AssertTrue(test_sprite_delegates.event_called);
 end;
 procedure TestCallForAllSpritesIntegration;
 begin
-    spriteDelegates := SpriteDelegates.Create();
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testSpriteDelegates := SpriteDelegates.Create();
+    testBitmap := CreateBitmap('Test Bitmap 2', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite1 := CreateSprite(testBitmap);
+    CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    testSprite2 := CreateSprite(testBitmap);
-    CallForAllSprites(spriteDelegates.sprite_function);
-    AssertEquals(2, spriteDelegates.function_call_count);
-    AssertTrue(spriteDelegates.event_called);
+    CreateSprite(testBitmap);
+    CallForAllSprites(test_sprite_delegates.sprite_function);
+    AssertEquals(2, test_sprite_delegates.function_call_count);
+    AssertTrue(test_sprite_delegates.event_called);
 end;
 procedure TestCallOnSpriteEventIntegration;
 begin
-    spriteDelegates := SpriteDelegates.Create();
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testSpriteDelegates := SpriteDelegates.Create();
+    testBitmap := CreateBitmap('Test Bitmap 34', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 6', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap, testAnimation);
+    testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
-    CallOnSpriteEvent(spriteDelegates.sprite_event_handler);
+    CallOnSpriteEvent(test_sprite_delegates.sprite_event_handler);
     UpdateSprite(testSprite);
-    StopCallingOnSpriteEvent(spriteDelegates.sprite_event_handler);
-    AssertTrue(spriteDelegates.event_called);
+    StopCallingOnSpriteEvent(test_sprite_delegates.sprite_event_handler);
+    AssertTrue(test_sprite_delegates.event_called);
 end;
 procedure TestCenterPointOfSpriteIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 3', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-    centerPoint := CenterPoint(testSprite);
-    AssertEquals(150.0, centerPoint.x);
-    AssertEquals(150.0, centerPoint.y);
+    testCenterPoint := CenterPoint(testSprite);
+    AssertEquals(150.0, testCenterPoint.x);
+    AssertEquals(150.0, testCenterPoint.y);
 end;
 procedure TestCreateSpriteIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 4', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
@@ -68,9 +68,9 @@ begin
 end;
 procedure TestCreateSpriteWithAnimationIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 5', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 1', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -79,64 +79,64 @@ begin
 end;
 procedure TestCreateSpriteWithBitmapNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    CreateBitmap('Test Bitmap 6', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_bitmap');
+    testSprite := CreateSprite('Test Bitmap 6');
     CleanupSprite := TSpriteCleanup.Create;
     AssertNotNull(testSprite);
     AssertTrue(HasSprite(SpriteName(testSprite)));
 end;
 procedure TestCreateSpriteNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 7', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite('Test Sprite 1', testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertNotNull(testSprite);
-    AssertEquals('test_sprite', SpriteName(testSprite));
+    AssertEquals('Test Sprite 1', SpriteName(testSprite));
 end;
 procedure TestCreateSpriteNamedWithAnimationIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 8', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 2', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap, testAnimation);
+    testSprite := CreateSprite('Test Sprite 2', testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
     AssertNotNull(testSprite);
-    AssertEquals('test_sprite', SpriteName(testSprite));
+    AssertEquals('Test Sprite 2', SpriteName(testSprite));
 end;
 procedure TestCreateSpriteWithBitmapAndAnimationNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    CreateBitmap('Test Bitmap 9', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    LoadAnimationScript('Test Script 3', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testSprite := CreateSprite('test_bitmap', 'test_animation');
+    testSprite := CreateSprite('Test Bitmap 9', 'test_animation');
     CleanupSprite := TSpriteCleanup.Create;
     AssertNotNull(testSprite);
     AssertTrue(HasSprite(SpriteName(testSprite)));
 end;
 procedure TestCreateSpritePackIntegration;
 begin
-    AssertFalse(HasSpritePack('test_pack'));
-    CreateSpritePack('test_pack');
-    CleanupSpritePack := TSpritePackCleanup.Create('test_pack')
-    AssertTrue(HasSpritePack('test_pack'));
+    AssertFalse(HasSpritePack('Test Sprite Pack 1'));
+    CreateSpritePack('Test Sprite Pack 1');
+    CleanupSpritePack := TSpritePackCleanup.Create('Test Sprite Pack 1')
+    AssertTrue(HasSpritePack('Test Sprite Pack 1'));
 end;
 procedure TestCurrentSpritePackIntegration;
 begin
     AssertEquals('default', CurrentSpritePack());
-    CreateSpritePack('test_pack');
-    CleanupSpritePack := TSpritePackCleanup.Create('test_pack')
-    SelectSpritePack('test_pack');
-    AssertEquals('test_pack', CurrentSpritePack());
+    CreateSpritePack('Test Sprite Pack 2');
+    CleanupSpritePack := TSpritePackCleanup.Create('Test Sprite Pack 2')
+    SelectSpritePack('Test Sprite Pack 2');
+    AssertEquals('Test Sprite Pack 2', CurrentSpritePack());
 end;
 procedure TestDrawAllSpritesIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 1', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 10', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     testSprite1 := CreateSprite(testBitmap);
@@ -152,9 +152,9 @@ begin
 end;
 procedure TestDrawSpriteOffsetByIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 3', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 12', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     testSprite := CreateSprite(testBitmap);
@@ -167,12 +167,12 @@ begin
 end;
 procedure TestDrawSpriteIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 4', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 13', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
     ClearScreen(ColorWhite());
@@ -182,9 +182,9 @@ begin
 end;
 procedure TestDrawSpriteOffsetXYIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    testWindow := OpenWindow('Test Window 2', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 11', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorBlack());
     testSprite := CreateSprite(testBitmap);
@@ -197,64 +197,64 @@ begin
 end;
 procedure TestFreeAllSpritesIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 14', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    CreateSprite('test_sprite1', testBitmap);
+    CreateSprite('Test Sprite 3', testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    CreateSprite('test_sprite2', testBitmap);
-    AssertTrue(HasSprite('test_sprite1'));
-    AssertTrue(HasSprite('test_sprite2'));
+    CreateSprite('Test Sprite 4', testBitmap);
+    AssertTrue(HasSprite('Test Sprite 3'));
+    AssertTrue(HasSprite('Test Sprite 4'));
     FreeAllSprites();
-    AssertFalse(HasSprite('test_sprite1'));
-    AssertFalse(HasSprite('test_sprite2'));
+    AssertFalse(HasSprite('Test Sprite 3'));
+    AssertFalse(HasSprite('Test Sprite 4'));
 end;
 procedure TestFreeSpriteIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 15', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite('Test Sprite 5', testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    AssertTrue(HasSprite('test_sprite'));
+    AssertTrue(HasSprite('Test Sprite 5'));
     FreeSprite(testSprite);
-    AssertFalse(HasSprite('test_sprite'));
+    AssertFalse(HasSprite('Test Sprite 5'));
 end;
 procedure TestFreeSpritePackIntegration;
 begin
     AssertEquals('default', CurrentSpritePack());
-    CreateSpritePack('test_pack');
-    CleanupSpritePack := TSpritePackCleanup.Create('test_pack')
-    SelectSpritePack('test_pack');
-    AssertTrue(HasSpritePack('test_pack'));
-    AssertEquals('test_pack', CurrentSpritePack());
-    FreeSpritePack('test_pack');
-    AssertFalse(HasSpritePack('test_pack'));
+    CreateSpritePack('Test Sprite Pack 3');
+    CleanupSpritePack := TSpritePackCleanup.Create('Test Sprite Pack 3')
+    SelectSpritePack('Test Sprite Pack 3');
+    AssertTrue(HasSpritePack('Test Sprite Pack 3'));
+    AssertEquals('Test Sprite Pack 3', CurrentSpritePack());
+    FreeSpritePack('Test Sprite Pack 3');
+    AssertFalse(HasSpritePack('Test Sprite Pack 3'));
     AssertEquals('default', CurrentSpritePack());
 end;
 procedure TestHasSpriteIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 16', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    AssertFalse(HasSprite('test_sprite'));
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    AssertFalse(HasSprite('Test Sprite 6'));
+    testSprite := CreateSprite('Test Sprite 6', testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    AssertTrue(HasSprite('test_sprite'));
+    AssertTrue(HasSprite('Test Sprite 6'));
     FreeSprite(testSprite);
-    AssertFalse(HasSprite('test_sprite'));
+    AssertFalse(HasSprite('Test Sprite 6'));
 end;
 procedure TestHasSpritePackIntegration;
 begin
-    AssertFalse(HasSpritePack('test_pack'));
-    CreateSpritePack('test_pack');
-    CleanupSpritePack := TSpritePackCleanup.Create('test_pack')
-    AssertTrue(HasSpritePack('test_pack'));
-    FreeSpritePack('test_pack');
-    AssertFalse(HasSpritePack('test_pack'));
+    AssertFalse(HasSpritePack('Test Sprite Pack 4'));
+    CreateSpritePack('Test Sprite Pack 4');
+    CleanupSpritePack := TSpritePackCleanup.Create('Test Sprite Pack 4')
+    AssertTrue(HasSpritePack('Test Sprite Pack 4'));
+    FreeSpritePack('Test Sprite Pack 4');
+    AssertFalse(HasSpritePack('Test Sprite Pack 4'));
 end;
 procedure TestMoveSpriteIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 17', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     startPosition := PointAt(100.0, 100.0);
     SpriteSetPosition(testSprite, startPosition);
@@ -265,20 +265,20 @@ begin
 end;
 procedure TestMoveSpriteByVectorIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 18', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     MoveSprite(testSprite, VectorTo(50.0, 50.0));
     AssertEquals(150.0, SpriteX(testSprite));
-    AssertEquals(150, SpriteY(testSprite));
+    AssertEquals(150.0, SpriteY(testSprite));
 end;
 procedure TestMoveSpriteByVectorPercentIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 19', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     MoveSprite(testSprite, VectorTo(50.0, 50.0), 0.5);
@@ -287,9 +287,9 @@ begin
 end;
 procedure TestMoveSpritePercentIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 20', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     SpriteSetVelocity(testSprite, VectorTo(10.0, 10.0));
@@ -299,9 +299,9 @@ begin
 end;
 procedure TestMoveSpriteToIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 21', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     MoveSpriteTo(testSprite, 400.0, 300.0);
     AssertEquals(400.0, SpriteX(testSprite));
@@ -309,28 +309,28 @@ begin
 end;
 procedure TestSelectSpritePackIntegration;
 begin
-    CreateSpritePack('test_pack');
-    CleanupSpritePack := TSpritePackCleanup.Create('test_pack')
+    CreateSpritePack('Test Sprite Pack 5');
+    CleanupSpritePack := TSpritePackCleanup.Create('Test Sprite Pack 5')
     AssertEquals('default', CurrentSpritePack());
-    SelectSpritePack('test_pack');
-    AssertEquals('test_pack', CurrentSpritePack());
+    SelectSpritePack('Test Sprite Pack 5');
+    AssertEquals('Test Sprite Pack 5', CurrentSpritePack());
 end;
 procedure TestSpriteAddLayerIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 22', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    newLayerBitmap := CreateBitmap('new_layer', 50, 50);
-    layerIndex := SpriteAddLayer(testSprite, newLayerBitmap, 'new_layer');
+    newLayerBitmap := CreateBitmap('Test Bitmap 23', 50, 50);
+    layerIndex := SpriteAddLayer(testSprite, newLayerBitmap, 'Test Bitmap 23');
     AssertEquals(1, layerIndex);
     AssertEquals(2, SpriteLayerCount(testSprite));
 end;
 procedure TestSpriteAddToVelocityIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 24', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetVelocity(testSprite, VectorTo(0.0, 0.0));
     SpriteAddToVelocity(testSprite, VectorTo(10.0, 10.0));
@@ -340,9 +340,9 @@ begin
 end;
 procedure TestSpriteAddValueIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 25', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteAddValue(testSprite, 'health', 100.0);
     AssertTrue(SpriteHasValue(testSprite, 'health'));
@@ -350,9 +350,9 @@ begin
 end;
 procedure TestSpriteAddValueWithDefaultIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 26', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteAddValue(testSprite, 'health', 100.0);
     AssertTrue(SpriteHasValue(testSprite, 'health'));
@@ -360,9 +360,9 @@ begin
 end;
 procedure TestSpriteAnchorPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 27', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     anchorPoint := SpriteAnchorPoint(testSprite);
     AssertEquals(50.0, anchorPoint.x);
@@ -370,9 +370,9 @@ begin
 end;
 procedure TestSpriteAnchorPositionIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 28', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     anchorPosition := SpriteAnchorPosition(testSprite);
@@ -381,11 +381,11 @@ begin
 end;
 procedure TestSpriteAnimationHasEndedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 29', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 4', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap, testAnimation);
+    testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteStartAnimation(testSprite, 'walkfront');
     AssertFalse(SpriteAnimationHasEnded(testSprite));
@@ -396,33 +396,33 @@ begin
 end;
 procedure TestSpriteAnimationNameIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 30', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 5', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap, testAnimation);
+    testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteStartAnimation(testSprite, 'walkfront');
     AssertEquals('walkfront', SpriteAnimationName(testSprite));
 end;
 procedure TestSpriteAtIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 31', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorRed());
     SetupCollisionMask(testBitmap);
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    SpriteSetX(testSprite, 400);
-    SpriteSetY(testSprite, 300);
+    SpriteSetX(testSprite, 400.0);
+    SpriteSetY(testSprite, 300.0);
     AssertTrue(SpriteAt(testSprite, PointAt(451.0, 350.0)));
     AssertFalse(SpriteAt(testSprite, PointAt(600.0, 500.0)));
 end;
 procedure TestSpriteBringLayerForwardIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 33', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layerIndex := SpriteAddLayer(testSprite, testBitmap, 'layer2');
     SpriteShowLayer(testSprite, layerIndex);
@@ -432,9 +432,9 @@ begin
 end;
 procedure TestSpriteBringLayerToFrontIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 32', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layerIndex := SpriteAddLayer(testSprite, testBitmap, 'layer2');
     SpriteShowLayer(testSprite, layerIndex);
@@ -444,21 +444,21 @@ begin
 end;
 procedure TestSpriteCallOnEventIntegration;
 begin
-    spriteDelegates := SpriteDelegates.Create();
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testSpriteDelegates := SpriteDelegates.Create();
+    testBitmap := CreateBitmap('Test Bitmap 35', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    SpriteCallOnEvent(testSprite, spriteDelegates.sprite_event_handler);
+    SpriteCallOnEvent(testSprite, test_sprite_delegates.sprite_event_handler);
     UpdateSprite(testSprite);
-    StopCallingOnSpriteEvent(spriteDelegates.sprite_event_handler);
-    AssertTrue(spriteDelegates.event_called);
+    StopCallingOnSpriteEvent(test_sprite_delegates.sprite_event_handler);
+    AssertTrue(test_sprite_delegates.event_called);
 end;
 procedure TestSpriteCircleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 36', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     circle := SpriteCircle(testSprite);
     AssertEquals(50.0, circle.center.x);
@@ -467,18 +467,18 @@ begin
 end;
 procedure TestSpriteCollisionBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 37', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     collisionBitmap := SpriteCollisionBitmap(testSprite);
     AssertEquals(testBitmap, collisionBitmap);
 end;
 procedure TestSpriteCollisionCircleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 38', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     circle := SpriteCollisionCircle(testSprite);
     AssertEquals(50.0, circle.center.x);
@@ -487,9 +487,9 @@ begin
 end;
 procedure TestSpriteCollisionKindIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 39', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(CollisionTestKind.PIXEL_COLLISIONS, SpriteCollisionKind(testSprite));
     SpriteSetCollisionKind(testSprite, CollisionTestKind.AABB_COLLISIONS);
@@ -497,9 +497,9 @@ begin
 end;
 procedure TestSpriteCollisionRectangleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 40', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     rect := SpriteCollisionRectangle(testSprite);
     AssertEquals(0.0, rect.x);
@@ -509,11 +509,11 @@ begin
 end;
 procedure TestSpriteCurrentCellIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 41', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 7', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap, testAnimation);
+    testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteStartAnimation(testSprite, 'walkfront');
     AssertEquals(0, SpriteCurrentCell(testSprite));
@@ -522,9 +522,9 @@ begin
 end;
 procedure TestSpriteCurrentCellRectangleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 42', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     rect := SpriteCurrentCellRectangle(testSprite);
     AssertEquals(0.0, rect.x);
@@ -534,9 +534,9 @@ begin
 end;
 procedure TestSpriteDxIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 43', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteDx(testSprite));
     SpriteSetDx(testSprite, 5.0);
@@ -544,9 +544,9 @@ begin
 end;
 procedure TestSpriteDyIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 44', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteDy(testSprite));
     SpriteSetDy(testSprite, 5.0);
@@ -554,9 +554,9 @@ begin
 end;
 procedure TestSpriteHasValueIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 45', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertFalse(SpriteHasValue(testSprite, 'health'));
     SpriteAddValue(testSprite, 'health', 100.0);
@@ -565,9 +565,9 @@ begin
 end;
 procedure TestSpriteHeadingIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 46', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(90.0, SpriteHeading(testSprite));
     SpriteSetVelocity(testSprite, VectorTo(1.0, 1.0));
@@ -575,17 +575,17 @@ begin
 end;
 procedure TestSpriteHeightIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 47', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(100, SpriteHeight(testSprite));
 end;
 procedure TestSpriteHideLayerNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 48', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
     SpriteShowLayer(testSprite, 'layer2');
@@ -595,9 +595,9 @@ begin
 end;
 procedure TestSpriteHideLayerIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 49', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
     SpriteShowLayer(testSprite, layerIdx);
@@ -607,27 +607,27 @@ begin
 end;
 procedure TestSpriteLayerNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 50', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
     AssertEquals(testBitmap, SpriteLayer(testSprite, 'layer2'));
 end;
 procedure TestSpriteLayerAtIndexIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 51', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
     AssertEquals(testBitmap, SpriteLayer(testSprite, layerIdx));
 end;
 procedure TestSpriteLayerCircleNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 52', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     circle := SpriteLayerCircle(testSprite, 'base_layer');
     AssertEquals(50.0, circle.center.x);
@@ -636,9 +636,9 @@ begin
 end;
 procedure TestSpriteLayerCircleAtIndexIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 53', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     circle := SpriteLayerCircle(testSprite, 0);
     AssertEquals(50.0, circle.center.x);
@@ -647,9 +647,9 @@ begin
 end;
 procedure TestSpriteLayerCountIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 54', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(1, SpriteLayerCount(testSprite));
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -658,9 +658,9 @@ begin
 end;
 procedure TestSpriteLayerHeightNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 55', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(100, SpriteLayerHeight(testSprite, 'base_layer'));
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -668,9 +668,9 @@ begin
 end;
 procedure TestSpriteLayerHeightIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 56', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(100, SpriteLayerHeight(testSprite, 0));
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -678,9 +678,9 @@ begin
 end;
 procedure TestSpriteLayerIndexIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 57', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0, SpriteLayerIndex(testSprite, 'base_layer'));
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -688,18 +688,18 @@ begin
 end;
 procedure TestSpriteLayerNameIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 58', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
     AssertEquals('', SpriteLayerName(testSprite, layerIdx));
 end;
 procedure TestSpriteLayerOffsetNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 59', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(VectorTo(0.0, 0.0), SpriteLayerOffset(testSprite, 'base_layer'));
     SpriteSetLayerOffset(testSprite, 'base_layer', VectorTo(10.0, 10.0));
@@ -707,9 +707,9 @@ begin
 end;
 procedure TestSpriteLayerOffsetIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 60', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(VectorTo(0.0, 0.0), SpriteLayerOffset(testSprite, 0));
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -718,9 +718,9 @@ begin
 end;
 procedure TestSpriteLayerRectangleNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 61', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     rect := SpriteLayerRectangle(testSprite, 'base_layer');
     AssertEquals(0.0, rect.x);
@@ -730,9 +730,9 @@ begin
 end;
 procedure TestSpriteLayerRectangleAtIndexIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 62', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     rect := SpriteLayerRectangle(testSprite, 0);
     AssertEquals(0.0, rect.x);
@@ -742,9 +742,9 @@ begin
 end;
 procedure TestSpriteLayerWidthNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 63', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(100, SpriteLayerWidth(testSprite, 'base_layer'));
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -752,9 +752,9 @@ begin
 end;
 procedure TestSpriteLayerWidthIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 64', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(100, SpriteLayerWidth(testSprite, 0));
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -762,21 +762,21 @@ begin
 end;
 procedure TestSpriteLocationMatrixIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 65', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
-    SpriteSetRotation(testSprite, 45);
+    SpriteSetRotation(testSprite, 45.0);
     matrix := SpriteLocationMatrix(testSprite);
     AssertEquals(150.0, matrix.elements[0, 2]);
     AssertEquals(1.0, matrix.elements[2, 2]);
 end;
 procedure TestSpriteMassIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 66', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(1.0, SpriteMass(testSprite));
     SpriteSetMass(testSprite, 10.0);
@@ -784,9 +784,9 @@ begin
 end;
 procedure TestSpriteMoveFromAnchorPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 67', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertFalse(SpriteMoveFromAnchorPoint(testSprite));
     SpriteSetMoveFromAnchorPoint(testSprite, true);
@@ -794,9 +794,9 @@ begin
 end;
 procedure TestSpriteMoveToTakingSecondsIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 68', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
     SpriteMoveTo(testSprite, PointAt(200.0, 200.0), 1.0);
@@ -810,28 +810,28 @@ begin
 end;
 procedure TestSpriteNameIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 69', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite('Test Sprite 7', testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    AssertEquals('test_sprite', SpriteName(testSprite));
+    AssertEquals('Test Sprite 7', SpriteName(testSprite));
 end;
 procedure TestSpriteNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 70', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite('Test Sprite 8', testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    AssertEquals(testSprite, SpriteNamed('test_sprite'));
+    AssertEquals(testSprite, SpriteNamed('Test Sprite 8'));
     AssertNull(SpriteNamed('non_existent_sprite'));
 end;
 procedure TestSpriteOffscreenIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 5', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 71', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
     AssertFalse(SpriteOffscreen(testSprite));
@@ -840,13 +840,13 @@ begin
 end;
 procedure TestSpriteOnScreenAtPointIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 6', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 72', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorRed());
     SetupCollisionMask(testBitmap);
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
     DrawSprite(testSprite);
@@ -856,13 +856,13 @@ begin
 end;
 procedure TestSpriteOnScreenAtIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 7', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 73', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     ClearBitmap(testBitmap, ColorRed());
     SetupCollisionMask(testBitmap);
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
     DrawSprite(testSprite);
@@ -872,9 +872,9 @@ begin
 end;
 procedure TestSpritePositionIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 74', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(PointAt(0.0, 0.0), SpritePosition(testSprite));
     SpriteSetPosition(testSprite, PointAt(400.0, 300.0));
@@ -882,9 +882,9 @@ begin
 end;
 procedure TestSpriteReplayAnimationIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 75', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 8', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -899,9 +899,9 @@ begin
 end;
 procedure TestSpriteReplayAnimationWithSoundIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 76', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'startup.txt');
+    testAnimation := LoadAnimationScript('Test Script 9', 'startup.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -917,9 +917,9 @@ begin
 end;
 procedure TestSpriteRotationIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 77', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteRotation(testSprite));
     SpriteSetRotation(testSprite, 45.0);
@@ -927,9 +927,9 @@ begin
 end;
 procedure TestSpriteScaleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 78', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(1.0, SpriteScale(testSprite));
     SpriteSetScale(testSprite, 2.0);
@@ -937,11 +937,11 @@ begin
 end;
 procedure TestSpriteScreenRectangleIntegration;
 begin
-    testWindow := OpenWindow('Test Window', 800, 600);
+    OpenWindow('Test Window 8', 800, 600);
     CleanupWindow := TWindowCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 79', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 10', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     ClearBitmap(testBitmap, ColorWhite());
     testSprite := CreateSprite(testBitmap, testAnimation);
@@ -956,9 +956,9 @@ begin
 end;
 procedure TestSpriteSendLayerBackwardIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 80', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layer1 := SpriteAddLayer(testSprite, testBitmap, 'layer1');
     SpriteShowLayer(testSprite, layer1);
@@ -970,9 +970,9 @@ begin
 end;
 procedure TestSpriteSendLayerToBackIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 81', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layer1 := SpriteAddLayer(testSprite, testBitmap, 'layer1');
     SpriteShowLayer(testSprite, layer1);
@@ -984,9 +984,9 @@ begin
 end;
 procedure TestSpriteSetAnchorPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 82', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(PointAt(50.0, 50.0), SpriteAnchorPoint(testSprite));
     SpriteSetAnchorPoint(testSprite, PointAt(25.0, 25.0));
@@ -994,20 +994,20 @@ begin
 end;
 procedure TestSpriteSetCollisionBitmapIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 83', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(testBitmap, SpriteCollisionBitmap(testSprite));
-    newBitmap := CreateBitmap('new_bitmap', 200, 200);
+    newBitmap := CreateBitmap('Test Bitmap 84', 200, 200);
     SpriteSetCollisionBitmap(testSprite, newBitmap);
     AssertEquals(newBitmap, SpriteCollisionBitmap(testSprite));
 end;
 procedure TestSpriteSetCollisionKindIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 85', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(CollisionTestKind.PIXEL_COLLISIONS, SpriteCollisionKind(testSprite));
     SpriteSetCollisionKind(testSprite, CollisionTestKind.AABB_COLLISIONS);
@@ -1015,9 +1015,9 @@ begin
 end;
 procedure TestSpriteSetDxIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 86', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteDx(testSprite));
     SpriteSetDx(testSprite, 5.0);
@@ -1025,9 +1025,9 @@ begin
 end;
 procedure TestSpriteSetDyIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 87', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteDy(testSprite));
     SpriteSetDy(testSprite, 5.0);
@@ -1035,9 +1035,9 @@ begin
 end;
 procedure TestSpriteSetHeadingIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 88', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetVelocity(testSprite, VectorFromAngle(90.0, 1.0));
     AssertEquals(90.0, SpriteHeading(testSprite));
@@ -1046,9 +1046,9 @@ begin
 end;
 procedure TestSpriteSetLayerOffsetNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 89', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(VectorTo(0.0, 0.0), SpriteLayerOffset(testSprite, 'base_layer'));
     SpriteSetLayerOffset(testSprite, 'base_layer', VectorTo(10.0, 10.0));
@@ -1056,9 +1056,9 @@ begin
 end;
 procedure TestSpriteSetLayerOffsetAtIndexIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 90', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(VectorTo(0.0, 0.0), SpriteLayerOffset(testSprite, 0));
     SpriteSetLayerOffset(testSprite, 0, VectorTo(10.0, 10.0));
@@ -1066,9 +1066,9 @@ begin
 end;
 procedure TestSpriteSetMassIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 91', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(1.0, SpriteMass(testSprite));
     SpriteSetMass(testSprite, 10.0);
@@ -1076,9 +1076,9 @@ begin
 end;
 procedure TestSpriteSetMoveFromAnchorPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 92', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertFalse(SpriteMoveFromAnchorPoint(testSprite));
     SpriteSetMoveFromAnchorPoint(testSprite, true);
@@ -1086,9 +1086,9 @@ begin
 end;
 procedure TestSpriteSetPositionIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 93', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(PointAt(0.0, 0.0), SpritePosition(testSprite));
     SpriteSetPosition(testSprite, PointAt(100.0, 100.0));
@@ -1096,9 +1096,9 @@ begin
 end;
 procedure TestSpriteSetRotationIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 94', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteRotation(testSprite));
     SpriteSetRotation(testSprite, 45.0);
@@ -1106,9 +1106,9 @@ begin
 end;
 procedure TestSpriteSetScaleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 95', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(1.0, SpriteScale(testSprite));
     SpriteSetScale(testSprite, 2.0);
@@ -1116,9 +1116,9 @@ begin
 end;
 procedure TestSpriteSetSpeedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 96', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetVelocity(testSprite, VectorFromAngle(0.0, 1.0));
     SpriteSetSpeed(testSprite, 5.0);
@@ -1126,9 +1126,9 @@ begin
 end;
 procedure TestSpriteSetValueNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 97', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertFalse(SpriteHasValue(testSprite, 'test_value'));
     SpriteAddValue(testSprite, 'test_value', 0.0);
@@ -1137,9 +1137,9 @@ begin
 end;
 procedure TestSpriteSetVelocityIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 98', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(VectorTo(0.0, 0.0), SpriteVelocity(testSprite));
     SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
@@ -1147,9 +1147,9 @@ begin
 end;
 procedure TestSpriteSetXIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 99', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteX(testSprite));
     SpriteSetX(testSprite, 150.0);
@@ -1157,9 +1157,9 @@ begin
 end;
 procedure TestSpriteSetYIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 100', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteY(testSprite));
     SpriteSetY(testSprite, 300.0);
@@ -1167,9 +1167,9 @@ begin
 end;
 procedure TestSpriteShowLayerNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 101', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
     SpriteHideLayer(testSprite, 'layer2');
@@ -1179,9 +1179,9 @@ begin
 end;
 procedure TestSpriteShowLayerIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 102', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
     SpriteHideLayer(testSprite, layerIdx);
@@ -1191,9 +1191,9 @@ begin
 end;
 procedure TestSpriteSpeedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 103', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteSpeed(testSprite));
     SpriteSetVelocity(testSprite, VectorTo(3.0, 4.0));
@@ -1201,9 +1201,9 @@ begin
 end;
 procedure TestSpriteStartAnimationNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 104', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 11', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1217,9 +1217,9 @@ begin
 end;
 procedure TestSpriteStartAnimationNamedWithSoundIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 105', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'startup.txt');
+    testAnimation := LoadAnimationScript('Test Script 12', 'startup.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1234,9 +1234,9 @@ begin
 end;
 procedure TestSpriteStartAnimationIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 106', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 13', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1249,9 +1249,9 @@ begin
 end;
 procedure TestSpriteStartAnimationWithSoundIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 107', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'startup.txt');
+    testAnimation := LoadAnimationScript('Test Script 14', 'startup.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1265,24 +1265,24 @@ begin
 end;
 procedure TestSpriteStopCallingOnEventIntegration;
 begin
-    spriteDelegates := SpriteDelegates.Create();
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testSpriteDelegates := SpriteDelegates.Create();
+    testBitmap := CreateBitmap('Test Bitmap 109', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    SpriteCallOnEvent(testSprite, spriteDelegates.sprite_event_handler);
+    SpriteCallOnEvent(testSprite, test_sprite_delegates.sprite_event_handler);
     UpdateSprite(testSprite);
-    AssertTrue(spriteDelegates.event_called);
-    SpriteStopCallingOnEvent(testSprite, spriteDelegates.sprite_event_handler);
-    spriteDelegates.reset;
-    UpdateSprite(testSprite);
-    AssertFalse(spriteDelegates.event_called);
+    AssertTrue(test_sprite_delegates.event_called);
+    SpriteStopCallingOnEvent(testSprite, test_sprite_delegates.sprite_event_handler);
+    testSpriteDelegates.reset
+;    UpdateSprite(testSprite);
+    AssertFalse(test_sprite_delegates.event_called);
 end;
 procedure TestSpriteToggleLayerVisibleNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 110', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
     SpriteShowLayer(testSprite, 'layer2');
@@ -1294,9 +1294,9 @@ begin
 end;
 procedure TestSpriteToggleLayerVisibleIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 111', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
     SpriteShowLayer(testSprite, layerIdx);
@@ -1306,9 +1306,9 @@ begin
 end;
 procedure TestSpriteValueIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 112', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(3, SpriteValueCount(testSprite));
     SpriteAddValue(testSprite, 'test_value', 0.0);
@@ -1316,9 +1316,9 @@ begin
 end;
 procedure TestSpriteValueCountIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 113', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(3, SpriteValueCount(testSprite));
     SpriteAddValue(testSprite, 'health', 0.0);
@@ -1327,9 +1327,9 @@ begin
 end;
 procedure TestSpriteVelocityIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 114', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(VectorTo(0.0, 0.0), SpriteVelocity(testSprite));
     SpriteSetVelocity(testSprite, VectorTo(5.0, 5.0));
@@ -1337,9 +1337,9 @@ begin
 end;
 procedure TestSpriteVisibleIndexOfLayerNamedIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 115', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0, SpriteVisibleIndexOfLayer(testSprite, 'base_layer'));
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -1348,9 +1348,9 @@ begin
 end;
 procedure TestSpriteVisibleIndexOfLayerIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 116', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0, SpriteVisibleIndexOfLayer(testSprite, 0));
     layerIdx := SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -1359,9 +1359,9 @@ begin
 end;
 procedure TestSpriteVisibleLayerIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 117', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0, SpriteVisibleLayer(testSprite, 0));
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -1370,9 +1370,9 @@ begin
 end;
 procedure TestSpriteVisibleLayerCountIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 118', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(1, SpriteVisibleLayerCount(testSprite));
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -1383,9 +1383,9 @@ begin
 end;
 procedure TestSpriteVisibleLayerIdIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 119', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0, SpriteVisibleLayerId(testSprite, 0));
     SpriteAddLayer(testSprite, testBitmap, 'layer2');
@@ -1394,9 +1394,9 @@ begin
 end;
 procedure TestSpriteWidthIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 120', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(1.0, SpriteScale(testSprite));
     SpriteSetScale(testSprite, 2.0);
@@ -1404,9 +1404,9 @@ begin
 end;
 procedure TestSpriteXIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 121', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteX(testSprite));
     SpriteSetX(testSprite, 150.0);
@@ -1414,9 +1414,9 @@ begin
 end;
 procedure TestSpriteYIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 122', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     AssertEquals(0.0, SpriteY(testSprite));
     SpriteSetY(testSprite, 200.0);
@@ -1424,26 +1424,26 @@ begin
 end;
 procedure TestStopCallingOnSpriteEventIntegration;
 begin
-    spriteDelegates := SpriteDelegates.Create();
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testSpriteDelegates := SpriteDelegates.Create();
+    testBitmap := CreateBitmap('Test Bitmap 108', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    CallOnSpriteEvent(spriteDelegates.sprite_event_handler);
+    CallOnSpriteEvent(test_sprite_delegates.sprite_event_handler);
     UpdateSprite(testSprite);
-    AssertTrue(spriteDelegates.event_called);
-    StopCallingOnSpriteEvent(spriteDelegates.sprite_event_handler);
-    spriteDelegates.reset;
-    UpdateSprite(testSprite);
-    AssertFalse(spriteDelegates.event_called);
+    AssertTrue(test_sprite_delegates.event_called);
+    StopCallingOnSpriteEvent(test_sprite_delegates.sprite_event_handler);
+    testSpriteDelegates.reset
+;    UpdateSprite(testSprite);
+    AssertFalse(test_sprite_delegates.event_called);
 end;
 procedure TestUpdateAllSpritesIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 123', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite1 := CreateSprite('test_sprite1', testBitmap);
+    testSprite1 := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    testSprite2 := CreateSprite('test_sprite2', testBitmap);
+    testSprite2 := CreateSprite(testBitmap);
     SpriteSetVelocity(testSprite1, VectorTo(10.0, 10.0));
     SpriteSetVelocity(testSprite2, VectorTo(-10.0, -10.0));
     UpdateAllSprites();
@@ -1452,11 +1452,11 @@ begin
 end;
 procedure TestUpdateAllSpritesPercentIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 124', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite1 := CreateSprite('test_sprite1', testBitmap);
+    testSprite1 := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    testSprite2 := CreateSprite('test_sprite2', testBitmap);
+    testSprite2 := CreateSprite(testBitmap);
     SpriteSetVelocity(testSprite1, VectorTo(100.0, 100.0));
     SpriteSetVelocity(testSprite2, VectorTo(-100.0, -100.0));
     UpdateAllSprites(0.5);
@@ -1467,9 +1467,9 @@ begin
 end;
 procedure TestUpdateSpriteIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 125', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetVelocity(testSprite, VectorTo(10.0, 10.0));
     initialPos := SpritePosition(testSprite);
@@ -1478,9 +1478,9 @@ begin
 end;
 procedure TestUpdateSpriteWithSoundIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 126', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'startup.txt');
+    testAnimation := LoadAnimationScript('Test Script 15', 'startup.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1493,9 +1493,9 @@ begin
 end;
 procedure TestUpdateSpritePercentIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 127', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetVelocity(testSprite, VectorTo(100.0, 100.0));
     UpdateSprite(testSprite, 0.5);
@@ -1504,9 +1504,9 @@ begin
 end;
 procedure TestUpdateSpritePercentWithSoundIntegration;
 begin
-    testAnimation := LoadAnimationScript('startup', 'startup.txt');
+    testAnimation := LoadAnimationScript('Test Script 16', 'startup.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 128', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1519,11 +1519,11 @@ begin
 end;
 procedure TestUpdateSpriteAnimationIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 129', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'kermit.txt');
+    testAnimation := LoadAnimationScript('Test Script 17', 'kermit.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap, testAnimation);
+    testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteStartAnimation(testSprite, 'walkfront');
     AssertFalse(SpriteAnimationHasEnded(testSprite));
@@ -1534,9 +1534,9 @@ begin
 end;
 procedure TestUpdateSpriteAnimationWithSoundIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 130', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'startup.txt');
+    testAnimation := LoadAnimationScript('Test Script 18', 'startup.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1551,9 +1551,9 @@ begin
 end;
 procedure TestUpdateSpriteAnimationPercentIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 131', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'startup.txt');
+    testAnimation := LoadAnimationScript('Test Script 19', 'startup.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1566,9 +1566,9 @@ begin
 end;
 procedure TestUpdateSpriteAnimationPercentWithSoundIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 132', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testAnimation := LoadAnimationScript('test_animation', 'startup.txt');
+    testAnimation := LoadAnimationScript('Test Script 20', 'startup.txt');
     CleanupAnimationScript := TAnimationScriptCleanup.Create;
     testSprite := CreateSprite(testBitmap, testAnimation);
     CleanupSprite := TSpriteCleanup.Create;
@@ -1584,9 +1584,9 @@ begin
 end;
 procedure TestVectorFromCenterSpriteToPointPointIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 133', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite := CreateSprite('test_sprite', testBitmap);
+    testSprite := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
     SpriteSetPosition(testSprite, PointAt(0.0, 0.0));
     targetPoint := PointAt(150.0, 150.0);
@@ -1596,11 +1596,11 @@ begin
 end;
 procedure TestVectorFromToIntegration;
 begin
-    testBitmap := CreateBitmap('test_bitmap', 100, 100);
+    testBitmap := CreateBitmap('Test Bitmap 134', 100, 100);
     CleanupBitmap := TBitmapCleanup.Create;
-    testSprite1 := CreateSprite('test_sprite1', testBitmap);
+    testSprite1 := CreateSprite(testBitmap);
     CleanupSprite := TSpriteCleanup.Create;
-    testSprite2 := CreateSprite('test_sprite2', testBitmap);
+    testSprite2 := CreateSprite(testBitmap);
     SpriteSetPosition(testSprite1, PointAt(0.0, 0.0));
     SpriteSetPosition(testSprite2, PointAt(100.0, 100.0));
     vector := VectorFromTo(testSprite1, testSprite2);
@@ -1611,5 +1611,5 @@ end;
 
 procedure RegisterTests;
 begin
-    #<Proc:0x00007fbbcab52da8 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
+    #<Proc:0x00007faa116e2450 /mnt/c/Users/Noahc/Documents/aYear_2_semester_2/TeamProject/GitHubRepo/splashkit_test_generator/test_generator/config/languages/pascal_config.rb:138 (lambda)>
 end;

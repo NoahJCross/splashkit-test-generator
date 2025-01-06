@@ -123,3 +123,29 @@
 2024-12-31 15:41:44,084 WARNING [default] Attempting to get index from invalid animation script.
 2024-12-31 15:41:44,084 WARNING [default] Attempting to create animation from invalid script
 2024-12-31 15:41:44,084 WARNING [default] Attempting to get frame time with invalid animation data.
+2025-01-03 04:03:52,721 ERROR: Invalid json object passed to json_has_key
+2025-01-03 04:03:52,726 ERROR: Invalid json pointer passed to json_read_x
+2025-01-03 04:03:52,727 WARNING: Passed an invalid json object to json_add_x
+2025-01-03 04:03:52,728 WARNING: Passed an invalid json object to json_add_array
+2025-01-03 04:03:52,732 WARNING: Passed an invalid json object to json_add_x
+2025-01-04 15:09:11,236 ERROR [default] Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,236 ERROR [default] Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,237 WARNING [default] At line 38 in animation kermit.txt: Cannot find boing sound file comedy_boing.wav
+2025-01-04 15:09:11,237 ERROR [default] Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,237 WARNING [default] At line 39 in animation kermit.txt: Cannot find boing sound file comedy_boing.wav
+2025-01-04 15:09:11,237 ERROR: Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,237 WARNING: At line 40 in animation kermit.txt: Cannot find boing sound file comedy_boing.wav
+2025-01-04 15:09:11,238 ERROR: Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,238 WARNING: At line 41 in animation kermit.txt: Cannot find boing sound file comedy_boing.wav
+2025-01-04 15:09:11,239 ERROR: Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,239 WARNING: At line 44 in animation kermit.txt: Cannot find MoonWalkFront sound file breakdance.wav
+2025-01-04 15:09:11,241 ERROR: Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,241 WARNING: At line 45 in animation kermit.txt: Cannot find MoonWalkFront sound file breakdance.wav
+2025-01-04 15:09:11,241 ERROR: Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,241 WARNING: At line 46 in animation kermit.txt: Cannot find MoonWalkFront sound file breakdance.wav
+2025-01-04 15:09:11,242 ERROR: Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,242 WARNING: At line 47 in animation kermit.txt: Cannot find MoonWalkFront sound file breakdance.wav
+2025-01-04 15:09:11,242 ERROR: Attempting to load sound effect when audio is closed.
+2025-01-04 15:09:11,242 WARNING: At line 49 in animation kermit.txt: Cannot find dance sound file dancingFrog.wav
+2025-01-06 17:10:45,041 ERROR: Invalid json object passed to json_has_key
+2025-01-06 17:10:45,042 WARNING: Passed an invalid json object to json_add_array

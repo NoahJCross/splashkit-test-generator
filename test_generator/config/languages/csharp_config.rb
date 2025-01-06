@@ -101,7 +101,7 @@ module LanguageConfig
           formatted_field = field.split('.').map(&:to_pascal_case).join('.')
           "#{var}.#{formatted_field}"
         },
-        delegate_call: ->(var, field) { "#{var}.#{field.to_pascal_case}();" },
+        method_call:   ->(var, field) { "#{var}.#{field.to_pascal_case}()" },
         array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
         matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
         array_size:    ->(arr) { "#{arr}.Count" },
@@ -111,7 +111,7 @@ module LanguageConfig
       function_handlers: {
         call:      ->(name, params, semicolon = true) { "#{name.to_pascal_case}(#{params})#{semicolon ? ';' : ''}" },
         pointer:   ->(_) { 'null;' },
-        test:      ->(name) { ["[Fact]", "public void Test#{name.to_pascal_case}Integration() {"] }
+        test:      ->(_, name) { ["[Fact]", "public void Test#{name.to_pascal_case}Integration() {"] }
       }.freeze,
 
       comment_syntax: {
@@ -148,11 +148,11 @@ module LanguageConfig
         unindent_before: ['}']
       }.freeze,
 
-      file_extension: 'cs',
-
       terminal_handlers: {
         message: ->(text) { "Console.WriteLine(\"#{text}\");" }
-      }.freeze
+      }.freeze,
+
+      file_extension: 'cs'
     }.freeze
   end
 end

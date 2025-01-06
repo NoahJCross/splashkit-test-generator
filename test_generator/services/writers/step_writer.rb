@@ -19,11 +19,18 @@ module TestGenerator
     end
 
     def write
-      if respond_to?("write_#{@step[:step_type]}_step", true)
-        send("write_#{@step[:step_type]}_step")
+      step_type = @step[:step_type]
+      method_name = "write_#{step_type}_step"
+
+      if respond_to?(method_name, true)
+        send(method_name)
       else
-        @formatter.indent("# TODO: Implement #{@step[:step_type]} step\n", @config)
+        MessageHandler.log_warning("Unimplemented step type: #{step_type}")
+        @formatter.indent("# TODO: Implement #{step_type} step", @config)
       end
+    rescue StandardError => e
+      MessageHandler.log_error("Error in step #{step_type}", e.message)
+      raise TestGeneratorError, "Failed to write #{step_type} step: #{e.message}"
     end
 
     private
@@ -32,15 +39,9 @@ module TestGenerator
     # @return [String] Formatted variable declaration code
     def write_variable_step
       handlers = @config.variable_handlers
-      declaration_op = @step[:is_mutable] ? 
-        handlers[:declaration][:mutable] : 
-        handlers[:declaration][:regular]
+      declaration_op = @step[:is_mutable] ? handlers[:declaration][:mutable] : handlers[:declaration][:regular]
       declaration = declaration_op.call(@step[:variable_name])
-      value = if @step[:value_type] == 'reference'
-                handlers[:identifier].call(@step[:value])
-              else
-                ValueFormatter.format_value(@step, @functions, @config)
-              end
+      value = format_variable_value
       @formatter.indent("#{declaration}#{value};", @config)
     end
 
@@ -153,7 +154,7 @@ module TestGenerator
       if @step[:function_name]
         format_function_call
       else
-        ValueFormatter.format_value(@step, @functions, @config) + ';'
+        "#{ValueFormatter.format_value(@step, @functions, @config)};"
       end
     end
 
@@ -167,7 +168,7 @@ module TestGenerator
 
     # Writes a prompt step that displays a message to the user
     # @return [String] Formatted prompt code (e.g., cout, print, Console.WriteLine etc.)
-    def write_prompt_step
+    def write_message_step
       @formatter.indent(@config.terminal_handlers[:message].call(@step[:message]), @config)
     end
 
@@ -181,9 +182,19 @@ module TestGenerator
 
     # Writes a delegate call step
     # @return [String] Formatted delegate call code
-    def write_delegate_call_step
+    def write_method_call_step
       variable_value = @config.variable_handlers[:identifier].call(@step[:variable_name])
-      @formatter.indent(@config.variable_handlers[:delegate_call].call(variable_value, @step[:variable_field]), @config)
+      "#{@formatter.indent(@config.variable_handlers[:method_call].call(variable_value, @step[:method_name]), @config)};"
+    end
+
+    # Formats a variable's value based on its type
+    # @return [String] The formatted value, either a reference or a formatted literal value
+    def format_variable_value
+      if @step[:value_type] == 'reference'
+        @config.variable_handlers[:identifier].call(@step[:value])
+      else
+        ValueFormatter.format_value(@step, @functions, @config)
+      end
     end
   end
 end
