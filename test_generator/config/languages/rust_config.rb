@@ -3,10 +3,34 @@ module LanguageConfig
   class RustConfig < BaseConfig
     def initialize
       super()
-      self.config = DEFAULT_CONFIG.merge
+      self.config = deep_merge(get, DEFAULT_CONFIG)
     end
+
+    class << self
+      private
+
+      def format_string_handler(text_parts, expressions)
+        format_str = "\"#{text_parts.join('{}')}{}\""
+        format_args = expressions.join(', ')
+        "format!(#{format_str}, #{format_args})"
+      end
+    end
+
     DEFAULT_CONFIG = {
+      identifier_cases: {
+        types:      :pascal_case,
+        functions:  :snake_case,
+        variables:  :snake_case,
+        fields:     :snake_case,
+        constants:  :pascal_case
+      }.freeze,
+
+      var_keyword: 'let',
+      var_mut_keyword: 'mut',
       supports_overloading: false,
+      statement_terminator: ';',
+      file_extension: 'rs',
+
       imports: [
         'use std::*;',
         'use splashkit::*;',
@@ -14,8 +38,6 @@ module LanguageConfig
         '#[cfg(test)]',
         'use ctor::ctor;'
       ],
-
-      naming_convention: ->(name) { name.to_snake_case },
 
       assert_conditions: {
         'equal'                   => ->(v1, v2, precision = nil) { precision ? "assert!((#{v1} - #{v2}).abs() <= #{precision});" : "assert_eq!(#{v1}, #{v2});" },
@@ -63,27 +85,14 @@ module LanguageConfig
         interpolation: ->(expr) { "{#{expr}}" },
         char:          ->(value) { "'#{value}'" },
         string_ref:    ->(value) { "#{value}.clone()" },
-        format_string: ->(text_parts, expressions) {
-          "format!(\"#{text_parts.join('{}')}{}\", #{expressions.join(', ')})"
-        }
+        format_string: method(:format_string_handler),
+        string: ->(value) { "\"#{value}\".to_string()" }
       }.freeze,
 
-      type_handlers: {
-        list:      ->(values, _) { "vec![#{values}]" },
-        class_instance:     ->(name, args) { "#{name.to_pascal_case}::new(#{args})" },
-        mapping:   {
-          'double' => 'f64',
-          'json'   => 'Json',
-          'line'   => 'Line'
-        }.freeze,
-        enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}::#{value.to_pascal_case}#{semicolon ? ";" : ''}" 
-        },
-        string: ->(value) { "\"#{value}\".to_string()" },
-        object: ->(object_type, variable_name) { {
-          object_type: object_type.to_pascal_case,
-          variable_name: variable_name.to_snake_case
-        } }
+      type_mapping:   {
+        'double' => 'f64',
+        'json'   => 'Json',
+        'line'   => 'Line'
       }.freeze,
 
       literal_cast: {
@@ -95,27 +104,16 @@ module LanguageConfig
       comparison_cast: {
         unsigned_int: ->(value) { "#{value} as u32" },
         float: ->(value) { "#{value} as f32" },
-        double: ->(value) { "#{value} as f64" },
+        double: ->(value) { "#{value} as f64" }
       }.freeze,
 
       variable_handlers: {
-        declaration: {
-          regular: ->(name) { "let #{name.to_snake_case} = " },
-          mutable: ->(name) { "let mut #{name.to_snake_case} = " }
-        },
-        identifier:    ->(name) { name.to_snake_case.to_s },
-        field_access: ->(var, field) { "#{var}.#{field}" },
-        method_call: ->(var, field) { "#{var}.#{field}()" },
-        array_access: ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:   ->(arr) { "#{arr}.len()" },
         reference_operator: ->(var) { "&mut #{var}" }
       }.freeze,
 
       function_handlers: {
-        call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
-        pointer:   ->(name) { "let callback = |_| (); #{name}Wrapper::new(callback);" },
-        test:      ->(_, name) { ["#[test]", "fn test_#{name.to_snake_case}_integration() {"] }
+        test: ->(_, name) { ['#[test]', "fn test_#{name.to_snake_case}_integration() {"] }
       }.freeze,
 
       comment_syntax: {
@@ -151,7 +149,21 @@ module LanguageConfig
         message: ->(text) { "println!(\"#{text}\");" }
       }.freeze,
 
-      file_extension: 'rs'
+      list_handlers: {
+        prefix: ->(_) { 'vec![' },
+        suffix: ']',
+        separator: ', '
+      },
+
+      enum_handlers: {
+        separator: '::'
+      },
+
+      class_handlers: {
+        prefix: ->(name) { "#{name.to_pascal_case}::new(" },
+        suffix: ')',
+        separator: ', '
+      }.freeze
     }.freeze
   end
 end

@@ -344,7 +344,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",

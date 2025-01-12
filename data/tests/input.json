@@ -7179,8 +7179,8 @@
           "function_name": "show_mouse_with_boolean",
           "args": [
             {
-              "value_type": "variable",
-              "variable_name": "false"
+              "value_type": "bool",
+              "value": false
             }
           ]
         },
@@ -7320,8 +7320,8 @@
           "function_name": "show_mouse_with_boolean",
           "args": [
             {
-              "value_type": "variable",
-              "variable_name": "true"
+              "value_type": "bool",
+              "value": true
             }
           ]
         },

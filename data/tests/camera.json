@@ -10,6 +10,11 @@
       "cleanup_type": "sprite",
       "function_name": "free_all_sprites",
       "args": []
+    },
+    {
+      "cleanup_type": "bitmap",
+      "function_name": "free_all_bitmaps",
+      "args": []
     }
   ],
   "tests": [

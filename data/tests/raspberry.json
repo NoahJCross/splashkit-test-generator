@@ -2,8 +2,8 @@
   "group": "raspberry",
   "cleanup": [
     {
-      "cleanup_type": "raspi",
-      "function_name": "raspi_cleanup",
+      "cleanup_type": "raspberry",
+      "function_name": "raspberry_cleanup",
       "args": []
     }
   ],
@@ -40,8 +40,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -50,7 +50,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -66,7 +66,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -101,7 +101,7 @@
                 {
                   "value_type": "enum",
                   "enum_type": "pins",
-                  "value": "pin11"
+                  "value": "pin_11"
                 }
               ]
             }
@@ -123,7 +123,7 @@
                 {
                   "value_type": "enum",
                   "enum_type": "pins",
-                  "value": "pin11"
+                  "value": "pin_11"
                 }
               ]
             }
@@ -141,8 +141,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -151,7 +151,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -167,7 +167,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             }
           ],
           "store_result": "test_mode"
@@ -199,8 +199,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "assertion",
@@ -226,8 +226,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -236,7 +236,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -252,7 +252,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -268,7 +268,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             }
           ],
           "store_result": "test_read_value"
@@ -300,8 +300,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -310,7 +310,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -335,7 +335,7 @@
                 {
                   "value_type": "enum",
                   "enum_type": "pins",
-                  "value": "pin11"
+                  "value": "pin_11"
                 }
               ]
             }
@@ -353,8 +353,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -363,7 +363,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -379,7 +379,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -395,7 +395,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             }
           ],
           "store_result": "test_pin_value_up"
@@ -422,7 +422,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -438,7 +438,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             }
           ],
           "store_result": "test_pin_value_down"
@@ -470,8 +470,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -480,7 +480,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin18"
+              "value": "pin_18"
             },
             {
               "value_type": "enum",
@@ -496,7 +496,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin18"
+              "value": "pin_18"
             },
             {
               "value_type": "int",
@@ -511,7 +511,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin18"
+              "value": "pin_18"
             }
           ],
           "store_result": "mode"
@@ -543,8 +543,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -553,12 +553,12 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin18"
+              "value": "pin_18"
             },
             {
               "value_type": "enum",
               "enum_type": "pin_modes",
-              "value": "gpio_pwm"
+              "value": "gpio_alt5"
             }
           ]
         },
@@ -569,7 +569,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin18"
+              "value": "pin_18"
             },
             {
               "value_type": "int",
@@ -584,7 +584,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin18"
+              "value": "pin_18"
             }
           ],
           "store_result": "mode"
@@ -596,7 +596,7 @@
             "value1": {
               "value_type": "enum",
               "enum_type": "pin_modes",
-              "value": "gpio_pwm"
+              "value": "gpio_alt5"
             },
             "value2": {
               "value_type": "variable",
@@ -616,8 +616,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -626,7 +626,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -642,7 +642,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "int",
@@ -657,7 +657,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "int",
@@ -672,7 +672,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             }
           ],
           "store_result": "mode"
@@ -704,8 +704,8 @@
         },
         {
           "step_type": "cleanup",
-          "cleanup_type": "raspi",
-          "store_result": "cleanup_raspi"
+          "cleanup_type": "raspberry",
+          "store_result": "cleanup_raspberry"
         },
         {
           "step_type": "function",
@@ -714,7 +714,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -730,7 +730,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             },
             {
               "value_type": "enum",
@@ -746,7 +746,7 @@
             {
               "value_type": "enum",
               "enum_type": "pins",
-              "value": "pin11"
+              "value": "pin_11"
             }
           ],
           "store_result": "test_pin_value"

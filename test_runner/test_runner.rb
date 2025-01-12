@@ -2,6 +2,10 @@ require_relative 'lib'
 
 # Module for executing tests across different programming languages
 module TestRunner
+  # Executes all tests for a specified programming language
+  # @param language [String] The programming language to run tests for
+  # @raise [TestRunnerError] If there's an error during test execution
+  # @raise [StandardError] If there's an unexpected error
   def self.run_all_tests(language)
     TestConfig.setup unless TestConfig.runners
     InstallationValidator.validate_language(language)
@@ -16,6 +20,12 @@ module TestRunner
     raise
   end
 
+  # Executes a specific test within a test group
+  # @param language [String] The programming language to run the test in
+  # @param group [String] The test group containing the test
+  # @param test_name [String] The specific test to run
+  # @raise [TestRunnerError] If there's an error during test execution
+  # @raise [StandardError] If there's an unexpected error
   def self.run_specific_test(language, group, test_name)
     TestConfig.setup unless TestConfig.runners
     InstallationValidator.validate_language(language)
@@ -30,6 +40,11 @@ module TestRunner
     raise
   end
 
+  # Executes all tests in a specific file
+  # @param language [String] The programming language to run the test in
+  # @param file_name [String] The name of the test file to run
+  # @raise [TestRunnerError] If there's an error during test execution
+  # @raise [StandardError] If there's an unexpected error
   def self.run_single_file(language, file_name)
     TestConfig.setup unless TestConfig.runners
     InstallationValidator.validate_language(language)
@@ -44,6 +59,9 @@ module TestRunner
     raise
   end
 
+  # Finds all test groups for a given language
+  # @param language [String] The programming language to find test groups for
+  # @return [Array<String>] List of test group names
   def self.find_test_groups(language)
     test_files = Dir.glob("generated_tests/#{language}/tests/*_tests.*")
     test_files.map { |f| File.basename(f, '.*').gsub('_tests', '') }

@@ -4,76 +4,96 @@ namespace SplashKitTests
 {
     public class SpriteDelegates
     {
-        public bool EventCalled { get; set; }
-        public int FloatFunctionCallCount { get; private set; }
-        public int FunctionCallCount { get; private set; }
+        private bool _eventCalled;
+        private int _floatFunctionCallCount;
+        private int _functionCallCount;
 
-        public void SpriteFloatFunction(nint ptr, float value)
+
+        public SpriteFloatFunction SpriteFloatFunction()
         {
-            FloatFunctionCallCount++;
-            EventCalled = true;
+            return (ptr, value) =>
+            {
+                _floatFunctionCallCount++;
+                _eventCalled = true;
+            };
         }
 
-        public void SpriteFunction(nint ptr)
+        public SpriteFunction SpriteFunction()
         {
-            FunctionCallCount++;
-            EventCalled = true;
+            return (ptr) =>
+            {
+                _functionCallCount++;
+                _eventCalled = true;
+            };
         }
 
-        public void SpriteEventHandler(nint ptr, int evt)
+        public SpriteEventHandler SpriteEventHandler()
         {
-            EventCalled = true;
+            return (ptr, evt) =>
+            {
+                _eventCalled = true;
+            };
         }
+
+        public bool EventCalled() { return _eventCalled; }
+        public int FloatFunctionCallCount() { return _floatFunctionCallCount; }
+        public int FunctionCallCount() { return _functionCallCount; }
 
         public void Reset()
         {
-            FloatFunctionCallCount = 0;
-            FunctionCallCount = 0;
-            EventCalled = false;
+            _floatFunctionCallCount = 0;
+            _functionCallCount = 0;
+            _eventCalled = false;
         }
     }
 
     public class KeyCallbacks
     {
-        public KeyCode GetKeyTyped { get; private set; }
-        public KeyCode GetKeyDown { get; private set; }
-        public KeyCode GetKeyUp { get; private set; }
+        private KeyCode _lastKeyTyped;
+        private KeyCode _lastKeyDown;
+        private KeyCode _lastKeyUp;
 
-        public void OnKeyTyped(int key)
+        public KeyCallback OnKeyTyped()
         {
-            GetKeyTyped = (KeyCode)key;
+            return (key) => _lastKeyTyped = (KeyCode)key;
         }
 
-        public void OnKeyDown(int key)
+        public KeyCallback OnKeyDown()
         {
-            GetKeyDown = (KeyCode)key;
+            return (key) => _lastKeyDown = (KeyCode)key;
         }
 
-        public void OnKeyUp(int key)
+        public KeyCallback OnKeyUp()
         {
-            GetKeyUp = (KeyCode)key;
+            return (key) => _lastKeyUp = (KeyCode)key;
         }
+
+        public KeyCode GetKeyTyped() { return _lastKeyTyped; }
+        public KeyCode GetKeyDown() { return _lastKeyDown; }
+        public KeyCode GetKeyUp() { return _lastKeyUp; }
 
         public void Reset()
         {
-            GetKeyTyped = 0;
-            GetKeyDown = 0;
-            GetKeyUp = 0;
+            _lastKeyTyped = 0;
+            _lastKeyDown = 0;
+            _lastKeyUp = 0;
         }
     }
 
     public class NotifierTracker
     {
-        public bool WasNotified { get; private set; }
+        private bool _wasNotified;
 
-        public void OnFree(IntPtr resource)
+        public FreeNotifier OnFree()
         {
-            WasNotified = true;
+            return (resource) => _wasNotified = true;
         }
+
+        public bool WasNotified() { return _wasNotified; }
 
         public void Reset()
         {
-            WasNotified = false;
+            _wasNotified = false;
         }
     }
     public class AnimationScriptCleanup : IDisposable
@@ -141,7 +161,7 @@ namespace SplashKitTests
             FreeAllFonts();
         }
     }
-    public class RaspiCleanup : IDisposable
+    public class RaspberryCleanup : IDisposable
     {
         public void Dispose()
         {
@@ -199,6 +219,24 @@ namespace SplashKitTests
         public void Dispose()
         {
             CloseLogProcess();
+        }
+    }
+
+    public class InterfaceFontCleanup : IDisposable
+    {
+        public void Dispose()
+        {
+            SetInterfaceFont(GetSystemFont());
+        }
+    }
+    public class LayoutCleanup : IDisposable
+    {
+        public void Dispose()
+        {
+            ProcessEvents();
+            ResetLayout();
+            SetInterfaceStyle(InterfaceStyle.ShadedDarkStyle);
+            ProcessEvents();
         }
     }
 }

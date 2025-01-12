@@ -44,7 +44,7 @@
           "step_type": "function",
           "function_name": "color_black",
           "args": [],
-          "store_result": "color"
+          "store_result": "test_color"
         },
         {
           "step_type": "function",
@@ -56,7 +56,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "color"
+              "variable_name": "test_color"
             }
           ]
         },
@@ -97,7 +97,7 @@
             "compare_type": "equal",
             "value1": {
               "value_type": "variable",
-              "variable_name": "color"
+              "variable_name": "test_color"
             },
             "value2": {
               "value_type": "variable",

@@ -430,7 +430,7 @@
           "args": [
             {
               "value_type": "int",
-              "value": 1100
+              "value": 1500
             }
           ]
         },
@@ -1819,7 +1819,7 @@
           "args": [
             {
               "value_type": "int",
-              "value": 1100
+              "value": 1500
             }
           ]
         },
@@ -1922,7 +1922,7 @@
           "args": [
             {
               "value_type": "int",
-              "value": 1100
+              "value": 1500
             }
           ]
         },

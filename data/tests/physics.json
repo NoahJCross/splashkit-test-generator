@@ -4316,7 +4316,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         },
@@ -4337,7 +4337,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         }
@@ -4669,7 +4669,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         },
@@ -4688,7 +4688,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         }
@@ -5704,7 +5704,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         },
@@ -6273,7 +6273,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         },
@@ -6483,7 +6483,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         },
@@ -6502,7 +6502,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         }
@@ -6598,7 +6598,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         },
@@ -6705,7 +6705,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         },
@@ -6927,7 +6927,7 @@
             },
             "value3": {
               "value_type": "precision",
-              "value": 2.0
+              "value": 0.0001
             }
           }
         },

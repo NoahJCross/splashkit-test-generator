@@ -24,7 +24,7 @@ module TestGenerator
           'array_access_field'        => :format_array_access_field_value,
           'double'                    => :format_primitive_value,
           'int'                       => :format_primitive_value,
-          'bool'                      => :format_primitive_value,
+          'bool'                      => :format_boolean_value,
           'string'                    => :format_string_value,
           'string_ref'                => :format_string_ref_value,
           'float'                     => :format_float_value,
@@ -76,7 +76,7 @@ module TestGenerator
         function_name = FunctionLookup.determine_function_name(value, config, functions)
         raise "Function name is required for function value #{JSON.pretty_generate(value)}" unless function_name
 
-        result = config.function_handlers[:call].call(function_name, args, false)
+        result = config.function_handlers[:call].call(function_name, args)
         if value[:cast_to] && config.comparison_cast
           result = config.comparison_cast[value[:cast_to].to_sym].call(result)
         end
@@ -119,7 +119,7 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted enum value
       def format_enum_value(value, _, config)
-        config.type_handlers[:enum].call(value[:enum_type], value[:value], false)
+        config.type_handlers[:enum].call(value[:enum_type], value[:value])
       end
 
       # Formats matrix access on variables
@@ -149,7 +149,7 @@ module TestGenerator
       # @return [String] The formatted list
       def format_list_value(value, functions, config)
         values = value[:value].map { |v| format_value(v, functions, config) }
-        config.type_handlers[:list].call(values.join(', '), value[:target_type])
+        config.type_handlers[:list].call(values, value[:target_type])
       end
 
       # Formats field access on array elements
@@ -212,15 +212,15 @@ module TestGenerator
 
       # Formats class instance creation
       # @param value [Hash] The class instance value to format
+      # @param functions [Array] Available functions
       # @param config [Hash] Language configuration
       # @return [String] The formatted class instance creation
       # @raise [StandardError] If class name is missing
-      def format_class_instance_value(value, _, config)
-        args = (value[:args] || []).map { |arg| format_value(arg, @functions, @config) }.join(', ')
+      def format_class_instance_value(value, functions, config)
+        formatted_args = (value[:args] || []).map { |arg| format_value(arg, functions, config) }
         raise "Class name is required for class instance value #{JSON.pretty_generate(value)}" unless value[:class_name]
 
-        class_name = config.naming_convention.call(value[:class_name])
-        config.type_handlers[:class_instance].call(class_name, args)
+        config.type_handlers[:class_instance].call(value[:class_name], formatted_args)
       end
 
       # Formats array size access
@@ -265,7 +265,7 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted string value
       def format_string_value(value, _, config)
-        config.type_handlers[:string].call(value[:value])
+        config.string_handlers[:string].call(value[:value])
       end
 
       # Formats string reference values
@@ -291,7 +291,19 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted method call
       def format_method_call_value(value, _, config)
-        config.variable_handlers[:method_call].call(value[:variable_name], value[:method_name])
+        variable_value = config.variable_handlers[:identifier].call(value[:variable_name])
+        config.variable_handlers[:method_call].call(variable_value, value[:method_name])
+      end
+
+      # Formats boolean values
+      # @param value [Hash] The boolean value to format
+      # @param _ [Array] Unused functions parameter
+      # @param config [Hash] Language configuration
+      # @return [String] The formatted boolean value
+      def format_boolean_value(value, _, config)
+        bool_value = value[:value]
+        mapping = config.boolean_mapping&.[](bool_value)
+        mapping || bool_value.to_s
       end
     end
   end

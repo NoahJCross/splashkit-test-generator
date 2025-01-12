@@ -247,11 +247,11 @@ impl Drop for FontCleanup {
     }
 }
 
-pub struct RaspiCleanup;
-impl RaspiCleanup {
+pub struct RaspberryCleanup;
+impl RaspberryCleanup {
     pub fn new() -> Self { Self }
 }
-impl Drop for RaspiCleanup {
+impl Drop for RaspberryCleanup {
     fn drop(&mut self) {
         raspi_cleanup();
     }

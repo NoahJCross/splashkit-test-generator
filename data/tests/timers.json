@@ -44,7 +44,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -91,7 +91,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -108,7 +108,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -130,7 +130,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -147,7 +147,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -185,7 +185,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -212,7 +212,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -226,7 +226,7 @@
       ]
     },
     {
-      "name": "has_timer__named",
+      "name": "has_timer_named",
       "steps": [
         {
           "step_type": "function",
@@ -250,7 +250,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -277,7 +277,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "has_timer__named",
+              "function_name": "has_timer_named",
               "args": [
                 {
                   "value_type": "string",
@@ -291,7 +291,7 @@
       ]
     },
     {
-      "name": "pause_timer__named",
+      "name": "pause_timer_named",
       "steps": [
         {
           "step_type": "function",
@@ -332,7 +332,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "pause_timer__named",
+          "function_name": "pause_timer_named",
           "args": [
             {
               "value_type": "string",
@@ -346,7 +346,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_paused__named",
+              "function_name": "timer_paused_named",
               "args": [
                 {
                   "value_type": "string",
@@ -462,7 +462,7 @@
       ]
     },
     {
-      "name": "reset_timer__named",
+      "name": "reset_timer_named",
       "steps": [
         {
           "step_type": "function",
@@ -513,7 +513,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "reset_timer__named",
+          "function_name": "reset_timer_named",
           "args": [
             {
               "value_type": "string",
@@ -626,7 +626,7 @@
       ]
     },
     {
-      "name": "resume_timer__named",
+      "name": "resume_timer_named",
       "steps": [
         {
           "step_type": "function",
@@ -677,7 +677,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "resume_timer__named",
+          "function_name": "resume_timer_named",
           "args": [
             {
               "value_type": "string",
@@ -810,7 +810,7 @@
       ]
     },
     {
-      "name": "start_timer__named",
+      "name": "start_timer_named",
       "steps": [
         {
           "step_type": "function",
@@ -820,8 +820,7 @@
               "value_type": "string",
               "value": "Test Timer 12"
             }
-          ],
-          "store_result": "test_timer"
+          ]
         },
         {
           "step_type": "cleanup",
@@ -830,7 +829,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "start_timer__named",
+          "function_name": "start_timer_named",
           "args": [
             {
               "value_type": "string",
@@ -844,7 +843,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_started__named",
+              "function_name": "timer_started_named",
               "args": [
                 {
                   "value_type": "string",
@@ -906,7 +905,7 @@
       ]
     },
     {
-      "name": "stop_timer__named",
+      "name": "stop_timer_named",
       "steps": [
         {
           "step_type": "function",
@@ -966,7 +965,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "stop_timer__named",
+          "function_name": "stop_timer_named",
           "args": [
             {
               "value_type": "string",
@@ -1118,7 +1117,7 @@
       ]
     },
     {
-      "name": "timer_paused__named",
+      "name": "timer_paused_named",
       "steps": [
         {
           "step_type": "function",
@@ -1152,7 +1151,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_paused__named",
+              "function_name": "timer_paused_named",
               "args": [
                 {
                   "value_type": "string",
@@ -1165,7 +1164,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "pause_timer__named",
+          "function_name": "pause_timer_named",
           "args": [
             {
               "value_type": "string",
@@ -1179,7 +1178,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_paused__named",
+              "function_name": "timer_paused_named",
               "args": [
                 {
                   "value_type": "string",
@@ -1268,7 +1267,7 @@
       ]
     },
     {
-      "name": "timer_started__named",
+      "name": "timer_started_named",
       "steps": [
         {
           "step_type": "function",
@@ -1292,7 +1291,7 @@
             "compare_type": "false",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_started__named",
+              "function_name": "timer_started_named",
               "args": [
                 {
                   "value_type": "string",
@@ -1305,7 +1304,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "start_timer__named",
+          "function_name": "start_timer_named",
           "args": [
             {
               "value_type": "string",
@@ -1319,7 +1318,7 @@
             "compare_type": "true",
             "value1": {
               "value_type": "function",
-              "function_name": "timer_started__named",
+              "function_name": "timer_started_named",
               "args": [
                 {
                   "value_type": "string",
@@ -1398,7 +1397,7 @@
       ]
     },
     {
-      "name": "timer_ticks__named",
+      "name": "timer_ticks_named",
       "steps": [
         {
           "step_type": "function",
@@ -1428,7 +1427,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "timer_ticks__named",
+          "function_name": "timer_ticks_named",
           "args": [
             {
               "value_type": "string",
@@ -1449,7 +1448,7 @@
         },
         {
           "step_type": "function",
-          "function_name": "timer_ticks__named",
+          "function_name": "timer_ticks_named",
           "args": [
             {
               "value_type": "string",

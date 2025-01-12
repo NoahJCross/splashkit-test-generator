@@ -5165,12 +5165,210 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "not_null",
+            "compare_type": "null",
             "value1": {
-              "value_type": "variable",
-              "variable_name": "test_options"
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "dest"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "double",
+              "value": 1.0
             },
-            "value2": null
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "scale_x"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "double",
+              "value": 1.0
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "scale_y"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "double",
+              "value": 0.0
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "angle"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "double",
+              "value": 0.0
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "anchor_offset_x"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "double",
+              "value": 0.0
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "anchor_offset_y"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "flip_x"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "flip_y"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "false",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "is_part"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "function",
+              "function_name": "rectangle_from",
+              "args": [
+                {
+                  "value_type": "double",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 0.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 1.0
+                },
+                {
+                  "value_type": "double",
+                  "value": 1.0
+                }
+              ]
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "part"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "enum",
+              "enum_type": "drawing_dest",
+              "value": "draw_default"
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "camera"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "int",
+              "value": 1
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "line_width"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "null",
+            "value1": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "anim"
+            }
+          }
+        },
+        {
+          "step_type": "assertion",
+          "compare": {
+            "compare_type": "equal",
+            "value1": {
+              "value_type": "int",
+              "value": -1
+            },
+            "value2": {
+              "value_type": "variable_field",
+              "variable_name": "test_options",
+              "variable_field": "draw_cell"
+            }
           }
         }
       ]
@@ -5976,16 +6174,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -6192,16 +6380,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -6402,16 +6580,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -6618,16 +6786,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -6828,16 +6986,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -7044,16 +7192,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -7533,16 +7671,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -7734,16 +7862,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -7936,16 +8054,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -8143,16 +8251,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -8358,16 +8456,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -8581,16 +8669,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -8809,16 +8887,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -9029,16 +9097,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -9217,16 +9275,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -9410,16 +9458,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -10683,16 +10721,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -10902,16 +10930,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -15278,7 +15296,7 @@
               "value": 0
             }
           ],
-          "store_result": "display"
+          "store_result": "test_display"
         },
         {
           "step_type": "assertion",
@@ -15286,7 +15304,7 @@
             "compare_type": "not_null",
             "value1": {
               "value_type": "variable",
-              "variable_name": "display"
+              "variable_name": "test_display"
             },
             "value2": null
           }
@@ -15301,7 +15319,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             },
@@ -15321,7 +15339,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             },
@@ -15341,7 +15359,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             },
@@ -15362,7 +15380,7 @@
               "value": 0
             }
           ],
-          "store_result": "display"
+          "store_result": "test_display"
         },
         {
           "step_type": "assertion",
@@ -15374,7 +15392,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             },
@@ -15398,7 +15416,7 @@
               "value": 0
             }
           ],
-          "store_result": "display"
+          "store_result": "test_display"
         },
         {
           "step_type": "assertion",
@@ -15410,7 +15428,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             },
@@ -15427,7 +15445,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             },
@@ -15448,7 +15466,7 @@
               "value": 0
             }
           ],
-          "store_result": "display"
+          "store_result": "test_display"
         },
         {
           "step_type": "assertion",
@@ -15460,7 +15478,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             },
@@ -15484,7 +15502,7 @@
               "value": 0
             }
           ],
-          "store_result": "display"
+          "store_result": "test_display"
         },
         {
           "step_type": "assertion",
@@ -15500,7 +15518,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             }
@@ -15520,7 +15538,7 @@
               "value": 0
             }
           ],
-          "store_result": "display"
+          "store_result": "test_display"
         },
         {
           "step_type": "assertion",
@@ -15536,7 +15554,7 @@
               "args": [
                 {
                   "value_type": "variable",
-                  "variable_name": "display"
+                  "variable_name": "test_display"
                 }
               ]
             }
@@ -16523,7 +16541,7 @@
               "value": 50.0
             }
           ],
-          "store_result": "circle"
+          "store_result": "test_circle"
         },
         {
           "step_type": "assertion",
@@ -16535,7 +16553,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
+              "variable_name": "test_circle",
               "variable_field": "center.x"
             }
           }
@@ -16550,8 +16568,8 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
-              "variable_field": "center.x"
+              "variable_name": "test_circle",
+              "variable_field": "center.y"
             }
           }
         },
@@ -16565,7 +16583,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
+              "variable_name": "test_circle",
               "variable_field": "radius"
             }
           }
@@ -16652,7 +16670,7 @@
               ]
             }
           ],
-          "store_result": "circle"
+          "store_result": "test_circle"
         },
         {
           "step_type": "assertion",
@@ -16664,7 +16682,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
+              "variable_name": "test_circle",
               "variable_field": "center.x"
             }
           }
@@ -16679,7 +16697,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
+              "variable_name": "test_circle",
               "variable_field": "center.x"
             }
           }
@@ -16694,7 +16712,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
+              "variable_name": "test_circle",
               "variable_field": "radius"
             }
           }
@@ -16785,7 +16803,7 @@
               "value": 2.0
             }
           ],
-          "store_result": "circle"
+          "store_result": "test_circle"
         },
         {
           "step_type": "assertion",
@@ -16797,7 +16815,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
+              "variable_name": "test_circle",
               "variable_field": "center.x"
             }
           }
@@ -16812,7 +16830,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
+              "variable_name": "test_circle",
               "variable_field": "center.x"
             }
           }
@@ -16827,7 +16845,7 @@
             },
             "value2": {
               "value_type": "variable_field",
-              "variable_name": "circle",
+              "variable_name": "test_circle",
               "variable_field": "radius"
             }
           }
@@ -18932,16 +18950,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -19127,16 +19135,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -19317,16 +19315,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -19512,16 +19500,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -20059,16 +20037,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -20258,16 +20226,6 @@
               ]
             }
           }
-        },
-        {
-          "step_type": "function",
-          "function_name": "free_bitmap",
-          "args": [
-            {
-              "value_type": "variable",
-              "variable_name": "test_bitmap"
-            }
-          ]
         }
       ]
     },
@@ -26795,7 +26753,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -26808,7 +26766,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             }
           ]
         },
@@ -27009,7 +26967,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -27022,7 +26980,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             },
             {
               "value_type": "function",
@@ -27228,7 +27186,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -27245,7 +27203,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             }
           ]
         },
@@ -27441,7 +27399,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -27458,7 +27416,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             },
             {
               "value_type": "function",
@@ -27659,7 +27617,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -27676,7 +27634,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             }
           ]
         },
@@ -27877,7 +27835,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -27894,7 +27852,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             },
             {
               "value_type": "function",
@@ -28060,7 +28018,7 @@
               "value": 150.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -28073,7 +28031,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             }
           ]
         },
@@ -28234,7 +28192,7 @@
               "value": 150.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -28247,7 +28205,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             },
             {
               "value_type": "function",
@@ -28754,7 +28712,7 @@
               "value": 30.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -28771,7 +28729,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             }
           ]
         },
@@ -28898,7 +28856,7 @@
               "value": 20.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -28915,7 +28873,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             },
             {
               "value_type": "function",
@@ -29318,7 +29276,7 @@
               "value": 50.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -29335,7 +29293,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             }
           ]
         },
@@ -29496,7 +29454,7 @@
               "value": 50.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -29513,7 +29471,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             },
             {
               "value_type": "function",
@@ -30000,7 +29958,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -30013,7 +29971,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             }
           ]
         },
@@ -30185,7 +30143,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -30198,7 +30156,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             },
             {
               "value_type": "function",
@@ -30375,7 +30333,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -30392,7 +30350,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             }
           ]
         },
@@ -30559,7 +30517,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -30576,7 +30534,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             },
             {
               "value_type": "function",
@@ -30748,7 +30706,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -30765,7 +30723,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             }
           ]
         },
@@ -30937,7 +30895,7 @@
               ]
             }
           ],
-          "store_result": "quad"
+          "store_result": "test_quad"
         },
         {
           "step_type": "function",
@@ -30954,7 +30912,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "quad"
+              "variable_name": "test_quad"
             },
             {
               "value_type": "function",
@@ -31091,7 +31049,7 @@
               "value": 150.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -31104,7 +31062,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             }
           ]
         },
@@ -31236,7 +31194,7 @@
               "value": 150.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -31249,7 +31207,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             },
             {
               "value_type": "function",
@@ -31659,7 +31617,7 @@
               "value": 50.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -31676,7 +31634,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             }
           ]
         },
@@ -31803,7 +31761,7 @@
               "value": 50.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -31820,7 +31778,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             },
             {
               "value_type": "function",
@@ -32223,7 +32181,7 @@
               "value": 150.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -32240,7 +32198,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             }
           ]
         },
@@ -32372,7 +32330,7 @@
               "value": 150.0
             }
           ],
-          "store_result": "rectangle"
+          "store_result": "test_rectangle"
         },
         {
           "step_type": "function",
@@ -32389,7 +32347,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "rectangle"
+              "variable_name": "test_rectangle"
             },
             {
               "value_type": "function",
@@ -35584,6 +35542,16 @@
           }
         },
         {
+          "step_type": "function",
+          "function_name": "write_line",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "Should show Asking if font has size on invalid font. warning:"
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "false",
@@ -37099,7 +37067,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -37112,7 +37080,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             }
           ]
         },
@@ -37270,7 +37238,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -37283,7 +37251,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             },
             {
               "value_type": "function",
@@ -37735,7 +37703,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -37752,7 +37720,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             }
           ]
         },
@@ -37905,7 +37873,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -37922,7 +37890,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             },
             {
               "value_type": "function",
@@ -38367,7 +38335,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -38384,7 +38352,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             }
           ]
         },
@@ -38542,7 +38510,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -38559,7 +38527,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             },
             {
               "value_type": "function",
@@ -39019,7 +38987,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -39032,7 +39000,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             }
           ]
         },
@@ -39190,7 +39158,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -39203,7 +39171,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             },
             {
               "value_type": "function",
@@ -39655,7 +39623,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -39672,7 +39640,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             }
           ]
         },
@@ -39825,7 +39793,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -39842,7 +39810,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             },
             {
               "value_type": "function",
@@ -40287,7 +40255,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -40304,7 +40272,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             }
           ]
         },
@@ -40462,7 +40430,7 @@
               ]
             }
           ],
-          "store_result": "triangle"
+          "store_result": "test_triangle"
         },
         {
           "step_type": "function",
@@ -40479,7 +40447,7 @@
             },
             {
               "value_type": "variable",
-              "variable_name": "triangle"
+              "variable_name": "test_triangle"
             },
             {
               "value_type": "function",

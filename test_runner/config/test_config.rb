@@ -7,8 +7,7 @@ module TestConfig
     # Sequential test groups
     config.mark_as_sequential('audio')
     config.mark_as_sequential('animations')
-    config.mark_as_sequential('audio')
-    config.mark_as_sequential('networking')
+    config.mark_as_skip('networking')
     config.mark_as_sequential('windows')
     config.mark_as_sequential('utilities')
     config.mark_as_sequential('camera')

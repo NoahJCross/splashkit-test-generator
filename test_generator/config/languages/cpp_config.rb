@@ -3,10 +3,31 @@ module LanguageConfig
   class CppConfig < BaseConfig
     def initialize
       super()
-      self.config = DEFAULT_CONFIG.merge
+      self.config = deep_merge(get, DEFAULT_CONFIG)
     end
+
+    class << self
+      private
+
+      def format_string_handler(text_parts, expressions)
+        combined_parts = text_parts.zip(expressions).flatten.compact
+        formatted_parts = combined_parts.each_with_index.map do |part, index|
+          if index.odd?
+            "to_string_custom(#{part})"
+          else
+            "\"#{part}\""
+          end
+        end
+        formatted_parts.join(' + ')
+      end
+    end
+
     DEFAULT_CONFIG = {
       supports_overloading: true,
+      statement_terminator: ';',
+      var_keyword: 'auto',
+      string_keyword: 'std::string',
+      file_extension: 'cpp',
 
       test_main_file: {
         path: 'test_main.cpp',
@@ -22,12 +43,19 @@ module LanguageConfig
 
       imports: [
         '#include <catch2/catch_all.hpp>',
+        '#include <iostream>',
         '#include <limits>',
         '#include "splashkit.h"',
         '#include "../helpers.hpp"'
       ],
 
-      naming_convention: ->(name) { name.to_snake_case },
+      identifier_cases: {
+        types:      :snake_case,
+        functions:  :snake_case,
+        variables:  :snake_case,
+        fields:     :snake_case,
+        constants:  :upper_case
+      }.freeze,
 
       assert_conditions: {
         'equal'                   => ->(v1, v2, precision = nil) { precision ? "REQUIRE(abs(#{v1} - #{v2}) <= #{precision});" : "REQUIRE(#{v1} == #{v2});" },
@@ -72,29 +100,10 @@ module LanguageConfig
       }.freeze,
 
       string_handlers: {
+        string: ->(value) { "\"#{value}\"" },
         char: ->(value) { "'#{value}'" },
         string_ref: ->(value) { value },
-        format_string: ->(text_parts, expressions) {
-          text_parts.zip(expressions).flatten.compact.each_with_index.map { |p, i| i.odd? ? p : "\"#{p}\"" }.join(' << ')
-        }
-      }.freeze,
-
-      type_handlers: {
-        list:      ->(values, target_type = nil) { 
-          mapped_type = DEFAULT_CONFIG[:type_handlers][:mapping][target_type] || target_type || 'auto'
-          "vector<#{mapped_type}> { #{values} }"
-        },
-        class_instance:     ->(name, args) { "#{name}(#{args})" },
-        mapping:   {
-        }.freeze,
-        enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_snake_case}::#{value.to_upper_case}#{semicolon ? ';' : ''}"
-        },
-        string: ->(value) { "\"#{value}\"" },
-        object: ->(object_type, variable_name) { {
-          object_type: object_type.to_snake_case,
-          variable_name: variable_name.to_snake_case
-        } },
+        format_string: method(:format_string_handler)
       }.freeze,
 
       literal_cast: {
@@ -104,23 +113,11 @@ module LanguageConfig
       }.freeze,
 
       variable_handlers: {
-        declaration: {
-          regular: ->(name) { "auto #{name.to_snake_case} = " },
-          mutable: ->(name) { "auto #{name.to_snake_case} = " }
-        },
-        identifier:     ->(name) { name.to_snake_case.to_s },
-        field_access:  ->(var, field) { "#{var}.#{field}" },
-        method_call: ->(var, field) { "#{var}.#{field}()" },
-        array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
         array_size:    ->(arr) { "#{arr}.size()" },
-        reference_operator: ->(var) { "#{var}" }
       }.freeze,
 
       function_handlers: {
-        call:      ->(name, params, semicolon = true) { "#{name.to_snake_case}(#{params})#{semicolon ? ';' : ''}" },
-        pointer:   ->(_) { 'nullptr;' },
-        test:      ->(group, name) { ["TEST_CASE_METHOD(Test#{group.to_pascal_case}Fixture, \"#{name.to_snake_case}_integration\") {"] }
+        test: ->(group, name) { ["TEST_CASE_METHOD(Test#{group.to_pascal_case}Fixture, \"test_#{name.to_snake_case}_integration\") {"] }
       }.freeze,
 
       comment_syntax: {
@@ -143,7 +140,7 @@ module LanguageConfig
 
       cleanup_handlers: {
         setup: ->(name, type, arg = nil) {
-          "#{type.to_snake_case}_cleanup #{name.to_snake_case}#{arg ? "(#{arg})" : '' };"
+          "#{type.to_snake_case}_cleanup #{name.to_snake_case}#{arg ? "(#{arg})" : ''};"
         }
       }.freeze,
 
@@ -153,10 +150,18 @@ module LanguageConfig
       }.freeze,
 
       terminal_handlers: {
-        message: ->(text) { "cout << \"#{text}\";" }
+        message: ->(text) { "std::cout << \"#{text}\" << std::endl;" }
       }.freeze,
 
-      file_extension: 'cpp'
+      list_handlers: {
+        prefix: ->(type) { "vector<#{type}> {" },
+        suffix: '}',
+        separator: ', '
+      },
+
+      enum_handlers: {
+        separator: '::'
+      }
     }.freeze
   end
 end

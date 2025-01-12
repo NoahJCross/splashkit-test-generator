@@ -26,6 +26,7 @@ module TestGenerator
           description: func['description'] || '',
           parameters: parse_parameters(func),
           return_type: func.dig('return', 'type'),
+          type_parameter: func.dig('return', 'type_parameter'),
           return_description: func.dig('return', 'description'),
           group: func.dig('attributes', 'group') || 'other',
           suffix: func.dig('attributes', 'suffix'),

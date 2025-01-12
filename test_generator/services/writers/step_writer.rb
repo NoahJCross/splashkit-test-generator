@@ -39,10 +39,23 @@ module TestGenerator
     # @return [String] Formatted variable declaration code
     def write_variable_step
       handlers = @config.variable_handlers
-      declaration_op = @step[:is_mutable] ? handlers[:declaration][:mutable] : handlers[:declaration][:regular]
+      declaration_op = get_declaration(handlers)
       declaration = declaration_op.call(@step[:variable_name])
       value = format_variable_value
-      @formatter.indent("#{declaration}#{value};", @config)
+      @formatter.indent("#{declaration}#{value}", @config, true)
+    end
+
+    # Gets the appropriate declaration handler based on variable type and mutability
+    # @param handlers [Hash] The variable handlers configuration
+    # @return [Proc] The declaration handler to use
+    def get_declaration(handlers)
+      if @step[:value_type] == 'string' && handlers[:declaration][:string]
+        handlers[:declaration][:string]
+      elsif @step[:is_mutable]
+        handlers[:declaration][:mutable]
+      else
+        handlers[:declaration][:regular]
+      end
     end
 
     # Writes a function call step
@@ -54,9 +67,9 @@ module TestGenerator
           @config.variable_handlers[:declaration][:mutable] :
           @config.variable_handlers[:declaration][:regular]
         declaration = declaration_op.call(@step[:store_result])
-        @formatter.indent("#{declaration}#{call}", @config)
+        @formatter.indent("#{declaration}#{call}", @config, true)
       else
-        @formatter.indent(call, @config)
+        @formatter.indent(call, @config, true)
       end
     end
 
@@ -80,6 +93,20 @@ module TestGenerator
       end
       loop_code << @formatter.indent(@config.control_flow[:end].call, @config)
       loop_code
+    end
+
+    # Writes a condition for if or while steps
+    # @param comparison [Hash] The comparison configuration
+    # @return [String] Formatted condition code
+    # @raise [StandardError] If comparison type is unsupported
+    def write_condition(comparison)
+      type = comparison[:compare_type]
+      value1 = ValueFormatter.format_value(comparison[:value1], @functions, @config)
+      value2 = comparison[:value2] ? ValueFormatter.format_value(comparison[:value2], @functions, @config) : nil
+      @config.if_conditions.fetch(type) do
+        MessageHandler.log_error("Unsupported comparison type: #{type}", comparison)
+        raise "Unsupported comparison type: #{type}"
+      end.call(value1, value2)
     end
 
     # Writes an if-else step
@@ -108,20 +135,6 @@ module TestGenerator
       else_code
     end
 
-    # Writes a condition for if or while steps
-    # @param comparison [Hash] The comparison configuration
-    # @return [String] Formatted condition code
-    # @raise [StandardError] If comparison type is unsupported
-    def write_condition(comparison)
-      type = comparison[:compare_type]
-      value1 = ValueFormatter.format_value(comparison[:value1], @functions, @config)
-      value2 = comparison[:value2] ? ValueFormatter.format_value(comparison[:value2], @functions, @config) : nil
-      @config.if_conditions.fetch(type) do
-        MessageHandler.log_error("Unsupported comparison type: #{type}", comparison)
-        raise "Unsupported comparison type: #{type}"
-      end.call(value1, value2)
-    end
-
     # Writes a while loop step
     # @return [String] Formatted while loop code
     def write_while_step
@@ -145,7 +158,8 @@ module TestGenerator
     def write_reassignment_step
       value = format_reassignment_value
       variable_identifier = @config.variable_handlers[:identifier].call(@step[:variable_name])
-      @formatter.indent("#{variable_identifier} = #{value}", @config)
+      reassignment_op = @config.variable_handlers[:declaration][:reassignment].call(variable_identifier)
+      @formatter.indent("#{reassignment_op}#{value}", @config, true)
     end
 
     # Formats the value for a reassignment step
@@ -154,7 +168,7 @@ module TestGenerator
       if @step[:function_name]
         format_function_call
       else
-        "#{ValueFormatter.format_value(@step, @functions, @config)};"
+        ValueFormatter.format_value(@step, @functions, @config)
       end
     end
 
@@ -184,7 +198,7 @@ module TestGenerator
     # @return [String] Formatted delegate call code
     def write_method_call_step
       variable_value = @config.variable_handlers[:identifier].call(@step[:variable_name])
-      "#{@formatter.indent(@config.variable_handlers[:method_call].call(variable_value, @step[:method_name]), @config)};"
+      @formatter.indent(@config.variable_handlers[:method_call].call(variable_value, @step[:method_name]), @config, true)
     end
 
     # Formats a variable's value based on its type

@@ -18,7 +18,6 @@ module TestGenerator
                 :string_handlers,
                 :type_handlers,
                 :supports_overloading,
-                :naming_convention,
                 :class_wrapper,
                 :class_wrapper_handler,
                 :numeric_constants,
@@ -26,9 +25,12 @@ module TestGenerator
                 :cleanup_handlers,
                 :comment_syntax,
                 :indentation,
+                :tear_down,
                 :literal_cast,
                 :comparison_cast,
-                :test_main_file
+                :test_main_file,
+                :statement_terminator,
+                :boolean_mapping
 
     def initialize(config)
       validate_config(config)
@@ -45,7 +47,6 @@ module TestGenerator
       @string_handlers = config[:string_handlers]
       @type_handlers = config[:type_handlers]
       @supports_overloading = config[:supports_overloading]
-      @naming_convention = config[:naming_convention]
       @numeric_constants = config[:numeric_constants]
       @terminal_handlers = config[:terminal_handlers]
       @cleanup_handlers = config[:cleanup_handlers]
@@ -53,8 +54,11 @@ module TestGenerator
       @indentation = config[:indentation]
       @literal_cast = config[:literal_cast]
       @comparison_cast = config[:comparison_cast]
+      @tear_down = config[:tear_down]
       @class_wrapper_handler = ClassWrapperHandler.new(config[:class_wrapper])
       @test_main_file = config[:test_main_file]
+      @statement_terminator = config[:statement_terminator]
+      @boolean_mapping = config[:boolean_mapping]
     end
 
     # Creates a configuration instance for a specific language
@@ -83,11 +87,11 @@ module TestGenerator
     # @raise [StandardError] If any required keys are missing
     def validate_config(config)
       required_keys = %i[
-        language indent_size file_extension imports function_handlers
+        language identifier_cases indent_size file_extension imports function_handlers
         variable_handlers assert_conditions if_conditions control_flow
-        string_handlers type_handlers supports_overloading naming_convention class_wrapper
+        string_handlers type_handlers supports_overloading class_wrapper
         numeric_constants terminal_handlers cleanup_handlers comment_syntax
-        indentation literal_cast
+        indentation literal_cast statement_terminator
       ]
       missing_keys = required_keys - config.keys
       raise ConfigurationError, "Missing required configuration keys: #{missing_keys.join(', ')}" if missing_keys.any?

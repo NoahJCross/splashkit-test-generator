@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Module for handling error and warning messages
 module MessageHandler
   COLORS = {

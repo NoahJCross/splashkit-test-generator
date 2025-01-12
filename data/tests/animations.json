@@ -1219,6 +1219,16 @@
         },
         {
           "step_type": "function",
+          "function_name": "write_line",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "c++ compiler is choosing the assign_animation_with_sound overload instead of assign_animation_with_script_named"
+            }
+          ]
+        },
+        {
+          "step_type": "function",
           "function_name": "assign_animation_with_script_named",
           "args": [
             {
@@ -1291,7 +1301,7 @@
             },
             {
               "value_type": "string",
-              "value": "walkfront"
+              "value": "moonwalkback"
             }
           ],
           "store_result": "test_animation"
@@ -1420,12 +1430,12 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
-              "value": 0
+              "value_type": "string",
+              "value": "walkfront"
             },
             "value2": {
               "value_type": "function",
-              "function_name": "animation_current_cell",
+              "function_name": "animation_name",
               "args": [
                 {
                   "value_type": "variable",
@@ -1512,10 +1522,14 @@
         {
           "step_type": "assertion",
           "compare": {
-            "compare_type": "true",
+            "compare_type": "equal",
             "value1": {
+              "value_type": "string",
+              "value": "walkfront"
+            },
+            "value2": {
               "value_type": "function",
-              "function_name": "animation_entered_frame",
+              "function_name": "animation_name",
               "args": [
                 {
                   "value_type": "variable",
@@ -2294,6 +2308,16 @@
           ]
         },
         {
+          "step_type": "function",
+          "function_name": "write_line",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "Should show Attempting to get name of invalid animation data. warning:"
+            }
+          ]
+        },
+        {
           "step_type": "assertion",
           "compare": {
             "compare_type": "equal",
@@ -2503,7 +2527,16 @@
             }
           }
         },
-
+        {
+          "step_type": "function",
+          "function_name": "write_line",
+          "args": [
+            {
+              "value_type": "string",
+              "value": "Should show No Animation with name warning:"
+            }
+          ]
+        },
         {
           "step_type": "assertion",
           "compare": {

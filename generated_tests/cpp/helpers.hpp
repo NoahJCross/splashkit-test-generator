@@ -1,5 +1,18 @@
 #include "splashkit.h"
 
+template<typename T>
+std::string to_string_custom(const T& value) {
+    if constexpr (std::is_same_v<T, bool>) {
+        return value ? "true" : "false";
+    } 
+    else if constexpr (std::is_same_v<T, std::string>) {
+        return value;
+    }
+    else {
+        return std::to_string(value);
+    }
+}
+
 class sprite_delegates {
 private:
     int _float_function_call_count = 0;
@@ -79,46 +92,34 @@ public:
         current_instance = this;
     }
 
-    static void key_typed_wrapper(void* ptr, key_code key) {
+    static void key_typed_wrapper(int key) {
         if (current_instance) {
-            current_instance->on_key_typed(key);
+            current_instance->_key_typed = key_code(key);
         }
     }
 
-    static void key_down_wrapper(void* ptr, key_code key) {
+    static void key_down_wrapper(int key) {
         if (current_instance) {
-            current_instance->on_key_down(key);
+            current_instance->_key_down = key_code(key);
         }
     }
 
-    static void key_up_wrapper(void* ptr, key_code key) {
+    static void key_up_wrapper(int key) {
         if (current_instance) {
-            current_instance->on_key_up(key);
+            current_instance->_key_up = key_code(key);
         }
     }
 
-    void (*key_typed())(void*, key_code) {
+    void (*on_key_typed())(int) {
         return &key_typed_wrapper;
     }
 
-    void (*key_down())(void*, key_code) {
+    void (*on_key_down())(int) {
         return &key_down_wrapper;
     }
 
-    void (*key_up())(void*, key_code) {
+    void (*on_key_up())(int) {
         return &key_up_wrapper;
-    }
-
-    void on_key_typed(int key) {
-        _key_typed = key_code(key);
-    }
-
-    void on_key_down(int key) {
-        _key_down = key_code(key);
-    }
-
-    void on_key_up(int key) {
-        _key_up = key_code(key);
     }
 
     void reset() {
@@ -238,9 +239,9 @@ public:
     }
 };
 
-class raspi_cleanup {
+class raspberry_cleanup {
 public:
-    ~raspi_cleanup() {
+    ~raspberry_cleanup() {
         raspi_cleanup();
     }
 };
@@ -297,5 +298,23 @@ class logger_cleanup {
 public:
     ~logger_cleanup() {
         close_log_process();
+    }
+};
+
+class layout_cleanup {
+public:
+    ~layout_cleanup() {
+        process_events();
+        reset_layout();
+        set_interface_style(interface_style::SHADED_DARK_STYLE);
+        process_events();
+    }
+};
+
+
+class interface_font_cleanup {
+public:
+    ~interface_font_cleanup() {
+        set_interface_font(get_system_font());
     }
 };

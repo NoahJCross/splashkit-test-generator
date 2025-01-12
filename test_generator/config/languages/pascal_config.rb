@@ -3,19 +3,47 @@ module LanguageConfig
   class PascalConfig < BaseConfig
     def initialize
       super()
-      self.config = DEFAULT_CONFIG.merge
+      self.config = deep_merge(get, DEFAULT_CONFIG)
     end
+
+    class << self
+      private
+
+      def format_string_handler(text_parts, expressions)
+        parts = []
+        text_parts.each_with_index do |text, i|
+          parts << "'#{text}'"
+          parts << "ToStr(#{expressions[i]})" if expressions[i]
+        end
+        parts.join(' + ')
+      end
+    end
+
     DEFAULT_CONFIG = {
+      var_keyword: '',
+      assignment_operator: ':=',
       supports_overloading: true,
+      statement_terminator: ';',
+      file_extension: 'pas',
+
       imports: [
-        'uses SplashKit, TestFramework, ../Helpers;'
+        ->(group) { "unit #{group}_tests;" },
+        'interface',
+        'uses SplashKit, fpcunit, testutils, testregistry, Helpers, Math;',
+        'procedure RegisterTests;'
       ],
 
-      naming_convention: ->(name) { name.to_pascal_case },
+      identifier_cases: {
+        types:      :pascal_case,
+        functions:  :pascal_case,
+        variables:  :camel_case,
+        fields:     :camel_case,
+        constants:  :upper_case
+      }.freeze,
 
       assert_conditions: {
-        'equal'                   => ->(v1, v2, precision = nil) { precision ? "AssertTrue(Abs(#{v1} - #{v2}) <= #{precision});" : "AssertEquals(#{v1}, #{v2});" },
-        'not_equal'               => ->(v1, v2, _)    { "AssertNotEquals(#{v1}, #{v2});" },
+        'equal'                   => ->(v1, v2, precision = nil) { precision ? "AssertTrue(Abs(#{v1} - #{v2}) <= #{precision});" : "AssertTrue(#{v1} = #{v2});" },
+        'not_equal'               => ->(v1, v2, _)    { "AssertTrue(#{v1} <> #{v2});" },
         'greater_than'            => ->(v1, v2, _)    { "AssertTrue(#{v1} > #{v2});" },
         'less_than'               => ->(v1, v2, _)    { "AssertTrue(#{v1} < #{v2});" },
         'null'                    => ->(v1, _, _)     { "AssertNull(#{v1});" },
@@ -46,10 +74,10 @@ module LanguageConfig
       }.freeze,
 
       control_flow: {
-        loop:      ->(iterations) { "for i := 0 to #{iterations - 1} do" },
-        while:     ->(condition) { "while #{condition} do" },
-        if:        ->(condition) { "if #{condition} then" },
-        else:      -> { 'else' },
+        loop:      ->(iterations) { "for i := 0 to #{iterations - 1} do begin" },
+        while:     ->(condition) { "while #{condition} do begin" },
+        if:        ->(condition) { "if #{condition} then begin" },
+        else:      -> { 'else begin' },
         break:     -> { 'break;' },
         end:       -> { 'end;' },
         new_line: 'LineEnding'
@@ -57,59 +85,41 @@ module LanguageConfig
 
       string_handlers: {
         char: ->(value) { "'#{value}'" },
-        string_ref: ->(value) { value },
-        format_string: ->(text_parts, expressions) {
-          text_parts.zip(expressions).flatten.compact.each_with_index.map { |p, i| i.odd? ? p : "'#{p}'" }.join(' + ')
-        }
+        string_ref: ->(value) { value.to_camel_case },
+        format_string: method(:format_string_handler),
+        string: ->(value) { "'#{value}'" }
       }.freeze,
 
       type_handlers: {
-        list:      ->(values, target_type = nil) { 
-          mapped_type = DEFAULT_CONFIG[:type_handlers][:mapping][target_type] || target_type || 'Integer'
-          "TArray<#{mapped_type}>.Create(#{values})" 
-        },
-        class_instance:     ->(name, args) { "#{name}.Create(#{args})" },
-        mapping:   {
-          'bool'   => 'Boolean',
-          'double' => 'Double',
-          'string' => 'String',
-          'json'   => 'Json',
-          'line'   => 'Line'
-        }.freeze,
-        enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}.#{value.to_upper_case}#{semicolon ? ';' : ''}" 
-        },
-        string: ->(value) { "'#{value}'" },
-        object: ->(object_type, variable_name) { {
-          object_type: object_type.to_pascal_case,
-          variable_name: variable_name.to_camel_case
-        } }
+        class_instance:     ->(name, args) { "T#{name}.Create(#{args})" },
+        enum:      ->(type, value) { 
+          "#{type.to_pascal_case}.#{value.to_upper_case}"
+        }
       }.freeze,
 
-      literal_cast: {
-        unsigned_int: ->(value) { "Cardinal(#{value})" },
-        float: ->(value) { value },
-        double: ->(value) { value },
+      type_mapping: {
+        'double' => 'Double',
+        'string' => 'String',
+        'json'   => 'Json',
+        'line'   => 'Line',
+        'float'  => 'Single',
+        'bool'   => 'Boolean',
+        'int'    => 'Integer',
+        'string_ref' => 'String',
+        'unsigned int' => 'Cardinal'
+      }.freeze,
+
+      boolean_mapping: {
+        true => 'True',
+        false => 'False'
       }.freeze,
 
       variable_handlers: {
-        declaration: {
-          regular: ->(name) { "#{name.to_camel_case} := " },
-          mutable: ->(name) { "#{name.to_camel_case} := " }
-        },
-        identifier:     ->(name) { name.to_camel_case.to_s },
-        field_access:  ->(var, field) { "#{var}.#{field}" },
-        method_call: ->(var, field) { "#{var}.#{field}" },
-        array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
-        array_size:    ->(arr) { "Length(#{arr})" },
-        reference_operator: ->(var) { "@#{var}" }
+        array_size: ->(arr) { "Length(#{arr})" }
       }.freeze,
 
       function_handlers: {
-        call:      ->(name, params, semicolon = true) { "#{name.to_pascal_case}(#{params})#{semicolon ? ';' : ''}" },
-        pointer:   ->(_) { 'nil;' },
-        test:      ->(_, name) { ["procedure Test#{name.to_pascal_case}Integration;", 'begin'] }
+        test: ->(group, name) { ["procedure TTest#{group.to_pascal_case}.Test#{name.to_pascal_case}Integration;"] }
       }.freeze,
 
       comment_syntax: {
@@ -122,40 +132,89 @@ module LanguageConfig
         header: [
           'type',
           ->(group) { "TTest#{group.to_pascal_case} = class(TTestCase)" },
-          'protected',
-          'procedure Setup; override;',
-          'end;'
+          'private_vars',
+          'published',
+          'published_functions',
+          'end;',
+          '',
+          'implementation',
+          '',
+          ->(group) { "{ TTest#{group.to_pascal_case} }" },
+          ''
         ],
+        publish: {
+          begin: 'protected',
+          setup: 'procedure Setup; override;',
+          tear_down: 'procedure TearDown; override;'
+        },
         constructor_wrapper: {
-          header: ['begin', 'inherited;'],
+          header: [
+            ->(group) { "procedure TTest#{group.to_pascal_case}.Setup;" },
+            'begin',
+            'inherited;'
+          ],
           footer: ['end;']
         },
         footer: [
-          'end;',
-          '',
           'procedure RegisterTests;',
           'begin',
-          ->(group) { "TestFramework.RegisterTest(TTest#{group.to_pascal_case}.Suite);" },
-          'end;'
+          ->(group) { "RegisterTest(TTest#{group.to_pascal_case});" },
+          'end;',
+          'end.'
         ]
       }.freeze,
 
+      tear_down: {
+        header: ->(group) {
+          ["procedure TTest#{group.to_pascal_case}.TearDown;",
+           'begin']
+        },
+        step: ->(step){
+          ["if Assigned(cleanup#{step.to_pascal_case}) then",
+           "cleanup#{step.to_pascal_case}.Free;"]
+        },
+        footer: ['inherited;', 'end;']
+      },
+
       cleanup_handlers: {
-        setup: ->(name, type, arg = nil) {
-          "#{name.to_pascal_case} := T#{type.to_pascal_case}Cleanup.Create#{arg ? "(#{arg})" : ';'}"
+        setup: ->(_, type, arg = nil) {
+          "cleanup#{type.to_pascal_case} := #{type.to_pascal_case}Cleanup.Create#{arg ? "(#{arg})" : ''};"
         }
       }.freeze,
 
       indentation: {
-        indent_after: ['begin', 'type', 'protected', 'published', 'do', 'class(TTestCase)', 'Create(Name: string);', 'constructor Create;'],
-        unindent_before: ['end;', 'end.', 'protected', 'published', 'inherited', 'begin']
+        indent_after: %w[begin type protected published do private],
+        unindent_before: %w[end; end. protected published inherited],
+        reset_on: {
+          'implementation' => 0
+        }
       }.freeze,
 
       terminal_handlers: {
         message: ->(text) { "Write('#{text}');" }
       }.freeze,
 
-      file_extension: 'pas'
+      array_handlers: {
+        separator: ', '
+      },
+
+      method_handlers: {
+        prefix: ->(var, method) { "#{var}.#{method}" },
+        suffix: '',
+        separator: ', '
+      },
+
+      list_handlers: {
+        prefix: ->(type) { "Create#{type}Array([" },
+        suffix: '])',
+        separator: ', '
+      },
+
+      class_handlers: {
+        prefix: ->(name) { "T#{name.to_pascal_case}.Create(" },
+        suffix: ')',
+        separator: ', '
+      }.freeze
     }.freeze
   end
 end

@@ -15,10 +15,17 @@ module TestRunner
       'rustc' => 'Install Rust from https://rustup.rs',
       'python3' => 'Download Python from https://www.python.org/downloads',
       'pytest' => 'Install pytest using: pip install pytest',
-      'fpc' => 'Install Free Pascal from https://www.freepascal.org/download.html',
+      'fpc' => 'Install Free Pascal:\n' \
+      'If you get "cannot execute: required file not found" with test_main,\n' \
+      'this is likely a loader issue. Try a different version of fpc:\n' \
+      '1. Remove current fpc: sudo apt remove fpc\n' \
+      '2. Download from https://sourceforge.net/projects/freepascal/\n' \
+      '3. Or try an older/newer version from your package manager',
       'g++' => 'Install g++ using your system package manager (sudo apt install g++, brew install gcc, etc.)',
       'dotnet' => 'Install .NET SDK from https://dotnet.microsoft.com/download',
-      'catch2' => 'Install Catch2 using your package manager (sudo apt install catch2, brew install catch2)'
+      'catch2' => 'Install Catch2 using your package manager (sudo apt install catch2, brew install catch2)',
+      'dunit' => 'Install FPCUnit using:\n' \
+                 '   sudo apt install fp-units-fcl fp-units-base'
     }.freeze
 
     def validate
@@ -84,10 +91,47 @@ module TestRunner
 
   # Validates installation requirements for Pascal development tools
   class PascalValidator < BaseValidator
+    def validate
+      super
+      check_fpcunit
+    end
+
     private
 
     def required_tools
       %w[fpc]
+    end
+
+    def check_fpcunit
+      fpcunit_paths = [
+        # Linux paths
+        '/usr/lib/fpc/*/units/*/fcl-fpcunit/fpcunit.ppu',
+        '/usr/lib/fpc/3.2.2/units/x86_64-linux/fcl-fpcunit/fpcunit.ppu',
+        '/usr/share/fpcsrc/*/packages/fcl-fpcunit/src/fpcunit.pp',
+        '/usr/lib/fpc/*/units/*/fcl-base/fpcunit.ppu',
+        '/usr/share/fpcsrc/*/fcl-fpcunit/src/fpcunit.pp',
+        '/usr/share/fpcsrc/*/packages/fcl-base/src/fpcunit.pp',
+        '/usr/lib/fpc/*/units/*/rtl/fpcunit.ppu',
+        # macOS paths
+        '/usr/local/lib/fpc/*/units/*/fcl-fpcunit/fpcunit.ppu',
+        '/usr/local/share/fpcsrc/*/packages/fcl-fpcunit/src/fpcunit.pp',
+        '/opt/homebrew/lib/fpc/*/units/*/fcl-fpcunit/fpcunit.ppu',
+        '/opt/homebrew/share/fpcsrc/*/packages/fcl-fpcunit/src/fpcunit.pp'
+      ]
+
+      found = Dir.glob(fpcunit_paths).any?
+      unless found
+        raise TestRunner::ConfigurationError,
+              "FPCUnit not found. Try these steps:\n\n" \
+              "1. On Linux:\n" \
+              "   sudo apt install fp-units-fcl fp-units-base\n\n" \
+              "   If the error persists:\n" \
+              "   sudo apt install fpc-source\n" \
+              "   sudo apt install fp-units-rtl\n\n" \
+              "2. On macOS:\n" \
+              "   brew install fpc\n" \
+              "   brew install fpc-units-fcl fpc-units-base"
+      end
     end
   end
 

@@ -1,57 +1,87 @@
 unit Helpers;
 
 interface
+uses SplashKit, Variants, SysUtils, StrUtils;
+
+function ToStr(const Value: Variant): String; overload;
+function ToStr(Value: Boolean): String; overload;
+function ToStr(Value: Integer): String; overload;
+function ToStr(Value: Double): String; overload;
+function ToStr(Value: String): String; overload;
+function CreateStringArray(const Values: array of String): ArrayOfString;
+function CreateDoubleArray(const Values: array of Double): ArrayOfDouble;
+function CreateBooleanArray(const Values: array of Boolean): ArrayOfBoolean;
+function CreateJsonArray(const Values: array of Json): ArrayOfJson;
+function CreateLineArray(const Values: array of Line): ArrayOfLine;
+function CreateCharArray(const Values: array of Char): ArrayOfChar;
+function CreateTriangleArray(const Values: array of Triangle): ArrayOfTriangle;
 
 type
+  TSpriteFunction = procedure(ptr: Pointer); cdecl;
+  TSpriteFloatFunction = procedure(ptr: Pointer; value: Single); cdecl;
+  TSpriteEventHandler = procedure(ptr: Pointer; evt: Integer); cdecl;
+  TKeyCallback = procedure(key: Integer); cdecl;
+  TFreeNotifier = procedure(resource: Pointer); cdecl;
+
   TSpriteDelegates = class
   private
-    FEventCalled: Boolean;
-    FFloatFunctionCallCount: Integer;
-    FFunctionCallCount: Integer;
+    class var
+      FEventCalled: Boolean;
+      FFloatFunctionCallCount: Integer;
+      FFunctionCallCount: Integer;
+    class procedure HandleSpriteFloat(ptr: Pointer; value: Single); static; cdecl;
+    class procedure HandleSprite(ptr: Pointer); static; cdecl;
+    class procedure HandleSpriteEvent(ptr: Pointer; evt: Integer); static; cdecl;
   public
     constructor Create;
-    procedure SpriteFloatCallback(Ptr: Pointer; Value: Single);
-    procedure SpriteCallback(Ptr: Pointer);
-    procedure SpriteEventCallback(Ptr: Pointer; Evt: Integer);
+    function SpriteFloatFunction: TSpriteFloatFunction;
+    function SpriteFunction: TSpriteFunction;
+    function SpriteEventHandler: TSpriteEventHandler;
     procedure Reset;
-    property EventCalled: Boolean read FEventCalled;
-    property FloatFunctionCallCount: Integer read FFloatFunctionCallCount;
-    property FunctionCallCount: Integer read FFunctionCallCount;
+    class property EventCalled: Boolean read FEventCalled;
+    class property FloatFunctionCallCount: Integer read FFloatFunctionCallCount;
+    class property FunctionCallCount: Integer read FFunctionCallCount;
   end;
 
   TKeyCallbacks = class
   private
-    FKeyTyped: Integer;
-    FKeyDown: Integer;
-    FKeyUp: Integer;
+    class var
+      FKeyTyped: KeyCode;
+      FKeyDown: KeyCode;
+      FKeyUp: KeyCode;
+    class procedure HandleKeyTyped(key: Integer); static; cdecl;
+    class procedure HandleKeyDown(key: Integer); static; cdecl;
+    class procedure HandleKeyUp(key: Integer); static; cdecl;
   public
     constructor Create;
-    procedure OnKeyTyped(Key: Integer);
-    procedure OnKeyDown(Key: Integer);
-    procedure OnKeyUp(Key: Integer);
+    function OnKeyTyped: KeyCallback;
+    function OnKeyDown: KeyCallback;
+    function OnKeyUp: KeyCallback;
     procedure Reset;
-    property KeyTyped: Integer read FKeyTyped;
-    property KeyDown: Integer read FKeyDown;
-    property KeyUp: Integer read FKeyUp;
+    class function GetKeyTyped: KeyCode;
+    class function GetKeyDown: KeyCode;
+    class function GetKeyUp: KeyCode;
   end;
 
   TNotifierTracker = class
   private
-    FWasNotified: Boolean;
+    class var
+      FWasNotified: Boolean;
+    class procedure HandleFree(resource: Pointer); static; cdecl;
   public
     constructor Create;
-    procedure OnFree(Resource: Pointer);
+    function OnFree: TFreeNotifier;
     procedure Reset;
-    property WasNotified: Boolean read FWasNotified;
+    class property WasNotified: Boolean read FWasNotified;
   end;
 
-  AnimationScriptCleanup = class(TInterfacedObject, IDisposable)
+  AnimationScriptCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  AnimationCleanup = class(TInterfacedObject, IDisposable)
+  AnimationCleanup = class(TInterfacedObject)
   private
     FAnimation: Animation;
   public
@@ -59,73 +89,73 @@ type
     destructor Destroy; override;
   end;
 
-  AudioCleanup = class(TInterfacedObject, IDisposable)
+  AudioCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  SoundEffectCleanup = class(TInterfacedObject, IDisposable)
+  SoundEffectCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  MusicCleanup = class(TInterfacedObject, IDisposable)
+  MusicCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  WindowCleanup = class(TInterfacedObject, IDisposable)
+  WindowCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  BitmapCleanup = class(TInterfacedObject, IDisposable)
+  BitmapCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  SpriteCleanup = class(TInterfacedObject, IDisposable)
+  SpriteCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  FontCleanup = class(TInterfacedObject, IDisposable)
+  FontCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  RaspiCleanup = class(TInterfacedObject, IDisposable)
+  RaspberryCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  JsonCleanup = class(TInterfacedObject, IDisposable)
+  JsonCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  ServerCleanup = class(TInterfacedObject, IDisposable)
+  ServerCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  ConnectionCleanup = class(TInterfacedObject, IDisposable)
+  ConnectionCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  ResourceCleanup = class(TInterfacedObject, IDisposable)
+  ResourceCleanup = class(TInterfacedObject)
   private
     FBundleName: String;
   public
@@ -133,7 +163,7 @@ type
     destructor Destroy; override;
   end;
 
-  SpritePackCleanup = class(TInterfacedObject, IDisposable)
+  SpritePackCleanup = class(TInterfacedObject)
   private
     FPackName: String;
   public
@@ -141,13 +171,25 @@ type
     destructor Destroy; override;
   end;
 
-  TimerCleanup = class(TInterfacedObject, IDisposable)
+  TimerCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
   end;
 
-  LoggerCleanup = class(TInterfacedObject, IDisposable)
+  LoggerCleanup = class(TInterfacedObject)
+  public
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
+  LayoutCleanup = class(TInterfacedObject)
+  public
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
+  InterfaceFontCleanup = class(TInterfacedObject)
   public
     constructor Create;
     destructor Destroy; override;
@@ -163,21 +205,36 @@ begin
   Reset;
 end;
 
-procedure TSpriteDelegates.SpriteFloatCallback(Ptr: Pointer; Value: Single);
+class procedure TSpriteDelegates.HandleSpriteFloat(ptr: Pointer; value: Single); static; cdecl;
 begin
   Inc(FFloatFunctionCallCount);
   FEventCalled := True;
 end;
 
-procedure TSpriteDelegates.SpriteCallback(Ptr: Pointer);
+class procedure TSpriteDelegates.HandleSprite(ptr: Pointer); static; cdecl;
 begin
   Inc(FFunctionCallCount);
   FEventCalled := True;
 end;
 
-procedure TSpriteDelegates.SpriteEventCallback(Ptr: Pointer; Evt: Integer);
+class procedure TSpriteDelegates.HandleSpriteEvent(ptr: Pointer; evt: Integer); static; cdecl;
 begin
   FEventCalled := True;
+end;
+
+function TSpriteDelegates.SpriteFloatFunction: TSpriteFloatFunction;
+begin
+  Result := @HandleSpriteFloat;
+end;
+
+function TSpriteDelegates.SpriteFunction: TSpriteFunction;
+begin
+  Result := @HandleSprite;
+end;
+
+function TSpriteDelegates.SpriteEventHandler: TSpriteEventHandler;
+begin
+  Result := @HandleSpriteEvent;
 end;
 
 procedure TSpriteDelegates.Reset;
@@ -195,26 +252,56 @@ begin
   Reset;
 end;
 
-procedure TKeyCallbacks.OnKeyTyped(Key: Integer);
-begin
-  FKeyTyped := Key;
-end;
-
-procedure TKeyCallbacks.OnKeyDown(Key: Integer);
-begin
-  FKeyDown := Key;
-end;
-
-procedure TKeyCallbacks.OnKeyUp(Key: Integer);
-begin
-  FKeyUp := Key;
-end;
-
 procedure TKeyCallbacks.Reset;
 begin
-  FKeyTyped := 0;
-  FKeyDown := 0;
-  FKeyUp := 0;
+  FKeyTyped := KeyCode(0);
+  FKeyDown := KeyCode(0);
+  FKeyUp := KeyCode(0);
+end;
+
+class procedure TKeyCallbacks.HandleKeyTyped(key: Integer); static; cdecl;
+begin
+  FKeyTyped := KeyCode(key);
+end;
+
+class procedure TKeyCallbacks.HandleKeyDown(key: Integer); static; cdecl;
+begin
+  FKeyDown := KeyCode(key);
+end;
+
+class procedure TKeyCallbacks.HandleKeyUp(key: Integer); static; cdecl;
+begin
+  FKeyUp := KeyCode(key);
+end;
+
+function TKeyCallbacks.OnKeyTyped: KeyCallback;
+begin
+  Result := @HandleKeyTyped;
+end;
+
+function TKeyCallbacks.OnKeyDown: KeyCallback;
+begin
+  Result := @HandleKeyDown;
+end;
+
+function TKeyCallbacks.OnKeyUp: KeyCallback;
+begin
+  Result := @HandleKeyUp;
+end;
+
+class function TKeyCallbacks.GetKeyTyped: KeyCode;
+begin
+  Result := FKeyTyped;
+end;
+
+class function TKeyCallbacks.GetKeyDown: KeyCode;
+begin
+  Result := FKeyDown;
+end;
+
+class function TKeyCallbacks.GetKeyUp: KeyCode;
+begin
+  Result := FKeyUp;
 end;
 
 { TNotifierTracker }
@@ -225,9 +312,14 @@ begin
   Reset;
 end;
 
-procedure TNotifierTracker.OnFree(Resource: Pointer);
+class procedure TNotifierTracker.HandleFree(resource: Pointer); static; cdecl;
 begin
   FWasNotified := True;
+end;
+
+function TNotifierTracker.OnFree: TFreeNotifier;
+begin
+  Result := @HandleFree;
 end;
 
 procedure TNotifierTracker.Reset;
@@ -243,7 +335,7 @@ end;
 
 destructor AnimationScriptCleanup.Destroy;
 begin
-    free_all_animation_scripts;
+    FreeAllAnimationScripts;
     inherited;
 end;
 
@@ -256,7 +348,7 @@ end;
 
 destructor AnimationCleanup.Destroy;
 begin
-    free_animation(FAnimation);
+    FreeAnimation(FAnimation);
     inherited;
 end;
 
@@ -268,7 +360,7 @@ end;
 
 destructor AudioCleanup.Destroy;
 begin
-    close_audio;
+    CloseAudio;
     inherited;
 end;
 
@@ -280,7 +372,7 @@ end;
 
 destructor SoundEffectCleanup.Destroy;
 begin
-    free_all_sound_effects;
+    FreeAllSoundEffects;
     inherited;
 end;
 
@@ -292,7 +384,7 @@ end;
 
 destructor MusicCleanup.Destroy;
 begin
-    free_all_music;
+    FreeAllMusic;
     inherited;
 end;
 
@@ -304,8 +396,8 @@ end;
 
 destructor WindowCleanup.Destroy;
 begin
-    close_all_windows;
-    set_camera_position(point_at(0, 0));
+    CloseAllWindows;
+    SetCameraPosition(PointAt(0, 0));
     inherited;
 end;
 
@@ -317,7 +409,7 @@ end;
 
 destructor BitmapCleanup.Destroy;
 begin
-    free_all_bitmaps;
+    FreeAllBitmaps;
     inherited;
 end;
 
@@ -329,7 +421,7 @@ end;
 
 destructor SpriteCleanup.Destroy;
 begin
-    free_all_sprites;
+    FreeAllSprites;
     inherited;
 end;
 
@@ -341,19 +433,19 @@ end;
 
 destructor FontCleanup.Destroy;
 begin
-    free_all_fonts;
+    FreeAllFonts;
     inherited;
 end;
 
-{ RaspiCleanup }
+{ RaspberryCleanup }
 
-constructor RaspiCleanup.Create;
+constructor RaspberryCleanup.Create;
 begin
 end;
 
-destructor RaspiCleanup.Destroy;
+destructor RaspberryCleanup.Destroy;
 begin
-    raspi_cleanup;
+    SplashKit.RaspiCleanup;
     inherited;
 end;
 
@@ -365,7 +457,7 @@ end;
 
 destructor JsonCleanup.Destroy;
 begin
-    free_all_json;
+    FreeAllJson;
     inherited;
 end;
 
@@ -377,7 +469,7 @@ end;
 
 destructor ServerCleanup.Destroy;
 begin
-    close_all_servers;
+    CloseAllServers;
     inherited;
 end;
 
@@ -389,7 +481,7 @@ end;
 
 destructor ConnectionCleanup.Destroy;
 begin
-    close_all_connections;
+    CloseAllConnections;
     inherited;
 end;
 
@@ -402,7 +494,7 @@ end;
 
 destructor ResourceCleanup.Destroy;
 begin
-    free_resource_bundle(FBundleName);
+    FreeResourceBundle(FBundleName);
     inherited;
 end;
 
@@ -415,7 +507,7 @@ end;
 
 destructor SpritePackCleanup.Destroy;
 begin
-    free_sprite_pack(FPackName);
+    FreeSpritePack(FPackName);
     inherited;
 end;
 
@@ -427,7 +519,7 @@ end;
 
 destructor TimerCleanup.Destroy;
 begin
-    free_all_timers;
+    FreeAllTimers;
     inherited;
 end;
 
@@ -439,8 +531,130 @@ end;
 
 destructor LoggerCleanup.Destroy;
 begin
-    close_log_process;
+    CloseLogProcess;
     inherited;
+end;
+
+{ LayoutCleanup }
+
+constructor LayoutCleanup.Create;
+begin
+end;
+
+destructor LayoutCleanup.Destroy;
+begin
+    ProcessEvents();
+    ResetLayout();
+    SetInterfaceStyle(InterfaceStyle.SHADED_DARK_STYLE);
+    ProcessEvents();
+    inherited;
+end;
+
+{ InterfaceFontCleanup }
+
+constructor InterfaceFontCleanup.Create;
+begin
+end;
+
+destructor InterfaceFontCleanup.Destroy;
+begin
+    SetInterfaceFont(GetSystemFont());
+    inherited;
+end;
+
+function ToStr(Value: Boolean): String; overload;
+begin
+  Result := BoolToStr(Value, True);
+end;
+
+function ToStr(Value: Integer): String; overload;
+begin
+  Result := IntToStr(Value);
+end;
+
+function ToStr(Value: Double): String; overload;
+begin
+  Result := FloatToStr(Value);
+end;
+
+function ToStr(Value: String): String; overload;
+begin
+  Result := Value;
+end;
+
+function ToStr(const Value: Variant): String; overload;
+begin
+  Result := VarToStr(Value); 
+end;
+
+function CreateStringArray(const Values: array of String): ArrayOfString;
+var
+  i: Integer;
+begin
+  Result := nil;
+  SetLength(Result, Length(Values));
+  for i := 0 to High(Values) do
+    Result[i] := Values[i];
+end;
+
+function CreateJsonArray(const Values: array of Json): ArrayOfJson;
+var
+  i: Integer;
+begin
+  Result := nil;
+  SetLength(Result, Length(Values));
+  for i := 0 to High(Values) do
+    Result[i] := Values[i];
+end;
+
+function CreateDoubleArray(const Values: array of Double): ArrayOfDouble;
+var
+  i: Integer;
+begin
+  Result := nil;
+  SetLength(Result, Length(Values));
+  for i := 0 to High(Values) do
+    Result[i] := Values[i];
+end;
+
+function CreateBooleanArray(const Values: array of Boolean): ArrayOfBoolean;
+var
+  i: Integer;
+begin
+  Result := nil;
+  SetLength(Result, Length(Values));
+  for i := 0 to High(Values) do
+    Result[i] := Values[i];
+end;
+
+function CreateLineArray(const Values: array of Line): ArrayOfLine;
+var
+  i: Integer;
+begin
+  Result := nil;
+  SetLength(Result, Length(Values));
+  for i := 0 to High(Values) do
+    Result[i] := Values[i];
+end;
+
+function CreateCharArray(const Values: array of Char): ArrayOfChar;
+var
+  i: Integer;
+begin
+  Result := nil;
+  SetLength(Result, Length(Values));
+  for i := 0 to High(Values) do
+    Result[i] := Values[i];
+end;
+
+function CreateTriangleArray(const Values: array of Triangle): ArrayOfTriangle;
+var
+  i: Integer;
+begin
+  Result := nil;
+  SetLength(Result, Length(Values));
+  for i := 0 to High(Values) do
+    Result[i] := Values[i];
 end;
 
 end. 

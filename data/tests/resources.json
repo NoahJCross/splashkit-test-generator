@@ -1,5 +1,12 @@
 {
   "group": "resources",
+  "cleanup": [
+    {
+      "cleanup_type": "bitmap",
+      "function_name": "free_all_bitmaps",
+      "args": []
+    }
+  ],
   "tests": [
     {
       "name": "deregister_free_notifier",

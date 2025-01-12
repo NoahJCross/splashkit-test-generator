@@ -1601,7 +1601,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A red bitmap button with label 'Click Me'"
+                  "value": "Expected: A red bitmap button with label Click Me"
                 },
                 {
                   "value_type": "function",
@@ -1870,7 +1870,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A red bitmap button scaled to 50% with label 'Click Me'"
+                  "value": "Expected: A red bitmap button scaled to 50% with label Click Me"
                 },
                 {
                   "value_type": "function",
@@ -2102,7 +2102,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A button with text 'Click Me' at position (100,100) with size 200x50"
+                  "value": "Expected: A button with text Click Me at position (100,100) with size 200x50"
                 },
                 {
                   "value_type": "function",
@@ -2265,7 +2265,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A button with text 'Click Me' using default layout"
+                  "value": "Expected: A button with text Click Me using default layout"
                 },
                 {
                   "value_type": "function",
@@ -2466,7 +2466,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A button with text 'Click Me' and label 'Label:' in a two-column layout"
+                  "value": "Expected: A button with text Click Me and label Label: in a two-column layout"
                 },
                 {
                   "value_type": "function",
@@ -2700,7 +2700,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A checkbox with text 'Test Checkbox' at position (100,100) with size 200x50"
+                  "value": "Expected: A checkbox with text Test Checkbox at position (100,100) with size 200x50"
                 },
                 {
                   "value_type": "function",
@@ -2873,7 +2873,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A checkbox with text 'Test Checkbox' using default layout"
+                  "value": "Expected: A checkbox with text Test Checkbox using default layout"
                 },
                 {
                   "value_type": "function",
@@ -3084,7 +3084,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A checkbox with text 'Check me' and label 'Test Checkbox' in a two-column layout"
+                  "value": "Expected: A checkbox with text Check me and label Test Checkbox in a two-column layout"
                 },
                 {
                   "value_type": "function",
@@ -3742,7 +3742,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A color slider with label 'Test Color Slider' in a two-column layout"
+                  "value": "Expected: A color slider with label Test Color Slider in a two-column layout"
                 },
                 {
                   "value_type": "function",
@@ -5953,7 +5953,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A collapsible header labeled 'Test Header' with a button"
+                  "value": "Expected: A collapsible header labeled Test Header with a button"
                 },
                 {
                   "value_type": "function",
@@ -6606,7 +6606,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A HSB color slider with label 'Color Slider' in a two-column layout"
+                  "value": "Expected: A HSB color slider with label Color Slider in a two-column layout"
                 },
                 {
                   "value_type": "function",
@@ -6819,7 +6819,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -7079,7 +7079,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A label with text 'Test Label' using default layout"
+                  "value": "Expected: A label with text Test Label using default layout"
                 },
                 {
                   "value_type": "function",
@@ -7295,7 +7295,7 @@
               "args": [
                 {
                   "value_type": "string",
-                  "value": "Expected: A label with text 'Test Label' at position (100,100)"
+                  "value": "Expected: A label with text Test Label at position (100,100)"
                 },
                 {
                   "value_type": "function",
@@ -9019,7 +9019,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -9678,7 +9678,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -9891,7 +9891,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -10100,7 +10100,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -10326,7 +10326,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -10539,7 +10539,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -10766,7 +10766,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -11051,7 +11051,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -11338,7 +11338,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -11710,7 +11710,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -11937,7 +11937,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -12178,7 +12178,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -12405,7 +12405,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -12627,7 +12627,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -12836,7 +12836,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -13050,7 +13050,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -13259,7 +13259,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",
@@ -15061,7 +15061,7 @@
         {
           "step_type": "cleanup",
           "cleanup_type": "layout",
-          "store_result": "layout_cleanup"
+          "store_result": "cleanup_layout"
         },
         {
           "step_type": "function",

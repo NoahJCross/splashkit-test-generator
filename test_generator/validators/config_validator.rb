@@ -10,7 +10,6 @@ module TestGenerator
       control_flow
       string_handlers
       type_handlers
-      naming_convention
       numeric_constants
       imports
       file_extension
@@ -104,7 +103,7 @@ module TestGenerator
     # Validates required type handler methods
     # @return [void]
     def validate_type_handlers
-      required = %i[list class_instance enum mapping object]
+      required = %i[list class_instance enum mapping]
       validate_methods(@config[:type_handlers], required, 'type_handlers')
     end
 

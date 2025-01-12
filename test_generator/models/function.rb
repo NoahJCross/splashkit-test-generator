@@ -2,7 +2,7 @@
 class Function
   attr_reader :name, :description, :parameters, :return_type,
               :return_description, :group, :suffix, :signature, :constructor_type,
-              :constant_value, :unique_global_name
+              :constant_value, :unique_global_name, :type_parameter
 
   def initialize(attributes = {})
     @name = attributes[:name]
@@ -16,5 +16,6 @@ class Function
     @suffix = attributes[:suffix] ? "_#{attributes[:suffix]}" : ''
     @signature = attributes[:signature]
     @constant_value = attributes[:constant_value]
+    @type_parameter = attributes[:type_parameter]
   end
 end

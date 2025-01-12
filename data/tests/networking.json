@@ -5978,6 +5978,10 @@
           "compare": {
             "compare_type": "equal",
             "value1": {
+              "value_type": "int",
+              "value": 1
+            },
+            "value2": {
               "value_type": "function",
               "function_name": "new_connection_count",
               "args": [
@@ -5986,10 +5990,6 @@
                   "variable_name": "test_server"
                 }
               ]
-            },
-            "value2": {
-              "value_type": "int",
-              "value": 1
             }
           }
         },

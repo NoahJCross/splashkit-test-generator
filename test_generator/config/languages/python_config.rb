@@ -3,19 +3,43 @@ module LanguageConfig
   class PythonConfig < BaseConfig
     def initialize
       super()
-      self.config = DEFAULT_CONFIG.merge
+      self.config = deep_merge(get, DEFAULT_CONFIG)
     end
+
+    class << self
+      private
+
+      def format_string_handler(text_parts, expressions)
+        formatted_expressions = expressions.map { |e| "{#{e}}" }
+        parts = []
+        text_parts.each_with_index do |text, i|
+          parts << text
+          parts << formatted_expressions[i] if formatted_expressions[i]
+        end
+        "f\"#{parts.join}\""
+      end
+    end
+
     DEFAULT_CONFIG = {
+      var_keyword: '',
       supports_overloading: false,
+      statement_terminator: '',
+      file_extension: 'py',
+
       imports: [
         'import pytest',
         'from splashkit import *',
-        'from ..helpers import *',
+        'from generated_tests.python.helpers import *',
         'import contextlib'
       ],
 
-      naming_convention: ->(name) { name.to_snake_case },
-
+      identifier_cases: {
+        types:      :pascal_case,
+        functions:  :snake_case,
+        variables:  :snake_case,
+        fields:     :snake_case,
+        constants:  :snake_case
+      }.freeze,
 
       assert_conditions: {
         'equal'                   => ->(v1, v2, precision = nil) { precision ? "assert abs(#{v1} - #{v2}) <= #{precision}" : "assert #{v1} == #{v2}" },
@@ -55,62 +79,36 @@ module LanguageConfig
         if:        ->(condition) { "if #{condition}:" },
         else:      -> { 'else:' },
         break:     -> { 'break' },
-        end:       -> { '' },
-        new_line: "'\'"
+        new_line: "'\'",
+        end:       -> { "python_end_block" },
+        block_end: -> { "python_end_block" }
       }.freeze,
 
       string_handlers: {
         interpolation: ->(expr) { "{#{expr}}" },
         char:          ->(value) { "'#{value}'" },
         string_ref: ->(value) { value },
-        format_string: ->(text_parts, expressions) {
-          "f\"#{text_parts.zip(expressions.map { |e| "{#{e}}" }).flatten.compact.join}\""
-        }
+        format_string: method(:format_string_handler),
+        string: ->(value) { "\"#{value}\"" }
       }.freeze,
 
-      type_handlers: {
-        list:      ->(values, _) { "[#{values}]" },
-        class_instance:     ->(name, args) { "#{name}(#{args})" },
-        mapping:   {
-          'double' => 'float',
-          'string' => 'str',
-          'json' => 'Json',
-          'line' => 'Line'
-        }.freeze,
-        enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ';' : ''}" 
-        },
-        string: ->(value) { "\"#{value}\"" },
-        object: ->(object_type, variable_name) { {
-          object_type: object_type.to_pascal_case,
-          variable_name: variable_name.to_snake_case
-        } }
+      type_mapping: {
+        'string' => 'str',
+        'json' => 'Json',
+        'line' => 'Line'
       }.freeze,
 
-      literal_cast: {
-        unsigned_int: ->(value) { value },
-        float: ->(value) { value },
-        double: ->(value) { value },
+      boolean_mapping: {
+        true => 'True',
+        false => 'False'
       }.freeze,
 
       variable_handlers: {
-        declaration: {
-          regular: ->(name) { "#{name.to_snake_case} = " },
-          mutable: ->(name) { "#{name.to_snake_case} = " }
-        },
-        identifier:     ->(name) { name.to_snake_case },
-        field_access:  ->(var, field) { "#{var}.#{field}" },
-        method_call: ->(var, field) { "#{var}.#{field}()" },
-        array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}][#{col}]" },
-        array_size:    ->(arr) { "len(#{arr})" },
-        reference_operator: ->(var) { var }
+        array_size: ->(arr) { "len(#{arr})" }
       }.freeze,
 
       function_handlers: {
-        call:      ->(name, params, _ = true) { "#{name.to_snake_case}(#{params})" },
-        pointer:   ->(_) { 'None' },
-        test:      ->(_, name) { ["def test_#{name.to_snake_case}_integration():"] }
+        test: ->(_, name) { ["def test_#{name.to_snake_case}_integration(self):"] }
       }.freeze,
 
       comment_syntax: {
@@ -138,9 +136,7 @@ module LanguageConfig
         indent_after: [':'],
         unindent_before: ['finally:', 'except:', 'else:', 'elif:'],
         reset_on: {
-          '@contextlib.contextmanager' => 1,
-          'def' => 1,
-          'while' => 2
+          'def' => 1
         }
       }.freeze,
 
@@ -148,7 +144,9 @@ module LanguageConfig
         message: ->(text) { "print(\"#{text}\", end=\"\")" }
       }.freeze,
 
-      file_extension: 'py'
+      array_handlers: {
+        matrix_separator: ','
+      }
     }.freeze
   end
 end

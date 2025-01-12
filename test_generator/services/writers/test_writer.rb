@@ -47,7 +47,10 @@ module TestGenerator
     # @param file [File] File handle to write to
     # @return [void]
     def write_imports(file)
-      @config.imports.each { |import| file.puts(import) }
+      @config.imports.each do |import|
+        line = import.respond_to?(:call) ? import.call(@group) : import
+        file.puts(line)
+      end
     end
 
     # Writes tests wrapped in a class structure
@@ -58,6 +61,7 @@ module TestGenerator
       write_constructor(file)
       write_class_footer(file) if @config.language == :cpp
       write_test_methods(file)
+      write_tear_down(file)
       write_class_footer(file) if @config.language != :cpp
     end
 
@@ -74,9 +78,62 @@ module TestGenerator
     # @param file [File] File handle to write to
     # @return [void]
     def write_class_header(file)
-      @config.class_wrapper_handler.header_lines(@group).each do |line|
-        file.puts(@formatter.format_line(line, @config))
+      @config.class_wrapper[:header].each do |line|
+        if line == 'published_functions' && @config.language == :pascal
+          write_published_section(file)
+        elsif line == 'private_vars' && @config.language == :pascal
+          write_private_vars(file)
+        else
+          line = line.call(@group) if line.respond_to?(:call)
+          file.puts(@formatter.indent(line, @config))
+        end
       end
+    end
+
+    # Writes the private vars for Pascal test classes
+    # @param file [File] File handle to write to
+    # @return [void]
+    def write_private_vars(file)
+      return unless @group_tests[@group][:cleanup]
+
+      file.puts(@formatter.indent('private', @config))
+      @group_tests[@group][:cleanup].each do |step|
+        file.puts(@formatter.indent("cleanup#{step[:cleanup_type].to_pascal_case}: #{step[:cleanup_type].to_pascal_case}Cleanup;", @config))
+      end
+    end
+
+    # Writes the published section for Pascal test classes
+    # @param file [File] File handle to write to
+    # @return [void]
+    def write_published_section(file)
+      @group_functions.each do |function|
+        test_case = find_test_case(function)
+        test_name = "procedure Test#{test_case[:name].to_pascal_case}Integration;"
+        file.puts(@formatter.indent(test_name, @config))
+      end
+      write_protected_section(file)
+    end
+
+    # Writes the protected section with setup and tear down declarations
+    # @param file [File] File handle to write to
+    # @return [void]
+    def write_protected_section(file)
+      return unless should_write_protected_section?
+
+      write_protected_line(file, :begin)
+      write_protected_line(file, :setup) if should_write_constructor?
+      write_protected_line(file, :tear_down) if should_write_tear_down?
+    end
+
+    def write_protected_line(file, section_type)
+      line = @config.class_wrapper[:publish][section_type]
+      file.puts(@formatter.indent(line, @config))
+    end
+
+    # Checks if the protected section should be written
+    # @return [Boolean] True if the protected section should be written
+    def should_write_protected_section?
+      should_write_constructor? || should_write_tear_down?
     end
 
     # Writes the constructor if required
@@ -95,7 +152,8 @@ module TestGenerator
     # @return [void]
     def write_constructor_header(file)
       @config.class_wrapper_handler.constructor_header(@group).each do |line|
-        file.puts(@formatter.format_line(line, @config))
+        formatted_line = line.respond_to?(:call) ? line.call(@group) : line
+        file.puts(@formatter.format_line(formatted_line, @config))
       end
     end
 
@@ -129,11 +187,38 @@ module TestGenerator
       end
     end
 
+    # Writes the tear down method
+    # @param file [File] File handle to write to
+    # @return [void]
+    def write_tear_down(file)
+      return unless should_write_tear_down?
+
+      @config.tear_down[:header].call(@group).each do |line|
+        file.puts(@formatter.indent(line, @config))
+      end
+      write_tear_down_steps(file)
+      @config.tear_down[:footer].each do |line|
+        file.puts(@formatter.indent(line, @config))
+      end
+    end
+
+    # Writes the tear down steps
+    # @param file [File] File handle to write to
+    # @return [void]
+    def write_tear_down_steps(file)
+      @group_tests[@group][:cleanup].each do |step|
+        @config.tear_down[:step].call(step[:cleanup_type]).each do |line|
+          file.puts(@formatter.indent(line, @config))
+        end
+      end
+    end
+
     # Writes the class footer
     # @param file [File] File handle to write to
     # @return [void]
     def write_class_footer(file)
       @config.class_wrapper_handler.footer_lines.each do |line|
+        line = line.call(@group) if line.respond_to?(:call)
         file.puts(@formatter.indent(line, @config))
       end
     end
@@ -142,6 +227,12 @@ module TestGenerator
     # @return [Boolean] True if constructor should be written
     def should_write_constructor?
       @config.class_wrapper_handler.constructor_header(@group) && constructor_steps
+    end
+
+    # Checks if tear down should be written
+    # @return [Boolean] True if tear down should be written
+    def should_write_tear_down?
+      @config.tear_down && @config.tear_down[:step] && @group_tests[@group][:cleanup]
     end
 
     # Gets constructor steps from group tests
@@ -158,7 +249,6 @@ module TestGenerator
     # @raise [StandardError] If no test case is found
     def find_test_case(function)
       test_case = FunctionLookup.get_test_by_function_name(function, @group_tests)
-      # MessageHandler.log_info("Found test case for #{function.name}: #{test_case ? 'yes' : 'no'}")
       validate_test_case_exists!(function, test_case)
       test_case
     end

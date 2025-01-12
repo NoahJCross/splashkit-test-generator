@@ -3,17 +3,43 @@ module LanguageConfig
   class CsharpConfig < BaseConfig
     def initialize
       super()
-      self.config = DEFAULT_CONFIG.merge
+      self.config = deep_merge(get, DEFAULT_CONFIG)
     end
+
+    class << self
+      private
+
+      def format_string_handler(text_parts, expressions)
+        formatted_expressions = expressions.map { |e| "{#{e}}" }
+        parts = []
+        text_parts.each_with_index do |text, i|
+          parts << text
+          parts << formatted_expressions[i] if formatted_expressions[i]
+        end
+        "$\"#{parts.join}\""
+      end
+    end
+
     DEFAULT_CONFIG = {
+      var_keyword: 'var',
       supports_overloading: true,
+      statement_terminator: ';',
+      file_extension: 'cs',
+
       imports: [
         'using Xunit;',
         'using SplashKitSDK;',
         'using static SplashKitSDK.SplashKit;',
         'using HttpMethod = SplashKitSDK.HttpMethod;'
       ],
-      naming_convention: ->(name) { name.to_pascal_case },
+
+      identifier_cases: {
+        types:      :pascal_case,
+        functions:  :pascal_case,
+        variables:  :camel_case,
+        fields:     :pascal_case,
+        constants:  :pascal_case
+      }.freeze,
 
       assert_conditions: {
         'equal'                   => ->(v1, v2, precision = nil)    { "Assert.Equal(#{v1}, #{v2}#{precision ? ", #{precision}" : ''});" },
@@ -59,59 +85,32 @@ module LanguageConfig
 
       string_handlers: {
         char:          ->(value) { "'#{value}'" },
-        string_ref: ->(value) { value },
-        format_string: ->(text_parts, expressions) {
-          "$\"#{text_parts.zip(expressions.map { |e| "{#{e}}" }).flatten.compact.join}\""
-        }
+        string_ref: ->(value) { value.to_camel_case },
+        format_string: method(:format_string_handler),
+        string: ->(value) { "\"#{value}\"" }
       }.freeze,
 
-      type_handlers: {
-        list:      ->(values, target_type = nil) { 
-          mapped_type = DEFAULT_CONFIG[:type_handlers][:mapping][target_type] || target_type || 'dynamic'
-          "new List<#{mapped_type}> { #{values} }"
-        },
-        class_instance:     ->(name, args) { "new #{name}(#{args})" },
-        mapping:   {
-          'json' => 'Json',
-          'line' => 'Line'
-        }.freeze,
-        enum:      ->(type, value, semicolon = true) { 
-          "#{type.to_pascal_case}.#{value.to_pascal_case}#{semicolon ? ';' : ''}"
-        },
-        string: ->(value) { "\"#{value}\"" },
-        object: ->(object_type, variable_name) { {
-          object_type: object_type.to_pascal_case,
-          variable_name: variable_name.to_camel_case
-        } },
+      type_mapping:   {
+        'json' => 'Json',
+        'line' => 'Line'
       }.freeze,
 
       literal_cast: {
         unsigned_int: ->(value) { "#{value}u" },
-        float: ->(value) { "#{value}f" },
-        double: ->(value) { value },
+        float: ->(value) { "#{value}f" }
       }.freeze,
 
       variable_handlers: {
-        declaration: {
-          regular: ->(name) { "var #{name.to_camel_case} = " },
-          mutable: ->(name) { "var #{name.to_camel_case} = " }
-        },
-        identifier:     ->(name) { name.to_camel_case.to_s },
-        field_access: ->(var, field) { 
-          formatted_field = field.split('.').map(&:to_pascal_case).join('.')
-          "#{var}.#{formatted_field}"
-        },
-        method_call:   ->(var, field) { "#{var}.#{field.to_pascal_case}()" },
-        array_access:  ->(arr, idx) { "#{arr}[#{idx}]" },
-        matrix_access: ->(var, row, col) { "#{var}[#{row}, #{col}]" },
         array_size:    ->(arr) { "#{arr}.Count" },
         reference_operator: ->(var) { "ref #{var}" }
       }.freeze,
 
+      array_handlers: {
+        matrix_separator: ', '
+      },
+
       function_handlers: {
-        call:      ->(name, params, semicolon = true) { "#{name.to_pascal_case}(#{params})#{semicolon ? ';' : ''}" },
-        pointer:   ->(_) { 'null;' },
-        test:      ->(_, name) { ["[Fact]", "public void Test#{name.to_pascal_case}Integration() {"] }
+        test: ->(_, name) { ["[Fact]", "public void Test#{name.to_pascal_case}Integration() {"] }
       }.freeze,
 
       comment_syntax: {
@@ -152,7 +151,17 @@ module LanguageConfig
         message: ->(text) { "Console.WriteLine(\"#{text}\");" }
       }.freeze,
 
-      file_extension: 'cs'
+      list_handlers: {
+        prefix: ->(type) { "new List<#{type}> {" },
+        suffix: '}',
+        separator: ', '
+      },
+
+      class_handlers: {
+        prefix: ->(name) { "new #{name.to_pascal_case}(" },
+        suffix: ')',
+        separator: ', '
+      }.freeze
     }.freeze
   end
 end
