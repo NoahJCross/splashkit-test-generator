@@ -157,8 +157,7 @@ module TestGenerator
     # @return [String] Formatted reassignment code
     def write_reassignment_step
       value = format_reassignment_value
-      variable_identifier = @config.variable_handlers[:identifier].call(@step[:variable_name])
-      reassignment_op = @config.variable_handlers[:declaration][:reassignment].call(variable_identifier)
+      reassignment_op = @config.variable_handlers[:declaration][:reassignment].call(@step[:variable_name])
       @formatter.indent("#{reassignment_op}#{value}", @config, true)
     end
 
@@ -197,8 +196,7 @@ module TestGenerator
     # Writes a delegate call step
     # @return [String] Formatted delegate call code
     def write_method_call_step
-      variable_value = @config.variable_handlers[:identifier].call(@step[:variable_name])
-      @formatter.indent(@config.variable_handlers[:method_call].call(variable_value, @step[:method_name]), @config, true)
+      @formatter.indent(@config.variable_handlers[:method_call].call(@step[:variable_name], @step[:method_name]), @config, true)
     end
 
     # Formats a variable's value based on its type

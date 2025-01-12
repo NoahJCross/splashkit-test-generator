@@ -2,15 +2,15 @@ require_relative 'base_test_runner'
 
 class RustTestRunner < BaseTestRunner
   def run_sequential_group(group)
-    system("cd generated_tests/rust && skm cargo test --test #{group}_tests -- --test-threads=1 --nocapture")
+    system("cd generated_tests/rust && cargo test --test #{group}_tests -- --test-threads=1 --nocapture")
   end
 
   def run_parallel_group(group)
-    system("cd generated_tests/rust && skm cargo test --test #{group}_tests")
+    system("cd generated_tests/rust && cargo test --test #{group}_tests")
   end
 
   def run_specific_test(group, test_class, test_method)
-    system("cd generated_tests/rust && skm cargo test --test #{group}_tests #{test_class}::#{test_method} -- --test-threads=1 --nocapture")
+    system("cd generated_tests/rust && cargo test --test #{group}_tests #{test_class}::#{test_method} -- --test-threads=1 --nocapture")
   end
 
   def get_test_method_name(test_name)

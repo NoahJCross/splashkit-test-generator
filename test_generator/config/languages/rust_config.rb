@@ -160,7 +160,7 @@ module LanguageConfig
       },
 
       class_handlers: {
-        prefix: ->(name) { "#{name.to_pascal_case}::new(" },
+        prefix: ->(name) { "#{name}::new(" },
         suffix: ')',
         separator: ', '
       }.freeze

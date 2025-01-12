@@ -291,8 +291,7 @@ module TestGenerator
       # @param config [Hash] Language configuration
       # @return [String] The formatted method call
       def format_method_call_value(value, _, config)
-        variable_value = config.variable_handlers[:identifier].call(value[:variable_name])
-        config.variable_handlers[:method_call].call(variable_value, value[:method_name])
+        config.variable_handlers[:method_call].call(value[:variable_name], value[:method_name])
       end
 
       # Formats boolean values

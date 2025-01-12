@@ -36,7 +36,6 @@ var
   FXMLResultsWriter: TXMLResultsWriter;
   FDigestResultsWriter: TDigestResultsWriter;
   testResult: TTestResult;
-  dbtype: string;
   groupName: string;
   testName: string;
   i: Integer;

@@ -66,19 +66,19 @@ module LanguageConfig
         },
 
         array_handlers: {
-          prefix: ->(arr) { "#{apply_case(arr, :variables)}[" },
+          prefix: ->(arr) { "#{arr}[" },
           suffix: ']',
           separator: ']['
         },
 
         method_handlers: {
-          prefix: ->(var, method) { "#{var}.#{apply_case(method, :functions)}(" },
+          prefix: ->(var, method) { "#{var}.#{method}(" },
           suffix: ')',
           separator: ', '
         },
 
         class_handlers: {
-          prefix: ->(name) { "#{apply_case(name, :types)}(" },
+          prefix: ->(name) { "#{name}(" },
           suffix: ')',
           separator: ', '
         }.freeze,
@@ -125,9 +125,8 @@ module LanguageConfig
     end
 
     def format_matrix_access(var, row, col)
-      formatted_var = apply_case(var, :variables)
       separator = @config[:array_handlers][:matrix_separator] || @config[:array_handlers][:separator]
-      "#{formatted_var}[#{row}#{separator}#{col}]"
+      "#{var}[#{row}#{separator}#{col}]"
     end
 
     def apply_case(value, type)
@@ -165,7 +164,9 @@ module LanguageConfig
 
     def format_method_call(var, method, *args)
       handlers = @config[:method_handlers]
-      "#{handlers[:prefix].call(var, method)}#{args.join(handlers[:separator])}#{handlers[:suffix]}"
+      formatted_var = apply_case(var, :variables)
+      formatted_method = apply_case(method, :functions)
+      "#{handlers[:prefix].call(formatted_var, formatted_method)}#{args.join(handlers[:separator])}#{handlers[:suffix]}"
     end
 
     def format_class_instance(name, args)

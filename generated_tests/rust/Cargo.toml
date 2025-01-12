@@ -4,5 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-splashkit = { path = "../../data/generated/rust" }
+
 ctor = "0.2"
+splashkit = { path = "/home/noah/.splashkit/cargo" }

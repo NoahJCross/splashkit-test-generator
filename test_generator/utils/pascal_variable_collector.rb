@@ -75,7 +75,7 @@ module TestGenerator
     # @param is_array [Boolean] Whether this type should be wrapped as an array
     # @return [String] The mapped Pascal type
     def map_type(type, is_array = false)
-      mapped_type = @config.type_handlers[:mapping][type] || type.to_pascal_case
+      mapped_type = @config.type_mapping[type] || type.to_pascal_case
       is_array ? "ArrayOf#{mapped_type}" : mapped_type
     end
   end

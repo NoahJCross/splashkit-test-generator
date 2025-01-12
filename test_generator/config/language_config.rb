@@ -30,7 +30,8 @@ module TestGenerator
                 :comparison_cast,
                 :test_main_file,
                 :statement_terminator,
-                :boolean_mapping
+                :boolean_mapping,
+                :type_mapping
 
     def initialize(config)
       validate_config(config)
@@ -59,6 +60,7 @@ module TestGenerator
       @test_main_file = config[:test_main_file]
       @statement_terminator = config[:statement_terminator]
       @boolean_mapping = config[:boolean_mapping]
+      @type_mapping = config[:type_mapping]
     end
 
     # Creates a configuration instance for a specific language

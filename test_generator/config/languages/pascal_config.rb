@@ -90,13 +90,6 @@ module LanguageConfig
         string: ->(value) { "'#{value}'" }
       }.freeze,
 
-      type_handlers: {
-        class_instance:     ->(name, args) { "T#{name}.Create(#{args})" },
-        enum:      ->(type, value) { 
-          "#{type.to_pascal_case}.#{value.to_upper_case}"
-        }
-      }.freeze,
-
       type_mapping: {
         'double' => 'Double',
         'string' => 'String',
@@ -211,7 +204,7 @@ module LanguageConfig
       },
 
       class_handlers: {
-        prefix: ->(name) { "T#{name.to_pascal_case}.Create(" },
+        prefix: ->(name) { "T#{name}.Create(" },
         suffix: ')',
         separator: ', '
       }.freeze
