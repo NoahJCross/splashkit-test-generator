@@ -1277,8 +1277,7 @@
               "value_type": "string",
               "value": "Test Timer 19"
             }
-          ],
-          "store_result": "test_timer"
+          ]
         },
         {
           "step_type": "cleanup",
