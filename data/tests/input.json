@@ -2677,6 +2677,17 @@
               "args": []
             }
           ]
+        },
+        {
+          "step_type": "function",
+          "function_name": "deregister_callback_on_key_typed",
+          "args": [
+            {
+              "value_type": "method_call",
+              "variable_name": "callbacks",
+              "method_name": "on_key_typed"
+            }
+          ]
         }
       ]
     },

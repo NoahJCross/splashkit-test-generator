@@ -7,7 +7,6 @@ class SpriteDelegates:
        self.float_function_call_count = 0
        self.function_call_count = 0
        
-       # Create and store the callbacks once
        def float_callback(sprite, value):
            self.float_function_call_count += 1
            self._event_called = True
@@ -19,7 +18,6 @@ class SpriteDelegates:
        def event_callback(sprite, evt):
            self._event_called = True
            
-       # Store the wrapped callbacks
        self._float_fn = SpriteFloatFunction(float_callback)
        self._function_fn = SpriteFunction(function_callback)
        self._event_fn = SpriteEventHandler(event_callback)
@@ -41,7 +39,7 @@ class SpriteDelegates:
    def event_called(self):
        return self._event_called
 
-class Keycallbacks:
+class KeyCallbacks:
    def __init__(self):
        self._key_typed = KeyCode.unknown_key
        self._key_down = KeyCode.unknown_key
