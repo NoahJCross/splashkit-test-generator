@@ -2,8 +2,7 @@ module LanguageConfig
   # Configuration class for generating Pascal test files
   class PascalConfig < BaseConfig
     def initialize
-      super()
-      self.config = deep_merge(get, DEFAULT_CONFIG)
+      super(DEFAULT_CONFIG)
     end
 
     class << self
@@ -34,7 +33,7 @@ module LanguageConfig
       ],
 
       identifier_cases: {
-        types:      :pascal_case,
+        cleanup:    :pascal_case,
         functions:  :pascal_case,
         variables:  :camel_case,
         fields:     :camel_case,
@@ -112,7 +111,7 @@ module LanguageConfig
       }.freeze,
 
       function_handlers: {
-        test: ->(group, name) { ["procedure TTest#{group.to_pascal_case}.Test#{name.to_pascal_case}Integration;"] }
+        test: ->(group, name) { ["procedure TTest#{group}.Test#{name}Integration;"] }
       }.freeze,
 
       comment_syntax: {
@@ -124,7 +123,7 @@ module LanguageConfig
       class_wrapper: {
         header: [
           'type',
-          ->(group) { "TTest#{group.to_pascal_case} = class(TTestCase)" },
+          ->(group) { "TTest#{group} = class(TTestCase)" },
           'private_vars',
           'published',
           'published_functions',
@@ -132,47 +131,38 @@ module LanguageConfig
           '',
           'implementation',
           '',
-          ->(group) { "{ TTest#{group.to_pascal_case} }" },
+          ->(group) { "{ TTest#{group} }" },
           ''
         ],
         publish: {
-          begin: 'protected',
           setup: 'procedure Setup; override;',
           tear_down: 'procedure TearDown; override;'
         },
         constructor_wrapper: {
-          header: [
-            ->(group) { "procedure TTest#{group.to_pascal_case}.Setup;" },
+          header: ->(group) { [
+            "procedure TTest#{group}.Setup;",
             'begin',
             'inherited;'
-          ],
+          ] },
           footer: ['end;']
         },
         footer: [
           'procedure RegisterTests;',
           'begin',
-          ->(group) { "RegisterTest(TTest#{group.to_pascal_case});" },
+          ->(group) { "RegisterTest(TTest#{group});" },
           'end;',
           'end.'
         ]
       }.freeze,
 
       tear_down: {
-        header: ->(group) {
-          ["procedure TTest#{group.to_pascal_case}.TearDown;",
-           'begin']
-        },
-        step: ->(step){
-          ["if Assigned(cleanup#{step.to_pascal_case}) then",
-           "cleanup#{step.to_pascal_case}.Free;"]
-        },
+        header: ->(group) { ["procedure TTest#{group}.TearDown;", 'begin'] },
         footer: ['inherited;', 'end;']
       },
 
       cleanup_handlers: {
-        setup: ->(_, type, arg = nil) {
-          "cleanup#{type.to_pascal_case} := #{type.to_pascal_case}Cleanup.Create#{arg ? "(#{arg})" : ''};"
-        }
+        setup: ->(_, type, arg = nil) { "cleanup#{type} := #{type}Cleanup.Create#{arg ? "(#{arg})" : ''};"},
+        free: ->(name) { ["if Assigned(cleanup#{name}) then", "cleanup#{name}.Free;"] }
       }.freeze,
 
       indentation: {

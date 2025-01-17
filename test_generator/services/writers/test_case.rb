@@ -27,7 +27,7 @@ module TestGenerator
     # Writes the test case header with the test name
     # @return [String] The formatted test header
     def write_header(formatter)
-      @config.function_handlers[:test].call(@group, @name).map do |line|
+      @config.format_test_function(@group, @name).map do |line|
         formatter.indent(line, @config)
       end.join
     end

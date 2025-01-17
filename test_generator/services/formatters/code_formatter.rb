@@ -41,7 +41,7 @@ module TestGenerator
       indent(line.strip, config)
     end
 
-    # Adds the language-specific line operator if configured
+    # Adds the language-specific statement terminator if configured (e.g. ; in C++)
     # @param text [String] The text to add the line operator to
     # @param config [Hash] The language configuration
     # @return [String] The text with line operator added if configured
@@ -90,7 +90,7 @@ module TestGenerator
       "#{' ' * (@level * @indent_size)}#{base_text}\n"
     end
 
-    # Checks if the text matches any reset patterns and sets the indentation level accordingly
+    # Checks if the text matches any reset patterns and sets the indentation level
     # @param text_str [String] The text to check for reset patterns
     # @param config [Hash] The language configuration containing reset patterns and their target levels
     def check_reset_patterns(text_str, config)

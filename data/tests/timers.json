@@ -12,42 +12,43 @@
       "name": "create_timer",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 1"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "not_null",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             },
             "value2": null
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 1"
                 }
               ]
@@ -61,40 +62,41 @@
       "name": "free_all_timers",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 2"
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 3"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 2"
                 }
               ]
@@ -103,15 +105,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 3"
                 }
               ]
@@ -120,20 +122,20 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_all_timers",
           "args": []
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 2"
                 }
               ]
@@ -142,15 +144,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 3"
                 }
               ]
@@ -164,31 +166,32 @@
       "name": "free_timer",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 4"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 4"
                 }
               ]
@@ -197,25 +200,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 4"
                 }
               ]
@@ -229,31 +232,32 @@
       "name": "has_timer_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 5"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 5"
                 }
               ]
@@ -262,25 +266,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 5"
                 }
               ]
@@ -294,62 +298,63 @@
       "name": "pause_timer_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 6"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "pause_timer_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 6"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_paused_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 6"
                 }
               ]
@@ -358,19 +363,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -383,76 +388,77 @@
       "name": "pause_timer",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 7"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "pause_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -465,78 +471,79 @@
       "name": "reset_timer_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 8"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "reset_timer_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 8"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "less_than",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks"
             }
           }
@@ -547,78 +554,79 @@
       "name": "reset_timer",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 9"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "reset_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "less_than",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks"
             }
           }
@@ -629,88 +637,89 @@
       "name": "resume_timer_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 10"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "pause_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resume_timer_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 10"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "greater_than",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks"
             }
           }
@@ -721,88 +730,89 @@
       "name": "resume_timer",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 11"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "pause_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resume_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "greater_than",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks"
             }
           }
@@ -813,40 +823,41 @@
       "name": "start_timer_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 12"
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 12"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_started_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 12"
                 }
               ]
@@ -860,41 +871,42 @@
       "name": "start_timer",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 13"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_started",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -908,85 +920,86 @@
       "name": "stop_timer_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 14"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "greater_than",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
             },
             "value2": {
-              "value_type": "unsigned_int",
+              "type": "unsigned_int",
               "value": 40
             }
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "stop_timer_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 14"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "unsigned_int",
+              "type": "unsigned_int",
               "value": 0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -999,41 +1012,42 @@
       "name": "stop_timer",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 15"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_started",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -1042,25 +1056,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "stop_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_started",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -1074,42 +1088,43 @@
       "name": "timer_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 16"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 16"
             }
           ],
           "store_result": "named_timer"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "named_timer"
             }
           }
@@ -1120,41 +1135,42 @@
       "name": "timer_paused_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 17"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_paused_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 17"
                 }
               ]
@@ -1163,25 +1179,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "pause_timer_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 17"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_paused_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 17"
                 }
               ]
@@ -1195,41 +1211,42 @@
       "name": "timer_paused",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 18"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_paused",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -1238,25 +1255,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "pause_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_paused",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -1270,30 +1287,31 @@
       "name": "timer_started_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 19"
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_started_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 19"
                 }
               ]
@@ -1302,25 +1320,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 19"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_started_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Timer 19"
                 }
               ]
@@ -1334,31 +1352,32 @@
       "name": "timer_started",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 20"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_started",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -1367,25 +1386,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_started",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -1399,73 +1418,74 @@
       "name": "timer_ticks_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 21"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 21"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 21"
             }
           ],
           "store_result": "after_delay_ticks"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "greater_than",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "after_delay_ticks"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks"
             }
           }
@@ -1476,73 +1496,74 @@
       "name": "timer_ticks",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 22"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "after_delay_ticks"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "greater_than",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "after_delay_ticks"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks"
             }
           }

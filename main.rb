@@ -23,7 +23,6 @@ module TestGenerator
   # @param group_tests [Hash] Pre-loaded test cases grouped by category
   def self.generate_for_language(functions, language, group_tests)
     config = LanguageConfig.for_language(language)
-    ConfigValidator.validate!(config)
     base_dir, tests_dir = DirectoryManager.setup(config.language)
 
     write_test_main_file(base_dir, config)

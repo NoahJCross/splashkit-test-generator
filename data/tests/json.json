@@ -2,11 +2,11 @@
   "group": "json",
   "constructor": [
     {
-      "step_type": "function",
+      "type": "function",
       "function_name": "set_resources_path",
       "args": [
         {
-          "value_type": "string",
+          "type": "string",
           "value": "set this value before running tests, use an absolute path"
         }
       ]
@@ -24,22 +24,23 @@
       "name": "create_json",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "not_null",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             }
           }
@@ -50,35 +51,36 @@
       "name": "create_json_from_string",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json_from_string",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "{\\\"name\\\":\\\"John\\\",\\\"age\\\":30,\\\"city\\\":\\\"New York\\\"}"
             }
           ],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_has_key",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "name"
                 }
               ]
@@ -86,23 +88,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "John"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "name"
                 }
               ]
@@ -115,170 +117,171 @@
       "name": "free_all_json",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json1"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json2"
         },
 
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json1"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json2"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_count_keys",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json1"
             }
           ],
           "store_result": "count1"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_count_keys",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json2"
             }
           ],
           "store_result": "count2"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 1
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "count1"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 1
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "count2"
             }
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_all_json",
           "args": []
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Should show Invalid json object passed to json_count_keys warning"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_count_keys",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json1"
             }
           ],
           "store_result": "count1_after_free"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_count_keys",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json2"
             }
           ],
           "store_result": "count2_after_free"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "count1_after_free"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "count2_after_free"
             }
           }
@@ -289,58 +292,59 @@
       "name": "free_json",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_json",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_has_key",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "key"
                 }
               ]
@@ -353,73 +357,74 @@
       "name": "json_count_keys",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key1"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value1"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_number_integer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key2"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 42
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_count_keys",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             }
           ],
           "store_result": "key_count"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 2
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "key_count"
             }
           }
@@ -430,36 +435,36 @@
       "name": "json_from_color",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "color_bright_green",
           "args": [],
           "store_result": "test_color"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_from_color",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_color"
             }
           ],
           "store_result": "test_json"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_has_key",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "color"
                 }
               ]
@@ -467,23 +472,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "#00ff00ff"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "color"
                 }
               ]
@@ -496,51 +501,51 @@
       "name": "json_from_file",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_from_file",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "person.json"
             }
           ],
           "store_result": "test_json"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "not_null",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             }
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "firstName"
             }
           ],
           "store_result": "test_value"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "John"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_value"
             }
           }
@@ -551,34 +556,34 @@
       "name": "json_from_string",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_from_string",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "{\\\"name\\\":\\\"John\\\",\\\"age\\\":30,\\\"city\\\":\\\"New York\\\"}"
             }
           ],
           "store_result": "test_json"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "John"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "name"
                 }
               ]
@@ -586,23 +591,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 30
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_number_as_int",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "age"
                 }
               ]
@@ -610,23 +615,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "New York"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "city"
                 }
               ]
@@ -639,48 +644,49 @@
       "name": "json_has_key",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key1"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value1"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_has_key",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "key1"
                 }
               ]
@@ -688,19 +694,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_has_key",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "key2"
                 }
               ]
@@ -713,42 +719,43 @@
       "name": "json_read_array_of_double",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_array_of_double",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "numbers"
             },
             {
-              "value_type": "list",
+              "type": "list",
               "target_type": "double",
               "value": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 1.1
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 2.2
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 3.3
                 }
               ]
@@ -756,56 +763,56 @@
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "out_result",
           "target_type": "double",
-          "value_type": "list",
+          "variable_type": "list",
           "value": [],
           "is_mutable": true
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_array_of_double",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "numbers"
             },
             {
-              "value_type": "ref",
+              "type": "ref",
               "variable_name": "out_result"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 1.1
             },
             "value2": {
-              "value_type": "array_access",
+              "type": "array_access",
               "array_name": "out_result",
               "index": 0
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 2.2
             },
             "value2": {
-              "value_type": "array_access",
+              "type": "array_access",
               "array_name": "out_result",
               "index": 1
             }
@@ -817,134 +824,135 @@
       "name": "json_read_array_of_json",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json1"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json1"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key1"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value1"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json2"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key2"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value2"
             }
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "test_json_array",
           "target_type": "json",
-          "value_type": "list",
+          "variable_type": "list",
           "value": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json1"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json2"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_array_of_json",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "array_key"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json_array"
             }
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "out_result",
           "target_type": "json",
-          "value_type": "list",
+          "variable_type": "list",
           "value": [],
           "is_mutable": true
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_array_of_json",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "array_key"
             },
             {
-              "value_type": "ref",
+              "type": "ref",
               "variable_name": "out_result"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 2
             },
             "value2": {
-              "value_type": "size",
+              "type": "size",
               "variable_name": "out_result"
             }
           }
@@ -955,42 +963,43 @@
       "name": "json_read_array_of_string",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_array_of_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_array"
             },
             {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "item1"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "item2"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "item3"
                 }
               ]
@@ -998,55 +1007,55 @@
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "out_result",
           "target_type": "string",
-          "value_type": "list",
+          "variable_type": "list",
           "value": [],
           "is_mutable": true
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_array_of_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_array"
             },
             {
-              "value_type": "ref",
+              "type": "ref",
               "variable_name": "out_result"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 3
             },
             "value2": {
-              "value_type": "size",
+              "type": "size",
               "variable_name": "out_result"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "item1"
             },
             "value2": {
-              "value_type": "array_access",
+              "type": "array_access",
               "array_name": "out_result",
               "index": 0
             }
@@ -1058,42 +1067,43 @@
       "name": "json_read_array_of_bool",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_array_of_bool",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "list",
+              "type": "list",
               "target_type": "bool",
               "value": [
                 {
-                  "value_type": "bool",
+                  "type": "bool",
                   "value": true
                 },
                 {
-                  "value_type": "bool",
+                  "type": "bool",
                   "value": false
                 },
                 {
-                  "value_type": "bool",
+                  "type": "bool",
                   "value": true
                 }
               ]
@@ -1101,62 +1111,62 @@
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "out_result",
           "target_type": "bool",
-          "value_type": "list",
+          "variable_type": "list",
           "value": [],
           "is_mutable": true
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_array_of_bool",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "ref",
+              "type": "ref",
               "variable_name": "out_result"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 3
             },
             "value2": {
-              "value_type": "size",
+              "type": "size",
               "variable_name": "out_result"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "array_access",
+              "type": "array_access",
               "array_name": "out_result",
               "index": 0
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "array_access",
+              "type": "array_access",
               "array_name": "out_result",
               "index": 1
             }
@@ -1168,48 +1178,49 @@
       "name": "json_read_bool",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_bool",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "bool",
+              "type": "bool",
               "value": true
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_bool",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "test_key"
                 }
               ]
@@ -1217,37 +1228,37 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_bool",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "bool",
+              "type": "bool",
               "value": false
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_bool",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "test_key"
                 }
               ]
@@ -1260,59 +1271,60 @@
       "name": "json_read_number",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_number_float",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "float",
+              "type": "float",
               "value": 42.5
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_number",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             }
           ],
           "store_result": "test_result"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 42.5
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_result"
             }
           }
@@ -1323,59 +1335,60 @@
       "name": "json_read_number_as_double",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_number_double",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 3.14
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_number_as_double",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             }
           ],
           "store_result": "test_result"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 3.14
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_result"
             }
           }
@@ -1386,59 +1399,60 @@
       "name": "json_read_number_as_int",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_number_integer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 42
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_number_as_int",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             }
           ],
           "store_result": "test_result"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 42
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_result"
             }
           }
@@ -1449,79 +1463,80 @@
       "name": "json_read_object",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "nested_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "nested_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_object",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "nestedObject"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "nested_json"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_object",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "nestedObject"
             }
           ],
           "store_result": "read_json"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "not_null",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "read_json"
             }
           }
@@ -1532,59 +1547,60 @@
       "name": "json_read_string",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_value"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             }
           ],
           "store_result": "read_value"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "test_value"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "read_value"
             }
           }
@@ -1595,42 +1611,43 @@
       "name": "json_set_array_of_string",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_array_of_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "value1"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "value2"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "value3"
                 }
               ]
@@ -1638,55 +1655,55 @@
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "out_result",
           "target_type": "string",
-          "value_type": "list",
+          "variable_type": "list",
           "value": [],
           "is_mutable": true
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_array_of_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "ref",
+              "type": "ref",
               "variable_name": "out_result"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "value1"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "value2"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "value3"
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "out_result"
             }
           }
@@ -1697,42 +1714,43 @@
       "name": "json_set_array_of_double",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_array_of_double",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "numbers"
             },
             {
-              "value_type": "list",
+              "type": "list",
               "target_type": "double",
               "value": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 1.1
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 2.2
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 3.3
                 }
               ]
@@ -1740,55 +1758,55 @@
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "out_result",
           "target_type": "double",
-          "value_type": "list",
+          "variable_type": "list",
           "value": [],
           "is_mutable": true
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_array_of_double",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "numbers"
             },
             {
-              "value_type": "ref",
+              "type": "ref",
               "variable_name": "out_result"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "double",
               "value": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 1.1
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 2.2
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 3.3
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "out_result"
             }
           }
@@ -1799,38 +1817,39 @@
       "name": "json_set_array_of_bool",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_array_of_bool",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "list",
+              "type": "list",
               "target_type": "bool",
               "value": [
                 {
-                  "value_type": "bool",
+                  "type": "bool",
                   "value": true
                 },
                 {
-                  "value_type": "bool",
+                  "type": "bool",
                   "value": false
                 }
               ]
@@ -1838,51 +1857,51 @@
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "out_result",
           "target_type": "bool",
-          "value_type": "list",
+          "variable_type": "list",
           "value": [],
           "is_mutable": true
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_array_of_bool",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "ref",
+              "type": "ref",
               "variable_name": "out_result"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "bool",
               "value": [
                 {
-                  "value_type": "bool",
+                  "type": "bool",
                   "value": true
                 },
                 {
-                  "value_type": "bool",
+                  "type": "bool",
                   "value": false
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "out_result"
             }
           }
@@ -1893,143 +1912,144 @@
       "name": "json_set_array_of_json",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json1"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json1"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key1"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value1"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json2"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key2"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value2"
             }
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "test_json_array",
-          "value_type": "list",
+          "variable_type": "list",
           "target_type": "json",
           "value": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json1"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json2"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_array_of_json",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "array_key"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json_array"
             }
           ]
         },
         {
-          "step_type": "variable",
+          "type": "variable",
           "variable_name": "out_result",
-          "value_type": "list",
+          "variable_type": "list",
           "target_type": "json",
           "value": [],
           "is_mutable": true
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_read_array_of_json",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "array_key"
             },
             {
-              "value_type": "ref",
+              "type": "ref",
               "variable_name": "out_result"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "value1"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "array_access",
+                  "type": "array_access",
                   "array_name": "out_result",
                   "index": 0
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "key1"
                 }
               ]
@@ -2037,24 +2057,24 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "value2"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "array_access",
+                  "type": "array_access",
                   "array_name": "out_result",
                   "index": 1
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "key2"
                 }
               ]
@@ -2067,48 +2087,49 @@
       "name": "json_set_bool",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_bool",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "bool",
+              "type": "bool",
               "value": true
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_has_key",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2116,19 +2137,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_bool",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2141,52 +2162,53 @@
       "name": "json_set_number_integer",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_number_integer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "age"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 30
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 30
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_number_as_int",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "age"
                 }
               ]
@@ -2199,52 +2221,53 @@
       "name": "json_set_number_double",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_number_double",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 3.14
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 3.14
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_number_as_double",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2257,52 +2280,53 @@
       "name": "json_set_number_float",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_number_float",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "float",
+              "type": "float",
               "value": 3.14
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 3.140000104904175
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_number",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2315,54 +2339,55 @@
       "name": "json_set_object",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_nested_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_object",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "nested"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_nested_json"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_has_key",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "nested"
                 }
               ]
@@ -2375,52 +2400,53 @@
       "name": "json_set_string",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_key"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_value"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "test_value"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "test_key"
                 }
               ]
@@ -2433,59 +2459,60 @@
       "name": "json_to_color",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "color"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "#ff0000ff"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_to_color",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             }
           ],
           "store_result": "test_color"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "#ff0000ff"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "color_to_string",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_color"
                 }
               ]
@@ -2498,77 +2525,78 @@
       "name": "json_to_file",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "testKey"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "testValue"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_to_file",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test.json"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_from_file",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test.json"
             }
           ],
           "store_result": "loaded_json"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "testValue"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "json_read_string",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "loaded_json"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "testKey"
                 }
               ]
@@ -2581,55 +2609,56 @@
       "name": "json_to_string",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_json",
           "args": [],
           "store_result": "test_json"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "json",
           "store_result": "cleanup_json"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_set_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "key"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "value"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "json_to_string",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json"
             }
           ],
           "store_result": "test_json_string"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": ""
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_json_string"
             }
           }

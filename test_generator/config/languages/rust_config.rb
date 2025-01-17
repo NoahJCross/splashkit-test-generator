@@ -2,8 +2,7 @@ module LanguageConfig
   # Configuration class for generating Rust test files
   class RustConfig < BaseConfig
     def initialize
-      super()
-      self.config = deep_merge(get, DEFAULT_CONFIG)
+      super(DEFAULT_CONFIG)
     end
 
     class << self
@@ -18,7 +17,7 @@ module LanguageConfig
 
     DEFAULT_CONFIG = {
       identifier_cases: {
-        types:      :pascal_case,
+        cleanup:    :pascal_case,
         functions:  :snake_case,
         variables:  :snake_case,
         fields:     :snake_case,
@@ -82,7 +81,6 @@ module LanguageConfig
       }.freeze,
 
       string_handlers: {
-        interpolation: ->(expr) { "{#{expr}}" },
         char:          ->(value) { "'#{value}'" },
         string_ref:    ->(value) { "#{value}.clone()" },
         format_string: method(:format_string_handler),
@@ -108,12 +106,12 @@ module LanguageConfig
       }.freeze,
 
       variable_handlers: {
-        array_size:   ->(arr) { "#{arr}.len()" },
+        array_size: ->(arr) { "#{arr}.len()" },
         reference_operator: ->(var) { "&mut #{var}" }
       }.freeze,
 
       function_handlers: {
-        test: ->(_, name) { ['#[test]', "fn test_#{name.to_snake_case}_integration() {"] }
+        test: ->(_, name) { ['#[test]', "fn test_#{name}_integration() {"] }
       }.freeze,
 
       comment_syntax: {
@@ -124,7 +122,7 @@ module LanguageConfig
 
       class_wrapper: {
         header: [
-          ->(group) { "mod test_#{group.to_snake_case} {" },
+          ->(group) { "mod Test#{group} {" },
           'use super::*;'
         ],
         constructor_wrapper: {
@@ -135,9 +133,7 @@ module LanguageConfig
       }.freeze,
 
       cleanup_handlers: {
-        setup: ->(name, type, arg = nil) {
-          "let _#{name.to_snake_case} = #{type.to_pascal_case}Cleanup::new(#{arg});"
-        }
+        setup: ->(name, type, arg = nil) { "let _#{name} = #{type}Cleanup::new(#{arg});" }
       }.freeze,
 
       indentation: {

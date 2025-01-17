@@ -2,8 +2,7 @@ module LanguageConfig
   # Configuration class for generating Cpp test files
   class CppConfig < BaseConfig
     def initialize
-      super()
-      self.config = deep_merge(get, DEFAULT_CONFIG)
+      super(DEFAULT_CONFIG)
     end
 
     class << self
@@ -34,7 +33,6 @@ module LanguageConfig
         content: [
           '#define CATCH_CONFIG_RUNNER',
           '#include <catch2/catch_all.hpp>',
-          '',
           'int main(int argc, char* argv[]) {',
           'return Catch::Session().run(argc, argv);',
           '}'
@@ -50,7 +48,7 @@ module LanguageConfig
       ],
 
       identifier_cases: {
-        types:      :snake_case,
+        cleanup:    :snake_case,
         functions:  :snake_case,
         variables:  :snake_case,
         fields:     :snake_case,
@@ -113,11 +111,11 @@ module LanguageConfig
       }.freeze,
 
       variable_handlers: {
-        array_size:    ->(arr) { "#{arr}.size()" },
+        array_size: ->(arr) { "#{arr}.size()" },
       }.freeze,
 
       function_handlers: {
-        test: ->(group, name) { ["TEST_CASE_METHOD(Test#{group.to_pascal_case}Fixture, \"test_#{name.to_snake_case}_integration\") {"] }
+        test: ->(group, name) { ["TEST_CASE_METHOD(Test#{group}Fixture, \"test_#{name}_integration\") {"] }
       }.freeze,
 
       comment_syntax: {
@@ -127,21 +125,16 @@ module LanguageConfig
       }.freeze,
 
       class_wrapper: {
-        header: [
-          ->(group) { "struct Test#{group.to_pascal_case}Fixture" },
-          '{'
-        ],
+        header: [->(group) { "struct Test#{group}Fixture" }, '{'],
         constructor_wrapper: {
-          header: ->(group) { ["Test#{group.to_pascal_case}Fixture()", '{'] },
+          header: ->(group) { ["Test#{group}Fixture()", '{'] },
           footer: ['}']
         },
         footer: ['};']
       }.freeze,
 
       cleanup_handlers: {
-        setup: ->(name, type, arg = nil) {
-          "#{type.to_snake_case}_cleanup #{name.to_snake_case}#{arg ? "(#{arg})" : ''};"
-        }
+        setup: ->(name, type, arg = nil) { "#{type}_cleanup #{name}#{arg.empty? ? '' : "(#{arg})" };" }
       }.freeze,
 
       indentation: {

@@ -38,7 +38,7 @@ module TestGenerator
     # @param item [Hash] The step being checked
     # @param variables [Hash] The collection of variables being built
     def check_for_loop(item, variables)
-      return unless item.is_a?(Hash) && item[:step_type] == 'loop'
+      return unless item.is_a?(Hash) && item[:type] == 'loop'
 
       variables['i'] = 'Integer'
     end
@@ -59,13 +59,13 @@ module TestGenerator
     # @param item [Hash] The step being checked
     # @param variables [Hash] The collection of variables being built
     def check_for_variable_step(item, variables)
-      return unless item[:step_type] == 'variable'
+      return unless item[:type] == 'variable' && item[:variable_type]
       # Handle variable references (copying type from another variable)
-      return variables[item[:variable_name]] = variables[item[:value]] if item[:value_type] == 'reference'
+      return variables[item[:variable_name]] = variables[item[:value]] if item[:variable_type] == 'reference'
 
-      is_class = item[:value_type] == 'class_instance'
-      is_array = item[:value_type] == 'list'
-      type = is_array ? item[:target_type] : item[:value_type]
+      is_class = item[:variable_type] == 'class_instance'
+      is_array = item[:variable_type] == 'list'
+      type = is_array ? item[:target_type] : item[:variable_type]
       type = is_class ? "t_#{item[:class_name]}" : type
       variables[item[:variable_name]] = map_type(type, is_array)
     end

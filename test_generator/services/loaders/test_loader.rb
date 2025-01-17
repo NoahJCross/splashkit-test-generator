@@ -32,7 +32,8 @@ module TestGenerator
       all_tests[group] ||= {
         tests: [],
         constructor: content[:constructor],
-        cleanup: content[:cleanup]
+        cleanup: content[:cleanup],
+        group: group
       }
       all_tests[group][:tests].concat(content[:tests])
       MessageHandler.log_info("Added #{content[:tests].count} tests to group '#{group}' from #{file}")

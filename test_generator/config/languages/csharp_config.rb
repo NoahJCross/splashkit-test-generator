@@ -2,8 +2,7 @@ module LanguageConfig
   # Configuration class for generating Csharp test files
   class CsharpConfig < BaseConfig
     def initialize
-      super()
-      self.config = deep_merge(get, DEFAULT_CONFIG)
+      super(DEFAULT_CONFIG)
     end
 
     class << self
@@ -34,7 +33,7 @@ module LanguageConfig
       ],
 
       identifier_cases: {
-        types:      :pascal_case,
+        cleanup:    :pascal_case,
         functions:  :pascal_case,
         variables:  :camel_case,
         fields:     :pascal_case,
@@ -84,13 +83,13 @@ module LanguageConfig
       }.freeze,
 
       string_handlers: {
-        char:          ->(value) { "'#{value}'" },
+        char: ->(value) { "'#{value}'" },
         string_ref: ->(value) { value.to_camel_case },
         format_string: method(:format_string_handler),
         string: ->(value) { "\"#{value}\"" }
       }.freeze,
 
-      type_mapping:   {
+      type_mapping: {
         'json' => 'Json',
         'line' => 'Line'
       }.freeze,
@@ -101,7 +100,7 @@ module LanguageConfig
       }.freeze,
 
       variable_handlers: {
-        array_size:    ->(arr) { "#{arr}.Count" },
+        array_size: ->(arr) { "#{arr}.Count" },
         reference_operator: ->(var) { "ref #{var}" }
       }.freeze,
 
@@ -110,7 +109,7 @@ module LanguageConfig
       },
 
       function_handlers: {
-        test: ->(_, name) { ["[Fact]", "public void Test#{name.to_pascal_case}Integration() {"] }
+        test: ->(_, name) { ['[Fact]', "public void Test#{name}Integration() {"] }
       }.freeze,
 
       comment_syntax: {
@@ -123,11 +122,11 @@ module LanguageConfig
         header: [
           'namespace SplashKitTests',
           '{',
-          ->(group) { "public class Test#{group.to_pascal_case}" },
+          ->(group) { "public class Test#{group}" },
           '{'
         ],
         constructor_wrapper: {
-          header: ->(group) { ["public Test#{group.to_pascal_case}()", '{' ]},
+          header: ->(group) { ["public Test#{group}()", '{'] },
           footer: ['}']
         },
         footer: [
@@ -137,9 +136,7 @@ module LanguageConfig
       }.freeze,
 
       cleanup_handlers: {
-        setup: ->(name, type, args = nil) {
-          "using var #{name.to_camel_case} = new #{type.to_pascal_case}Cleanup#{args ? "(#{args})" : '()'};"
-        }
+        setup: ->(name, type, args = nil) { "using var #{name} = new #{type}Cleanup#{args ? "(#{args})" : '()'};" }
       }.freeze,
 
       indentation: {

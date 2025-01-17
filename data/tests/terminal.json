@@ -5,30 +5,30 @@
       "name": "read_char",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Enter the letter A"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "read_char",
           "args": [],
           "store_result": "result"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "char",
+              "type": "char",
               "value": "A"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "result"
             }
           }
@@ -39,30 +39,30 @@
       "name": "read_line",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Enter the text: Test Input"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "read_line",
           "args": [],
           "store_result": "result"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Input"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "result"
             }
           }
@@ -73,26 +73,26 @@
       "name": "terminal_has_input",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Enter some text: Some Input"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "terminal_has_input",
           "args": [],
           "store_result": "result"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "result"
             }
           }
@@ -103,26 +103,26 @@
       "name": "write",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print Test String:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test String"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         }
@@ -132,26 +132,26 @@
       "name": "write_int",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print 42:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_int",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 42
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         }
@@ -161,26 +161,26 @@
       "name": "write_double",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print 3.14:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_double",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 3.14
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         }
@@ -190,26 +190,26 @@
       "name": "write_char",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print A:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_char",
           "args": [
             {
-              "value_type": "char",
+              "type": "char",
               "value": "A"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         }
@@ -219,20 +219,20 @@
       "name": "write_line",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print Test Line:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Line"
             }
           ]
@@ -243,16 +243,16 @@
       "name": "write_line_empty",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print empty line:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         }
@@ -262,20 +262,20 @@
       "name": "write_line_int",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print 42:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_int",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 42
             }
           ]
@@ -286,20 +286,20 @@
       "name": "write_line_double",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print 3.14:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_double",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 3.14
             }
           ]
@@ -310,20 +310,20 @@
       "name": "write_line_char",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_empty",
           "args": []
         },
         {
-          "step_type": "message",
+          "type": "message",
           "message": "Should print A:"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "write_line_char",
           "args": [
             {
-              "value_type": "char",
+              "type": "char",
               "value": "A"
             }
           ]

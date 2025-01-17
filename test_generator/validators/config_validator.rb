@@ -2,31 +2,18 @@ module TestGenerator
   # Class responsible for validating language configuration handlers and their required methods
   class ConfigValidator
     # List of required configuration handlers that must be present
-    REQUIRED_HANDLERS = %i[
-      variable_handlers
-      function_handlers
-      assert_conditions
-      if_conditions
-      control_flow
-      string_handlers
-      type_handlers
-      numeric_constants
-      imports
-      file_extension
-      class_wrapper
-      supports_overloading
-      comment_syntax
-      cleanup_handlers
-      indentation
-      literal_cast
+    REQUIRED_KEYS = %i[
+      language identifier_cases indent_size file_extension imports assert_conditions
+      if_conditions control_flow string_handlers supports_overloading class_wrapper
+      numeric_constants terminal_handlers comment_syntax indentation literal_cast
+      statement_terminator variable_handlers function_handlers cleanup_handlers
+      array_handlers method_handlers list_handlers class_handlers
     ].freeze
 
     # Creates a new validator instance
     # @param config [Object] The configuration object to validate
     def initialize(config)
-      @config = config.instance_variables.each_with_object({}) do |var, hash|
-        hash[var.to_s.delete('@').to_sym] = config.instance_variable_get(var)
-      end
+      @config = config.is_a?(Hash) ? config : {}
     end
 
     # Validates a configuration by creating a new validator instance
@@ -41,7 +28,7 @@ module TestGenerator
     # @return [Boolean] True if all validations pass
     # @raise [StandardError] If any validation fails
     def validate!
-      validate_required_handlers
+      validate_required_keys
       validate_handler_methods
       true
     end
@@ -50,8 +37,8 @@ module TestGenerator
 
     # Checks for presence of all required handlers
     # @raise [StandardError] If any required handlers are missing
-    def validate_required_handlers
-      missing = REQUIRED_HANDLERS - @config.keys
+    def validate_required_keys
+      missing = REQUIRED_KEYS - @config.keys
       raise "Missing required handlers: #{missing.join(', ')}" if missing.any?
     end
 
@@ -62,7 +49,6 @@ module TestGenerator
       validate_function_handlers
       validate_control_flow
       validate_string_handlers
-      validate_type_handlers
       validate_assert_conditions
       validate_if_conditions
       validate_class_wrapper
@@ -70,19 +56,27 @@ module TestGenerator
       validate_indentation
       validate_cleanup_handlers
       validate_literal_cast
+      validate_terminal_handlers
+      validate_list_handlers
+      validate_class_handlers
+      validate_method_handlers
+      validate_array_handlers
+      validate_enum_handlers
+      validate_numeric_constants
+      validate_identifier_cases
     end
 
     # Validates required variable handler methods
     # @return [void]
     def validate_variable_handlers
-      required = %i[declaration identifier field_access array_access matrix_access array_size reference_operator]
+      required = %i[array_size reference_operator declaration]
       validate_methods(@config[:variable_handlers], required, 'variable_handlers')
     end
 
     # Validates required function handler methods
     # @return [void]
     def validate_function_handlers
-      required = %i[call test]
+      required = %i[test]
       validate_methods(@config[:function_handlers], required, 'function_handlers')
     end
 
@@ -96,15 +90,8 @@ module TestGenerator
     # Validates required string handler methods
     # @return [void]
     def validate_string_handlers
-      required = %i[char format_string]
+      required = %i[char format_string string string_ref]
       validate_methods(@config[:string_handlers], required, 'string_handlers')
-    end
-
-    # Validates required type handler methods
-    # @return [void]
-    def validate_type_handlers
-      required = %i[list class_instance enum mapping]
-      validate_methods(@config[:type_handlers], required, 'type_handlers')
     end
 
     # Validates required assert condition methods
@@ -157,6 +144,62 @@ module TestGenerator
     def validate_literal_cast
       required = %i[unsigned_int float double]
       validate_methods(@config[:literal_cast], required, 'literal_cast')
+    end
+
+    # Validates required terminal handler methods
+    # @return [void]
+    def validate_terminal_handlers
+      required = %i[message]
+      validate_methods(@config[:terminal_handlers], required, 'terminal_handlers')
+    end
+
+    # Validates required list handler methods
+    # @return [void]
+    def validate_list_handlers
+      required = %i[prefix suffix separator]
+      validate_methods(@config[:list_handlers], required, 'list_handlers')
+    end
+
+    # Validates required class handler methods
+    # @return [void]
+    def validate_class_handlers
+      required = %i[prefix suffix separator]
+      validate_methods(@config[:class_handlers], required, 'class_handlers')
+    end
+
+    # Validates required method handler methods
+    # @return [void]
+    def validate_method_handlers
+      required = %i[prefix suffix separator]
+      validate_methods(@config[:method_handlers], required, 'method_handlers')
+    end
+
+    # Validates required array handler methods
+    # @return [void]
+    def validate_array_handlers
+      required = %i[prefix suffix separator]
+      validate_methods(@config[:array_handlers], required, 'array_handlers')
+    end
+
+    # Validates required enum handler methods
+    # @return [void]
+    def validate_enum_handlers
+      required = %i[separator]
+      validate_methods(@config[:enum_handlers], required, 'enum_handlers')
+    end
+
+    # Validates required numeric constant methods
+    # @return [void]
+    def validate_numeric_constants
+      required = %i[infinity negative_infinity max_value]
+      validate_methods(@config[:numeric_constants], required, 'numeric_constants')
+    end
+
+    # Validates required identifier case methods
+    # @return [void]
+    def validate_identifier_cases
+      required = %i[types functions variables fields constants]
+      validate_methods(@config[:identifier_cases], required, 'identifier_cases')
     end
 
     # Validates that a handler has all required methods

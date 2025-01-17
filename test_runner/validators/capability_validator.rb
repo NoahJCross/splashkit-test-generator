@@ -1,20 +1,27 @@
 # Validates hardware capabilities
 class CapabilityValidator
-  GPIO_GROUPS = %w[raspberry].freeze
-  GPIO_PATHS = %w[/dev/gpiomem /dev/gpio /sys/class/gpio].freeze
-
   def self.validate_group(group)
-    return true unless GPIO_GROUPS.include?(group)
+    return true unless %w[raspberry].include?(group)
 
-    unless gpio_available?
-      puts "\nSkipping '#{group}' - GPIO capability not detected"
+    unless raspberry_pi?
+      puts "\nSkipping 'raspberry' - Raspberry Pi capability not detected"
       return false
     end
-
     true
   end
 
-  def self.gpio_available?
-    GPIO_PATHS.any? { |path| File.exist?(path) }
+  def self.raspberry_pi?
+    # Method 1: Check for Raspberry Pi specific file
+    if File.exist?('/proc/device-tree/model')
+      device_model = File.read('/proc/device-tree/model')
+      return true if device_model.include?('Raspberry Pi')
+    end
+    # Method 2: Check for ARM architecture and Broadcom chip
+    if %w[arm aarch64].include?(RbConfig::CONFIG['target_cpu']) && 
+       File.exist?('/proc/cpuinfo') && File.read('/proc/cpuinfo') =~ /BCM\d+/
+      return true
+    end
+
+    false
   end
 end

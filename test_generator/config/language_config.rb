@@ -1,5 +1,5 @@
 Dir[File.join(__dir__, 'languages', '*_config.rb')].sort.each { |file| require file }
-
+require 'pp'
 module TestGenerator
   # Manages configuration for different programming language test generators
   class LanguageConfig
@@ -7,60 +7,62 @@ module TestGenerator
     SUPPORTED_LANGUAGES = %i[python cpp rust csharp pascal].freeze
 
     attr_reader :language,
-                :indent_size,
+                :statement_terminator,
                 :file_extension,
+                :indent_size,
                 :imports,
-                :function_handlers,
                 :variable_handlers,
+                :function_handlers,
                 :assert_conditions,
                 :if_conditions,
                 :control_flow,
                 :string_handlers,
-                :type_handlers,
                 :supports_overloading,
-                :class_wrapper,
                 :class_wrapper_handler,
+                :tear_down_handler,
+                :constructor_handler,
                 :numeric_constants,
                 :terminal_handlers,
-                :cleanup_handlers,
                 :comment_syntax,
                 :indentation,
-                :tear_down,
                 :literal_cast,
                 :comparison_cast,
                 :test_main_file,
-                :statement_terminator,
                 :boolean_mapping,
-                :type_mapping
+                :type_mapping,
+                :class_wrapper,
+                :tear_down,
+                :cleanup_handlers
 
     def initialize(config)
-      validate_config(config)
+      ConfigValidator.validate!(config)
+      @config_instance = config.delete(:config_instance)
       @language = config[:language]
       @indent_size = config[:indent_size]
       @file_extension = config[:file_extension]
       @imports = config[:imports]
-      @class_wrapper = config[:class_wrapper]
-      @function_handlers = config[:function_handlers]
       @variable_handlers = config[:variable_handlers]
+      @class_wrapper = config[:class_wrapper]
+      @tear_down = config[:tear_down]
+      @cleanup_handlers = config[:cleanup_handlers]
       @assert_conditions = config[:assert_conditions]
       @if_conditions = config[:if_conditions]
       @control_flow = config[:control_flow]
       @string_handlers = config[:string_handlers]
-      @type_handlers = config[:type_handlers]
       @supports_overloading = config[:supports_overloading]
       @numeric_constants = config[:numeric_constants]
       @terminal_handlers = config[:terminal_handlers]
-      @cleanup_handlers = config[:cleanup_handlers]
       @comment_syntax = config[:comment_syntax]
       @indentation = config[:indentation]
       @literal_cast = config[:literal_cast]
       @comparison_cast = config[:comparison_cast]
-      @tear_down = config[:tear_down]
-      @class_wrapper_handler = ClassWrapperHandler.new(config[:class_wrapper])
       @test_main_file = config[:test_main_file]
       @statement_terminator = config[:statement_terminator]
       @boolean_mapping = config[:boolean_mapping]
       @type_mapping = config[:type_mapping]
+      @class_wrapper_handler = ClassWrapperHandler.new(self)
+      @constructor_handler = ConstructorHandler.new(self)
+      @tear_down_handler = TearDownHandler.new(self)
     end
 
     # Creates a configuration instance for a specific language
@@ -72,8 +74,10 @@ module TestGenerator
 
       begin
         config_class = Object.const_get("LanguageConfig::#{language.to_s.capitalize}Config")
-        config = config_class.new.get
+        config_instance = config_class.new
+        config = config_instance.get
         config[:language] = language
+        config[:config_instance] = config_instance
         new(config)
       rescue NameError
         raise ConfigurationError, "Configuration not found for language: #{language}"
@@ -82,21 +86,28 @@ module TestGenerator
       end
     end
 
-    private
+    # Handles method calls that are not directly defined in the LanguageConfig class
+    # Delegates undefined methods to the underlying configuration instance if possible
+    # @param method_name [Symbol] The name of the method being called
+    # @param args [Array] Arguments passed to the method
+    # @param block [Proc] Optional block passed to the method
+    # @return [Object] Result of the method call on the config instance
+    # @raise [NoMethodError] If the method is not found on the config instance
+    def method_missing(method_name, *args, &block)
+      if @config_instance.respond_to?(method_name)
+        @config_instance.send(method_name, *args, &block)
+      else
+        super
+      end
+    end
 
-    # Validates that all required configuration keys are present
-    # @param config [Hash] The configuration to validate
-    # @raise [StandardError] If any required keys are missing
-    def validate_config(config)
-      required_keys = %i[
-        language identifier_cases indent_size file_extension imports function_handlers
-        variable_handlers assert_conditions if_conditions control_flow
-        string_handlers type_handlers supports_overloading class_wrapper
-        numeric_constants terminal_handlers cleanup_handlers comment_syntax
-        indentation literal_cast statement_terminator
-      ]
-      missing_keys = required_keys - config.keys
-      raise ConfigurationError, "Missing required configuration keys: #{missing_keys.join(', ')}" if missing_keys.any?
+    # Checks if a method can be handled by the underlying configuration instance
+    # Extends the default respond_to? behavior to include methods from the config instance
+    # @param method_name [Symbol] The name of the method to check
+    # @param include_private [Boolean] Whether to include private methods in the check
+    # @return [Boolean] True if the method exists on the config instance or the parent class
+    def respond_to_missing?(method_name, include_private = false)
+      @config_instance.respond_to?(method_name) || super
     end
   end
 end

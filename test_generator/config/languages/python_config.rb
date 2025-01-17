@@ -2,8 +2,7 @@ module LanguageConfig
   # Configuration class for generating python test files
   class PythonConfig < BaseConfig
     def initialize
-      super()
-      self.config = deep_merge(get, DEFAULT_CONFIG)
+      super(DEFAULT_CONFIG)
     end
 
     class << self
@@ -29,12 +28,12 @@ module LanguageConfig
       imports: [
         'import pytest',
         'from splashkit import *',
-        'from generated_tests.python.helpers import *',
+        'from helpers import *',
         'import contextlib'
       ],
 
       identifier_cases: {
-        types:      :pascal_case,
+        cleanup:    :pascal_case,
         functions:  :snake_case,
         variables:  :snake_case,
         fields:     :snake_case,
@@ -85,7 +84,6 @@ module LanguageConfig
       }.freeze,
 
       string_handlers: {
-        interpolation: ->(expr) { "{#{expr}}" },
         char:          ->(value) { "'#{value}'" },
         string_ref: ->(value) { value },
         format_string: method(:format_string_handler),
@@ -108,7 +106,7 @@ module LanguageConfig
       }.freeze,
 
       function_handlers: {
-        test: ->(_, name) { ["def test_#{name.to_snake_case}_integration(self):"] }
+        test: ->(_, name) { ["def test_#{name}_integration(self):"] }
       }.freeze,
 
       comment_syntax: {
@@ -118,7 +116,7 @@ module LanguageConfig
       }.freeze,
 
       class_wrapper: {
-        header: [->(group) { "class Test#{group.to_pascal_case}:" }],
+        header: [->(group) { "class Test#{group}:" }],
         constructor_wrapper: {
           header: ['def setup_method(self):'],
           footer: ['']
@@ -127,9 +125,7 @@ module LanguageConfig
       }.freeze,
 
       cleanup_handlers: {
-        setup: ->(_, type, args = nil) {
-          "with #{type}_cleanup(#{args}):"
-        }
+        setup: ->(_, type, args = nil) { "with #{type}_cleanup(#{args}):" }
       }.freeze,
 
       indentation: {

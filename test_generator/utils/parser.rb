@@ -3,7 +3,7 @@
 module TestGenerator
   # Parses SplashKit API definitions to create function and parameter objects
   module Parser
-    # Parses the functions from the API definition
+
     def self.parse_functions(api)
       all_functions = []
       api.each_value do |group|
@@ -18,7 +18,6 @@ module TestGenerator
     class << self
       private
 
-      # Creates a function object from the function definition
       def create_function(func)
         Function.new(
           name: func['name'],
@@ -34,7 +33,6 @@ module TestGenerator
         )
       end
 
-      # Parses the parameters of a function and returns an array of parameter objects
       def parse_parameters(function)
         parameters = []
         return parameters unless function['parameters'].is_a?(Hash)

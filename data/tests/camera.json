@@ -22,59 +22,60 @@
       "name": "camera_position",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 1"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "camera_position",
           "args": [],
           "store_result": "test_camera_position"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_camera_position",
               "variable_field": "x"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_camera_position",
               "variable_field": "y"
             }
@@ -86,42 +87,43 @@
       "name": "camera_x",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 2"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_position",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -129,15 +131,15 @@
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_x",
               "args": []
             }
@@ -149,42 +151,43 @@
       "name": "camera_y",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 3"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_position",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 200.0
                 }
               ]
@@ -192,15 +195,15 @@
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 200.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_y",
               "args": []
             }
@@ -212,58 +215,60 @@
       "name": "center_camera_on_vector",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 4"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Bitmap 1"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ],
           "store_result": "test_bitmap"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "bitmap",
           "store_result": "cleanup_bitmap"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_sprite",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_bitmap",
               "value": "Test Sprite 1"
             }
@@ -271,28 +276,29 @@
           "store_result": "test_sprite"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "sprite",
           "store_result": "cleanup_sprite"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "sprite_set_position",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -300,23 +306,23 @@
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "center_camera_on_vector",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "vector_from_angle",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 50.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 50.0
                 }
               ]
@@ -324,25 +330,25 @@
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": -267.8606182336807
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": -161.69777810573578
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_position",
               "args": []
             }
@@ -354,58 +360,60 @@
       "name": "center_camera_on",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 5"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Bitmap 2"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ],
           "store_result": "test_bitmap"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "bitmap",
           "store_result": "cleanup_bitmap"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_sprite",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_bitmap",
               "value": "Test Sprite 2"
             }
@@ -413,28 +421,29 @@
           "store_result": "test_sprite"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "sprite",
           "store_result": "cleanup_sprite"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "sprite_set_position",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -442,43 +451,43 @@
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "center_camera_on",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_sprite"
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": -300.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": -200.0
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_position",
               "args": []
             }
@@ -490,92 +499,93 @@
       "name": "move_camera_by_vector",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 6"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "vector_from_angle",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ],
           "store_result": "test_vector"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_camera_to",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_camera_by_vector",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_vector"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_x",
               "args": []
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_y",
               "args": []
             }
@@ -587,81 +597,82 @@
       "name": "move_camera_by",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 7"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_camera_to",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_camera_by",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_x",
               "args": []
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_y",
               "args": []
             }
@@ -673,42 +684,43 @@
       "name": "move_camera_to_point",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 8"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_camera_to_point",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -716,25 +728,25 @@
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_position",
               "args": []
             }
@@ -746,67 +758,68 @@
       "name": "move_camera_to",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 9"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_camera_to",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_x",
               "args": []
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_y",
               "args": []
             }
@@ -818,58 +831,59 @@
       "name": "point_in_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 10"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 400.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 300.0
             }
           ],
           "store_result": "test_point"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_in_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 },
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_point"
                 }
               ]
@@ -877,34 +891,34 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 1000.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 1000.0
             }
           ],
           "store_result": "test_point_outside"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_in_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 },
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_point_outside"
                 }
               ]
@@ -917,53 +931,54 @@
       "name": "point_on_screen",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 11"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 400.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 300.0
             }
           ],
           "store_result": "test_point"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_on_screen",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_point"
                 }
               ]
@@ -971,30 +986,30 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "point_at",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 1000.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 1000.0
             }
           ],
           "store_result": "test_point_outside"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_on_screen",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_point_outside"
                 }
               ]
@@ -1007,86 +1022,87 @@
       "name": "rect_in_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 12"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_x",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_y",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ],
           "store_result": "test_rectangle"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rect_in_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 },
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_rectangle"
                 }
               ]
@@ -1094,42 +1110,42 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 1000.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 1000.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ],
           "store_result": "test_rectangle_outside"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rect_in_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 },
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_rectangle_outside"
                 }
               ]
@@ -1142,61 +1158,62 @@
       "name": "rect_on_screen",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 13"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ],
           "store_result": "test_rectangle"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rect_on_screen",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_rectangle"
                 }
               ]
@@ -1204,29 +1221,29 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_camera_to",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 1000.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 1000.0
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rect_on_screen",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_rectangle"
                 }
               ]
@@ -1239,79 +1256,80 @@
       "name": "screen_center",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 14"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_x",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_y",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 0.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "screen_center",
           "args": [],
           "store_result": "test_center"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 400.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_center",
               "variable_field": "x"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 300.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_center",
               "variable_field": "y"
             }
@@ -1323,59 +1341,60 @@
       "name": "screen_rectangle",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 15"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "screen_rectangle",
           "args": [],
           "store_result": "test_rectangle"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 800.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_rectangle",
               "variable_field": "width"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 600.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_rectangle",
               "variable_field": "height"
             }
@@ -1387,42 +1406,43 @@
       "name": "set_camera_position",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 16"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_position",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -1430,25 +1450,25 @@
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_position",
               "args": []
             }
@@ -1460,48 +1480,49 @@
       "name": "set_camera_x",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 17"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_x",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_x",
               "args": []
             }
@@ -1513,48 +1534,49 @@
       "name": "set_camera_y",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 18"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_y",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "camera_y",
               "args": []
             }
@@ -1566,42 +1588,43 @@
       "name": "to_screen_point",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 19"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_position",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -1609,19 +1632,19 @@
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "to_screen_point",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 150.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 150.0
                 }
               ]
@@ -1630,30 +1653,30 @@
           "store_result": "test_screen_point"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 50.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_screen_point",
               "variable_field": "x"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 50.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_screen_point",
               "variable_field": "y"
             }
@@ -1665,83 +1688,84 @@
       "name": "to_screen_rectangle",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 20"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "rectangle_from",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 200.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 200.0
             }
           ],
           "store_result": "test_rectangle"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "to_screen_rectangle",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_rectangle"
             }
           ],
           "store_result": "screen_rectangle"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "cast_to": "float",
               "function_name": "to_screen_x",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rectangle_left",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "screen_rectangle"
                 }
               ]
@@ -1749,26 +1773,26 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "cast_to": "float",
               "function_name": "to_screen_y",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rectangle_top",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "screen_rectangle"
                 }
               ]
@@ -1781,59 +1805,60 @@
       "name": "to_screen_x",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 21"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_x",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "to_screen_x",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 150.0
             }
           ],
           "store_result": "test_screen_x"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 50.0
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_screen_x"
             }
           }
@@ -1844,59 +1869,60 @@
       "name": "to_screen_y",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 22"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_y",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "to_screen_y",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 150.0
             }
           ],
           "store_result": "test_screen_y"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 50.0
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_screen_y"
             }
           }
@@ -1907,42 +1933,43 @@
       "name": "to_world",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 23"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_position",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -1950,19 +1977,19 @@
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "to_world",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 400.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 300.0
                 }
               ]
@@ -1971,30 +1998,30 @@
           "store_result": "test_world_point"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 500.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_world_point",
               "variable_field": "x"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 400.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_world_point",
               "variable_field": "y"
             }
@@ -2006,42 +2033,43 @@
       "name": "to_world_x",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 24"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_position",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -2049,26 +2077,26 @@
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "to_world_x",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 400.0
             }
           ],
           "store_result": "test_world_x"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 500.0
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_world_x"
             }
           }
@@ -2079,42 +2107,43 @@
       "name": "to_world_y",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 25"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_camera_position",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 100.0
                 }
               ]
@@ -2122,26 +2151,26 @@
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "to_world_y",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 300.0
             }
           ],
           "store_result": "test_world_y"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 400.0
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_world_y"
             }
           }
@@ -2152,97 +2181,97 @@
       "name": "vector_world_to_screen",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "vector_world_to_screen",
           "args": [],
           "store_result": "test_vector1"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "vector_from_angle",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 0.0
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_vector1"
             }
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_camera_to",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "vector_world_to_screen",
           "args": [],
           "store_result": "test_vector2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "vector_to",
           "args": [
             {
-              "value_type": "double",
+              "type": "double",
               "value": -100.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": -100.0
             }
           ],
           "store_result": "test_vector_to"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_vector_to",
               "variable_field": "x"
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_vector2",
               "variable_field": "x"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_vector_to",
               "variable_field": "y"
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_vector2",
               "variable_field": "y"
             }
@@ -2254,65 +2283,66 @@
       "name": "window_area",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 26"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_area",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ],
           "store_result": "test_area"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 800.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_area",
               "variable_field": "width"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 600.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "test_area",
               "variable_field": "height"
             }

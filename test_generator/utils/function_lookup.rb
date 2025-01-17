@@ -3,7 +3,7 @@
 module TestGenerator
   # Module for looking up tests and functions by their unique names
   module FunctionLookup
-    # Determines the appropriate function name based on the configuration
+    # Determines the appropriate function name based on overload support
     # @param step [Hash] The step containing the function name
     # @param config [Object] The language configuration object
     # @param functions [Array<Function>] List of available functions

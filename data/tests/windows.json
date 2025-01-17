@@ -17,73 +17,74 @@
       "name": "clear_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 1"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "color_black",
           "args": [],
           "store_result": "test_color"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "clear_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_color"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "refresh_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "get_pixel_at_point",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 0.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 0.0
                 }
               ]
@@ -92,15 +93,15 @@
           "store_result": "pixel"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_color"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "pixel"
             }
           }
@@ -111,61 +112,62 @@
       "name": "close_all_windows",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 2"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 3"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "close_all_windows",
           "args": []
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 3"
                 }
               ]
@@ -174,15 +176,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 3"
                 }
               ]
@@ -196,54 +198,55 @@
       "name": "close_current_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 4"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "close_current_window",
           "args": []
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 4"
                 }
               ]
@@ -252,11 +255,11 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "null",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window",
               "args": []
             },
@@ -269,38 +272,39 @@
       "name": "close_window_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 5"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 5"
                 }
               ]
@@ -309,25 +313,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "close_window_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 5"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 5"
                 }
               ]
@@ -341,60 +345,61 @@
       "name": "close_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 6"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_caption",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ],
           "store_result": "window_name"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "close_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "window_name"
                 }
               ]
@@ -408,83 +413,84 @@
       "name": "current_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 7"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window1"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 8"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window2"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window2"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window",
               "args": []
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_current_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window2"
                 }
               ]
@@ -493,15 +499,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_current_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window1"
                 }
               ]
@@ -515,45 +521,46 @@
       "name": "current_window_has_border",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 9"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_has_border",
               "args": []
             },
@@ -561,16 +568,16 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "current_window_toggle_border",
           "args": []
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_has_border",
               "args": []
             },
@@ -583,78 +590,79 @@
       "name": "current_window_height",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 10"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_height",
               "args": []
             }
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resize_current_window",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_height",
               "args": []
             }
@@ -666,45 +674,46 @@
       "name": "current_window_is_fullscreen",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 11"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_is_fullscreen",
               "args": []
             },
@@ -712,16 +721,16 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "current_window_toggle_fullscreen",
           "args": []
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_is_fullscreen",
               "args": []
             },
@@ -734,86 +743,87 @@
       "name": "current_window_position",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 12"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_current_window_to",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "current_window_position",
           "args": [],
           "store_result": "position"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0,
               "alt_value": 68.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "position",
               "variable_field": "x"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 200.0,
               "alt_value": 168.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "position",
               "variable_field": "y"
             }
@@ -825,60 +835,61 @@
       "name": "current_window_toggle_border",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 13"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "current_window_has_border",
           "args": [],
           "store_result": "initial_border"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "current_window_toggle_border",
           "args": []
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_border"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_has_border",
               "args": []
             }
@@ -890,60 +901,61 @@
       "name": "current_window_toggle_fullscreen",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 14"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "current_window_is_fullscreen",
           "args": [],
           "store_result": "initial_fullscreen"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "current_window_toggle_fullscreen",
           "args": []
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_fullscreen"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_is_fullscreen",
               "args": []
             }
@@ -955,78 +967,79 @@
       "name": "current_window_width",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 15"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_width",
               "args": []
             }
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resize_current_window",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_width",
               "args": []
             }
@@ -1038,94 +1051,95 @@
       "name": "current_window_x",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 16"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_current_window_to",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100,
               "alt_value": 68
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_x",
               "args": []
             }
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_current_window_to",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 300
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 300,
               "alt_value": 268
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_x",
               "args": []
             }
@@ -1137,64 +1151,65 @@
       "name": "current_window_y",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 17"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_current_window_to",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100,
               "alt_value": 68
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_y",
               "args": []
             }
@@ -1206,39 +1221,40 @@
       "name": "has_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 18"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 18"
                 }
               ]
@@ -1247,19 +1263,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "function",
+                  "type": "function",
                   "function_name": "window_caption",
                   "args": [
                     {
-                      "value_type": "variable",
+                      "type": "variable",
                       "variable_name": "test_window"
                     }
                   ]
@@ -1270,25 +1286,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "close_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_window",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 18"
                 }
               ]
@@ -1302,68 +1318,69 @@
       "name": "is_current_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 19"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window1"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 20"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window1"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_current_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window1"
                 }
               ]
@@ -1372,15 +1389,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_current_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window2"
                 }
               ]
@@ -1394,80 +1411,81 @@
       "name": "move_current_window_to",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 21"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_current_window_to",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100,
               "alt_value": 68
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_x",
               "args": []
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 200,
               "alt_value": 168
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window_y",
               "args": []
             }
@@ -1479,61 +1497,62 @@
       "name": "move_window_to_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 22"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 22"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 150
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 250
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 150,
               "alt_value": 118
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_x_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 22"
                 }
               ]
@@ -1541,20 +1560,20 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 250,
               "alt_value": 218
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_y_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 22"
                 }
               ]
@@ -1567,62 +1586,63 @@
       "name": "move_window_to",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 23"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 300
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 200,
               "alt_value": 168
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_x",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -1630,20 +1650,20 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 300,
               "alt_value": 268
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_y",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -1656,54 +1676,55 @@
       "name": "open_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 24"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "not_null",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             "value2": null
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 24"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_caption",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -1711,19 +1732,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_width",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -1731,19 +1752,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_height",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -1756,91 +1777,92 @@
       "name": "refresh_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 25"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "clear_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "color_white",
               "args": []
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "draw_circle",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "color_black",
               "args": []
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 400.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 300.0
             },
             {
-              "value_type": "double",
+              "type": "double",
               "value": 50.0
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "refresh_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "get_pixel_at_point",
           "args": [
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "point_at",
               "args": [
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 400.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 350.0
                 }
               ]
@@ -1849,16 +1871,16 @@
           "store_result": "pixel"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "color_black",
               "args": []
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "pixel"
             }
           }
@@ -1869,39 +1891,40 @@
       "name": "refresh_window_with_target_fps",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 26"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "refresh_window_with_target_fps",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "unsigned_int",
+              "type": "unsigned_int",
               "value": 60
             }
           ]
@@ -1912,67 +1935,68 @@
       "name": "resize_current_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 27"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resize_current_window",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 1024
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 768
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 1024
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_width",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -1980,19 +2004,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 768
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_height",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2005,61 +2029,62 @@
       "name": "resize_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 28"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resize_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 1024
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 768
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 1024
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_width",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2067,19 +2092,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 768
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_height",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2092,67 +2117,68 @@
       "name": "set_current_window_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 29"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 30"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 30"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window2"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window",
               "args": []
             }
@@ -2164,67 +2190,68 @@
       "name": "set_current_window",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 31"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 32"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "set_current_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window2"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window2"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "current_window",
               "args": []
             }
@@ -2236,43 +2263,44 @@
       "name": "window_caption",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 33"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 33"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_caption",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2285,39 +2313,40 @@
       "name": "window_close_requested_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 34"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_close_requested_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 34"
                 }
               ]
@@ -2326,15 +2355,15 @@
           }
         },
         {
-          "step_type": "while",
+          "type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_close_requested_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 34"
                 }
               ]
@@ -2342,65 +2371,65 @@
           },
           "while_steps": [
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "process_events",
               "args": []
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "clear_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 },
                 {
-                  "value_type": "function",
+                  "type": "function",
                   "function_name": "color_white",
                   "args": []
                 }
               ]
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "draw_text_no_font_no_size",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test: window_close_requested_named. Close window to pass."
                 },
                 {
-                  "value_type": "function",
+                  "type": "function",
                   "function_name": "color_black",
                   "args": []
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 10.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 10.0
                 }
               ]
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "refresh_screen",
               "args": []
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_close_requested_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 34"
                 }
               ]
@@ -2414,39 +2443,40 @@
       "name": "window_close_requested",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 35"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_close_requested",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2455,15 +2485,15 @@
           }
         },
         {
-          "step_type": "while",
+          "type": "while",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_close_requested",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2471,65 +2501,65 @@
           },
           "while_steps": [
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "process_events",
               "args": []
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "clear_window",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 },
                 {
-                  "value_type": "function",
+                  "type": "function",
                   "function_name": "color_white",
                   "args": []
                 }
               ]
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "draw_text_no_font_no_size",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test: window_close_requested. Close window to pass."
                 },
                 {
-                  "value_type": "function",
+                  "type": "function",
                   "function_name": "color_black",
                   "args": []
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 10.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 10.0
                 }
               ]
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "refresh_screen",
               "args": []
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_close_requested",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2543,38 +2573,39 @@
       "name": "window_has_border_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 36"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_border_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 36"
                 }
               ]
@@ -2583,25 +2614,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_toggle_border_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 36"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_border_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 36"
                 }
               ]
@@ -2615,39 +2646,40 @@
       "name": "window_has_border",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 37"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_border",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2656,25 +2688,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_toggle_border",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_border",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2688,63 +2720,64 @@
       "name": "window_has_focus",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 38"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window1"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 39"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "process_events",
           "args": []
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_focus",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window2"
                 }
               ]
@@ -2753,15 +2786,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_focus",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window1"
                 }
               ]
@@ -2775,43 +2808,44 @@
       "name": "window_height_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 40"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_height_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 40"
                 }
               ]
@@ -2819,37 +2853,37 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resize_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_height_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 40"
                 }
               ]
@@ -2862,43 +2896,44 @@
       "name": "window_height",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 41"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_height",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2906,37 +2941,37 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resize_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_height",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -2949,38 +2984,39 @@
       "name": "window_is_fullscreen_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 42"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_is_fullscreen_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 42"
                 }
               ]
@@ -2989,25 +3025,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_toggle_fullscreen_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 42"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_is_fullscreen_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 42"
                 }
               ]
@@ -3021,39 +3057,40 @@
       "name": "window_is_fullscreen",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 43"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_is_fullscreen",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -3062,25 +3099,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_toggle_fullscreen",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_is_fullscreen",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -3094,74 +3131,75 @@
       "name": "window_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 44"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 44"
             }
           ],
           "store_result": "named_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "named_window"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_caption",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_caption",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "named_window"
                 }
               ]
@@ -3174,94 +3212,95 @@
       "name": "window_position_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 45"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 45"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 500
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_position_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 45"
             }
           ],
           "store_result": "position"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0,
               "alt_value": 68.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "position",
               "variable_field": "x"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 200.0,
               "alt_value": 168.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "position",
               "variable_field": "y"
             }
@@ -3273,95 +3312,96 @@
       "name": "window_position",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 46"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 500
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_position",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ],
           "store_result": "position"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 100.0,
               "alt_value": 68.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "position",
               "variable_field": "x"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 200.0,
               "alt_value": 168.0
             },
             "value2": {
-              "value_type": "variable_field",
+              "type": "variable_field",
               "variable_name": "position",
               "variable_field": "y"
             }
@@ -3373,88 +3413,90 @@
       "name": "window_set_icon",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 47"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_bitmap",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Bitmap 1"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 32
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 32
             }
           ],
           "store_result": "icon"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "bitmap",
           "store_result": "cleanup_bitmap"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "clear_bitmap",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "icon"
             },
             {
-              "value_type": "function",
+              "type": "function",
               "function_name": "color_white",
               "args": []
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_set_icon",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "icon"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_bitmap",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "icon"
             }
           ]
@@ -3465,38 +3507,39 @@
       "name": "window_toggle_border_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 48"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_border_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 48"
                 }
               ]
@@ -3505,25 +3548,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_toggle_border_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 48"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_border_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 48"
                 }
               ]
@@ -3537,39 +3580,40 @@
       "name": "window_toggle_border",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 49"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_border",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -3578,25 +3622,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_toggle_border",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_has_border",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -3610,38 +3654,39 @@
       "name": "window_toggle_fullscreen_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 50"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_is_fullscreen_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 50"
                 }
               ]
@@ -3650,25 +3695,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_toggle_fullscreen_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 50"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_is_fullscreen_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 50"
                 }
               ]
@@ -3682,39 +3727,40 @@
       "name": "window_toggle_fullscreen",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 51"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_is_fullscreen",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -3723,25 +3769,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "window_toggle_fullscreen",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_is_fullscreen",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -3755,43 +3801,44 @@
       "name": "window_width_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 52"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_width_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 52"
                 }
               ]
@@ -3799,37 +3846,37 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resize_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 1024
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 1024
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_width_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 52"
                 }
               ]
@@ -3842,43 +3889,44 @@
       "name": "window_width",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 53"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_width",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -3886,37 +3934,37 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "resize_window",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 1024
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 1024
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_width",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -3929,171 +3977,172 @@
       "name": "window_with_focus",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 54"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window1"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window1"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 500
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 55"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window2"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window2"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 850
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 500
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window2"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_with_focus",
               "args": []
             }
           }
         },
         {
-          "step_type": "while",
+          "type": "while",
           "compare": {
             "compare_type": "not_equal",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_with_focus",
               "args": []
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window1"
             }
           },
           "while_steps": [
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "process_events",
               "args": []
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "clear_screen_to_white",
               "args": []
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "draw_text_no_font_no_size_with_options",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test: window_with_focus. Click this window to pass."
                 },
                 {
-                  "value_type": "function",
+                  "type": "function",
                   "function_name": "color_black",
                   "args": []
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 10.0
                 },
                 {
-                  "value_type": "double",
+                  "type": "double",
                   "value": 10.0
                 },
                 {
-                  "value_type": "function",
+                  "type": "function",
                   "function_name": "option_draw_to_window",
                   "args": [
                     {
-                      "value_type": "variable",
+                      "type": "variable",
                       "variable_name": "test_window1"
                     }
                   ]
@@ -4101,22 +4150,22 @@
               ]
             },
             {
-              "step_type": "function",
+              "type": "function",
               "function_name": "refresh_screen",
               "args": []
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window1"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_with_focus",
               "args": []
             }
@@ -4128,61 +4177,62 @@
       "name": "window_x_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 56"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 56"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100,
               "alt_value": 68
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_x_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 56"
                 }
               ]
@@ -4190,38 +4240,38 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 56"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 300
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 300,
               "alt_value": 268
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_x_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 56"
                 }
               ]
@@ -4234,62 +4284,63 @@
       "name": "window_x",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 57"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 100,
               "alt_value": 68
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_x",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -4297,38 +4348,38 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 300
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 300,
               "alt_value": 268
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_x",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -4341,61 +4392,62 @@
       "name": "window_y_named",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 58"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 58"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 200,
               "alt_value": 168
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_y_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 58"
                 }
               ]
@@ -4403,38 +4455,38 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to_named",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 58"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 400,
               "alt_value": 368
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_y_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Window 58"
                 }
               ]
@@ -4447,62 +4499,63 @@
       "name": "window_y",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 59"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ],
           "store_result": "test_window"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 200,
               "alt_value": 168
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_y",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]
@@ -4510,38 +4563,38 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "move_window_to",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_window"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 100
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 400
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 400,
               "alt_value": 368
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "window_y",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_window"
                 }
               ]

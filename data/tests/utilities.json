@@ -2,11 +2,11 @@
   "group": "utilities",
   "constructor": [
     {
-      "step_type": "function",
+      "type": "function",
       "function_name": "set_resources_path",
       "args": [
         {
-          "value_type": "string",
+          "type": "string",
           "value": "set this value before running tests, use an absolute path"
         }
       ]
@@ -34,76 +34,78 @@
       "name": "display_dialog",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 2"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "window",
           "store_result": "cleanup_window"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "load_font",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test_font"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "hara.ttf"
             }
           ],
           "store_result": "test_font"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "font",
           "store_result": "cleanup_font"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "display_dialog",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Dialog"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "This is a test message"
             },
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_font"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 20
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_font",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_font"
             }
           ]
@@ -114,19 +116,19 @@
       "name": "contains",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -135,19 +137,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "library"
                 }
               ]
@@ -156,19 +158,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "it lib"
                 }
               ]
@@ -177,19 +179,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -198,19 +200,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "unreal"
                 }
               ]
@@ -219,19 +221,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "contains",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -245,19 +247,19 @@
       "name": "convert_to_double",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 123.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123"
                 }
               ]
@@ -265,19 +267,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 123.456
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123.456"
                 }
               ]
@@ -285,19 +287,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": -123.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123"
                 }
               ]
@@ -305,19 +307,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": -123.456
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -325,19 +327,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 0.456
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ".456"
                 }
               ]
@@ -345,19 +347,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 123.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123."
                 }
               ]
@@ -365,19 +367,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 123.456
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "000123.456"
                 }
               ]
@@ -385,19 +387,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "double",
+              "type": "double",
               "value": 123.456
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123.456000"
                 }
               ]
@@ -405,18 +407,18 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "inf"
+              "type": "inf"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "inf"
                 }
               ]
@@ -424,18 +426,18 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "neg_inf"
+              "type": "neg_inf"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-inf"
                 }
               ]
@@ -443,19 +445,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 123.0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "1.23e2"
                 }
               ]
@@ -468,19 +470,19 @@
       "name": "convert_to_integer",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 123
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123"
                 }
               ]
@@ -488,19 +490,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 123
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123.456"
                 }
               ]
@@ -508,19 +510,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": -123
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123"
                 }
               ]
@@ -528,19 +530,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": -123
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -548,19 +550,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 123
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123."
                 }
               ]
@@ -568,19 +570,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 123
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "000123.456"
                 }
               ]
@@ -588,19 +590,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 123
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "convert_to_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123.456000"
                 }
               ]
@@ -613,23 +615,23 @@
       "name": "index_of",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -637,23 +639,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 10
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "library"
                 }
               ]
@@ -661,23 +663,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 7
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "it lib"
                 }
               ]
@@ -685,23 +687,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": -1
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "unreal"
                 }
               ]
@@ -709,23 +711,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 }
               ]
@@ -733,23 +735,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": -1
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library is the best"
                 }
               ]
@@ -757,23 +759,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -781,23 +783,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": -1
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -805,23 +807,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "index_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -834,15 +836,15 @@
       "name": "is_double",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123.456"
                 }
               ]
@@ -851,15 +853,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123"
                 }
               ]
@@ -868,15 +870,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -885,15 +887,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123"
                 }
               ]
@@ -902,15 +904,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123."
                 }
               ]
@@ -919,15 +921,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "000123.456"
                 }
               ]
@@ -936,15 +938,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123.456000"
                 }
               ]
@@ -953,15 +955,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ".456"
                 }
               ]
@@ -970,15 +972,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SplashKit"
                 }
               ]
@@ -987,15 +989,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_double",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -1009,15 +1011,15 @@
       "name": "is_integer",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123"
                 }
               ]
@@ -1026,15 +1028,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123"
                 }
               ]
@@ -1043,15 +1045,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123.456"
                 }
               ]
@@ -1060,15 +1062,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -1077,15 +1079,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ".456"
                 }
               ]
@@ -1094,15 +1096,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SplashKit"
                 }
               ]
@@ -1111,15 +1113,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_integer",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -1133,15 +1135,15 @@
       "name": "is_number",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123"
                 }
               ]
@@ -1150,15 +1152,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "123.456"
                 }
               ]
@@ -1167,15 +1169,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123"
                 }
               ]
@@ -1184,15 +1186,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "-123.456"
                 }
               ]
@@ -1201,15 +1203,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SplashKit"
                 }
               ]
@@ -1218,15 +1220,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "is_number",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -1240,19 +1242,19 @@
       "name": "length_of",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 9
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "length_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -1260,19 +1262,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "length_of",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -1285,27 +1287,27 @@
       "name": "replace_all",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "SK library"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SK"
                 }
               ]
@@ -1313,27 +1315,27 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit lib"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "lib"
                 }
               ]
@@ -1341,27 +1343,27 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkitlibrary"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "it lib"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "itlib"
                 }
               ]
@@ -1369,27 +1371,27 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit library"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "unreal"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "tournament"
                 }
               ]
@@ -1397,27 +1399,27 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "SK"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SK"
                 }
               ]
@@ -1425,27 +1427,27 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": " library"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -1453,27 +1455,27 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit library"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SK"
                 }
               ]
@@ -1481,27 +1483,27 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": ""
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "replace_all",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SK"
                 }
               ]
@@ -1514,68 +1516,68 @@
       "name": "split",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "split",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit library"
             },
             {
-              "value_type": "char",
+              "type": "char",
               "value": " "
             }
           ],
           "store_result": "result"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "library"
                 }
               ]
             },
             "value2": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "result"
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "char",
+                  "type": "char",
                   "value": " "
                 }
               ]
@@ -1583,29 +1585,29 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "char",
+                  "type": "char",
                   "value": ","
                 }
               ]
@@ -1613,33 +1615,33 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ",splashkit library"
                 },
                 {
-                  "value_type": "char",
+                  "type": "char",
                   "value": ","
                 }
               ]
@@ -1647,33 +1649,33 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library,"
                 },
                 {
-                  "value_type": "char",
+                  "type": "char",
                   "value": ","
                 }
               ]
@@ -1681,37 +1683,37 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit library"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ",splashkit library,"
                 },
                 {
-                  "value_type": "char",
+                  "type": "char",
                   "value": ","
                 }
               ]
@@ -1719,37 +1721,37 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "list",
+              "type": "list",
               "target_type": "string",
               "value": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "library"
                 }
               ]
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "split",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit,,library"
                 },
                 {
-                  "value_type": "char",
+                  "type": "char",
                   "value": ","
                 }
               ]
@@ -1762,19 +1764,19 @@
       "name": "to_lowercase",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "to_lowercase",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SPLASHKIT"
                 }
               ]
@@ -1782,19 +1784,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": ""
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "to_lowercase",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -1802,19 +1804,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "to_lowercase",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -1822,19 +1824,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "to_lowercase",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SpLaShKiT"
                 }
               ]
@@ -1847,19 +1849,19 @@
       "name": "to_uppercase",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "SPLASHKIT"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "to_uppercase",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -1867,19 +1869,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": ""
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "to_uppercase",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -1887,19 +1889,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "SPLASHKIT"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "to_uppercase",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SPLASHKIT"
                 }
               ]
@@ -1907,19 +1909,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "SPLASHKIT"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "to_uppercase",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "SpLaShKiT"
                 }
               ]
@@ -1932,19 +1934,19 @@
       "name": "trim",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "  splashkit"
                 }
               ]
@@ -1952,19 +1954,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit  "
                 }
               ]
@@ -1972,19 +1974,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "  splashkit  "
                 }
               ]
@@ -1992,19 +1994,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "splashkit"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "splashkit"
                 }
               ]
@@ -2012,19 +2014,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": ""
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "trim",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 }
               ]
@@ -2037,51 +2039,51 @@
       "name": "rnd_range",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "range",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rnd_range",
               "args": [
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": -1
                 },
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": 5
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "type": "int",
               "value": -1
             },
             "value3": {
-              "value_type": "int",
+              "type": "int",
               "value": 5
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 1
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rnd_range",
               "args": [
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": 1
                 },
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": 1
                 }
               ]
@@ -2089,29 +2091,29 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "range",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rnd_range",
               "args": [
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": 5
                 },
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": 1
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "type": "int",
               "value": 1
             },
             "value3": {
-              "value_type": "int",
+              "type": "int",
               "value": 5
             }
           }
@@ -2122,20 +2124,20 @@
       "name": "rnd",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "range",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rnd",
               "args": []
             },
             "value2": {
-              "value_type": "int",
+              "type": "int",
               "value": 0.0
             },
             "value3": {
-              "value_type": "max_value"
+              "type": "max_value"
             }
           }
         }
@@ -2145,67 +2147,67 @@
       "name": "rnd_int",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "range",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rnd_int",
               "args": [
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": 1
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value3": {
-              "value_type": "int",
+              "type": "int",
               "value": 1
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "range",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rnd_int",
               "args": [
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": 10
                 }
               ]
             },
             "value2": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value3": {
-              "value_type": "int",
+              "type": "int",
               "value": 10
             }
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rnd_int",
               "args": [
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": -1
                 }
               ]
@@ -2213,19 +2215,19 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "rnd_int",
               "args": [
                 {
-                  "value_type": "int",
+                  "type": "int",
                   "value": 0
                 }
               ]
@@ -2238,39 +2240,39 @@
       "name": "current_ticks",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "open_window",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Window 1"
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 800
             },
             {
-              "value_type": "int",
+              "type": "int",
               "value": 600
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "current_ticks",
           "args": [],
           "store_result": "test_ticks"
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "greater_than",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_ticks"
             },
             "value2": {
-              "value_type": "int",
+              "type": "int",
               "value": 0
             }
           }
@@ -2281,66 +2283,67 @@
       "name": "delay",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "create_timer",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Timer 1"
             }
           ],
           "store_result": "test_timer"
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
+          "args": [],
           "cleanup_type": "timer",
           "store_result": "cleanup_timer"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "start_timer",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ]
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "timer_ticks",
           "args": [
             {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "test_timer"
             }
           ],
           "store_result": "initial_ticks"
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "delay",
           "args": [
             {
-              "value_type": "int",
+              "type": "int",
               "value": 200
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "less_than",
             "value1": {
-              "value_type": "variable",
+              "type": "variable",
               "variable_name": "initial_ticks + 200"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "timer_ticks",
               "args": [
                 {
-                  "value_type": "variable",
+                  "type": "variable",
                   "variable_name": "test_timer"
                 }
               ]
@@ -2353,23 +2356,23 @@
       "name": "file_as_string",
       "steps": [
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": "BITMAP,ufo,ufo.png\\n"
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "file_as_string",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "blah.txt"
                 },
                 {
-                  "value_type": "enum",
+                  "type": "enum",
                   "enum_type": "resource_kind",
                   "value": "bundle_resource"
                 }
@@ -2378,23 +2381,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": ""
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "file_as_string",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": ""
                 },
                 {
-                  "value_type": "enum",
+                  "type": "enum",
                   "enum_type": "resource_kind",
                   "value": "bundle_resource"
                 }
@@ -2403,23 +2406,23 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "equal",
             "value1": {
-              "value_type": "string",
+              "type": "string",
               "value": ""
             },
             "value2": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "file_as_string",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "invalid.txt"
                 },
                 {
-                  "value_type": "enum",
+                  "type": "enum",
                   "enum_type": "resource_kind",
                   "value": "bundle_resource"
                 }

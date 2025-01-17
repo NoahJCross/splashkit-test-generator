@@ -2,11 +2,11 @@
   "group": "resource_bundles",
   "constructor": [
     {
-      "step_type": "function",
+      "type": "function",
       "function_name": "set_resources_path",
       "args": [
         {
-          "value_type": "string",
+          "type": "string",
           "value": "set this value before running tests, use an absolute path"
         }
       ]
@@ -18,7 +18,7 @@
       "function_name": "free_resource_bundle",
       "args": [
         {
-          "value_type": "object",
+          "type": "object",
           "object_type": "string",
           "variable_name": "bundle_name"
         }
@@ -30,40 +30,40 @@
       "name": "free_resource_bundle",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "load_resource_bundle",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test.txt"
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
           "cleanup_type": "resource",
           "store_result": "cleanup_resource",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Resource Bundle"
                 }
               ]
@@ -72,15 +72,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_bitmap",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "FrogBmp"
                 }
               ]
@@ -89,15 +89,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_font_name_as_string",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "hara"
                 }
               ]
@@ -106,25 +106,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_resource_bundle",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Resource Bundle"
                 }
               ]
@@ -138,40 +138,40 @@
       "name": "has_resource_bundle",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "load_resource_bundle",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test.txt"
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
           "cleanup_type": "resource",
           "store_result": "cleanup_resource",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Resource Bundle"
                 }
               ]
@@ -180,25 +180,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_resource_bundle",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Resource Bundle"
                 }
               ]
@@ -207,15 +207,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "nonexistent"
                 }
               ]
@@ -229,40 +229,40 @@
       "name": "load_resource_bundle",
       "steps": [
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "load_resource_bundle",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             },
             {
-              "value_type": "string",
+              "type": "string",
               "value": "test.txt"
             }
           ]
         },
         {
-          "step_type": "cleanup",
+          "type": "cleanup",
           "cleanup_type": "resource",
           "store_result": "cleanup_resource",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "Test Resource Bundle"
                 }
               ]
@@ -271,15 +271,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_animation_script",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "WalkingScript"
                 }
               ]
@@ -288,15 +288,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_bitmap",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "FrogBmp"
                 }
               ]
@@ -305,15 +305,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_font_name_as_string",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "hara"
                 }
               ]
@@ -322,15 +322,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_sound_effect",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "error"
                 }
               ]
@@ -339,15 +339,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_timer_named",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "my timer"
                 }
               ]
@@ -356,15 +356,15 @@
           }
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "true",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "blah"
                 }
               ]
@@ -373,25 +373,25 @@
           }
         },
         {
-          "step_type": "function",
+          "type": "function",
           "function_name": "free_resource_bundle",
           "args": [
             {
-              "value_type": "string",
+              "type": "string",
               "value": "Test Resource Bundle"
             }
           ]
         },
         {
-          "step_type": "assertion",
+          "type": "assertion",
           "compare": {
             "compare_type": "false",
             "value1": {
-              "value_type": "function",
+              "type": "function",
               "function_name": "has_resource_bundle",
               "args": [
                 {
-                  "value_type": "string",
+                  "type": "string",
                   "value": "test_bundle"
                 }
               ]

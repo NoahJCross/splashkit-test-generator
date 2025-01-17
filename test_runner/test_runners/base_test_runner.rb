@@ -97,4 +97,10 @@ class BaseTestRunner
   def get_test_method_name(test_name)
     raise NotImplementedError
   end
+
+  private
+
+  def run_in_dir(lang, command)
+    system("cd generated_tests/#{lang} && #{command}")
+  end
 end

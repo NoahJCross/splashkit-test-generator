@@ -19,18 +19,19 @@ module TestGenerator
     end
 
     def write
-      step_type = @step[:step_type]
-      method_name = "write_#{step_type}_step"
+      type = @step[:type]
+      method_name = "write_#{type}_step"
 
       if respond_to?(method_name, true)
         send(method_name)
       else
-        MessageHandler.log_warning("Unimplemented step type: #{step_type}")
-        @formatter.indent("# TODO: Implement #{step_type} step", @config)
+        MessageHandler.log_warning("Unimplemented step type: #{type}")
+        puts ": #{JSON.pretty_generate(@step)}"
+        @formatter.indent("# TODO: Implement #{type} step", @config)
       end
     rescue StandardError => e
-      MessageHandler.log_error("Error in step #{step_type}", e.message)
-      raise TestGeneratorError, "Failed to write #{step_type} step: #{e.message}"
+      MessageHandler.log_error("Error in step #{type}", e.message)
+      raise TestGeneratorError, "Failed to write #{type} step: #{e.message}"
     end
 
     private
@@ -38,38 +39,38 @@ module TestGenerator
     # Writes a variable declaration step
     # @return [String] Formatted variable declaration code
     def write_variable_step
-      handlers = @config.variable_handlers
-      declaration_op = get_declaration(handlers)
+      declaration_op = declaration
       declaration = declaration_op.call(@step[:variable_name])
-      value = format_variable_value
+      step_clone = @step.clone
+      step_clone[:type] = step_clone[:variable_type]
+      value = ValueFormatter.format_value(step_clone, @functions, @config)
       @formatter.indent("#{declaration}#{value}", @config, true)
-    end
-
-    # Gets the appropriate declaration handler based on variable type and mutability
-    # @param handlers [Hash] The variable handlers configuration
-    # @return [Proc] The declaration handler to use
-    def get_declaration(handlers)
-      if @step[:value_type] == 'string' && handlers[:declaration][:string]
-        handlers[:declaration][:string]
-      elsif @step[:is_mutable]
-        handlers[:declaration][:mutable]
-      else
-        handlers[:declaration][:regular]
-      end
     end
 
     # Writes a function call step
     # @return [String] Formatted function call code
     def write_function_step
-      call = format_function_call
+      call = ValueFormatter.format_value(@step, @functions, @config)
       if @step[:store_result]
-        declaration_op = @step[:is_mutable] ? 
-          @config.variable_handlers[:declaration][:mutable] :
-          @config.variable_handlers[:declaration][:regular]
+        declaration_op = declaration
         declaration = declaration_op.call(@step[:store_result])
         @formatter.indent("#{declaration}#{call}", @config, true)
       else
         @formatter.indent(call, @config, true)
+      end
+    end
+
+    # Gets the appropriate declaration handler based on variable type and mutability
+    # @param handlers [Hash] The variable handlers configuration
+    # @return [Proc] The declaration handler to use
+    def declaration
+      handlers = @config.variable_handlers
+      if @step[:type] == 'string' && handlers[:declaration][:string]
+        handlers[:declaration][:string]
+      elsif @step[:is_mutable]
+        handlers[:declaration][:mutable]
+      else
+        handlers[:declaration][:regular]
       end
     end
 
@@ -147,36 +148,14 @@ module TestGenerator
       while_code
     end
 
-    # Writes a break statement
-    # @return [String] Formatted break statement
-    def write_break_step
-      @formatter.indent(@config.control_flow[:break].call, @config)
-    end
-
     # Writes a variable reassignment step
     # @return [String] Formatted reassignment code
     def write_reassignment_step
-      value = format_reassignment_value
       reassignment_op = @config.variable_handlers[:declaration][:reassignment].call(@step[:variable_name])
+      step_clone = @step.clone
+      step_clone[:type] = step_clone[:reassignment_type]
+      value = ValueFormatter.format_value(step_clone, @functions, @config)
       @formatter.indent("#{reassignment_op}#{value}", @config, true)
-    end
-
-    # Formats the value for a reassignment step
-    # @return [String] Formatted value
-    def format_reassignment_value
-      if @step[:function_name]
-        format_function_call
-      else
-        ValueFormatter.format_value(@step, @functions, @config)
-      end
-    end
-
-    # Formats a function call
-    # @return [String] Formatted function call
-    def format_function_call
-      args = @step[:args].map { |arg| ValueFormatter.format_value(arg, @functions, @config) }.join(', ')
-      function_name = FunctionLookup.determine_function_name(@step, @config, @functions)
-      @config.function_handlers[:call].call(function_name, args)
     end
 
     # Writes a prompt step that displays a message to the user
@@ -188,25 +167,20 @@ module TestGenerator
     # Writes a cleanup step
     # @return [String] Formatted cleanup code
     def write_cleanup_step
-      args = @step[:args]&.map { |arg| ValueFormatter.format_value(arg, @functions, @config) }&.join(', ')
-      setup = @config.cleanup_handlers[:setup].call(@step[:store_result], @step[:cleanup_type], args)
-      @formatter.indent(setup, @config)
+      args = format_args(@step[:args])
+      cleanup = @config.format_cleanup(@step[:store_result], @step[:cleanup_type], args)
+      @formatter.indent(cleanup, @config)
+    end
+
+    def format_args(args)
+      args.map { |arg| ValueFormatter.format_value(arg, @functions, @config) }.join(', ')
     end
 
     # Writes a delegate call step
     # @return [String] Formatted delegate call code
     def write_method_call_step
-      @formatter.indent(@config.variable_handlers[:method_call].call(@step[:variable_name], @step[:method_name]), @config, true)
-    end
-
-    # Formats a variable's value based on its type
-    # @return [String] The formatted value, either a reference or a formatted literal value
-    def format_variable_value
-      if @step[:value_type] == 'reference'
-        @config.variable_handlers[:identifier].call(@step[:value])
-      else
-        ValueFormatter.format_value(@step, @functions, @config)
-      end
+      method_call = ValueFormatter.format_value(@step, @functions, @config)
+      @formatter.indent(method_call, @config, true)
     end
   end
 end

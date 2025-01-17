@@ -15,6 +15,8 @@ require_relative 'test_generator/models/parameter'
 # Service handlers for messages and class wrapping
 require_relative 'test_generator/services/handlers/message_handler'
 require_relative 'test_generator/services/handlers/class_wrapper_handler'
+require_relative 'test_generator/services/handlers/constructor_handler'
+require_relative 'test_generator/services/handlers/tear_down_handler'
 
 # Code and value formatting services
 require_relative 'test_generator/services/formatters/code_formatter'
