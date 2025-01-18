@@ -198,7 +198,7 @@ module TestGenerator
     # Validates required identifier case methods
     # @return [void]
     def validate_identifier_cases
-      required = %i[types functions variables fields constants]
+      required = %i[cleanup functions variables fields constants]
       validate_methods(@config[:identifier_cases], required, 'identifier_cases')
     end
 
