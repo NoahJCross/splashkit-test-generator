@@ -6,6 +6,10 @@ module TestGenerator
   # Main entry point for test generation
   # @param api_json [String] JSON string containing the API specification
   def self.generate(api_json)
+    SourceValidator.validate
+    CMakeBuilder.build_if_needed
+    BindingFetcher.process_files
+    
     api = JSON.parse(api_json)
     functions = Parser.parse_functions(api)
     group_tests = TestLoader.new.load_all
@@ -24,27 +28,10 @@ module TestGenerator
   def self.generate_for_language(functions, language, group_tests)
     config = LanguageConfig.for_language(language)
     base_dir, tests_dir = DirectoryManager.setup(config.language)
-
-    write_test_main_file(base_dir, config)
     write_group_files(functions, tests_dir, config, group_tests)
   rescue StandardError => e
     MessageHandler.log_error('Test generation failed', e.message)
     raise
-  end
-
-  # Writes the main test runner file if specified in the language config
-  # @param base_dir [String] Base directory for test files
-  # @param config [LanguageConfig] Configuration for the target language
-  def self.write_test_main_file(base_dir, config)
-    return unless config.test_main_file
-
-    main_path = File.join(base_dir, config.test_main_file[:path])
-    formatter = CodeFormatter.new(config.indent_size)
-    File.open(main_path, 'w') do |file|
-      config.test_main_file[:content].each do |line|
-        file.write(formatter.format_line(line, config))
-      end
-    end
   end
 
   # Writes individual test group files

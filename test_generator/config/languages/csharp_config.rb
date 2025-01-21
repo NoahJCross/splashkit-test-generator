@@ -34,6 +34,7 @@ module LanguageConfig
 
       identifier_cases: {
         cleanup:    :pascal_case,
+        types:      :pascal_case,
         functions:  :pascal_case,
         variables:  :camel_case,
         fields:     :pascal_case,

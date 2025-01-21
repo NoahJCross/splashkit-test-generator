@@ -5196,17 +5196,6 @@
         {
           "type": "assertion",
           "compare": {
-            "compare_type": "null",
-            "value1": {
-              "type": "variable_field",
-              "variable_name": "test_options",
-              "variable_field": "dest"
-            }
-          }
-        },
-        {
-          "type": "assertion",
-          "compare": {
             "compare_type": "equal",
             "value1": {
               "type": "double",

@@ -1,16 +1,37 @@
 require_relative 'base_test_runner'
 
 class CppTestRunner < BaseTestRunner
+  private
+
+  def compile_command(test_files)
+    base_cmd = "g++"
+    lib_dir = LibProcessor.test_library_dir
+    case RbConfig::CONFIG['host_os']
+    when /mswin|mingw|windows/i
+      "#{base_cmd} #{test_files} -L#{lib_dir} -lSplashKitBackend"
+    when /darwin|mac os/i
+      "#{base_cmd} #{test_files} -L#{lib_dir} -lSplashKitBackend -rpath @loader_path"
+    else 
+      "#{base_cmd} #{test_files} -L#{lib_dir} -Wl,-rpath=\\$ORIGIN -lSplashKitBackend"
+    end
+  end
+
   def run_sequential_group(group)
-    run_in_dir('cpp', "g++ -std=c++17 -I/usr/include test_main.cpp tests/#{group}_tests.cpp -l SplashKit -l Catch2 -o test && ./test")
+    test_files = "test_main.cpp tests/#{group}_tests.cpp"
+    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test -r console -s"
+    run_in_dir('cpp', cmd)
   end
 
   def run_parallel_group(group)
-    run_in_dir('cpp', "g++ -std=c++17 -I/usr/include test_main.cpp tests/#{group}_tests.cpp -l SplashKit -l Catch2 -o test && ./test")
+    test_files = "test_main.cpp tests/#{group}_tests.cpp"
+    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test -r console -s"
+    run_in_dir('cpp', cmd)
   end
 
   def run_specific_test(group, test_method)
-    run_in_dir('cpp', "g++ -std=c++17 -I/usr/include test_main.cpp tests/#{group}_tests.cpp -l SplashKit -l Catch2 -o test && ./test \"#{test_method}\"")
+    test_files = "test_main.cpp tests/#{group}_tests.cpp"
+    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test \"#{test_method}\" -r console -s"
+    run_in_dir('cpp', cmd)
   end
 
   def get_test_method_name(test_name)

@@ -1,14 +1,16 @@
 {$mode objfpc}{$H+}
 {$UNITPATH tests}
+{$UNITPATH ../../../../../generated/pascal}
 
 program TestMain;
 
 uses
   SysUtils,
-  fpcunit, 
-  SplashKit,
+  DynLibs, 
+  fpcunit,
   testregistry,
   consoletestrunner,
+  SplashKit,
   animations_tests,
   audio_tests, 
   camera_tests, 
@@ -31,7 +33,7 @@ uses
   testreport,
   DigestTestReport;
 
-{ Create a custom results writer }
+{ Custom results writer }
 type
   TCustomTestWriter = class(TTestCase, IInterface, ITestListener)
   private

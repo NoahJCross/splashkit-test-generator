@@ -26,14 +26,18 @@ module LanguageConfig
       file_extension: 'py',
 
       imports: [
+        'import sys',
+        'import os',
+        'sys.path.append(os.path.join(os.path.dirname(__file__), "../../../data/language_files/python"))',
+        'from splashkit_test import *',
         'import pytest',
-        'from splashkit import *',
         'from helpers import *',
         'import contextlib'
       ],
 
       identifier_cases: {
-        cleanup:    :pascal_case,
+        cleanup:    :snake_case,
+        types:      :pascal_case,
         functions:  :snake_case,
         variables:  :snake_case,
         fields:     :snake_case,

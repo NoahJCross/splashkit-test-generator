@@ -1,4 +1,4 @@
-use splashkit::*;
+use splashkit_backend::*;
 use std::sync::{Arc, Mutex};
 
 pub struct SpriteDelegates {

@@ -18,6 +18,7 @@ module LanguageConfig
     DEFAULT_CONFIG = {
       identifier_cases: {
         cleanup:    :pascal_case,
+        types:      :pascal_case,
         functions:  :snake_case,
         variables:  :snake_case,
         fields:     :snake_case,
@@ -32,10 +33,10 @@ module LanguageConfig
 
       imports: [
         'use std::*;',
-        'use splashkit::*;',
+        'use splashkit_backend::*;',
         'use splashkit_tests::helpers::*;',
-        '#[cfg(test)]',
-        'use ctor::ctor;'
+        'use ctor::ctor;',
+        '#[cfg(test)]'
       ],
 
       assert_conditions: {
@@ -122,7 +123,7 @@ module LanguageConfig
 
       class_wrapper: {
         header: [
-          ->(group) { "mod Test#{group} {" },
+          ->(group) { "mod test_#{group} {" },
           'use super::*;'
         ],
         constructor_wrapper: {

@@ -101,6 +101,18 @@ class BaseTestRunner
   private
 
   def run_in_dir(lang, command)
-    system("cd generated_tests/#{lang} && #{command}")
+    system("export #{lib_path} && cd generated_tests/#{lang} && #{command}")
+  end
+
+  def lib_path
+    lib_path = LibProcessor.test_library_dir
+    case RbConfig::CONFIG['host_os']
+    when /mswin|mingw|windows/i
+      "PATH=#{lib_path};#{ENV['PATH']}"
+    when /darwin|mac os/i
+      "DYLD_LIBRARY_PATH=#{lib_path}"
+    else # Linux
+      "LD_LIBRARY_PATH=#{lib_path}:#{ENV['LD_LIBRARY_PATH']}"
+    end
   end
 end

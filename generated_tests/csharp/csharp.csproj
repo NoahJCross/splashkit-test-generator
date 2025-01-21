@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Using Include="Xunit" />
-    <Compile Include="../../data/generated/csharp/**/*.cs" />
+    <Compile Include="../../data/language_files/csharp/**/*.cs" />
     <Compile Include="tests/*.cs" />
     <Compile Include="helpers.cs" />
   </ItemGroup>

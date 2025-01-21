@@ -10,7 +10,6 @@ generated_tests/csharp/obj
 generated_tests/rust/target
 generated_tests/csharp/TestResults
 generated_tests/cpp/test
-generated_tests/cpp/test_main.cpp
 generated_tests/python/.pytest_cache
 generated_tests/rust/logs
 generated_tests/rust/.cargo
@@ -36,3 +35,9 @@ test_main*
 *.o
 *.ppu
 link*res
+
+#language files
+splashkit_test.py
+splashkit_test.cs
+build
+lib.rs

@@ -28,27 +28,16 @@ module LanguageConfig
       string_keyword: 'std::string',
       file_extension: 'cpp',
 
-      test_main_file: {
-        path: 'test_main.cpp',
-        content: [
-          '#define CATCH_CONFIG_RUNNER',
-          '#include <catch2/catch_all.hpp>',
-          'int main(int argc, char* argv[]) {',
-          'return Catch::Session().run(argc, argv);',
-          '}'
-        ]
-      },
-
       imports: [
         '#include <catch2/catch_all.hpp>',
         '#include <iostream>',
         '#include <limits>',
-        '#include "splashkit.h"',
         '#include "../helpers.hpp"'
       ],
 
       identifier_cases: {
         cleanup:    :snake_case,
+        types:      :snake_case,
         functions:  :snake_case,
         variables:  :snake_case,
         fields:     :snake_case,
