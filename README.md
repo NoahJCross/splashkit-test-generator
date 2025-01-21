@@ -38,20 +38,22 @@ ruby main.rb path/to/api.json
 
 ### Test Runner
 
-You can run tests either by using command-line arguments or by editing run_tests.rb directly.
+You can run tests either by using command-line arguments or by editing main.rb directly.
 
 #### Command Line Usage
 
 Run all tests for a language
-ruby run_tests.rb --language cpp
+ruby main.rb -l cpp
 
 Run specific test group
-ruby run_tests.rb --language cpp --group animations
+ruby main.rb -l cpp -g animations
 
 Run single test
-ruby run_tests.rb --language cpp --group animations --test animation_count
+ruby main.rb -l cpp -g animations -t animation_count
 
 #### File Usage
+
+ruby main.rb --run-tests
 
 Run all tests for a language in run_tests:
 

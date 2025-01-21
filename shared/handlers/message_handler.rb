@@ -1,3 +1,7 @@
+def colorize(text, color_code)
+  "\e[#{color_code}m#{text}\e[0m"
+end
+
 # Module for handling error and warning messages
 module MessageHandler
   COLORS = {
@@ -5,7 +9,8 @@ module MessageHandler
     warning: '33',  # yellow
     info: '36',     # cyan
     success: '32',  # green
-    test: '35'      # magenta
+    test: '35',     # magenta
+    status: '34'    # blue
   }.freeze
 
   class << self
@@ -28,6 +33,10 @@ module MessageHandler
 
     def log_test(message)
       puts colorize(message, COLORS[:test])
+    end
+
+    def log_status(message)
+      puts colorize("Status: #{message}", COLORS[:status])
     end
 
     def colorize(text, color_code)

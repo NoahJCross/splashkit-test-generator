@@ -1,69 +1,44 @@
 #!/usr/bin/env ruby
-require_relative 'lib'
+require_relative 'shared/lib'
 
-# Module responsible for generating test cases for SplashKit functions
-module TestGenerator
-  # Main entry point for test generation
-  # @param api_json [String] JSON string containing the API specification
-  def self.generate(api_json)
-    SourceValidator.validate
-    CMakeBuilder.build_if_needed
-    BindingFetcher.process_files
-    
-    api = JSON.parse(api_json)
-    functions = Parser.parse_functions(api)
-    group_tests = TestLoader.new.load_all
+options = CliParser.parse
 
-    # Generate tests for each supported programming language
-    LanguageConfig::SUPPORTED_LANGUAGES.each do |language|
-      generate_for_language(functions, language, group_tests)
-      MessageHandler.log_success("Completed generating tests for #{language}")
-    end
-  end
-
-  # Generates test files for a specific programming language
-  # @param functions [Array<Function>] List of functions to generate tests for
-  # @param language [String] Target programming language
-  # @param group_tests [Hash] Pre-loaded test cases grouped by category
-  def self.generate_for_language(functions, language, group_tests)
-    config = LanguageConfig.for_language(language)
-    base_dir, tests_dir = DirectoryManager.setup(config.language)
-    write_group_files(functions, tests_dir, config, group_tests)
-  rescue StandardError => e
-    MessageHandler.log_error('Test generation failed', e.message)
-    raise
-  end
-
-  # Writes individual test group files
-  # @param functions [Array<Function>] List of all functions
-  # @param tests_dir [String] Directory to write test files
-  # @param config [LanguageConfig] Language configuration
-  # @param group_tests [Hash] Pre-loaded test cases
-  def self.write_group_files(functions, tests_dir, config, group_tests)
-    functions
-      .group_by { |func| func.group || 'ungrouped' } # Group functions by their category
-      .each do |group, group_funcs|
-        TestWriter.new(group, group_funcs, functions, config, group_tests).write_to(tests_dir)
-      end
-  end
-end
-
-# Script execution starts here
-# Validate command line arguments
-unless ARGV[0]
-  puts MessageHandler.colorize('Usage: ruby main.rb path/to/api.json', '31')
-  exit 1
-end
-
-# Main execution block
 begin
-  api_json = File.read(ARGV[0])
-  TestGenerator.generate(api_json)
-  puts MessageHandler.log_success("Tests generated successfully in 'generated_tests' directory")
+  if options[:generate]
+    api_json = File.read(options[:generate])
+    require_relative 'test_generator/test_generator'
+    TestGenerator.generate(api_json)
+  elsif options[:run_tests] || options[:language] || options[:group] || options[:test]
+    require_relative 'test_runner/test_runner'
+    if options[:run_tests]
+      # Add your TestRunner calls here for default behavior
+      # Examples:
+      # TestRunner.run_all_tests(:pascal)
+      # TestRunner.run_single_file(:pascal, 'animations')
+      # TestRunner.run_specific_test(:pascal, 'animations', 'animation_count')
+    elsif options[:test]
+      TestRunner.run_specific_test(options[:language], options[:group], options[:test])
+    elsif options[:group]
+      TestRunner.run_single_file(options[:language], options[:group])
+    else
+      TestRunner.run_all_tests(options[:language])
+    end
+  else
+    puts "\nError: No valid operation specified"
+    puts "Please use one of the following options:"
+    puts "  --generate PATH     : Generate tests from API JSON file"
+    puts "  --run-tests        : Run tests with default configuration"
+    puts "  --language LANGUAGE : Run tests for specific language"
+    puts "\nUse --help for complete usage information"
+    exit 1
+  end
 rescue Errno::ENOENT
-  puts MessageHandler.colorize("WARNING: Could not find file '#{ARGV[0]}'", '31')
+  puts MessageHandler.log_warning("Could not find file '#{options[:generate]}'")
   exit 1
 rescue JSON::ParserError
-  puts MessageHandler.colorize('WARNING: Invalid JSON file', '31')
+  puts MessageHandler.log_warning('Invalid JSON file')
+  exit 1
+rescue StandardError => e
+  puts MessageHandler.log_warning("Error: #{e.message}")
   exit 1
 end

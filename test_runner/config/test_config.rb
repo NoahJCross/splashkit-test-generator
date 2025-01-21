@@ -1,5 +1,3 @@
-require_relative '../lib'
-
 module TestConfig
   def self.setup
     config = TestRunnerConfig.new

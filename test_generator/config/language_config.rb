@@ -1,5 +1,4 @@
 Dir[File.join(__dir__, 'languages', '*_config.rb')].sort.each { |file| require file }
-require 'pp'
 module TestGenerator
   # Manages configuration for different programming language test generators
   class LanguageConfig

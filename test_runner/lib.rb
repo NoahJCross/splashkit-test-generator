@@ -13,9 +13,3 @@ require_relative 'test_runners/python_test_runner'
 require_relative 'test_runners/pascal_test_runner'
 require_relative 'test_runners/rust_test_runner'
 require_relative 'test_runners/csharp_test_runner'
-
-# Shared 
-require_relative '../shared/utils/lib_processor'
-require_relative '../shared/utils/directory_manager'
-require_relative '../shared/handlers/message_handler'
-require_relative '../shared/extensions/string_extensions'

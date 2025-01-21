@@ -36,7 +36,7 @@ module TestGenerator
         group: group
       }
       all_tests[group][:tests].concat(content[:tests])
-      MessageHandler.log_info("Added #{content[:tests].count} tests to group '#{group}' from #{file}")
+      MessageHandler.log_status("Found #{content[:tests].count} tests for group '#{group}' from #{file}")
     rescue JSON::ParserError => e
       raise ValidationError, "Invalid JSON in test file #{file}: #{e.message}"
     rescue StandardError => e

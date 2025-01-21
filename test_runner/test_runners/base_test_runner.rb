@@ -1,5 +1,3 @@
-require_relative '../lib'
-
 # Base class for language-specific test runners
 class BaseTestRunner
   def initialize(config)

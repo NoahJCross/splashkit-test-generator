@@ -1,14 +1,14 @@
 
 class DirectoryManager
   REQUIRED_LANGUAGES = ['rust', 'python', 'cpp', 'clib', 'pascal', 'csharp']
-  ROOT_DIR = File.expand_path('../../../../../..', __dir__)
-  LANGUAGE_FILES_DIR = File.join('data', 'language_files')
-  CMAKE_PATH = File.join(LANGUAGE_FILES_DIR, 'cpp')
-  OUTPUT_DIR = File.join(LANGUAGE_FILES_DIR, 'cpp', 'lib')
-  TRANSLATOR_DIR = File.join(ROOT_DIR, 'tools', 'translator')
-  GENERATED_DIR = File.join(ROOT_DIR, 'generated')
-  SK_SRC = File.join(ROOT_DIR, 'coresdk', 'src')
-  SK_EXT = File.join(ROOT_DIR, 'coresdk', 'external')
+  ROOT_DIR = File.expand_path('../../../../../..', __dir__) # splashkit-core root
+  LANGUAGE_FILES_DIR = File.join('data', 'language_files') # splashkit-test-generator/data/language_files
+  CMAKE_PATH = File.join(LANGUAGE_FILES_DIR, 'cpp') # splashkit-test-generator/data/language_files/cpp
+  OUTPUT_DIR = File.join(LANGUAGE_FILES_DIR, 'cpp', 'lib') # splashkit-test-generator/data/language_files/cpp/lib
+  TRANSLATOR_DIR = File.join(ROOT_DIR, 'tools', 'translator') # splashkit-core/tools/translator
+  GENERATED_DIR = File.join(ROOT_DIR, 'generated') # splashkit-core/generated
+  SK_SRC = File.join(ROOT_DIR, 'coresdk', 'src') # splashkit-core/coresdk/src
+  SK_EXT = File.join(ROOT_DIR, 'coresdk', 'external') # splashkit-core/coresdk/external
 
   class << self
     def setup(language)
