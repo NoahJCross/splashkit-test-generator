@@ -2,7 +2,7 @@ import sys
 import os
 import contextlib
 sys.path.append(os.path.join(os.path.dirname(__file__), "../../data/language_files/python"))
-from splashkit import *
+from splashkit_test import *
 
 class SpriteDelegates:
    def __init__(self):
@@ -11,11 +11,11 @@ class SpriteDelegates:
        self._function_call_count = 0
        
        def float_callback(sprite, value):
-           self.float_function_call_count += 1
+           self._float_function_call_count += 1
            self._event_called = True
        
        def function_callback(sprite):
-           self.function_call_count += 1
+           self._function_call_count += 1
            self._event_called = True
        
        def event_callback(sprite, evt):
