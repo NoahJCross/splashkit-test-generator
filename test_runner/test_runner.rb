@@ -63,7 +63,7 @@ module TestRunner
   # @param language [String] The programming language to find test groups for
   # @return [Array<String>] List of test group names
   def self.find_test_groups(language)
-    test_files = Dir.glob("generated_tests/#{language}/tests/*_tests.*")
-    test_files.map { |f| File.basename(f, '.*').gsub('_tests', '') }
+    test_files = Dir.glob("data/tests/*.*")
+    test_files.map { |f| File.basename(f, '.*') }
   end
 end
