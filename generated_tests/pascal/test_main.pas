@@ -1,16 +1,16 @@
 {$mode objfpc}{$H+}
 {$UNITPATH tests}
-{$UNITPATH ../../../../../generated/pascal}
-
+{$UNITPATH ../../data/language_files/pascal}
 program TestMain;
 
 uses
   SysUtils,
+  LibLoader,
   DynLibs, 
   fpcunit,
   testregistry,
   consoletestrunner,
-  SplashKit,
+  splashkit_test,
   animations_tests,
   audio_tests, 
   camera_tests, 
@@ -301,5 +301,11 @@ begin
   finally
     testResult.Free;
     FCustomWriter.Free;
+    FinalizeLibrary
   end;
+end.
+
+initialization
+begin
+  InitializeLibrary
 end.

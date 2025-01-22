@@ -39,5 +39,6 @@ link*res
 #language files
 splashkit_test.py
 splashkit_test.cs
+splashkit_test.pas
 build
 lib.rs

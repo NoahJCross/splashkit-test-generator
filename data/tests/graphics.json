@@ -18060,6 +18060,16 @@
           }
         },
         {
+          "type": "function",
+          "function_name": "write_line",
+          "args": [
+            {
+              "type": "string",
+              "value": "Python pointer registry creates an instance if None instead of returning None"
+            }
+          ]
+        },
+        {
           "type": "assertion",
           "compare": {
             "compare_type": "null",

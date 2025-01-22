@@ -163,8 +163,8 @@
               "value": "test_logging2"
             },
             {
-              "type": "variable",
-              "variable_name": "true"
+              "type": "bool",
+              "value": true
             },
             {
               "type": "enum",

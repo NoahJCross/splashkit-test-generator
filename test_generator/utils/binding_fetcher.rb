@@ -7,6 +7,7 @@ module TestGenerator
       process_python_files
       process_rust_files
       process_csharp_files
+      process_pascal_files
     end
 
     private
@@ -33,6 +34,14 @@ module TestGenerator
     def self.process_csharp_files
       generate_language_bindings('csharp', 'splashkit.cs', 'splashkit_test.cs') do |content|
         content.gsub!(/\[DllImport\("SplashKit",/, '[DllImport("SplashKitBackend",')
+      end
+    end
+
+    # Generates Pascal-specific test bindings with updated library paths
+    # @return [void]
+    def self.process_pascal_files
+      generate_language_bindings('pascal', 'splashkit.pas', 'splashkit_test.pas') do |content|
+        content.gsub!(/unit\s+SplashKit;/i, 'unit splashkit_test;')
       end
     end
 
@@ -103,7 +112,10 @@ module TestGenerator
     # @param source_file [String] Path to source file
     # @return [Boolean] true if destination is current
     def self.timestamps_current?(dest_file, source_file)
-      File.exist?(dest_file) && File.mtime(dest_file) >= File.mtime(source_file)
+      dest_time = File.mtime(dest_file)
+      [source_file, __FILE__ ].all? do |file|
+        dest_time >= File.mtime(file)
+      end
     end
   end
 end

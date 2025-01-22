@@ -242,5 +242,5 @@ def layout_cleanup():
     finally:
         process_events()
         reset_layout()
-        set_interface_style(InterfaceStyle.ShadedDarkStyle)
+        set_interface_style(InterfaceStyle.shaded_dark_style)
         process_events()
