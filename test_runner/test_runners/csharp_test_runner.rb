@@ -8,7 +8,7 @@ class CSharpTestRunner < BaseTestRunner
 
   def run_parallel_group(group)
     group_name = group.to_pascal_case
-    run_in_dir('csharp', "dotnet test --nologo --filter \"FullyQualifiedName~SplashKitTests.Test#{group_name}\" --blame-crash-dump-type full --logger \"console;verbosity=detailed\"")
+    run_in_dir('csharp', "dotnet test --nologo --filter \"FullyQualifiedName~SplashKitTests.Test#{group_name}\" --logger \"console;verbosity=detailed\"")
   end
 
   def run_specific_test(group, test_method)

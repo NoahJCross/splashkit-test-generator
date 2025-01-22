@@ -3,19 +3,19 @@ require_relative 'base_test_runner'
 class CppTestRunner < BaseTestRunner
   def run_sequential_group(group)
     test_files = "test_main.cpp tests/#{group}_tests.cpp"
-    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test -r console -s"
+    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test -r console -d yes"
     run_in_dir('cpp', cmd)
   end
 
   def run_parallel_group(group)
     test_files = "test_main.cpp tests/#{group}_tests.cpp"
-    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test -r console -s"
+    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test -r console -d yes"
     run_in_dir('cpp', cmd)
   end
 
   def run_specific_test(group, test_method)
     test_files = "test_main.cpp tests/#{group}_tests.cpp"
-    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test \"#{test_method}\" -r console -s"
+    cmd = "#{compile_command(test_files)} -l Catch2 -o test && ./test \"#{test_method}\" -r console -d yes"
     run_in_dir('cpp', cmd)
   end
 
