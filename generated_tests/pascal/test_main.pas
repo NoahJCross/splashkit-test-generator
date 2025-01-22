@@ -1,37 +1,37 @@
 {$mode objfpc}{$H+}
 {$UNITPATH tests}
 {$UNITPATH ../../data/language_files/pascal}
+
 program TestMain;
 
 uses
   SysUtils,
-  LibLoader,
   DynLibs, 
   fpcunit,
   testregistry,
   consoletestrunner,
   splashkit_test,
-  animations_tests,
-  audio_tests, 
-  camera_tests, 
-  color_tests, 
-  geometry_tests, 
-  graphics_tests, 
-  input_tests, 
-  interface_tests, 
-  json_tests, 
-  logging_tests, 
-  physics_tests, 
-  raspberry_tests,
-  resource_bundles_tests,
-  resources_tests, 
-  sprites_tests, 
-  terminal_tests,
-  timers_tests,
-  utilities_tests,
-  windows_tests,
   testreport,
-  DigestTestReport;
+  DigestTestReport
+  {$IFDEF TEST_ANIMATIONS}, animations_tests {$ENDIF}
+  {$IFDEF TEST_AUDIO}, audio_tests {$ENDIF}
+  {$IFDEF TEST_CAMERA}, camera_tests {$ENDIF}
+  {$IFDEF TEST_COLOR}, color_tests {$ENDIF}
+  {$IFDEF TEST_GEOMETRY}, geometry_tests {$ENDIF}
+  {$IFDEF TEST_GRAPHICS}, graphics_tests {$ENDIF}
+  {$IFDEF TEST_INPUT}, input_tests {$ENDIF}
+  {$IFDEF TEST_INTERFACE}, interface_tests {$ENDIF}
+  {$IFDEF TEST_JSON}, json_tests {$ENDIF}
+  {$IFDEF TEST_LOGGING}, logging_tests {$ENDIF}
+  {$IFDEF TEST_PHYSICS}, physics_tests {$ENDIF}
+  {$IFDEF TEST_RASPBERRY}, raspberry_tests {$ENDIF}
+  {$IFDEF TEST_RESOURCE_BUNDLES}, resource_bundles_tests {$ENDIF}
+  {$IFDEF TEST_RESOURCES}, resources_tests {$ENDIF}
+  {$IFDEF TEST_SPRITES}, sprites_tests {$ENDIF}
+  {$IFDEF TEST_TERMINAL}, terminal_tests {$ENDIF}
+  {$IFDEF TEST_TIMERS}, timers_tests {$ENDIF}
+  {$IFDEF TEST_UTILITIES}, utilities_tests {$ENDIF}
+  {$IFDEF TEST_WINDOWS}, windows_tests {$ENDIF};
 
 { Custom results writer }
 type
@@ -220,25 +220,25 @@ end;
 procedure RegisterTestGroup(const groupName: string);
 begin
   case LowerCase(groupName) of
-    'ttestanimations': animations_tests.RegisterTests;
-    'ttestaudio': audio_tests.RegisterTests;
-    'ttestcamera': camera_tests.RegisterTests;
-    'ttestcolor': color_tests.RegisterTests;
-    'ttestgeometry': geometry_tests.RegisterTests;
-    'ttestgraphics': graphics_tests.RegisterTests;
-    'ttestinput': input_tests.RegisterTests;
-    'ttestinterface': interface_tests.RegisterTests;
-    'ttestjson': json_tests.RegisterTests;
-    'ttestlogging': logging_tests.RegisterTests;
-    'ttestphysics': physics_tests.RegisterTests;
-    'ttestraspberry': raspberry_tests.RegisterTests;
-    'ttestresourcebundles': resource_bundles_tests.RegisterTests;
-    'ttestresources': resources_tests.RegisterTests;
-    'ttestsprites': sprites_tests.RegisterTests;
-    'ttestterminal': terminal_tests.RegisterTests;
-    'ttesttimers': timers_tests.RegisterTests;
-    'ttestutilities': utilities_tests.RegisterTests;
-    'ttestwindows': windows_tests.RegisterTests;
+    'ttestanimations': {$IFDEF TEST_ANIMATIONS} animations_tests.RegisterTests {$ENDIF};
+    'ttestaudio': {$IFDEF TEST_AUDIO} audio_tests.RegisterTests {$ENDIF};
+    'ttestcamera': {$IFDEF TEST_CAMERA} camera_tests.RegisterTests {$ENDIF};
+    'ttestcolor': {$IFDEF TEST_COLOR} color_tests.RegisterTests {$ENDIF};
+    'ttestgeometry': {$IFDEF TEST_GEOMETRY} geometry_tests.RegisterTests {$ENDIF};
+    'ttestgraphics': {$IFDEF TEST_GRAPHICS} graphics_tests.RegisterTests {$ENDIF};
+    'ttestinput': {$IFDEF TEST_INPUT} input_tests.RegisterTests {$ENDIF};
+    'ttestinterface': {$IFDEF TEST_INTERFACE} interface_tests.RegisterTests {$ENDIF};
+    'ttestjson': {$IFDEF TEST_JSON} json_tests.RegisterTests {$ENDIF};
+    'ttestlogging': {$IFDEF TEST_LOGGING} logging_tests.RegisterTests {$ENDIF};
+    'ttestphysics': {$IFDEF TEST_PHYSICS} physics_tests.RegisterTests {$ENDIF};
+    'ttestraspberry': {$IFDEF TEST_RASPBERRY} raspberry_tests.RegisterTests {$ENDIF};
+    'ttestresourcebundles': {$IFDEF TEST_RESOURCEBUNDLES} resource_bundles_tests.RegisterTests {$ENDIF};
+    'ttestresources': {$IFDEF TEST_RESOURCES} resources_tests.RegisterTests {$ENDIF};
+    'ttestsprites': {$IFDEF TEST_SPRITES} sprites_tests.RegisterTests {$ENDIF};
+    'ttestterminal': {$IFDEF TEST_TERMINAL} terminal_tests.RegisterTests {$ENDIF};
+    'ttesttimers': {$IFDEF TEST_TIMERS} timers_tests.RegisterTests {$ENDIF};
+    'ttestutilities': {$IFDEF TEST_UTILITIES} utilities_tests.RegisterTests {$ENDIF};
+    'ttestwindows': {$IFDEF TEST_WINDOWS} windows_tests.RegisterTests {$ENDIF};
   end;
 end;
 
@@ -301,11 +301,5 @@ begin
   finally
     testResult.Free;
     FCustomWriter.Free;
-    FinalizeLibrary
   end;
-end.
-
-initialization
-begin
-  InitializeLibrary
 end.

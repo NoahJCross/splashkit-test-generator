@@ -28,7 +28,7 @@ module LanguageConfig
       imports: [
         ->(group) { "unit #{group}_tests;" },
         'interface',
-        'uses SplashKit, fpcunit, testutils, testregistry, Helpers, Math;',
+        'uses splashkit_test, fpcunit, testutils, testregistry, Helpers, Math;',
         'procedure RegisterTests;'
       ],
 

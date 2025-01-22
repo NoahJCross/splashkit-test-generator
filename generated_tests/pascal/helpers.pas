@@ -1,7 +1,7 @@
 unit Helpers;
 
 interface
-uses SplashKit, Variants, SysUtils, StrUtils;
+uses splashkit_test, Variants, SysUtils, StrUtils;
 
 function ToStr(const Value: Variant): String; overload;
 function ToStr(Value: Boolean): String; overload;
@@ -445,7 +445,7 @@ end;
 
 destructor RaspberryCleanup.Destroy;
 begin
-    SplashKit.RaspiCleanup;
+    splashkit_test.RaspiCleanup;
     inherited;
 end;
 
