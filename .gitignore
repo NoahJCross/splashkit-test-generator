@@ -32,6 +32,7 @@ bin
 # pascal generated files
 test_main*
 !test_main.pas
+!test_main.cpp
 *.o
 *.ppu
 link*res
