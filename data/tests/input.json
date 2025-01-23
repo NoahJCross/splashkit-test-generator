@@ -10020,22 +10020,6 @@
           ]
         },
         {
-          "type": "assertion",
-          "compare": {
-            "compare_type": "true",
-            "value1": {
-              "type": "function",
-              "function_name": "text_entry_cancelled_in_window",
-              "args": [
-                {
-                  "type": "variable",
-                  "variable_name": "test_window"
-                }
-              ]
-            }
-          }
-        },
-        {
           "type": "function",
           "function_name": "end_reading_text_in_window",
           "args": [

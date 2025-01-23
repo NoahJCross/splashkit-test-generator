@@ -8,31 +8,43 @@ namespace SplashKitTests
         private int _floatFunctionCallCount;
         private int _functionCallCount;
 
+        private readonly SpriteFloatFunction _spriteFloatDelegate;
+        private readonly SpriteFunction _spriteFunctionDelegate;
+        private readonly SpriteEventHandler _spriteEventDelegate;
 
-        public SpriteFloatFunction SpriteFloatFunction()
+
+        public SpriteDelegates()
         {
-            return (ptr, value) =>
+            _spriteFloatDelegate = (ptr, value) =>
             {
                 _floatFunctionCallCount++;
                 _eventCalled = true;
             };
-        }
 
-        public SpriteFunction SpriteFunction()
-        {
-            return (ptr) =>
+            _spriteFunctionDelegate = (ptr) =>
             {
                 _functionCallCount++;
                 _eventCalled = true;
             };
+            _spriteEventDelegate = (ptr, evt) =>
+            {
+                _eventCalled = true;
+            };
+        }
+
+        public SpriteFloatFunction SpriteFloatFunction()
+        {
+            return _spriteFloatDelegate;
+        }
+
+        public SpriteFunction SpriteFunction()
+        {
+            return _spriteFunctionDelegate;
         }
 
         public SpriteEventHandler SpriteEventHandler()
         {
-            return (ptr, evt) =>
-            {
-                _eventCalled = true;
-            };
+            return _spriteEventDelegate;
         }
 
         public bool EventCalled() { return _eventCalled; }
@@ -52,20 +64,30 @@ namespace SplashKitTests
         private KeyCode _lastKeyTyped;
         private KeyCode _lastKeyDown;
         private KeyCode _lastKeyUp;
+        private KeyCallback _onKeyTyped;    
+        private KeyCallback _onKeyDown;
+        private KeyCallback _onKeyUp;
+
+        public KeyCallbacks()
+        {
+            _onKeyTyped = (key) => _lastKeyTyped = (KeyCode)key;
+            _onKeyDown = (key) => _lastKeyDown = (KeyCode)key;
+            _onKeyUp = (key) => _lastKeyUp = (KeyCode)key;
+        }
 
         public KeyCallback OnKeyTyped()
         {
-            return (key) => _lastKeyTyped = (KeyCode)key;
+            return _onKeyTyped;
         }
 
         public KeyCallback OnKeyDown()
         {
-            return (key) => _lastKeyDown = (KeyCode)key;
+            return _onKeyDown;
         }
 
         public KeyCallback OnKeyUp()
         {
-            return (key) => _lastKeyUp = (KeyCode)key;
+            return _onKeyUp;
         }
 
         public KeyCode GetKeyTyped() { return _lastKeyTyped; }
@@ -83,10 +105,15 @@ namespace SplashKitTests
     public class NotifierTracker
     {
         private bool _wasNotified;
+        private FreeNotifier _onFree;
 
+        public NotifierTracker()
+        {
+            _onFree = (resource) => _wasNotified = true;
+        }
         public FreeNotifier OnFree()
         {
-            return (resource) => _wasNotified = true;
+            return _onFree;
         }
 
         public bool WasNotified() { return _wasNotified; }

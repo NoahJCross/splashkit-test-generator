@@ -65,7 +65,7 @@ module TestGenerator
     # @return [Proc] The declaration handler to use
     def declaration
       handlers = @config.variable_handlers
-      if @step[:type] == 'string' && handlers[:declaration][:string]
+      if @step[:variable_type] == 'string' && handlers[:declaration][:string]
         handlers[:declaration][:string]
       elsif @step[:is_mutable]
         handlers[:declaration][:mutable]
