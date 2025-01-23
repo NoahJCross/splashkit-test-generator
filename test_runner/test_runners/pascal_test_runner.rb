@@ -27,13 +27,13 @@ class PascalTestRunner < BaseTestRunner
     lib_dir = LibProcessor.test_library_dir
     base_cmd = case RbConfig::CONFIG['host_os']
     when /mswin|mingw|windows/i
-      "fpc -S2 -Sh -Cg -dTEST_#{group_name.upcase} -Fu'.' -Fu'tests' -k\"-L#{lib_dir}\" -k\"-lSplashKit.dll\""
+      "fpc -S2 -Sh -Cg -dTEST_#{group_name.upcase} -Fu'.' -Fu'tests' -k\"-L#{lib_dir}\" -k\"-lSplashKitBackend.dll\""
     when /darwin|mac os/i
       "ppcx64 -Tdarwin -S2 -Sh -XR/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -WM10.11 -Cg -dTEST_#{group_name.upcase} -Fu'.' -Fu'tests' " \
-      "-k\"-L#{lib_dir}\" -k\"-lSplashKit\" -k\"-rpath @loader_path -rpath #{lib_dir}\""
+      "-k\"-L#{lib_dir}\" -k\"-lSplashKitBackend\" -k\"-rpath @loader_path -rpath #{lib_dir}\""
     else # Linux
-      "ppcx64 -S2 -Sh -Cg -dTEST_#{group_name.upcase} -Fu'.' -Fu'tests' -k\"-L#{lib_dir}\" -k\"-lSplashKit\" " \
-      "-k\"-rpath=\\$ORIGIN -rpath='#{lib_dir}' -rpath=/usr/local/lib\""
+      "ppcx64 -S2 -Sh -Cg -dTEST_#{group_name.upcase} -Fu'.' -Fu'tests' -k\"-L#{lib_dir}\" -k\"-lSplashKitBackend\" " \
+      "-k\"-rpath=\\$ORIGIN -rpath='#{lib_dir}'\""
     end
     "#{base_cmd} test_main.pas -o#{output_name}"
   end
