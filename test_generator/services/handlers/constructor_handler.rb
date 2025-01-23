@@ -53,7 +53,7 @@ module TestGenerator
     def update_resources_path(step)
       step = step.dup
       step[:args] = step[:args].map(&:dup)
-      step[:args][0][:value] = File.join(File.expand_path('../../..', __dir__), 'resources')
+      step[:args][0][:value] = DirectoryManager::RESOURCES_DIR
       step
     end
   end

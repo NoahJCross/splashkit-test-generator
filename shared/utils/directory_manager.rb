@@ -2,6 +2,7 @@
 class DirectoryManager
   REQUIRED_LANGUAGES = ['rust', 'python', 'cpp', 'clib', 'pascal', 'csharp']
   ROOT_DIR = File.expand_path('../../../../../..', __dir__) # splashkit-core root
+  RESOURCES_DIR = File.join(File.expand_path('../../..', __dir__), 'Resources') # test/resources
   LANGUAGE_FILES_DIR = File.join('data', 'language_files') # splashkit-test-generator/data/language_files
   CMAKE_PATH = File.join(LANGUAGE_FILES_DIR, 'cpp') # splashkit-test-generator/data/language_files/cpp
   OUTPUT_DIR = File.join(LANGUAGE_FILES_DIR, 'cpp', 'lib') # splashkit-test-generator/data/language_files/cpp/lib
